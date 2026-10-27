@@ -54,6 +54,11 @@
     <string name="update_failed">Uppdateringen installerades inte</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Instruktioner</string>
+    <string name="tmdb_short">Rena bakgrunder och titellogotyper för filmer och serier.</string>
+    <string name="youtube_short">Populära videor i ditt land för YouTube-rutan.</string>
+    <string name="smarttube_short">Ditt eget YouTube-flöde för YouTube-rutan, utan nyckel.</string>
+    <string name="plex_short">Bakgrunder från din egen Plex-server.</string>
     <string name="phone_paste">Klistra in nycklar från telefonen</string>
     <string name="scan_to_paste">Skanna med mobilen för att klistra in nycklarna</string>
     <string name="tmdb_notice">Bakgrunderna använder TMDB:s API men är inte godkända eller certifierade av TMDB.</string>

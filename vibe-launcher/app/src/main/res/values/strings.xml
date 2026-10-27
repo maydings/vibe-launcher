@@ -58,6 +58,11 @@
     <string name="percent" translatable="false">%1$d%%</string>
     <string name="ram">RAM</string>
     <string name="ram_value" translatable="false">%1$.1f / %2$.1f GB</string>
+    <string name="keys_help">Instructions</string>
+    <string name="tmdb_short">Clean backdrops and title logos for films and shows.</string>
+    <string name="youtube_short">Popular videos in your country for the YouTube tile.</string>
+    <string name="smarttube_short">Your own YouTube feed for the YouTube tile, no key needed.</string>
+    <string name="plex_short">Backdrops from your own Plex server.</string>
     <string name="phone_paste">Paste keys from your phone</string>
     <string name="scan_to_paste">Scan with your phone to paste the keys</string>
     <string name="tmdb_notice">Backdrops use the TMDB API but are not endorsed or certified by TMDB.</string>

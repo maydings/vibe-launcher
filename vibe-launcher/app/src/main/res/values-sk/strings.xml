@@ -54,6 +54,11 @@
     <string name="update_failed">Aktualizácia sa nenainštalovala</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Návod</string>
+    <string name="tmdb_short">Čisté pozadia a logá titulov pre filmy a seriály.</string>
+    <string name="youtube_short">Obľúbené videá vo vašej krajine pre dlaždicu YouTube.</string>
+    <string name="smarttube_short">Váš vlastný kanál YouTube pre dlaždicu YouTube, bez kľúča.</string>
+    <string name="plex_short">Pozadia z vášho vlastného servera Plex.</string>
     <string name="phone_paste">Vložiť kľúče z telefónu</string>
     <string name="scan_to_paste">Naskenujte telefónom a vložte kľúče</string>
     <string name="tmdb_notice">Pozadia používajú API TMDB, no TMDB ich neschvaľuje ani necertifikuje.</string>

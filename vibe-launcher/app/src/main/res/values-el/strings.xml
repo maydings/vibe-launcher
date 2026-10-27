@@ -54,6 +54,11 @@
     <string name="update_failed">Η ενημέρωση δεν εγκαταστάθηκε</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Οδηγίες</string>
+    <string name="tmdb_short">Καθαρά φόντα και λογότυπα τίτλων για ταινίες και σειρές.</string>
+    <string name="youtube_short">Δημοφιλή βίντεο στη χώρα σας για το πλακίδιο του YouTube.</string>
+    <string name="smarttube_short">Η δική σας ροή YouTube για το πλακίδιο του YouTube, χωρίς κλειδί.</string>
+    <string name="plex_short">Φόντα από τον δικό σας διακομιστή Plex.</string>
     <string name="phone_paste">Επικόλληση κλειδιών από το κινητό</string>
     <string name="scan_to_paste">Σαρώστε με το κινητό για να επικολλήσετε τα κλειδιά</string>
     <string name="tmdb_notice">Τα φόντα χρησιμοποιούν το API του TMDB, αλλά δεν εγκρίνονται ούτε πιστοποιούνται από το TMDB.</string>

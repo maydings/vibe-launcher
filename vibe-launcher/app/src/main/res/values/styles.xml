@@ -6,6 +6,15 @@
         <item name="android:windowAnimationStyle">@null</item>
     </style>
 
+    <!-- Settings (SettingsActivity): its own near black under the screen it's given, no open animation of
+         Android's (it fades in, settings_in). No preview window: shown at once before the screen was up, it
+         made the fade in a cut. -->
+    <style name="Theme.Settings" parent="android:Theme.Material.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@drawable/settings_bg</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
     <!-- Frosted pill. -->
     <style name="TopButton">
         <item name="android:layout_width">wrap_content</item>

@@ -54,6 +54,11 @@
     <string name="update_failed">અપડેટ ઇન્સ્ટૉલ થયું નહીં</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">સૂચનાઓ</string>
+    <string name="tmdb_short">ફિલ્મો અને શો માટે સ્વચ્છ બેકડ્રોપ અને શીર્ષક લોગો.</string>
+    <string name="youtube_short">YouTube ટાઇલ માટે તમારા દેશના લોકપ્રિય વીડિયો.</string>
+    <string name="smarttube_short">YouTube ટાઇલ માટે તમારી પોતાની YouTube ફીડ, કી વગર.</string>
+    <string name="plex_short">તમારા પોતાના Plex સર્વરમાંથી બેકડ્રોપ.</string>
     <string name="phone_paste">ફોનમાંથી કી પેસ્ટ કરો</string>
     <string name="scan_to_paste">કી પેસ્ટ કરવા ફોનથી સ્કૅન કરો</string>
     <string name="tmdb_notice">બેકડ્રોપ TMDB API વાપરે છે, પણ TMDB દ્વારા સમર્થિત કે પ્રમાણિત નથી.</string>

@@ -54,6 +54,11 @@
     <string name="update_failed">បច្ចុប្បន្នភាពមិនបានដំឡើងទេ</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">ការណែនាំ</string>
+    <string name="tmdb_short">ផ្ទាំងខាងក្រោយស្អាត និងឡូហ្គោចំណងជើង សម្រាប់ភាពយន្ត និងកម្មវិធី។</string>
+    <string name="youtube_short">វីដេអូពេញនិយមក្នុងប្រទេសអ្នក សម្រាប់ប្រអប់ YouTube។</string>
+    <string name="smarttube_short">ព័ត៌មាន YouTube ផ្ទាល់ខ្លួនរបស់អ្នក សម្រាប់ប្រអប់ YouTube ដោយមិនត្រូវការសោ។</string>
+    <string name="plex_short">ផ្ទាំងខាងក្រោយពីម៉ាស៊ីនមេ Plex ផ្ទាល់ខ្លួនរបស់អ្នក។</string>
     <string name="phone_paste">បិទភ្ជាប់សោពីទូរសព្ទ</string>
     <string name="scan_to_paste">ស្កេនដោយទូរសព្ទដើម្បីបិទភ្ជាប់សោ</string>
     <string name="tmdb_notice">ផ្ទៃខាងក្រោយប្រើ API របស់ TMDB ប៉ុន្តែមិនត្រូវបាន TMDB គាំទ្រ ឬបញ្ជាក់ទេ។</string>

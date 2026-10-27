@@ -54,6 +54,11 @@
     <string name="update_failed">Aktualizacja się nie zainstalowała</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Instrukcje</string>
+    <string name="tmdb_short">Czyste tła i logotypy tytułów dla filmów i seriali.</string>
+    <string name="youtube_short">Popularne filmy w Twoim kraju dla kafelka YouTube.</string>
+    <string name="smarttube_short">Twój własny kanał YouTube dla kafelka YouTube, bez klucza.</string>
+    <string name="plex_short">Tła z Twojego własnego serwera Plex.</string>
     <string name="phone_paste">Wklej klucze z telefonu</string>
     <string name="scan_to_paste">Zeskanuj telefonem, aby wkleić klucze</string>
     <string name="tmdb_notice">Tła korzystają z API TMDB, ale nie są zatwierdzone ani certyfikowane przez TMDB.</string>

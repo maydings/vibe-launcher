@@ -73,6 +73,14 @@
         <!-- market://launch?id=<package>: how the TV's phone-remote service opens an app by its package name.
              The stock launcher serves it; with that off (adb) this does. Where it's still on (the store
              build), Android lets the user pick between the two. -->
+        <!-- Vibe Launcher settings, over Home in its task (SettingsActivity). -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden|uiMode"
+            android:theme="@style/Theme.Settings"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustNothing" />
         <activity
             android:name=".AppLaunchActivity"
             android:exported="true"

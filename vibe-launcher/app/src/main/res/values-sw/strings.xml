@@ -54,6 +54,11 @@
     <string name="update_failed">Sasisho halikusakinishwa</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Maelekezo</string>
+    <string name="tmdb_short">Mandhari safi na nembo za mada kwa filamu na vipindi.</string>
+    <string name="youtube_short">Video maarufu nchini kwako kwa kigae cha YouTube.</string>
+    <string name="smarttube_short">Mlisho wako mwenyewe wa YouTube kwa kigae cha YouTube, bila ufunguo.</string>
+    <string name="plex_short">Mandhari kutoka seva yako mwenyewe ya Plex.</string>
     <string name="phone_paste">Bandika funguo kutoka kwa simu</string>
     <string name="scan_to_paste">Changanua kwa simu ili kubandika funguo</string>
     <string name="tmdb_notice">Mandhari hutumia API ya TMDB lakini hayajaidhinishwa wala kuthibitishwa na TMDB.</string>

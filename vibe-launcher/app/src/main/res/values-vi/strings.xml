@@ -54,6 +54,11 @@
     <string name="update_failed">Bản cập nhật chưa được cài</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Hướng dẫn</string>
+    <string name="tmdb_short">Hình nền sạch và logo tiêu đề cho phim và chương trình.</string>
+    <string name="youtube_short">Video phổ biến ở quốc gia của bạn cho ô YouTube.</string>
+    <string name="smarttube_short">Nguồn cấp YouTube của riêng bạn cho ô YouTube, không cần khóa.</string>
+    <string name="plex_short">Hình nền từ máy chủ Plex của riêng bạn.</string>
     <string name="phone_paste">Dán khóa từ điện thoại</string>
     <string name="scan_to_paste">Quét bằng điện thoại để dán khóa</string>
     <string name="tmdb_notice">Ảnh nền dùng API của TMDB nhưng không được TMDB xác nhận hay chứng nhận.</string>

@@ -54,6 +54,11 @@
     <string name="update_failed">Ažuriranje se nije instaliralo</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Upute</string>
+    <string name="tmdb_short">Čiste pozadine i logotipi naslova za filmove i serije.</string>
+    <string name="youtube_short">Popularni videozapisi u vašoj zemlji za pločicu YouTubea.</string>
+    <string name="smarttube_short">Vaš vlastiti YouTube feed za pločicu YouTubea, bez ključa.</string>
+    <string name="plex_short">Pozadine s vašeg vlastitog Plex poslužitelja.</string>
     <string name="phone_paste">Zalijepi ključeve s telefona</string>
     <string name="scan_to_paste">Skenirajte telefonom da biste zalijepili ključeve</string>
     <string name="tmdb_notice">Pozadine koriste TMDB API, ali ih TMDB ne podržava niti certificira.</string>

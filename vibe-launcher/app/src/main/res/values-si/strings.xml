@@ -54,6 +54,11 @@
     <string name="update_failed">යාවත්කාලීනය ස්ථාපනය නොවීය</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">උපදෙස්</string>
+    <string name="tmdb_short">චිත්‍රපට සහ වැඩසටහන් සඳහා පිරිසිදු පසුබිම් සහ මාතෘකා ලාංඡන.</string>
+    <string name="youtube_short">YouTube ටයිලය සඳහා ඔබේ රටේ ජනප්‍රිය වීඩියෝ.</string>
+    <string name="smarttube_short">YouTube ටයිලය සඳහා ඔබේම YouTube සංග්‍රහය, යතුරක් අවශ්‍ය නැත.</string>
+    <string name="plex_short">ඔබේම Plex සේවාදායකයෙන් පසුබිම්.</string>
     <string name="phone_paste">දුරකථනයෙන් යතුරු අලවන්න</string>
     <string name="scan_to_paste">යතුරු ඇලවීමට දුරකථනයෙන් ස්කෑන් කරන්න</string>
     <string name="tmdb_notice">පසුබිම් TMDB API භාවිත කරයි, නමුත් TMDB විසින් අනුමත හෝ සහතික කර නැත.</string>

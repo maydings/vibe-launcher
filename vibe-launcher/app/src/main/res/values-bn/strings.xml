@@ -54,6 +54,11 @@
     <string name="update_failed">আপডেট ইনস্টল হয়নি</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">নির্দেশাবলী</string>
+    <string name="tmdb_short">সিনেমা ও শো-এর জন্য পরিষ্কার ব্যাকড্রপ ও শিরোনামের লোগো।</string>
+    <string name="youtube_short">YouTube টাইলের জন্য আপনার দেশের জনপ্রিয় ভিডিও।</string>
+    <string name="smarttube_short">YouTube টাইলের জন্য আপনার নিজের YouTube ফিড, কোনো কী লাগবে না।</string>
+    <string name="plex_short">আপনার নিজের Plex সার্ভার থেকে ব্যাকড্রপ।</string>
     <string name="phone_paste">ফোন থেকে কী পেস্ট করুন</string>
     <string name="scan_to_paste">কী পেস্ট করতে ফোন দিয়ে স্ক্যান করুন</string>
     <string name="tmdb_notice">ব্যাকড্রপে TMDB API ব্যবহার হয়, তবে TMDB এগুলি অনুমোদন বা প্রত্যয়ন করে না।</string>

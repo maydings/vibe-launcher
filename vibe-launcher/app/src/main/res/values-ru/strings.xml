@@ -54,6 +54,11 @@
     <string name="update_failed">Обновление не установлено</string>
     <string name="cpu">ЦП</string>
     <string name="ram">ОЗУ</string>
+    <string name="keys_help">Инструкции</string>
+    <string name="tmdb_short">Чистые фоны и логотипы названий для фильмов и сериалов.</string>
+    <string name="youtube_short">Популярные видео в вашей стране для плитки YouTube.</string>
+    <string name="smarttube_short">Ваша собственная лента YouTube для плитки YouTube, без ключа.</string>
+    <string name="plex_short">Фоны с вашего собственного сервера Plex.</string>
     <string name="phone_paste">Вставить ключи с телефона</string>
     <string name="scan_to_paste">Отсканируйте телефоном, чтобы вставить ключи</string>
     <string name="tmdb_notice">Фоны используют API TMDB, но не одобрены и не сертифицированы TMDB.</string>

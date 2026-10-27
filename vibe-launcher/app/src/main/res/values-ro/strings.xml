@@ -54,6 +54,11 @@
     <string name="update_failed">Actualizarea nu s-a instalat</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Instrucțiuni</string>
+    <string name="tmdb_short">Fundaluri curate și logouri de titlu pentru filme și seriale.</string>
+    <string name="youtube_short">Videoclipuri populare din țara ta pentru panoul YouTube.</string>
+    <string name="smarttube_short">Propriul tău flux YouTube pentru panoul YouTube, fără cheie.</string>
+    <string name="plex_short">Fundaluri de pe propriul tău server Plex.</string>
     <string name="phone_paste">Lipește cheile de pe telefon</string>
     <string name="scan_to_paste">Scanează cu telefonul ca să lipești cheile</string>
     <string name="tmdb_notice">Fundalurile folosesc API-ul TMDB, dar nu sunt aprobate sau certificate de TMDB.</string>

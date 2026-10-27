@@ -54,6 +54,11 @@
     <string name="update_failed">La mise à jour ne s\'est pas installée</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Instructions</string>
+    <string name="tmdb_short">Des fonds propres et les logos des titres pour les films et séries.</string>
+    <string name="youtube_short">Les vidéos populaires de votre pays pour la vignette YouTube.</string>
+    <string name="smarttube_short">Votre propre fil YouTube pour la vignette YouTube, sans clé.</string>
+    <string name="plex_short">Des fonds depuis votre propre serveur Plex.</string>
     <string name="phone_paste">Coller les clés depuis le téléphone</string>
     <string name="scan_to_paste">Scannez avec votre téléphone pour coller les clés</string>
     <string name="tmdb_notice">Les arrière-plans utilisent l\'API TMDB, sans être approuvés ni certifiés par TMDB.</string>

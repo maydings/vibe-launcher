@@ -54,6 +54,11 @@
     <string name="update_failed">アップデートをインストールできませんでした</string>
     <string name="cpu">CPU</string>
     <string name="ram">メモリ</string>
+    <string name="keys_help">説明</string>
+    <string name="tmdb_short">映画や番組のきれいな背景画像とタイトルロゴ。</string>
+    <string name="youtube_short">YouTube タイルに、お住まいの国の人気動画。</string>
+    <string name="smarttube_short">YouTube タイルに、ご自身の YouTube フィード。キー不要。</string>
+    <string name="plex_short">ご自身の Plex サーバーからの背景画像。</string>
     <string name="phone_paste">スマホからキーを貼り付け</string>
     <string name="scan_to_paste">スマホでスキャンしてキーを貼り付け</string>
     <string name="tmdb_notice">背景画像は TMDB API を使用していますが、TMDB の承認や認定を受けたものではありません。</string>

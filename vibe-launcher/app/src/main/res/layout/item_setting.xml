@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- One Settings row (SettingsDialog): its name, its value on the right, and > when it opens a page. Key
+<!-- One Settings row (SettingsScreen): its name, its value on the right, and > when it opens a page. Key
      rows edit in place, in a field made for them. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"

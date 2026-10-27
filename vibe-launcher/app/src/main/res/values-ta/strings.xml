@@ -54,6 +54,11 @@
     <string name="update_failed">புதுப்பிப்பு நிறுவப்படவில்லை</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">வழிமுறைகள்</string>
+    <string name="tmdb_short">திரைப்படங்கள், நிகழ்ச்சிகளுக்கு சுத்தமான பின்னணிகளும் தலைப்பு லோகோக்களும்.</string>
+    <string name="youtube_short">YouTube டைலுக்கு உங்கள் நாட்டின் பிரபல வீடியோக்கள்.</string>
+    <string name="smarttube_short">YouTube டைலுக்கு உங்கள் சொந்த YouTube ஊட்டம், விசை தேவையில்லை.</string>
+    <string name="plex_short">உங்கள் சொந்த Plex சர்வரிலிருந்து பின்னணிகள்.</string>
     <string name="phone_paste">தொலைபேசியிலிருந்து விசைகளை ஒட்டவும்</string>
     <string name="scan_to_paste">சாவிகளை ஒட்ட ஃபோனால் ஸ்கேன் செய்யவும்</string>
     <string name="tmdb_notice">பின்னணிகள் TMDB API-ஐப் பயன்படுத்துகின்றன, ஆனால் TMDB இவற்றை அங்கீகரிக்கவோ சான்றளிக்கவோ இல்லை.</string>

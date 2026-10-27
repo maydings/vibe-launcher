@@ -54,6 +54,11 @@
     <string name="update_failed">La actualización no se instaló</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Instrucciones</string>
+    <string name="tmdb_short">Fondos limpios y logotipos de títulos para películas y series.</string>
+    <string name="youtube_short">Vídeos populares en tu país para el mosaico de YouTube.</string>
+    <string name="smarttube_short">Tu propio feed de YouTube para el mosaico de YouTube, sin clave.</string>
+    <string name="plex_short">Fondos de tu propio servidor Plex.</string>
     <string name="phone_paste">Pegar las claves desde el móvil</string>
     <string name="scan_to_paste">Escanea con el móvil para pegar las claves</string>
     <string name="tmdb_notice">Los fondos usan la API de TMDB, pero TMDB no los respalda ni certifica.</string>

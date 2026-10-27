@@ -54,6 +54,11 @@
     <string name="update_failed">更新未能安裝</string>
     <string name="cpu">CPU</string>
     <string name="ram">記憶體</string>
+    <string name="keys_help">說明</string>
+    <string name="tmdb_short">為電影和節目提供乾淨的背景和片名標誌。</string>
+    <string name="youtube_short">為 YouTube 方塊提供你所在國家的熱門影片。</string>
+    <string name="smarttube_short">為 YouTube 方塊提供你自己的 YouTube 動態，不需要金鑰。</string>
+    <string name="plex_short">來自你自己的 Plex 伺服器的背景。</string>
     <string name="phone_paste">從手機貼上金鑰</string>
     <string name="scan_to_paste">用手機掃描以貼上金鑰</string>
     <string name="tmdb_notice">背景圖使用 TMDB API，但未獲 TMDB 背書或認證。</string>

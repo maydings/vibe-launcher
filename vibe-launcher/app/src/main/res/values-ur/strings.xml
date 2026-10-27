@@ -54,6 +54,11 @@
     <string name="update_failed">اپ ڈیٹ انسٹال نہیں ہوئی</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">ہدایات</string>
+    <string name="tmdb_short">فلموں اور شوز کے لیے صاف بیک ڈراپ اور عنوان کے لوگو۔</string>
+    <string name="youtube_short">YouTube ٹائل کے لیے آپ کے ملک کی مقبول ویڈیوز۔</string>
+    <string name="smarttube_short">YouTube ٹائل کے لیے آپ کی اپنی YouTube فیڈ، کلید کی ضرورت نہیں۔</string>
+    <string name="plex_short">آپ کے اپنے Plex سرور سے بیک ڈراپ۔</string>
     <string name="phone_paste">فون سے کیز پیسٹ کریں</string>
     <string name="scan_to_paste">کلیدیں پیسٹ کرنے کے لیے فون سے اسکین کریں</string>
     <string name="tmdb_notice">پس منظر TMDB API استعمال کرتے ہیں مگر TMDB ان کی توثیق یا تصدیق نہیں کرتا۔</string>

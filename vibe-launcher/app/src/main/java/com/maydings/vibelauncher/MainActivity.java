@@ -237,10 +237,14 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private String timeBoxMeasuredFor;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
-    /** Settings' 51 language rows, made ahead (SettingsDialog.prepareLanguages); lent to it while it's open. */
-    ViewGroup languageRows;
-    /** Closes Settings while it's open (SettingsDialog), for Home pressed over it; null otherwise. */
-    Runnable closeSettings;
+    /** Home is covered by Vibe Launcher's own Settings, not an app: coming back is no new visit. */
+    private boolean inSettings;
+    /** The Home there is, for Settings (it makes Home again after a new grid or language). */
+    private static java.lang.ref.WeakReference<MainActivity> current = new java.lang.ref.WeakReference<>(null);
+
+    static MainActivity current() {
+        return current.get();
+    }
     /** Refreshes the network pill when the connection changes: after a reboot Wi-Fi often connects after Home is shown. */
     private final ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
         @Override
@@ -315,13 +319,23 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         super.attachBaseContext(Lang.wrap(base));   // the language chosen in Settings, or the TV's own
     }
 
+    /**
+     * Nothing of the last Home is put back (the grid's scroll, the focus): made again (a new grid or language
+     * from Settings), it came back scrolled to the bottom. Home always starts on the dock's first app.
+     */
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         CrashGuard.install(this);
         PowerOnHome.register(this);
-        // Settings' language rows, made ahead once Home is up and its entrance has played.
-        handler.postDelayed(() -> languageRows = SettingsDialog.prepareLanguages(this), 3000);
+        current = new java.lang.ref.WeakReference<>(this);
+        // Settings, made ahead once Home's first frame is up (and a moment for its entrance), so opening it is
+        // only a fade.
+        getWindow().getDecorView().post(() -> handler.postDelayed(() -> SettingsScreen.prepare(this), 1000));
         setContentView(R.layout.activity_main);
         density = getResources().getDisplayMetrics().density;
         // Tiles per row: chosen in Vibe Launcher settings (4, 5 or 6), else by the screen's size.
@@ -548,8 +562,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         super.onNewIntent(intent);
         boolean pressed = intent != null && intent.hasCategory(Intent.CATEGORY_HOME)
                 && !intent.getBooleanExtra(PowerOnHome.EXTRA, false);   // the power-on one leaves Home as it was
-        // Home closes Settings, which covers Home and would otherwise stay up over it.
-        if (pressed && closeSettings != null) closeSettings.run();
         // Pressed with Home already in front.
         if (pressed && !rebuildOnResume && !backFromApp) homeToTop = true;
     }
@@ -557,6 +569,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     @Override
     protected void onResume() {
         super.onResume();
+        inSettings = false;
         lastKeyAt = SystemClock.uptimeMillis();
         armIdle();
         showUpdateReady();
@@ -652,7 +665,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     protected void onStop() {
         super.onStop();
         started = false;
-        backFromApp = true;
+        backFromApp = !inSettings;   // Settings is part of Home: no new picture for coming back from it
     }
 
     /**
@@ -672,6 +685,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     @Override
     protected void onDestroy() {
+        if (current.get() == this) current.clear();
         unregisterReceiver(screenReceiver);
         unregisterReceiver(packageReceiver);
         // The pools go on filling for the next Home; only this one's handlers go.
@@ -2118,7 +2132,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (!BuildConfig.STORE) {
             Updater.Release[] update = {Updater.available(this)};
             View updateRow = addInputRow(rows, popup, R.drawable.ic_update, "", -1,
-                    () -> SettingsDialog.startUpdate(this, update[0]));
+                    () -> SettingsScreen.startUpdate(this, update[0]));
             Runnable showUpdate = () -> {
                 updateRow.setVisibility(update[0] != null ? View.VISIBLE : View.GONE);
                 if (update[0] != null) {
@@ -2136,7 +2150,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             });
         }
         addInputRow(rows, popup, R.drawable.ic_all_apps, getString(R.string.vibe_settings), -1,
-                () -> SettingsDialog.show(this, root));
+                this::openSettings);
         addInputRow(rows, popup, R.drawable.ic_settings, getString(R.string.android_settings), -1,
                 () -> open(new Intent(Settings.ACTION_SETTINGS)));
         if (BuildConfig.STORE && !DefaultHome.isHome(this) && !DefaultHome.homeButtonOn(this)) {
@@ -2160,6 +2174,13 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     /** The green dot in the Settings gear: shown while a newer release is waiting to be installed. */
+    /** Vibe Launcher settings: their own screen over Home, made ahead (SettingsScreen), fading in. */
+    private void openSettings() {
+        inSettings = true;
+        startActivity(new Intent(this, SettingsActivity.class));
+        overridePendingTransition(R.anim.settings_in, R.anim.settings_hold);
+    }
+
     void showUpdateReady() {
         boolean ready = BuildConfig.STORE ? StoreUpdates.available() : Updater.available(this) != null;
         findViewById(R.id.updateDot).setVisibility(ready ? View.VISIBLE : View.GONE);

@@ -54,6 +54,11 @@
     <string name="update_failed">Kemas kini tidak dipasang</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Arahan</string>
+    <string name="tmdb_short">Latar bersih dan logo tajuk untuk filem dan rancangan.</string>
+    <string name="youtube_short">Video popular di negara anda untuk jubin YouTube.</string>
+    <string name="smarttube_short">Suapan YouTube anda sendiri untuk jubin YouTube, tanpa kunci.</string>
+    <string name="plex_short">Latar dari pelayan Plex anda sendiri.</string>
     <string name="phone_paste">Tampal kunci dari telefon</string>
     <string name="scan_to_paste">Imbas dengan telefon untuk menampal kunci</string>
     <string name="tmdb_notice">Latar menggunakan API TMDB tetapi tidak disokong atau diperakui oleh TMDB.</string>

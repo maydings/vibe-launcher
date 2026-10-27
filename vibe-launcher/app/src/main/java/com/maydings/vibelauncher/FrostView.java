@@ -204,8 +204,21 @@ public class FrostView extends View {
         wrapper.setClipBounds(new Rect(0, top, wrapper.getWidth(), wrapper.getHeight()));
     }
 
-    /** How far tiles reach up into the bar, eased over {@link #fadeDistance}. */
+    /**
+     * How far tiles reach up into the bar, eased over {@link #fadeDistance}; and fully while the grid is
+     * scrolled down at all. Else, scrolled to where the gap between two rows was under the bar, the tint and
+     * its line went, and came back as the next row reached it.
+     */
     private float coverage() {
+        if (source instanceof androidx.recyclerview.widget.RecyclerView) {
+            int scrolled = ((androidx.recyclerview.widget.RecyclerView) source).computeVerticalScrollOffset();
+            if (scrolled >= fadeDistance) return 1f;
+            return Math.max(scrolled / fadeDistance, reach());
+        }
+        return reach();
+    }
+
+    private float reach() {
         getLocationInWindow(myLoc);
         int barTop = myLoc[1], barBottom = barTop + getHeight();
         int reach = 0;
@@ -271,17 +284,19 @@ public class FrostView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        float tint = Math.max(amount, under);
-        if (tint <= 0f) return;
-        dst.set(0, 0, getWidth(), getHeight());
-        // Full strength: the frost is transparent where nothing is underneath, and it stands in for
-        // the clipped-away tiles, so it must not fade (that let the sharp tiles show through).
-        if (amount > 0f && frost != null) canvas.drawBitmap(frost, null, dst, bitmapPaint);
-
-        fillPaint.setColor(scaleAlpha(TINT, tint));
-        canvas.drawRect(dst, fillPaint);
         float line = getResources().getDisplayMetrics().density;
-        fillPaint.setColor(scaleAlpha(HAIRLINE, tint));
+        float tint = Math.max(amount, under);
+        if (tint > 0f) {
+            dst.set(0, 0, getWidth(), getHeight());
+            // Full strength: the frost is transparent where nothing is underneath, and it stands in for
+            // the clipped-away tiles, so it must not fade (that let the sharp tiles show through).
+            if (amount > 0f && frost != null) canvas.drawBitmap(frost, null, dst, bitmapPaint);
+            fillPaint.setColor(scaleAlpha(TINT, tint));
+            canvas.drawRect(0, 0, getWidth(), getHeight() - line, fillPaint);
+        }
+        // The bar's bottom line, always and at full strength: fading with the tint, it went and came back as
+        // the grid scrolled under the bar or away.
+        fillPaint.setColor(HAIRLINE);
         canvas.drawRect(0, getHeight() - line, getWidth(), getHeight(), fillPaint);
     }
 

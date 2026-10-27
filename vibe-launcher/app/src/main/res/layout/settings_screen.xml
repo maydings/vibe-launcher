@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Vibe Launcher settings, full screen and opaque: the page's name on top, the logo on the
      left and the list on the right. Opening a row slides its list over the logo and its page in on the right
-     (SettingsDialog adds the lists to the stage and places the logo). -->
+     (SettingsScreen adds the lists to the stage and places the logo). -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!-- No background of its own: the window's (settings_bg) is the screen's, drawn once. -->
+    <!-- No background of its own: the window's (settings_bg, Theme.Settings) is the screen's, drawn once. -->
 
     <ImageView
         android:id="@+id/logo"
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- The project's home, under the logo (placed in SettingsDialog). Plain text: TVs rarely have a browser
+    <!-- The project's home, under the logo (placed in SettingsScreen). Plain text: TVs rarely have a browser
          to open it in. -->
     <TextView
         android:id="@+id/projectLink"

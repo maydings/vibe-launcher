@@ -54,6 +54,11 @@
     <string name="update_failed">अपडेट इन्स्टॉल झाले नाही</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">सूचना</string>
+    <string name="tmdb_short">चित्रपट आणि शोसाठी स्वच्छ बॅकड्रॉप आणि शीर्षक लोगो.</string>
+    <string name="youtube_short">YouTube टाइलसाठी तुमच्या देशातील लोकप्रिय व्हिडिओ.</string>
+    <string name="smarttube_short">YouTube टाइलसाठी तुमची स्वतःची YouTube फीड, की लागत नाही.</string>
+    <string name="plex_short">तुमच्या स्वतःच्या Plex सर्व्हरवरून बॅकड्रॉप.</string>
     <string name="phone_paste">फोनवरून की पेस्ट करा</string>
     <string name="scan_to_paste">की पेस्ट करण्यासाठी फोनने स्कॅन करा</string>
     <string name="tmdb_notice">पार्श्वभूमी TMDB API वापरतात, पण TMDB त्यांना मान्यता किंवा प्रमाणपत्र देत नाही.</string>

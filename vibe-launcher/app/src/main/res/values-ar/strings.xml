@@ -54,6 +54,11 @@
     <string name="update_failed">لم يُثبَّت التحديث</string>
     <string name="cpu">المعالج</string>
     <string name="ram">الذاكرة</string>
+    <string name="keys_help">التعليمات</string>
+    <string name="tmdb_short">خلفيات نظيفة وشعارات العناوين للأفلام والمسلسلات.</string>
+    <string name="youtube_short">الفيديوهات الشائعة في بلدك لمربع YouTube.</string>
+    <string name="smarttube_short">موجز YouTube الخاص بك لمربع YouTube، دون الحاجة إلى مفتاح.</string>
+    <string name="plex_short">خلفيات من خادم Plex الخاص بك.</string>
     <string name="phone_paste">لصق المفاتيح من هاتفك</string>
     <string name="scan_to_paste">امسح بهاتفك للصق المفاتيح</string>
     <string name="tmdb_notice">تستخدم الخلفيات واجهة TMDB API لكنها غير معتمدة أو مصدَّقة من TMDB.</string>

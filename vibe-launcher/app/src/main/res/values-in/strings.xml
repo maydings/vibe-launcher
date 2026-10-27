@@ -54,6 +54,11 @@
     <string name="update_failed">Pembaruan tidak terpasang</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Petunjuk</string>
+    <string name="tmdb_short">Latar bersih dan logo judul untuk film dan acara.</string>
+    <string name="youtube_short">Video populer di negara Anda untuk ubin YouTube.</string>
+    <string name="smarttube_short">Feed YouTube Anda sendiri untuk ubin YouTube, tanpa kunci.</string>
+    <string name="plex_short">Latar dari server Plex Anda sendiri.</string>
     <string name="phone_paste">Tempel kunci dari ponsel</string>
     <string name="scan_to_paste">Pindai dengan ponsel untuk menempelkan kunci</string>
     <string name="tmdb_notice">Latar memakai API TMDB tetapi tidak didukung atau disertifikasi oleh TMDB.</string>

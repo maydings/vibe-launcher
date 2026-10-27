@@ -54,6 +54,11 @@
     <string name="update_failed">ติดตั้งอัปเดตไม่สำเร็จ</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">คำแนะนำ</string>
+    <string name="tmdb_short">ภาพพื้นหลังที่สะอาดและโลโก้ชื่อเรื่องสำหรับภาพยนตร์และรายการ</string>
+    <string name="youtube_short">วิดีโอยอดนิยมในประเทศของคุณสำหรับไทล์ YouTube</string>
+    <string name="smarttube_short">ฟีด YouTube ของคุณเองสำหรับไทล์ YouTube ไม่ต้องใช้คีย์</string>
+    <string name="plex_short">ภาพพื้นหลังจากเซิร์ฟเวอร์ Plex ของคุณเอง</string>
     <string name="phone_paste">วางคีย์จากโทรศัพท์</string>
     <string name="scan_to_paste">สแกนด้วยโทรศัพท์เพื่อวางคีย์</string>
     <string name="tmdb_notice">ภาพพื้นหลังใช้ API ของ TMDB แต่ไม่ได้รับการรับรองหรือการรับรองมาตรฐานจาก TMDB</string>

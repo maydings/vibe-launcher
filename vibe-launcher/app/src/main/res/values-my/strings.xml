@@ -54,6 +54,11 @@
     <string name="update_failed">အပ်ဒိတ် မထည့်သွင်းနိုင်ခဲ့ပါ</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">ညွှန်ကြားချက်များ</string>
+    <string name="tmdb_short">ရုပ်ရှင်နှင့် ရှိုးများအတွက် သန့်ရှင်းသော နောက်ခံပုံများနှင့် ခေါင်းစဉ် လိုဂိုများ။</string>
+    <string name="youtube_short">YouTube အကွက်အတွက် သင့်နိုင်ငံရှိ လူကြိုက်များသော ဗီဒီယိုများ။</string>
+    <string name="smarttube_short">YouTube အကွက်အတွက် သင့်ကိုယ်ပိုင် YouTube ဖိဒ်၊ ကီး မလိုပါ။</string>
+    <string name="plex_short">သင့်ကိုယ်ပိုင် Plex ဆာဗာမှ နောက်ခံပုံများ။</string>
     <string name="phone_paste">ဖုန်းမှ ကီးများ ကူးထည့်ရန်</string>
     <string name="scan_to_paste">ကီးများ ကူးထည့်ရန် ဖုန်းဖြင့် စကင်ဖတ်ပါ</string>
     <string name="tmdb_notice">နောက်ခံပုံများသည် TMDB API ကို သုံးသော်လည်း TMDB ၏ ထောက်ခံမှု သို့မဟုတ် အသိအမှတ်ပြုမှု မရှိပါ။</string>

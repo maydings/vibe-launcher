@@ -54,6 +54,11 @@
     <string name="update_failed">Hindi na-install ang update</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Mga tagubilin</string>
+    <string name="tmdb_short">Malinis na backdrop at logo ng pamagat para sa mga pelikula at palabas.</string>
+    <string name="youtube_short">Mga sikat na video sa bansa mo para sa tile ng YouTube.</string>
+    <string name="smarttube_short">Ang sarili mong feed sa YouTube para sa tile ng YouTube, walang key.</string>
+    <string name="plex_short">Mga backdrop mula sa sarili mong Plex server.</string>
     <string name="phone_paste">I-paste ang mga key mula sa phone</string>
     <string name="scan_to_paste">I-scan gamit ang phone para i-paste ang mga key</string>
     <string name="tmdb_notice">Gumagamit ang mga backdrop ng TMDB API pero hindi ito ini-endorse o sinertipika ng TMDB.</string>

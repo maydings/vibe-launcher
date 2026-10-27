@@ -54,6 +54,11 @@
     <string name="update_failed">അപ്‌ഡേറ്റ് ഇൻസ്റ്റാൾ ആയില്ല</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">നിർദേശങ്ങൾ</string>
+    <string name="tmdb_short">സിനിമകൾക്കും ഷോകൾക്കും വൃത്തിയുള്ള പശ്ചാത്തലങ്ങളും ടൈറ്റിൽ ലോഗോകളും.</string>
+    <string name="youtube_short">YouTube ടൈലിന് നിങ്ങളുടെ രാജ്യത്തെ ജനപ്രിയ വീഡിയോകൾ.</string>
+    <string name="smarttube_short">YouTube ടൈലിന് നിങ്ങളുടെ സ്വന്തം YouTube ഫീഡ്, കീ വേണ്ട.</string>
+    <string name="plex_short">നിങ്ങളുടെ സ്വന്തം Plex സെർവറിൽ നിന്നുള്ള പശ്ചാത്തലങ്ങൾ.</string>
     <string name="phone_paste">ഫോണിൽ നിന്ന് കീകൾ ഒട്ടിക്കുക</string>
     <string name="scan_to_paste">കീകൾ ഒട്ടിക്കാൻ ഫോൺ ഉപയോഗിച്ച് സ്കാൻ ചെയ്യുക</string>
     <string name="tmdb_notice">പശ്ചാത്തലങ്ങൾ TMDB API ഉപയോഗിക്കുന്നു, പക്ഷേ TMDB ഇവ അംഗീകരിക്കുകയോ സാക്ഷ്യപ്പെടുത്തുകയോ ചെയ്തിട്ടില്ല.</string>

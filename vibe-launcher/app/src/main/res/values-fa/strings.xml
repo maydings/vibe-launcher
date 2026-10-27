@@ -54,6 +54,11 @@
     <string name="update_failed">به‌روزرسانی نصب نشد</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">راهنما</string>
+    <string name="tmdb_short">پس‌زمینه‌های تمیز و لوگوی عنوان برای فیلم‌ها و سریال‌ها.</string>
+    <string name="youtube_short">ویدیوهای پرطرفدار کشور شما برای کاشی YouTube.</string>
+    <string name="smarttube_short">فید YouTube خودتان برای کاشی YouTube، بدون نیاز به کلید.</string>
+    <string name="plex_short">پس‌زمینه‌ها از سرور Plex خودتان.</string>
     <string name="phone_paste">چسباندن کلیدها از تلفن</string>
     <string name="scan_to_paste">برای چسباندن کلیدها با گوشی اسکن کنید</string>
     <string name="tmdb_notice">پس‌زمینه‌ها از API ‏TMDB استفاده می‌کنند، اما مورد تأیید یا گواهی TMDB نیستند.</string>

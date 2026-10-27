@@ -54,6 +54,11 @@
     <string name="update_failed">업데이트를 설치하지 못했습니다</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">안내</string>
+    <string name="tmdb_short">영화와 프로그램의 깔끔한 배경과 타이틀 로고.</string>
+    <string name="youtube_short">YouTube 타일에 내 나라의 인기 동영상.</string>
+    <string name="smarttube_short">YouTube 타일에 내 YouTube 피드, 키가 필요 없습니다.</string>
+    <string name="plex_short">내 Plex 서버의 배경.</string>
     <string name="phone_paste">휴대폰에서 키 붙여넣기</string>
     <string name="scan_to_paste">휴대폰으로 스캔해 키를 붙여넣으세요</string>
     <string name="tmdb_notice">배경은 TMDB API를 사용하지만 TMDB의 보증이나 인증을 받지 않았습니다.</string>

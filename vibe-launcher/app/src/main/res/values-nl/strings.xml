@@ -54,6 +54,11 @@
     <string name="update_failed">De update is niet geïnstalleerd</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Instructies</string>
+    <string name="tmdb_short">Schone achtergronden en titellogo’s voor films en series.</string>
+    <string name="youtube_short">Populaire video’s in je land voor de YouTube-tegel.</string>
+    <string name="smarttube_short">Je eigen YouTube-feed voor de YouTube-tegel, zonder sleutel.</string>
+    <string name="plex_short">Achtergronden van je eigen Plex-server.</string>
     <string name="phone_paste">Sleutels plakken vanaf je telefoon</string>
     <string name="scan_to_paste">Scan met je telefoon om de sleutels te plakken</string>
     <string name="tmdb_notice">Achtergronden gebruiken de TMDB-API, maar worden niet door TMDB onderschreven of gecertificeerd.</string>

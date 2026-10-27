@@ -95,8 +95,10 @@ slides in when you press Up from the picture alone, or move down into the app gr
 
 Full screen: the logo on the left and **General**, **Appearance** and
 **API keys** on the right. Picking one slides its list over the logo and its page in on the right;
-Back or Left slides back. Changes apply as you make them (tiles per row and the language once you
-close Settings, as they rebuild Home), and the focused row's explanation shows under the list.
+Back or Left slides back. Changes apply as you make them: a new number of tiles per row rebuilds Home
+behind Settings, ready when you leave, and a new language rebuilds both (Settings comes back on General
+after a moment). The focused row's explanation shows under the list. Settings is built when Home
+starts, so opening it is just a fade.
 
 **General**: language, reloading the backdrops, Home at power-on, Restart… (app store version), and the
 software version with its update check.
@@ -126,7 +128,8 @@ software version with its update check.
   top bar but without the bar; Off leaves the pictures alone.
 
 **API keys**: optional keys that unlock more backdrops: **TMDB**, **YouTube** and **Plex**. Each has
-an explanation under the list of what it adds and where to get it, free; OK edits it in place.
+a line under the list on what it adds, and **Instructions**, first on the page, says where to get each,
+free. OK on a key edits it in place.
 Typing a 32-character key with a remote is no fun, so **Paste keys from your phone** shows a **QR
 code**: scan it and paste the keys there. Saved keys stay on the TV and show only their last four
 characters. Under YouTube, one row installs SmartTube (its latest release, checked against GitHub's

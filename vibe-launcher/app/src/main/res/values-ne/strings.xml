@@ -54,6 +54,11 @@
     <string name="update_failed">अपडेट इन्स्टल भएन</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">निर्देशनहरू</string>
+    <string name="tmdb_short">चलचित्र र कार्यक्रमका लागि सफा ब्याकड्रप र शीर्षक लोगो।</string>
+    <string name="youtube_short">YouTube टाइलका लागि तपाईंको देशका लोकप्रिय भिडियो।</string>
+    <string name="smarttube_short">YouTube टाइलका लागि तपाईंको आफ्नै YouTube फिड, कुञ्जी चाहिँदैन।</string>
+    <string name="plex_short">तपाईंको आफ्नै Plex सर्भरबाट ब्याकड्रप।</string>
     <string name="phone_paste">फोनबाट कुञ्जी टाँस्नुहोस्</string>
     <string name="scan_to_paste">कुञ्जीहरू टाँस्न फोनले स्क्यान गर्नुहोस्</string>
     <string name="tmdb_notice">पृष्ठभूमिहरूले TMDB API प्रयोग गर्छन्, तर TMDB ले यिनलाई समर्थन वा प्रमाणित गरेको छैन।</string>

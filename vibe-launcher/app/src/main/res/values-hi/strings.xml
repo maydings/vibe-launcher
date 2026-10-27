@@ -54,6 +54,11 @@
     <string name="update_failed">अपडेट इंस्टॉल नहीं हुआ</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">निर्देश</string>
+    <string name="tmdb_short">फ़िल्मों और शो के लिए साफ़ बैकड्रॉप और शीर्षक लोगो।</string>
+    <string name="youtube_short">YouTube टाइल के लिए आपके देश के लोकप्रिय वीडियो।</string>
+    <string name="smarttube_short">YouTube टाइल के लिए आपकी अपनी YouTube फ़ीड, बिना कुंजी के।</string>
+    <string name="plex_short">आपके अपने Plex सर्वर से बैकड्रॉप।</string>
     <string name="phone_paste">फ़ोन से कुंजियाँ पेस्ट करें</string>
     <string name="scan_to_paste">कुंजियाँ चिपकाने के लिए फ़ोन से स्कैन करें</string>
     <string name="tmdb_notice">बैकड्रॉप TMDB API का उपयोग करते हैं, पर TMDB द्वारा समर्थित या प्रमाणित नहीं हैं।</string>

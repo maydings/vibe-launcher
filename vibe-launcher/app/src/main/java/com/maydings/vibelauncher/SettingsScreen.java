@@ -1,5 +1,6 @@
 package com.maydings.vibelauncher;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -9,12 +10,13 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.view.ContextThemeWrapper;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.DecelerateInterpolator;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -31,22 +33,42 @@ import java.util.List;
 import java.util.function.Supplier;
 
 /**
- * Vibe Launcher settings, full screen: the logo on the left and General, Appearance and
- * API keys on the right. Opening one slides its list over the logo and its page in on the right; Back (or
- * Left) slides them back. Changes apply as they're made; tiles per row and the language
- * rebuild Home, so those wait until Settings closes.
+ * Vibe Launcher settings, full screen: the logo on the left and General, Appearance and API keys on the
+ * right. Opening one slides its list over the logo and its page in on the right; Back (or Left) slides them
+ * back. Changes apply as they're made; tiles per row and the language rebuild Home behind Settings at once.
+ *
+ * Built once, as soon as Home is up (prepare), and kept: the frame, the first list and the 51 languages,
+ * measured and laid out at the screen's size. SettingsActivity only puts it on screen, with a fade, and hands
+ * it back when it closes. The other pages are made as they're opened (a few rows, current values).
+ *
  * General: language, reloading the backdrops, Home at power-on, Restart… (store build, Home button service
  * on) and updates (Updater). Appearance: tiles per row, inputs, the top bar and the slideshow's clock. API
  * keys: the TMDB, YouTube and Plex keys, edited in place and explained under the list, SmartTube to install
  * or sign in to (the key-free way to YouTube backdrops), and a QR code for pasting the keys from a phone
  * (PhoneLink).
  */
-final class SettingsDialog {
+final class SettingsScreen {
 
     private static final long SLIDE_MS = 320;
 
-    static void show(Activity activity, ViewGroup root) {
-        new SettingsDialog(activity, root).open();
+    /** The one prepared screen: views made with the app's context, so keeping them leaks no Activity. */
+    @SuppressLint("StaticFieldLeak")
+    private static SettingsScreen prepared;
+
+    /**
+     * Makes the screen ahead (Home calls it once its first frame is drawn), again only when the language
+     * changed, and never while it's on screen.
+     */
+    static void prepare(Context context) {
+        String language = new VibeSettings(context).language();
+        if (prepared != null && (prepared.host != null || prepared.builtFor.equals(language))) return;
+        prepared = new SettingsScreen(context.getApplicationContext(), language);
+    }
+
+    /** The prepared screen for SettingsActivity, made now if Home hasn't yet. */
+    static SettingsScreen get(Context context) {
+        prepare(context);
+        return prepared;
     }
 
     /** One row: its name, its value, and what OK does. */
@@ -81,9 +103,9 @@ final class SettingsDialog {
 
         Page(CharSequence title) {
             this.title = title;
-            view = new LinearLayout(activity);
+            view = new LinearLayout(ctx);
             view.setOrientation(LinearLayout.VERTICAL);
-            ScrollView scroll = new ScrollView(activity);
+            ScrollView scroll = new ScrollView(ctx);
             scroll.setVerticalScrollBarEnabled(false);
             // A ScrollView takes focus itself when Up or Down finds no row: on the left list it would hold
             // focus out of sight, so only the rows can have it.
@@ -92,7 +114,7 @@ final class SettingsDialog {
             // Room for the focused row to grow (1.035 of the column's width) without its corners being cut.
             int pad = (int) (6 * density), side = (int) (columnW * 0.02f) + 2;
             scroll.setPadding(side, pad, side, pad);
-            list = new LinearLayout(activity);
+            list = new LinearLayout(ctx);
             list.setOrientation(LinearLayout.VERTICAL);
             scroll.addView(list);
             // The focused row grows past the list's edges: drawn whole, not cut square at them.
@@ -101,11 +123,11 @@ final class SettingsDialog {
             view.setClipChildren(false);
             view.addView(scroll, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
-            about = new TextView(activity);
+            about = new TextView(ctx);
             about.setTextColor(0x99FFFFFF);
             about.setTextSize(14);
             about.setLineSpacing(0, 1.15f);
-            about.setTypeface(UiFont.get(activity, R.string.font_regular));
+            about.setTypeface(UiFont.get(ctx, R.string.font_regular));
             about.setPadding(side + pad, (int) (10 * density), side + pad, 0);
             // The rest of the column, down to the bottom; a long text (a long translation) gets smaller to fit.
             view.addView(about, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f));
@@ -113,18 +135,12 @@ final class SettingsDialog {
         }
 
         Row add(int label, Supplier<CharSequence> valueOf, Runnable action) {
-            return add(activity.getString(label), valueOf, action);
+            return add(ctx.getString(label), valueOf, action);
         }
 
         Row add(CharSequence label, Supplier<CharSequence> valueOf, Runnable action) {
-            Row row = adopt(LayoutInflater.from(activity).inflate(R.layout.item_setting, list, false), valueOf, action);
+            Row row = new Row(LayoutInflater.from(ctx).inflate(R.layout.item_setting, list, false));
             row.label.setText(label);
-            return row;
-        }
-
-        /** Makes a row of an item_setting view: a new one, or one prepared ahead (prepareLanguages). */
-        Row adopt(View view, Supplier<CharSequence> valueOf, Runnable action) {
-            Row row = new Row(view);
             row.valueOf = valueOf;
             row.action = action;
             row.refresh();
@@ -163,7 +179,7 @@ final class SettingsDialog {
 
         /** An Off/On row: OK switches it. */
         Row toggle(int label, Supplier<Boolean> get, java.util.function.Consumer<Boolean> set) {
-            return add(label, () -> activity.getString(get.get() ? R.string.on : R.string.off),
+            return add(label, () -> ctx.getString(get.get() ? R.string.on : R.string.off),
                     () -> set.accept(!get.get()));
         }
 
@@ -182,24 +198,26 @@ final class SettingsDialog {
         }
     }
 
-    private final Activity activity;
-    /** Home's screen, hidden while Settings covers it: it would go on drawing (the frosted bar's blur) under it. */
-    private final View home;
+    /** For making the views and reading strings: the app's context in the chosen language, with a theme. */
+    private final Context ctx;
+    private final String builtFor;   // the language it was made in
     private final float density;
     private final VibeSettings settings;
-    private final Dialog dialog;
+    private final View screen;
     private final FrameLayout stage;
     private final View logo;
     private final TextView title;
+    private final Page root;
+    private final Page languagePage;
+    private final Row generalRow;
     private final List<Page> pages = new ArrayList<>();
     /** Where the lists sit: the left column (over the logo) and the right one, and their width. */
     private final int leftX, rightX, columnW, screenW;
 
-    private final int startColumns;
-    private int columns;
-    private final String startLanguage;
+    /** The SettingsActivity it's on, while it is: what opens other screens, dialogs and the keyboard. */
+    private Activity host;
     private String language;
-    private final String[] keys;   // TMDB, YouTube, Plex, as saved
+    private final String[] keys = new String[3];   // TMDB, YouTube, Plex, as saved
     private Row editing;
     private int editingKey;
 
@@ -207,88 +225,122 @@ final class SettingsDialog {
     private String phoneUrl;
     private BroadcastReceiver packages;
     private Row smartTubeRow;
-    private Page languagePage;
-    private long slidAt;   // when the last slide started (uptime)
 
-    private SettingsDialog(Activity activity, View home) {
-        this.activity = activity;
-        this.home = home;
-        density = activity.getResources().getDisplayMetrics().density;
-        settings = new VibeSettings(activity);
-        startColumns = columns = MainActivity.COLUMNS;
-        startLanguage = language = settings.language();
-        keys = new String[]{settings.tmdbKey(), settings.youtubeKey(), settings.plexToken()};
-
-        View screen = LayoutInflater.from(activity).inflate(R.layout.dialog_settings, new FrameLayout(activity), false);
-        stage = screen.findViewById(R.id.stage);
-        logo = screen.findViewById(R.id.logo);
-        title = screen.findViewById(R.id.title);
-        int w = screenW = activity.getResources().getDisplayMetrics().widthPixels;
+    private SettingsScreen(Context app, String language) {
+        ctx = new ContextThemeWrapper(Lang.wrap(app), android.R.style.Theme_Material_NoActionBar);
+        builtFor = language;
+        this.language = language;
+        density = ctx.getResources().getDisplayMetrics().density;
+        settings = new VibeSettings(ctx);
+        int w = screenW = ctx.getResources().getDisplayMetrics().widthPixels;
+        int h = ctx.getResources().getDisplayMetrics().heightPixels;
         // The list from 55% of the width to 95%, the picture centred in the left half.
         rightX = (int) (w * 0.55f);
         columnW = (int) (w * 0.40f);
         leftX = (int) (w * 0.06f);
+
+        screen = LayoutInflater.from(ctx).inflate(R.layout.settings_screen, new FrameLayout(ctx), false);
+        stage = screen.findViewById(R.id.stage);
+        logo = screen.findViewById(R.id.logo);
+        title = screen.findViewById(R.id.title);
         ((FrameLayout.LayoutParams) logo.getLayoutParams()).leftMargin = leftX + (columnW - logo.getLayoutParams().width) / 2;
         View projectLink = screen.findViewById(R.id.projectLink);
         FrameLayout.LayoutParams linkLp = (FrameLayout.LayoutParams) projectLink.getLayoutParams();
         linkLp.width = columnW;
         linkLp.leftMargin = leftX;
 
-        dialog = new Dialog(activity, android.R.style.Theme_Material_NoActionBar_Fullscreen);
-        dialog.setContentView(screen);
-        Window window = dialog.getWindow();
-        if (window != null) {
-            // Opaque, so the TV draws Settings alone instead of blending it over Home on every frame.
-            window.setBackgroundDrawableResource(R.drawable.settings_bg);
-            window.setFormat(android.graphics.PixelFormat.OPAQUE);
-            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            // The keyboard only comes up once a key field is picked.
-            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
-                    | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
-            window.setWindowAnimations(android.R.style.Animation_Toast);   // a fade
-        }
-        dialog.setOnKeyListener((d, keyCode, event) -> {
-            if (keyCode != KeyEvent.KEYCODE_BACK) return false;
-            if (event.getAction() == KeyEvent.ACTION_UP) back();
-            return true;
-        });
-    }
-
-    private void open() {
-        Page root = new Page(activity.getString(R.string.settings));
-        root.link(R.string.tab_general, null, this::general);
+        root = new Page(ctx.getString(R.string.settings));
+        generalRow = root.link(R.string.tab_general, null, this::general);
         root.link(R.string.tab_appearance, null, this::appearance);
         root.link(R.string.tab_keys, null, this::apiKeys);
         place(root, 0);
+        languagePage = buildLanguages();
+        place(languagePage, screenW - rightX);   // off the screen until Language is picked
+        languagePage.focusable(false);
+        // Laid out now, at the screen's size: showing it only has to draw it.
+        screen.measure(View.MeasureSpec.makeMeasureSpec(w, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(h, View.MeasureSpec.EXACTLY));
+        screen.layout(0, 0, w, h);
+    }
+
+    // ---- on and off the screen ---------------------------------------------------------------------
+
+    /** SettingsActivity showing it: back to the first list, with the values as they are now. */
+    View attach(Activity activity) {
+        host = activity;
+        language = settings.language();
+        keys[0] = settings.tmdbKey();
+        keys[1] = settings.youtubeKey();
+        keys[2] = settings.plexToken();
+        pages.clear();
         pages.add(root);
+        root.view.animate().cancel();
+        root.view.setTranslationX(0f);
+        root.focusable(true);
+        for (Row row : root.rows) row.view.setActivated(false);
+        root.opened = null;
+        logo.animate().cancel();
+        logo.setTranslationX(0f);
         title.setText(root.title);
         startPhoneLink();
         watchSmartTube();
-        dialog.setOnDismissListener(d -> closed());
-        if (activity instanceof MainActivity) {
-            ((MainActivity) activity).closeSettings = () -> {
-                home.setVisibility(View.VISIBLE);
-                dialog.dismiss();
-            };
+        ViewGroup parent = (ViewGroup) screen.getParent();
+        if (parent != null) parent.removeView(screen);
+        return screen;
+    }
+
+    View first() {
+        return root.first();
+    }
+
+    /** Opens on General, already in place (Settings back in a new language): Language has the focus. */
+    void showGeneral() {
+        Page page = general();
+        open(page, generalRow);
+        // Where the slides end: they then run from there to there, so nothing moves.
+        logo.setTranslationX(offLeft(logo));
+        root.view.setTranslationX(leftX - rightX);
+        page.view.setTranslationX(0f);
+    }
+
+    /** SettingsActivity going: everything but the first list and the languages goes, ready for next time. */
+    void detach(Activity activity) {
+        if (host != activity) return;
+        if (editing != null) endEdit();
+        link.stop();
+        host.unregisterReceiver(packages);
+        smartTubeRow = null;
+        for (Page page : pages) {
+            if (page != root && page != languagePage) stage.removeView(page.view);
         }
-        dialog.show();
-        root.first().requestFocus();
-        // Once Settings has faded in over it.
-        stage.postDelayed(() -> {
-            if (dialog.isShowing()) home.setVisibility(View.INVISIBLE);
-        }, 400);
-        stage.postDelayed(this::prebuildLanguages, 450);
+        for (int i = stage.getChildCount() - 1; i >= 0; i--) {   // pages still sliding out
+            View v = stage.getChildAt(i);
+            if (v != root.view && v != languagePage.view) stage.removeView(v);
+        }
+        languagePage.view.animate().cancel();
+        languagePage.view.setTranslationX(screenW - rightX);
+        languagePage.focusable(false);
+        for (Row row : languagePage.rows) row.view.setActivated(false);
+        ViewGroup parent = (ViewGroup) screen.getParent();
+        if (parent != null) parent.removeView(screen);
+        host = null;
+    }
+
+    /** Home, if it's there: what tiles per row, the language, the backdrops and the top bar change. */
+    private static MainActivity home() {
+        return MainActivity.current();
     }
 
     // ---- the pages ---------------------------------------------------------------------------------
 
     private Page general() {
-        Page page = new Page(activity.getString(R.string.tab_general));
+        Page page = new Page(ctx.getString(R.string.tab_general));
         page.link(R.string.language, () -> language.isEmpty()
-                ? activity.getString(R.string.language_system) : Lang.name(language), this::languages);
+                ? ctx.getString(R.string.language_system) : Lang.name(language), this::languages);
         page.add(R.string.reload_backdrops, null, () -> {
-            if (activity instanceof MainActivity) ((MainActivity) activity).reloadBackdrops();
-            Toast.makeText(activity, R.string.backdrops_reloading, Toast.LENGTH_SHORT).show();
+            MainActivity home = home();
+            if (home != null) home.reloadBackdrops();
+            Toast.makeText(host, R.string.backdrops_reloading, Toast.LENGTH_SHORT).show();
         });
         page.toggle(R.string.power_on_home, settings::powerOnHome, settings::setPowerOnHome);
         // The TV's power menu, which asks before it restarts: only the Home button service can open it (an
@@ -305,160 +357,149 @@ final class SettingsDialog {
         return page;
     }
 
-    /**
-     * The language list (51 rows), built and laid out off the screen once Settings is showing, so Language
-     * slides in at once. Never while a page slides: built then, it held the slide up.
-     */
-    private void prebuildLanguages() {
-        if (languagePage != null || !dialog.isShowing()) return;
-        long sinceSlide = android.os.SystemClock.uptimeMillis() - slidAt;
-        if (sinceSlide < SLIDE_MS + 50) {
-            stage.postDelayed(this::prebuildLanguages, SLIDE_MS + 50 - sinceSlide);
-            return;
-        }
-        languagePage = buildLanguages();
-        place(languagePage, screenW - rightX);
-        languagePage.focusable(false);
-    }
-
-    /** The language list, built ahead (prebuildLanguages) or now, opening on the one in use. */
+    /** The language list, made with the screen, opening on the one in use. */
     private Page languages() {
-        if (languagePage == null) languagePage = buildLanguages();
-        Page page = languagePage;
-        page.refresh();
-        for (Row row : page.rows) {
-            if (language.equals(row.view.getTag())) page.opened = row;   // open() focuses it
+        languagePage.refresh();
+        for (Row row : languagePage.rows) {
+            if (language.equals(row.view.getTag())) languagePage.opened = row;   // open() focuses it
         }
-        return page;
+        return languagePage;
     }
 
     private Page buildLanguages() {
-        Page page = new Page(activity.getString(R.string.language));
-        // The rows prepared when Home started, else made now.
-        ViewGroup prepared = prepared();
-        if (prepared == null || prepared.getChildCount() == 0) prepared = makeLanguageRows(activity, 0);
-        while (prepared.getChildCount() > 0) {
-            View view = prepared.getChildAt(0);
-            prepared.removeViewAt(0);
-            String tag = (String) view.getTag();
-            page.adopt(view, () -> tag.equals(language) ? "✓" : "", () -> {
-                language = tag;
-                back();
-            });
+        Page page = new Page(ctx.getString(R.string.language));
+        for (int i = -1; i < Lang.TAGS.length; i++) {
+            String tag = i < 0 ? "" : Lang.TAGS[i];
+            Row row = page.add(i < 0 ? ctx.getString(R.string.language_system) : Lang.NAMES[i],
+                    () -> tag.equals(language) ? "✓" : "", () -> {
+                        if (tag.equals(language)) {
+                            back();
+                            return;
+                        }
+                        // Everything is made again in the new language: Home behind, and Settings, which
+                        // comes back on General after a moment of nothing.
+                        language = tag;
+                        settings.setLanguage(tag);
+                        rebuildHome();
+                        Activity h = host;
+                        if (h != null) {
+                            h.setIntent(h.getIntent().putExtra(SettingsActivity.ON_GENERAL, true));
+                            h.recreate();
+                        }
+                    });
+            row.view.setTag(tag);
         }
         return page;
     }
 
-    // ---- the language rows, prepared ahead -----------------------------------------------------------
-
-    /**
-     * Makes the 51 language rows and measures them at the list's width, without drawing them, so Settings
-     * only has to put them on its Language page. Home keeps them (MainActivity.languageRows), so a new Home
-     * (a new language or grid) makes its own.
-     */
-    static ViewGroup prepareLanguages(Activity activity) {
-        int w = activity.getResources().getDisplayMetrics().widthPixels;
-        int columnW = (int) (w * 0.40f);
-        return makeLanguageRows(activity, columnW - 2 * ((int) (columnW * 0.02f) + 2));
-    }
-
-    /** The rows Home prepared, while they're not on a Language page; null if it hasn't yet. */
-    private ViewGroup prepared() {
-        return activity instanceof MainActivity ? ((MainActivity) activity).languageRows : null;
-    }
-
-    /** Every language's row, its tag on it; measured at listW when it's known (> 0). */
-    private static ViewGroup makeLanguageRows(Activity activity, int listW) {
-        LinearLayout rows = new LinearLayout(activity);
-        rows.setOrientation(LinearLayout.VERTICAL);
-        LayoutInflater inflater = LayoutInflater.from(activity);
-        for (int i = -1; i < Lang.TAGS.length; i++) {
-            View row = inflater.inflate(R.layout.item_setting, rows, false);
-            ((TextView) row.findViewById(R.id.label)).setText(i < 0 ? activity.getString(R.string.language_system) : Lang.NAMES[i]);
-            row.setTag(i < 0 ? "" : Lang.TAGS[i]);
-            rows.addView(row);
-        }
-        if (listW > 0) {
-            rows.measure(View.MeasureSpec.makeMeasureSpec(listW, View.MeasureSpec.EXACTLY),
-                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        }
-        return rows;
-    }
-
-    /** Settings closing: its language rows go back, as they were, for the next time. */
-    private void returnLanguageRows() {
-        // Not when a set was prepared meanwhile (these were made on the spot): one set is kept.
-        ViewGroup prepared = prepared();
-        if (languagePage == null || prepared == null || prepared.getChildCount() > 0) return;
-        for (Row row : languagePage.rows) {
-            View view = row.view;
-            ((ViewGroup) view.getParent()).removeView(view);
-            view.animate().cancel();
-            view.setScaleX(1f);
-            view.setScaleY(1f);
-            view.setActivated(false);
-            view.setFocusable(true);
-            view.setOnClickListener(null);
-            view.setOnFocusChangeListener(null);
-            view.setOnKeyListener(null);
-            prepared.addView(view);
-        }
-        languagePage = null;
+    /** Home again with the new grid or language, made now, behind Settings, so it's ready when Settings closes. */
+    private static void rebuildHome() {
+        MainActivity home = home();
+        if (home != null) home.recreate();
     }
 
     private Page appearance() {
-        Page page = new Page(activity.getString(R.string.tab_appearance));
-        page.link(R.string.tiles_per_row, () -> String.valueOf(columns), this::tiles);
+        Page page = new Page(ctx.getString(R.string.tab_appearance));
+        page.link(R.string.tiles_per_row, () -> String.valueOf(MainActivity.COLUMNS), this::tiles);
         page.toggle(R.string.hide_inactive_inputs, settings::hideInactiveInputs, settings::setHideInactiveInputs);
         page.toggle(R.string.auto_hide_bar, settings::autoHideBar, on -> {
             settings.setAutoHideBar(on);
-            if (activity instanceof MainActivity) ((MainActivity) activity).updateTopBar();
+            MainActivity home = home();
+            if (home != null) home.updateTopBar();
         });
         page.toggle(R.string.slideshow_clock, settings::slideshowClock, settings::setSlideshowClock);
         return page;
     }
 
     private Page tiles() {
-        Page page = new Page(activity.getString(R.string.tiles_per_row));
+        Page page = new Page(ctx.getString(R.string.tiles_per_row));
         for (int n = 4; n <= 6; n++) {
             int value = n;
-            Row row = page.add(String.valueOf(n), () -> value == columns ? "✓" : "", () -> {
-                columns = value;
-                back();
+            // Picked, it's ticked and the list stays: Back or Left goes back.
+            Row row = page.add(String.valueOf(n), () -> value == MainActivity.COLUMNS ? "✓" : "", () -> {
+                if (value == MainActivity.COLUMNS) return;
+                settings.setColumns(value);
+                MainActivity.COLUMNS = value;   // shown here at once; the new Home reads the setting
+                rebuildHome();
+                page.refresh();   // the tick moves
             });
-            if (n == columns) page.opened = row;
+            if (n == MainActivity.COLUMNS) page.opened = row;
         }
         return page;
     }
 
     private Page apiKeys() {
-        Page page = new Page(activity.getString(R.string.tab_keys));
+        Page page = new Page(ctx.getString(R.string.tab_keys));
         page.footnote = R.string.tmdb_notice;   // TMDB's terms ask apps using its API to say so
-        key(page, R.string.tmdb_key, 0, R.string.tmdb_info);
-        key(page, R.string.youtube_key, 1, R.string.youtube_info);
+        // First the instructions, on a page of their own; under the list, each row says in a line what it adds.
+        page.link(R.string.keys_help, null, this::keysHelp);
+        key(page, R.string.tmdb_key, 0, R.string.tmdb_short);
+        key(page, R.string.youtube_key, 1, R.string.youtube_short);
         // SmartTube signed in beats a key (the user's own feed). The store build can't install apps: there
         // the row only opens SmartTube, when it's on the TV.
         smartTubeRow = page.add("", null, () -> {
-            Intent open = SmartTube.launchIntent(activity);
+            Intent open = SmartTube.launchIntent(host);
             if (open != null) {
-                activity.startActivity(open);
+                host.startActivity(open);
                 return;
             }
             if (BuildConfig.STORE) return;
-            boolean started = SmartTube.install(activity, res -> Toast.makeText(activity,
+            boolean started = SmartTube.install(host, res -> Toast.makeText(host,
                     res == R.string.update_failed ? R.string.smarttube_failed : res, Toast.LENGTH_LONG).show());
-            if (started) Toast.makeText(activity, R.string.smarttube_downloading, Toast.LENGTH_LONG).show();
+            if (started) Toast.makeText(host, R.string.smarttube_downloading, Toast.LENGTH_LONG).show();
         });
-        smartTubeRow.about = R.string.youtube_info;
+        smartTubeRow.about = R.string.smarttube_short;
         showSmartTube();
-        key(page, R.string.plex_token, 2, R.string.plex_info);
+        key(page, R.string.plex_token, 2, R.string.plex_short);
         if (phoneUrl != null) page.link(R.string.phone_paste, null, this::phone);
+        return page;
+    }
+
+    /**
+     * How to get each key and what it adds, a section for each. Each section takes focus in turn, so Up and
+     * Down move through them and the page scrolls to the one focused.
+     */
+    private Page keysHelp() {
+        Page page = new Page(ctx.getString(R.string.keys_help));
+        int[][] sections = {{R.string.tmdb_key, R.string.tmdb_info}, {R.string.youtube_key, R.string.youtube_info},
+                {R.string.plex_token, R.string.plex_info}};
+        int pad = (int) (16 * density);
+        for (int[] section : sections) {
+            LinearLayout box = new LinearLayout(ctx);
+            box.setOrientation(LinearLayout.VERTICAL);
+            box.setPadding(pad, pad, pad, pad);
+            box.setBackgroundResource(R.drawable.setting_text_bg);
+            box.setFocusable(true);
+            box.setOnKeyListener((v, keyCode, event) -> {
+                if (event.getAction() != KeyEvent.ACTION_DOWN || keyCode != KeyEvent.KEYCODE_DPAD_LEFT) return false;
+                back();
+                return true;
+            });
+            TextView heading = new TextView(ctx);
+            heading.setText(section[0]);
+            heading.setTextColor(0xEBFFFFFF);
+            heading.setTextSize(18);
+            heading.setTypeface(UiFont.get(ctx, R.string.font_medium));
+            box.addView(heading);
+            TextView text = new TextView(ctx);
+            text.setText(section[1]);
+            text.setTextColor(0xB3FFFFFF);
+            text.setTextSize(15);
+            text.setLineSpacing(0, 1.15f);
+            text.setTypeface(UiFont.get(ctx, R.string.font_regular));
+            text.setPadding(0, (int) (8 * density), 0, 0);
+            box.addView(text);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            lp.bottomMargin = (int) (8 * density);
+            page.list.addView(box, lp);
+        }
         return page;
     }
 
     /** A key row: the saved key's last four characters; OK edits it in place. */
     private void key(Page page, int label, int index, int about) {
-        Row row = page.add(label, () -> keys[index].isEmpty() ? activity.getString(R.string.not_set) : mask(keys[index]), null);
+        Row row = page.add(label, () -> keys[index].isEmpty() ? ctx.getString(R.string.not_set) : mask(keys[index]), null);
         row.about = about;
         row.field = (EditText) ((android.view.ViewStub) row.view.findViewById(R.id.fieldStub)).inflate();
         row.action = () -> edit(row, index);
@@ -473,8 +514,8 @@ final class SettingsDialog {
 
     /** Typing a 32-character key with a remote is painful: a page to paste it from a phone instead. */
     private Page phone() {
-        Page page = new Page(activity.getString(R.string.phone_paste));
-        LinearLayout box = new LinearLayout(activity);
+        Page page = new Page(ctx.getString(R.string.phone_paste));
+        LinearLayout box = new LinearLayout(ctx);
         box.setOrientation(LinearLayout.VERTICAL);
         box.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
         box.setFocusable(true);   // somewhere for focus to be: Back and Left go back
@@ -483,25 +524,25 @@ final class SettingsDialog {
             back();
             return true;
         });
-        ImageView qr = new ImageView(activity);
+        ImageView qr = new ImageView(ctx);
         int size = (int) (180 * density);
         qr.setImageBitmap(PhoneLink.qr(phoneUrl, size));
         qr.setBackgroundColor(Color.WHITE);
         int pad = (int) (10 * density);
         qr.setPadding(pad, pad, pad, pad);
         box.addView(qr, new LinearLayout.LayoutParams(size + 2 * pad, size + 2 * pad));
-        TextView scan = new TextView(activity);
+        TextView scan = new TextView(ctx);
         scan.setText(R.string.scan_to_paste);
         scan.setTextColor(0xCCFFFFFF);
         scan.setTextSize(17);
-        scan.setTypeface(UiFont.get(activity, R.string.font_regular));
+        scan.setTypeface(UiFont.get(ctx, R.string.font_regular));
         scan.setPadding(0, (int) (18 * density), 0, 0);
         box.addView(scan);
-        TextView url = new TextView(activity);
+        TextView url = new TextView(ctx);
         url.setText(phoneUrl.replace("http://", ""));
         url.setTextColor(0x80FFFFFF);
         url.setTextSize(13);
-        url.setTypeface(UiFont.get(activity, R.string.font_regular));
+        url.setTypeface(UiFont.get(ctx, R.string.font_regular));
         url.setPadding(0, (int) (6 * density), 0, 0);
         box.addView(url);
         page.list.addView(box, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -514,7 +555,7 @@ final class SettingsDialog {
     /** Puts a page's list in the right column (offset 0) or the left one (offset leftX - rightX). */
     private void place(Page page, float translationX) {
         page.view.setTranslationX(translationX);
-        if (page.view.getParent() != null) return;   // the language list, kept laid out
+        if (page.view.getParent() != null) return;   // the first list and the languages, kept laid out
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(columnW, ViewGroup.LayoutParams.MATCH_PARENT);
         lp.leftMargin = rightX;
         lp.topMargin = (int) (82 * density);
@@ -537,9 +578,8 @@ final class SettingsDialog {
         current.focusable(false);
         from.view.setActivated(true);
         place(next, screenW - rightX);
-        // Started once the new page is laid out: a long one (51 languages) takes longer than the slide to lay
-        // out the first time, and the slide was over before its first frame.
-        next.view.getViewTreeObserver().addOnPreDrawListener(new android.view.ViewTreeObserver.OnPreDrawListener() {
+        // Started once the new page is laid out, so the whole slide is seen.
+        next.view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
                 next.view.getViewTreeObserver().removeOnPreDrawListener(this);
@@ -559,14 +599,13 @@ final class SettingsDialog {
     }
 
     /** Back a page, everything sliding the other way: Settings closes from the first. */
-    private void back() {
+    void back() {
         if (editing != null) {
             endEdit();
             return;
         }
         if (pages.size() == 1) {
-            home.setVisibility(View.VISIBLE);   // back under Settings as it fades out
-            dialog.dismiss();
+            if (host != null) host.finish();
             return;
         }
         Page gone = pages.remove(pages.size() - 1);
@@ -600,7 +639,6 @@ final class SettingsDialog {
     }
 
     private void slide(View v, float x) {
-        slidAt = android.os.SystemClock.uptimeMillis();
         v.animate().cancel();
         // withLayer: drawn as one texture while it moves, not redrawn row by row on every frame.
         v.animate().translationX(x).setDuration(SLIDE_MS).setInterpolator(new DecelerateInterpolator(1.6f))
@@ -630,7 +668,7 @@ final class SettingsDialog {
         row.field.setSelectAllOnFocus(true);
         row.field.requestFocus();
         row.field.selectAll();
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) host.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null) row.field.post(() -> imm.showSoftInput(row.field, InputMethodManager.SHOW_IMPLICIT));
     }
 
@@ -640,7 +678,7 @@ final class SettingsDialog {
         editing = null;
         keys[editingKey] = value(row.field, keys[editingKey]);
         settings.save(keys[0], keys[1], keys[2]);
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = host != null ? (InputMethodManager) host.getSystemService(Context.INPUT_METHOD_SERVICE) : null;
         if (imm != null) imm.hideSoftInputFromWindow(row.field.getWindowToken(), 0);
         row.field.setVisibility(View.GONE);
         row.value.setVisibility(View.VISIBLE);
@@ -651,7 +689,7 @@ final class SettingsDialog {
 
     private void startPhoneLink() {
         link = new PhoneLink(received -> {
-            if (!dialog.isShowing()) return;
+            if (host == null) return;
             String[] names = {"tmdbKey", "youtubeKey", "plexToken"};
             for (int i = 0; i < names.length; i++) {
                 String k = received.get(names[i]);
@@ -659,7 +697,7 @@ final class SettingsDialog {
             }
             settings.save(keys[0], keys[1], keys[2]);
             for (Page page : pages) page.refresh();
-            Toast.makeText(activity, R.string.saved_from_phone, Toast.LENGTH_SHORT).show();
+            Toast.makeText(host, R.string.saved_from_phone, Toast.LENGTH_SHORT).show();
         }, settings);
         phoneUrl = link.start();
     }
@@ -668,11 +706,9 @@ final class SettingsDialog {
 
     /**
      * Install or Open, checked again when an app is installed or removed (the installer's screen closes
-     * before the install is done) and whenever Settings gets the screen back.
+     * before the install is done) and whenever Settings gets the screen back (SettingsActivity.onResume).
      */
     private void watchSmartTube() {
-        dialog.getWindow().getDecorView().getViewTreeObserver()
-                .addOnWindowFocusChangeListener(hasFocus -> { if (hasFocus) showSmartTube(); });
         packages = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -682,32 +718,15 @@ final class SettingsDialog {
         IntentFilter filter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
         filter.addAction(Intent.ACTION_PACKAGE_REMOVED);
         filter.addDataScheme("package");
-        if (Build.VERSION.SDK_INT >= 33) activity.registerReceiver(packages, filter, Context.RECEIVER_NOT_EXPORTED);
-        else activity.registerReceiver(packages, filter);
+        if (Build.VERSION.SDK_INT >= 33) host.registerReceiver(packages, filter, Context.RECEIVER_NOT_EXPORTED);
+        else host.registerReceiver(packages, filter);
     }
 
-    private void showSmartTube() {
+    void showSmartTube() {
         if (smartTubeRow == null) return;
-        boolean installed = SmartTube.launchIntent(activity) != null;
+        boolean installed = SmartTube.launchIntent(ctx) != null;
         smartTubeRow.label.setText(installed ? R.string.smarttube_open : R.string.smarttube_install);
         if (BuildConfig.STORE) smartTubeRow.view.setVisibility(installed ? View.VISIBLE : View.GONE);
-    }
-
-    // ---- closing -----------------------------------------------------------------------------------
-
-    private void closed() {
-        home.setVisibility(View.VISIBLE);
-        if (activity instanceof MainActivity) ((MainActivity) activity).closeSettings = null;
-        if (editing != null) endEdit();
-        returnLanguageRows();
-        link.stop();
-        activity.unregisterReceiver(packages);
-        boolean rebuild = columns != startColumns || !language.equals(startLanguage);
-        if (columns != startColumns) settings.setColumns(columns);
-        if (!language.equals(startLanguage)) settings.setLanguage(language);
-        // An update found here shows on the Settings pill straight away, not at the next return to Home.
-        if (activity instanceof MainActivity) ((MainActivity) activity).showUpdateReady();
-        if (rebuild) activity.recreate();   // Home again with the new grid or language
     }
 
     // ---- updates -----------------------------------------------------------------------------------
@@ -718,39 +737,39 @@ final class SettingsDialog {
      * only says how it updates.
      */
     private void showUpdates(Row status, Row button) {
-        String version = Updater.installedVersion(activity);
+        String version = Updater.installedVersion(ctx);
         if (BuildConfig.STORE) {
-            status.value.setText(activity.getString(R.string.version_current, version));
+            status.value.setText(ctx.getString(R.string.version_current, version));
             button.view.setVisibility(StoreUpdates.available() ? View.VISIBLE : View.GONE);
             button.label.setText(R.string.store_update);
-            button.action = () -> StoreUpdates.open(activity);
+            button.action = () -> StoreUpdates.open(host);
             return;
         }
-        if (Updater.isDevelopmentBuild(activity)) {
-            status.value.setText(activity.getString(R.string.version_current, version));
+        if (Updater.isDevelopmentBuild(ctx)) {
+            status.value.setText(ctx.getString(R.string.version_current, version));
             status.about = R.string.update_development;
             button.view.setVisibility(View.GONE);
             return;
         }
         // What the last check found: the gear menu, which opens Settings, has just asked GitHub again.
-        Updater.Release found = Updater.available(activity);
+        Updater.Release found = Updater.available(ctx);
         if (found != null) {
             offerUpdate(status, button, found);
             return;
         }
-        status.value.setText(activity.getString(R.string.version_current, version));
+        status.value.setText(ctx.getString(R.string.version_current, version));
         boolean[] checking = {false};
         button.action = () -> {
             // Not disabled while it checks: a disabled row loses focus, which went to the top of the list.
             if (checking[0]) return;
             checking[0] = true;
             button.label.setText(R.string.checking_updates);
-            Updater.check(activity, (newer, failed) -> {
+            Updater.check(ctx, (newer, failed) -> {
                 checking[0] = false;
                 if (newer != null) {
                     offerUpdate(status, button, newer);
                 } else {
-                    status.value.setText(activity.getString(failed ? R.string.update_check_failed
+                    status.value.setText(ctx.getString(failed ? R.string.update_check_failed
                             : R.string.version_up_to_date, version));
                     button.label.setText(R.string.check_updates);
                 }
@@ -759,9 +778,11 @@ final class SettingsDialog {
     }
 
     private void offerUpdate(Row status, Row button, Updater.Release release) {
-        status.value.setText(activity.getString(R.string.update_available, release.version));
-        button.label.setText(activity.getString(R.string.update_to, release.version));
-        button.action = () -> startUpdate(activity, release);
+        status.value.setText(ctx.getString(R.string.update_available, release.version));
+        button.label.setText(ctx.getString(R.string.update_to, release.version));
+        button.action = () -> {
+            if (host != null) startUpdate(host, release);
+        };
     }
 
     /** A saved key as shown: bullets and the last four characters; "" when not set. */

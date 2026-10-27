@@ -54,6 +54,11 @@
     <string name="update_failed">అప్‌డేట్ ఇన్‌స్టాల్ కాలేదు</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">సూచనలు</string>
+    <string name="tmdb_short">సినిమాలు, షోలకు శుభ్రమైన బ్యాక్‌డ్రాప్‌లు మరియు టైటిల్ లోగోలు.</string>
+    <string name="youtube_short">YouTube టైల్‌కు మీ దేశంలో ప్రాచుర్యం పొందిన వీడియోలు.</string>
+    <string name="smarttube_short">YouTube టైల్‌కు మీ స్వంత YouTube ఫీడ్, కీ అవసరం లేదు.</string>
+    <string name="plex_short">మీ స్వంత Plex సర్వర్ నుండి బ్యాక్‌డ్రాప్‌లు.</string>
     <string name="phone_paste">ఫోన్ నుండి కీలను అతికించండి</string>
     <string name="scan_to_paste">కీలను పేస్ట్ చేయడానికి ఫోన్‌తో స్కాన్ చేయండి</string>
     <string name="tmdb_notice">బ్యాక్‌డ్రాప్‌లు TMDB API ని వాడతాయి, కానీ TMDB వీటిని ఆమోదించలేదు లేదా ధృవీకరించలేదు.</string>

@@ -54,6 +54,11 @@
     <string name="update_failed">A frissítés nem települt</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">Útmutató</string>
+    <string name="tmdb_short">Tiszta hátterek és címlogók filmekhez és sorozatokhoz.</string>
+    <string name="youtube_short">Az országod népszerű videói a YouTube csempéhez.</string>
+    <string name="smarttube_short">A saját YouTube-hírfolyamod a YouTube csempéhez, kulcs nélkül.</string>
+    <string name="plex_short">Hátterek a saját Plex szerveredről.</string>
     <string name="phone_paste">Kulcsok beillesztése telefonról</string>
     <string name="scan_to_paste">Olvasd be telefonnal a kulcsok beillesztéséhez</string>
     <string name="tmdb_notice">A háttérképek a TMDB API-t használják, de a TMDB nem támogatja és nem tanúsítja őket.</string>

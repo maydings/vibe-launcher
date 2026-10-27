@@ -54,6 +54,11 @@
     <string name="update_failed">ዝማኔው አልተጫነም</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="keys_help">መመሪያዎች</string>
+    <string name="tmdb_short">ለፊልሞችና ትርዒቶች ንጹህ ዳራዎችና የርዕስ አርማዎች።</string>
+    <string name="youtube_short">ለYouTube ሰድር በአገርዎ ተወዳጅ ቪዲዮዎች።</string>
+    <string name="smarttube_short">የራስዎ የYouTube ምግብ ለYouTube ሰድር፣ ቁልፍ አያስፈልግም።</string>
+    <string name="plex_short">ከራስዎ Plex አገልጋይ ዳራዎች።</string>
     <string name="phone_paste">ቁልፎችን ከስልክዎ ይለጥፉ</string>
     <string name="scan_to_paste">ቁልፎቹን ለመለጠፍ በስልክዎ ይቃኙ</string>
     <string name="tmdb_notice">ዳራዎቹ የTMDB APIን ይጠቀማሉ፣ ግን በTMDB የተደገፉ ወይም የተረጋገጡ አይደሉም።</string>
