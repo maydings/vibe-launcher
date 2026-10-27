@@ -20,12 +20,13 @@ and gets out of the way. It works well enough for us that I'd like to share it w
 - **Inputs at a glance.** HDMI ports with what's connected, devices behind a switch listed by name.
 - **A slideshow when idle.** Leave Home alone for a minute and every app's backdrops play full screen.
 - **50 languages.** Follows your TV, or pick one.
-- **Settings that slide.** Full screen, pages that slide in from the side, changes that apply as you
-  make them.
+- **Settings that slide.** Full screen and ready the moment you open it: pages slide in from the side,
+  changes apply as you make them, and each key comes with instructions.
 - **Home at power-on.** For TVs that wake up on their last input: Home comes up instead (optional).
 - **Updates itself.** Shows what's new, checks the download, installs with one confirmation.
 - **Snappy and light.** Moving around feels instant, even on older TVs with 1 to 2 GB of RAM. No
-  background services, and it lets go of its pictures while you're in another app.
+  background services (but the app store version's optional Home button), and it lets go of its
+  pictures while you're in another app.
 
 ## The home screen
 
