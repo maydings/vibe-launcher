@@ -101,6 +101,9 @@ behind Settings, ready when you leave, and a new language rebuilds both (Setting
 after a moment). The focused row's explanation shows under the list. Settings is built when Home
 starts, so opening it is just a fade.
 
+| ![Vibe Launcher settings: the logo on the left, General, Appearance and API keys on the right](vibe-launcher/docs/settings-main.jpg) | ![General: its list slid over the logo, with Language, Reload backdrops, Home at power-on and the software version on the right](vibe-launcher/docs/settings-general.jpg) |
+|---|---|
+
 **General**: language, reloading the backdrops, Home at power-on, Restart… (app store version), and the
 software version with its update check.
 
@@ -128,6 +131,9 @@ software version with its update check.
 - **Screensaver clock**: On (the default) shows the time on the slideshow, in the same place as on the
   top bar but without the bar; Off leaves the pictures alone.
 
+| ![Appearance: tiles per row, hide inactive inputs, auto-hide and the screensaver clock](vibe-launcher/docs/settings-appearance.jpg) | ![The language list, each language in its own name, with General slid to the left](vibe-launcher/docs/language.jpg) |
+|---|---|
+
 **API keys**: optional keys that unlock more backdrops: **TMDB**, **YouTube** and **Plex**. Each has
 a line under the list on what it adds, and **Instructions**, first on the page, says where to get each,
 free. OK on a key edits it in place.
@@ -135,6 +141,9 @@ Typing a 32-character key with a remote is no fun, so **Paste keys from your pho
 code**: scan it and paste the keys there. Saved keys stay on the TV and show only their last four
 characters. Under YouTube, one row installs SmartTube (its latest release, checked against GitHub's
 checksum) or opens it to sign in.
+
+| ![API keys: Instructions first, then the TMDB, YouTube and Plex keys, SmartTube and Paste keys from your phone](vibe-launcher/docs/settings-keys.jpg) | ![Instructions: what each key adds and where to get it, a section for each](vibe-launcher/docs/settings-instructions.jpg) |
+|---|---|
 
 ## Updates
 
