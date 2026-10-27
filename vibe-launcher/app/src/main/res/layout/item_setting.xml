@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- One Settings row (SettingsDialog): its name, its value on the right, and > when it opens a page. Key
-     rows edit in place, in the field. -->
+     rows edit in place, in a field made for them. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="42dp"
@@ -38,24 +38,15 @@
         android:textSize="16sp"
         android:fontFamily="@string/font_regular" />
 
-    <EditText
-        android:id="@+id/field"
+    <!-- The key field, made only for the key rows (setting_field). -->
+    <ViewStub
+        android:id="@+id/fieldStub"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1.4"
         android:layout_marginStart="14dp"
-        android:visibility="gone"
-        android:background="@null"
-        android:gravity="end|center_vertical"
-        android:importantForAutofill="no"
-        android:inputType="text|textNoSuggestions"
-        android:imeOptions="actionDone|flagNoExtractUi"
-        android:maxLines="1"
-        android:textColor="#FFFFFFFF"
-        android:textCursorDrawable="@null"
-        android:textSize="16sp"
-        android:fontFamily="@string/font_regular"
-        android:hint="@null" />
+        android:inflatedId="@+id/field"
+        android:layout="@layout/setting_field" />
 
     <ImageView
         android:id="@+id/chevron"

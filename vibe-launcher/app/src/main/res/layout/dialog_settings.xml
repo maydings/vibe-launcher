@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Vibe Launcher settings, full screen and opaque, Apple TV style: the page's name on top, the logo on the
+<!-- Vibe Launcher settings, full screen and opaque: the page's name on top, the logo on the
      left and the list on the right. Opening a row slides its list over the logo and its page in on the right
      (SettingsDialog adds the lists to the stage and places the logo). -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/settings_bg">
+    android:layout_height="match_parent">
+    <!-- No background of its own: the window's (settings_bg) is the screen's, drawn once. -->
 
     <ImageView
         android:id="@+id/logo"

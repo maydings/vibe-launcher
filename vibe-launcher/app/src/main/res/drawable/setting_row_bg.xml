@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- A Settings row, Apple TV style: white when focused, faint glass otherwise; activated is the row whose
+<!-- A Settings row: white when focused, faint glass otherwise; activated is the row whose
      page is open, on the list slid to the left. -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_focused="true">

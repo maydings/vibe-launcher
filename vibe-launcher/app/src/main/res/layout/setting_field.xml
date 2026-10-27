@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A key row's field (item_setting's stub): where a key is typed in place of its masked value. -->
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    android:background="@null"
+    android:gravity="end|center_vertical"
+    android:importantForAutofill="no"
+    android:inputType="text|textNoSuggestions"
+    android:imeOptions="actionDone|flagNoExtractUi"
+    android:maxLines="1"
+    android:textColor="#FFFFFFFF"
+    android:textCursorDrawable="@null"
+    android:textSize="16sp"
+    android:fontFamily="@string/font_regular"
+    android:hint="@null" />

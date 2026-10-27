@@ -1,6 +1,6 @@
 # Vibe Launcher
 
-A free and open-source (MIT), tvOS-inspired home screen for Android TV, with no ads, ever. Plain
+A free and open-source (MIT) home screen for Android TV, with no ads, ever. Plain
 Java, under 1 MB, no background services (the app store build has one: its Home button); built for TVs with 1 to 2 GB of RAM. Android 8.0 (API 26) and newer, targets API 34 so Play Protect accepts it
 on Android 11+ devices such as the NVIDIA Shield.
 

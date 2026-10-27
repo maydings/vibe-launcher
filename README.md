@@ -20,8 +20,8 @@ and gets out of the way. It works well enough for us that I'd like to share it w
 - **Inputs at a glance.** HDMI ports with what's connected, devices behind a switch listed by name.
 - **A slideshow when idle.** Leave Home alone for a minute and every app's backdrops play full screen.
 - **50 languages.** Follows your TV, or pick one.
-- **Settings like Apple TV's.** Full screen, pages that slide in from the side, changes that apply as
-  you make them.
+- **Settings that slide.** Full screen, pages that slide in from the side, changes that apply as you
+  make them.
 - **Home at power-on.** For TVs that wake up on their last input: Home comes up instead (optional).
 - **Updates itself.** Shows what's new, checks the download, installs with one confirmation.
 - **Snappy and light.** Moving around feels instant, even on older TVs with 1 to 2 GB of RAM. No
@@ -93,7 +93,7 @@ slides in when you press Up from the picture alone, or move down into the app gr
 
 ## Settings
 
-Full screen, laid out like Apple TV's: the logo on the left and **General**, **Appearance** and
+Full screen: the logo on the left and **General**, **Appearance** and
 **API keys** on the right. Picking one slides its list over the logo and its page in on the right;
 Back or Left slides back. Changes apply as you make them (tiles per row and the language once you
 close Settings, as they rebuild Home), and the focused row's explanation shows under the list.

@@ -46,7 +46,7 @@ Plain "Vibe Launcher" is free, but two unrelated apps on Play are close to it ("
 **Full description** (4000 max):
 
 ```
-Vibe Launcher is a home screen for Android TV and Google TV, inspired by Apple TV: a dock of your favourite apps under a full-screen picture of what's in them, and everything else in a grid below. No ads, no tracking, no account.
+Vibe Launcher is a home screen for Android TV and Google TV: a dock of your favourite apps under a full-screen picture of what's in them, and everything else in a grid below. No ads, no tracking, no account.
 
 PICTURES FROM YOUR APPS
 • The focused app fills the screen with artwork from its own home-screen cards: what you're watching, what's new, what it recommends.

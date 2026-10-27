@@ -89,7 +89,7 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * tvOS style home: a backdrop for the focused dock app, a pinned dock row, an app grid, and one glass
+ * The home screen: a backdrop for the focused dock app, a pinned dock row, an app grid, and one glass
  * highlight that springs between tiles.
  */
 public class MainActivity extends Activity implements AppAdapter.TileListener {
@@ -237,6 +237,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private String timeBoxMeasuredFor;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
+    /** Settings' 51 language rows, made ahead (SettingsDialog.prepareLanguages); lent to it while it's open. */
+    ViewGroup languageRows;
+    /** Closes Settings while it's open (SettingsDialog), for Home pressed over it; null otherwise. */
+    Runnable closeSettings;
     /** Refreshes the network pill when the connection changes: after a reboot Wi-Fi often connects after Home is shown. */
     private final ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
         @Override
@@ -316,6 +320,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         super.onCreate(savedInstanceState);
         CrashGuard.install(this);
         PowerOnHome.register(this);
+        // Settings' language rows, made ahead once Home is up and its entrance has played.
+        handler.postDelayed(() -> languageRows = SettingsDialog.prepareLanguages(this), 3000);
         setContentView(R.layout.activity_main);
         density = getResources().getDisplayMetrics().density;
         // Tiles per row: chosen in Vibe Launcher settings (4, 5 or 6), else by the screen's size.
@@ -406,7 +412,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         frost.setSource(grid);
         frost.setBackdrop(backdrop);
 
-        // tvOS layout: push the dock row to the bottom of the screen; the grid hides below until you press Down.
+        // Push the dock row to the bottom of the screen; the grid hides below until you press Down.
         grid.addOnLayoutChangeListener((v, l, t, r, b, ol, ot, or, ob) -> {
             int h = b - t;
             int tileH = AppAdapter.tileHeightPx(AppAdapter.tileWidthPx(
@@ -540,11 +546,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        // Pressed with Home already in front; not the power-on one, which leaves Home as it was.
-        if (intent != null && intent.hasCategory(Intent.CATEGORY_HOME) && !rebuildOnResume && !backFromApp
-                && !intent.getBooleanExtra(PowerOnHome.EXTRA, false)) {
-            homeToTop = true;
-        }
+        boolean pressed = intent != null && intent.hasCategory(Intent.CATEGORY_HOME)
+                && !intent.getBooleanExtra(PowerOnHome.EXTRA, false);   // the power-on one leaves Home as it was
+        // Home closes Settings, which covers Home and would otherwise stay up over it.
+        if (pressed && closeSettings != null) closeSettings.run();
+        // Pressed with Home already in front.
+        if (pressed && !rebuildOnResume && !backFromApp) homeToTop = true;
     }
 
     @Override

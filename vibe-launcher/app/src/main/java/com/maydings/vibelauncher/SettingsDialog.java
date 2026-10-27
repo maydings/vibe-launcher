@@ -31,9 +31,9 @@ import java.util.List;
 import java.util.function.Supplier;
 
 /**
- * Vibe Launcher settings, full screen and Apple TV style: the logo on the left and General, Appearance and
+ * Vibe Launcher settings, full screen: the logo on the left and General, Appearance and
  * API keys on the right. Opening one slides its list over the logo and its page in on the right; Back (or
- * Left) slides them back. Changes apply as they're made, like on Apple TV; tiles per row and the language
+ * Left) slides them back. Changes apply as they're made; tiles per row and the language
  * rebuild Home, so those wait until Settings closes.
  * General: language, reloading the backdrops, Home at power-on, Restart… (store build, Home button service
  * on) and updates (Updater). Appearance: tiles per row, inputs, the top bar and the slideshow's clock. API
@@ -46,14 +46,14 @@ final class SettingsDialog {
     private static final long SLIDE_MS = 320;
 
     static void show(Activity activity, ViewGroup root) {
-        new SettingsDialog(activity).open();
+        new SettingsDialog(activity, root).open();
     }
 
     /** One row: its name, its value, and what OK does. */
     private static final class Row {
         final View view;
         final TextView label, value;
-        final EditText field;
+        EditText field;   // key rows only (see key())
         Supplier<CharSequence> valueOf;
         Runnable action;
         int about;   // the text under the list while it's focused; 0 for none
@@ -62,7 +62,6 @@ final class SettingsDialog {
             this.view = view;
             label = view.findViewById(R.id.label);
             value = view.findViewById(R.id.value);
-            field = view.findViewById(R.id.field);
         }
 
         void refresh() {
@@ -118,8 +117,14 @@ final class SettingsDialog {
         }
 
         Row add(CharSequence label, Supplier<CharSequence> valueOf, Runnable action) {
-            Row row = new Row(LayoutInflater.from(activity).inflate(R.layout.item_setting, list, false));
+            Row row = adopt(LayoutInflater.from(activity).inflate(R.layout.item_setting, list, false), valueOf, action);
             row.label.setText(label);
+            return row;
+        }
+
+        /** Makes a row of an item_setting view: a new one, or one prepared ahead (prepareLanguages). */
+        Row adopt(View view, Supplier<CharSequence> valueOf, Runnable action) {
+            Row row = new Row(view);
             row.valueOf = valueOf;
             row.action = action;
             row.refresh();
@@ -178,6 +183,8 @@ final class SettingsDialog {
     }
 
     private final Activity activity;
+    /** Home's screen, hidden while Settings covers it: it would go on drawing (the frosted bar's blur) under it. */
+    private final View home;
     private final float density;
     private final VibeSettings settings;
     private final Dialog dialog;
@@ -201,9 +208,11 @@ final class SettingsDialog {
     private BroadcastReceiver packages;
     private Row smartTubeRow;
     private Page languagePage;
+    private long slidAt;   // when the last slide started (uptime)
 
-    private SettingsDialog(Activity activity) {
+    private SettingsDialog(Activity activity, View home) {
         this.activity = activity;
+        this.home = home;
         density = activity.getResources().getDisplayMetrics().density;
         settings = new VibeSettings(activity);
         startColumns = columns = MainActivity.COLUMNS;
@@ -215,7 +224,7 @@ final class SettingsDialog {
         logo = screen.findViewById(R.id.logo);
         title = screen.findViewById(R.id.title);
         int w = screenW = activity.getResources().getDisplayMetrics().widthPixels;
-        // Apple TV's proportions: the list from 55% of the width to 95%, the picture centred in the left half.
+        // The list from 55% of the width to 95%, the picture centred in the left half.
         rightX = (int) (w * 0.55f);
         columnW = (int) (w * 0.40f);
         leftX = (int) (w * 0.06f);
@@ -229,7 +238,9 @@ final class SettingsDialog {
         dialog.setContentView(screen);
         Window window = dialog.getWindow();
         if (window != null) {
-            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            // Opaque, so the TV draws Settings alone instead of blending it over Home on every frame.
+            window.setBackgroundDrawableResource(R.drawable.settings_bg);
+            window.setFormat(android.graphics.PixelFormat.OPAQUE);
             window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             // The keyboard only comes up once a key field is picked.
             window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
@@ -254,8 +265,19 @@ final class SettingsDialog {
         startPhoneLink();
         watchSmartTube();
         dialog.setOnDismissListener(d -> closed());
+        if (activity instanceof MainActivity) {
+            ((MainActivity) activity).closeSettings = () -> {
+                home.setVisibility(View.VISIBLE);
+                dialog.dismiss();
+            };
+        }
         dialog.show();
         root.first().requestFocus();
+        // Once Settings has faded in over it.
+        stage.postDelayed(() -> {
+            if (dialog.isShowing()) home.setVisibility(View.INVISIBLE);
+        }, 400);
+        stage.postDelayed(this::prebuildLanguages, 450);
     }
 
     // ---- the pages ---------------------------------------------------------------------------------
@@ -264,14 +286,6 @@ final class SettingsDialog {
         Page page = new Page(activity.getString(R.string.tab_general));
         page.link(R.string.language, () -> language.isEmpty()
                 ? activity.getString(R.string.language_system) : Lang.name(language), this::languages);
-        // Built and laid out now, off the screen, so it slides in at once when picked (51 rows).
-        stage.post(() -> {
-            if (languagePage == null) {
-                languagePage = buildLanguages();
-                place(languagePage, screenW - rightX);
-                languagePage.focusable(false);
-            }
-        });
         page.add(R.string.reload_backdrops, null, () -> {
             if (activity instanceof MainActivity) ((MainActivity) activity).reloadBackdrops();
             Toast.makeText(activity, R.string.backdrops_reloading, Toast.LENGTH_SHORT).show();
@@ -291,11 +305,26 @@ final class SettingsDialog {
         return page;
     }
 
-    /** The language list, kept once built (see general()), opening on the one in use. */
+    /**
+     * The language list (51 rows), built and laid out off the screen once Settings is showing, so Language
+     * slides in at once. Never while a page slides: built then, it held the slide up.
+     */
+    private void prebuildLanguages() {
+        if (languagePage != null || !dialog.isShowing()) return;
+        long sinceSlide = android.os.SystemClock.uptimeMillis() - slidAt;
+        if (sinceSlide < SLIDE_MS + 50) {
+            stage.postDelayed(this::prebuildLanguages, SLIDE_MS + 50 - sinceSlide);
+            return;
+        }
+        languagePage = buildLanguages();
+        place(languagePage, screenW - rightX);
+        languagePage.focusable(false);
+    }
+
+    /** The language list, built ahead (prebuildLanguages) or now, opening on the one in use. */
     private Page languages() {
         if (languagePage == null) languagePage = buildLanguages();
         Page page = languagePage;
-        page.focusable(true);
         page.refresh();
         for (Row row : page.rows) {
             if (language.equals(row.view.getTag())) page.opened = row;   // open() focuses it
@@ -305,16 +334,76 @@ final class SettingsDialog {
 
     private Page buildLanguages() {
         Page page = new Page(activity.getString(R.string.language));
-        for (int i = -1; i < Lang.TAGS.length; i++) {
-            String tag = i < 0 ? "" : Lang.TAGS[i];
-            Row row = page.add(i < 0 ? activity.getString(R.string.language_system) : Lang.NAMES[i],
-                    () -> tag.equals(language) ? "✓" : "", () -> {
-                        language = tag;
-                        back();
-                    });
-            row.view.setTag(tag);
+        // The rows prepared when Home started, else made now.
+        ViewGroup prepared = prepared();
+        if (prepared == null || prepared.getChildCount() == 0) prepared = makeLanguageRows(activity, 0);
+        while (prepared.getChildCount() > 0) {
+            View view = prepared.getChildAt(0);
+            prepared.removeViewAt(0);
+            String tag = (String) view.getTag();
+            page.adopt(view, () -> tag.equals(language) ? "✓" : "", () -> {
+                language = tag;
+                back();
+            });
         }
         return page;
+    }
+
+    // ---- the language rows, prepared ahead -----------------------------------------------------------
+
+    /**
+     * Makes the 51 language rows and measures them at the list's width, without drawing them, so Settings
+     * only has to put them on its Language page. Home keeps them (MainActivity.languageRows), so a new Home
+     * (a new language or grid) makes its own.
+     */
+    static ViewGroup prepareLanguages(Activity activity) {
+        int w = activity.getResources().getDisplayMetrics().widthPixels;
+        int columnW = (int) (w * 0.40f);
+        return makeLanguageRows(activity, columnW - 2 * ((int) (columnW * 0.02f) + 2));
+    }
+
+    /** The rows Home prepared, while they're not on a Language page; null if it hasn't yet. */
+    private ViewGroup prepared() {
+        return activity instanceof MainActivity ? ((MainActivity) activity).languageRows : null;
+    }
+
+    /** Every language's row, its tag on it; measured at listW when it's known (> 0). */
+    private static ViewGroup makeLanguageRows(Activity activity, int listW) {
+        LinearLayout rows = new LinearLayout(activity);
+        rows.setOrientation(LinearLayout.VERTICAL);
+        LayoutInflater inflater = LayoutInflater.from(activity);
+        for (int i = -1; i < Lang.TAGS.length; i++) {
+            View row = inflater.inflate(R.layout.item_setting, rows, false);
+            ((TextView) row.findViewById(R.id.label)).setText(i < 0 ? activity.getString(R.string.language_system) : Lang.NAMES[i]);
+            row.setTag(i < 0 ? "" : Lang.TAGS[i]);
+            rows.addView(row);
+        }
+        if (listW > 0) {
+            rows.measure(View.MeasureSpec.makeMeasureSpec(listW, View.MeasureSpec.EXACTLY),
+                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        }
+        return rows;
+    }
+
+    /** Settings closing: its language rows go back, as they were, for the next time. */
+    private void returnLanguageRows() {
+        // Not when a set was prepared meanwhile (these were made on the spot): one set is kept.
+        ViewGroup prepared = prepared();
+        if (languagePage == null || prepared == null || prepared.getChildCount() > 0) return;
+        for (Row row : languagePage.rows) {
+            View view = row.view;
+            ((ViewGroup) view.getParent()).removeView(view);
+            view.animate().cancel();
+            view.setScaleX(1f);
+            view.setScaleY(1f);
+            view.setActivated(false);
+            view.setFocusable(true);
+            view.setOnClickListener(null);
+            view.setOnFocusChangeListener(null);
+            view.setOnKeyListener(null);
+            prepared.addView(view);
+        }
+        languagePage = null;
     }
 
     private Page appearance() {
@@ -371,6 +460,7 @@ final class SettingsDialog {
     private void key(Page page, int label, int index, int about) {
         Row row = page.add(label, () -> keys[index].isEmpty() ? activity.getString(R.string.not_set) : mask(keys[index]), null);
         row.about = about;
+        row.field = (EditText) ((android.view.ViewStub) row.view.findViewById(R.id.fieldStub)).inflate();
         row.action = () -> edit(row, index);
         row.field.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_NULL) endEdit();
@@ -439,6 +529,10 @@ final class SettingsDialog {
     private void open(Page next, Row from) {
         Page current = pages.get(pages.size() - 1);
         View leftNow = pages.size() >= 2 ? pages.get(pages.size() - 2).view : logo;
+        // The language list may still be sliding out from last time: stopped now, its end (which takes its
+        // rows' focus away) doesn't land on it coming back in.
+        next.view.animate().cancel();
+        next.focusable(true);
         current.opened = from;
         current.focusable(false);
         from.view.setActivated(true);
@@ -449,6 +543,7 @@ final class SettingsDialog {
             @Override
             public boolean onPreDraw() {
                 next.view.getViewTreeObserver().removeOnPreDrawListener(this);
+                if (pages.get(pages.size() - 1) != next) return true;   // gone back already
                 slide(leftNow, offLeft(leftNow));
                 slide(current.view, leftX - rightX);
                 slide(next.view, 0f);
@@ -470,13 +565,14 @@ final class SettingsDialog {
             return;
         }
         if (pages.size() == 1) {
+            home.setVisibility(View.VISIBLE);   // back under Settings as it fades out
             dialog.dismiss();
             return;
         }
         Page gone = pages.remove(pages.size() - 1);
         gone.view.animate().cancel();
         gone.view.animate().translationX(screenW - rightX).setDuration(SLIDE_MS)
-                .setInterpolator(new DecelerateInterpolator(1.6f)).withEndAction(() -> {
+                .setInterpolator(new DecelerateInterpolator(1.6f)).withLayer().withEndAction(() -> {
                     // The language list stays, off the screen and out of focus's way, for next time.
                     if (gone == languagePage) gone.focusable(false);
                     else stage.removeView(gone.view);
@@ -504,8 +600,11 @@ final class SettingsDialog {
     }
 
     private void slide(View v, float x) {
+        slidAt = android.os.SystemClock.uptimeMillis();
         v.animate().cancel();
-        v.animate().translationX(x).setDuration(SLIDE_MS).setInterpolator(new DecelerateInterpolator(1.6f)).start();
+        // withLayer: drawn as one texture while it moves, not redrawn row by row on every frame.
+        v.animate().translationX(x).setDuration(SLIDE_MS).setInterpolator(new DecelerateInterpolator(1.6f))
+                .withLayer().start();
     }
 
     private void showAbout(Page page, Row row) {
@@ -597,7 +696,10 @@ final class SettingsDialog {
     // ---- closing -----------------------------------------------------------------------------------
 
     private void closed() {
+        home.setVisibility(View.VISIBLE);
+        if (activity instanceof MainActivity) ((MainActivity) activity).closeSettings = null;
         if (editing != null) endEdit();
+        returnLanguageRows();
         link.stop();
         activity.unregisterReceiver(packages);
         boolean rebuild = columns != startColumns || !language.equals(startLanguage);
