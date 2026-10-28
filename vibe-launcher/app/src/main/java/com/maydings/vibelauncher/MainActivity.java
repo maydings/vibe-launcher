@@ -1355,7 +1355,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      */
     private void updateCarets() {
         // None while the menus move, in the slideshow, or under a menu or dialog (Home hasn't the focus).
-        boolean on = !caretsHeld && !slideshow && hasWindowFocus() && settings.carets();
+        boolean shown = !caretsHeld && !slideshow && hasWindowFocus();
+        boolean on = shown && settings.carets();   // the Play pill isn't an arrow: it stays when they're off
         boolean more = on && pictureOnly && backdropPkg != null && backdrops.stillCount(backdropPkg) > 1;
         boolean dock = on && !pictureOnly && onDock();
         showCaret(caretDock, dock);
@@ -1366,7 +1367,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         showCaret(caretDown, on && pictureOnly);
         showCaret(caretLeft, more);
         showCaret(caretRight, more);
-        showPlay(on && pictureOnly);
+        showPlay(shown && pictureOnly);
     }
 
     private static void showCaret(View caret, boolean show) {

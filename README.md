@@ -7,7 +7,7 @@ accounts. Free and open source.
 I built Vibe Launcher for my own TVs at home, because I wanted a home screen that just shows my apps
 and gets out of the way. It works well enough for us that I'd like to share it with everyone else.
 
-![Vibe Launcher: Netflix focused in the dock, with Apex's backdrop and title logo filling the screen](vibe-launcher/docs/home.jpg)
+![Vibe Launcher: Netflix focused in a four-app dock, with Wake Up Dead Man's backdrop and title logo filling the screen](vibe-launcher/docs/home.jpg)
 
 **[Download the latest APK](https://github.com/maydings/vibe-launcher/releases/latest/download/vibe-launcher.apk)**
 · Android TV and Google TV, Android 8.0 or newer · under 1 MB
@@ -35,7 +35,7 @@ your TV, or as few as one, as you choose. Only the dock shows, with a faint arro
 the rest of your apps slide up in a grid. A single glass highlight springs from
 tile to tile.
 
-![The app grid below the dock, with the glass highlight on YouTube Kids](vibe-launcher/docs/launcher-grid.jpg)
+![The app grid below the dock, with the glass highlight on Jellyfin](vibe-launcher/docs/launcher-grid.jpg)
 
 ### Backdrops
 
@@ -145,7 +145,7 @@ clock, the arrows and the highlight color.
   the arrows (paler towards the middle, OK when done), with a preview of the glass on a white tile: a colored
   highlight makes it easier to see which white tile (YouTube, Netflix) is focused. **Reset** puts it back to white.
 
-| ![Appearance: tiles per row, hide inactive inputs, auto-hide and the screensaver clock](vibe-launcher/docs/settings-appearance.jpg) | ![The language list, each language in its own name, with General slid to the left](vibe-launcher/docs/language.jpg) |
+| ![Appearance: tiles per row, apps in dock, hide inactive inputs, auto-hide, the screensaver clock, arrows and the highlight color](vibe-launcher/docs/settings-appearance.jpg) | ![The language list, each language in its own name, with General slid to the left](vibe-launcher/docs/language.jpg) |
 |---|---|
 
 **API keys**: optional keys that unlock more backdrops: **TMDB**, **YouTube** and **Plex**. Each has
