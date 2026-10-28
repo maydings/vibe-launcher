@@ -59,6 +59,13 @@
     <string name="youtube_short">YouTube ಟೈಲ್‌ಗೆ ನಿಮ್ಮ ದೇಶದ ಜನಪ್ರಿಯ ವೀಡಿಯೊಗಳು.</string>
     <string name="smarttube_short">YouTube ಟೈಲ್‌ಗೆ ನಿಮ್ಮದೇ YouTube ಫೀಡ್, ಕೀ ಬೇಕಿಲ್ಲ.</string>
     <string name="plex_short">ನಿಮ್ಮದೇ Plex ಸರ್ವರ್‌ನಿಂದ ಹಿನ್ನೆಲೆಗಳು.</string>
+    <string name="about">ಬಗ್ಗೆ</string>
+    <string name="project">ಯೋಜನೆ</string>
+    <string name="report_problem">ಸಮಸ್ಯೆ ವರದಿ ಮಾಡಿ</string>
+    <string name="issues_on_github">GitHub ನಲ್ಲಿ Issues</string>
+    <string name="license">ಪರವಾನಗಿ</string>
+    <string name="scan_project">ಯೋಜನೆಯ ಪುಟಕ್ಕಾಗಿ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
+    <string name="about_credits">Gathin23/tv-vibehack ನ ಫೋರ್ಕ್ ಆಗಿ ಆರಂಭವಾಯಿತು. Outfit ಅಕ್ಷರಶೈಲಿ SIL Open Font License ಅಡಿಯಲ್ಲಿದೆ. ಹಿನ್ನೆಲೆಗಳು TMDB API ಬಳಸುತ್ತವೆ, ಆದರೆ TMDB ಅನುಮೋದಿಸಿಲ್ಲ ಅಥವಾ ಪ್ರಮಾಣೀಕರಿಸಿಲ್ಲ.</string>
     <string name="phone_paste">ಫೋನ್‌ನಿಂದ ಕೀಗಳನ್ನು ಅಂಟಿಸಿ</string>
     <string name="scan_to_paste">ಕೀಗಳನ್ನು ಅಂಟಿಸಲು ಫೋನ್‌ನಿಂದ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
     <string name="tmdb_notice">ಹಿನ್ನೆಲೆಗಳು TMDB API ಬಳಸುತ್ತವೆ, ಆದರೆ TMDB ಇವನ್ನು ಅನುಮೋದಿಸಿಲ್ಲ ಅಥವಾ ಪ್ರಮಾಣೀಕರಿಸಿಲ್ಲ.</string>

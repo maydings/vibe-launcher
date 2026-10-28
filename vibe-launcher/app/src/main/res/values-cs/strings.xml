@@ -59,6 +59,13 @@
     <string name="youtube_short">Oblíbená videa ve vaší zemi pro dlaždici YouTube.</string>
     <string name="smarttube_short">Vlastní kanál YouTube pro dlaždici YouTube, bez klíče.</string>
     <string name="plex_short">Pozadí z vlastního serveru Plex.</string>
+    <string name="about">O aplikaci</string>
+    <string name="project">Projekt</string>
+    <string name="report_problem">Nahlásit problém</string>
+    <string name="issues_on_github">Issues na GitHubu</string>
+    <string name="license">Licence</string>
+    <string name="scan_project">Naskenujte stránku projektu</string>
+    <string name="about_credits">Vznikl jako fork projektu Gathin23/tv-vibehack. Písmo Outfit je pod licencí SIL Open Font License. Pozadí používají TMDB API, ale TMDB je neschvaluje ani necertifikuje.</string>
     <string name="phone_paste">Vložit klíče z telefonu</string>
     <string name="scan_to_paste">Naskenujte telefonem a vložte klíče</string>
     <string name="tmdb_notice">Pozadí používají API TMDB, ale TMDB je neschvaluje ani necertifikuje.</string>

@@ -59,6 +59,13 @@
     <string name="youtube_short">វីដេអូពេញនិយមក្នុងប្រទេសអ្នក សម្រាប់ប្រអប់ YouTube។</string>
     <string name="smarttube_short">ព័ត៌មាន YouTube ផ្ទាល់ខ្លួនរបស់អ្នក សម្រាប់ប្រអប់ YouTube ដោយមិនត្រូវការសោ។</string>
     <string name="plex_short">ផ្ទាំងខាងក្រោយពីម៉ាស៊ីនមេ Plex ផ្ទាល់ខ្លួនរបស់អ្នក។</string>
+    <string name="about">អំពី</string>
+    <string name="project">គម្រោង</string>
+    <string name="report_problem">រាយការណ៍​បញ្ហា</string>
+    <string name="issues_on_github">Issues នៅលើ GitHub</string>
+    <string name="license">អាជ្ញាប័ណ្ណ</string>
+    <string name="scan_project">ស្កេន​ដើម្បី​បើក​ទំព័រ​គម្រោង</string>
+    <string name="about_credits">ចាប់ផ្ដើម​ជា fork នៃ Gathin23/tv-vibehack។ ពុម្ពអក្សរ Outfit ស្ថិត​ក្រោម SIL Open Font License។ ផ្ទាំង​ខាងក្រោយ​ប្រើ TMDB API ប៉ុន្តែ​មិន​ត្រូវ​បាន TMDB គាំទ្រ ឬ​បញ្ជាក់​ទេ។</string>
     <string name="phone_paste">បិទភ្ជាប់សោពីទូរសព្ទ</string>
     <string name="scan_to_paste">ស្កេនដោយទូរសព្ទដើម្បីបិទភ្ជាប់សោ</string>
     <string name="tmdb_notice">ផ្ទៃខាងក្រោយប្រើ API របស់ TMDB ប៉ុន្តែមិនត្រូវបាន TMDB គាំទ្រ ឬបញ្ជាក់ទេ។</string>

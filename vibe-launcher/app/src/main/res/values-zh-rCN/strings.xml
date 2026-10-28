@@ -59,6 +59,13 @@
     <string name="youtube_short">为 YouTube 磁贴提供你所在国家的热门视频。</string>
     <string name="smarttube_short">为 YouTube 磁贴提供你自己的 YouTube 订阅内容，无需密钥。</string>
     <string name="plex_short">来自你自己的 Plex 服务器的背景。</string>
+    <string name="about">关于</string>
+    <string name="project">项目</string>
+    <string name="report_problem">报告问题</string>
+    <string name="issues_on_github">GitHub 上的 Issues</string>
+    <string name="license">许可证</string>
+    <string name="scan_project">扫码打开项目页面</string>
+    <string name="about_credits">最初是 Gathin23/tv-vibehack 的一个分支。Outfit 字体采用 SIL Open Font License。背景图使用 TMDB API，但未获 TMDB 认可或认证。</string>
     <string name="phone_paste">从手机粘贴密钥</string>
     <string name="scan_to_paste">用手机扫码粘贴密钥</string>
     <string name="tmdb_notice">背景图使用 TMDB API，但未获得 TMDB 认可或认证。</string>

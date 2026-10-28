@@ -59,6 +59,13 @@
     <string name="youtube_short">Video popular di negara anda untuk jubin YouTube.</string>
     <string name="smarttube_short">Suapan YouTube anda sendiri untuk jubin YouTube, tanpa kunci.</string>
     <string name="plex_short">Latar dari pelayan Plex anda sendiri.</string>
+    <string name="about">Perihal</string>
+    <string name="project">Projek</string>
+    <string name="report_problem">Laporkan masalah</string>
+    <string name="issues_on_github">Issues di GitHub</string>
+    <string name="license">Lesen</string>
+    <string name="scan_project">Imbas untuk halaman projek</string>
+    <string name="about_credits">Bermula sebagai fork Gathin23/tv-vibehack. Muka taip Outfit di bawah SIL Open Font License. Latar menggunakan API TMDB tetapi tidak disokong atau diperakui oleh TMDB.</string>
     <string name="phone_paste">Tampal kunci dari telefon</string>
     <string name="scan_to_paste">Imbas dengan telefon untuk menampal kunci</string>
     <string name="tmdb_notice">Latar menggunakan API TMDB tetapi tidak disokong atau diperakui oleh TMDB.</string>

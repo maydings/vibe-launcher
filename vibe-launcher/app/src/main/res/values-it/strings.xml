@@ -59,6 +59,13 @@
     <string name="youtube_short">I video più visti nel tuo paese per il riquadro di YouTube.</string>
     <string name="smarttube_short">Il tuo feed di YouTube per il riquadro di YouTube, senza chiave.</string>
     <string name="plex_short">Sfondi dal tuo server Plex.</string>
+    <string name="about">Informazioni</string>
+    <string name="project">Progetto</string>
+    <string name="report_problem">Segnala un problema</string>
+    <string name="issues_on_github">Issues su GitHub</string>
+    <string name="license">Licenza</string>
+    <string name="scan_project">Inquadra per la pagina del progetto</string>
+    <string name="about_credits">Nato come fork di Gathin23/tv-vibehack. Il carattere Outfit è distribuito con la SIL Open Font License. Gli sfondi usano l’API di TMDB ma non sono approvati né certificati da TMDB.</string>
     <string name="phone_paste">Incolla le chiavi dal telefono</string>
     <string name="scan_to_paste">Inquadra con il telefono per incollare le chiavi</string>
     <string name="tmdb_notice">Gli sfondi usano l\'API di TMDB, ma non sono approvati né certificati da TMDB.</string>

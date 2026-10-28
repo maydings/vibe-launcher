@@ -59,6 +59,13 @@
     <string name="youtube_short">Popularni videozapisi u vašoj zemlji za pločicu YouTubea.</string>
     <string name="smarttube_short">Vaš vlastiti YouTube feed za pločicu YouTubea, bez ključa.</string>
     <string name="plex_short">Pozadine s vašeg vlastitog Plex poslužitelja.</string>
+    <string name="about">O aplikaciji</string>
+    <string name="project">Projekt</string>
+    <string name="report_problem">Prijavi problem</string>
+    <string name="issues_on_github">Issues na GitHubu</string>
+    <string name="license">Licenca</string>
+    <string name="scan_project">Skenirajte za stranicu projekta</string>
+    <string name="about_credits">Nastao kao fork projekta Gathin23/tv-vibehack. Font Outfit je pod licencom SIL Open Font License. Pozadine koriste TMDB API, ali ih TMDB ne podržava niti certificira.</string>
     <string name="phone_paste">Zalijepi ključeve s telefona</string>
     <string name="scan_to_paste">Skenirajte telefonom da biste zalijepili ključeve</string>
     <string name="tmdb_notice">Pozadine koriste TMDB API, ali ih TMDB ne podržava niti certificira.</string>

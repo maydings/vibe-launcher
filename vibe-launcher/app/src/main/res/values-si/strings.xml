@@ -59,6 +59,13 @@
     <string name="youtube_short">YouTube ටයිලය සඳහා ඔබේ රටේ ජනප්‍රිය වීඩියෝ.</string>
     <string name="smarttube_short">YouTube ටයිලය සඳහා ඔබේම YouTube සංග්‍රහය, යතුරක් අවශ්‍ය නැත.</string>
     <string name="plex_short">ඔබේම Plex සේවාදායකයෙන් පසුබිම්.</string>
+    <string name="about">ගැන</string>
+    <string name="project">ව්‍යාපෘතිය</string>
+    <string name="report_problem">ගැටලුවක් වාර්තා කරන්න</string>
+    <string name="issues_on_github">GitHub හි Issues</string>
+    <string name="license">බලපත්‍රය</string>
+    <string name="scan_project">ව්‍යාපෘති පිටුව සඳහා ස්කෑන් කරන්න</string>
+    <string name="about_credits">Gathin23/tv-vibehack හි fork එකක් ලෙස ආරම්භ විය. Outfit අකුරු මුහුණත SIL Open Font License යටතේ ඇත. පසුබිම් TMDB API භාවිත කරයි, නමුත් TMDB විසින් අනුමත හෝ සහතික කර නැත.</string>
     <string name="phone_paste">දුරකථනයෙන් යතුරු අලවන්න</string>
     <string name="scan_to_paste">යතුරු ඇලවීමට දුරකථනයෙන් ස්කෑන් කරන්න</string>
     <string name="tmdb_notice">පසුබිම් TMDB API භාවිත කරයි, නමුත් TMDB විසින් අනුමත හෝ සහතික කර නැත.</string>

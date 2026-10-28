@@ -59,6 +59,13 @@
     <string name="youtube_short">YouTube टाइलका लागि तपाईंको देशका लोकप्रिय भिडियो।</string>
     <string name="smarttube_short">YouTube टाइलका लागि तपाईंको आफ्नै YouTube फिड, कुञ्जी चाहिँदैन।</string>
     <string name="plex_short">तपाईंको आफ्नै Plex सर्भरबाट ब्याकड्रप।</string>
+    <string name="about">बारेमा</string>
+    <string name="project">परियोजना</string>
+    <string name="report_problem">समस्या रिपोर्ट गर्नुहोस्</string>
+    <string name="issues_on_github">GitHub मा Issues</string>
+    <string name="license">इजाजतपत्र</string>
+    <string name="scan_project">परियोजना पृष्ठका लागि स्क्यान गर्नुहोस्</string>
+    <string name="about_credits">Gathin23/tv-vibehack को फोर्कको रूपमा सुरु भयो। Outfit टाइपफेस SIL Open Font License अन्तर्गत छ। ब्याकड्रपहरूले TMDB API प्रयोग गर्छन्, तर TMDB द्वारा समर्थित वा प्रमाणित छैनन्।</string>
     <string name="phone_paste">फोनबाट कुञ्जी टाँस्नुहोस्</string>
     <string name="scan_to_paste">कुञ्जीहरू टाँस्न फोनले स्क्यान गर्नुहोस्</string>
     <string name="tmdb_notice">पृष्ठभूमिहरूले TMDB API प्रयोग गर्छन्, तर TMDB ले यिनलाई समर्थन वा प्रमाणित गरेको छैन।</string>

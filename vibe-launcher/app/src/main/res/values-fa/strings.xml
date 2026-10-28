@@ -59,6 +59,13 @@
     <string name="youtube_short">ویدیوهای پرطرفدار کشور شما برای کاشی YouTube.</string>
     <string name="smarttube_short">فید YouTube خودتان برای کاشی YouTube، بدون نیاز به کلید.</string>
     <string name="plex_short">پس‌زمینه‌ها از سرور Plex خودتان.</string>
+    <string name="about">درباره</string>
+    <string name="project">پروژه</string>
+    <string name="report_problem">گزارش مشکل</string>
+    <string name="issues_on_github">Issues در GitHub</string>
+    <string name="license">مجوز</string>
+    <string name="scan_project">برای صفحهٔ پروژه اسکن کنید</string>
+    <string name="about_credits">به‌عنوان فورکی از Gathin23/tv-vibehack آغاز شد. قلم Outfit تحت SIL Open Font License است. پس‌زمینه‌ها از API ‏TMDB استفاده می‌کنند اما مورد تأیید یا گواهی TMDB نیستند.</string>
     <string name="phone_paste">چسباندن کلیدها از تلفن</string>
     <string name="scan_to_paste">برای چسباندن کلیدها با گوشی اسکن کنید</string>
     <string name="tmdb_notice">پس‌زمینه‌ها از API ‏TMDB استفاده می‌کنند، اما مورد تأیید یا گواهی TMDB نیستند.</string>

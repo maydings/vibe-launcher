@@ -59,6 +59,13 @@
     <string name="youtube_short">Beliebte Videos in deinem Land für die YouTube-Kachel.</string>
     <string name="smarttube_short">Dein eigener YouTube-Feed für die YouTube-Kachel, ohne Schlüssel.</string>
     <string name="plex_short">Hintergründe von deinem eigenen Plex-Server.</string>
+    <string name="about">Über</string>
+    <string name="project">Projekt</string>
+    <string name="report_problem">Problem melden</string>
+    <string name="issues_on_github">Issues auf GitHub</string>
+    <string name="license">Lizenz</string>
+    <string name="scan_project">Scannen für die Projektseite</string>
+    <string name="about_credits">Entstanden als Fork von Gathin23/tv-vibehack. Die Schrift Outfit steht unter der SIL Open Font License. Die Hintergründe nutzen die TMDB-API, sind aber nicht von TMDB unterstützt oder zertifiziert.</string>
     <string name="phone_paste">Schlüssel vom Handy einfügen</string>
     <string name="scan_to_paste">Mit dem Handy scannen, um die Schlüssel einzufügen</string>
     <string name="tmdb_notice">Hintergründe nutzen die TMDB-API, sind aber nicht von TMDB unterstützt oder zertifiziert.</string>

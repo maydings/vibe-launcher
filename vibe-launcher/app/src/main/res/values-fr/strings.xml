@@ -59,6 +59,13 @@
     <string name="youtube_short">Les vidéos populaires de votre pays pour la vignette YouTube.</string>
     <string name="smarttube_short">Votre propre fil YouTube pour la vignette YouTube, sans clé.</string>
     <string name="plex_short">Des fonds depuis votre propre serveur Plex.</string>
+    <string name="about">À propos</string>
+    <string name="project">Projet</string>
+    <string name="report_problem">Signaler un problème</string>
+    <string name="issues_on_github">Issues sur GitHub</string>
+    <string name="license">Licence</string>
+    <string name="scan_project">Scannez pour la page du projet</string>
+    <string name="about_credits">Né d’un fork de Gathin23/tv-vibehack. La police Outfit est sous licence SIL Open Font License. Les fonds utilisent l’API de TMDB, sans être approuvés ni certifiés par TMDB.</string>
     <string name="phone_paste">Coller les clés depuis le téléphone</string>
     <string name="scan_to_paste">Scannez avec votre téléphone pour coller les clés</string>
     <string name="tmdb_notice">Les arrière-plans utilisent l\'API TMDB, sans être approuvés ni certifiés par TMDB.</string>

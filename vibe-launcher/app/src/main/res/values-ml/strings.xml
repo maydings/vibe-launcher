@@ -59,6 +59,13 @@
     <string name="youtube_short">YouTube ടൈലിന് നിങ്ങളുടെ രാജ്യത്തെ ജനപ്രിയ വീഡിയോകൾ.</string>
     <string name="smarttube_short">YouTube ടൈലിന് നിങ്ങളുടെ സ്വന്തം YouTube ഫീഡ്, കീ വേണ്ട.</string>
     <string name="plex_short">നിങ്ങളുടെ സ്വന്തം Plex സെർവറിൽ നിന്നുള്ള പശ്ചാത്തലങ്ങൾ.</string>
+    <string name="about">കുറിച്ച്</string>
+    <string name="project">പ്രോജക്റ്റ്</string>
+    <string name="report_problem">പ്രശ്നം റിപ്പോർട്ട് ചെയ്യുക</string>
+    <string name="issues_on_github">GitHub-ലെ Issues</string>
+    <string name="license">ലൈസൻസ്</string>
+    <string name="scan_project">പ്രോജക്റ്റ് പേജിനായി സ്കാൻ ചെയ്യുക</string>
+    <string name="about_credits">Gathin23/tv-vibehack-ന്റെ ഫോർക്കായി തുടങ്ങി. Outfit ടൈപ്പ്ഫേസ് SIL Open Font License-ന് കീഴിലാണ്. പശ്ചാത്തലങ്ങൾ TMDB API ഉപയോഗിക്കുന്നു, എന്നാൽ TMDB അംഗീകരിച്ചതോ സാക്ഷ്യപ്പെടുത്തിയതോ അല്ല.</string>
     <string name="phone_paste">ഫോണിൽ നിന്ന് കീകൾ ഒട്ടിക്കുക</string>
     <string name="scan_to_paste">കീകൾ ഒട്ടിക്കാൻ ഫോൺ ഉപയോഗിച്ച് സ്കാൻ ചെയ്യുക</string>
     <string name="tmdb_notice">പശ്ചാത്തലങ്ങൾ TMDB API ഉപയോഗിക്കുന്നു, പക്ഷേ TMDB ഇവ അംഗീകരിക്കുകയോ സാക്ഷ്യപ്പെടുത്തുകയോ ചെയ്തിട്ടില്ല.</string>

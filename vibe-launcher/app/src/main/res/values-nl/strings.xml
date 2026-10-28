@@ -59,6 +59,13 @@
     <string name="youtube_short">Populaire video’s in je land voor de YouTube-tegel.</string>
     <string name="smarttube_short">Je eigen YouTube-feed voor de YouTube-tegel, zonder sleutel.</string>
     <string name="plex_short">Achtergronden van je eigen Plex-server.</string>
+    <string name="about">Over</string>
+    <string name="project">Project</string>
+    <string name="report_problem">Een probleem melden</string>
+    <string name="issues_on_github">Issues op GitHub</string>
+    <string name="license">Licentie</string>
+    <string name="scan_project">Scan voor de projectpagina</string>
+    <string name="about_credits">Begonnen als fork van Gathin23/tv-vibehack. Het lettertype Outfit valt onder de SIL Open Font License. De achtergronden gebruiken de TMDB-API, maar zijn niet goedgekeurd of gecertificeerd door TMDB.</string>
     <string name="phone_paste">Sleutels plakken vanaf je telefoon</string>
     <string name="scan_to_paste">Scan met je telefoon om de sleutels te plakken</string>
     <string name="tmdb_notice">Achtergronden gebruiken de TMDB-API, maar worden niet door TMDB onderschreven of gecertificeerd.</string>

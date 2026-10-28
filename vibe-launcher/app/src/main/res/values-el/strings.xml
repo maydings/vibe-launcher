@@ -59,6 +59,13 @@
     <string name="youtube_short">Δημοφιλή βίντεο στη χώρα σας για το πλακίδιο του YouTube.</string>
     <string name="smarttube_short">Η δική σας ροή YouTube για το πλακίδιο του YouTube, χωρίς κλειδί.</string>
     <string name="plex_short">Φόντα από τον δικό σας διακομιστή Plex.</string>
+    <string name="about">Σχετικά</string>
+    <string name="project">Έργο</string>
+    <string name="report_problem">Αναφορά προβλήματος</string>
+    <string name="issues_on_github">Issues στο GitHub</string>
+    <string name="license">Άδεια</string>
+    <string name="scan_project">Σαρώστε για τη σελίδα του έργου</string>
+    <string name="about_credits">Ξεκίνησε ως fork του Gathin23/tv-vibehack. Η γραμματοσειρά Outfit διατίθεται με την SIL Open Font License. Τα φόντα χρησιμοποιούν το TMDB API αλλά δεν υποστηρίζονται ούτε πιστοποιούνται από το TMDB.</string>
     <string name="phone_paste">Επικόλληση κλειδιών από το κινητό</string>
     <string name="scan_to_paste">Σαρώστε με το κινητό για να επικολλήσετε τα κλειδιά</string>
     <string name="tmdb_notice">Τα φόντα χρησιμοποιούν το API του TMDB, αλλά δεν εγκρίνονται ούτε πιστοποιούνται από το TMDB.</string>

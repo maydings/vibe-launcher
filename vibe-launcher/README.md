@@ -59,6 +59,14 @@ To try the store build on a TV as a store user
 would get it (stock launcher and Home left alone): `FLAVOR=store ./build-and-install.sh 192.168.1.50`. For
 a store upload, `./gradlew bundleStoreRelease` makes `app/build/outputs/bundle/storeRelease/app-store-release.aab`.
 
+**An app's rows that stay empty.** Some apps fill a row of cards only once it's switched on in the
+launcher's *Customize channels* screen (SmartTV Client for Twitch's followed channels, for one), and with
+Google's launcher turned off that screen is gone. Android lets only the system switch rows on, so Vibe
+Launcher can't, and neither can adb. Best effort, on Android TV (Google's `tvlauncher`, Android 8 to 11):
+`./channel-rows.sh 192.168.1.50` turns that launcher on for a moment and opens the screen; switch the rows
+on, press Enter, and it turns the launcher off again and makes Vibe Launcher Home again. What's switched on
+stays.
+
 **Release builds** are signed with a key that never enters the repo. Put its location in
 `local.properties` (ignored by git):
 

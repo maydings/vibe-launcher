@@ -59,6 +59,13 @@
     <string name="youtube_short">為 YouTube 方塊提供你所在國家的熱門影片。</string>
     <string name="smarttube_short">為 YouTube 方塊提供你自己的 YouTube 動態，不需要金鑰。</string>
     <string name="plex_short">來自你自己的 Plex 伺服器的背景。</string>
+    <string name="about">關於</string>
+    <string name="project">專案</string>
+    <string name="report_problem">回報問題</string>
+    <string name="issues_on_github">GitHub 上的 Issues</string>
+    <string name="license">授權</string>
+    <string name="scan_project">掃描開啟專案頁面</string>
+    <string name="about_credits">最初是 Gathin23/tv-vibehack 的分支。Outfit 字型採用 SIL Open Font License。背景圖使用 TMDB API，但未經 TMDB 認可或認證。</string>
     <string name="phone_paste">從手機貼上金鑰</string>
     <string name="scan_to_paste">用手機掃描以貼上金鑰</string>
     <string name="tmdb_notice">背景圖使用 TMDB API，但未獲 TMDB 背書或認證。</string>

@@ -59,6 +59,13 @@
     <string name="youtube_short">YouTube အကွက်အတွက် သင့်နိုင်ငံရှိ လူကြိုက်များသော ဗီဒီယိုများ။</string>
     <string name="smarttube_short">YouTube အကွက်အတွက် သင့်ကိုယ်ပိုင် YouTube ဖိဒ်၊ ကီး မလိုပါ။</string>
     <string name="plex_short">သင့်ကိုယ်ပိုင် Plex ဆာဗာမှ နောက်ခံပုံများ။</string>
+    <string name="about">အကြောင်း</string>
+    <string name="project">ပရောဂျက်</string>
+    <string name="report_problem">ပြဿနာ တင်ပြရန်</string>
+    <string name="issues_on_github">GitHub ပေါ်ရှိ Issues</string>
+    <string name="license">လိုင်စင်</string>
+    <string name="scan_project">ပရောဂျက် စာမျက်နှာအတွက် စကင်ဖတ်ပါ</string>
+    <string name="about_credits">Gathin23/tv-vibehack ၏ fork အဖြစ် စတင်ခဲ့သည်။ Outfit စာလုံးပုံစံသည် SIL Open Font License အောက်ရှိသည်။ နောက်ခံပုံများသည် TMDB API ကို သုံးသော်လည်း TMDB က ထောက်ခံ သို့မဟုတ် အသိအမှတ်ပြုထားခြင်း မရှိပါ။</string>
     <string name="phone_paste">ဖုန်းမှ ကီးများ ကူးထည့်ရန်</string>
     <string name="scan_to_paste">ကီးများ ကူးထည့်ရန် ဖုန်းဖြင့် စကင်ဖတ်ပါ</string>
     <string name="tmdb_notice">နောက်ခံပုံများသည် TMDB API ကို သုံးသော်လည်း TMDB ၏ ထောက်ခံမှု သို့မဟုတ် အသိအမှတ်ပြုမှု မရှိပါ။</string>

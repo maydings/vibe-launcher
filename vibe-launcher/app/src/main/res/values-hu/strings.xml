@@ -59,6 +59,13 @@
     <string name="youtube_short">Az országod népszerű videói a YouTube csempéhez.</string>
     <string name="smarttube_short">A saját YouTube-hírfolyamod a YouTube csempéhez, kulcs nélkül.</string>
     <string name="plex_short">Hátterek a saját Plex szerveredről.</string>
+    <string name="about">Névjegy</string>
+    <string name="project">Projekt</string>
+    <string name="report_problem">Hiba bejelentése</string>
+    <string name="issues_on_github">Issues a GitHubon</string>
+    <string name="license">Licenc</string>
+    <string name="scan_project">Szkenneld be a projekt oldalához</string>
+    <string name="about_credits">A(z) Gathin23/tv-vibehack forkjaként indult. Az Outfit betűtípus a SIL Open Font License alatt érhető el. A hátterek a TMDB API-t használják, de a TMDB nem támogatja és nem tanúsítja őket.</string>
     <string name="phone_paste">Kulcsok beillesztése telefonról</string>
     <string name="scan_to_paste">Olvasd be telefonnal a kulcsok beillesztéséhez</string>
     <string name="tmdb_notice">A háttérképek a TMDB API-t használják, de a TMDB nem támogatja és nem tanúsítja őket.</string>

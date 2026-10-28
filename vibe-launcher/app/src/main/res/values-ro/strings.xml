@@ -59,6 +59,13 @@
     <string name="youtube_short">Videoclipuri populare din țara ta pentru panoul YouTube.</string>
     <string name="smarttube_short">Propriul tău flux YouTube pentru panoul YouTube, fără cheie.</string>
     <string name="plex_short">Fundaluri de pe propriul tău server Plex.</string>
+    <string name="about">Despre</string>
+    <string name="project">Proiect</string>
+    <string name="report_problem">Raportează o problemă</string>
+    <string name="issues_on_github">Issues pe GitHub</string>
+    <string name="license">Licență</string>
+    <string name="scan_project">Scanează pentru pagina proiectului</string>
+    <string name="about_credits">A pornit ca fork al Gathin23/tv-vibehack. Fontul Outfit este sub licența SIL Open Font License. Fundalurile folosesc API-ul TMDB, dar nu sunt aprobate sau certificate de TMDB.</string>
     <string name="phone_paste">Lipește cheile de pe telefon</string>
     <string name="scan_to_paste">Scanează cu telefonul ca să lipești cheile</string>
     <string name="tmdb_notice">Fundalurile folosesc API-ul TMDB, dar nu sunt aprobate sau certificate de TMDB.</string>

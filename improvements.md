@@ -1,3 +1,0 @@
-on your vibe Launcher smarttube preview works (the pictures etc) Cloudstream works and shows movies etc... VLC don't show my last seen things etc why? streamflix reborn2 too (don't shows films etc like cloud stream)
-
-can you add this? the app "smart TV client for Twitch" don't shows my followed channels (if there on) maybe add this too. sadly on your GitHub you don't have the issues on or a contact method somi try this way. good work thx gz

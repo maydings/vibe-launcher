@@ -59,6 +59,13 @@
     <string name="youtube_short">Video populer di negara Anda untuk ubin YouTube.</string>
     <string name="smarttube_short">Feed YouTube Anda sendiri untuk ubin YouTube, tanpa kunci.</string>
     <string name="plex_short">Latar dari server Plex Anda sendiri.</string>
+    <string name="about">Tentang</string>
+    <string name="project">Proyek</string>
+    <string name="report_problem">Laporkan masalah</string>
+    <string name="issues_on_github">Issues di GitHub</string>
+    <string name="license">Lisensi</string>
+    <string name="scan_project">Pindai untuk halaman proyek</string>
+    <string name="about_credits">Berawal sebagai fork dari Gathin23/tv-vibehack. Huruf Outfit berada di bawah SIL Open Font License. Latar menggunakan API TMDB, tetapi tidak didukung atau disertifikasi oleh TMDB.</string>
     <string name="phone_paste">Tempel kunci dari ponsel</string>
     <string name="scan_to_paste">Pindai dengan ponsel untuk menempelkan kunci</string>
     <string name="tmdb_notice">Latar memakai API TMDB tetapi tidak didukung atau disertifikasi oleh TMDB.</string>

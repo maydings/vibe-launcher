@@ -59,6 +59,13 @@
     <string name="youtube_short">סרטונים פופולריים בארץ שלך לאריח של YouTube.</string>
     <string name="smarttube_short">הפיד שלך ב-YouTube לאריח של YouTube, בלי מפתח.</string>
     <string name="plex_short">רקעים משרת ה-Plex שלך.</string>
+    <string name="about">אודות</string>
+    <string name="project">הפרויקט</string>
+    <string name="report_problem">דיווח על בעיה</string>
+    <string name="issues_on_github">Issues ב-GitHub</string>
+    <string name="license">רישיון</string>
+    <string name="scan_project">סרקו לדף הפרויקט</string>
+    <string name="about_credits">התחיל כ-fork של Gathin23/tv-vibehack. הגופן Outfit מופץ ברישיון SIL Open Font License. הרקעים משתמשים ב-API של TMDB אך אינם מאושרים או מוסמכים על ידי TMDB.</string>
     <string name="phone_paste">הדבקת מפתחות מהטלפון</string>
     <string name="scan_to_paste">סרקו בטלפון כדי להדביק את המפתחות</string>
     <string name="tmdb_notice">תמונות הרקע משתמשות ב-API של TMDB, אך אינן מאושרות או מוסמכות על ידי TMDB.</string>

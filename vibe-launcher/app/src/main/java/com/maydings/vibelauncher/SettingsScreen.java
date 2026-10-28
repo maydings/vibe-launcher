@@ -252,10 +252,6 @@ final class SettingsScreen {
         logo = screen.findViewById(R.id.logo);
         title = screen.findViewById(R.id.title);
         ((FrameLayout.LayoutParams) logo.getLayoutParams()).leftMargin = leftX + (columnW - logo.getLayoutParams().width) / 2;
-        View projectLink = screen.findViewById(R.id.projectLink);
-        FrameLayout.LayoutParams linkLp = (FrameLayout.LayoutParams) projectLink.getLayoutParams();
-        linkLp.width = columnW;
-        linkLp.leftMargin = leftX;
 
         root = new Page(ctx.getString(R.string.settings));
         generalRow = root.link(R.string.tab_general, null, this::general);
@@ -372,6 +368,68 @@ final class SettingsScreen {
         Row version = page.add(R.string.updates, null, null);
         Row check = page.add(R.string.check_updates, null, null);
         showUpdates(version, check);
+        page.link(R.string.about, null, this::about);
+        return page;
+    }
+
+    private static final String AUTHOR = "Mahir Aydın";
+    private static final String GITHUB_USER = "maydings";
+    private static final String PROJECT = "maydings/vibe-launcher";
+    private static final String PROJECT_URL = "https://github.com/" + PROJECT;
+
+    /**
+     * Who made it and where it lives: the author's picture, name and GitHub name, with a QR code for the project
+     * page (TVs rarely have a browser), then the version, the project, where to report a problem and the license;
+     * the credits under the list.
+     */
+    private Page about() {
+        Page page = new Page(ctx.getString(R.string.about));
+        page.footnote = R.string.about_credits;
+        LinearLayout header = new LinearLayout(ctx);
+        header.setOrientation(LinearLayout.HORIZONTAL);
+        header.setGravity(android.view.Gravity.CENTER_VERTICAL);
+        int pad = (int) (12 * density);
+        header.setPadding(pad, pad, pad, (int) (18 * density));
+        ImageView avatar = new ImageView(ctx);
+        avatar.setImageResource(R.drawable.about_avatar);   // bundled: no request to GitHub to show it
+        int avatarSize = (int) (84 * density);
+        header.addView(avatar, new LinearLayout.LayoutParams(avatarSize, avatarSize));
+        LinearLayout names = new LinearLayout(ctx);
+        names.setOrientation(LinearLayout.VERTICAL);
+        names.setPadding((int) (18 * density), 0, (int) (12 * density), 0);
+        TextView name = new TextView(ctx);
+        name.setText(AUTHOR);
+        name.setTextColor(0xF2FFFFFF);
+        name.setTextSize(24);
+        name.setTypeface(UiFont.get(ctx, R.string.font_medium));
+        names.addView(name);
+        TextView handle = new TextView(ctx);
+        handle.setText(ctx.getString(R.string.github_handle, GITHUB_USER));
+        handle.setTextColor(0x99FFFFFF);
+        handle.setTextSize(15);
+        handle.setTypeface(UiFont.get(ctx, R.string.font_regular));
+        names.addView(handle);
+        TextView scan = new TextView(ctx);
+        scan.setText(R.string.scan_project);
+        scan.setTextColor(0x80FFFFFF);
+        scan.setTextSize(13);
+        scan.setTypeface(UiFont.get(ctx, R.string.font_regular));
+        scan.setPadding(0, (int) (10 * density), 0, 0);
+        names.addView(scan);
+        header.addView(names, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+        ImageView qr = new ImageView(ctx);
+        int qrSize = (int) (84 * density), qrPad = (int) (5 * density);
+        qr.setImageBitmap(PhoneLink.qr(PROJECT_URL, qrSize));
+        qr.setBackgroundColor(Color.WHITE);
+        qr.setPadding(qrPad, qrPad, qrPad, qrPad);
+        header.addView(qr, new LinearLayout.LayoutParams(qrSize + 2 * qrPad, qrSize + 2 * qrPad));
+        page.list.addView(header, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+        // Information only: rows to look at, nothing to press.
+        page.add(R.string.updates, () -> Updater.installedVersion(ctx), null);
+        page.add(R.string.project, () -> PROJECT, null);
+        page.add(R.string.report_problem, () -> ctx.getString(R.string.issues_on_github), null);
+        page.add(R.string.license, () -> "MIT", null);
         return page;
     }
 

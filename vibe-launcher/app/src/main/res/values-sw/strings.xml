@@ -59,6 +59,13 @@
     <string name="youtube_short">Video maarufu nchini kwako kwa kigae cha YouTube.</string>
     <string name="smarttube_short">Mlisho wako mwenyewe wa YouTube kwa kigae cha YouTube, bila ufunguo.</string>
     <string name="plex_short">Mandhari kutoka seva yako mwenyewe ya Plex.</string>
+    <string name="about">Kuhusu</string>
+    <string name="project">Mradi</string>
+    <string name="report_problem">Ripoti tatizo</string>
+    <string name="issues_on_github">Issues kwenye GitHub</string>
+    <string name="license">Leseni</string>
+    <string name="scan_project">Changanua kufungua ukurasa wa mradi</string>
+    <string name="about_credits">Ilianza kama fork ya Gathin23/tv-vibehack. Fonti ya Outfit iko chini ya SIL Open Font License. Mandhari hutumia API ya TMDB lakini haijaidhinishwa wala kuthibitishwa na TMDB.</string>
     <string name="phone_paste">Bandika funguo kutoka kwa simu</string>
     <string name="scan_to_paste">Changanua kwa simu ili kubandika funguo</string>
     <string name="tmdb_notice">Mandhari hutumia API ya TMDB lakini hayajaidhinishwa wala kuthibitishwa na TMDB.</string>

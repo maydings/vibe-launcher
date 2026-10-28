@@ -59,6 +59,13 @@
     <string name="youtube_short">Video phổ biến ở quốc gia của bạn cho ô YouTube.</string>
     <string name="smarttube_short">Nguồn cấp YouTube của riêng bạn cho ô YouTube, không cần khóa.</string>
     <string name="plex_short">Hình nền từ máy chủ Plex của riêng bạn.</string>
+    <string name="about">Giới thiệu</string>
+    <string name="project">Dự án</string>
+    <string name="report_problem">Báo cáo sự cố</string>
+    <string name="issues_on_github">Issues trên GitHub</string>
+    <string name="license">Giấy phép</string>
+    <string name="scan_project">Quét để mở trang dự án</string>
+    <string name="about_credits">Bắt đầu là một bản fork của Gathin23/tv-vibehack. Phông chữ Outfit theo giấy phép SIL Open Font License. Hình nền dùng API của TMDB nhưng không được TMDB chứng thực hay chứng nhận.</string>
     <string name="phone_paste">Dán khóa từ điện thoại</string>
     <string name="scan_to_paste">Quét bằng điện thoại để dán khóa</string>
     <string name="tmdb_notice">Ảnh nền dùng API của TMDB nhưng không được TMDB xác nhận hay chứng nhận.</string>

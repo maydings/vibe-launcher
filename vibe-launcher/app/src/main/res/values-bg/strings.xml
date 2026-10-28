@@ -59,6 +59,13 @@
     <string name="youtube_short">Популярни видеоклипове в държавата ви за плочката на YouTube.</string>
     <string name="smarttube_short">Вашата собствена емисия в YouTube за плочката на YouTube, без ключ.</string>
     <string name="plex_short">Фонове от вашия собствен Plex сървър.</string>
+    <string name="about">Относно</string>
+    <string name="project">Проект</string>
+    <string name="report_problem">Съобщете за проблем</string>
+    <string name="issues_on_github">Issues в GitHub</string>
+    <string name="license">Лиценз</string>
+    <string name="scan_project">Сканирайте за страницата на проекта</string>
+    <string name="about_credits">Започна като разклонение на Gathin23/tv-vibehack. Шрифтът Outfit е под SIL Open Font License. Фоновете използват TMDB API, но не са одобрени или сертифицирани от TMDB.</string>
     <string name="phone_paste">Поставяне на ключовете от телефона</string>
     <string name="scan_to_paste">Сканирайте с телефона, за да поставите ключовете</string>
     <string name="tmdb_notice">Фоновете използват API на TMDB, но не са одобрени или сертифицирани от TMDB.</string>

@@ -59,6 +59,13 @@
     <string name="youtube_short">Vídeos populares en tu país para el mosaico de YouTube.</string>
     <string name="smarttube_short">Tu propio feed de YouTube para el mosaico de YouTube, sin clave.</string>
     <string name="plex_short">Fondos de tu propio servidor Plex.</string>
+    <string name="about">Acerca de</string>
+    <string name="project">Proyecto</string>
+    <string name="report_problem">Informar de un problema</string>
+    <string name="issues_on_github">Issues en GitHub</string>
+    <string name="license">Licencia</string>
+    <string name="scan_project">Escanea para ver la página del proyecto</string>
+    <string name="about_credits">Empezó como un fork de Gathin23/tv-vibehack. La tipografía Outfit está bajo la SIL Open Font License. Los fondos usan la API de TMDB, pero TMDB no los respalda ni certifica.</string>
     <string name="phone_paste">Pegar las claves desde el móvil</string>
     <string name="scan_to_paste">Escanea con el móvil para pegar las claves</string>
     <string name="tmdb_notice">Los fondos usan la API de TMDB, pero TMDB no los respalda ni certifica.</string>

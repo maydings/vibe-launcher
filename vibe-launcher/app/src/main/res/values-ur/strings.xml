@@ -59,6 +59,13 @@
     <string name="youtube_short">YouTube ٹائل کے لیے آپ کے ملک کی مقبول ویڈیوز۔</string>
     <string name="smarttube_short">YouTube ٹائل کے لیے آپ کی اپنی YouTube فیڈ، کلید کی ضرورت نہیں۔</string>
     <string name="plex_short">آپ کے اپنے Plex سرور سے بیک ڈراپ۔</string>
+    <string name="about">کے بارے میں</string>
+    <string name="project">پروجیکٹ</string>
+    <string name="report_problem">مسئلہ رپورٹ کریں</string>
+    <string name="issues_on_github">GitHub پر Issues</string>
+    <string name="license">لائسنس</string>
+    <string name="scan_project">پروجیکٹ کے صفحے کے لیے اسکین کریں</string>
+    <string name="about_credits">Gathin23/tv-vibehack کے فورک کے طور پر شروع ہوا۔ Outfit ٹائپ فیس SIL Open Font License کے تحت ہے۔ بیک ڈراپس TMDB API استعمال کرتے ہیں لیکن TMDB کی طرف سے منظور یا تصدیق شدہ نہیں ہیں۔</string>
     <string name="phone_paste">فون سے کیز پیسٹ کریں</string>
     <string name="scan_to_paste">کلیدیں پیسٹ کرنے کے لیے فون سے اسکین کریں</string>
     <string name="tmdb_notice">پس منظر TMDB API استعمال کرتے ہیں مگر TMDB ان کی توثیق یا تصدیق نہیں کرتا۔</string>

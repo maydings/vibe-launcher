@@ -29,18 +29,4 @@
         android:id="@+id/stage"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <!-- The project's home, under the logo (placed in SettingsScreen). Plain text: TVs rarely have a browser
-         to open it in. -->
-    <TextView
-        android:id="@+id/projectLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:layout_marginBottom="22dp"
-        android:gravity="center"
-        android:text="@string/project_link"
-        android:textColor="#66FFFFFF"
-        android:textSize="12sp"
-        android:fontFamily="@string/font_regular" />
 </FrameLayout>

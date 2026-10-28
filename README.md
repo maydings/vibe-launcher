@@ -50,8 +50,9 @@ As you move along the dock, the screen behind it fills with artwork from the foc
 - **Plex**: Continue Watching and recently added from your own server, with your Plex token.
 - **HDHomeRun**: what's on your tuner right now, from SiliconDust's free guide. No setup.
 
-Low-resolution art becomes a 2×2 wall instead of one blurry still, and apps with nothing to show get
-a soft glow in their own colour.
+Low-resolution art becomes a 2×2 wall instead of one blurry still, or, when an app has only a small
+picture or two (VLC's frames of what you're watching), that picture on its own. Apps with nothing to
+show get a soft glow in their own colour.
 
 **Just the picture**: press Up on the dock and the apps slide away, leaving the backdrop on its own,
 and a **Play** button slides in from the left, just above where the apps were. It opens on what you've started watching
@@ -104,8 +105,9 @@ starts, so opening it is just a fade.
 | ![Vibe Launcher settings: the logo on the left, General, Appearance and API keys on the right](vibe-launcher/docs/settings-main.jpg) | ![General: its list slid over the logo, with Language, Reload backdrops, Home at power-on and the software version on the right](vibe-launcher/docs/settings-general.jpg) |
 |---|---|
 
-**General**: language, reloading the backdrops, Home at power-on, Restart… (app store version), and the
-software version with its update check.
+**General**: language, reloading the backdrops, Home at power-on, Restart… (app store version), the
+software version with its update check, and **About**: who made it, the project's page (with a QR code to
+open it on a phone), where to report a problem, the license and the credits.
 
 - **Language**: Match system (the default), or any of 50 languages, each listed in its own name. The
   clock and date follow it.

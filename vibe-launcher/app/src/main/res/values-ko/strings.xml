@@ -59,6 +59,13 @@
     <string name="youtube_short">YouTube 타일에 내 나라의 인기 동영상.</string>
     <string name="smarttube_short">YouTube 타일에 내 YouTube 피드, 키가 필요 없습니다.</string>
     <string name="plex_short">내 Plex 서버의 배경.</string>
+    <string name="about">정보</string>
+    <string name="project">프로젝트</string>
+    <string name="report_problem">문제 신고</string>
+    <string name="issues_on_github">GitHub의 Issues</string>
+    <string name="license">라이선스</string>
+    <string name="scan_project">스캔하여 프로젝트 페이지 열기</string>
+    <string name="about_credits">Gathin23/tv-vibehack의 포크로 시작했습니다. Outfit 서체는 SIL Open Font License를 따릅니다. 배경은 TMDB API를 사용하지만 TMDB의 보증이나 인증을 받지 않았습니다.</string>
     <string name="phone_paste">휴대폰에서 키 붙여넣기</string>
     <string name="scan_to_paste">휴대폰으로 스캔해 키를 붙여넣으세요</string>
     <string name="tmdb_notice">배경은 TMDB API를 사용하지만 TMDB의 보증이나 인증을 받지 않았습니다.</string>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">Vibe Launcher</string>
-    <string name="project_link" translatable="false">github.com/maydings/vibe-launcher</string>
     <string name="inputs">Inputs</string>
     <string name="wifi">Wi-Fi</string>
     <string name="settings">Settings</string>
@@ -63,6 +62,14 @@
     <string name="youtube_short">Popular videos in your country for the YouTube tile.</string>
     <string name="smarttube_short">Your own YouTube feed for the YouTube tile, no key needed.</string>
     <string name="plex_short">Backdrops from your own Plex server.</string>
+    <string name="about">About</string>
+    <string name="github_handle" translatable="false">\u0040%1$s · GitHub</string>
+    <string name="project">Project</string>
+    <string name="report_problem">Report a problem</string>
+    <string name="issues_on_github">Issues on GitHub</string>
+    <string name="license">License</string>
+    <string name="scan_project">Scan for the project page</string>
+    <string name="about_credits">Started as a fork of Gathin23/tv-vibehack. The Outfit typeface is under the SIL Open Font License. Backdrops use the TMDB API but are not endorsed or certified by TMDB.</string>
     <string name="phone_paste">Paste keys from your phone</string>
     <string name="scan_to_paste">Scan with your phone to paste the keys</string>
     <string name="tmdb_notice">Backdrops use the TMDB API but are not endorsed or certified by TMDB.</string>

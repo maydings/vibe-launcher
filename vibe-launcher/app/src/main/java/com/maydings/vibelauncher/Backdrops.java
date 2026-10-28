@@ -138,6 +138,11 @@ final class Backdrops {
     /** SmartTube builds (stable, beta, the old names): they publish the signed-in user's YouTube feed. */
     private static final String[] SMARTTUBE = SmartTube.PACKAGES;
     private static final int MIN_WIDTH = 800;   // Netflix publishes 853x480
+    /**
+     * An app's own card art, used only when it has nothing sharper (in a wall of four, else on its own): VLC
+     * publishes 512x288 frames of what you're watching, and at 800 its cards showed nothing but its glow.
+     */
+    private static final int CARD_MIN_WIDTH = 480;
     private static final float MIN_ASPECT = 1.45f, MAX_ASPECT = 2.4f;
     private static final int SHARP_WIDTH = 1280;  // narrower art goes into a 2x2 wall
     private static final int WALL = 4;
@@ -928,7 +933,7 @@ final class Backdrops {
         final String title;
         final boolean badged;
         final List<String> images = new ArrayList<>();
-        int minWidth = MIN_WIDTH;
+        int minWidth = CARD_MIN_WIDTH;
         String link;   // what opens the card's title (see Entry.link)
         /**
          * The art comes with the title's name and logo from the app's own source (Plex): used as is, not

@@ -59,6 +59,13 @@
     <string name="youtube_short">Popularne filmy w Twoim kraju dla kafelka YouTube.</string>
     <string name="smarttube_short">Twój własny kanał YouTube dla kafelka YouTube, bez klucza.</string>
     <string name="plex_short">Tła z Twojego własnego serwera Plex.</string>
+    <string name="about">Informacje</string>
+    <string name="project">Projekt</string>
+    <string name="report_problem">Zgłoś problem</string>
+    <string name="issues_on_github">Issues na GitHubie</string>
+    <string name="license">Licencja</string>
+    <string name="scan_project">Zeskanuj, aby otworzyć stronę projektu</string>
+    <string name="about_credits">Powstał jako fork Gathin23/tv-vibehack. Krój Outfit jest objęty licencją SIL Open Font License. Tła korzystają z API TMDB, ale nie są popierane ani certyfikowane przez TMDB.</string>
     <string name="phone_paste">Wklej klucze z telefonu</string>
     <string name="scan_to_paste">Zeskanuj telefonem, aby wkleić klucze</string>
     <string name="tmdb_notice">Tła korzystają z API TMDB, ale nie są zatwierdzone ani certyfikowane przez TMDB.</string>

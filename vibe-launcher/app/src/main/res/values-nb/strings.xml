@@ -59,6 +59,13 @@
     <string name="youtube_short">Populære videoer i landet ditt for YouTube-flisen.</string>
     <string name="smarttube_short">Din egen YouTube-strøm for YouTube-flisen, uten nøkkel.</string>
     <string name="plex_short">Bakgrunner fra din egen Plex-server.</string>
+    <string name="about">Om</string>
+    <string name="project">Prosjekt</string>
+    <string name="report_problem">Rapporter et problem</string>
+    <string name="issues_on_github">Issues på GitHub</string>
+    <string name="license">Lisens</string>
+    <string name="scan_project">Skann for prosjektsiden</string>
+    <string name="about_credits">Startet som en fork av Gathin23/tv-vibehack. Skrifttypen Outfit er under SIL Open Font License. Bakgrunnene bruker TMDB-API-et, men er ikke godkjent eller sertifisert av TMDB.</string>
     <string name="phone_paste">Lim inn nøkler fra telefonen</string>
     <string name="scan_to_paste">Skann med mobilen for å lime inn nøklene</string>
     <string name="tmdb_notice">Bakgrunnene bruker TMDBs API, men er ikke godkjent eller sertifisert av TMDB.</string>

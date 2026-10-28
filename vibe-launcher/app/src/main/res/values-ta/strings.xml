@@ -59,6 +59,13 @@
     <string name="youtube_short">YouTube டைலுக்கு உங்கள் நாட்டின் பிரபல வீடியோக்கள்.</string>
     <string name="smarttube_short">YouTube டைலுக்கு உங்கள் சொந்த YouTube ஊட்டம், விசை தேவையில்லை.</string>
     <string name="plex_short">உங்கள் சொந்த Plex சர்வரிலிருந்து பின்னணிகள்.</string>
+    <string name="about">பற்றி</string>
+    <string name="project">திட்டம்</string>
+    <string name="report_problem">சிக்கலைப் புகாரளி</string>
+    <string name="issues_on_github">GitHub இல் Issues</string>
+    <string name="license">உரிமம்</string>
+    <string name="scan_project">திட்டப் பக்கத்திற்கு ஸ்கேன் செய்யவும்</string>
+    <string name="about_credits">Gathin23/tv-vibehack இன் ஃபோர்க்காகத் தொடங்கியது. Outfit எழுத்துரு SIL Open Font License இன் கீழ் உள்ளது. பின்னணிகள் TMDB API ஐப் பயன்படுத்துகின்றன, ஆனால் TMDB ஆல் அங்கீகரிக்கப்படவோ சான்றளிக்கப்படவோ இல்லை.</string>
     <string name="phone_paste">தொலைபேசியிலிருந்து விசைகளை ஒட்டவும்</string>
     <string name="scan_to_paste">சாவிகளை ஒட்ட ஃபோனால் ஸ்கேன் செய்யவும்</string>
     <string name="tmdb_notice">பின்னணிகள் TMDB API-ஐப் பயன்படுத்துகின்றன, ஆனால் TMDB இவற்றை அங்கீகரிக்கவோ சான்றளிக்கவோ இல்லை.</string>

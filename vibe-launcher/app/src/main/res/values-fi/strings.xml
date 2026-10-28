@@ -59,6 +59,13 @@
     <string name="youtube_short">Maasi suosittuja videoita YouTube-ruutuun.</string>
     <string name="smarttube_short">Oma YouTube-syötteesi YouTube-ruutuun, ilman avainta.</string>
     <string name="plex_short">Taustakuvat omalta Plex-palvelimeltasi.</string>
+    <string name="about">Tietoja</string>
+    <string name="project">Projekti</string>
+    <string name="report_problem">Ilmoita ongelmasta</string>
+    <string name="issues_on_github">Issues GitHubissa</string>
+    <string name="license">Lisenssi</string>
+    <string name="scan_project">Skannaa projektin sivulle</string>
+    <string name="about_credits">Alkoi Gathin23/tv-vibehack-projektin haarana. Outfit-kirjasin on SIL Open Font Licensen alainen. Taustakuvat käyttävät TMDB:n rajapintaa, mutta TMDB ei ole hyväksynyt tai sertifioinut niitä.</string>
     <string name="phone_paste">Liitä avaimet puhelimesta</string>
     <string name="scan_to_paste">Skannaa puhelimella liittääksesi avaimet</string>
     <string name="tmdb_notice">Taustakuvat käyttävät TMDB:n API:a, mutta TMDB ei ole hyväksynyt tai sertifioinut niitä.</string>

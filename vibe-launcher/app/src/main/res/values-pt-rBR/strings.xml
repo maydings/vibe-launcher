@@ -59,6 +59,13 @@
     <string name="youtube_short">Vídeos populares no seu país para o bloco do YouTube.</string>
     <string name="smarttube_short">Seu próprio feed do YouTube para o bloco do YouTube, sem chave.</string>
     <string name="plex_short">Fundos do seu próprio servidor Plex.</string>
+    <string name="about">Sobre</string>
+    <string name="project">Projeto</string>
+    <string name="report_problem">Relatar um problema</string>
+    <string name="issues_on_github">Issues no GitHub</string>
+    <string name="license">Licença</string>
+    <string name="scan_project">Escaneie para a página do projeto</string>
+    <string name="about_credits">Começou como um fork de Gathin23/tv-vibehack. A fonte Outfit está sob a SIL Open Font License. Os fundos usam a API do TMDB, mas não são endossados nem certificados pelo TMDB.</string>
     <string name="phone_paste">Colar as chaves pelo celular</string>
     <string name="scan_to_paste">Escaneie com o celular para colar as chaves</string>
     <string name="tmdb_notice">Os fundos usam a API do TMDB, mas não são endossados nem certificados pelo TMDB.</string>

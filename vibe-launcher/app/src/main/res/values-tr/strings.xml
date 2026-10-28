@@ -59,6 +59,13 @@
     <string name="youtube_short">YouTube kutucuğu için ülkenizdeki popüler videolar.</string>
     <string name="smarttube_short">YouTube kutucuğu için kendi YouTube akışınız, anahtar gerekmez.</string>
     <string name="plex_short">Kendi Plex sunucunuzdan arka planlar.</string>
+    <string name="about">Hakkında</string>
+    <string name="project">Proje</string>
+    <string name="report_problem">Sorun bildir</string>
+    <string name="issues_on_github">GitHub\'da Issues</string>
+    <string name="license">Lisans</string>
+    <string name="scan_project">Proje sayfası için tarayın</string>
+    <string name="about_credits">Gathin23/tv-vibehack projesinin bir çatalı olarak başladı. Outfit yazı tipi SIL Open Font License kapsamındadır. Arka planlar TMDB API\'sini kullanır ancak TMDB tarafından onaylanmamış veya sertifikalandırılmamıştır.</string>
     <string name="phone_paste">Anahtarları telefondan yapıştır</string>
     <string name="scan_to_paste">Anahtarları yapıştırmak için telefonla tarayın</string>
     <string name="tmdb_notice">Arka planlar TMDB API\'sini kullanır ancak TMDB tarafından onaylanmış veya sertifikalandırılmış değildir.</string>

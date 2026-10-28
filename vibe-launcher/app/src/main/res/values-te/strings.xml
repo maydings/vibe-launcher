@@ -59,6 +59,13 @@
     <string name="youtube_short">YouTube టైల్‌కు మీ దేశంలో ప్రాచుర్యం పొందిన వీడియోలు.</string>
     <string name="smarttube_short">YouTube టైల్‌కు మీ స్వంత YouTube ఫీడ్, కీ అవసరం లేదు.</string>
     <string name="plex_short">మీ స్వంత Plex సర్వర్ నుండి బ్యాక్‌డ్రాప్‌లు.</string>
+    <string name="about">గురించి</string>
+    <string name="project">ప్రాజెక్ట్</string>
+    <string name="report_problem">సమస్యను నివేదించండి</string>
+    <string name="issues_on_github">GitHub లో Issues</string>
+    <string name="license">లైసెన్స్</string>
+    <string name="scan_project">ప్రాజెక్ట్ పేజీ కోసం స్కాన్ చేయండి</string>
+    <string name="about_credits">Gathin23/tv-vibehack ఫోర్క్‌గా మొదలైంది. Outfit టైప్‌ఫేస్ SIL Open Font License కింద ఉంది. బ్యాక్‌డ్రాప్‌లు TMDB APIని ఉపయోగిస్తాయి, కానీ TMDB ఆమోదించలేదు లేదా ధృవీకరించలేదు.</string>
     <string name="phone_paste">ఫోన్ నుండి కీలను అతికించండి</string>
     <string name="scan_to_paste">కీలను పేస్ట్ చేయడానికి ఫోన్‌తో స్కాన్ చేయండి</string>
     <string name="tmdb_notice">బ్యాక్‌డ్రాప్‌లు TMDB API ని వాడతాయి, కానీ TMDB వీటిని ఆమోదించలేదు లేదా ధృవీకరించలేదు.</string>

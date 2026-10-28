@@ -59,6 +59,13 @@
     <string name="youtube_short">YouTube タイルに、お住まいの国の人気動画。</string>
     <string name="smarttube_short">YouTube タイルに、ご自身の YouTube フィード。キー不要。</string>
     <string name="plex_short">ご自身の Plex サーバーからの背景画像。</string>
+    <string name="about">このアプリについて</string>
+    <string name="project">プロジェクト</string>
+    <string name="report_problem">問題を報告</string>
+    <string name="issues_on_github">GitHub の Issues</string>
+    <string name="license">ライセンス</string>
+    <string name="scan_project">スキャンしてプロジェクトページへ</string>
+    <string name="about_credits">Gathin23/tv-vibehack のフォークとして始まりました。フォント Outfit は SIL Open Font License で提供されています。背景画像は TMDB API を使用していますが、TMDB による承認・認定は受けていません。</string>
     <string name="phone_paste">スマホからキーを貼り付け</string>
     <string name="scan_to_paste">スマホでスキャンしてキーを貼り付け</string>
     <string name="tmdb_notice">背景画像は TMDB API を使用していますが、TMDB の承認や認定を受けたものではありません。</string>
