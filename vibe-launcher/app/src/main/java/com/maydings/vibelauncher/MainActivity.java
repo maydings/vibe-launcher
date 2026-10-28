@@ -1546,11 +1546,20 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     /** The dock's apps: their pools are the slideshow's pictures. */
     private List<String> dockApps() {
         List<String> dock = new ArrayList<>();
-        for (int i = 0; i < COLUMNS; i++) {
-            String pkg = adapter.packageAt(i);
-            if (pkg != null) dock.add(pkg);
-        }
+        for (int position : dockAppPositions()) dock.add(adapter.packageAt(position));
         return dock;
+    }
+
+    /**
+     * The dock positions holding an app: not the All apps tile, which has no pictures. Its own list, as the
+     * dock's positions and dockApps' indexes differ once All apps is in the dock.
+     */
+    private List<Integer> dockAppPositions() {
+        List<Integer> positions = new ArrayList<>();
+        for (int i = 0; i < COLUMNS; i++) {
+            if (adapter.packageAt(i) != null) positions.add(i);
+        }
+        return positions;
     }
 
     /**
@@ -1625,8 +1634,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         handler.removeCallbacks(nextSlide);
         handler.removeCallbacks(letScreenOff);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        int at = slidePkg != null ? dockApps().indexOf(slidePkg) : -1;
-        if (slideEntry != null && at >= 0 && slidePkg.equals(adapter.packageAt(at))) {
+        int at = -1;   // the stopped-on app's dock position
+        for (int position : dockAppPositions()) {
+            if (slidePkg != null && slidePkg.equals(adapter.packageAt(position))) at = position;
+        }
+        if (slideEntry != null && at >= 0) {
             backdrops.keep(slidePkg, slideEntry);
             backdropPkg = slidePkg;   // already showing: focusing its tile doesn't load another
             backdropLink = slideEntry.link;
@@ -1648,11 +1660,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      * rows come back on it; the carousel opens on what you're watching in it, else this visit's picture.
      */
     private void switchApp(int direction) {
-        List<String> dock = dockApps();
+        List<Integer> dock = dockAppPositions();
         if (dock.size() < 2) return;
-        int at = Math.max(0, Math.min(dock.size() - 1, lastFocused % COLUMNS));
-        int next = ((at + direction) % dock.size() + dock.size()) % dock.size();
-        String pkg = dock.get(next);
+        int at = Math.max(0, dock.indexOf(lastFocused % COLUMNS));
+        int next = dock.get(((at + direction) % dock.size() + dock.size()) % dock.size());   // a dock position
+        String pkg = adapter.packageAt(next);
         cancelHold();
         backdropPkg = pkg;   // set first: focusing its tile then doesn't load a picture of its own
         backdropColor = adapter.ambientColorAt(next);

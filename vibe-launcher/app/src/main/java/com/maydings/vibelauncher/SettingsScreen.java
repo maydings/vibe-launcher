@@ -326,6 +326,14 @@ final class SettingsScreen {
         languagePage.view.setTranslationX(screenW - rightX);
         languagePage.focusable(false);
         for (Row row : languagePage.rows) row.view.setActivated(false);
+        // The focused row is grown (1.035): kept for next time, it would come back grown with another focused.
+        for (Page page : new Page[]{root, languagePage}) {
+            for (Row row : page.rows) {
+                row.view.animate().cancel();
+                row.view.setScaleX(1f);
+                row.view.setScaleY(1f);
+            }
+        }
         ViewGroup parent = (ViewGroup) screen.getParent();
         if (parent != null) parent.removeView(screen);
         host = null;
