@@ -38,7 +38,9 @@ import java.util.function.Supplier;
  * back. Changes apply as they're made; tiles per row and the language rebuild Home behind Settings at once.
  *
  * Built once, as soon as Home is up (prepare), and kept: the frame, the first list and the 51 languages,
- * measured and laid out at the screen's size. SettingsActivity only puts it on screen, with a fade, and hands
+ * measured and laid out at the screen's size. The languages are made a few at a time, so Home keeps
+ * answering the remote meanwhile (all at once, with a font to load for many of them, it stopped for a
+ * second on the 940E). SettingsActivity only puts it on screen, with a fade, and hands
  * it back when it closes. The other pages are made as they're opened (a few rows, current values).
  *
  * General: language, reloading the backdrops, Home at power-on, Restart… (store build, Home button service
@@ -55,6 +57,10 @@ final class SettingsScreen {
     @SuppressLint("StaticFieldLeak")
     private static SettingsScreen prepared;
 
+    /** Languages made in one go, and the wait between goes: a few frames' work each, with frames between. */
+    private static final int LANGUAGES_PER_STEP = 3;
+    private static final long STEP_GAP_MS = 50;
+
     /**
      * Makes the screen ahead (Home calls it once its first frame is drawn), again only when the language
      * changed, and never while it's on screen.
@@ -63,12 +69,34 @@ final class SettingsScreen {
         String language = new VibeSettings(context).language();
         if (prepared != null && (prepared.host != null || prepared.builtFor.equals(language))) return;
         prepared = new SettingsScreen(context.getApplicationContext(), language);
+        prepared.handler.postDelayed(prepared::step, STEP_GAP_MS);
     }
 
-    /** The prepared screen for SettingsActivity, made now if Home hasn't yet. */
+    /** The prepared screen for SettingsActivity, made now if Home hasn't yet, and finished now if it's still being made. */
     static SettingsScreen get(Context context) {
         prepare(context);
+        prepared.finish();
         return prepared;
+    }
+
+    /** A few more languages, and then the next go, or the screen's layout when they're all made. */
+    private void step() {
+        if (laidOut || prepared != this) return;
+        if (addLanguages(LANGUAGES_PER_STEP)) finish();
+        else handler.postDelayed(this::step, STEP_GAP_MS);
+    }
+
+    /** The rest of the languages, then the whole screen measured and laid out at the screen's size. */
+    private void finish() {
+        if (laidOut) return;
+        handler.removeCallbacksAndMessages(null);
+        addLanguages(Integer.MAX_VALUE);
+        languagePage.focusable(false);
+        // Laid out now: showing it only has to draw it.
+        screen.measure(View.MeasureSpec.makeMeasureSpec(screenW, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(screenH, View.MeasureSpec.EXACTLY));
+        screen.layout(0, 0, screenW, screenH);
+        laidOut = true;
     }
 
     /** One row: its name, its value, and what OK does. */
@@ -216,7 +244,11 @@ final class SettingsScreen {
     private final Row generalRow;
     private final List<Page> pages = new ArrayList<>();
     /** Where the lists sit: the left column (over the logo) and the right one, and their width. */
-    private final int leftX, rightX, columnW, screenW;
+    private final int leftX, rightX, columnW, screenW, screenH;
+    /** For making the languages a few at a time (prepare); nothing else is posted on it. */
+    private final android.os.Handler handler = new android.os.Handler(android.os.Looper.getMainLooper());
+    private int nextLanguage = -1;   // -1 for the TV's own language, then Lang.TAGS
+    private boolean laidOut;
 
     /** The highlight color, for the rows' focused look. */
     private int highlight;
@@ -241,7 +273,7 @@ final class SettingsScreen {
         settings = new VibeSettings(ctx);
         highlight = Highlight.color(ctx);
         int w = screenW = ctx.getResources().getDisplayMetrics().widthPixels;
-        int h = ctx.getResources().getDisplayMetrics().heightPixels;
+        screenH = ctx.getResources().getDisplayMetrics().heightPixels;
         // The list from 55% of the width to 95%, the picture centred in the left half.
         rightX = (int) (w * 0.55f);
         columnW = (int) (w * 0.40f);
@@ -258,13 +290,8 @@ final class SettingsScreen {
         root.link(R.string.tab_appearance, null, this::appearance);
         root.link(R.string.tab_keys, null, this::apiKeys);
         place(root, 0);
-        languagePage = buildLanguages();
+        languagePage = new Page(ctx.getString(R.string.language));   // its rows: addLanguages
         place(languagePage, screenW - rightX);   // off the screen until Language is picked
-        languagePage.focusable(false);
-        // Laid out now, at the screen's size: showing it only has to draw it.
-        screen.measure(View.MeasureSpec.makeMeasureSpec(w, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(h, View.MeasureSpec.EXACTLY));
-        screen.layout(0, 0, w, h);
     }
 
     // ---- on and off the screen ---------------------------------------------------------------------
@@ -450,9 +477,17 @@ final class SettingsScreen {
         return languagePage;
     }
 
-    private Page buildLanguages() {
-        Page page = new Page(ctx.getString(R.string.language));
-        for (int i = -1; i < Lang.TAGS.length; i++) {
+    /**
+     * Up to n more of the language rows, each measured as it's made so its font is loaded and its text laid
+     * out now, not all together; true once they're all made.
+     */
+    private boolean addLanguages(int n) {
+        Page page = languagePage;
+        int side = (int) (columnW * 0.02f) + 2;   // the list's padding (Page)
+        int width = View.MeasureSpec.makeMeasureSpec(columnW - 2 * side, View.MeasureSpec.EXACTLY);
+        int height = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        for (; n > 0 && nextLanguage < Lang.TAGS.length; n--, nextLanguage++) {
+            int i = nextLanguage;
             String tag = i < 0 ? "" : Lang.TAGS[i];
             Row row = page.add(i < 0 ? ctx.getString(R.string.language_system) : Lang.NAMES[i],
                     () -> tag.equals(language) ? "✓" : "", () -> {
@@ -472,8 +507,9 @@ final class SettingsScreen {
                         }
                     });
             row.view.setTag(tag);
+            row.view.measure(width, height);
         }
-        return page;
+        return nextLanguage >= Lang.TAGS.length;
     }
 
     /** Home again with the new grid or language, made now, behind Settings, so it's ready when Settings closes. */

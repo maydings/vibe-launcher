@@ -140,7 +140,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private int focusAfterSlide = -1;   // from the top bar: the dock tile to focus once the rows are gone
     /**
      * The slideshow: after IDLE_MS without a key on Home, every dock app's pictures at random, SLIDE_MS
-     * each, with nothing else on screen. Any key stops it on the picture showing (see endSlideshow).
+     * each, with nothing else on screen. Any key brings Home back on the picture showing's app (see endSlideshow).
      */
     private boolean slideshow;
     private String slidePkg;            // the app of the picture showing in the slideshow
@@ -522,8 +522,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView rv, int newState) {
-                // Settle exactly on the tile: the plan can be off by the few pixels the grid scrolled on
-                // its own before onTileFocused ran, or the scroll stopped short at the end of the list.
+                // Settle exactly on the tile: the plan can be off when the scroll stopped short at the end
+                // of the list, or a new focus cut it short.
                 if (newState != RecyclerView.SCROLL_STATE_IDLE || !glassShown || focusedCard == null
                         || !focusedCard.isAttachedToWindow()) return;
                 plannedScroll = 0;
@@ -714,7 +714,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         handler.removeCallbacks(refreshPools);
         cancelPictureSoon();
         handler.removeCallbacks(startSlideshow);
-        if (slideshow) endSlideshow();
+        if (slideshow) endSlideshow(false);
     }
 
     @Override
@@ -1231,9 +1231,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             lastKeyAt = SystemClock.uptimeMillis();
             armIdle();
-            if (slideshow) {   // any other key: back to the picture alone, on the picture showing
+            if (slideshow) {   // any other key: Home as it was, on the picture showing and its app
                 swallowUp = event.getKeyCode();
-                endSlideshow();
+                endSlideshow(true);
                 return true;
             }
         } else if (event.getAction() == KeyEvent.ACTION_UP && event.getKeyCode() == swallowUp) {
@@ -1687,10 +1687,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     /**
-     * A key in the slideshow: it stops on the picture showing, with that picture's app as the one picked,
-     * so the Play pill opens it.
+     * The slideshow stops on the picture showing, with that picture's app as the one picked. With toRows (a
+     * key pressed), the rows and the top bar come back on its tile: stopped on the picture alone, which looks
+     * the same as the slideshow, the key seemed to do nothing. Else (Home going away) the picture alone.
      */
-    private void endSlideshow() {
+    private void endSlideshow(boolean toRows) {
         slideshow = false;
         slideClock.animate().cancel();
         slideClock.animate().alpha(0f).setStartDelay(0).setDuration(CARET_FADE_MS)
@@ -1713,8 +1714,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             glass.animate().cancel();   // the Play pill, not the glass, with the picture alone
             glass.setAlpha(0f);
         }
-        if (pictureOnly && !caretsHeld) updateCarets();
-        if (pictureOnly) openCarousel(false);   // the stopped-on app's carousel, and the time left on it
+        if (toRows) {
+            showRows(true, false);
+        } else {
+            if (pictureOnly && !caretsHeld) updateCarets();
+            if (pictureOnly) openCarousel(false);   // the stopped-on app's carousel, and the time left on it
+        }
         armIdle();
     }
 

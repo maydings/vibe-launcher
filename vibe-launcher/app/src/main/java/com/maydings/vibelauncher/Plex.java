@@ -61,11 +61,10 @@ final class Plex {
     private volatile long onDeckTime;
     private final Object deckLock = new Object();
     /** Asks the server for On Deck away from the threads that show and build pictures. */
-    private final ExecutorService refresher = Executors.newSingleThreadExecutor(r -> {
-        Thread t = new Thread(r, "PlexOnDeck");
-        t.setPriority(Thread.MIN_PRIORITY);
-        return t;
-    });
+    private final ExecutorService refresher = Executors.newSingleThreadExecutor(r -> new Thread(() -> {
+        android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);   // see Backdrops.builder
+        r.run();
+    }, "PlexOnDeck"));
 
     Plex(Context context, int width, int height) {
         settings = new VibeSettings(context);

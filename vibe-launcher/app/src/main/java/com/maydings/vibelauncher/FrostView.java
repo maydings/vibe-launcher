@@ -163,6 +163,7 @@ public class FrostView extends View {
             if (child.getVisibility() != VISIBLE || child.getAlpha() <= 0f) continue;
             child.getLocationInWindow(sourceLoc);
             if (sourceLoc[1] >= barBottom) continue;     // getLocationInWindow includes translation and scale
+            if (sourceLoc[1] + child.getHeight() * child.getScaleY() <= myLoc[1]) continue;   // all above the bar
             collectDirty(child);
             int save = smallCanvas.save();
             smallCanvas.translate(child.getLeft(), child.getTop());

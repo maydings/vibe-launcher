@@ -183,11 +183,13 @@ final class Backdrops {
      * Filling the pools: every app's on this one thread, at low priority so it never slows down what's on
      * screen. The pools being built take turns a card at a time (see {@link #pump}).
      */
-    private final ExecutorService builder = Executors.newSingleThreadExecutor(r -> {
-        Thread t = new Thread(r, "BackdropPools");
-        t.setPriority(Thread.MIN_PRIORITY);
-        return t;
-    });
+    private final ExecutorService builder = Executors.newSingleThreadExecutor(r -> new Thread(() -> {
+        // Android's background priority, not only Java's lowest: that also puts the thread in the background
+        // group, off the cores the screen is drawn on. Java's alone left it competing with them: rebuilding
+        // the pools at full tilt for a minute and more, it slowed Home down on the 940E.
+        android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+        r.run();
+    }, "BackdropPools"));
     private final ConcurrentLinkedQueue<Build> incoming = new ConcurrentLinkedQueue<>();
     private final List<Build> active = new ArrayList<>();   // pool thread only
     /** Bumped by reload: builds from before it are dropped, and put nothing into the new pools. */

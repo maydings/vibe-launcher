@@ -73,7 +73,7 @@ Play button. An app with no picture yet goes straight to the top bar instead.
 Leave Home alone for a minute and the apps and the top bar slide away: the backdrops of every app in
 the dock follow each other at random, ten seconds each, with only the clock over them, where it sits on
 the top bar (Settings → Appearance → Screensaver clock turns it off). Press any button and
-it stops on the picture showing, with the Play button ready, so holding OK opens it. It
+Home comes back, on the app of the picture showing, with its picture behind the dock. It
 doesn't start while a menu or Settings is open, and it keeps the screen on only as long as your TV's
 own screen-off setting would. (This replaces the screensaver of earlier versions; pick another, or
 Turn screen off, in your TV's screen saver settings.)
