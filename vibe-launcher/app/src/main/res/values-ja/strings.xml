@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API キー</string>
     <string name="youtube_key">YouTube API キー</string>
     <string name="tiles_per_row">1 列のタイル数</string>
+    <string name="dock_apps">ドックのアプリ数</string>
     <string name="language">言語</string>
     <string name="language_system">システムに合わせる</string>
     <string name="hide_inactive_inputs">使用していない入力を隠す</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">新しい背景画像をダウンロードしています…</string>
     <string name="auto_hide_bar">自動的に隠す</string>
     <string name="slideshow_clock">スクリーンセーバーの時計</string>
+    <string name="carets">矢印</string>
     <string name="glass_color">ハイライトの色</string>
     <string name="glass_white">リセット</string>
     <string name="glass_color_hint">矢印キーで点を動かします：円の周りで色が変わり、中心に近いほど淡くなります。完了したら OK を押します。</string>

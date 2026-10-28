@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API key</string>
     <string name="youtube_key">YouTube API key</string>
     <string name="tiles_per_row">Tiles per row</string>
+    <string name="dock_apps">Apps in dock</string>
     <string name="language">Language</string>
     <string name="language_system">Match system</string>
     <string name="hide_inactive_inputs">Hide inactive inputs</string>
@@ -89,6 +90,7 @@
     <string name="backdrops_reloading">Downloading new backdrops…</string>
     <string name="auto_hide_bar">Auto-hide</string>
     <string name="slideshow_clock">Screensaver clock</string>
+    <string name="carets">Arrows</string>
     <string name="glass_color">Highlight color</string>
     <string name="glass_white">Reset</string>
     <string name="glass_color_hint">The arrows move the dot: the color around the wheel, paler towards the middle. OK when done.</string>

@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API key</string>
     <string name="youtube_key">YouTube API key</string>
     <string name="tiles_per_row">Tile bawat hanay</string>
+    <string name="dock_apps">Mga app sa dock</string>
     <string name="language">Wika</string>
     <string name="language_system">Gaya ng system</string>
     <string name="hide_inactive_inputs">Itago ang mga hindi aktibong input</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Nagda-download ng mga bagong backdrop…</string>
     <string name="auto_hide_bar">Awtomatikong itago</string>
     <string name="slideshow_clock">Orasan sa screensaver</string>
+    <string name="carets">Mga arrow</string>
     <string name="glass_color">Kulay ng highlight</string>
     <string name="glass_white">I-reset</string>
     <string name="glass_color_hint">Ginagalaw ng mga arrow ang tuldok: ang kulay sa paligid ng gulong, mas maputla papunta sa gitna. Pindutin ang OK kapag tapos na.</string>

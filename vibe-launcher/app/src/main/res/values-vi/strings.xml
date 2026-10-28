@@ -27,6 +27,7 @@
     <string name="tmdb_key">Khóa API TMDB</string>
     <string name="youtube_key">Khóa API YouTube</string>
     <string name="tiles_per_row">Số ô mỗi hàng</string>
+    <string name="dock_apps">Ứng dụng trên thanh dock</string>
     <string name="language">Ngôn ngữ</string>
     <string name="language_system">Giống hệ thống</string>
     <string name="hide_inactive_inputs">Ẩn đầu vào không hoạt động</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Đang tải ảnh nền mới…</string>
     <string name="auto_hide_bar">Tự động ẩn</string>
     <string name="slideshow_clock">Đồng hồ trên trình bảo vệ màn hình</string>
+    <string name="carets">Mũi tên</string>
     <string name="glass_color">Màu đánh dấu</string>
     <string name="glass_white">Đặt lại</string>
     <string name="glass_color_hint">Các phím mũi tên di chuyển chấm: màu quanh vòng tròn, nhạt dần về giữa. Nhấn OK khi xong.</string>

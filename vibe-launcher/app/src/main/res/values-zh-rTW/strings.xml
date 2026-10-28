@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API 金鑰</string>
     <string name="youtube_key">YouTube API 金鑰</string>
     <string name="tiles_per_row">每列圖塊數</string>
+    <string name="dock_apps">Dock 中的應用程式</string>
     <string name="language">語言</string>
     <string name="language_system">跟隨系統</string>
     <string name="hide_inactive_inputs">隱藏未使用的輸入</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">正在下載新的背景圖…</string>
     <string name="auto_hide_bar">自動隱藏</string>
     <string name="slideshow_clock">螢幕保護程式時鐘</string>
+    <string name="carets">箭頭</string>
     <string name="glass_color">醒目提示顏色</string>
     <string name="glass_white">重設</string>
     <string name="glass_color_hint">方向鍵移動圓點：沿色輪改變顏色，越靠近中心越淡。完成後按 OK。</string>

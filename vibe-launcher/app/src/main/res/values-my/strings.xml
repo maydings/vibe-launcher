@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API ကီး</string>
     <string name="youtube_key">YouTube API ကီး</string>
     <string name="tiles_per_row">တစ်တန်းလျှင် အကွက်</string>
+    <string name="dock_apps">ဒေါ့ခ်ရှိ အက်ပ်များ</string>
     <string name="language">ဘာသာစကား</string>
     <string name="language_system">စနစ်အတိုင်း</string>
     <string name="hide_inactive_inputs">အသုံးမပြုသော အဝင်များကို ဖျောက်ရန်</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">နောက်ခံပုံအသစ်များ ဒေါင်းလုဒ်လုပ်နေသည်…</string>
     <string name="auto_hide_bar">အလိုအလျောက် ဝှက်ရန်</string>
     <string name="slideshow_clock">မျက်နှာပြင်ထိန်း နာရီ</string>
+    <string name="carets">မြားများ</string>
     <string name="glass_color">အသားပေး အရောင်</string>
     <string name="glass_white">ပြန်သတ်မှတ်ရန်</string>
     <string name="glass_color_hint">မြားများက အစက်ကို ရွှေ့သည်- ဘီးပတ်လည်တွင် အရောင်၊ အလယ်သို့ ဖျော့လာသည်။ ပြီးလျှင် OK ကို နှိပ်ပါ။</string>

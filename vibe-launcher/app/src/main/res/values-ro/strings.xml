@@ -27,6 +27,7 @@
     <string name="tmdb_key">Cheie API TMDB</string>
     <string name="youtube_key">Cheie API YouTube</string>
     <string name="tiles_per_row">Plăci pe rând</string>
+    <string name="dock_apps">Aplicații în dock</string>
     <string name="language">Limbă</string>
     <string name="language_system">Ca sistemul</string>
     <string name="hide_inactive_inputs">Ascunde intrările inactive</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Se descarcă fundaluri noi…</string>
     <string name="auto_hide_bar">Ascundere automată</string>
     <string name="slideshow_clock">Ceas pe screensaver</string>
+    <string name="carets">Săgeți</string>
     <string name="glass_color">Culoarea evidențierii</string>
     <string name="glass_white">Resetează</string>
     <string name="glass_color_hint">Săgețile mută punctul: culoarea de jur împrejurul roții, mai palidă spre centru. Apasă OK când ai terminat.</string>

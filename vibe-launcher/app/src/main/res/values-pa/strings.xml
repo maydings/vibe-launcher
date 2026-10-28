@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API ਕੁੰਜੀ</string>
     <string name="youtube_key">YouTube API ਕੁੰਜੀ</string>
     <string name="tiles_per_row">ਹਰ ਕਤਾਰ ਵਿੱਚ ਟਾਈਲਾਂ</string>
+    <string name="dock_apps">ਡੌਕ ਵਿੱਚ ਐਪਾਂ</string>
     <string name="language">ਭਾਸ਼ਾ</string>
     <string name="language_system">ਸਿਸਟਮ ਵਾਂਗ</string>
     <string name="hide_inactive_inputs">ਅਕਿਰਿਆਸ਼ੀਲ ਇਨਪੁੱਟ ਲੁਕਾਓ</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">ਨਵੇਂ ਪਿਛੋਕੜ ਡਾਊਨਲੋਡ ਹੋ ਰਹੇ ਹਨ…</string>
     <string name="auto_hide_bar">ਆਪਣੇ-ਆਪ ਲੁਕਾਓ</string>
     <string name="slideshow_clock">ਸਕ੍ਰੀਨਸੇਵਰ ਘੜੀ</string>
+    <string name="carets">ਤੀਰ</string>
     <string name="glass_color">ਹਾਈਲਾਈਟ ਦਾ ਰੰਗ</string>
     <string name="glass_white">ਰੀਸੈੱਟ</string>
     <string name="glass_color_hint">ਤੀਰ ਬਿੰਦੂ ਨੂੰ ਹਿਲਾਉਂਦੇ ਹਨ: ਪਹੀਏ ਦੁਆਲੇ ਰੰਗ, ਵਿਚਕਾਰ ਵੱਲ ਫਿੱਕਾ। ਹੋ ਜਾਣ ਤੇ OK ਦਬਾਓ।</string>

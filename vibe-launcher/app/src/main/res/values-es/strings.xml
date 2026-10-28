@@ -27,6 +27,7 @@
     <string name="tmdb_key">Clave de API de TMDB</string>
     <string name="youtube_key">Clave de API de YouTube</string>
     <string name="tiles_per_row">Mosaicos por fila</string>
+    <string name="dock_apps">Apps en el dock</string>
     <string name="language">Idioma</string>
     <string name="language_system">Igual que el sistema</string>
     <string name="hide_inactive_inputs">Ocultar entradas inactivas</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Descargando fondos nuevos…</string>
     <string name="auto_hide_bar">Ocultar automáticamente</string>
     <string name="slideshow_clock">Reloj en el salvapantallas</string>
+    <string name="carets">Flechas</string>
     <string name="glass_color">Color de resaltado</string>
     <string name="glass_white">Restablecer</string>
     <string name="glass_color_hint">Las flechas mueven el punto: el color alrededor de la rueda, más pálido hacia el centro. Pulsa OK al terminar.</string>

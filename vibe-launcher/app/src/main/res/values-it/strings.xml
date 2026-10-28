@@ -27,6 +27,7 @@
     <string name="tmdb_key">Chiave API TMDB</string>
     <string name="youtube_key">Chiave API YouTube</string>
     <string name="tiles_per_row">Riquadri per riga</string>
+    <string name="dock_apps">App nel dock</string>
     <string name="language">Lingua</string>
     <string name="language_system">Come il sistema</string>
     <string name="hide_inactive_inputs">Nascondi ingressi inattivi</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Download di nuovi sfondi…</string>
     <string name="auto_hide_bar">Nascondi automaticamente</string>
     <string name="slideshow_clock">Orologio nel salvaschermo</string>
+    <string name="carets">Frecce</string>
     <string name="glass_color">Colore di evidenziazione</string>
     <string name="glass_white">Ripristina</string>
     <string name="glass_color_hint">Le frecce muovono il punto: il colore attorno alla ruota, più tenue verso il centro. Premi OK quando hai finito.</string>

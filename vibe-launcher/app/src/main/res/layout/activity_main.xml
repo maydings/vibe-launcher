@@ -316,6 +316,19 @@
         android:alpha="0"
         android:importantForAccessibility="no" />
 
+    <!-- Down from the dock, to the other apps: in the space under its panel, which ends 22dp (half the space
+         between two rows of tiles) above the screen's bottom edge (see MainActivity's grid padding). -->
+    <ImageView
+        android:id="@+id/caretMore"
+        android:layout_width="28dp"
+        android:layout_height="14dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="4dp"
+        android:rotation="180"
+        android:src="@drawable/ic_caret"
+        android:alpha="0"
+        android:importantForAccessibility="no" />
+
     <!-- Down from the top bar, to the picture alone: just under the bar while it has focus (placed in code). -->
     <ImageView
         android:id="@+id/caretBar"

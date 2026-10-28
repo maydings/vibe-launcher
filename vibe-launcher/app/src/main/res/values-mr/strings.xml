@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API की</string>
     <string name="youtube_key">YouTube API की</string>
     <string name="tiles_per_row">प्रत्येक ओळीतील टाइल</string>
+    <string name="dock_apps">डॉकमधील ॲप्स</string>
     <string name="language">भाषा</string>
     <string name="language_system">सिस्टमप्रमाणे</string>
     <string name="hide_inactive_inputs">निष्क्रिय इनपुट लपवा</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">नवीन पार्श्वभूमी डाउनलोड होत आहेत…</string>
     <string name="auto_hide_bar">आपोआप लपवा</string>
     <string name="slideshow_clock">स्क्रीनसेव्हर घड्याळ</string>
+    <string name="carets">बाण</string>
     <string name="glass_color">हायलाइटचा रंग</string>
     <string name="glass_white">रीसेट</string>
     <string name="glass_color_hint">बाण ठिपका हलवतात: चाकाभोवती रंग, मध्याकडे फिकट. झाल्यावर OK दाबा.</string>

@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API-kulcs</string>
     <string name="youtube_key">YouTube API-kulcs</string>
     <string name="tiles_per_row">Csempék soronként</string>
+    <string name="dock_apps">Alkalmazások a dokkban</string>
     <string name="language">Nyelv</string>
     <string name="language_system">Mint a rendszer</string>
     <string name="hide_inactive_inputs">Inaktív bemenetek elrejtése</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Új háttérképek letöltése…</string>
     <string name="auto_hide_bar">Automatikus elrejtés</string>
     <string name="slideshow_clock">Óra a képernyővédőn</string>
+    <string name="carets">Nyilak</string>
     <string name="glass_color">Kiemelés színe</string>
     <string name="glass_white">Visszaállítás</string>
     <string name="glass_color_hint">A nyilak mozgatják a pontot: a szín körben a keréken, középfelé halványabb. Ha kész, nyomd meg az OK gombot.</string>

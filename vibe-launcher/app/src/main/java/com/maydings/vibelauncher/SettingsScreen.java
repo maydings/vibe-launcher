@@ -485,6 +485,7 @@ final class SettingsScreen {
     private Page appearance() {
         Page page = new Page(ctx.getString(R.string.tab_appearance));
         page.link(R.string.tiles_per_row, () -> String.valueOf(MainActivity.COLUMNS), this::tiles);
+        page.link(R.string.dock_apps, () -> String.valueOf(MainActivity.DOCK), this::dockApps);
         page.toggle(R.string.hide_inactive_inputs, settings::hideInactiveInputs, settings::setHideInactiveInputs);
         page.toggle(R.string.auto_hide_bar, settings::autoHideBar, on -> {
             settings.setAutoHideBar(on);
@@ -492,6 +493,7 @@ final class SettingsScreen {
             if (home != null) home.updateTopBar();
         });
         page.toggle(R.string.slideshow_clock, settings::slideshowClock, settings::setSlideshowClock);
+        page.toggle(R.string.carets, settings::carets, settings::setCarets);
         page.link(R.string.glass_color, this::swatch, this::glassColour);
         return page;
     }
@@ -565,10 +567,29 @@ final class SettingsScreen {
                 if (value == MainActivity.COLUMNS) return;
                 settings.setColumns(value);
                 MainActivity.COLUMNS = value;   // shown here at once; the new Home reads the setting
+                MainActivity.DOCK = settings.dockApps(value);   // a full dock follows; a shorter one stays
                 rebuildHome();
                 page.refresh();   // the tick moves
             });
             if (n == MainActivity.COLUMNS) page.opened = row;
+        }
+        return page;
+    }
+
+    /** Apps in dock: 1 up to tiles per row (a full row), the shorter dock centred. Home is rebuilt at once. */
+    private Page dockApps() {
+        Page page = new Page(ctx.getString(R.string.dock_apps));
+        for (int n = 1; n <= MainActivity.COLUMNS; n++) {
+            int value = n;
+            // Picked, it's ticked and the list stays: Back or Left goes back.
+            Row row = page.add(String.valueOf(n), () -> value == MainActivity.DOCK ? "✓" : "", () -> {
+                if (value == MainActivity.DOCK) return;
+                settings.setDockApps(value == MainActivity.COLUMNS ? 0 : value);
+                MainActivity.DOCK = value;
+                rebuildHome();
+                page.refresh();
+            });
+            if (n == MainActivity.DOCK) page.opened = row;
         }
         return page;
     }

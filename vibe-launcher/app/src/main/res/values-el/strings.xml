@@ -27,6 +27,7 @@
     <string name="tmdb_key">Κλειδί API του TMDB</string>
     <string name="youtube_key">Κλειδί API του YouTube</string>
     <string name="tiles_per_row">Πλακίδια ανά σειρά</string>
+    <string name="dock_apps">Εφαρμογές στη γραμμή</string>
     <string name="language">Γλώσσα</string>
     <string name="language_system">Όπως το σύστημα</string>
     <string name="hide_inactive_inputs">Απόκρυψη ανενεργών εισόδων</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Λήψη νέων φόντων…</string>
     <string name="auto_hide_bar">Αυτόματη απόκρυψη</string>
     <string name="slideshow_clock">Ρολόι προφύλαξης οθόνης</string>
+    <string name="carets">Βέλη</string>
     <string name="glass_color">Χρώμα επισήμανσης</string>
     <string name="glass_white">Επαναφορά</string>
     <string name="glass_color_hint">Τα βέλη μετακινούν την κουκκίδα: το χρώμα γύρω από τον τροχό, πιο απαλό προς το κέντρο. Πατήστε OK όταν τελειώσετε.</string>

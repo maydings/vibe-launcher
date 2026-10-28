@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API کلید</string>
     <string name="youtube_key">YouTube API کلید</string>
     <string name="tiles_per_row">ہر قطار میں ٹائلیں</string>
+    <string name="dock_apps">ڈاک میں ایپس</string>
     <string name="language">زبان</string>
     <string name="language_system">سسٹم کے مطابق</string>
     <string name="hide_inactive_inputs">غیر فعال ان پٹ چھپائیں</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">نئے پس منظر ڈاؤن لوڈ ہو رہے ہیں…</string>
     <string name="auto_hide_bar">خود بخود چھپائیں</string>
     <string name="slideshow_clock">اسکرین سیور گھڑی</string>
+    <string name="carets">تیر</string>
     <string name="glass_color">نمایاں رنگ</string>
     <string name="glass_white">ری سیٹ</string>
     <string name="glass_color_hint">تیر نقطے کو ہلاتے ہیں: پہیے کے گرد رنگ، درمیان کی طرف ہلکا۔ مکمل ہونے پر OK دبائیں۔</string>

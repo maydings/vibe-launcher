@@ -27,6 +27,7 @@
     <string name="tmdb_key">Kunci API TMDB</string>
     <string name="youtube_key">Kunci API YouTube</string>
     <string name="tiles_per_row">Ubin per baris</string>
+    <string name="dock_apps">Aplikasi di dok</string>
     <string name="language">Bahasa</string>
     <string name="language_system">Sesuai sistem</string>
     <string name="hide_inactive_inputs">Sembunyikan input tidak aktif</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Mengunduh latar baru…</string>
     <string name="auto_hide_bar">Sembunyikan otomatis</string>
     <string name="slideshow_clock">Jam di screensaver</string>
+    <string name="carets">Panah</string>
     <string name="glass_color">Warna sorotan</string>
     <string name="glass_white">Setel ulang</string>
     <string name="glass_color_hint">Tombol panah menggerakkan titik: warna di sekeliling roda, makin pucat ke tengah. Tekan OK jika sudah selesai.</string>

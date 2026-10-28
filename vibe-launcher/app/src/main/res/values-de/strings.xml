@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB-API-Schlüssel</string>
     <string name="youtube_key">YouTube-API-Schlüssel</string>
     <string name="tiles_per_row">Kacheln pro Reihe</string>
+    <string name="dock_apps">Apps im Dock</string>
     <string name="language">Sprache</string>
     <string name="language_system">Wie das System</string>
     <string name="hide_inactive_inputs">Inaktive Eingänge ausblenden</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Neue Hintergründe werden geladen…</string>
     <string name="auto_hide_bar">Automatisch ausblenden</string>
     <string name="slideshow_clock">Uhr im Bildschirmschoner</string>
+    <string name="carets">Pfeile</string>
     <string name="glass_color">Farbe der Hervorhebung</string>
     <string name="glass_white">Zurücksetzen</string>
     <string name="glass_color_hint">Die Pfeile bewegen den Punkt: die Farbe rund ums Rad, blasser zur Mitte hin. Mit OK fertig.</string>

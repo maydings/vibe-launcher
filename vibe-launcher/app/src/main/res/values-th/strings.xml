@@ -27,6 +27,7 @@
     <string name="tmdb_key">คีย์ API ของ TMDB</string>
     <string name="youtube_key">คีย์ API ของ YouTube</string>
     <string name="tiles_per_row">ไทล์ต่อแถว</string>
+    <string name="dock_apps">แอปในแถบด้านล่าง</string>
     <string name="language">ภาษา</string>
     <string name="language_system">ตามระบบ</string>
     <string name="hide_inactive_inputs">ซ่อนอินพุตที่ไม่ได้ใช้งาน</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">กำลังดาวน์โหลดภาพพื้นหลังใหม่…</string>
     <string name="auto_hide_bar">ซ่อนอัตโนมัติ</string>
     <string name="slideshow_clock">นาฬิกาบนภาพพักหน้าจอ</string>
+    <string name="carets">ลูกศร</string>
     <string name="glass_color">สีไฮไลต์</string>
     <string name="glass_white">รีเซ็ต</string>
     <string name="glass_color_hint">ลูกศรเลื่อนจุด: สีไล่รอบวงล้อ และจางลงเมื่อเข้าใกล้กลาง กด OK เมื่อเสร็จ</string>

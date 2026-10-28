@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API কী</string>
     <string name="youtube_key">YouTube API কী</string>
     <string name="tiles_per_row">প্রতি সারিতে টাইল</string>
+    <string name="dock_apps">ডকে অ্যাপ</string>
     <string name="language">ভাষা</string>
     <string name="language_system">সিস্টেমের মতো</string>
     <string name="hide_inactive_inputs">নিষ্ক্রিয় ইনপুট লুকান</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">নতুন ব্যাকড্রপ ডাউনলোড হচ্ছে…</string>
     <string name="auto_hide_bar">স্বয়ংক্রিয়ভাবে লুকান</string>
     <string name="slideshow_clock">স্ক্রিনসেভার ঘড়ি</string>
+    <string name="carets">তীরচিহ্ন</string>
     <string name="glass_color">হাইলাইটের রং</string>
     <string name="glass_white">রিসেট</string>
     <string name="glass_color_hint">তীর চিহ্নগুলো বিন্দুটি সরায়: চাকার চারপাশে রং, মাঝের দিকে ফিকে। শেষ হলে OK চাপুন।</string>

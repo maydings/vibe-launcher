@@ -31,7 +31,8 @@ and gets out of the way. It works well enough for us that I'd like to share it w
 ## The home screen
 
 Your favourite apps sit in a dock at the bottom of the screen: four, five or six, to suit the size of
-your TV or as you choose. Press Down and the rest of your apps slide up in a grid. A single glass highlight springs from
+your TV, or as few as one, as you choose. Only the dock shows, with a faint arrow under it; press Down and
+the rest of your apps slide up in a grid. A single glass highlight springs from
 tile to tile.
 
 ![The app grid below the dock, with the glass highlight on YouTube Kids](vibe-launcher/docs/launcher-grid.jpg)
@@ -120,12 +121,14 @@ open it on a phone), where to report a problem, the license and the credits.
   asks before it restarts. An app can't restart the TV itself, and the adb version has no Home button
   service to ask the TV with, so it doesn't show this.
 
-**Appearance**: tiles per row, hiding inactive inputs, auto-hide, the screensaver clock and the
-highlight color.
+**Appearance**: tiles per row, apps in dock, hiding inactive inputs, auto-hide, the screensaver
+clock, the arrows and the highlight color.
 
 - **Tiles per row**: 4, 5 or 6. Tiles shrink to fit and the dock holds as many apps. Until you pick,
   it follows the TV's size: 4 under 51", 5 up to 74", 6 from 74" up. A streaming box can't tell
   the size of the TV it's plugged into, so it starts at 4.
+- **Apps in dock**: from 1 up to a full row (the default). A shorter dock keeps the tiles' size and
+  sits centred, its band fitted round it, without the app's big name over it; the rows below stay full.
 - **Hide inactive inputs**: the Inputs menu leaves out HDMI inputs with nothing connected. AV inputs
   always stay: TVs can't tell whether anything is plugged into them.
 - **Auto-hide**: On keeps the top bar out of sight on the dock and with the picture alone;
@@ -133,6 +136,9 @@ highlight color.
   passes the picture alone and reaches the bar.
 - **Screensaver clock**: On (the default) shows the time on the slideshow, in the same place as on the
   top bar but without the bar; Off leaves the pictures alone.
+- **Arrows**: On (the default) shows the faint arrows that point where the remote goes: above and below
+  the dock (to the picture alone, and to the rest of your apps), under the top bar, and at the screen's
+  edges with the picture alone. Off hides them all.
 - **Highlight color**: the color of what's focused, white by default: the glass, the top bar's buttons,
   the menus' rows, the Play button's fill and Settings' rows (their text turns dark or white to stay
   readable). Pick one on a color wheel with

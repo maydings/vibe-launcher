@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API कुञ्जी</string>
     <string name="youtube_key">YouTube API कुञ्जी</string>
     <string name="tiles_per_row">प्रति पङ्क्ति टाइल</string>
+    <string name="dock_apps">डकमा एपहरू</string>
     <string name="language">भाषा</string>
     <string name="language_system">प्रणाली जस्तै</string>
     <string name="hide_inactive_inputs">निष्क्रिय इनपुट लुकाउनुहोस्</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">नयाँ पृष्ठभूमिहरू डाउनलोड हुँदैछन्…</string>
     <string name="auto_hide_bar">स्वतः लुकाउनुहोस्</string>
     <string name="slideshow_clock">स्क्रिनसेभर घडी</string>
+    <string name="carets">तीरहरू</string>
     <string name="glass_color">हाइलाइटको रङ</string>
     <string name="glass_white">रिसेट</string>
     <string name="glass_color_hint">तीरहरूले थोप्लो सार्छन्: पाङ्ग्राको वरिपरि रङ, बीचतिर फिक्का। सकिएपछि OK थिच्नुहोस्।</string>

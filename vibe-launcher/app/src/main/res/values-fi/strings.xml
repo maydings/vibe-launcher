@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB-API-avain</string>
     <string name="youtube_key">YouTube-API-avain</string>
     <string name="tiles_per_row">Ruutuja rivillä</string>
+    <string name="dock_apps">Sovellukset telakassa</string>
     <string name="language">Kieli</string>
     <string name="language_system">Järjestelmän mukaan</string>
     <string name="hide_inactive_inputs">Piilota passiiviset tulot</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Ladataan uusia taustakuvia…</string>
     <string name="auto_hide_bar">Piilota automaattisesti</string>
     <string name="slideshow_clock">Kello näytönsäästäjässä</string>
+    <string name="carets">Nuolet</string>
     <string name="glass_color">Korostuksen väri</string>
     <string name="glass_white">Palauta</string>
     <string name="glass_color_hint">Nuolet siirtävät pistettä: väri kiertää kehää, keskustaa kohti vaaleampi. Lopuksi OK.</string>

@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API anahtarı</string>
     <string name="youtube_key">YouTube API anahtarı</string>
     <string name="tiles_per_row">Satır başına kutu</string>
+    <string name="dock_apps">Dock\'taki uygulamalar</string>
     <string name="language">Dil</string>
     <string name="language_system">Sistemle aynı</string>
     <string name="hide_inactive_inputs">Etkin olmayan girişleri gizle</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Yeni arka planlar indiriliyor…</string>
     <string name="auto_hide_bar">Otomatik gizle</string>
     <string name="slideshow_clock">Ekran koruyucuda saat</string>
+    <string name="carets">Oklar</string>
     <string name="glass_color">Vurgu rengi</string>
     <string name="glass_white">Sıfırla</string>
     <string name="glass_color_hint">Oklar noktayı hareket ettirir: renk tekerleğin çevresinde, merkeze doğru daha soluk. Bitince OK\'a basın.</string>

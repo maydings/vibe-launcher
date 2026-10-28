@@ -27,6 +27,7 @@
     <string name="tmdb_key">Klíč API TMDB</string>
     <string name="youtube_key">Klíč API YouTube</string>
     <string name="tiles_per_row">Dlaždic v řadě</string>
+    <string name="dock_apps">Aplikace v doku</string>
     <string name="language">Jazyk</string>
     <string name="language_system">Podle systému</string>
     <string name="hide_inactive_inputs">Skrýt neaktivní vstupy</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Stahování nových pozadí…</string>
     <string name="auto_hide_bar">Automaticky skrýt</string>
     <string name="slideshow_clock">Hodiny na spořiči</string>
+    <string name="carets">Šipky</string>
     <string name="glass_color">Barva zvýraznění</string>
     <string name="glass_white">Obnovit</string>
     <string name="glass_color_hint">Šipky posouvají tečku: barva je po obvodu kruhu, ke středu bledší. Hotovo potvrďte OK.</string>

@@ -27,6 +27,7 @@
     <string name="tmdb_key">کلید API برای TMDB</string>
     <string name="youtube_key">کلید API برای YouTube</string>
     <string name="tiles_per_row">کاشی در هر ردیف</string>
+    <string name="dock_apps">برنامه‌های داک</string>
     <string name="language">زبان</string>
     <string name="language_system">مثل سیستم</string>
     <string name="hide_inactive_inputs">پنهان کردن ورودی‌های غیرفعال</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">در حال دانلود پس‌زمینه‌های تازه…</string>
     <string name="auto_hide_bar">پنهان‌سازی خودکار</string>
     <string name="slideshow_clock">ساعت محافظ صفحه</string>
+    <string name="carets">پیکان‌ها</string>
     <string name="glass_color">رنگ برجسته‌سازی</string>
     <string name="glass_white">بازنشانی</string>
     <string name="glass_color_hint">پیکان‌ها نقطه را جابه‌جا می‌کنند: رنگ دور چرخ است و به سمت مرکز کم‌رنگ‌تر. در پایان OK را بزنید.</string>

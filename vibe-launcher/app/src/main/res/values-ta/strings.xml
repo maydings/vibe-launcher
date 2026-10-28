@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API சாவி</string>
     <string name="youtube_key">YouTube API சாவி</string>
     <string name="tiles_per_row">வரிசைக்கு டைல்கள்</string>
+    <string name="dock_apps">டாக்கில் உள்ள ஆப்ஸ்</string>
     <string name="language">மொழி</string>
     <string name="language_system">சிஸ்டம் போலவே</string>
     <string name="hide_inactive_inputs">செயலற்ற உள்ளீடுகளை மறை</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">புதிய பின்னணிகள் பதிவிறக்கப்படுகின்றன…</string>
     <string name="auto_hide_bar">தானாக மறை</string>
     <string name="slideshow_clock">ஸ்கிரீன்சேவர் கடிகாரம்</string>
+    <string name="carets">அம்புகள்</string>
     <string name="glass_color">தனிப்படுத்தல் நிறம்</string>
     <string name="glass_white">மீட்டமை</string>
     <string name="glass_color_hint">அம்புகள் புள்ளியை நகர்த்தும்: சக்கரத்தைச் சுற்றி நிறம், நடுவை நோக்கி வெளிர். முடிந்ததும் OK அழுத்தவும்.</string>

@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API යතුර</string>
     <string name="youtube_key">YouTube API යතුර</string>
     <string name="tiles_per_row">පේළියකට ටයිල්</string>
+    <string name="dock_apps">ඩොකයේ යෙදුම්</string>
     <string name="language">භාෂාව</string>
     <string name="language_system">පද්ධතියට අනුව</string>
     <string name="hide_inactive_inputs">අක්‍රිය ආදාන සඟවන්න</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">නව පසුබිම් බාගත වෙමින්…</string>
     <string name="auto_hide_bar">ස්වයංක්‍රීයව සඟවන්න</string>
     <string name="slideshow_clock">තිර සුරැකුම් ඔරලෝසුව</string>
+    <string name="carets">ඊතල</string>
     <string name="glass_color">ඉස්මතු කිරීමේ වර්ණය</string>
     <string name="glass_white">යළි සකසන්න</string>
     <string name="glass_color_hint">ඊතල තිත ගෙන යයි: රෝදය වටා වර්ණය, මැදට යන විට මැලවේ. අවසන් වූ විට OK ඔබන්න.</string>

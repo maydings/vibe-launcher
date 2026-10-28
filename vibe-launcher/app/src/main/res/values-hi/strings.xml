@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API कुंजी</string>
     <string name="youtube_key">YouTube API कुंजी</string>
     <string name="tiles_per_row">हर पंक्ति में टाइलें</string>
+    <string name="dock_apps">डॉक में ऐप</string>
     <string name="language">भाषा</string>
     <string name="language_system">सिस्टम जैसी</string>
     <string name="hide_inactive_inputs">निष्क्रिय इनपुट छिपाएँ</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">नए बैकड्रॉप डाउनलोड हो रहे हैं…</string>
     <string name="auto_hide_bar">अपने-आप छिपाएं</string>
     <string name="slideshow_clock">स्क्रीनसेवर घड़ी</string>
+    <string name="carets">तीर</string>
     <string name="glass_color">हाइलाइट का रंग</string>
     <string name="glass_white">रीसेट</string>
     <string name="glass_color_hint">तीर बिंदु को हिलाते हैं: पहिए के चारों ओर रंग, बीच की ओर हल्का। हो जाने पर OK दबाएँ।</string>

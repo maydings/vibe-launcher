@@ -27,6 +27,7 @@
     <string name="tmdb_key">API ключ за TMDB</string>
     <string name="youtube_key">API ключ за YouTube</string>
     <string name="tiles_per_row">Плочки на ред</string>
+    <string name="dock_apps">Приложения в дока</string>
     <string name="language">Език</string>
     <string name="language_system">Като системата</string>
     <string name="hide_inactive_inputs">Скриване на неактивните входове</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Изтегляне на нови фонове…</string>
     <string name="auto_hide_bar">Автоскриване</string>
     <string name="slideshow_clock">Часовник на скрийнсейвъра</string>
+    <string name="carets">Стрелки</string>
     <string name="glass_color">Цвят на открояването</string>
     <string name="glass_white">Нулиране</string>
     <string name="glass_color_hint">Стрелките местят точката: цветът е по кръга, по-блед към средата. OK, когато сте готови.</string>

@@ -27,6 +27,7 @@
     <string name="tmdb_key">Klucz API TMDB</string>
     <string name="youtube_key">Klucz API YouTube</string>
     <string name="tiles_per_row">Kafelki w rzędzie</string>
+    <string name="dock_apps">Aplikacje w doku</string>
     <string name="language">Język</string>
     <string name="language_system">Jak w systemie</string>
     <string name="hide_inactive_inputs">Ukryj nieaktywne wejścia</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Pobieranie nowych teł…</string>
     <string name="auto_hide_bar">Automatyczne ukrywanie</string>
     <string name="slideshow_clock">Zegar na wygaszaczu</string>
+    <string name="carets">Strzałki</string>
     <string name="glass_color">Kolor podświetlenia</string>
     <string name="glass_white">Resetuj</string>
     <string name="glass_color_hint">Strzałki przesuwają kropkę: kolor wokół koła, bledszy ku środkowi. Na koniec naciśnij OK.</string>

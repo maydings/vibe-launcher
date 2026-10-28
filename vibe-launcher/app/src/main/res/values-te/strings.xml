@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API కీ</string>
     <string name="youtube_key">YouTube API కీ</string>
     <string name="tiles_per_row">వరుసకు టైల్స్</string>
+    <string name="dock_apps">డాక్‌లో యాప్‌లు</string>
     <string name="language">భాష</string>
     <string name="language_system">సిస్టమ్ లాగానే</string>
     <string name="hide_inactive_inputs">నిష్క్రియ ఇన్‌పుట్‌లను దాచు</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">కొత్త బ్యాక్‌డ్రాప్‌లు డౌన్‌లోడ్ అవుతున్నాయి…</string>
     <string name="auto_hide_bar">ఆటోమేటిక్‌గా దాచు</string>
     <string name="slideshow_clock">స్క్రీన్‌సేవర్ గడియారం</string>
+    <string name="carets">బాణాలు</string>
     <string name="glass_color">హైలైట్ రంగు</string>
     <string name="glass_white">రీసెట్</string>
     <string name="glass_color_hint">బాణాలు చుక్కను కదుపుతాయి: చక్రం చుట్టూ రంగు, మధ్య వైపు లేతగా. పూర్తయ్యాక OK నొక్కండి.</string>

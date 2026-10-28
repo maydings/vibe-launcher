@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API-nøkkel</string>
     <string name="youtube_key">YouTube API-nøkkel</string>
     <string name="tiles_per_row">Ruter per rad</string>
+    <string name="dock_apps">Apper i dokken</string>
     <string name="language">Språk</string>
     <string name="language_system">Som systemet</string>
     <string name="hide_inactive_inputs">Skjul inaktive innganger</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Laster ned nye bakgrunner…</string>
     <string name="auto_hide_bar">Skjul automatisk</string>
     <string name="slideshow_clock">Klokke på skjermsparer</string>
+    <string name="carets">Piler</string>
     <string name="glass_color">Uthevingsfarge</string>
     <string name="glass_white">Tilbakestill</string>
     <string name="glass_color_hint">Pilene flytter prikken: fargen rundt hjulet, blekere mot midten. Trykk OK når du er ferdig.</string>

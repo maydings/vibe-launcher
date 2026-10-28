@@ -27,6 +27,7 @@
     <string name="tmdb_key">Ufunguo wa API wa TMDB</string>
     <string name="youtube_key">Ufunguo wa API wa YouTube</string>
     <string name="tiles_per_row">Vigae kwa kila safu</string>
+    <string name="dock_apps">Programu kwenye gati</string>
     <string name="language">Lugha</string>
     <string name="language_system">Kama mfumo</string>
     <string name="hide_inactive_inputs">Ficha viingizo visivyotumika</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Inapakua mandhari mapya…</string>
     <string name="auto_hide_bar">Ficha kiotomatiki</string>
     <string name="slideshow_clock">Saa kwenye skrini ya kupumzisha</string>
+    <string name="carets">Mishale</string>
     <string name="glass_color">Rangi ya kuangazia</string>
     <string name="glass_white">Weka upya</string>
     <string name="glass_color_hint">Mishale husogeza kitone: rangi kuzunguka gurudumu, hafifu zaidi kuelekea katikati. Bonyeza OK ukimaliza.</string>

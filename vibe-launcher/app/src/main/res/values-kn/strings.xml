@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API ಕೀ</string>
     <string name="youtube_key">YouTube API ಕೀ</string>
     <string name="tiles_per_row">ಸಾಲಿಗೆ ಟೈಲ್‌ಗಳು</string>
+    <string name="dock_apps">ಡಾಕ್‌ನಲ್ಲಿ ಆ್ಯಪ್‌ಗಳು</string>
     <string name="language">ಭಾಷೆ</string>
     <string name="language_system">ಸಿಸ್ಟಂನಂತೆ</string>
     <string name="hide_inactive_inputs">ನಿಷ್ಕ್ರಿಯ ಇನ್‌ಪುಟ್‌ಗಳನ್ನು ಮರೆಮಾಡಿ</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">ಹೊಸ ಹಿನ್ನೆಲೆಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…</string>
     <string name="auto_hide_bar">ಸ್ವಯಂ ಮರೆಮಾಡು</string>
     <string name="slideshow_clock">ಸ್ಕ್ರೀನ್‌ಸೇವರ್ ಗಡಿಯಾರ</string>
+    <string name="carets">ಬಾಣಗಳು</string>
     <string name="glass_color">ಹೈಲೈಟ್ ಬಣ್ಣ</string>
     <string name="glass_white">ಮರುಹೊಂದಿಸಿ</string>
     <string name="glass_color_hint">ಬಾಣಗಳು ಚುಕ್ಕೆಯನ್ನು ಸರಿಸುತ್ತವೆ: ಚಕ್ರದ ಸುತ್ತ ಬಣ್ಣ, ಮಧ್ಯದ ಕಡೆಗೆ ಮಸುಕು. ಮುಗಿದಾಗ OK ಒತ್ತಿ.</string>

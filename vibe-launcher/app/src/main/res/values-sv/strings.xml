@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API-nyckel</string>
     <string name="youtube_key">YouTube API-nyckel</string>
     <string name="tiles_per_row">Rutor per rad</string>
+    <string name="dock_apps">Appar i dockan</string>
     <string name="language">Språk</string>
     <string name="language_system">Som systemet</string>
     <string name="hide_inactive_inputs">Dölj inaktiva ingångar</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Hämtar nya bakgrunder…</string>
     <string name="auto_hide_bar">Dölj automatiskt</string>
     <string name="slideshow_clock">Klocka på skärmsläckare</string>
+    <string name="carets">Pilar</string>
     <string name="glass_color">Markeringsfärg</string>
     <string name="glass_white">Återställ</string>
     <string name="glass_color_hint">Pilarna flyttar pricken: färgen runt hjulet, blekare mot mitten. Tryck OK när du är klar.</string>

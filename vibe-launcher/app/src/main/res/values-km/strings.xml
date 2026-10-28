@@ -27,6 +27,7 @@
     <string name="tmdb_key">សោ API របស់ TMDB</string>
     <string name="youtube_key">សោ API របស់ YouTube</string>
     <string name="tiles_per_row">ប្រអប់ក្នុងមួយជួរ</string>
+    <string name="dock_apps">កម្មវិធី​ក្នុង​ដុក</string>
     <string name="language">ភាសា</string>
     <string name="language_system">តាមប្រព័ន្ធ</string>
     <string name="hide_inactive_inputs">លាក់ការបញ្ចូលដែលមិនសកម្ម</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">កំពុងទាញយកផ្ទៃខាងក្រោយថ្មី…</string>
     <string name="auto_hide_bar">លាក់ដោយស្វ័យប្រវត្តិ</string>
     <string name="slideshow_clock">នាឡិកាលើធាតុរក្សាអេក្រង់</string>
+    <string name="carets">ព្រួញ</string>
     <string name="glass_color">ពណ៌​បន្លិច</string>
     <string name="glass_white">កំណត់ឡើងវិញ</string>
     <string name="glass_color_hint">ព្រួញ​ផ្លាស់ទី​ចំណុច៖ ពណ៌​នៅ​ជុំវិញ​កង់ ស្រាល​ជាង​ឆ្ពោះ​ទៅ​កណ្ដាល។ ចុច OK នៅពេលរួចរាល់។</string>

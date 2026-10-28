@@ -27,6 +27,7 @@
     <string name="tmdb_key">Chave da API do TMDB</string>
     <string name="youtube_key">Chave da API do YouTube</string>
     <string name="tiles_per_row">Blocos por linha</string>
+    <string name="dock_apps">Apps na barra</string>
     <string name="language">Idioma</string>
     <string name="language_system">Igual ao sistema</string>
     <string name="hide_inactive_inputs">Ocultar entradas inativas</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Baixando fundos novos…</string>
     <string name="auto_hide_bar">Ocultar automaticamente</string>
     <string name="slideshow_clock">Relógio no protetor de tela</string>
+    <string name="carets">Setas</string>
     <string name="glass_color">Cor do destaque</string>
     <string name="glass_white">Redefinir</string>
     <string name="glass_color_hint">As setas movem o ponto: a cor ao redor da roda, mais clara em direção ao centro. Aperte OK ao terminar.</string>

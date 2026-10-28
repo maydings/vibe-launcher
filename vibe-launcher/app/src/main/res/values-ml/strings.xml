@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API കീ</string>
     <string name="youtube_key">YouTube API കീ</string>
     <string name="tiles_per_row">ഓരോ വരിയിലും ടൈലുകൾ</string>
+    <string name="dock_apps">ഡോക്കിലെ ആപ്പുകൾ</string>
     <string name="language">ഭാഷ</string>
     <string name="language_system">സിസ്റ്റം പോലെ</string>
     <string name="hide_inactive_inputs">നിഷ്‌ക്രിയ ഇൻപുട്ടുകൾ മറയ്ക്കുക</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">പുതിയ പശ്ചാത്തലങ്ങൾ ഡൗൺലോഡ് ചെയ്യുന്നു…</string>
     <string name="auto_hide_bar">സ്വയം മറയ്ക്കുക</string>
     <string name="slideshow_clock">സ്ക്രീൻസേവർ ക്ലോക്ക്</string>
+    <string name="carets">അമ്പടയാളങ്ങൾ</string>
     <string name="glass_color">ഹൈലൈറ്റ് നിറം</string>
     <string name="glass_white">പുനഃസജ്ജമാക്കുക</string>
     <string name="glass_color_hint">അമ്പടയാളങ്ങൾ കുത്ത് നീക്കുന്നു: ചക്രത്തിന് ചുറ്റും നിറം, നടുവിലേക്ക് മങ്ങിയത്. കഴിഞ്ഞാൽ OK അമർത്തുക.</string>

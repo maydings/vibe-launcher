@@ -17,7 +17,9 @@ final class VibeSettings {
     private static final String AUTO_HIDE_BAR = "autoHideBar";
     private static final String SLIDESHOW_CLOCK = "slideshowClock";
     private static final String POWER_ON_HOME = "powerOnHome";
+    private static final String DOCK_APPS = "dockApps";
     private static final String GLASS_TINT = "glassTint";
+    private static final String CARETS = "carets";
 
     private final SharedPreferences prefs;
 
@@ -48,6 +50,20 @@ final class VibeSettings {
 
     void setColumns(int columns) {
         prefs.edit().putInt(COLUMNS, columns).apply();
+    }
+
+    /**
+     * How many apps the dock holds, 1 up to a row's worth; a full row unless fewer were chosen (kept as 0, so
+     * the dock stays full when tiles per row changes).
+     */
+    int dockApps(int columns) {
+        int n = prefs.getInt(DOCK_APPS, 0);
+        return n >= 1 && n < columns ? n : columns;
+    }
+
+    /** Fewer than a row's worth, or 0 for a full row. */
+    void setDockApps(int n) {
+        prefs.edit().putInt(DOCK_APPS, n).apply();
     }
 
     /** The chosen language's tag (see Lang), or "" to follow the TV's own. */
@@ -89,6 +105,15 @@ final class VibeSettings {
 
     void setSlideshowClock(boolean show) {
         prefs.edit().putBoolean(SLIDESHOW_CLOCK, show).apply();
+    }
+
+    /** The small arrows on Home that show where the remote goes (on by default). */
+    boolean carets() {
+        return prefs.getBoolean(CARETS, true);
+    }
+
+    void setCarets(boolean show) {
+        prefs.edit().putBoolean(CARETS, show).apply();
     }
 
     /** Home shortly after the screen turns on, over whatever the TV woke up on (off by default; PowerOnHome). */

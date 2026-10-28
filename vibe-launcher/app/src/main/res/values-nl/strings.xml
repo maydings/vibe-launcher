@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB-API-sleutel</string>
     <string name="youtube_key">YouTube-API-sleutel</string>
     <string name="tiles_per_row">Tegels per rij</string>
+    <string name="dock_apps">Apps in het dock</string>
     <string name="language">Taal</string>
     <string name="language_system">Zoals het systeem</string>
     <string name="hide_inactive_inputs">Inactieve ingangen verbergen</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Nieuwe achtergronden downloaden…</string>
     <string name="auto_hide_bar">Automatisch verbergen</string>
     <string name="slideshow_clock">Klok op screensaver</string>
+    <string name="carets">Pijlen</string>
     <string name="glass_color">Markeringskleur</string>
     <string name="glass_white">Herstellen</string>
     <string name="glass_color_hint">De pijlen verplaatsen de stip: de kleur rond het wiel, bleker naar het midden. Druk op OK als je klaar bent.</string>

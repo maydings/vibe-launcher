@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API 키</string>
     <string name="youtube_key">YouTube API 키</string>
     <string name="tiles_per_row">한 줄 타일 수</string>
+    <string name="dock_apps">독의 앱</string>
     <string name="language">언어</string>
     <string name="language_system">시스템과 같게</string>
     <string name="hide_inactive_inputs">비활성 입력 숨기기</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">새 배경을 다운로드하는 중…</string>
     <string name="auto_hide_bar">자동 숨기기</string>
     <string name="slideshow_clock">화면 보호기 시계</string>
+    <string name="carets">화살표</string>
     <string name="glass_color">강조 색상</string>
     <string name="glass_white">초기화</string>
     <string name="glass_color_hint">화살표로 점을 움직입니다. 원을 따라 색이 바뀌고, 가운데로 갈수록 옅어집니다. 다 되면 OK를 누르세요.</string>

@@ -27,6 +27,7 @@
     <string name="tmdb_key">Ключ API TMDB</string>
     <string name="youtube_key">Ключ API YouTube</string>
     <string name="tiles_per_row">Плиток у ряду</string>
+    <string name="dock_apps">Застосунки в доку</string>
     <string name="language">Мова</string>
     <string name="language_system">Як у системі</string>
     <string name="hide_inactive_inputs">Приховувати неактивні входи</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Завантаження нових фонів…</string>
     <string name="auto_hide_bar">Автоприховування</string>
     <string name="slideshow_clock">Годинник на заставці</string>
+    <string name="carets">Стрілки</string>
     <string name="glass_color">Колір виділення</string>
     <string name="glass_white">Скинути</string>
     <string name="glass_color_hint">Стрілки рухають крапку: колір — по колу, до центру блідіший. Коли готово, натисніть OK.</string>

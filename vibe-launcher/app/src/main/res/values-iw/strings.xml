@@ -27,6 +27,7 @@
     <string name="tmdb_key">מפתח API של TMDB</string>
     <string name="youtube_key">מפתח API של YouTube</string>
     <string name="tiles_per_row">אריחים בשורה</string>
+    <string name="dock_apps">אפליקציות במעגן</string>
     <string name="language">שפה</string>
     <string name="language_system">כמו במערכת</string>
     <string name="hide_inactive_inputs">הסתרת כניסות לא פעילות</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">מורידים תמונות רקע חדשות…</string>
     <string name="auto_hide_bar">הסתרה אוטומטית</string>
     <string name="slideshow_clock">שעון בשומר המסך</string>
+    <string name="carets">חיצים</string>
     <string name="glass_color">צבע ההדגשה</string>
     <string name="glass_white">איפוס</string>
     <string name="glass_color_hint">החצים מזיזים את הנקודה: הצבע סביב הגלגל, חיוור יותר לכיוון המרכז. בסיום לוחצים OK.</string>

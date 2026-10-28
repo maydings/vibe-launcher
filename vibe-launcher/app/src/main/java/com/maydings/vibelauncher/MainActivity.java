@@ -96,6 +96,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     /** Tiles per row and dock slots: Vibe Launcher settings (4, 5 or 6), else config.xml. Set in onCreate. */
     static int COLUMNS = 4;
+    /** How many apps the dock holds: a full row, or fewer, centred (Settings > Appearance > Apps in dock). */
+    static int DOCK = 4;
     /** How long the rows take to slide out of sight; the top bar moves at the same speed. */
     private static final long PICTURE_SLIDE_MS = 450;
     private static final long CARET_FADE_MS = 150;   // the carets go before the menus move
@@ -156,7 +158,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     };
     private final Runnable showPictureFromBar = this::showPictureFromBar;
     private float dockPanelTop;   // the dock's panel top on screen: how far the rows slide to leave it
-    private View caretDock, caretBar, caretUp, caretDown, caretLeft, caretRight;
+    private View caretDock, caretMore, caretBar, caretUp, caretDown, caretLeft, caretRight;
     private boolean playShown;   // the Play pill is in (or coming in)
     private VibeSettings settings;
     /** Hold OK with the picture alone: the Play pill fills, and a long press opens backdropLink. */
@@ -304,11 +306,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private final Runnable refreshPools = new Runnable() {
         @Override
         public void run() {
-            List<String> dock = new ArrayList<>();
-            for (int i = 0; i < COLUMNS; i++) {
-                String pkg = adapter.packageAt(i);
-                if (pkg != null) dock.add(pkg);
-            }
+            List<String> dock = dockApps();
             for (String pkg : dock) backdrops.refresh(pkg);
             handler.removeCallbacks(this);
             // Builds just started count as fresh, so this lands on the next pool to fall due.
@@ -343,6 +341,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         // Tiles per row: chosen in Vibe Launcher settings (4, 5 or 6), else by the screen's size.
         settings = new VibeSettings(this);
         COLUMNS = settings.columns(defaultColumns());
+        DOCK = settings.dockApps(COLUMNS);
         liveTvPkg = getString(R.string.live_tv_package).trim();
 
         root = findViewById(R.id.root);
@@ -406,6 +405,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         rows = findViewById(R.id.rows);
         topBar = findViewById(R.id.topBar);
         caretDock = findViewById(R.id.caretDock);
+        caretMore = findViewById(R.id.caretMore);
         caretBar = findViewById(R.id.caretBar);
         caretUp = findViewById(R.id.caretUp);
         caretDown = findViewById(R.id.caretDown);
@@ -416,14 +416,63 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         holdPlayFill = findViewById(R.id.holdPlayFill);
         playInfo = findViewById(R.id.playInfo);
         setHoldFill(0f);
-        grid.setLayoutManager(new GridLayoutManager(this, COLUMNS));
+        adapter = new AppAdapter(this, this, COLUMNS, DOCK);
+        // In half tiles, so a dock of fewer tiles than a row can be centred (AppAdapter.spanSize).
+        GridLayoutManager layout = new GridLayoutManager(this, COLUMNS * 2) {
+            // onTileFocused scrolls the rows itself, for every tile. RecyclerView's own scroll to bring a
+            // focused tile on screen measures differently (the tile, not the glass; the dock's row reaches a
+            // little past the screen's edge), so the two pulled a row a few dp up and down going sideways.
+            @Override
+            public boolean requestChildRectangleOnScreen(@NonNull RecyclerView parent, @NonNull View child,
+                                                         @NonNull Rect rect, boolean immediate,
+                                                         boolean focusedChildVisible) {
+                return false;
+            }
+
+            // The rows below the dock are laid out (and their pictures loaded) before they scroll in, not
+            // during the scroll down from the dock.
+            @Override
+            protected void calculateExtraLayoutSpace(@NonNull RecyclerView.State state, @NonNull int[] extra) {
+                extra[0] = 0;
+                extra[1] = grid.getHeight() / 2;
+            }
+        };
+        layout.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return adapter.spanSize(position);
+            }
+        });
+        grid.setLayoutManager(layout);
         grid.setHasFixedSize(true);
         grid.setItemAnimator(new TileAnimator());
-        grid.addItemDecoration(new DockDecoration(COLUMNS, density));
+        grid.addItemDecoration(new DockDecoration(adapter, COLUMNS, density));
         grid.setLayoutAnimation(new LayoutAnimationController(
                 AnimationUtils.loadAnimation(this, R.anim.tile_enter), 0.06f));
-        adapter = new AppAdapter(this, this, COLUMNS);
         grid.setAdapter(adapter);
+        // A shorter dock's centring is the first and last tiles' insets (DockDecoration), which RecyclerView
+        // keeps per view: moved in or out of those places without a rebind, a tile kept the old ones.
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                grid.post(grid::invalidateItemDecorations);
+            }
+
+            @Override
+            public void onItemRangeInserted(int start, int count) {
+                onChanged();
+            }
+
+            @Override
+            public void onItemRangeRemoved(int start, int count) {
+                onChanged();
+            }
+
+            @Override
+            public void onItemRangeMoved(int from, int to, int count) {
+                onChanged();
+            }
+        });
         FrostView frost = findViewById(R.id.frost);
         frost.setSource(grid);
         frost.setBackdrop(backdrop);
@@ -433,8 +482,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             int h = b - t;
             int tileH = AppAdapter.tileHeightPx(AppAdapter.tileWidthPx(
                     (r - l) - grid.getPaddingLeft() - grid.getPaddingRight(), COLUMNS, density));
-            int dockRow = AppAdapter.itemHeightPx(tileH, density) + (int) ((6 + 12) * density);   // plus DockDecoration offsets
-            int want = Math.max(0, h - dockRow - (int) (30 * density));
+            // The dock's panel ends DockDecoration.PAD_DP under its tiles, which sit 6dp (DockDecoration) plus 8dp
+            // (the item's padding) into their row. Under the panel, half the space between two rows of tiles
+            // (an item is its tile plus 44dp): the next row stays below the screen's edge until you go down,
+            // and caretMore sits in that space.
+            int below = AppAdapter.itemHeightPx(tileH, density) - tileH;
+            int want = Math.max(0, h - tileH - Math.round((6 + 8 + DockDecoration.PAD_DP) * density) - below / 2);
             boolean moved = grid.getPaddingTop() != want;
             if (moved) {
                 grid.setPadding(grid.getPaddingLeft(), want, grid.getPaddingRight(), grid.getPaddingBottom());
@@ -504,7 +557,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
                 if (!stillShown) {   // no picture to show alone (none, or not loaded yet): the dock tile
                     cancelPictureSoon();
-                    focusTile(lastFocused % COLUMNS);
+                    focusTile(adapter.dockTileFor(lastFocused));
                     return true;
                 }
                 if (settings.autoHideBar()) {   // the bar goes either way: the picture alone at once, no wait
@@ -515,7 +568,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 if (pictureSoon) {   // Down again straight away: scrolling down, to the dock
                     cancelPictureSoon();
                     // Back to the dock tile Up came from, not whichever tile the focus finder picks.
-                    focusTile(lastFocused % COLUMNS);
+                    focusTile(adapter.dockTileFor(lastFocused));
                     return true;
                 }
                 // The picture alone, as Up from the dock, after the same wait.
@@ -619,7 +672,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 backdrops.reshuffle();
                 backdropPkg = null;
                 // Loaded here: the tile usually kept its focus, so no focus change would load it.
-                if (heroShown && lastFocused < COLUMNS) {
+                if (heroShown && adapter.inDock(lastFocused)) {
                     showBackdrop(adapter.packageAt(lastFocused), adapter.ambientColorAt(lastFocused));
                 }
             }
@@ -789,7 +842,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         // Work out the scroll first so the glass goes straight to the row's final spot. Aiming at the
         // row's current spot and then following the scroll sent it too far up/down and back.
         View item = (View) card.getParent();
-        boolean dock = position < COLUMNS;
+        boolean dock = adapter.inDock(position);
         int dy;
         if (dock) {
             // Dock: park it at the bottom of the screen and show the top shelf for this app.
@@ -799,10 +852,13 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             // Scroll just enough so the whole glass (not only the tile) is visible.
             int top = item.getTop() - (int) pad * 2, bottom = item.getBottom() + (int) pad;
             int parentTop = grid.getPaddingTop(), parentBottom = grid.getHeight() - grid.getPaddingBottom();
-            // When the glass is taller than the space (the 940E: 328 px of glass, 318 of room), favour the
-            // top: fitting the bottom pushed the top out, so each sideways press scrolled 10 px back and forth.
-            dy = top < parentTop ? top - parentTop
-                    : (bottom > parentBottom ? Math.min(bottom - parentBottom, top - parentTop) : 0);
+            // The row goes in the dock's place at the bottom of the screen. When the glass and the names under
+            // it are taller than that (the dock rests low, with nothing under its tiles), the row comes up just
+            // far enough for its names to show: going up into the empty space where the app's name is with
+            // the dock, not off the bottom of the screen. One place for the whole row, so going sideways never
+            // moves it.
+            int slotTop = Math.min(parentTop, parentBottom - (bottom - top));
+            dy = top < slotTop ? top - slotTop : (bottom > parentBottom ? bottom - parentBottom : 0);
         }
         // The grid can't scroll past its ends (the bottom row), so only plan what is actually left.
         // Measured from the first or last tile when it's laid out: RecyclerView's scroll range is only an
@@ -845,11 +901,14 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void showHero(int position, float dockTopInRoot) {
         // Centred just above the dock's panel, which starts DockDecoration.PAD_DP above its tiles.
         dockPanelTop = dockTopInRoot - DockDecoration.PAD_DP * density;
-        caretDock.setY(dockPanelTop - 6 * density - caretDock.getLayoutParams().height);
+        // 4dp over the panel, as caretMore is under it: the same space from the panel to either chevron.
+        caretDock.setY(dockPanelTop - 4 * density - caretDock.getLayoutParams().height);
         String label = adapter.labelAt(position);
         int color = adapter.ambientColorAt(position);
         float y = dockPanelTop - 26 * density - heroName.getHeight();
         boolean changed = !label.contentEquals(heroName.getText());
+        // No big name over a dock that doesn't fill its row (Settings > Appearance > Apps in dock).
+        heroName.setVisibility(adapter.dockCount() < COLUMNS ? View.INVISIBLE : View.VISIBLE);
 
         if (!heroShown) {
             heroName.setText(label);
@@ -975,10 +1034,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     @Override
     public boolean onTileVerticalKey(int position, int keyCode) {
-        int count = adapter.getItemCount();
         int target;
         if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {
-            if (position < COLUMNS) {                      // dock row: the picture alone, then the top bar
+            if (adapter.inDock(position)) {                // dock row: the picture alone, then the top bar
                 if (!stillShown) {                         // no picture (none, or not loaded yet): the top bar
                     cancelPictureSoon();
                     focusTopBar();
@@ -997,11 +1055,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 handler.postDelayed(showPictureSoon, PICTURE_DELAY_MS);
                 return true;
             }
-            target = position - COLUMNS;
+            target = adapter.above(position);   // from the row under the dock, the nearest dock tile
         } else {
-            int lastRowStart = ((count - 1) / COLUMNS) * COLUMNS;
-            if (position >= lastRowStart) return true;     // already on the last row: stay put
-            target = Math.min(position + COLUMNS, count - 1);
+            target = adapter.below(position);
+            if (target == position) return true;           // already on the last row: stay put
         }
         focusTile(target);
         // Handled here rather than by Android's focus search, which is what plays the click for left/right.
@@ -1235,7 +1292,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         pictureSoon = false;
         // Focus goes to the tile once the rows are out of sight (menusMoved): focused now, it would be seen
         // growing to its focused size on the way out.
-        focusAfterSlide = lastFocused % COLUMNS;
+        focusAfterSlide = adapter.dockTileFor(lastFocused);
         showPictureOnly(SoundEffectConstants.NAVIGATION_DOWN);
     }
 
@@ -1292,14 +1349,17 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     /**
      * The carets that show where the remote goes. With the picture alone, on the screen's edges: up (the
      * top bar), down (back to the apps), and left and right when the app has another picture. Otherwise
-     * one right above the dock while on it, and one just under the top bar while on it: both lead to the
-     * picture alone. None on the lower rows.
+     * one right above the dock while on it (to the picture alone) and one under it (to the other apps, if
+     * there are any), and one just under the top bar while on it (to the picture alone). None on the lower
+     * rows, and none at all when they're turned off (Settings > Appearance).
      */
     private void updateCarets() {
         // None while the menus move, in the slideshow, or under a menu or dialog (Home hasn't the focus).
-        boolean on = !caretsHeld && !slideshow && hasWindowFocus();
+        boolean on = !caretsHeld && !slideshow && hasWindowFocus() && settings.carets();
         boolean more = on && pictureOnly && backdropPkg != null && backdrops.stillCount(backdropPkg) > 1;
-        showCaret(caretDock, on && !pictureOnly && onDock());
+        boolean dock = on && !pictureOnly && onDock();
+        showCaret(caretDock, dock);
+        showCaret(caretMore, dock && adapter.getItemCount() > adapter.dockCount());
         caretBar.setY(topBar.getHeight() + 4 * density);   // just under the bar
         showCaret(caretBar, on && !pictureOnly && onTopBar());
         showCaret(caretUp, on && pictureOnly);
@@ -1345,7 +1405,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     /**
-     * Where the Play pill goes: its left edge level with the first tile's, its bottom edge 12dp above where
+     * Where the Play pill goes: its left edge level with a full dock's first tile's (wherever a shorter dock
+     * starts), its bottom edge 12dp above where
      * the dock's band is when the rows show. Both from the rows' resting place, so it's the same however the
      * picture alone was reached (from the dock, or down from the top bar while the rows were still away).
      */
@@ -1357,10 +1418,13 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             View card = ((AppAdapter.Holder) first).card;
             Rect r = new Rect(0, 0, card.getWidth(), card.getHeight());
             root.offsetDescendantRectToMyCoords(card, r);
+            // Where a full dock's first tile is: a shorter dock is centred, and its first tile further in.
+            float cell = (grid.getWidth() - grid.getPaddingLeft() - grid.getPaddingRight()) / (float) COLUMNS;
+            int left = r.left - Math.round(adapter.dockInset() * cell);
             ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) holdPlay.getLayoutParams();
-            if (lp.leftMargin != r.left) {
-                lp.leftMargin = r.left;
-                lp.setMarginStart(r.left);
+            if (lp.leftMargin != left) {
+                lp.leftMargin = left;
+                lp.setMarginStart(left);
                 holdPlay.setLayoutParams(lp);
             }
         }
@@ -1411,7 +1475,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         View focused = getCurrentFocus();
         if (focused == null || focused.getId() != R.id.card) return false;
         RecyclerView.ViewHolder holder = grid.findContainingViewHolder(focused);
-        return holder != null && holder.getBindingAdapterPosition() >= COLUMNS;
+        return holder != null && holder.getBindingAdapterPosition() >= adapter.dockCount();
     }
 
     private boolean onTopBar() {
@@ -1429,7 +1493,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (focused == null || focused.getId() != R.id.card) return false;
         RecyclerView.ViewHolder holder = grid.findContainingViewHolder(focused);
         int position = holder != null ? holder.getBindingAdapterPosition() : RecyclerView.NO_POSITION;
-        return position != RecyclerView.NO_POSITION && position < COLUMNS;
+        return position != RecyclerView.NO_POSITION && adapter.inDock(position);
     }
 
     /**
@@ -1556,7 +1620,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      */
     private List<Integer> dockAppPositions() {
         List<Integer> positions = new ArrayList<>();
-        for (int i = 0; i < COLUMNS; i++) {
+        for (int i = 0; i < adapter.dockCount(); i++) {
             if (adapter.packageAt(i) != null) positions.add(i);
         }
         return positions;
@@ -1578,7 +1642,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         glass.animate().alpha(0f).setDuration(CARET_FADE_MS).start();
         showSlideClock(pictureOnly ? 0 : PICTURE_SLIDE_MS);   // once the top bar, with its clock, is away
         if (!pictureOnly) {
-            if (!onDock()) focusAfterSlide = lastFocused % COLUMNS;   // the top bar or a lower row
+            if (!onDock()) focusAfterSlide = adapter.dockTileFor(lastFocused);   // the top bar or a lower row
             showPictureOnly(-1);
         } else {
             updateCarets();   // the carets and play button go
@@ -1662,7 +1726,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void switchApp(int direction) {
         List<Integer> dock = dockAppPositions();
         if (dock.size() < 2) return;
-        int at = Math.max(0, dock.indexOf(lastFocused % COLUMNS));
+        int at = Math.max(0, dock.indexOf(adapter.dockTileFor(lastFocused)));
         int next = dock.get(((at + direction) % dock.size() + dock.size()) % dock.size());   // a dock position
         String pkg = adapter.packageAt(next);
         cancelHold();

@@ -27,6 +27,7 @@
     <string name="tmdb_key">TMDB API ključ</string>
     <string name="youtube_key">YouTube API ključ</string>
     <string name="tiles_per_row">Pločica u retku</string>
+    <string name="dock_apps">Aplikacije u doku</string>
     <string name="language">Jezik</string>
     <string name="language_system">Kao sustav</string>
     <string name="hide_inactive_inputs">Sakrij neaktivne ulaze</string>
@@ -85,6 +86,7 @@
     <string name="backdrops_reloading">Preuzimanje novih pozadina…</string>
     <string name="auto_hide_bar">Automatsko skrivanje</string>
     <string name="slideshow_clock">Sat na čuvaru zaslona</string>
+    <string name="carets">Strelice</string>
     <string name="glass_color">Boja isticanja</string>
     <string name="glass_white">Vrati</string>
     <string name="glass_color_hint">Strelice pomiču točku: boja je po krugu, prema sredini bljeđa. Za kraj pritisnite OK.</string>

@@ -89,7 +89,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
 
     private final Context ctx;
     private final TileListener listener;
-    private final int dockSize;
+    /** Tiles per row, and how many of the first make the dock (as many or fewer, centred). */
+    private final int columns, dockSize;
     /** Dock order (res/values/config.xml, dock_apps). */
     private final List<String> favourites;
     /** Never shown as tiles (res/values/config.xml, hidden_apps). */
@@ -99,9 +100,10 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
     /** Position of the tile being moved, or -1. */
     private int moving = -1;
 
-    AppAdapter(Context ctx, TileListener listener, int dockSize) {
+    AppAdapter(Context ctx, TileListener listener, int columns, int dockSize) {
         this.ctx = ctx;
         this.listener = listener;
+        this.columns = columns;
         this.dockSize = dockSize;
         this.favourites = Arrays.asList(ctx.getResources().getStringArray(R.array.dock_apps));
         this.hidden = new HashSet<>(Arrays.asList(ctx.getResources().getStringArray(R.array.hidden_apps)));
@@ -297,8 +299,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_LEFT: to = from - 1; break;
             case KeyEvent.KEYCODE_DPAD_RIGHT: to = from + 1; break;
-            case KeyEvent.KEYCODE_DPAD_UP: to = from - dockSize; break;
-            case KeyEvent.KEYCODE_DPAD_DOWN: to = Math.min(from + dockSize, last); break;
+            case KeyEvent.KEYCODE_DPAD_UP: to = above(from); break;
+            case KeyEvent.KEYCODE_DPAD_DOWN: to = Math.min(below(from), last); break;
             default: return false;
         }
         if (to < 0 || to > last || to == from) return true;
@@ -309,6 +311,79 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         notifyItemRangeChanged(Math.min(from, to), Math.abs(to - from) + 1, PAYLOAD_STATE);
         listener.onTileMoved(to);
         return true;
+    }
+
+    // ---- rows: the dock (dockSize tiles, centred), then rows of columns -------------------------------
+
+    /** The dock's tiles as there are apps: fewer than dockSize when the TV has only a few. */
+    int dockCount() {
+        return Math.min(dockSize, items.size());
+    }
+
+    boolean inDock(int position) {
+        return position >= 0 && position < dockCount();
+    }
+
+    /** The first position of position's row. */
+    int rowStart(int position) {
+        int dock = dockCount();
+        return position < dock ? 0 : dock + (position - dock) / columns * columns;
+    }
+
+    /** The last position of position's row. */
+    int rowEnd(int position) {
+        int dock = dockCount();
+        return position < dock ? dock - 1 : Math.min(rowStart(position) + columns - 1, items.size() - 1);
+    }
+
+    /** The empty space before the dock's first tile, and after its last, in tiles (halves when odd). */
+    float dockInset() {
+        return (columns - dockCount()) / 2f;
+    }
+
+    /**
+     * The tile above: from the row under the dock, the dock tile nearest above it (the dock is centred, and
+     * may be shorter); -1 from the dock.
+     */
+    int above(int position) {
+        int dock = dockCount();
+        if (position < dock) return -1;
+        int col = position - dock;
+        if (col >= columns) return position - columns;
+        return Math.max(0, Math.min(dock - 1, Math.round(col - dockInset())));
+    }
+
+    /** The tile below, the nearest under a dock tile; the same position on the last row (nowhere to go). */
+    int below(int position) {
+        int dock = dockCount(), count = items.size();
+        if (position < dock) {
+            if (count <= dock) return position;
+            return Math.min(count - 1, dock + Math.max(0, Math.min(columns - 1, Math.round(position + dockInset()))));
+        }
+        if (rowStart(position) + columns >= count) return position;   // the last row
+        return Math.min(position + columns, count - 1);
+    }
+
+    /** The dock tile a position belongs under: itself in the dock, else the nearest above its column. */
+    int dockTileFor(int position) {
+        int dock = dockCount();
+        if (dock == 0) return 0;
+        if (position < dock) return position;
+        return Math.max(0, Math.min(dock - 1, Math.round((position - dock) % columns - dockInset())));
+    }
+
+    /**
+     * Spans for the grid, in half tiles (its span count is twice the columns): a tile takes two, and the
+     * dock's first and last tiles take the empty space beside them too, which DockDecoration insets, so a
+     * shorter dock is centred and the next row starts on a line of its own.
+     */
+    int spanSize(int position) {
+        int dock = dockCount(), extra = columns - dock;   // the empty half tiles on each side
+        if (position >= dock) return 2;
+        int span = 2;
+        if (position == 0) span += extra;
+        if (position == dock - 1) span += extra;
+        return span;
     }
 
     /** The TV's App info page for pkg, or null where the firmware has none. */
@@ -334,7 +409,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         // Sized to the column width: 4 per row keeps the design size, 5 and 6 shrink to fit.
         float density = parent.getResources().getDisplayMetrics().density;
         int width = parent.getWidth() > 0 ? parent.getWidth() : parent.getMeasuredWidth();
-        int w = tileWidthPx(width - parent.getPaddingLeft() - parent.getPaddingRight(), dockSize, density);
+        int w = tileWidthPx(width - parent.getPaddingLeft() - parent.getPaddingRight(), columns, density);
         int h = tileHeightPx(w);
         View card = v.findViewById(R.id.card);
         ViewGroup.LayoutParams cardLp = card.getLayoutParams();
@@ -388,7 +463,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
 
     /** The parts that change while moving: dock label visibility and the move outline. */
     private void bindState(Holder h, int position) {
-        h.name.setVisibility(position < dockSize ? View.INVISIBLE : View.VISIBLE);   // the dock has no labels
+        h.name.setVisibility(inDock(position) ? View.INVISIBLE : View.VISIBLE);   // the dock has no labels
         h.card.setForeground(position == moving ? ctx.getDrawable(R.drawable.move_outline) : null);
     }
 
@@ -593,9 +668,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
                 if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
                     // Stay put at a row's ends: Android's focus search would otherwise jump up to the top bar.
                     if (pos == RecyclerView.NO_POSITION) return false;
-                    int col = pos % adapter.dockSize;
-                    return keyCode == KeyEvent.KEYCODE_DPAD_LEFT ? col == 0
-                            : col == adapter.dockSize - 1 || pos == adapter.getItemCount() - 1;
+                    return keyCode == KeyEvent.KEYCODE_DPAD_LEFT ? pos == adapter.rowStart(pos)
+                            : pos == adapter.rowEnd(pos);
                 }
                 if (keyCode != KeyEvent.KEYCODE_DPAD_UP && keyCode != KeyEvent.KEYCODE_DPAD_DOWN) return false;
                 return listener != null && pos != RecyclerView.NO_POSITION && listener.onTileVerticalKey(pos, keyCode);
