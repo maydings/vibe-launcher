@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Hämtar nya bakgrunder…</string>
     <string name="auto_hide_bar">Dölj automatiskt</string>
     <string name="slideshow_clock">Klocka på skärmsläckare</string>
+    <string name="glass_color">Markeringsfärg</string>
+    <string name="glass_white">Återställ</string>
+    <string name="glass_color_hint">Pilarna flyttar pricken: färgen runt hjulet, blekare mot mitten. Tryck OK när du är klar.</string>
     <string name="power_on_home">Hem vid påslagning</string>
     <string name="restart">Starta om…</string>
     <string name="time_remaining">%1$s kvar</string>

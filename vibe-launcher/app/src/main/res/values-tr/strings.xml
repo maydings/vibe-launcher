@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Yeni arka planlar indiriliyor…</string>
     <string name="auto_hide_bar">Otomatik gizle</string>
     <string name="slideshow_clock">Ekran koruyucuda saat</string>
+    <string name="glass_color">Vurgu rengi</string>
+    <string name="glass_white">Sıfırla</string>
+    <string name="glass_color_hint">Oklar noktayı hareket ettirir: renk tekerleğin çevresinde, merkeze doğru daha soluk. Bitince OK\'a basın.</string>
     <string name="power_on_home">Açılışta ana ekran</string>
     <string name="restart">Yeniden başlat…</string>
     <string name="time_remaining">%1$s kaldı</string>

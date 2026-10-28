@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Descargando fondos nuevos…</string>
     <string name="auto_hide_bar">Ocultar automáticamente</string>
     <string name="slideshow_clock">Reloj en el salvapantallas</string>
+    <string name="glass_color">Color de resaltado</string>
+    <string name="glass_white">Restablecer</string>
+    <string name="glass_color_hint">Las flechas mueven el punto: el color alrededor de la rueda, más pálido hacia el centro. Pulsa OK al terminar.</string>
     <string name="power_on_home">Inicio al encender</string>
     <string name="restart">Reiniciar…</string>
     <string name="time_remaining">Quedan %1$s</string>

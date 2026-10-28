@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">กำลังดาวน์โหลดภาพพื้นหลังใหม่…</string>
     <string name="auto_hide_bar">ซ่อนอัตโนมัติ</string>
     <string name="slideshow_clock">นาฬิกาบนภาพพักหน้าจอ</string>
+    <string name="glass_color">สีไฮไลต์</string>
+    <string name="glass_white">รีเซ็ต</string>
+    <string name="glass_color_hint">ลูกศรเลื่อนจุด: สีไล่รอบวงล้อ และจางลงเมื่อเข้าใกล้กลาง กด OK เมื่อเสร็จ</string>
     <string name="power_on_home">หน้าหลักเมื่อเปิดเครื่อง</string>
     <string name="restart">รีสตาร์ท…</string>
     <string name="time_remaining">เหลือ %1$s</string>

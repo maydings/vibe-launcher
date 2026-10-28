@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">새 배경을 다운로드하는 중…</string>
     <string name="auto_hide_bar">자동 숨기기</string>
     <string name="slideshow_clock">화면 보호기 시계</string>
+    <string name="glass_color">강조 색상</string>
+    <string name="glass_white">초기화</string>
+    <string name="glass_color_hint">화살표로 점을 움직입니다. 원을 따라 색이 바뀌고, 가운데로 갈수록 옅어집니다. 다 되면 OK를 누르세요.</string>
     <string name="power_on_home">전원 켤 때 홈</string>
     <string name="restart">다시 시작…</string>
     <string name="time_remaining">%1$s 남음</string>

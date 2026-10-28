@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">מורידים תמונות רקע חדשות…</string>
     <string name="auto_hide_bar">הסתרה אוטומטית</string>
     <string name="slideshow_clock">שעון בשומר המסך</string>
+    <string name="glass_color">צבע ההדגשה</string>
+    <string name="glass_white">איפוס</string>
+    <string name="glass_color_hint">החצים מזיזים את הנקודה: הצבע סביב הגלגל, חיוור יותר לכיוון המרכז. בסיום לוחצים OK.</string>
     <string name="power_on_home">מסך הבית בהדלקה</string>
     <string name="restart">הפעלה מחדש…</string>
     <string name="time_remaining">נותרו %1$s</string>

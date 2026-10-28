@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">နောက်ခံပုံအသစ်များ ဒေါင်းလုဒ်လုပ်နေသည်…</string>
     <string name="auto_hide_bar">အလိုအလျောက် ဝှက်ရန်</string>
     <string name="slideshow_clock">မျက်နှာပြင်ထိန်း နာရီ</string>
+    <string name="glass_color">အသားပေး အရောင်</string>
+    <string name="glass_white">ပြန်သတ်မှတ်ရန်</string>
+    <string name="glass_color_hint">မြားများက အစက်ကို ရွှေ့သည်- ဘီးပတ်လည်တွင် အရောင်၊ အလယ်သို့ ဖျော့လာသည်။ ပြီးလျှင် OK ကို နှိပ်ပါ။</string>
     <string name="power_on_home">ဖွင့်သည့်အခါ ပင်မ</string>
     <string name="restart">ပြန်စရန်…</string>
     <string name="time_remaining">%1$s ကျန်သည်</string>

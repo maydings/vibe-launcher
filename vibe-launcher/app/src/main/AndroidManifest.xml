@@ -40,6 +40,11 @@
             <action android:name="android.settings.APPLICATION_DETAILS_SETTINGS" />
             <data android:scheme="package" />
         </intent>
+        <!-- The TV's Settings, or its settings app where that doesn't answer (SystemSettings). -->
+        <intent>
+            <action android:name="android.settings.SETTINGS" />
+        </intent>
+        <package android:name="com.android.tv.settings" />
     </queries>
 
     <application

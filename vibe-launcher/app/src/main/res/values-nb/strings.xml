@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Laster ned nye bakgrunner…</string>
     <string name="auto_hide_bar">Skjul automatisk</string>
     <string name="slideshow_clock">Klokke på skjermsparer</string>
+    <string name="glass_color">Uthevingsfarge</string>
+    <string name="glass_white">Tilbakestill</string>
+    <string name="glass_color_hint">Pilene flytter prikken: fargen rundt hjulet, blekere mot midten. Trykk OK når du er ferdig.</string>
     <string name="power_on_home">Hjem ved påslåing</string>
     <string name="restart">Start på nytt…</string>
     <string name="time_remaining">%1$s igjen</string>

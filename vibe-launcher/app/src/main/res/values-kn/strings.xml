@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">ಹೊಸ ಹಿನ್ನೆಲೆಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…</string>
     <string name="auto_hide_bar">ಸ್ವಯಂ ಮರೆಮಾಡು</string>
     <string name="slideshow_clock">ಸ್ಕ್ರೀನ್‌ಸೇವರ್ ಗಡಿಯಾರ</string>
+    <string name="glass_color">ಹೈಲೈಟ್ ಬಣ್ಣ</string>
+    <string name="glass_white">ಮರುಹೊಂದಿಸಿ</string>
+    <string name="glass_color_hint">ಬಾಣಗಳು ಚುಕ್ಕೆಯನ್ನು ಸರಿಸುತ್ತವೆ: ಚಕ್ರದ ಸುತ್ತ ಬಣ್ಣ, ಮಧ್ಯದ ಕಡೆಗೆ ಮಸುಕು. ಮುಗಿದಾಗ OK ಒತ್ತಿ.</string>
     <string name="power_on_home">ಆನ್ ಆದಾಗ ಹೋಮ್</string>
     <string name="restart">ಮರುಪ್ರಾರಂಭಿಸಿ…</string>
     <string name="time_remaining">%1$s ಉಳಿದಿದೆ</string>

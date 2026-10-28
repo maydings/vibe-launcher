@@ -75,10 +75,25 @@ RESULT=$(tv_install "$APK")
 [[ "$RESULT" == *Success* ]] || die "install failed: $RESULT (a release build installed? uninstall it first: debug and release builds are signed with different keys)"
 # Started as Home (the HOME action and category), not as an app: "am start -n" alone opens it in an ordinary
 # task, and the next Home press starts a second copy beside it.
+# Except with a stock launcher left on (STOCK_LAUNCHER=none while one is enabled): started as Home, Vibe
+# Launcher stays Android's home process until a restart, and Android then blocks the stock launcher's
+# launches from the remote's app buttons (upstream #1274). There it's started by its name only.
 # Replaced while it was Home, Android may have restarted it mid-update, and upstream saw such an instance
 # (a TCL, Android 11) leave the previous app's picture on screen; stopped, the start below makes a fresh one.
+STOCK_ON=""
+if [ "$STOCK_LAUNCHER" = none ]; then
+  ENABLED=$(tv "pm list packages -e" | sed 's/^package://')
+  for k in $STOCK_LAUNCHERS; do
+    if grep -qx "$k" <<< "$ENABLED"; then STOCK_ON=$k; fi
+  done
+fi
 tv "am force-stop ${LAUNCHER_ACTIVITY%%/*}" >/dev/null
-tv "am start -a android.intent.action.MAIN -c android.intent.category.HOME -n $LAUNCHER_ACTIVITY" >/dev/null
+if [ -n "$STOCK_ON" ]; then
+  say "$STOCK_ON stays on: starting Vibe Launcher as an app, not as Home."
+  tv "am start -n $LAUNCHER_ACTIVITY" >/dev/null
+else
+  tv "am start -a android.intent.action.MAIN -c android.intent.category.HOME -n $LAUNCHER_ACTIVITY" >/dev/null
+fi
 sleep 2
 [ "$STOCK_LAUNCHER" = none ] || tv "pm disable-user --user 0 $STOCK_LAUNCHER"
 tv "cmd package set-home-activity --user 0 $LAUNCHER_ACTIVITY" >/dev/null

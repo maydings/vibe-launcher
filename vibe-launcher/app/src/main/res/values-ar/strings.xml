@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">جارٍ تنزيل خلفيات جديدة…</string>
     <string name="auto_hide_bar">إخفاء تلقائي</string>
     <string name="slideshow_clock">ساعة شاشة التوقف</string>
+    <string name="glass_color">لون التمييز</string>
+    <string name="glass_white">إعادة تعيين</string>
+    <string name="glass_color_hint">تحرّك الأسهم النقطة: اللون حول العجلة، ويبهت كلما اقتربت من الوسط. اضغط OK عند الانتهاء.</string>
     <string name="power_on_home">الرئيسية عند التشغيل</string>
     <string name="restart">إعادة التشغيل…</string>
     <string name="time_remaining">متبقٍ: %1$s</string>

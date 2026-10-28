@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">නව පසුබිම් බාගත වෙමින්…</string>
     <string name="auto_hide_bar">ස්වයංක්‍රීයව සඟවන්න</string>
     <string name="slideshow_clock">තිර සුරැකුම් ඔරලෝසුව</string>
+    <string name="glass_color">ඉස්මතු කිරීමේ වර්ණය</string>
+    <string name="glass_white">යළි සකසන්න</string>
+    <string name="glass_color_hint">ඊතල තිත ගෙන යයි: රෝදය වටා වර්ණය, මැදට යන විට මැලවේ. අවසන් වූ විට OK ඔබන්න.</string>
     <string name="power_on_home">ක්‍රියාත්මක වන විට මුල් පිටුව</string>
     <string name="restart">නැවත අරඹන්න…</string>
     <string name="time_remaining">%1$s ඉතිරියි</string>

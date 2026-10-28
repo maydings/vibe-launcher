@@ -82,6 +82,9 @@
     <string name="backdrops_reloading">Downloading new backdrops…</string>
     <string name="auto_hide_bar">Auto-hide</string>
     <string name="slideshow_clock">Screensaver clock</string>
+    <string name="glass_color">Highlight color</string>
+    <string name="glass_white">Reset</string>
+    <string name="glass_color_hint">The arrows move the dot: the color around the wheel, paler towards the middle. OK when done.</string>
     <string name="power_on_home">Home at power-on</string>
     <string name="restart">Restart…</string>
     <string name="time_remaining">%1$s remaining</string>

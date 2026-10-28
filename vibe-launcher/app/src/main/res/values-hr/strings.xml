@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Preuzimanje novih pozadina…</string>
     <string name="auto_hide_bar">Automatsko skrivanje</string>
     <string name="slideshow_clock">Sat na čuvaru zaslona</string>
+    <string name="glass_color">Boja isticanja</string>
+    <string name="glass_white">Vrati</string>
+    <string name="glass_color_hint">Strelice pomiču točku: boja je po krugu, prema sredini bljeđa. Za kraj pritisnite OK.</string>
     <string name="power_on_home">Početni zaslon pri uključivanju</string>
     <string name="restart">Ponovno pokreni…</string>
     <string name="time_remaining">Još %1$s</string>

@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Memuat turun latar baharu…</string>
     <string name="auto_hide_bar">Sembunyi automatik</string>
     <string name="slideshow_clock">Jam penyelamat skrin</string>
+    <string name="glass_color">Warna serlahan</string>
+    <string name="glass_white">Tetapkan semula</string>
+    <string name="glass_color_hint">Anak panah menggerakkan titik: warna di sekeliling roda, lebih pucat ke tengah. Tekan OK apabila selesai.</string>
     <string name="power_on_home">Laman utama semasa dihidupkan</string>
     <string name="restart">Mula semula…</string>
     <string name="time_remaining">%1$s lagi</string>

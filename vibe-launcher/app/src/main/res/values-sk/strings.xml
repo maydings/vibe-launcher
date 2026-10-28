@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Sťahujú sa nové pozadia…</string>
     <string name="auto_hide_bar">Automaticky skryť</string>
     <string name="slideshow_clock">Hodiny na šetriči</string>
+    <string name="glass_color">Farba zvýraznenia</string>
+    <string name="glass_white">Obnoviť</string>
+    <string name="glass_color_hint">Šípky posúvajú bodku: farba je po obvode kruhu, k stredu bledšia. Na záver stlačte OK.</string>
     <string name="power_on_home">Domov po zapnutí</string>
     <string name="restart">Reštartovať…</string>
     <string name="time_remaining">Zostáva %1$s</string>

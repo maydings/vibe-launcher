@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Загрузка новых фонов…</string>
     <string name="auto_hide_bar">Автоскрытие</string>
     <string name="slideshow_clock">Часы на заставке</string>
+    <string name="glass_color">Цвет выделения</string>
+    <string name="glass_white">Сбросить</string>
+    <string name="glass_color_hint">Стрелки двигают точку: цвет — по кругу, к центру бледнее. По готовности нажмите OK.</string>
     <string name="power_on_home">Главный экран при включении</string>
     <string name="restart">Перезагрузить…</string>
     <string name="time_remaining">Осталось: %1$s</string>

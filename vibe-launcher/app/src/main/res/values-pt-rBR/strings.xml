@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Baixando fundos novos…</string>
     <string name="auto_hide_bar">Ocultar automaticamente</string>
     <string name="slideshow_clock">Relógio no protetor de tela</string>
+    <string name="glass_color">Cor do destaque</string>
+    <string name="glass_white">Redefinir</string>
+    <string name="glass_color_hint">As setas movem o ponto: a cor ao redor da roda, mais clara em direção ao centro. Aperte OK ao terminar.</string>
     <string name="power_on_home">Início ao ligar</string>
     <string name="restart">Reiniciar…</string>
     <string name="time_remaining">Faltam %1$s</string>

@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">కొత్త బ్యాక్‌డ్రాప్‌లు డౌన్‌లోడ్ అవుతున్నాయి…</string>
     <string name="auto_hide_bar">ఆటోమేటిక్‌గా దాచు</string>
     <string name="slideshow_clock">స్క్రీన్‌సేవర్ గడియారం</string>
+    <string name="glass_color">హైలైట్ రంగు</string>
+    <string name="glass_white">రీసెట్</string>
+    <string name="glass_color_hint">బాణాలు చుక్కను కదుపుతాయి: చక్రం చుట్టూ రంగు, మధ్య వైపు లేతగా. పూర్తయ్యాక OK నొక్కండి.</string>
     <string name="power_on_home">ఆన్ చేసినప్పుడు హోమ్</string>
     <string name="restart">రీస్టార్ట్ చేయి…</string>
     <string name="time_remaining">%1$s మిగిలి ఉంది</string>

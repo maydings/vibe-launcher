@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">正在下載新的背景圖…</string>
     <string name="auto_hide_bar">自動隱藏</string>
     <string name="slideshow_clock">螢幕保護程式時鐘</string>
+    <string name="glass_color">醒目提示顏色</string>
+    <string name="glass_white">重設</string>
+    <string name="glass_color_hint">方向鍵移動圓點：沿色輪改變顏色，越靠近中心越淡。完成後按 OK。</string>
     <string name="power_on_home">開機時顯示主畫面</string>
     <string name="restart">重新啟動…</string>
     <string name="time_remaining">剩餘 %1$s</string>

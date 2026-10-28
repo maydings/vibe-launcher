@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">កំពុងទាញយកផ្ទៃខាងក្រោយថ្មី…</string>
     <string name="auto_hide_bar">លាក់ដោយស្វ័យប្រវត្តិ</string>
     <string name="slideshow_clock">នាឡិកាលើធាតុរក្សាអេក្រង់</string>
+    <string name="glass_color">ពណ៌​បន្លិច</string>
+    <string name="glass_white">កំណត់ឡើងវិញ</string>
+    <string name="glass_color_hint">ព្រួញ​ផ្លាស់ទី​ចំណុច៖ ពណ៌​នៅ​ជុំវិញ​កង់ ស្រាល​ជាង​ឆ្ពោះ​ទៅ​កណ្ដាល។ ចុច OK នៅពេលរួចរាល់។</string>
     <string name="power_on_home">ទំព័រដើមពេលបើក</string>
     <string name="restart">ចាប់ផ្ដើមឡើងវិញ…</string>
     <string name="time_remaining">នៅសល់ %1$s</string>

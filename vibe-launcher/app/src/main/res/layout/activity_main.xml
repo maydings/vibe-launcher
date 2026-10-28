@@ -91,18 +91,23 @@
         android:singleLine="true" />
 
     <!-- The wrapper clips at its edge; the grid itself must not clip so scaled tiles can overflow their
-         cells. The grid runs the full height so tiles scroll up under the top bar, which frosts them. -->
+         cells. The grid runs the full height so tiles scroll up under the top bar, which frosts them.
+         The tiles keep 50dp from the screen's sides: 36dp of margin and 14dp of the grid's padding, which
+         leaves the dock's band (DockDecoration, 14dp around the tiles) room for its sides inside the clip;
+         at 6 tiles per row they were cut off. -->
     <FrameLayout
         android:id="@+id/rows"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp">
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
             android:paddingTop="10dp"
             android:paddingBottom="40dp"
             android:clipToPadding="false"

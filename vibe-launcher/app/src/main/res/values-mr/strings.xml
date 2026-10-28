@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">नवीन पार्श्वभूमी डाउनलोड होत आहेत…</string>
     <string name="auto_hide_bar">आपोआप लपवा</string>
     <string name="slideshow_clock">स्क्रीनसेव्हर घड्याळ</string>
+    <string name="glass_color">हायलाइटचा रंग</string>
+    <string name="glass_white">रीसेट</string>
+    <string name="glass_color_hint">बाण ठिपका हलवतात: चाकाभोवती रंग, मध्याकडे फिकट. झाल्यावर OK दाबा.</string>
     <string name="power_on_home">सुरू होताना होम</string>
     <string name="restart">रीस्टार्ट करा…</string>
     <string name="time_remaining">%1$s बाकी</string>

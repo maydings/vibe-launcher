@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Pobieranie nowych teł…</string>
     <string name="auto_hide_bar">Automatyczne ukrywanie</string>
     <string name="slideshow_clock">Zegar na wygaszaczu</string>
+    <string name="glass_color">Kolor podświetlenia</string>
+    <string name="glass_white">Resetuj</string>
+    <string name="glass_color_hint">Strzałki przesuwają kropkę: kolor wokół koła, bledszy ku środkowi. Na koniec naciśnij OK.</string>
     <string name="power_on_home">Ekran główny po włączeniu</string>
     <string name="restart">Uruchom ponownie…</string>
     <string name="time_remaining">Pozostało: %1$s</string>

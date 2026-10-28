@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Nieuwe achtergronden downloaden…</string>
     <string name="auto_hide_bar">Automatisch verbergen</string>
     <string name="slideshow_clock">Klok op screensaver</string>
+    <string name="glass_color">Markeringskleur</string>
+    <string name="glass_white">Herstellen</string>
+    <string name="glass_color_hint">De pijlen verplaatsen de stip: de kleur rond het wiel, bleker naar het midden. Druk op OK als je klaar bent.</string>
     <string name="power_on_home">Start bij inschakelen</string>
     <string name="restart">Opnieuw opstarten…</string>
     <string name="time_remaining">Nog %1$s</string>

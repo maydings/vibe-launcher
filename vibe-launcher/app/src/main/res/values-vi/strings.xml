@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Đang tải ảnh nền mới…</string>
     <string name="auto_hide_bar">Tự động ẩn</string>
     <string name="slideshow_clock">Đồng hồ trên trình bảo vệ màn hình</string>
+    <string name="glass_color">Màu đánh dấu</string>
+    <string name="glass_white">Đặt lại</string>
+    <string name="glass_color_hint">Các phím mũi tên di chuyển chấm: màu quanh vòng tròn, nhạt dần về giữa. Nhấn OK khi xong.</string>
     <string name="power_on_home">Màn hình chính khi bật</string>
     <string name="restart">Khởi động lại…</string>
     <string name="time_remaining">Còn %1$s</string>

@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Inapakua mandhari mapya…</string>
     <string name="auto_hide_bar">Ficha kiotomatiki</string>
     <string name="slideshow_clock">Saa kwenye skrini ya kupumzisha</string>
+    <string name="glass_color">Rangi ya kuangazia</string>
+    <string name="glass_white">Weka upya</string>
+    <string name="glass_color_hint">Mishale husogeza kitone: rangi kuzunguka gurudumu, hafifu zaidi kuelekea katikati. Bonyeza OK ukimaliza.</string>
     <string name="power_on_home">Nyumbani inapowashwa</string>
     <string name="restart">Washa upya…</string>
     <string name="time_remaining">Zimebaki %1$s</string>

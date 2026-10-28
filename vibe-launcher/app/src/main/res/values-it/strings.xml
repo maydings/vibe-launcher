@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Download di nuovi sfondi…</string>
     <string name="auto_hide_bar">Nascondi automaticamente</string>
     <string name="slideshow_clock">Orologio nel salvaschermo</string>
+    <string name="glass_color">Colore di evidenziazione</string>
+    <string name="glass_white">Ripristina</string>
+    <string name="glass_color_hint">Le frecce muovono il punto: il colore attorno alla ruota, più tenue verso il centro. Premi OK quando hai finito.</string>
     <string name="power_on_home">Home all\'accensione</string>
     <string name="restart">Riavvia…</string>
     <string name="time_remaining">Ancora %1$s</string>

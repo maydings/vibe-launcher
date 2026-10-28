@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Mengunduh latar baru…</string>
     <string name="auto_hide_bar">Sembunyikan otomatis</string>
     <string name="slideshow_clock">Jam di screensaver</string>
+    <string name="glass_color">Warna sorotan</string>
+    <string name="glass_white">Setel ulang</string>
+    <string name="glass_color_hint">Tombol panah menggerakkan titik: warna di sekeliling roda, makin pucat ke tengah. Tekan OK jika sudah selesai.</string>
     <string name="power_on_home">Beranda saat dinyalakan</string>
     <string name="restart">Mulai ulang…</string>
     <string name="time_remaining">Sisa %1$s</string>

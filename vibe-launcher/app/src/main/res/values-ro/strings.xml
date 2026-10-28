@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Se descarcă fundaluri noi…</string>
     <string name="auto_hide_bar">Ascundere automată</string>
     <string name="slideshow_clock">Ceas pe screensaver</string>
+    <string name="glass_color">Culoarea evidențierii</string>
+    <string name="glass_white">Resetează</string>
+    <string name="glass_color_hint">Săgețile mută punctul: culoarea de jur împrejurul roții, mai palidă spre centru. Apasă OK când ai terminat.</string>
     <string name="power_on_home">Acasă la pornire</string>
     <string name="restart">Repornește…</string>
     <string name="time_remaining">Mai sunt %1$s</string>

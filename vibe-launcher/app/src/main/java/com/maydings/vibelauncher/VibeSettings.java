@@ -17,6 +17,7 @@ final class VibeSettings {
     private static final String AUTO_HIDE_BAR = "autoHideBar";
     private static final String SLIDESHOW_CLOCK = "slideshowClock";
     private static final String POWER_ON_HOME = "powerOnHome";
+    private static final String GLASS_TINT = "glassTint";
 
     private final SharedPreferences prefs;
 
@@ -97,6 +98,15 @@ final class VibeSettings {
 
     void setPowerOnHome(boolean on) {
         prefs.edit().putBoolean(POWER_ON_HOME, on).apply();
+    }
+
+    /** The glass highlight's colour, RGB (white by default; GlassView). */
+    int glassTint() {
+        return prefs.getInt(GLASS_TINT, 0xFFFFFF);
+    }
+
+    void setGlassTint(int rgb) {
+        prefs.edit().putInt(GLASS_TINT, rgb & 0xFFFFFF).apply();
     }
 
     void save(String tmdbKey, String youtubeKey, String plexToken) {

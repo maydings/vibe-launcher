@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">نئے پس منظر ڈاؤن لوڈ ہو رہے ہیں…</string>
     <string name="auto_hide_bar">خود بخود چھپائیں</string>
     <string name="slideshow_clock">اسکرین سیور گھڑی</string>
+    <string name="glass_color">نمایاں رنگ</string>
+    <string name="glass_white">ری سیٹ</string>
+    <string name="glass_color_hint">تیر نقطے کو ہلاتے ہیں: پہیے کے گرد رنگ، درمیان کی طرف ہلکا۔ مکمل ہونے پر OK دبائیں۔</string>
     <string name="power_on_home">آن ہونے پر ہوم</string>
     <string name="restart">دوبارہ شروع کریں…</string>
     <string name="time_remaining">%1$s باقی</string>

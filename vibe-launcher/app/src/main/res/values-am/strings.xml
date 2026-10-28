@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">አዲስ ዳራዎችን በማውረድ ላይ…</string>
     <string name="auto_hide_bar">በራስ-ሰር ደብቅ</string>
     <string name="slideshow_clock">የስክሪን ቆጣቢ ሰዓት</string>
+    <string name="glass_color">የማድመቂያ ቀለም</string>
+    <string name="glass_white">ዳግም አስጀምር</string>
+    <string name="glass_color_hint">ቀስቶቹ ነጥቡን ያንቀሳቅሳሉ፦ ቀለሙ በክቡ ዙሪያ፣ ወደ መሃል ሲጠጋ ይደበዝዛል። ሲጨርሱ OK ይጫኑ።</string>
     <string name="power_on_home">ሲበራ መነሻ</string>
     <string name="restart">እንደገና አስጀምር…</string>
     <string name="time_remaining">%1$s ቀርቷል</string>

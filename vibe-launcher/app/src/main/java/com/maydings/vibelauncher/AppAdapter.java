@@ -414,7 +414,14 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
             h.icon.setImageDrawable(e.icon);
             h.icon.setVisibility(View.VISIBLE);
             h.label.setText(e.label);
-            h.label.setVisibility(View.VISIBLE);
+            // All apps is the grid of squares alone, centred: its name shows above the dock when it's focused.
+            h.label.setVisibility(e.allApps ? View.GONE : View.VISIBLE);
+            ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) h.icon.getLayoutParams();
+            int below = e.allApps ? 0 : Math.round(14 * ctx.getResources().getDisplayMetrics().density);
+            if (lp.bottomMargin != below) {
+                lp.bottomMargin = below;
+                h.icon.setLayoutParams(lp);
+            }
         }
         h.card.setOnClickListener(v -> launch(e));
         h.card.setOnLongClickListener(v -> {

@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">در حال دانلود پس‌زمینه‌های تازه…</string>
     <string name="auto_hide_bar">پنهان‌سازی خودکار</string>
     <string name="slideshow_clock">ساعت محافظ صفحه</string>
+    <string name="glass_color">رنگ برجسته‌سازی</string>
+    <string name="glass_white">بازنشانی</string>
+    <string name="glass_color_hint">پیکان‌ها نقطه را جابه‌جا می‌کنند: رنگ دور چرخ است و به سمت مرکز کم‌رنگ‌تر. در پایان OK را بزنید.</string>
     <string name="power_on_home">خانه هنگام روشن شدن</string>
     <string name="restart">راه‌اندازی مجدد…</string>
     <string name="time_remaining">%1$s باقی‌مانده</string>

@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">正在下载新的背景图…</string>
     <string name="auto_hide_bar">自动隐藏</string>
     <string name="slideshow_clock">屏保时钟</string>
+    <string name="glass_color">高亮颜色</string>
+    <string name="glass_white">重置</string>
+    <string name="glass_color_hint">方向键移动圆点：沿色轮改变颜色，越靠近中心越浅。完成后按 OK。</string>
     <string name="power_on_home">开机时显示主屏幕</string>
     <string name="restart">重启…</string>
     <string name="time_remaining">剩余 %1$s</string>

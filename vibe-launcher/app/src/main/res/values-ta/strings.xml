@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">புதிய பின்னணிகள் பதிவிறக்கப்படுகின்றன…</string>
     <string name="auto_hide_bar">தானாக மறை</string>
     <string name="slideshow_clock">ஸ்கிரீன்சேவர் கடிகாரம்</string>
+    <string name="glass_color">தனிப்படுத்தல் நிறம்</string>
+    <string name="glass_white">மீட்டமை</string>
+    <string name="glass_color_hint">அம்புகள் புள்ளியை நகர்த்தும்: சக்கரத்தைச் சுற்றி நிறம், நடுவை நோக்கி வெளிர். முடிந்ததும் OK அழுத்தவும்.</string>
     <string name="power_on_home">இயக்கும்போது முகப்பு</string>
     <string name="restart">மறுதொடக்கம்…</string>
     <string name="time_remaining">%1$s மீதம்</string>

@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Nagda-download ng mga bagong backdrop…</string>
     <string name="auto_hide_bar">Awtomatikong itago</string>
     <string name="slideshow_clock">Orasan sa screensaver</string>
+    <string name="glass_color">Kulay ng highlight</string>
+    <string name="glass_white">I-reset</string>
+    <string name="glass_color_hint">Ginagalaw ng mga arrow ang tuldok: ang kulay sa paligid ng gulong, mas maputla papunta sa gitna. Pindutin ang OK kapag tapos na.</string>
     <string name="power_on_home">Home sa pag-on</string>
     <string name="restart">I-restart…</string>
     <string name="time_remaining">%1$s pa ang natitira</string>

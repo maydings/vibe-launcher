@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Ladataan uusia taustakuvia…</string>
     <string name="auto_hide_bar">Piilota automaattisesti</string>
     <string name="slideshow_clock">Kello näytönsäästäjässä</string>
+    <string name="glass_color">Korostuksen väri</string>
+    <string name="glass_white">Palauta</string>
+    <string name="glass_color_hint">Nuolet siirtävät pistettä: väri kiertää kehää, keskustaa kohti vaaleampi. Lopuksi OK.</string>
     <string name="power_on_home">Koti käynnistettäessä</string>
     <string name="restart">Käynnistä uudelleen…</string>
     <string name="time_remaining">%1$s jäljellä</string>

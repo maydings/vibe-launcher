@@ -239,6 +239,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private final Handler handler = new Handler(Looper.getMainLooper());
     /** Home is covered by Vibe Launcher's own Settings, not an app: coming back is no new visit. */
     private boolean inSettings;
+    /** The highlight color (Settings), as last applied: the menus' rows take it as they're made. */
+    private int highlight = 0xFFFFFFFF;
     /** The Home there is, for Settings (it makes Home again after a new grid or language). */
     private static java.lang.ref.WeakReference<MainActivity> current = new java.lang.ref.WeakReference<>(null);
 
@@ -570,6 +572,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     protected void onResume() {
         super.onResume();
         inSettings = false;
+        applyHighlight();   // chosen in Settings meanwhile
         lastKeyAt = SystemClock.uptimeMillis();
         armIdle();
         showUpdateReady();
@@ -840,12 +843,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     // ---- top shelf -------------------------------------------------------------------------------
 
     private void showHero(int position, float dockTopInRoot) {
-        // Centred just above the dock's panel, which starts 14dp above its tiles.
-        dockPanelTop = dockTopInRoot - 14 * density;
+        // Centred just above the dock's panel, which starts DockDecoration.PAD_DP above its tiles.
+        dockPanelTop = dockTopInRoot - DockDecoration.PAD_DP * density;
         caretDock.setY(dockPanelTop - 6 * density - caretDock.getLayoutParams().height);
         String label = adapter.labelAt(position);
         int color = adapter.ambientColorAt(position);
-        float y = dockTopInRoot - 14 * density - 26 * density - heroName.getHeight();
+        float y = dockPanelTop - 26 * density - heroName.getHeight();
         boolean changed = !label.contentEquals(heroName.getText());
 
         if (!heroShown) {
@@ -2152,7 +2155,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         addInputRow(rows, popup, R.drawable.ic_all_apps, getString(R.string.vibe_settings), -1,
                 this::openSettings);
         addInputRow(rows, popup, R.drawable.ic_settings, getString(R.string.android_settings), -1,
-                () -> open(new Intent(Settings.ACTION_SETTINGS)));
+                () -> open(SystemSettings.intent(this)));
         if (BuildConfig.STORE && !DefaultHome.isHome(this) && !DefaultHome.homeButtonOn(this)) {
             // The stock launcher stays on: the TV's default-Home dialog where it has one, else HomeKeyService.
             addInputRow(rows, popup, R.drawable.ic_home, getString(R.string.make_home), -1, this::makeHomeStore);
@@ -2174,6 +2177,16 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     /** The green dot in the Settings gear: shown while a newer release is waiting to be installed. */
+    /** The highlight color on the glass, the top bar's pills and the Play pill's fill (menus take it as made). */
+    private void applyHighlight() {
+        highlight = Highlight.color(this);
+        glass.setTint(highlight);
+        for (int id : new int[]{R.id.btnInputs, R.id.btnWifi, R.id.btnSettings}) {
+            Highlight.pill(findViewById(id), highlight);
+        }
+        Highlight.filled((TextView) holdPlayFill, highlight);
+    }
+
     /** Vibe Launcher settings: their own screen over Home, made ahead (SettingsScreen), fading in. */
     private void openSettings() {
         inSettings = true;
@@ -2586,6 +2599,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     private View addInputRow(LinearLayout rows, PopupWindow popup, int iconRes, String title, int state, Runnable action) {
         View row = getLayoutInflater().inflate(R.layout.item_input, rows, false);
+        Highlight.menuRow(row, highlight);
         ((ImageView) row.findViewById(R.id.icon)).setImageResource(iconRes);
         ((TextView) row.findViewById(R.id.title)).setText(title);
         TextView status = row.findViewById(R.id.status);

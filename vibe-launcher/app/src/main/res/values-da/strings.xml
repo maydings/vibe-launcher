@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Henter nye baggrunde…</string>
     <string name="auto_hide_bar">Skjul automatisk</string>
     <string name="slideshow_clock">Ur på pauseskærm</string>
+    <string name="glass_color">Fremhævningsfarve</string>
+    <string name="glass_white">Nulstil</string>
+    <string name="glass_color_hint">Pilene flytter prikken: farven rundt om hjulet, blegere mod midten. Tryk OK, når du er færdig.</string>
     <string name="power_on_home">Hjem ved tænding</string>
     <string name="restart">Genstart…</string>
     <string name="time_remaining">%1$s tilbage</string>

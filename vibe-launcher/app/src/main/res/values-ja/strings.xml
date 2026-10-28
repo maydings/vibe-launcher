@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">新しい背景画像をダウンロードしています…</string>
     <string name="auto_hide_bar">自動的に隠す</string>
     <string name="slideshow_clock">スクリーンセーバーの時計</string>
+    <string name="glass_color">ハイライトの色</string>
+    <string name="glass_white">リセット</string>
+    <string name="glass_color_hint">矢印キーで点を動かします：円の周りで色が変わり、中心に近いほど淡くなります。完了したら OK を押します。</string>
     <string name="power_on_home">電源オン時にホーム</string>
     <string name="restart">再起動…</string>
     <string name="time_remaining">残り %1$s</string>

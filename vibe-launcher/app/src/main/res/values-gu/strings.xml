@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">નવા બેકડ્રોપ ડાઉનલોડ થઈ રહ્યા છે…</string>
     <string name="auto_hide_bar">આપમેળે છુપાવો</string>
     <string name="slideshow_clock">સ્ક્રીનસેવર ઘડિયાળ</string>
+    <string name="glass_color">હાઇલાઇટનો રંગ</string>
+    <string name="glass_white">રીસેટ</string>
+    <string name="glass_color_hint">તીર બિંદુને ખસેડે છે: પૈડાની આસપાસ રંગ, વચ્ચે તરફ ફિક્કો. પૂર્ણ થાય ત્યારે OK દબાવો.</string>
     <string name="power_on_home">ચાલુ થતાં હોમ</string>
     <string name="restart">ફરી શરૂ કરો…</string>
     <string name="time_remaining">%1$s બાકી</string>

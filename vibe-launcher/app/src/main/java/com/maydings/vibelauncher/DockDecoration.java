@@ -17,6 +17,8 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
     private final Paint band = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint edge = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final RectF rect = new RectF();
+    /** The band's margin above and below the tiles (Home places the app's name and the Play pill from it). */
+    static final float PAD_DP = 10f;
 
     DockDecoration(int dockSize, float density) {
         this.dockSize = dockSize;
@@ -40,7 +42,7 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         boolean any = false;
-        int tileW = 0;
+        int tileW = 0, tileH = 0;
         for (int i = 0; i < parent.getChildCount(); i++) {
             View child = parent.getChildAt(i);
             int pos = parent.getChildAdapterPosition(child);
@@ -54,6 +56,7 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
             float r = l + card.getWidth();
             float b = t + card.getHeight();
             tileW = card.getWidth();
+            tileH = card.getHeight();
             if (!any) {
                 rect.set(l, t, r, b);
                 any = true;
@@ -62,8 +65,11 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
             }
         }
         if (!any) return;
-        float pad = 14 * density;
-        rect.inset(-pad, -pad);
+        // Close round the tiles; wider at the sides by what a focused tile grows more across than up and down
+        // (tiles are wider than tall), so a focused tile has the same room on every side.
+        float pad = PAD_DP * density;
+        float padX = pad + (AppAdapter.FOCUS_SCALE - 1f) / 2f * (tileW - tileH);
+        rect.inset(-padX, -pad);
         // Concentric with the tiles' corners: their radius plus the band's padding, for any tiles per row.
         float radius = AppAdapter.cornerRadius(tileW, density) + pad;
         c.drawRoundRect(rect, radius, radius, band);

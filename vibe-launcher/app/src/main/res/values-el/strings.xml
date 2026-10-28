@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Λήψη νέων φόντων…</string>
     <string name="auto_hide_bar">Αυτόματη απόκρυψη</string>
     <string name="slideshow_clock">Ρολόι προφύλαξης οθόνης</string>
+    <string name="glass_color">Χρώμα επισήμανσης</string>
+    <string name="glass_white">Επαναφορά</string>
+    <string name="glass_color_hint">Τα βέλη μετακινούν την κουκκίδα: το χρώμα γύρω από τον τροχό, πιο απαλό προς το κέντρο. Πατήστε OK όταν τελειώσετε.</string>
     <string name="power_on_home">Αρχική κατά την ενεργοποίηση</string>
     <string name="restart">Επανεκκίνηση…</string>
     <string name="time_remaining">Απομένουν %1$s</string>

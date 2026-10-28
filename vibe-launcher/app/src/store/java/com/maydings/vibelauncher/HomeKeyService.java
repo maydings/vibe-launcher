@@ -16,7 +16,6 @@ import android.os.Looper;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.UserManager;
-import android.provider.Settings;
 import android.view.InputDevice;
 import android.view.KeyEvent;
 import android.view.ViewConfiguration;
@@ -148,7 +147,7 @@ public final class HomeKeyService extends AccessibilityService implements InputM
         if (event.getAction() == KeyEvent.ACTION_UP && !event.isCanceled()) {
             // A hold, by how long it was down: the TV's Settings. Else Vibe Launcher.
             boolean held = event.getEventTime() - event.getDownTime() >= ViewConfiguration.getLongPressTimeout();
-            open(held ? new Intent(Settings.ACTION_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) : homeIntent());
+            open(held ? SystemSettings.intent(this).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) : homeIntent());
         }
         return true;
     }

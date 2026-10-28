@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Stahování nových pozadí…</string>
     <string name="auto_hide_bar">Automaticky skrýt</string>
     <string name="slideshow_clock">Hodiny na spořiči</string>
+    <string name="glass_color">Barva zvýraznění</string>
+    <string name="glass_white">Obnovit</string>
+    <string name="glass_color_hint">Šipky posouvají tečku: barva je po obvodu kruhu, ke středu bledší. Hotovo potvrďte OK.</string>
     <string name="power_on_home">Domů po zapnutí</string>
     <string name="restart">Restartovat…</string>
     <string name="time_remaining">Zbývá %1$s</string>

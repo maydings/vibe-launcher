@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Új háttérképek letöltése…</string>
     <string name="auto_hide_bar">Automatikus elrejtés</string>
     <string name="slideshow_clock">Óra a képernyővédőn</string>
+    <string name="glass_color">Kiemelés színe</string>
+    <string name="glass_white">Visszaállítás</string>
+    <string name="glass_color_hint">A nyilak mozgatják a pontot: a szín körben a keréken, középfelé halványabb. Ha kész, nyomd meg az OK gombot.</string>
     <string name="power_on_home">Kezdőképernyő bekapcsoláskor</string>
     <string name="restart">Újraindítás…</string>
     <string name="time_remaining">Még %1$s</string>

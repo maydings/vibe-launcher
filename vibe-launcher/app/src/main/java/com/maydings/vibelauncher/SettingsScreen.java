@@ -98,6 +98,8 @@ final class SettingsScreen {
         final LinearLayout list;
         final TextView about;
         final List<Row> rows = new ArrayList<>();
+        /** What can take focus here: the rows, and the wheel, the QR code and the instructions' sections. */
+        final List<View> stops = new ArrayList<>();
         int footnote;   // under the list when the focused row has nothing to say
         Row opened;     // the row whose page is open, while this list is on the left
 
@@ -140,6 +142,7 @@ final class SettingsScreen {
 
         Row add(CharSequence label, Supplier<CharSequence> valueOf, Runnable action) {
             Row row = new Row(LayoutInflater.from(ctx).inflate(R.layout.item_setting, list, false));
+            Highlight.settingRow(row.view, highlight);
             row.label.setText(label);
             row.valueOf = valueOf;
             row.action = action;
@@ -166,6 +169,7 @@ final class SettingsScreen {
             });
             list.addView(row.view);
             rows.add(row);
+            stops.add(row.view);
             return row;
         }
 
@@ -188,13 +192,13 @@ final class SettingsScreen {
         }
 
         View first() {
-            for (Row row : rows) if (row.view.getVisibility() == View.VISIBLE) return row.view;
-            return list.getChildCount() > 0 ? list.getChildAt(0) : view;
+            for (View stop : stops) if (stop.getVisibility() == View.VISIBLE) return stop;
+            return view;
         }
 
         /** On the left, the list is only looked at: its rows can't take focus. */
         void focusable(boolean on) {
-            for (int i = 0; i < list.getChildCount(); i++) list.getChildAt(i).setFocusable(on);
+            for (View stop : stops) stop.setFocusable(on);
         }
     }
 
@@ -214,6 +218,9 @@ final class SettingsScreen {
     /** Where the lists sit: the left column (over the logo) and the right one, and their width. */
     private final int leftX, rightX, columnW, screenW;
 
+    /** The highlight color, for the rows' focused look. */
+    private int highlight;
+
     /** The SettingsActivity it's on, while it is: what opens other screens, dialogs and the keyboard. */
     private Activity host;
     private String language;
@@ -232,6 +239,7 @@ final class SettingsScreen {
         this.language = language;
         density = ctx.getResources().getDisplayMetrics().density;
         settings = new VibeSettings(ctx);
+        highlight = Highlight.color(ctx);
         int w = screenW = ctx.getResources().getDisplayMetrics().widthPixels;
         int h = ctx.getResources().getDisplayMetrics().heightPixels;
         // The list from 55% of the width to 95%, the picture centred in the left half.
@@ -268,6 +276,7 @@ final class SettingsScreen {
     /** SettingsActivity showing it: back to the first list, with the values as they are now. */
     View attach(Activity activity) {
         host = activity;
+        recolor(Highlight.color(ctx));
         language = settings.language();
         keys[0] = settings.tmdbKey();
         keys[1] = settings.youtubeKey();
@@ -324,6 +333,15 @@ final class SettingsScreen {
         ViewGroup parent = (ViewGroup) screen.getParent();
         if (parent != null) parent.removeView(screen);
         host = null;
+    }
+
+    /** The rows on screen, and the languages kept ready, in this highlight color. */
+    private void recolor(int color) {
+        if (color == highlight) return;
+        highlight = color;
+        for (Page page : pages) for (Row row : page.rows) Highlight.settingRow(row.view, color);
+        for (Row row : root.rows) Highlight.settingRow(row.view, color);
+        for (Row row : languagePage.rows) Highlight.settingRow(row.view, color);
     }
 
     /** Home, if it's there: what tiles per row, the language, the backdrops and the top bar change. */
@@ -408,6 +426,67 @@ final class SettingsScreen {
             if (home != null) home.updateTopBar();
         });
         page.toggle(R.string.slideshow_clock, settings::slideshowClock, settings::setSlideshowClock);
+        page.link(R.string.glass_color, this::swatch, this::glassColour);
+        return page;
+    }
+
+    /** A dot in the highlight colour, for its row. */
+    private CharSequence swatch() {
+        android.text.SpannableString dot = new android.text.SpannableString("●");
+        dot.setSpan(new android.text.style.ForegroundColorSpan(0xFF000000 | settings.glassTint()), 0, 1,
+                android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return dot;
+    }
+
+    /**
+     * The glass highlight's colour: White (as it was), a preview of the glass on a white tile (where white
+     * glass hardly shows), and the colour wheel. Each move is saved at once; Home takes it when it's back.
+     */
+    private Page glassColour() {
+        Page page = new Page(ctx.getString(R.string.glass_color));
+        page.footnote = R.string.glass_color_hint;
+        int tint = settings.glassTint();
+        // The preview: a white tile, the glass over it as Home draws it on a focused tile.
+        FrameLayout preview = new FrameLayout(ctx);
+        int tileW = (int) (150 * density), tileH = Math.round(tileW * AppAdapter.DESIGN_H_DP / AppAdapter.DESIGN_W_DP);
+        View tile = new View(ctx);
+        android.graphics.drawable.GradientDrawable white = new android.graphics.drawable.GradientDrawable();
+        white.setColor(0xFFF4F4F4);
+        white.setCornerRadius(AppAdapter.cornerRadius(tileW, density) * AppAdapter.FOCUS_SCALE);
+        tile.setBackground(white);
+        int grownW = (int) (tileW * AppAdapter.FOCUS_SCALE), grownH = (int) (tileH * AppAdapter.FOCUS_SCALE);
+        preview.addView(tile, new FrameLayout.LayoutParams(grownW, grownH, android.view.Gravity.CENTER));
+        GlassView glass = new GlassView(ctx, null);
+        glass.setRadius(AppAdapter.cornerRadius(tileW, density) * AppAdapter.FOCUS_SCALE);
+        glass.setTint(tint);
+        int glow = (int) (6 * density);   // GlassView's room for its glow
+        preview.addView(glass, new FrameLayout.LayoutParams(grownW + 2 * glow, grownH + 2 * glow, android.view.Gravity.CENTER));
+        ColorWheelView[] wheel = new ColorWheelView[1];
+        page.add(R.string.glass_white, null, () -> {
+            settings.setGlassTint(0xFFFFFF);
+            glass.setTint(0xFFFFFF);
+            wheel[0].set(0xFFFFFF);
+            recolor(0xFFFFFFFF);
+        });
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                grownH + 2 * glow + (int) (12 * density));
+        page.list.addView(preview, lp);
+        wheel[0] = new ColorWheelView(ctx, tint, new ColorWheelView.Listener() {
+            @Override
+            public void picked(int rgb) {
+                settings.setGlassTint(rgb);
+                glass.setTint(rgb);
+                recolor(0xFF000000 | rgb);
+            }
+
+            @Override
+            public void done() {
+                back();
+            }
+        });
+        page.list.addView(wheel[0], new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (200 * density)));
+        page.stops.add(wheel[0]);
+        page.about.setText(R.string.glass_color_hint);
         return page;
     }
 
@@ -493,6 +572,7 @@ final class SettingsScreen {
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             lp.bottomMargin = (int) (8 * density);
             page.list.addView(box, lp);
+            page.stops.add(box);
         }
         return page;
     }
@@ -547,6 +627,7 @@ final class SettingsScreen {
         box.addView(url);
         page.list.addView(box, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
+        page.stops.add(box);
         return page;
     }
 
@@ -827,6 +908,9 @@ final class SettingsScreen {
             scroll.requestLayout();
         });
         View install = panel.findViewById(R.id.install), cancel = panel.findViewById(R.id.cancelUpdate);
+        int highlight = Highlight.color(activity);
+        Highlight.pill((TextView) install, highlight);
+        Highlight.pill((TextView) cancel, highlight);
         cancel.setOnClickListener(v -> dialog.dismiss());
         install.setOnClickListener(v -> {
             dialog.dismiss();

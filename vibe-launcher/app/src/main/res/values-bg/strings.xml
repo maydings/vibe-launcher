@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Изтегляне на нови фонове…</string>
     <string name="auto_hide_bar">Автоскриване</string>
     <string name="slideshow_clock">Часовник на скрийнсейвъра</string>
+    <string name="glass_color">Цвят на открояването</string>
+    <string name="glass_white">Нулиране</string>
+    <string name="glass_color_hint">Стрелките местят точката: цветът е по кръга, по-блед към средата. OK, когато сте готови.</string>
     <string name="power_on_home">Начало при включване</string>
     <string name="restart">Рестартиране…</string>
     <string name="time_remaining">Остават %1$s</string>

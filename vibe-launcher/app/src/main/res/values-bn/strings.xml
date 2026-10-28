@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">নতুন ব্যাকড্রপ ডাউনলোড হচ্ছে…</string>
     <string name="auto_hide_bar">স্বয়ংক্রিয়ভাবে লুকান</string>
     <string name="slideshow_clock">স্ক্রিনসেভার ঘড়ি</string>
+    <string name="glass_color">হাইলাইটের রং</string>
+    <string name="glass_white">রিসেট</string>
+    <string name="glass_color_hint">তীর চিহ্নগুলো বিন্দুটি সরায়: চাকার চারপাশে রং, মাঝের দিকে ফিকে। শেষ হলে OK চাপুন।</string>
     <string name="power_on_home">চালু হলে হোম</string>
     <string name="restart">রিস্টার্ট…</string>
     <string name="time_remaining">%1$s বাকি</string>

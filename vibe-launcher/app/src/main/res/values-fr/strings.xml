@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Téléchargement de nouveaux arrière-plans…</string>
     <string name="auto_hide_bar">Masquage automatique</string>
     <string name="slideshow_clock">Horloge de l\'écran de veille</string>
+    <string name="glass_color">Couleur de surbrillance</string>
+    <string name="glass_white">Réinitialiser</string>
+    <string name="glass_color_hint">Les flèches déplacent le point : la couleur autour de la roue, plus pâle vers le centre. OK pour terminer.</string>
     <string name="power_on_home">Accueil à l\'allumage</string>
     <string name="restart">Redémarrer…</string>
     <string name="time_remaining">Encore %1$s</string>

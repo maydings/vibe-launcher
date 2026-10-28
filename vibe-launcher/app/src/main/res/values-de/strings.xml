@@ -78,6 +78,9 @@
     <string name="backdrops_reloading">Neue Hintergründe werden geladen…</string>
     <string name="auto_hide_bar">Automatisch ausblenden</string>
     <string name="slideshow_clock">Uhr im Bildschirmschoner</string>
+    <string name="glass_color">Farbe der Hervorhebung</string>
+    <string name="glass_white">Zurücksetzen</string>
+    <string name="glass_color_hint">Die Pfeile bewegen den Punkt: die Farbe rund ums Rad, blasser zur Mitte hin. Mit OK fertig.</string>
     <string name="power_on_home">Startseite beim Einschalten</string>
     <string name="restart">Neu starten…</string>
     <string name="time_remaining">Noch %1$s</string>

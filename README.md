@@ -118,7 +118,8 @@ software version with its update check.
   asks before it restarts. An app can't restart the TV itself, and the adb version has no Home button
   service to ask the TV with, so it doesn't show this.
 
-**Appearance**: tiles per row, hiding inactive inputs, auto-hide and the screensaver clock.
+**Appearance**: tiles per row, hiding inactive inputs, auto-hide, the screensaver clock and the
+highlight color.
 
 - **Tiles per row**: 4, 5 or 6. Tiles shrink to fit and the dock holds as many apps. Until you pick,
   it follows the TV's size: 4 under 51", 5 up to 74", 6 from 74" up. A streaming box can't tell
@@ -130,6 +131,11 @@ software version with its update check.
   passes the picture alone and reaches the bar.
 - **Screensaver clock**: On (the default) shows the time on the slideshow, in the same place as on the
   top bar but without the bar; Off leaves the pictures alone.
+- **Highlight color**: the color of what's focused, white by default: the glass, the top bar's buttons,
+  the menus' rows, the Play button's fill and Settings' rows (their text turns dark or white to stay
+  readable). Pick one on a color wheel with
+  the arrows (paler towards the middle, OK when done), with a preview of the glass on a white tile: a colored
+  highlight makes it easier to see which white tile (YouTube, Netflix) is focused. **Reset** puts it back to white.
 
 | ![Appearance: tiles per row, hide inactive inputs, auto-hide and the screensaver clock](vibe-launcher/docs/settings-appearance.jpg) | ![The language list, each language in its own name, with General slid to the left](vibe-launcher/docs/language.jpg) |
 |---|---|
