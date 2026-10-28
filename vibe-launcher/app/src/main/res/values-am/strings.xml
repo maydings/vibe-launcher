@@ -101,6 +101,9 @@
     <string name="continue_button">ቀጥል</string>
     <string name="home_key_disclosure_title">የመነሻ አዝራሩን ይጠቀሙ</string>
     <string name="home_key_disclosure">ይህ ቴሌቪዥን መተግበሪያዎች የመነሻ መተግበሪያ እንዲሆኑ አይፈቅድም፣ ስለዚህ Vibe Launcher ለመነሻ አዝራሩ ምላሽ ለመስጠት የተደራሽነት አገልግሎት ያስፈልገዋል።\n\nየመነሻ አዝራሩን ይወስዳል፦ መጫን Vibe Launcherን ይከፍታል፣ ተጭኖ መያዝ ቅንብሮችን ይከፍታል፣ ሌሎቹ ቁልፎች ሁሉ ሳይነኩ ያልፋሉ። የቴሌቪዥኑ የራሱ መነሻ ማያ ገጽ ሲመጣም ያያል፣ ይሸፍነዋልም። በማያ ገጹ ላይ ምንም አያነብም፣ ምንም አያስቀምጥም፣ የትም ምንም አይልክም።\n\nበማንኛውም ጊዜ በቅንብሮች &gt; ተደራሽነት ውስጥ ያጥፉት።</string>
+    <string name="home_key_disclosure_more">“%1$s”ን ካበሩ፣ ማያ ገጹ ሲበራ Vibe Launcherንም ይከፍታል፤ መጀመሪያ ቁልፍ ካልተጫኑ በስተቀር (ቁልፍ መጫኑን ብቻ ያስተውላል፣ የትኛው እንደሆነ አይደለም)። በቅንብሮች ውስጥ ያለው “%2$s” ደግሞ የቲቪውን የኃይል ምናሌ ለመክፈት ይጠቀምበታል።</string>
+    <string name="home_button">የመነሻ አዝራር</string>
+    <string name="home_button_short">የራሳቸውን መነሻ ማያ ገጽ ለሚይዙ ቲቪዎች፦ የሪሞቱ የመነሻ አዝራር Vibe Launcherን ይከፍታል፣ ተጭኖ መያዙ ደግሞ የቲቪውን ቅንብሮች ይከፍታል።</string>
     <string name="home_key_agree">እስማማለሁ</string>
     <string name="home_key_steps">ቀጥሎ፦ በሚከፈተው ዝርዝር ውስጥ “%1$s”ን ይምረጡ፣ ያብሩት፣ ከዚያ መነሻን ይጫኑ።</string>
     <string name="store_update">Vibe Launcherን አዘምን</string>

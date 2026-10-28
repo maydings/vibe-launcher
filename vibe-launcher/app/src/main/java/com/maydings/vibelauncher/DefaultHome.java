@@ -34,7 +34,7 @@ final class DefaultHome {
      * Whether becoming the default Home (request) would bring the Home button here. Android picks a Home
      * app that declares a higher priority before it looks at the user's choice, and only system apps can:
      * Google TV's launcher does (2, on the onn 4K stick), so there the Home role is granted and changes
-     * nothing. Then only the store build's Home button service helps.
+     * nothing. Then only the Home button service helps.
      */
     static boolean choiceWins(Context context) {
         int ours = 0, best = Integer.MIN_VALUE;
@@ -46,7 +46,7 @@ final class DefaultHome {
         return best <= ours;
     }
 
-    /** The store build's Home button (HomeKeyService) is on under Settings > Accessibility. */
+    /** The Home button (HomeKeyService) is on under Settings > Accessibility. */
     static boolean homeButtonOn(Context context) {
         String on = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
         if (on == null) return false;

@@ -45,6 +45,11 @@
             <action android:name="android.settings.SETTINGS" />
         </intent>
         <package android:name="com.android.tv.settings" />
+        <!-- Every Home app on the TV: HomeKeyService looks up the stock launcher's home screens. -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.HOME" />
+        </intent>
     </queries>
 
     <application
@@ -76,8 +81,8 @@
             </intent-filter>
         </activity>
         <!-- market://launch?id=<package>: how the TV's phone-remote service opens an app by its package name.
-             The stock launcher serves it; with that off (adb) this does. Where it's still on (the store
-             build), Android lets the user pick between the two. -->
+             The stock launcher serves it; with that off (adb) this does. Where it's still on (no
+             adb), Android lets the user pick between the two. -->
         <!-- Vibe Launcher settings, over Home in its task (SettingsActivity). -->
         <activity
             android:name=".SettingsActivity"
@@ -99,5 +104,28 @@
                 <data android:scheme="market" android:host="launch" />
             </intent-filter>
         </activity>
+        <!-- The Home button, for a TV whose stock launcher stays on: the user turns this on under
+             Settings > Accessibility. See HomeKeyService. -->
+        <service
+            android:name=".HomeKeyService"
+            android:label="@string/home_key_name"
+            android:directBootAware="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/home_key_service" />
+        </service>
+        <!-- Opened once at boot by HomeKeyService, so the screen behind it says what it is. -->
+        <activity
+            android:name=".ProbeActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 </manifest>

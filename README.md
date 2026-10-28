@@ -10,30 +10,31 @@ and gets out of the way. It works well enough for us that I'd like to share it w
 ![Vibe Launcher: Netflix focused in a four-app dock, with Wake Up Dead Man's backdrop and title logo filling the screen](vibe-launcher/docs/home.jpg)
 
 **[Download the latest APK](https://github.com/maydings/vibe-launcher/releases/latest/download/vibe-launcher.apk)**
-· Android TV and Google TV, Android 8.0 or newer · under 1 MB
+· Android TV and Google TV, Android 8.0 or newer · about 1.2 MB
 
 ## Highlights
 
 - **Backdrops from your apps.** The focused app fills the screen with what it's actually showing you:
   the film or show on its home screen card, with the title's own logo.
-- **Dock and grid.** Up to six favourite apps in a dock; press Down for everything else.
+- **Dock and grid.** One to six favourite apps in a dock; press Down for everything else.
 - **Inputs at a glance.** HDMI ports with what's connected, devices behind a switch listed by name.
 - **A slideshow when idle.** Leave Home alone for a minute and every app's backdrops play full screen.
 - **50 languages.** Follows your TV, or pick one.
 - **Settings that slide.** Full screen and ready the moment you open it: pages slide in from the side,
   changes apply as you make them, and each key comes with instructions.
 - **Home at power-on.** For TVs that wake up on their last input: Home comes up instead (optional).
+- **Your Home button, no computer needed.** On TVs that keep their own launcher, an optional service
+  sends the Home button to Vibe Launcher.
 - **Updates itself.** Shows what's new, checks the download, installs with one confirmation.
 - **Snappy and light.** Moving around feels instant, even on older TVs with 1 to 2 GB of RAM. No
-  background services (but the app store version's optional Home button), and it lets go of its
+  background services (but the optional Home button service), and it lets go of its
   pictures while you're in another app.
 
 ## The home screen
 
 Your favourite apps sit in a dock at the bottom of the screen: four, five or six, to suit the size of
 your TV, or as few as one, as you choose. Only the dock shows, with a faint arrow under it; press Down and
-the rest of your apps slide up in a grid. A single glass highlight springs from
-tile to tile.
+the rest of your apps slide up in a grid. A single glass highlight springs from tile to tile.
 
 ![The app grid below the dock, with the glass highlight on Jellyfin](vibe-launcher/docs/launcher-grid.jpg)
 
@@ -106,25 +107,28 @@ starts, so opening it is just a fade.
 | ![Vibe Launcher settings: the logo on the left, General, Appearance and API keys on the right](vibe-launcher/docs/settings-main.jpg) | ![General: its list slid over the logo, with Language, Reload backdrops, Home at power-on and the software version on the right](vibe-launcher/docs/settings-general.jpg) |
 |---|---|
 
-**General**: language, reloading the backdrops, Home at power-on, Restart… (app store version), the
+**General**: language, reloading the backdrops, Home at power-on, the Home button, Restart… (with the Home button service), the
 software version with its update check, and **About**: who made it, the project's page (with a QR code to
 open it on a phone), where to report a problem, the license and the credits.
 
 - **Language**: Match system (the default), or any of 50 languages, each listed in its own name. The
   clock and date follow it.
-- **Backdrops → Reload backdrops**: empties the saved pictures and downloads them all again, each
+- **Reload backdrops**: empties the saved pictures and downloads them all again, each
   app's first one first.
 - **Home at power-on**: Off (the default) or On. For TVs that wake up on the input or app they were
-  left on (Sony goes back to the last HDMI input): On brings Home up just after the screen turns on. In
-  the app store version, a button pressed in that first moment keeps you where the TV woke up.
-- **Restart…** (app store version, with the Home button on): opens the TV's own power menu, which
-  asks before it restarts. An app can't restart the TV itself, and the adb version has no Home button
-  service to ask the TV with, so it doesn't show this.
+  left on (Sony goes back to the last HDMI input): On brings Home up just after the screen turns on. With
+  the Home button service on, a button pressed in that first moment keeps you where the TV woke up.
+- **Home button**: Off or On, at any time (shown unless Vibe Launcher is already your TV's Home). On
+  explains the Home button service first, then opens Settings → Accessibility to turn it on; Off turns
+  it off straight away.
+- **Restart…** (with the Home button service on): opens the TV's own power menu, which asks before it
+  restarts. An app can't restart the TV itself; only the service can ask the TV, so without it this
+  doesn't show.
 
 **Appearance**: tiles per row, apps in dock, hiding inactive inputs, auto-hide, the screensaver
 clock, the arrows and the highlight color.
 
-- **Tiles per row**: 4, 5 or 6. Tiles shrink to fit and the dock holds as many apps. Until you pick,
+- **Tiles per row**: 4, 5 or 6. Tiles shrink to fit, and a full dock holds as many apps. Until you pick,
   it follows the TV's size: 4 under 51", 5 up to 74", 6 from 74" up. A streaming box can't tell
   the size of the TV it's plugged into, so it starts at 4.
 - **Apps in dock**: from 1 up to a full row (the default). A shorter dock keeps the tiles' size and
@@ -179,13 +183,16 @@ open **App info**. Hidden apps come back from the same menu.
 Download **[vibe-launcher.apk](https://github.com/maydings/vibe-launcher/releases/latest/download/vibe-launcher.apk)**
 and install it. No account needed.
 
-There's also an **app store version**,
-[vibe-launcher-store.apk](https://github.com/maydings/vibe-launcher/releases/latest/download/vibe-launcher-store.apk),
-for TVs where the stock launcher can't be turned off: it leaves it on, and its own Home button service
-(turned on in Settings → Accessibility, it walks you through it) sends the Home button to Vibe Launcher,
-and holding Home opens the TV's Settings. With it on, Settings → General also offers **Restart…**.
-It doesn't update itself or install SmartTube. The two are signed alike, so either can replace the other;
-[the build notes](vibe-launcher/README.md) compare them.
+**Home button service.** Many TVs keep sending the Home button to their own launcher, which can only be
+turned off with a computer ([adb](vibe-launcher/README.md)). Without that, Vibe Launcher offers its Home
+button service instead (turned on in Settings → Accessibility; it walks you through it): Home then opens
+Vibe Launcher, and holding Home opens the TV's Settings. With it on, Settings → General also offers
+**Restart…**. It's optional, it reads nothing on screen, and where Vibe Launcher is already Home it isn't
+offered.
+
+(Up to 2.7.2 there was a separate app store version, vibe-launcher-store.apk, which didn't update itself.
+If you have it, install vibe-launcher.apk over it once: they're signed alike, so your settings stay, and
+it updates itself from then on.)
 
 ### On the TV
 
@@ -196,13 +203,14 @@ It doesn't update itself or install SmartTube. The two are signed alike, so eith
 3. Open Vibe Launcher from your apps and allow its two permissions: TV listings (for the apps'
    cards) and location (Android only reveals the Wi-Fi network's name with it).
 4. Make it your home screen when it offers to, or later from the Settings menu → **Make Vibe Launcher
-   your Home**.
+   your Home**: Android's own choice where the TV has one that works, otherwise the Home button service.
 
 ### Keeping it as your home screen
 
 Google's own launcher and Google's setup app are system apps that can keep answering the Home button,
-even with Vibe Launcher set as the default. Turning them off takes a computer with
-[adb](https://developer.android.com/tools/adb), once:
+even with Vibe Launcher set as the default. Without a computer, the Home button service (above) takes
+care of that. With one, you can turn them off instead, once, with
+[adb](https://developer.android.com/tools/adb):
 
 ```bash
 adb connect <tv-ip>:5555
@@ -230,12 +238,12 @@ lists for over a hundred TV models.
 
 ## Tested on
 
-| Device | Android | Version |
+| Device | Android | Set up with |
 |---|---|---|
 | Sony Bravia XBR-940E | 9 | adb |
 | Sony Bravia 900F | 9 | adb |
 | NVIDIA Shield TV (2017) | 11 | adb |
-| onn 4K Streaming Device (Walmart, Google TV) | 14 | adb and app store |
+| onn 4K Streaming Device (Walmart, Google TV) | 14 | adb and Home button service |
 
 It should run on any Android TV or Google TV with Android 8.0 or newer.
 
@@ -244,7 +252,7 @@ It should run on any Android TV or Google TV with Android 8.0 or newer.
 **No data collection and no ads, ever.** No accounts, no analytics, no tracking, and nothing is ever
 sent to me. Vibe Launcher goes online only to fetch artwork (looking up the titles on your apps' cards
 with TMDB or Stremio, and asking YouTube, your own Plex server or your HDHomeRun's guide) and to check
-this project's releases for updates (the app store build leaves updates to the store). Your API keys
+this project's releases for updates (the Google Play version leaves updates to Play). Your API keys
 stay on the TV. The details are in the [privacy policy](vibe-launcher/docs/PRIVACY.md).
 
 ## Build it yourself

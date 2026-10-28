@@ -101,6 +101,9 @@
     <string name="continue_button">Continuați</string>
     <string name="home_key_disclosure_title">Folosiți butonul Acasă</string>
     <string name="home_key_disclosure">Acest televizor nu permite aplicațiilor să devină aplicația de pornire, așa că Vibe Launcher are nevoie de un serviciu de accesibilitate ca să răspundă la butonul Acasă.\n\nPreia butonul Acasă: o apăsare deschide Vibe Launcher, ținut apăsat deschide setările, iar toate celelalte butoane trec neschimbate. Vede și când apare ecranul de pornire al televizorului și îl acoperă. Nu citește nimic de pe ecran, nu păstrează nimic și nu trimite nimic nicăieri.\n\nÎl puteți dezactiva oricând din Setări &gt; Accesibilitate.</string>
+    <string name="home_key_disclosure_more">Dacă activați „%1$s”, deschide și Vibe Launcher când se aprinde ecranul, cu excepția cazului în care apăsați mai întâi un buton (reține doar că s-a apăsat un buton, nu care). Iar „%2$s” din Setări îl folosește pentru a deschide meniul de alimentare al televizorului.</string>
+    <string name="home_button">Butonul Acasă</string>
+    <string name="home_button_short">Pentru televizoarele care își păstrează propriul ecran de pornire: butonul Acasă al telecomenzii deschide Vibe Launcher, iar ținut apăsat deschide setările televizorului.</string>
     <string name="home_key_agree">Sunt de acord</string>
     <string name="home_key_steps">Apoi: în lista care se deschide, alegeți „%1$s”, activați-l și apăsați Acasă.</string>
     <string name="store_update">Actualizați Vibe Launcher</string>

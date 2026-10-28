@@ -25,14 +25,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * The Home button for the store build. Installed from an app store there's no adb to turn the stock
- * launcher off, and Android TV has no setting for the Home app, so Home keeps opening the stock one. The
+ * The Home button, for a TV whose stock launcher stays on: installed without adb (from an app store, or a
+ * release APK with a file manager) there's no turning it off, and Android TV has no setting for the Home
+ * app, so Home keeps opening the stock one. The
  * user turns this on under Settings > Accessibility, and then:
  * - Home is kept from the stock launcher: a press opens Vibe Launcher, a hold the TV's Settings (Google TV's
  *   own long-press panel needs a system permission);
  * - a stock home screen that comes up anyway (Back out of an app) is covered with Vibe Launcher;
  * - with Home at power-on (Settings), Home comes up after the screen turns on, unless a key was pressed first;
- * - Settings > General > Restart… opens the TV's power menu (HomeButtonLink).
+ * - Settings > General > Restart… opens the TV's power menu, and Settings > General > Home button turns
+ *   it off (HomeButtonLink).
  *
  * It hears only from the stock launchers, and only that one of their screens came up; it reads nothing on
  * screen. It sees every key and passes on all but Home. While a game controller is connected it stops
@@ -73,6 +75,7 @@ public final class HomeKeyService extends AccessibilityService implements InputM
             updateKeyFilter();
         }
         HomeButtonLink.powerMenu = () -> performGlobalAction(GLOBAL_ACTION_POWER_DIALOG);
+        HomeButtonLink.turnOff = this::disableSelf;
         // Home at power-on: from here while it's bound (PowerOnHome stands down), so a key pressed in the
         // app the TV woke up on keeps it there.
         screenOnReceiver = new BroadcastReceiver() {
@@ -229,6 +232,7 @@ public final class HomeKeyService extends AccessibilityService implements InputM
     @Override
     public void onDestroy() {
         HomeButtonLink.powerMenu = null;
+        HomeButtonLink.turnOff = null;
         handler.removeCallbacksAndMessages(null);
         if (screenOnReceiver != null) unregisterReceiver(screenOnReceiver);
         stopWaitingForUnlock();

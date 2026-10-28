@@ -101,6 +101,9 @@
     <string name="continue_button">जारी रखें</string>
     <string name="home_key_disclosure_title">होम बटन इस्तेमाल करें</string>
     <string name="home_key_disclosure">यह टीवी ऐप को होम ऐप नहीं बनने देता, इसलिए होम बटन का जवाब देने के लिए Vibe Launcher को एक सुलभता सेवा की ज़रूरत है।\n\nयह होम बटन संभालता है: दबाने पर Vibe Launcher खुलता है, दबाए रखने पर सेटिंग खुलती है, और बाकी सभी बटन जैसे के तैसे आगे जाते हैं। यह यह भी देखता है कि टीवी की अपनी होम स्क्रीन कब आती है, और उसे ढक देता है। यह स्क्रीन पर कुछ नहीं पढ़ता, कुछ नहीं रखता और कहीं कुछ नहीं भेजता।\n\nइसे कभी भी सेटिंग &gt; सुलभता में बंद करें।</string>
+    <string name="home_key_disclosure_more">अगर आप “%1$s” चालू करते हैं, तो स्क्रीन चालू होने पर यह Vibe Launcher भी खोलता है, जब तक कि आप पहले कोई बटन न दबाएँ (यह केवल यह नोट करता है कि कोई बटन दबाया गया, कौन-सा नहीं)। और सेटिंग्स में “%2$s” टीवी का पावर मेनू खोलने के लिए इसका उपयोग करता है।</string>
+    <string name="home_button">होम बटन</string>
+    <string name="home_button_short">जो टीवी अपनी होम स्क्रीन रखते हैं उनके लिए: रिमोट का होम बटन Vibe Launcher खोलता है, और उसे दबाए रखने पर टीवी की सेटिंग्स खुलती हैं।</string>
     <string name="home_key_agree">सहमत हूँ</string>
     <string name="home_key_steps">आगे: खुलने वाली सूची में “%1$s” चुनें, उसे चालू करें, फिर होम दबाएँ।</string>
     <string name="store_update">Vibe Launcher अपडेट करें</string>

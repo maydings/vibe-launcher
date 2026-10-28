@@ -101,6 +101,9 @@
     <string name="continue_button">המשך</string>
     <string name="home_key_disclosure_title">שימוש בכפתור הבית</string>
     <string name="home_key_disclosure">הטלוויזיה הזו לא מאפשרת לאפליקציות להפוך לאפליקציית הבית, ולכן Vibe Launcher צריך שירות נגישות כדי להגיב לכפתור הבית.\n\nהוא לוקח את כפתור הבית: לחיצה פותחת את Vibe Launcher, לחיצה ארוכה פותחת את ההגדרות, וכל שאר המקשים עוברים כמו שהם. הוא גם רואה מתי מסך הבית של הטלוויזיה עצמה עולה, ומכסה אותו. הוא לא קורא דבר מהמסך, לא שומר דבר ולא שולח דבר לשום מקום.\n\nאפשר לכבות אותו בכל רגע בהגדרות &gt; נגישות.</string>
+    <string name="home_key_disclosure_more">אם תפעילו את “%1$s”, השירות גם פותח את Vibe Launcher כשהמסך נדלק, אלא אם תלחצו קודם על מקש (הוא רושם רק שמקש נלחץ, לא איזה). ו־“%2$s” בהגדרות משתמש בו כדי לפתוח את תפריט ההפעלה של הטלוויזיה.</string>
+    <string name="home_button">כפתור הבית</string>
+    <string name="home_button_short">לטלוויזיות ששומרות על מסך הבית שלהן: כפתור הבית בשלט פותח את Vibe Launcher, ולחיצה ארוכה עליו פותחת את הגדרות הטלוויזיה.</string>
     <string name="home_key_agree">אני מסכים/ה</string>
     <string name="home_key_steps">השלב הבא: ברשימה שנפתחת בחרו “%1$s”, הפעילו אותו ולחצו על כפתור הבית.</string>
     <string name="store_update">עדכון Vibe Launcher</string>

@@ -101,6 +101,9 @@
     <string name="continue_button">Endelea</string>
     <string name="home_key_disclosure_title">Tumia kitufe cha Mwanzo</string>
     <string name="home_key_disclosure">TV hii hairuhusu programu kuwa programu ya mwanzo, kwa hiyo Vibe Launcher inahitaji huduma ya ufikivu ili kujibu kitufe cha Mwanzo.\n\nHuchukua kitufe cha Mwanzo: kubonyeza hufungua Vibe Launcher, kubonyeza kwa muda hufungua Mipangilio, na vitufe vingine vyote hupita bila kubadilishwa. Pia huona skrini ya mwanzo ya TV yenyewe inapotokea, na kuifunika. Haisomi chochote kwenye skrini, haihifadhi chochote na haitumi chochote popote.\n\nIzime wakati wowote katika Mipangilio &gt; Ufikivu.</string>
+    <string name="home_key_disclosure_more">Ukiwasha “%1$s”, pia hufungua Vibe Launcher skrini inapowaka, isipokuwa ukibonyeza kitufe kwanza (hutambua tu kwamba kitufe kilibonyezwa, si kipi). Na “%2$s” katika Mipangilio huitumia kufungua menyu ya nishati ya TV.</string>
+    <string name="home_button">Kitufe cha Mwanzo</string>
+    <string name="home_button_short">Kwa TV zinazobaki na skrini yao ya mwanzo: kitufe cha Mwanzo cha rimoti hufungua Vibe Launcher, na kukishikilia hufungua Mipangilio ya TV.</string>
     <string name="home_key_agree">Ninakubali</string>
     <string name="home_key_steps">Kisha: katika orodha itakayofunguka, chagua “%1$s”, iwashe, kisha ubonyeze Mwanzo.</string>
     <string name="store_update">Sasisha Vibe Launcher</string>

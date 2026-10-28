@@ -101,6 +101,9 @@
     <string name="continue_button">Doorgaan</string>
     <string name="home_key_disclosure_title">De startknop gebruiken</string>
     <string name="home_key_disclosure">Deze tv laat apps geen startscherm-app worden, dus Vibe Launcher heeft een toegankelijkheidsservice nodig om op de startknop te reageren.\n\nHij neemt de startknop over: indrukken opent Vibe Launcher, ingedrukt houden opent de instellingen, en alle andere knoppen gaan onveranderd door. Hij ziet ook wanneer het eigen startscherm van de tv verschijnt, en bedekt het. Hij leest niets op het scherm, bewaart niets en stuurt nergens iets heen.\n\nZet hem op elk moment uit via Instellingen &gt; Toegankelijkheid.</string>
+    <string name="home_key_disclosure_more">Als je ‘%1$s’ inschakelt, opent hij Vibe Launcher ook wanneer het scherm aangaat, tenzij je eerst op een knop drukt (hij onthoudt alleen dát er op een knop is gedrukt, niet welke). En ‘%2$s’ in Instellingen gebruikt hem om het aan/uit-menu van de tv te openen.</string>
+    <string name="home_button">Startknop</string>
+    <string name="home_button_short">Voor tv\'s die hun eigen startscherm houden: de startknop van de afstandsbediening opent Vibe Launcher, en ingedrukt houden opent de instellingen van de tv.</string>
     <string name="home_key_agree">Akkoord</string>
     <string name="home_key_steps">Daarna: kies in de lijst die opent ‘%1$s’, zet het aan en druk op de startknop.</string>
     <string name="store_update">Vibe Launcher updaten</string>

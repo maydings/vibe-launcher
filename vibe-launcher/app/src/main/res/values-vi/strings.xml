@@ -101,6 +101,9 @@
     <string name="continue_button">Tiếp tục</string>
     <string name="home_key_disclosure_title">Dùng nút Màn hình chính</string>
     <string name="home_key_disclosure">TV này không cho ứng dụng trở thành ứng dụng màn hình chính, nên Vibe Launcher cần một dịch vụ hỗ trợ tiếp cận để phản hồi nút Màn hình chính.\n\nDịch vụ đảm nhận nút Màn hình chính: nhấn để mở Vibe Launcher, nhấn giữ để mở Cài đặt, mọi nút khác đi qua như bình thường. Dịch vụ cũng biết khi màn hình chính của chính TV hiện lên và che nó đi. Dịch vụ không đọc gì trên màn hình, không lưu gì và không gửi gì đi đâu cả.\n\nTắt bất cứ lúc nào trong Cài đặt &gt; Hỗ trợ tiếp cận.</string>
+    <string name="home_key_disclosure_more">Nếu bạn bật “%1$s”, dịch vụ cũng mở Vibe Launcher khi màn hình bật, trừ khi bạn nhấn một nút trước (chỉ ghi nhận rằng có nút được nhấn, không ghi nhận nút nào). Và “%2$s” trong Cài đặt dùng dịch vụ này để mở menu nguồn của TV.</string>
+    <string name="home_button">Nút Màn hình chính</string>
+    <string name="home_button_short">Dành cho TV vẫn giữ màn hình chính riêng: nút Màn hình chính trên điều khiển mở Vibe Launcher, còn nhấn giữ sẽ mở phần Cài đặt của TV.</string>
     <string name="home_key_agree">Đồng ý</string>
     <string name="home_key_steps">Tiếp theo: trong danh sách mở ra, chọn “%1$s”, bật lên rồi nhấn nút Màn hình chính.</string>
     <string name="store_update">Cập nhật Vibe Launcher</string>

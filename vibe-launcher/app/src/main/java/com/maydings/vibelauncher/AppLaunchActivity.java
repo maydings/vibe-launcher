@@ -11,7 +11,7 @@ import android.os.Bundle;
  * market://launch?id=<package>: the TV's phone-remote service (the Google TV app's "open app", Home
  * Assistant's Android TV Remote) opens an app by its package name this way. The stock launcher serves it;
  * with that turned off over adb, nothing did, and the launch failed silently (upstream #1059). Where it's
- * still on (the store build), Android asks which of the two to use. Opens the app's TV launch intent, else
+ * still on (no adb), Android asks which of the two to use. Opens the app's TV launch intent, else
  * its phone one. No screen of its own.
  */
 @SuppressLint("CustomSplashScreen")   // not a splash screen: it opens another app and closes

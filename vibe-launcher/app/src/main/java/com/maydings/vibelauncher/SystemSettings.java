@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.provider.Settings;
 
-/** The TV's own Settings: the gear menu's Android settings row, and holding Home in the store build. */
+/** The TV's own Settings: the gear menu's Android settings row, and holding Home with the Home button service on. */
 final class SystemSettings {
 
     private static final ComponentName AOSP_TV_SETTINGS =

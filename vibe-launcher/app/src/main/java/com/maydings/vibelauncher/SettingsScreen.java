@@ -43,7 +43,7 @@ import java.util.function.Supplier;
  * second on the 940E). SettingsActivity only puts it on screen, with a fade, and hands
  * it back when it closes. The other pages are made as they're opened (a few rows, current values).
  *
- * General: language, reloading the backdrops, Home at power-on, Restart… (store build, Home button service
+ * General: language, reloading the backdrops, Home at power-on, the Home button service, Restart… (service
  * on) and updates (Updater). Appearance: tiles per row, inputs, the top bar and the slideshow's clock. API
  * keys: the TMDB, YouTube and Plex keys, edited in place and explained under the list, SmartTube to install
  * or sign in to (the key-free way to YouTube backdrops), and a QR code for pasting the keys from a phone
@@ -264,6 +264,7 @@ final class SettingsScreen {
     private String phoneUrl;
     private BroadcastReceiver packages;
     private Row smartTubeRow;
+    private Row homeButtonRow, restartRow;   // General's, while it's made
 
     private SettingsScreen(Context app, String language) {
         ctx = new ContextThemeWrapper(Lang.wrap(app), android.R.style.Theme_Material_NoActionBar);
@@ -392,14 +393,31 @@ final class SettingsScreen {
             Toast.makeText(host, R.string.backdrops_reloading, Toast.LENGTH_SHORT).show();
         });
         page.toggle(R.string.power_on_home, settings::powerOnHome, settings::setPowerOnHome);
+        // The Home button service, on or off at any time (Home offers it once, on its first start): while
+        // Vibe Launcher isn't the TV's Home, or while it's on. On explains it first and opens Accessibility;
+        // Off turns it off here.
+        homeButtonRow = page.add(R.string.home_button,
+                () -> ctx.getString(DefaultHome.homeButtonOn(ctx) ? R.string.on : R.string.off), () -> {
+                    Runnable off = HomeButtonLink.turnOff;
+                    if (!DefaultHome.homeButtonOn(ctx)) {
+                        HomeButtonLink.offer(host);
+                    } else if (off != null) {
+                        off.run();
+                        handler.postDelayed(this::showHomeButton, 300);   // Android notes it a moment later
+                    } else {
+                        HomeButtonLink.openSettings(host);   // on, but not bound yet: off from Accessibility
+                    }
+                });
+        homeButtonRow.about = R.string.home_button_short;
+        homeButtonRow.view.setVisibility(DefaultHome.homeButtonOn(ctx) || !DefaultHome.isHome(ctx)
+                ? View.VISIBLE : View.GONE);
         // The TV's power menu, which asks before it restarts: only the Home button service can open it (an
         // app may not restart the TV), so only while that's on.
-        if (HomeButtonLink.bound()) {
-            page.add(R.string.restart, null, () -> {
-                Runnable powerMenu = HomeButtonLink.powerMenu;
-                if (powerMenu != null) powerMenu.run();
-            });
-        }
+        restartRow = page.add(R.string.restart, null, () -> {
+            Runnable powerMenu = HomeButtonLink.powerMenu;
+            if (powerMenu != null) powerMenu.run();
+        });
+        showHomeButton();
         Row version = page.add(R.string.updates, null, null);
         Row check = page.add(R.string.check_updates, null, null);
         showUpdates(version, check);
@@ -924,6 +942,13 @@ final class SettingsScreen {
         filter.addDataScheme("package");
         if (Build.VERSION.SDK_INT >= 33) host.registerReceiver(packages, filter, Context.RECEIVER_NOT_EXPORTED);
         else host.registerReceiver(packages, filter);
+    }
+
+    /** General's Home button row and Restart…, as the service is now; again when Settings is back in front. */
+    void showHomeButton() {
+        if (homeButtonRow == null) return;
+        homeButtonRow.refresh();
+        restartRow.view.setVisibility(HomeButtonLink.bound() ? View.VISIBLE : View.GONE);
     }
 
     void showSmartTube() {

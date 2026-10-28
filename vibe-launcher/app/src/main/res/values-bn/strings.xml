@@ -101,6 +101,9 @@
     <string name="continue_button">চালিয়ে যান</string>
     <string name="home_key_disclosure_title">হোম বোতাম ব্যবহার করুন</string>
     <string name="home_key_disclosure">এই টিভি কোনো অ্যাপকে হোম অ্যাপ হতে দেয় না, তাই হোম বোতামে সাড়া দিতে Vibe Launcher-এর একটি অ্যাক্সেসিবিলিটি পরিষেবা দরকার।\n\nএটি হোম বোতাম নিয়ে নেয়: চাপলে Vibe Launcher খোলে, চেপে ধরলে সেটিংস খোলে, আর বাকি সব বোতাম যেমন আছে তেমনই চলে যায়। টিভির নিজের হোম স্ক্রিন এলে সেটাও দেখে এবং ঢেকে দেয়। স্ক্রিনের কিছুই পড়ে না, কিছুই রাখে না, কোথাও কিছু পাঠায় না।\n\nযেকোনো সময় সেটিংস &gt; অ্যাক্সেসিবিলিটি থেকে বন্ধ করুন।</string>
+    <string name="home_key_disclosure_more">আপনি “%1$s” চালু করলে, স্ক্রিন চালু হওয়ার সময় এটি Vibe Launcher-ও খোলে, যদি না আপনি আগে কোনো বোতাম চাপেন (এটি শুধু খেয়াল করে যে একটি বোতাম চাপা হয়েছে, কোনটি নয়)। আর সেটিংসের “%2$s” টিভির পাওয়ার মেনু খুলতে এটি ব্যবহার করে।</string>
+    <string name="home_button">হোম বোতাম</string>
+    <string name="home_button_short">যে টিভি নিজের হোম স্ক্রিন রেখে দেয় তার জন্য: রিমোটের হোম বোতাম Vibe Launcher খোলে, আর চেপে ধরে রাখলে টিভির সেটিংস খোলে।</string>
     <string name="home_key_agree">সম্মত</string>
     <string name="home_key_steps">এরপর: যে তালিকা খুলবে তাতে “%1$s” বেছে নিন, চালু করুন, তারপর হোম চাপুন।</string>
     <string name="store_update">Vibe Launcher আপডেট করুন</string>

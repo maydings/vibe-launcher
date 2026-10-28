@@ -11,7 +11,7 @@ import android.os.Looper;
 /**
  * Settings > General > Home at power-on (off by default): for TVs that wake up on the input or app they
  * were left on (the Sonys go back to the last HDMI input), Home comes up shortly after the screen turns on.
- * The store build's Home button service does it while it's on, and skips it if a key was pressed first;
+ * The Home button service does it while it's on, and skips it if a key was pressed first;
  * otherwise Home's own process does, which can't see keys in other apps.
  */
 final class PowerOnHome {

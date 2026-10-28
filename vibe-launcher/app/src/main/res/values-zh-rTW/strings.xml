@@ -101,6 +101,9 @@
     <string name="continue_button">繼續</string>
     <string name="home_key_disclosure_title">使用主畫面鍵</string>
     <string name="home_key_disclosure">這台電視不允許應用程式成為主畫面應用程式，因此 Vibe Launcher 需要一項無障礙服務來回應主畫面鍵。\n\n它接管主畫面鍵：按一下開啟 Vibe Launcher，長按開啟設定，其他按鍵都原樣放行。它也能知道電視內建的主畫面何時出現，並把它蓋住。它不讀取畫面上的任何內容，不保存任何東西，也不傳送任何東西到任何地方。\n\n可隨時在「設定」&gt;「無障礙設定」中關閉。</string>
+    <string name="home_key_disclosure_more">如果開啟「%1$s」，螢幕亮起時它也會開啟 Vibe Launcher，除非你先按了某個按鍵（它只記下有按鍵被按過，不記是哪個）。設定中的「%2$s」也透過它開啟電視的電源選單。</string>
+    <string name="home_button">主畫面鍵</string>
+    <string name="home_button_short">適用於保留自帶主畫面的電視：按遙控器的主畫面鍵會開啟 Vibe Launcher，長按則開啟電視的設定。</string>
     <string name="home_key_agree">同意</string>
     <string name="home_key_steps">下一步：在開啟的清單中選取「%1$s」並開啟，然後按主畫面鍵。</string>
     <string name="store_update">更新 Vibe Launcher</string>

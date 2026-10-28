@@ -101,6 +101,9 @@
     <string name="continue_button">Continuar</string>
     <string name="home_key_disclosure_title">Usar o botão Início</string>
     <string name="home_key_disclosure">Esta TV não permite que apps se tornem o app de tela inicial, então o Vibe Launcher precisa de um serviço de acessibilidade para responder ao botão Início.\n\nEle assume o botão Início: um toque abre o Vibe Launcher, segurar abre as configurações, e todos os outros botões passam sem alteração. Ele também vê quando a tela inicial da própria TV aparece e a cobre. Não lê nada na tela, não guarda nada e não envia nada para lugar nenhum.\n\nDesative quando quiser em Configurações &gt; Acessibilidade.</string>
+    <string name="home_key_disclosure_more">Se você ativar “%1$s”, ele também abre o Vibe Launcher quando a tela liga, a menos que você aperte um botão antes (ele só registra que um botão foi apertado, não qual). E “%2$s” nas Configurações o usa para abrir o menu de energia da TV.</string>
+    <string name="home_button">Botão Início</string>
+    <string name="home_button_short">Para TVs que mantêm a própria tela inicial: o botão Início do controle abre o Vibe Launcher, e mantê-lo pressionado abre as configurações da TV.</string>
     <string name="home_key_agree">Concordo</string>
     <string name="home_key_steps">Depois: na lista que abrir, escolha “%1$s”, ative e pressione Início.</string>
     <string name="store_update">Atualizar o Vibe Launcher</string>

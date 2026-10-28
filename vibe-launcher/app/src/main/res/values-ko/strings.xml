@@ -101,6 +101,9 @@
     <string name="continue_button">계속</string>
     <string name="home_key_disclosure_title">홈 버튼 사용</string>
     <string name="home_key_disclosure">이 TV에서는 앱을 홈 앱으로 설정할 수 없으므로, Vibe Launcher가 홈 버튼에 응답하려면 접근성 서비스가 필요합니다.\n\n홈 버튼을 맡습니다. 누르면 Vibe Launcher가, 길게 누르면 설정이 열리며, 다른 버튼은 모두 그대로 전달됩니다. TV 자체 홈 화면이 나타나는 것도 확인해 그 위를 덮습니다. 화면의 내용은 읽지 않고, 아무것도 저장하지 않으며, 어디에도 아무것도 보내지 않습니다.\n\n설정 &gt; 접근성에서 언제든지 끌 수 있습니다.</string>
+    <string name="home_key_disclosure_more">‘%1$s’을(를) 켜면 화면이 켜질 때도 Vibe Launcher를 엽니다. 단, 먼저 버튼을 누른 경우는 제외합니다(버튼이 눌렸다는 것만 기록하며 어떤 버튼인지는 기록하지 않음). 또한 설정의 ‘%2$s’은(는) 이 서비스로 TV의 전원 메뉴를 엽니다.</string>
+    <string name="home_button">홈 버튼</string>
+    <string name="home_button_short">자체 홈 화면을 유지하는 TV용: 리모컨의 홈 버튼을 누르면 Vibe Launcher가 열리고, 길게 누르면 TV 설정이 열립니다.</string>
     <string name="home_key_agree">동의</string>
     <string name="home_key_steps">다음: 열리는 목록에서 ‘%1$s’을(를) 선택해 사용 설정한 다음 홈 버튼을 누르세요.</string>
     <string name="store_update">Vibe Launcher 업데이트</string>

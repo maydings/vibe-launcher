@@ -101,6 +101,9 @@
     <string name="continue_button">Teruskan</string>
     <string name="home_key_disclosure_title">Gunakan butang Laman Utama</string>
     <string name="home_key_disclosure">TV ini tidak membenarkan apl menjadi apl laman utama, jadi Vibe Launcher memerlukan perkhidmatan kebolehaksesan untuk menjawab butang Laman Utama.\n\nIa mengambil alih butang Laman Utama: tekan untuk membuka Vibe Launcher, tekan lama untuk membuka Tetapan, dan semua butang lain dilepaskan tanpa diubah. Ia juga melihat apabila skrin utama TV itu sendiri muncul, lalu menutupnya. Ia tidak membaca apa-apa pada skrin, tidak menyimpan apa-apa dan tidak menghantar apa-apa ke mana-mana.\n\nMatikannya pada bila-bila masa dalam Tetapan &gt; Kebolehaksesan.</string>
+    <string name="home_key_disclosure_more">Jika anda menghidupkan “%1$s”, ia juga membuka Vibe Launcher apabila skrin dihidupkan, melainkan anda menekan butang dahulu (ia hanya mencatat bahawa butang ditekan, bukan yang mana). Dan “%2$s” dalam Tetapan menggunakannya untuk membuka menu kuasa TV.</string>
+    <string name="home_button">Butang Laman Utama</string>
+    <string name="home_button_short">Untuk TV yang mengekalkan skrin utamanya sendiri: butang Laman Utama pada alat kawalan membuka Vibe Launcher, dan menahannya membuka Tetapan TV.</string>
     <string name="home_key_agree">Setuju</string>
     <string name="home_key_steps">Seterusnya: dalam senarai yang dibuka, pilih “%1$s”, hidupkannya, kemudian tekan Laman Utama.</string>
     <string name="store_update">Kemas kini Vibe Launcher</string>

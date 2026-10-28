@@ -101,6 +101,9 @@
     <string name="continue_button">Weiter</string>
     <string name="home_key_disclosure_title">Home-Taste verwenden</string>
     <string name="home_key_disclosure">Dieser Fernseher lässt Apps nicht zur Startbildschirm-App werden. Deshalb braucht Vibe Launcher einen Bedienungshilfen-Dienst, um auf die Home-Taste zu reagieren.\n\nEr übernimmt die Home-Taste: Drücken öffnet Vibe Launcher, langes Drücken die Einstellungen, und jede andere Taste geht unverändert weiter. Er sieht auch, wann der eigene Startbildschirm des Fernsehers erscheint, und überdeckt ihn. Er liest nichts vom Bildschirm, speichert nichts und sendet nichts irgendwohin.\n\nDu kannst ihn jederzeit unter Einstellungen &gt; Bedienungshilfen ausschalten.</string>
+    <string name="home_key_disclosure_more">Wenn du „%1$s“ einschaltest, öffnet er Vibe Launcher auch, wenn sich der Bildschirm einschaltet, es sei denn, du drückst zuerst eine Taste (er merkt sich nur, dass eine Taste gedrückt wurde, nicht welche). Und „%2$s“ in den Einstellungen öffnet damit das Ein/Aus-Menü des Fernsehers.</string>
+    <string name="home_button">Home-Taste</string>
+    <string name="home_button_short">Für Fernseher, die ihren eigenen Startbildschirm behalten: Die Home-Taste der Fernbedienung öffnet Vibe Launcher, gedrückt gehalten die Einstellungen des Fernsehers.</string>
     <string name="home_key_agree">Zustimmen</string>
     <string name="home_key_steps">Als Nächstes: Wähle in der Liste, die sich öffnet, „%1$s“, schalte es ein und drücke dann Home.</string>
     <string name="store_update">Vibe Launcher aktualisieren</string>

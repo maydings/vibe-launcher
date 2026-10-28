@@ -101,6 +101,9 @@
     <string name="continue_button">Nastavi</string>
     <string name="home_key_disclosure_title">Koristi tipku Početno</string>
     <string name="home_key_disclosure">Ovaj televizor ne dopušta aplikacijama da postanu aplikacija početnog zaslona, pa Vibe Launcheru treba usluga pristupačnosti da bi odgovorio na tipku Početno.\n\nPreuzima tipku Početno: pritisak otvara Vibe Launcher, dulji pritisak otvara postavke, a sve ostale tipke prolaze nepromijenjene. Vidi i kad se pojavi vlastiti početni zaslon televizora i prekriva ga. Ne čita ništa sa zaslona, ništa ne sprema i nikamo ništa ne šalje.\n\nIsključite je bilo kada u Postavke &gt; Pristupačnost.</string>
+    <string name="home_key_disclosure_more">Ako uključite „%1$s”, otvara i Vibe Launcher kad se zaslon uključi, osim ako prvo ne pritisnete tipku (bilježi samo da je tipka pritisnuta, ne koja). A „%2$s” u Postavkama njome otvara izbornik napajanja televizora.</string>
+    <string name="home_button">Tipka Početno</string>
+    <string name="home_button_short">Za televizore koji zadržavaju vlastiti početni zaslon: tipka Početno na daljinskom upravljaču otvara Vibe Launcher, a držanje te tipke otvara postavke televizora.</string>
     <string name="home_key_agree">Slažem se</string>
     <string name="home_key_steps">Zatim: na popisu koji se otvori odaberite „%1$s”, uključite ga i pritisnite Početno.</string>
     <string name="store_update">Ažuriraj Vibe Launcher</string>

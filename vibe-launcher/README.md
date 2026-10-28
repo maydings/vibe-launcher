@@ -1,7 +1,7 @@
 # Vibe Launcher
 
 A free and open-source (MIT) home screen for Android TV, with no ads, ever. Plain
-Java, under 1 MB, no background services (the app store build has one: its Home button); built for TVs with 1 to 2 GB of RAM. Android 8.0 (API 26) and newer, targets API 34 so Play Protect accepts it
+Java, about 1.2 MB, no background services (but the optional Home button service); built for TVs with 1 to 2 GB of RAM. Android 8.0 (API 26) and newer, targets API 34 so Play Protect accepts it
 on Android 11+ devices such as the NVIDIA Shield.
 
 ![Vibe Launcher home with a backdrop behind the dock](docs/home.jpg)
@@ -40,20 +40,20 @@ Or by hand: `./gradlew assembleAdbDebug`, then `adb install -r -g app/build/outp
 
 **Two builds** come from the same code (`app/build.gradle`):
 
-| | `adb` (this README, the GitHub releases) | `store` (for an app store) |
+| | `adb` (the GitHub releases, `build-and-install.sh`) | `store` (Google Play) |
 |---|---|---|
-| Installed with | `build-and-install.sh` or a GitHub release APK, over adb | the store, no computer |
-| Stock launcher | turned off over adb (with Google TV's setup wizard) | stays on |
-| Home button | comes here by itself: Vibe Launcher is the only Home | the user turns on *Vibe Launcher Home button* in Settings → Accessibility; the service keeps Home from the stock launcher: a press opens Vibe Launcher, a hold the TV's Settings; a stock home that comes up anyway (Back out of an app) gets covered |
-| Accessibility service | none | `HomeKeyService`: hears only the stock launchers' screens opening, reads nothing on screen, keeps Home and passes every other key on; stops looking at keys while a game controller is connected (Home then reaches the stock launcher, which gets covered) |
-| First start, and gear menu → *Make Home* | the TV's default-Home dialog, where it has one | the TV's default-Home dialog only where it can work (no stock launcher outranks it); otherwise, or if that doesn't take, a note on what the Home button service sees and the steps, then Accessibility settings. Shown until Home comes here |
+| Installed with | `build-and-install.sh` over adb, or the release APK with a file manager | the store, no computer |
+| Stock launcher | turned off over adb (with Google TV's setup wizard), or left on without a computer | stays on |
+| Home button | with the stock launcher off, comes here by itself; left on, as the store build | the user turns on *Vibe Launcher Home button* in Settings → Accessibility; the service keeps Home from the stock launcher: a press opens Vibe Launcher, a hold the TV's Settings; a stock home that comes up anyway (Back out of an app) gets covered |
+| Accessibility service | `HomeKeyService` (both): hears only the stock launchers' screens opening, reads nothing on screen, keeps Home and passes every other key on; stops looking at keys while a game controller is connected (Home then reaches the stock launcher, which gets covered). Off until the user turns it on | same |
+| First start, and gear menu → *Make Home* (both, until Home comes here) | the TV's default-Home dialog only where it can work (no stock launcher outranks it); otherwise, or if that doesn't take, a note on what the Home button service sees and the steps, then Accessibility settings | same |
 | Remote's app buttons (Google TV) | the ones Google TV's launcher handled (YouTube, Free TV) stop working with it off | keep working |
 | Updates | checks the GitHub releases (daily, on waking, in the gear menu) and installs them | Play installs them; while Play has a newer version, the gear shows the green dot and its row (and Settings) opens Play's update screen |
-| Settings → General | version and *Check for updates* | version only; *TV → Restart…* while the Home button is on (the service opens the TV's power menu) |
-| Home at power-on (Settings → General, off by default) | Home's own process, a moment after the screen turns on | the Home button service, and only if no key was pressed in that moment (without the service, as in the adb version) |
+| Settings → General | version and *Check for updates*; *Home button* (On explains it, then Accessibility; Off turns it off), unless Vibe Launcher is already Home; *Restart…* while the service is on (it opens the TV's power menu) | version only; *Home button* and *Restart…* likewise |
+| Home at power-on (Settings → General, off by default) | the Home button service while it's on, and only if no key was pressed in that moment; otherwise Home's own process, a moment after the screen turns on | same |
 | SmartTube | Settings can install it | Settings only opens it, and only shows the button when it's on the TV |
 | Install permissions | `REQUEST_INSTALL_PACKAGES`, `KILL_BACKGROUND_PROCESSES` | none |
-| Code of its own | `app/src/adb` (manifest) | `app/src/store` (manifest, `HomeKeyService`, `ProbeActivity`) |
+| Code of its own | `app/src/adb` (manifest, `StoreUpdates` that does nothing) | `app/src/store` (manifest: TV only; `StoreUpdates` asking Play) |
 
 To try the store build on a TV as a store user
 would get it (stock launcher and Home left alone): `FLAVOR=store ./build-and-install.sh 192.168.1.50`. For

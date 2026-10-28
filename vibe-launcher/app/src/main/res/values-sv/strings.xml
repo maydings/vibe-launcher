@@ -101,6 +101,9 @@
     <string name="continue_button">Fortsätt</string>
     <string name="home_key_disclosure_title">Använd hemknappen</string>
     <string name="home_key_disclosure">Den här tv:n låter inte appar bli startskärmsapp, så Vibe Launcher behöver en tillgänglighetstjänst för att svara på hemknappen.\n\nDen tar över hemknappen: ett tryck öppnar Vibe Launcher, ett långt tryck öppnar inställningarna, och alla andra knappar går igenom oförändrade. Den ser också när tv:ns egen startskärm kommer fram och täcker den. Den läser inget på skärmen, sparar inget och skickar inget någonstans.\n\nStäng av den när du vill under Inställningar &gt; Tillgänglighet.</string>
+    <string name="home_key_disclosure_more">Om du slår på ”%1$s” öppnar den också Vibe Launcher när skärmen slås på, om du inte trycker på en knapp först (den noterar bara att en knapp trycktes, inte vilken). Och ”%2$s” i Inställningar använder den för att öppna tv:ns strömmeny.</string>
+    <string name="home_button">Hemknapp</string>
+    <string name="home_button_short">För tv-apparater som behåller sin egen startskärm: fjärrkontrollens hemknapp öppnar Vibe Launcher, och håller du in den öppnas tv:ns inställningar.</string>
     <string name="home_key_agree">Godkänn</string>
     <string name="home_key_steps">Nästa steg: välj ”%1$s” i listan som öppnas, slå på den och tryck sedan på hem.</string>
     <string name="store_update">Uppdatera Vibe Launcher</string>

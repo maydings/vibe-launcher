@@ -101,6 +101,9 @@
     <string name="continue_button">Dalej</string>
     <string name="home_key_disclosure_title">Używaj przycisku ekranu głównego</string>
     <string name="home_key_disclosure">Ten telewizor nie pozwala aplikacjom stać się aplikacją ekranu głównego, więc Vibe Launcher potrzebuje usługi ułatwień dostępu, żeby reagować na przycisk ekranu głównego.\n\nPrzejmuje przycisk ekranu głównego: naciśnięcie otwiera Vibe Launcher, przytrzymanie otwiera ustawienia, a wszystkie inne przyciski przechodzą bez zmian. Widzi też, kiedy pojawia się własny ekran główny telewizora, i go zasłania. Niczego nie odczytuje z ekranu, niczego nie przechowuje i nigdzie niczego nie wysyła.\n\nMożesz ją wyłączyć w dowolnej chwili w Ustawieniach &gt; Ułatwienia dostępu.</string>
+    <string name="home_key_disclosure_more">Jeśli włączysz „%1$s”, usługa otworzy też Vibe Launcher po włączeniu ekranu, chyba że najpierw naciśniesz przycisk (odnotowuje tylko, że przycisk został naciśnięty, nie który). A „%2$s” w Ustawieniach używa jej do otwarcia menu zasilania telewizora.</string>
+    <string name="home_button">Przycisk ekranu głównego</string>
+    <string name="home_button_short">Dla telewizorów, które zachowują własny ekran główny: przycisk ekranu głównego na pilocie otwiera Vibe Launcher, a przytrzymanie go otwiera ustawienia telewizora.</string>
     <string name="home_key_agree">Zgadzam się</string>
     <string name="home_key_steps">Dalej: na liście, która się otworzy, wybierz „%1$s”, włącz to i naciśnij przycisk ekranu głównego.</string>
     <string name="store_update">Zaktualizuj Vibe Launcher</string>

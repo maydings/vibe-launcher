@@ -101,6 +101,9 @@
     <string name="continue_button">Tovább</string>
     <string name="home_key_disclosure_title">A Kezdőképernyő gomb használata</string>
     <string name="home_key_disclosure">Ez a tévé nem engedi, hogy egy alkalmazás legyen a kezdőképernyő-alkalmazás, ezért a Vibe Launchernek kisegítő szolgáltatásra van szüksége, hogy válaszolni tudjon a Kezdőképernyő gombra.\n\nÁtveszi a Kezdőképernyő gombot: egy megnyomás a Vibe Launchert nyitja meg, a nyomva tartás a beállításokat, minden más gomb változatlanul továbbmegy. Azt is látja, mikor jelenik meg a tévé saját kezdőképernyője, és eltakarja. Semmit nem olvas a képernyőről, semmit nem tárol, és semmit nem küld sehová.\n\nBármikor kikapcsolhatja: Beállítások &gt; Kisegítő lehetőségek.</string>
+    <string name="home_key_disclosure_more">Ha bekapcsolja a(z) „%1$s” beállítást, a képernyő bekapcsolásakor is megnyitja a Vibe Launchert, hacsak előbb meg nem nyom egy gombot (csak azt jegyzi meg, hogy gombot nyomtak meg, azt nem, hogy melyiket). A beállítások „%2$s” pontja pedig ezzel nyitja meg a tévé bekapcsológomb-menüjét.</string>
+    <string name="home_button">Kezdőképernyő gomb</string>
+    <string name="home_button_short">Olyan tévékhez, amelyek megtartják a saját kezdőképernyőjüket: a távirányító Kezdőképernyő gombja megnyitja a Vibe Launchert, nyomva tartva pedig a tévé beállításait.</string>
     <string name="home_key_agree">Elfogadom</string>
     <string name="home_key_steps">Ezután: a megnyíló listában válassza ki ezt: „%1$s”, kapcsolja be, majd nyomja meg a Kezdőképernyő gombot.</string>
     <string name="store_update">A Vibe Launcher frissítése</string>

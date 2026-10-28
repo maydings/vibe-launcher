@@ -1922,7 +1922,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         }
         if (missing.isEmpty()) return false;
         getPreferences(MODE_PRIVATE).edit().putBoolean("askedPermissions", true).apply();
-        showNotice(R.string.permissions_title, getString(R.string.permissions_why), R.string.continue_button,
+        showNotice(this, R.string.permissions_title, getString(R.string.permissions_why), R.string.continue_button,
                 () -> requestPermissions(missing.toArray(new String[0]), 1), this::askHomeOnce);
         return true;
     }
@@ -1934,74 +1934,57 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void askHomeOnce() {
         if (getPreferences(MODE_PRIVATE).getBoolean("askedHome", false) || DefaultHome.isHome(this)) return;
         getPreferences(MODE_PRIVATE).edit().putBoolean("askedHome", true).apply();
-        // The store build, on its first start: set up the Home button now, while the user is here to read it.
-        if (BuildConfig.STORE) {
-            if (!DefaultHome.homeButtonOn(this)) makeHomeStore();
-            return;
-        }
-        if (DefaultHome.request(this) != null) makeHome();
+        // On its first start: set up Home now, while the user is here to read it.
+        if (!DefaultHome.homeButtonOn(this)) offerHome();
     }
 
-    /** The system's own screen for choosing the default Home, or a note that this TV has none. */
-    private void makeHome() {
-        Intent request = DefaultHome.request(this);
-        if (request == null) {
-            Toast.makeText(this, R.string.home_not_changeable, Toast.LENGTH_LONG).show();
-            return;
-        }
+    /** The system's own screen for choosing the default Home (DefaultHome.request). */
+    private void makeHome(Intent request) {
         try {
             // The Android 10+ dialog answers with a result; Android 9's chooser is plain Home.
             if (Build.VERSION.SDK_INT >= 29) startActivityForResult(request, 2);
             else startActivity(request);
         } catch (ActivityNotFoundException | SecurityException e) {
-            // The store build has another way: the Home button service.
-            if (BuildConfig.STORE) showHomeKeyDisclosure();
-            else Toast.makeText(this, R.string.home_not_changeable, Toast.LENGTH_LONG).show();
+            // There's another way: the Home button service.
+            HomeButtonLink.offer(this);
         }
     }
 
     /**
-     * The store build: Android's own dialog for the default Home first, which needs nothing more, where the TV
-     * has it. Without it, or turned down (onActivityResult), the Home button service.
+     * Android's own dialog for the default Home first, which needs nothing more, where the TV has it. Without
+     * it, or turned down (onActivityResult), the Home button service.
      */
-    private void makeHomeStore() {
+    private void offerHome() {
         // Asked only where it can work: where the stock launcher outranks any choice, straight to the service.
-        if (DefaultHome.choiceWins(this) && DefaultHome.request(this) != null) makeHome();
-        else showHomeKeyDisclosure();
+        Intent request = DefaultHome.request(this);
+        if (DefaultHome.choiceWins(this) && request != null) makeHome(request);
+        else HomeButtonLink.offer(this);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 2 && BuildConfig.STORE && !DefaultHome.isHome(this) && !DefaultHome.homeButtonOn(this)) {
-            showHomeKeyDisclosure();
+        if (requestCode == 2 && !DefaultHome.isHome(this) && !DefaultHome.homeButtonOn(this)) {
+            HomeButtonLink.offer(this);
         }
     }
 
-    /**
-     * Says what the Home button service sees, and that nothing leaves the TV, before the user is sent to turn
-     * it on: app stores ask for this up front for any accessibility service that isn't an accessibility tool.
-     */
-    private void showHomeKeyDisclosure() {
-        // What it does, then what to do in Settings: the user reads it here, before the list opens.
-        String text = getString(R.string.home_key_disclosure) + "\n\n"
-                + getString(R.string.home_key_steps, getString(R.string.home_key_name));
-        showNotice(R.string.home_key_disclosure_title, text, R.string.home_key_agree, this::turnOnHomeButton, null);
-    }
-
     /** A note with OK (named okLabel) and Cancel, in the update dialog's glass. Back counts as Cancel. */
-    private void showNotice(int title, CharSequence text, int okLabel, Runnable ok, Runnable cancel) {
-        View panel = getLayoutInflater().inflate(R.layout.dialog_update, root, false);
+    static void showNotice(Activity activity, int title, CharSequence text, int okLabel, Runnable ok,
+            Runnable cancel) {
+        View panel = activity.getLayoutInflater().inflate(R.layout.dialog_update,
+                activity.findViewById(android.R.id.content), false);
         ((TextView) panel.findViewById(R.id.updateTitle)).setText(title);
         ((TextView) panel.findViewById(R.id.notes)).setText(text);
         TextView okButton = panel.findViewById(R.id.install);
         okButton.setText(okLabel);
-        Dialog dialog = new Dialog(this, android.R.style.Theme_Material_Dialog_NoActionBar);
+        Dialog dialog = new Dialog(activity, android.R.style.Theme_Material_Dialog_NoActionBar);
         dialog.setContentView(panel);
         Window window = dialog.getWindow();
         if (window != null) {
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            window.setLayout((int) (560 * getResources().getDisplayMetrics().density), ViewGroup.LayoutParams.WRAP_CONTENT);
+            window.setLayout((int) (560 * activity.getResources().getDisplayMetrics().density),
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
         }
         boolean[] chose = {false};
         panel.findViewById(R.id.cancelUpdate).setOnClickListener(v -> dialog.dismiss());
@@ -2015,16 +1998,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         });
         dialog.show();
         okButton.requestFocus();
-    }
-
-    /** The TV's accessibility settings, where the user turns on the Home button. */
-    private void turnOnHomeButton() {
-        try {
-            startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
-            Toast.makeText(this, getString(R.string.home_key_turn_on, getString(R.string.home_key_name)), Toast.LENGTH_LONG).show();
-        } catch (ActivityNotFoundException | SecurityException e) {
-            Toast.makeText(this, R.string.home_not_changeable, Toast.LENGTH_LONG).show();
-        }
     }
 
     @Override
@@ -2238,11 +2211,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 this::openSettings);
         addInputRow(rows, popup, R.drawable.ic_settings, getString(R.string.android_settings), -1,
                 () -> open(SystemSettings.intent(this)));
-        if (BuildConfig.STORE && !DefaultHome.isHome(this) && !DefaultHome.homeButtonOn(this)) {
+        if (!DefaultHome.isHome(this) && !DefaultHome.homeButtonOn(this)) {
             // The stock launcher stays on: the TV's default-Home dialog where it has one, else HomeKeyService.
-            addInputRow(rows, popup, R.drawable.ic_home, getString(R.string.make_home), -1, this::makeHomeStore);
-        } else if (!BuildConfig.STORE && !DefaultHome.isHome(this)) {
-            addInputRow(rows, popup, R.drawable.ic_home, getString(R.string.make_home), -1, this::makeHome);
+            addInputRow(rows, popup, R.drawable.ic_home, getString(R.string.make_home), -1, this::offerHome);
         }
         // Live while the menu is open.
         Runnable tick = new Runnable() {

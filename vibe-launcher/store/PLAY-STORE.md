@@ -57,14 +57,17 @@ PICTURES FROM YOUR APPS
 • Optional: your own Plex server's art and Continue watching, TMDB artwork and logos, popular YouTube videos.
 
 A HOME SCREEN THAT STAYS OUT OF THE WAY
+• At rest, just your dock: from one app to a full row, as you choose. Press Down and the rest of your apps slide up in a grid.
 • 4, 5 or 6 tiles per row, picked for your screen size.
 • Move, hide or uninstall apps from the tile menu; hidden ones come back from it too.
-• The clock, your network and your TV's inputs (HDMI, with the devices on them) in a frosted bar.
-• 50 languages.
+• The clock, your network and your TV's inputs (HDMI, with the devices on them) in a frosted bar, or hidden until you need it.
+• Make it yours: a highlight color for what's focused, and faint arrows that show where the remote goes (or not).
+• Home at power-on: for TVs that wake up on their last input, Home comes up instead (optional).
+• Full-screen settings that apply as you change them, in 50 languages.
 • Light: built for TVs with 1 to 2 GB of memory.
 
 THE HOME BUTTON
-Android TV has no setting for choosing the home screen, so Vibe Launcher includes an optional accessibility service, "Vibe Launcher Home button". With it on, pressing Home opens Vibe Launcher and holding Home opens your TV's Settings. It only sees which screen comes up and the Home key; it reads nothing on screen, passes every other key on, stores nothing and sends nothing anywhere. Vibe Launcher explains this before you turn it on, and you can turn it off at any time in Settings > Accessibility.
+Android TV has no setting for choosing the home screen, so Vibe Launcher includes an optional accessibility service, "Vibe Launcher Home button". With it on, pressing Home opens Vibe Launcher and holding Home opens your TV's Settings. It hears only when the TV's own home screen comes up, and the remote's keys: it keeps Home and passes every other key on. It reads nothing on screen, stores nothing and sends nothing anywhere. Vibe Launcher explains this before you turn it on, and you can turn it off at any time in Settings > Accessibility.
 
 PRIVACY
 No ads, no analytics, no accounts. Vibe Launcher goes online only for pictures: from your apps, and from the services you give it a key for. The full list is in the privacy policy.
@@ -146,16 +149,29 @@ The optional "Vibe Launcher Home button" service makes Home open Vibe Launcher i
 Before the user is sent to Accessibility settings, the app shows a disclosure explaining what the service sees and does, with Agree and Cancel. Nothing is enabled without the user turning it on in Settings > Accessibility.
 ```
 
-**Video** (YouTube, unlisted; 30–60 seconds), shot on a Google TV with Vibe Launcher installed fresh:
-1. Open Vibe Launcher from the apps row: its disclosure note appears on first start. Pause on it.
-2. Choose *Agree*: Settings opens on Accessibility. Choose *Vibe Launcher Home button*, turn it on,
-   accept Android's confirmation.
-3. Open any app, press Home: Vibe Launcher opens.
-4. Press Home a few times on Vibe Launcher: it stays.
-5. Hold Home: the TV's Settings open.
-6. Back in Settings > Accessibility, turn the service off: Home goes back to the TV's own home screen.
+**Video** (YouTube, unlisted; about a minute). Play asks it to show
+([guidance](https://support.google.com/googleplay/android-developer/answer/10964491)): the app opening on
+the device, the way to the disclosure and the whole of it, what happens when the user agrees (including
+turning the service on), what happens when they don't and how they get the disclosure back, and a core
+feature that uses the service, with captions where it isn't obvious. Any Android TV or Google TV will do,
+as long as the disclosure comes up there (on TVs where Android's own default-Home dialog wins, that dialog
+comes first; Cancel on it brings the disclosure). Install the store build fresh, then:
 
-A phone pointed at the TV is fine; a capture card is clearer.
+1. Open Vibe Launcher from the TV's apps row. Answer the permissions note (that's a separate one).
+2. The Home button disclosure appears. Hold on it long enough to read every line.
+3. Choose *Cancel*: the note closes and Vibe Launcher goes on working, with Home still going to the TV's
+   own home screen (press it to show that, then open Vibe Launcher again).
+4. Top bar > Settings menu > *Make Vibe Launcher your Home* (or Vibe Launcher settings > General >
+   *Home button*): the same disclosure comes back.
+5. Choose *Agree*: Android's Settings opens on Accessibility. Choose *Vibe Launcher Home button*, turn it
+   on, accept Android's confirmation.
+6. Open any app, press Home: Vibe Launcher opens. Caption: "Home button service: Home opens Vibe Launcher".
+7. Hold Home: the TV's Settings open. Caption: "Holding Home opens the TV's Settings".
+8. In Vibe Launcher settings > General, set *Home button* to Off: Home goes back to the TV's own home
+   screen.
+
+A phone pointed at the TV is fine; a capture card is clearer. Add the captions in YouTube's editor or
+any video editor.
 
 ## 5. Before each upload
 

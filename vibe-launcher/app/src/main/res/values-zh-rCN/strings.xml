@@ -101,6 +101,9 @@
     <string name="continue_button">继续</string>
     <string name="home_key_disclosure_title">使用主页键</string>
     <string name="home_key_disclosure">这台电视不允许应用成为主屏幕应用，因此 Vibe Launcher 需要一项无障碍服务来响应主页键。\n\n它接管主页键：按一下打开 Vibe Launcher，长按打开设置，其他按键都原样放行。它也能知道电视自带的主屏幕何时出现，并把它盖住。它不读取屏幕上的任何内容，不保存任何东西，也不向任何地方发送任何东西。\n\n可随时在“设置”&gt;“无障碍”中关闭。</string>
+    <string name="home_key_disclosure_more">如果开启“%1$s”，屏幕亮起时它也会打开 Vibe Launcher，除非你先按了某个键（它只记下有键被按过，不记是哪个键）。设置中的“%2$s”也通过它打开电视的电源菜单。</string>
+    <string name="home_button">主页键</string>
+    <string name="home_button_short">适用于保留自带主屏幕的电视：按遥控器的主页键会打开 Vibe Launcher，长按则打开电视的设置。</string>
     <string name="home_key_agree">同意</string>
     <string name="home_key_steps">下一步：在打开的列表中选择“%1$s”并开启，然后按主页键。</string>
     <string name="store_update">更新 Vibe Launcher</string>

@@ -101,6 +101,9 @@
     <string name="continue_button">Jatka</string>
     <string name="home_key_disclosure_title">Käytä aloitusnäyttöpainiketta</string>
     <string name="home_key_disclosure">Tämä televisio ei anna sovellusten ryhtyä aloitusnäyttösovellukseksi, joten Vibe Launcher tarvitsee esteettömyyspalvelun vastatakseen aloitusnäyttöpainikkeeseen.\n\nSe ottaa aloitusnäyttöpainikkeen hoitaakseen: painallus avaa Vibe Launcherin, pitkä painallus asetukset, ja kaikki muut painikkeet menevät läpi sellaisinaan. Se näkee myös, kun television oma aloitusnäyttö tulee esiin, ja peittää sen. Se ei lue mitään näytöltä, ei tallenna mitään eikä lähetä mitään minnekään.\n\nVoit poistaa sen käytöstä milloin tahansa: Asetukset &gt; Esteettömyys.</string>
+    <string name="home_key_disclosure_more">Jos otat käyttöön asetuksen ”%1$s”, se avaa Vibe Launcherin myös näytön käynnistyessä, ellet paina ensin jotakin painiketta (se huomaa vain, että painiketta painettiin, ei mitä). Ja ”%2$s” asetuksissa avaa sen avulla television virtavalikon.</string>
+    <string name="home_button">Aloitusnäyttöpainike</string>
+    <string name="home_button_short">Televisioille, jotka pitävät oman aloitusnäyttönsä: kaukosäätimen aloitusnäyttöpainike avaa Vibe Launcherin, ja sen painaminen pitkään avaa television asetukset.</string>
     <string name="home_key_agree">Hyväksy</string>
     <string name="home_key_steps">Seuraavaksi: valitse avautuvasta luettelosta ”%1$s”, ota se käyttöön ja paina aloitusnäyttöpainiketta.</string>
     <string name="store_update">Päivitä Vibe Launcher</string>

@@ -101,6 +101,9 @@
     <string name="continue_button">続行</string>
     <string name="home_key_disclosure_title">ホームボタンを使う</string>
     <string name="home_key_disclosure">このテレビではアプリをホームアプリにできないため、Vibe Launcher がホームボタンに応えるにはユーザー補助サービスが必要です。\n\nホームボタンを引き受けます。押すと Vibe Launcher が、長押しすると設定が開き、ほかのボタンはそのまま通ります。テレビ独自のホーム画面が表示されたときもそれを確認し、上から覆います。画面の内容は読み取らず、何も保存せず、どこにも何も送信しません。\n\n[設定] &gt; [ユーザー補助] でいつでもオフにできます。</string>
+    <string name="home_key_disclosure_more">「%1$s」をオンにすると、画面がオンになったときにも Vibe Launcher を開きます。ただし先にボタンを押した場合は開きません（ボタンが押されたことだけを記録し、どのボタンかは記録しません）。また、設定の「%2$s」はこれを使ってテレビの電源メニューを開きます。</string>
+    <string name="home_button">ホームボタン</string>
+    <string name="home_button_short">独自のホーム画面を使い続けるテレビ向け：リモコンのホームボタンで Vibe Launcher が開き、長押しでテレビの設定が開きます。</string>
     <string name="home_key_agree">同意する</string>
     <string name="home_key_steps">次に、表示されるリストで「%1$s」を選んでオンにし、ホームボタンを押してください。</string>
     <string name="store_update">Vibe Launcher を更新</string>

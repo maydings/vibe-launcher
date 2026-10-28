@@ -106,6 +106,9 @@
     <string name="continue_button">Continue</string>
     <string name="home_key_disclosure_title">Use the Home button</string>
     <string name="home_key_disclosure">This TV doesn\'t let apps become the Home app, so Vibe Launcher needs an accessibility service to answer the Home button.\n\nIt takes the Home button: a press opens Vibe Launcher, a hold opens Settings, and every other key passes on untouched. It also sees when the TV\'s own home screen comes up, and covers it. It reads nothing on screen, keeps nothing and sends nothing anywhere.\n\nTurn it off any time in Settings &gt; Accessibility.</string>
+    <string name="home_key_disclosure_more">If you turn on “%1$s”, it also opens Vibe Launcher when the screen turns on, unless you press a key first (it notes only that a key was pressed, not which). And “%2$s” in Settings uses it to open the TV\'s power menu.</string>
+    <string name="home_button">Home button</string>
+    <string name="home_button_short">For TVs that keep their own home screen: the remote\'s Home button opens Vibe Launcher, and holding it opens the TV\'s Settings.</string>
     <string name="home_key_agree">Agree</string>
     <string name="home_key_steps">Next: in the list that opens, choose “%1$s”, turn it on, then press Home.</string>
     <string name="store_update">Update Vibe Launcher</string>

@@ -101,6 +101,9 @@
     <string name="continue_button">Continuer</string>
     <string name="home_key_disclosure_title">Utiliser le bouton Accueil</string>
     <string name="home_key_disclosure">Ce téléviseur ne permet pas aux applications de devenir l\'application d\'accueil. Vibe Launcher a donc besoin d\'un service d\'accessibilité pour répondre au bouton Accueil.\n\nIl prend en charge le bouton Accueil : un appui ouvre Vibe Launcher, un appui long ouvre les paramètres, et toutes les autres touches passent telles quelles. Il voit aussi quand l\'écran d\'accueil du téléviseur s\'affiche, et le recouvre. Il ne lit rien à l\'écran, ne garde rien et n\'envoie rien nulle part.\n\nDésactivez-le à tout moment dans Paramètres &gt; Accessibilité.</string>
+    <string name="home_key_disclosure_more">Si vous activez « %1$s », il ouvre aussi Vibe Launcher quand l\'écran s\'allume, sauf si vous appuyez d\'abord sur une touche (il note seulement qu\'une touche a été pressée, pas laquelle). Et « %2$s » dans les paramètres l\'utilise pour ouvrir le menu d\'alimentation du téléviseur.</string>
+    <string name="home_button">Bouton Accueil</string>
+    <string name="home_button_short">Pour les téléviseurs qui gardent leur propre écran d\'accueil : le bouton Accueil de la télécommande ouvre Vibe Launcher, et un appui long ouvre les paramètres du téléviseur.</string>
     <string name="home_key_agree">Accepter</string>
     <string name="home_key_steps">Ensuite : dans la liste qui s\'ouvre, choisissez « %1$s », activez-le, puis appuyez sur Accueil.</string>
     <string name="store_update">Mettre à jour Vibe Launcher</string>
