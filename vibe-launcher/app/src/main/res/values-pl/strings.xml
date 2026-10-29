@@ -55,6 +55,7 @@
     <string name="update_failed">Aktualizacja się nie zainstalowała</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Dysk</string>
     <string name="keys_help">Instrukcje</string>
     <string name="tmdb_short">Czyste tła i logotypy tytułów dla filmów i seriali.</string>
     <string name="youtube_short">Popularne filmy w Twoim kraju dla kafelka YouTube.</string>

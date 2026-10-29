@@ -55,6 +55,7 @@
     <string name="update_failed">Aktualizácia sa nenainštalovala</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Disk</string>
     <string name="keys_help">Návod</string>
     <string name="tmdb_short">Čisté pozadia a logá titulov pre filmy a seriály.</string>
     <string name="youtube_short">Obľúbené videá vo vašej krajine pre dlaždicu YouTube.</string>

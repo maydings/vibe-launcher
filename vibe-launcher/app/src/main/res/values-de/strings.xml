@@ -55,6 +55,7 @@
     <string name="update_failed">Das Update wurde nicht installiert</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Disk</string>
     <string name="keys_help">Anleitung</string>
     <string name="tmdb_short">Saubere Hintergründe und Titellogos für Filme und Serien.</string>
     <string name="youtube_short">Beliebte Videos in deinem Land für die YouTube-Kachel.</string>

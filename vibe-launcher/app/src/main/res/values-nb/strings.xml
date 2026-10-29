@@ -55,6 +55,7 @@
     <string name="update_failed">Oppdateringen ble ikke installert</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Disk</string>
     <string name="keys_help">Veiledning</string>
     <string name="tmdb_short">Rene bakgrunner og tittellogoer for filmer og serier.</string>
     <string name="youtube_short">Populære videoer i landet ditt for YouTube-flisen.</string>

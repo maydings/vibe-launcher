@@ -55,6 +55,7 @@
     <string name="update_failed">ติดตั้งอัปเดตไม่สำเร็จ</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">ดิสก์</string>
     <string name="keys_help">คำแนะนำ</string>
     <string name="tmdb_short">ภาพพื้นหลังที่สะอาดและโลโก้ชื่อเรื่องสำหรับภาพยนตร์และรายการ</string>
     <string name="youtube_short">วิดีโอยอดนิยมในประเทศของคุณสำหรับไทล์ YouTube</string>

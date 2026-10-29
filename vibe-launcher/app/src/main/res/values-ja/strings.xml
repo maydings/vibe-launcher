@@ -55,6 +55,7 @@
     <string name="update_failed">アップデートをインストールできませんでした</string>
     <string name="cpu">CPU</string>
     <string name="ram">メモリ</string>
+    <string name="storage">ディスク</string>
     <string name="keys_help">説明</string>
     <string name="tmdb_short">映画や番組のきれいな背景画像とタイトルロゴ。</string>
     <string name="youtube_short">YouTube タイルに、お住まいの国の人気動画。</string>

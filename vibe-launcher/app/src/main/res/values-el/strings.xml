@@ -55,6 +55,7 @@
     <string name="update_failed">Η ενημέρωση δεν εγκαταστάθηκε</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Δίσκος</string>
     <string name="keys_help">Οδηγίες</string>
     <string name="tmdb_short">Καθαρά φόντα και λογότυπα τίτλων για ταινίες και σειρές.</string>
     <string name="youtube_short">Δημοφιλή βίντεο στη χώρα σας για το πλακίδιο του YouTube.</string>

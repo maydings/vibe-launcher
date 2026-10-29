@@ -55,6 +55,7 @@
     <string name="update_failed">Päivitystä ei asennettu</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Levy</string>
     <string name="keys_help">Ohjeet</string>
     <string name="tmdb_short">Siistit taustakuvat ja nimilogot elokuville ja sarjoille.</string>
     <string name="youtube_short">Maasi suosittuja videoita YouTube-ruutuun.</string>

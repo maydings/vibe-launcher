@@ -55,6 +55,7 @@
     <string name="update_failed">更新未能安装</string>
     <string name="cpu">CPU</string>
     <string name="ram">内存</string>
+    <string name="storage">磁盘</string>
     <string name="keys_help">说明</string>
     <string name="tmdb_short">为电影和剧集提供干净的背景和片名标志。</string>
     <string name="youtube_short">为 YouTube 磁贴提供你所在国家的热门视频。</string>

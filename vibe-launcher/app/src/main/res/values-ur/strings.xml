@@ -55,6 +55,7 @@
     <string name="update_failed">اپ ڈیٹ انسٹال نہیں ہوئی</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">ڈسک</string>
     <string name="keys_help">ہدایات</string>
     <string name="tmdb_short">فلموں اور شوز کے لیے صاف بیک ڈراپ اور عنوان کے لوگو۔</string>
     <string name="youtube_short">YouTube ٹائل کے لیے آپ کے ملک کی مقبول ویڈیوز۔</string>

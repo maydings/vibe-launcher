@@ -55,6 +55,7 @@
     <string name="update_failed">အပ်ဒိတ် မထည့်သွင်းနိုင်ခဲ့ပါ</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">ဒစ်</string>
     <string name="keys_help">ညွှန်ကြားချက်များ</string>
     <string name="tmdb_short">ရုပ်ရှင်နှင့် ရှိုးများအတွက် သန့်ရှင်းသော နောက်ခံပုံများနှင့် ခေါင်းစဉ် လိုဂိုများ။</string>
     <string name="youtube_short">YouTube အကွက်အတွက် သင့်နိုင်ငံရှိ လူကြိုက်များသော ဗီဒီယိုများ။</string>

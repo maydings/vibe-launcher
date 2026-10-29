@@ -90,7 +90,7 @@ slides in when you press Up from the picture alone, or move down into the app gr
   PlayStation behind an HDMI switch each get their own row. Names and hidden inputs from the TV's own
   settings carry over.
 - **Network** shows each connection with its IP address (and the Wi-Fi link speed), and VPNs.
-- **Settings** shows live memory use and opens Vibe Launcher's settings or Android's.
+- **Settings** shows live memory and disk use and opens Vibe Launcher's settings or Android's.
 
 | ![The Inputs menu: HDMI 2 with a PlayStation 5 and an Apple TV behind it, both connected](vibe-launcher/docs/inputs-menu.jpg) | ![The Settings menu with live RAM use](vibe-launcher/docs/settings-menu.jpg) |
 |---|---|

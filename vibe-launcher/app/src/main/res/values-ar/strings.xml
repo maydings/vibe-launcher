@@ -55,6 +55,7 @@
     <string name="update_failed">لم يُثبَّت التحديث</string>
     <string name="cpu">المعالج</string>
     <string name="ram">الذاكرة</string>
+    <string name="storage">القرص</string>
     <string name="keys_help">التعليمات</string>
     <string name="tmdb_short">خلفيات نظيفة وشعارات العناوين للأفلام والمسلسلات.</string>
     <string name="youtube_short">الفيديوهات الشائعة في بلدك لمربع YouTube.</string>

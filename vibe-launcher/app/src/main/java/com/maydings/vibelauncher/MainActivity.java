@@ -37,8 +37,10 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.StatFs;
 import android.os.SystemClock;
 import android.provider.Settings;
 import android.text.Editable;
@@ -2178,6 +2180,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         boolean cpuLive = cpuInfo.canMeasure();
         View cpu = cpuLive ? addMeterRow(rows, getString(R.string.cpu)) : null;
         View ram = addMeterRow(rows, getString(R.string.ram));
+        View disk = addMeterRow(rows, getString(R.string.storage));
         addSeparator(rows);
         // The last check's answer at once, then ask GitHub again: a release out since then replaces it in
         // this row, or shows the row. Settings → General, opened from here, shows the same answer. The row is
@@ -2221,10 +2224,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             public void run() {
                 if (cpuLive) updateCpu(cpu, cpuInfo.usage());
                 updateRam(ram);
+                updateDisk(disk);
                 handler.postDelayed(this, 1000);
             }
         };
         tick.run();
+        alignMeters(cpu, ram, disk);
         popup.setOnDismissListener(() -> handler.removeCallbacks(tick));
         showMenu(popup, panel, rows, anchor, Gravity.END);
     }
@@ -2261,7 +2266,60 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         return row;
     }
 
+    /**
+     * One label width and one figures width for every meter in the menu, so their bars line up: the labels as
+     * written (in some languages "Disk" is longer than "RAM"), the figures at their widest for this device (by its
+     * totals: widestFigures, left in each row's tag by its first update). Set once, so the bars don't
+     * move as the numbers change.
+     */
+    private void alignMeters(View... meters) {
+        float labels = 0, values = 0;
+        for (View row : meters) {
+            if (row == null) continue;
+            TextView label = row.findViewById(R.id.label);
+            labels = Math.max(labels, label.getPaint().measureText(label.getText().toString()));
+            if (row.getTag() instanceof String) {
+                // Every digit as the font's widest: its digits aren't all one width ("13" is wider than "16").
+                TextView value = row.findViewById(R.id.value);
+                values = Math.max(values, value.getPaint().measureText(
+                        ((String) row.getTag()).replaceAll("\\d", widestDigit(value))));
+            }
+        }
+        float dp = getResources().getDisplayMetrics().density;
+        int labelWidth = Math.max((int) Math.ceil(labels), Math.round(40 * dp));
+        int valueWidth = Math.max((int) Math.ceil(values) + 1, Math.round(64 * dp));
+        for (View row : meters) {
+            if (row == null) continue;
+            row.findViewById(R.id.label).getLayoutParams().width = labelWidth;
+            row.findViewById(R.id.value).getLayoutParams().width = valueWidth;
+            row.requestLayout();
+        }
+    }
+
+    /** A figure in GB with at least two significant digits: "8.5" under 10, else whole ("11", "128"). */
+    private static String gb(float value) {
+        float tenths = Math.round(value * 10) / 10f;
+        return tenths < 10 ? String.format(Locale.getDefault(), "%.1f", tenths) : String.valueOf(Math.round(value));
+    }
+
+    /**
+     * The widest a meter's figures get for a device with this total: two digits ("8.5 / 16 GB") under 100 GB,
+     * three ("100 / 128 GB") from there; alignMeters measures it with the widest digit in every place.
+     */
+    private String widestFigures(float total) {
+        return total < 99.5f ? getString(R.string.ram_value, gb(8.5f), gb(16)) : getString(R.string.ram_value, gb(100), gb(128));
+    }
+
+    private static String widestDigit(TextView text) {
+        String widest = "0";
+        for (char d = '1'; d <= '9'; d++) {
+            if (text.getPaint().measureText(String.valueOf(d)) > text.getPaint().measureText(widest)) widest = String.valueOf(d);
+        }
+        return widest;
+    }
+
     private void updateCpu(View row, float usage) {
+        row.setTag(getString(R.string.percent, 100));
         if (usage < 0) return;
         ((ProgressBar) row.findViewById(R.id.bar)).setProgress((int) (1000 * usage));
         ((TextView) row.findViewById(R.id.value)).setText(getString(R.string.percent, Math.round(100 * usage)));
@@ -2281,7 +2339,29 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         int color = mi.availMem > 100 * mb ? 0xFF34C759 : mi.availMem > 10 * mb ? 0xFFFFCC00 : 0xFFFF3B30;
         bar.setProgressTintList(ColorStateList.valueOf(color));
         float gb = 1024f * 1024 * 1024;
-        ((TextView) row.findViewById(R.id.value)).setText(getString(R.string.ram_value, used / gb, mi.totalMem / gb));
+        ((TextView) row.findViewById(R.id.value)).setText(getString(R.string.ram_value, gb(used / gb), gb(mi.totalMem / gb)));
+        row.setTag(widestFigures(mi.totalMem / gb));
+    }
+
+    /** Space where apps and their data go: used of total, like RAM. */
+    private void updateDisk(View row) {
+        long free, total;
+        try {
+            StatFs fs = new StatFs(Environment.getDataDirectory().getPath());
+            free = fs.getAvailableBytes();
+            total = fs.getTotalBytes();
+        } catch (IllegalArgumentException e) {
+            return;
+        }
+        ProgressBar bar = row.findViewById(R.id.bar);
+        bar.setProgress((int) (1000 * (total - free) / Math.max(1, total)));
+        // Green while there's room, yellow under 1 GB free (app updates start failing), red under 200 MB.
+        long mb = 1024 * 1024;
+        int color = free > 1024 * mb ? 0xFF34C759 : free > 200 * mb ? 0xFFFFCC00 : 0xFFFF3B30;
+        bar.setProgressTintList(ColorStateList.valueOf(color));
+        float gb = 1024f * 1024 * 1024;
+        ((TextView) row.findViewById(R.id.value)).setText(getString(R.string.ram_value, gb((total - free) / gb), gb(total / gb)));
+        row.setTag(widestFigures(total / gb));
     }
 
     private void open(Intent i) {

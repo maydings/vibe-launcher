@@ -55,6 +55,7 @@
     <string name="update_failed">Güncelleme yüklenemedi</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Disk</string>
     <string name="keys_help">Talimatlar</string>
     <string name="tmdb_short">Filmler ve diziler için temiz arka planlar ve başlık logoları.</string>
     <string name="youtube_short">YouTube kutucuğu için ülkenizdeki popüler videolar.</string>

@@ -55,6 +55,7 @@
     <string name="update_failed">A frissítés nem települt</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Lemez</string>
     <string name="keys_help">Útmutató</string>
     <string name="tmdb_short">Tiszta hátterek és címlogók filmekhez és sorozatokhoz.</string>
     <string name="youtube_short">Az országod népszerű videói a YouTube csempéhez.</string>

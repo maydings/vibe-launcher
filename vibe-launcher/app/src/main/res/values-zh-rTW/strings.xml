@@ -55,6 +55,7 @@
     <string name="update_failed">更新未能安裝</string>
     <string name="cpu">CPU</string>
     <string name="ram">記憶體</string>
+    <string name="storage">磁碟</string>
     <string name="keys_help">說明</string>
     <string name="tmdb_short">為電影和節目提供乾淨的背景和片名標誌。</string>
     <string name="youtube_short">為 YouTube 方塊提供你所在國家的熱門影片。</string>

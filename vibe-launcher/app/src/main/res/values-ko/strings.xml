@@ -55,6 +55,7 @@
     <string name="update_failed">업데이트를 설치하지 못했습니다</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">디스크</string>
     <string name="keys_help">안내</string>
     <string name="tmdb_short">영화와 프로그램의 깔끔한 배경과 타이틀 로고.</string>
     <string name="youtube_short">YouTube 타일에 내 나라의 인기 동영상.</string>

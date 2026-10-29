@@ -55,6 +55,7 @@
     <string name="update_failed">Pembaruan tidak terpasang</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Disk</string>
     <string name="keys_help">Petunjuk</string>
     <string name="tmdb_short">Latar bersih dan logo judul untuk film dan acara.</string>
     <string name="youtube_short">Video populer di negara Anda untuk ubin YouTube.</string>

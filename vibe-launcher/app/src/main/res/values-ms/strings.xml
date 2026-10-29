@@ -55,6 +55,7 @@
     <string name="update_failed">Kemas kini tidak dipasang</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Disk</string>
     <string name="keys_help">Arahan</string>
     <string name="tmdb_short">Latar bersih dan logo tajuk untuk filem dan rancangan.</string>
     <string name="youtube_short">Video popular di negara anda untuk jubin YouTube.</string>

@@ -55,6 +55,7 @@
     <string name="update_failed">Актуализацията не се инсталира</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Диск</string>
     <string name="keys_help">Инструкции</string>
     <string name="tmdb_short">Чисти фонове и лога на заглавията за филми и сериали.</string>
     <string name="youtube_short">Популярни видеоклипове в държавата ви за плочката на YouTube.</string>

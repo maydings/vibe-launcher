@@ -55,6 +55,7 @@
     <string name="update_failed">Оновлення не встановилося</string>
     <string name="cpu">ЦП</string>
     <string name="ram">ОЗП</string>
+    <string name="storage">Диск</string>
     <string name="keys_help">Інструкції</string>
     <string name="tmdb_short">Чисті фони й логотипи назв для фільмів і серіалів.</string>
     <string name="youtube_short">Популярні відео у вашій країні для плитки YouTube.</string>

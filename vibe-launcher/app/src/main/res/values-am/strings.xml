@@ -55,6 +55,7 @@
     <string name="update_failed">ዝማኔው አልተጫነም</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">ዲስክ</string>
     <string name="keys_help">መመሪያዎች</string>
     <string name="tmdb_short">ለፊልሞችና ትርዒቶች ንጹህ ዳራዎችና የርዕስ አርማዎች።</string>
     <string name="youtube_short">ለYouTube ሰድር በአገርዎ ተወዳጅ ቪዲዮዎች።</string>

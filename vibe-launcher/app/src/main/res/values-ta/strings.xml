@@ -55,6 +55,7 @@
     <string name="update_failed">புதுப்பிப்பு நிறுவப்படவில்லை</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">வட்டு</string>
     <string name="keys_help">வழிமுறைகள்</string>
     <string name="tmdb_short">திரைப்படங்கள், நிகழ்ச்சிகளுக்கு சுத்தமான பின்னணிகளும் தலைப்பு லோகோக்களும்.</string>
     <string name="youtube_short">YouTube டைலுக்கு உங்கள் நாட்டின் பிரபல வீடியோக்கள்.</string>

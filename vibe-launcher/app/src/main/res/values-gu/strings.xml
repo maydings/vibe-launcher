@@ -55,6 +55,7 @@
     <string name="update_failed">અપડેટ ઇન્સ્ટૉલ થયું નહીં</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">ડિસ્ક</string>
     <string name="keys_help">સૂચનાઓ</string>
     <string name="tmdb_short">ફિલ્મો અને શો માટે સ્વચ્છ બેકડ્રોપ અને શીર્ષક લોગો.</string>
     <string name="youtube_short">YouTube ટાઇલ માટે તમારા દેશના લોકપ્રિય વીડિયો.</string>

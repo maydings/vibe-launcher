@@ -55,6 +55,7 @@
     <string name="update_failed">העדכון לא הותקן</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">דיסק</string>
     <string name="keys_help">הוראות</string>
     <string name="tmdb_short">רקעים נקיים ולוגו של הכותרת לסרטים ולסדרות.</string>
     <string name="youtube_short">סרטונים פופולריים בארץ שלך לאריח של YouTube.</string>

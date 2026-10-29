@@ -55,6 +55,7 @@
     <string name="update_failed">Actualizarea nu s-a instalat</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Disc</string>
     <string name="keys_help">Instrucțiuni</string>
     <string name="tmdb_short">Fundaluri curate și logouri de titlu pentru filme și seriale.</string>
     <string name="youtube_short">Videoclipuri populare din țara ta pentru panoul YouTube.</string>

@@ -55,6 +55,7 @@
     <string name="update_failed">යාවත්කාලීනය ස්ථාපනය නොවීය</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">තැටිය</string>
     <string name="keys_help">උපදෙස්</string>
     <string name="tmdb_short">චිත්‍රපට සහ වැඩසටහන් සඳහා පිරිසිදු පසුබිම් සහ මාතෘකා ලාංඡන.</string>
     <string name="youtube_short">YouTube ටයිලය සඳහා ඔබේ රටේ ජනප්‍රිය වීඩියෝ.</string>

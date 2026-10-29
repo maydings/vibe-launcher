@@ -55,6 +55,7 @@
     <string name="update_failed">La mise à jour ne s\'est pas installée</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Disque</string>
     <string name="keys_help">Instructions</string>
     <string name="tmdb_short">Des fonds propres et les logos des titres pour les films et séries.</string>
     <string name="youtube_short">Les vidéos populaires de votre pays pour la vignette YouTube.</string>

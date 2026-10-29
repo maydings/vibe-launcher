@@ -55,6 +55,7 @@
     <string name="update_failed">ಅಪ್‌ಡೇಟ್ ಇನ್‌ಸ್ಟಾಲ್ ಆಗಲಿಲ್ಲ</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">ಡಿಸ್ಕ್</string>
     <string name="keys_help">ಸೂಚನೆಗಳು</string>
     <string name="tmdb_short">ಸಿನಿಮಾ ಮತ್ತು ಶೋಗಳಿಗೆ ಸ್ವಚ್ಛ ಹಿನ್ನೆಲೆಗಳು ಮತ್ತು ಶೀರ್ಷಿಕೆ ಲೋಗೋಗಳು.</string>
     <string name="youtube_short">YouTube ಟೈಲ್‌ಗೆ ನಿಮ್ಮ ದೇಶದ ಜನಪ್ರಿಯ ವೀಡಿಯೊಗಳು.</string>

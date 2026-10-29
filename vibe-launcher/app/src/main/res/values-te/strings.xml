@@ -55,6 +55,7 @@
     <string name="update_failed">అప్‌డేట్ ఇన్‌స్టాల్ కాలేదు</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">డిస్క్</string>
     <string name="keys_help">సూచనలు</string>
     <string name="tmdb_short">సినిమాలు, షోలకు శుభ్రమైన బ్యాక్‌డ్రాప్‌లు మరియు టైటిల్ లోగోలు.</string>
     <string name="youtube_short">YouTube టైల్‌కు మీ దేశంలో ప్రాచుర్యం పొందిన వీడియోలు.</string>

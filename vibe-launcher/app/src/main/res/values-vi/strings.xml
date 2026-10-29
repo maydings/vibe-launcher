@@ -55,6 +55,7 @@
     <string name="update_failed">Bản cập nhật chưa được cài</string>
     <string name="cpu">CPU</string>
     <string name="ram">RAM</string>
+    <string name="storage">Ổ đĩa</string>
     <string name="keys_help">Hướng dẫn</string>
     <string name="tmdb_short">Hình nền sạch và logo tiêu đề cho phim và chương trình.</string>
     <string name="youtube_short">Video phổ biến ở quốc gia của bạn cho ô YouTube.</string>
