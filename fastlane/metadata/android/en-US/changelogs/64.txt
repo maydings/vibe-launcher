@@ -1,0 +1,3 @@
+* New: Settings > General > Back button: Off, First app, Poster view or Screensaver.
+* New: Settings > Appearance > Clock: Match system, 12-hour or 24-hour.
+* Home also answers TVs with CVTE firmware, which send Home and power-on as COMMON_HOME.

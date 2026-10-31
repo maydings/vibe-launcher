@@ -1,0 +1,20 @@
+A home screen for Android TV and Google TV, inspired by tvOS. The app you focus in the dock fills the screen with its films and shows, as clean backdrops with the title's logo.
+
+**Highlights**
+
+* **Backdrops**: the focused dock app's films and shows, from the TV's own home screen cards. Clean pictures and title logos come from Stremio's free data, or from TMDB, YouTube and Plex keys you paste from your phone through a QR code.
+* **Poster view and screensaver**: the picture alone, with a Play button that opens the title. Left alone, Home becomes a slideshow of your apps' pictures, with the clock.
+* **A frosted top bar**: the clock and date, an Inputs menu that lists HDMI-CEC devices by name under their port, the network, and Settings with live RAM and disk meters.
+* **Your Home button, no computer needed**: on TVs that keep their own launcher, an optional accessibility service sends the Home button to Vibe Launcher. It's off until you turn it on, and it reads only the Home key, nothing on screen.
+* **Settings that slide**: tiles per row, apps in dock, auto-hide, a 12- or 24-hour clock, what Back does on Home, Home at power-on and the highlight colour.
+* **50 languages**: follows your TV, or pick one.
+* **Light**: about 1.2 MB, built for TVs with 1 to 2 GB of RAM. Android 8.0 and newer.
+* **Updates from inside the launcher**, with release notes and a SHA-256 check.
+
+**Privacy**
+
+No account, no ads, no analytics, no tracking. Location is asked only because Android shows the Wi-Fi network's name with it. Pictures come straight from the services above.
+
+**Tested on** Sony Bravia XBR-940E and 900F (Android TV 9), NVIDIA Shield TV 2017 (Android 11) and onn 4K Streaming Device (Google TV 14).
+
+Open source under the MIT licence.

@@ -10,7 +10,7 @@ and gets out of the way. It works well enough for us that I'd like to share it w
 ![Vibe Launcher: Netflix focused in a four-app dock, with Wake Up Dead Man's backdrop and title logo filling the screen](vibe-launcher/docs/home.jpg)
 
 **[Download the latest APK](https://github.com/maydings/vibe-launcher/releases/latest/download/vibe-launcher.apk)**
-· Android TV and Google TV, Android 8.0 or newer · about 1.2 MB
+· on the TV, Downloader code **5573341** · Android TV and Google TV, Android 8.0 or newer · about 1.2 MB
 
 ## Highlights
 
@@ -201,10 +201,10 @@ it updates itself from then on.)
 
 ### On the TV
 
-1. Install a downloader or file manager from the Play Store, for example **Downloader** (by
-   AFTVnews) or **X-plore**.
-2. Open the download link above in it and open the APK. Android asks once to allow that app to install
-   apps; allow it.
+1. Install **Downloader** (by AFTVnews) from the Play Store.
+2. Open it and type the code **5573341** in its address box (or the download link above, in
+   Downloader or any file manager such as **X-plore**), then open the APK. Android asks once to allow
+   that app to install apps; allow it. The code always gets the latest release.
 3. Open Vibe Launcher from your apps and allow its two permissions: TV listings (for the apps'
    cards) and location (Android only reveals the Wi-Fi network's name with it).
 4. Make it your home screen when it offers to, or later from the Settings menu → **Make Vibe Launcher
@@ -238,7 +238,7 @@ Two things to check before turning off the setup app:
 To undo either, `adb shell pm enable --user 0 <package>`.
 
 **Removing the TV's ads and bloat** is a separate job, and this project only replaces the home
-screen. For that, see [Gathin23/tv-vibehack](https://github.com/Gathin23/tv-vibehack), with tested
+screen. For that, see [Gathin23/cleanyourtv](https://github.com/Gathin23/cleanyourtv), with tested
 lists for over a hundred TV models.
 
 ## Tested on
@@ -269,6 +269,6 @@ machine-made translations (`vibe-launcher/app/src/main/res/values-*/strings.xml`
 ## Licence
 
 MIT, see [`LICENSE`](LICENSE). Started as a fork of
-[Gathin23/tv-vibehack](https://github.com/Gathin23/tv-vibehack). The Outfit typeface is under the SIL
+[Gathin23/cleanyourtv](https://github.com/Gathin23/cleanyourtv). The Outfit typeface is under the SIL
 Open Font License (`vibe-launcher/FONT-LICENSE-OFL.txt`). Backdrops use the TMDB API but are not
 endorsed or certified by TMDB.
