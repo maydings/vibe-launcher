@@ -20,6 +20,8 @@ final class VibeSettings {
     private static final String DOCK_APPS = "dockApps";
     private static final String GLASS_TINT = "glassTint";
     private static final String CARETS = "carets";
+    private static final String CLOCK_HOURS = "clockHours";
+    private static final String BACK_ACTION = "backAction";
 
     private final SharedPreferences prefs;
 
@@ -114,6 +116,26 @@ final class VibeSettings {
 
     void setCarets(boolean show) {
         prefs.edit().putBoolean(CARETS, show).apply();
+    }
+
+    /** The clock in 12- or 24-hour time, or 0 for the TV's own setting (the default). */
+    int clockHours() {
+        return prefs.getInt(CLOCK_HOURS, 0);
+    }
+
+    void setClockHours(int hours) {
+        prefs.edit().putInt(CLOCK_HOURS, hours).apply();
+    }
+
+    static final int BACK_NOTHING = 0, BACK_FIRST_APP = 1, BACK_POSTER = 2, BACK_SCREENSAVER = 3;
+
+    /** What Back does on Home: nothing (the default), the first app, the poster view or the screensaver. */
+    int backAction() {
+        return prefs.getInt(BACK_ACTION, BACK_NOTHING);
+    }
+
+    void setBackAction(int action) {
+        prefs.edit().putInt(BACK_ACTION, action).apply();
     }
 
     /** Home shortly after the screen turns on, over whatever the TV woke up on (off by default; PowerOnHome). */

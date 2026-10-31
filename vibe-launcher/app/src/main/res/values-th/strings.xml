@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">กำลังดาวน์โหลดภาพพื้นหลังใหม่…</string>
     <string name="auto_hide_bar">ซ่อนอัตโนมัติ</string>
     <string name="slideshow_clock">นาฬิกาบนภาพพักหน้าจอ</string>
+    <string name="back_button">ปุ่มย้อนกลับ</string>
+    <string name="back_first_app">แอปแรก</string>
+    <string name="back_poster">มุมมองโปสเตอร์</string>
+    <string name="back_screensaver">ภาพพักหน้าจอ</string>
+    <string name="clock">นาฬิกา</string>
+    <string name="clock_12">12 ชั่วโมง</string>
+    <string name="clock_24">24 ชั่วโมง</string>
     <string name="carets">ลูกศร</string>
     <string name="glass_color">สีไฮไลต์</string>
     <string name="glass_white">รีเซ็ต</string>

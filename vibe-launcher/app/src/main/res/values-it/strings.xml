@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Download di nuovi sfondi…</string>
     <string name="auto_hide_bar">Nascondi automaticamente</string>
     <string name="slideshow_clock">Orologio nel salvaschermo</string>
+    <string name="back_button">Tasto Indietro</string>
+    <string name="back_first_app">Prima app</string>
+    <string name="back_poster">Vista poster</string>
+    <string name="back_screensaver">Salvaschermo</string>
+    <string name="clock">Orologio</string>
+    <string name="clock_12">12 ore</string>
+    <string name="clock_24">24 ore</string>
     <string name="carets">Frecce</string>
     <string name="glass_color">Colore di evidenziazione</string>
     <string name="glass_white">Ripristina</string>

@@ -68,9 +68,12 @@
             android:clearTaskOnLaunch="true"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden|uiMode"
             android:screenOrientation="landscape">
+            <!-- CVTE firmware (ro.CVT_EN_COMMON_HOME_INTENT=1) sends Home and boot as MAIN + HOME + COMMON_HOME,
+                 which only a filter listing both matches. In this one filter: a plain HOME intent still matches. -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.COMMON_HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <!-- Also in the TV's app list, so it can be opened after an install without adb and file

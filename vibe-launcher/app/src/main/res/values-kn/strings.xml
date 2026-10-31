@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">ಹೊಸ ಹಿನ್ನೆಲೆಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…</string>
     <string name="auto_hide_bar">ಸ್ವಯಂ ಮರೆಮಾಡು</string>
     <string name="slideshow_clock">ಸ್ಕ್ರೀನ್‌ಸೇವರ್ ಗಡಿಯಾರ</string>
+    <string name="back_button">ಹಿಂದೆ ಬಟನ್</string>
+    <string name="back_first_app">ಮೊದಲ ಆ್ಯಪ್</string>
+    <string name="back_poster">ಪೋಸ್ಟರ್ ವೀಕ್ಷಣೆ</string>
+    <string name="back_screensaver">ಸ್ಕ್ರೀನ್‌ಸೇವರ್</string>
+    <string name="clock">ಗಡಿಯಾರ</string>
+    <string name="clock_12">12 ಗಂಟೆ</string>
+    <string name="clock_24">24 ಗಂಟೆ</string>
     <string name="carets">ಬಾಣಗಳು</string>
     <string name="glass_color">ಹೈಲೈಟ್ ಬಣ್ಣ</string>
     <string name="glass_white">ಮರುಹೊಂದಿಸಿ</string>

@@ -172,7 +172,7 @@ The full list, with what each is sent, is in the [privacy policy](docs/PRIVACY.m
 | File | What it does |
 |---|---|
 | `MainActivity` | Home screen, dock and grid focus, top bar menus, the Inputs menu with its HDMI-CEC devices |
-| `SettingsScreen`, `SettingsActivity` | Vibe Launcher settings: General (language, reload backdrops, Home at power-on, Restart…, software version), Appearance (tiles per row, inputs, auto-hide, screensaver clock) and API keys (the keys, their explanations, the QR code). Built once when Home starts and shown on a screen of its own, which fades in; its lists slide left as pages open, and Home is rebuilt behind it for a new grid or language |
+| `SettingsScreen`, `SettingsActivity` | Vibe Launcher settings: General (language, reload backdrops, Home at power-on, Back button, Restart…, software version), Appearance (tiles per row, inputs, auto-hide, screensaver clock, 12/24-hour clock) and API keys (the keys, their explanations, the QR code). Built once when Home starts and shown on a screen of its own, which fades in; its lists slide left as pages open, and Home is rebuilt behind it for a new grid or language |
 | `Lang` | The 50 languages and applying the one chosen in settings (or the TV's own) |
 | `Updater`, `UpdateReceiver` | Checks the GitHub releases, downloads and verifies the APK, hands it to Android's installer |
 | `AppAdapter`, `TileAnimator`, `DockDecoration` | Tiles, their animations and the dock band |

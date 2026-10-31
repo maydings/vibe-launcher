@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Λήψη νέων φόντων…</string>
     <string name="auto_hide_bar">Αυτόματη απόκρυψη</string>
     <string name="slideshow_clock">Ρολόι προφύλαξης οθόνης</string>
+    <string name="back_button">Κουμπί Πίσω</string>
+    <string name="back_first_app">Πρώτη εφαρμογή</string>
+    <string name="back_poster">Προβολή αφίσας</string>
+    <string name="back_screensaver">Προφύλαξη οθόνης</string>
+    <string name="clock">Ρολόι</string>
+    <string name="clock_12">12ωρο</string>
+    <string name="clock_24">24ωρο</string>
     <string name="carets">Βέλη</string>
     <string name="glass_color">Χρώμα επισήμανσης</string>
     <string name="glass_white">Επαναφορά</string>

@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">جارٍ تنزيل خلفيات جديدة…</string>
     <string name="auto_hide_bar">إخفاء تلقائي</string>
     <string name="slideshow_clock">ساعة شاشة التوقف</string>
+    <string name="back_button">زر الرجوع</string>
+    <string name="back_first_app">التطبيق الأول</string>
+    <string name="back_poster">عرض الملصق</string>
+    <string name="back_screensaver">شاشة التوقف</string>
+    <string name="clock">الساعة</string>
+    <string name="clock_12">12 ساعة</string>
+    <string name="clock_24">24 ساعة</string>
     <string name="carets">الأسهم</string>
     <string name="glass_color">لون التمييز</string>
     <string name="glass_white">إعادة تعيين</string>

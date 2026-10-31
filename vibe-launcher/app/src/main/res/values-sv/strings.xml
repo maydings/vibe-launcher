@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Hämtar nya bakgrunder…</string>
     <string name="auto_hide_bar">Dölj automatiskt</string>
     <string name="slideshow_clock">Klocka på skärmsläckare</string>
+    <string name="back_button">Bakåtknapp</string>
+    <string name="back_first_app">Första appen</string>
+    <string name="back_poster">Affischvy</string>
+    <string name="back_screensaver">Skärmsläckare</string>
+    <string name="clock">Klocka</string>
+    <string name="clock_12">12 timmar</string>
+    <string name="clock_24">24 timmar</string>
     <string name="carets">Pilar</string>
     <string name="glass_color">Markeringsfärg</string>
     <string name="glass_white">Återställ</string>

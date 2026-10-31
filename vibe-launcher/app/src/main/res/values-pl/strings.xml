@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Pobieranie nowych teł…</string>
     <string name="auto_hide_bar">Automatyczne ukrywanie</string>
     <string name="slideshow_clock">Zegar na wygaszaczu</string>
+    <string name="back_button">Przycisk Wstecz</string>
+    <string name="back_first_app">Pierwsza aplikacja</string>
+    <string name="back_poster">Widok plakatu</string>
+    <string name="back_screensaver">Wygaszacz ekranu</string>
+    <string name="clock">Zegar</string>
+    <string name="clock_12">12-godzinny</string>
+    <string name="clock_24">24-godzinny</string>
     <string name="carets">Strzałki</string>
     <string name="glass_color">Kolor podświetlenia</string>
     <string name="glass_white">Resetuj</string>

@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Stahování nových pozadí…</string>
     <string name="auto_hide_bar">Automaticky skrýt</string>
     <string name="slideshow_clock">Hodiny na spořiči</string>
+    <string name="back_button">Tlačítko Zpět</string>
+    <string name="back_first_app">První aplikace</string>
+    <string name="back_poster">Zobrazení plakátu</string>
+    <string name="back_screensaver">Spořič obrazovky</string>
+    <string name="clock">Hodiny</string>
+    <string name="clock_12">12hodinový</string>
+    <string name="clock_24">24hodinový</string>
     <string name="carets">Šipky</string>
     <string name="glass_color">Barva zvýraznění</string>
     <string name="glass_white">Obnovit</string>

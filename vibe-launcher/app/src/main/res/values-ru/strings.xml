@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Загрузка новых фонов…</string>
     <string name="auto_hide_bar">Автоскрытие</string>
     <string name="slideshow_clock">Часы на заставке</string>
+    <string name="back_button">Кнопка «Назад»</string>
+    <string name="back_first_app">Первое приложение</string>
+    <string name="back_poster">Постер</string>
+    <string name="back_screensaver">Заставка</string>
+    <string name="clock">Часы</string>
+    <string name="clock_12">12-часовой</string>
+    <string name="clock_24">24-часовой</string>
     <string name="carets">Стрелки</string>
     <string name="glass_color">Цвет выделения</string>
     <string name="glass_white">Сбросить</string>

@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Neue Hintergründe werden geladen…</string>
     <string name="auto_hide_bar">Automatisch ausblenden</string>
     <string name="slideshow_clock">Uhr im Bildschirmschoner</string>
+    <string name="back_button">Zurück-Taste</string>
+    <string name="back_first_app">Erste App</string>
+    <string name="back_poster">Posteransicht</string>
+    <string name="back_screensaver">Bildschirmschoner</string>
+    <string name="clock">Uhr</string>
+    <string name="clock_12">12 Stunden</string>
+    <string name="clock_24">24 Stunden</string>
     <string name="carets">Pfeile</string>
     <string name="glass_color">Farbe der Hervorhebung</string>
     <string name="glass_white">Zurücksetzen</string>

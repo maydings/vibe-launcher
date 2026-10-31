@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Ladataan uusia taustakuvia…</string>
     <string name="auto_hide_bar">Piilota automaattisesti</string>
     <string name="slideshow_clock">Kello näytönsäästäjässä</string>
+    <string name="back_button">Takaisin-painike</string>
+    <string name="back_first_app">Ensimmäinen sovellus</string>
+    <string name="back_poster">Julistenäkymä</string>
+    <string name="back_screensaver">Näytönsäästäjä</string>
+    <string name="clock">Kello</string>
+    <string name="clock_12">12 tuntia</string>
+    <string name="clock_24">24 tuntia</string>
     <string name="carets">Nuolet</string>
     <string name="glass_color">Korostuksen väri</string>
     <string name="glass_white">Palauta</string>

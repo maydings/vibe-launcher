@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">កំពុងទាញយកផ្ទៃខាងក្រោយថ្មី…</string>
     <string name="auto_hide_bar">លាក់ដោយស្វ័យប្រវត្តិ</string>
     <string name="slideshow_clock">នាឡិកាលើធាតុរក្សាអេក្រង់</string>
+    <string name="back_button">ប៊ូតុងថយក្រោយ</string>
+    <string name="back_first_app">កម្មវិធីទីមួយ</string>
+    <string name="back_poster">ទិដ្ឋភាពផ្ទាំងរូបភាព</string>
+    <string name="back_screensaver">ធាតុរក្សាអេក្រង់</string>
+    <string name="clock">នាឡិកា</string>
+    <string name="clock_12">12 ម៉ោង</string>
+    <string name="clock_24">24 ម៉ោង</string>
     <string name="carets">ព្រួញ</string>
     <string name="glass_color">ពណ៌​បន្លិច</string>
     <string name="glass_white">កំណត់ឡើងវិញ</string>

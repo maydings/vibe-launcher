@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">പുതിയ പശ്ചാത്തലങ്ങൾ ഡൗൺലോഡ് ചെയ്യുന്നു…</string>
     <string name="auto_hide_bar">സ്വയം മറയ്ക്കുക</string>
     <string name="slideshow_clock">സ്ക്രീൻസേവർ ക്ലോക്ക്</string>
+    <string name="back_button">പിന്നോട്ട് ബട്ടൺ</string>
+    <string name="back_first_app">ആദ്യ ആപ്പ്</string>
+    <string name="back_poster">പോസ്റ്റർ കാഴ്ച</string>
+    <string name="back_screensaver">സ്ക്രീൻസേവർ</string>
+    <string name="clock">ക്ലോക്ക്</string>
+    <string name="clock_12">12 മണിക്കൂർ</string>
+    <string name="clock_24">24 മണിക്കൂർ</string>
     <string name="carets">അമ്പടയാളങ്ങൾ</string>
     <string name="glass_color">ഹൈലൈറ്റ് നിറം</string>
     <string name="glass_white">പുനഃസജ്ജമാക്കുക</string>

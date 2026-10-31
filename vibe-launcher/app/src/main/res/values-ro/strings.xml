@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Se descarcă fundaluri noi…</string>
     <string name="auto_hide_bar">Ascundere automată</string>
     <string name="slideshow_clock">Ceas pe screensaver</string>
+    <string name="back_button">Butonul Înapoi</string>
+    <string name="back_first_app">Prima aplicație</string>
+    <string name="back_poster">Vizualizare afiș</string>
+    <string name="back_screensaver">Screensaver</string>
+    <string name="clock">Ceas</string>
+    <string name="clock_12">12 ore</string>
+    <string name="clock_24">24 de ore</string>
     <string name="carets">Săgeți</string>
     <string name="glass_color">Culoarea evidențierii</string>
     <string name="glass_white">Resetează</string>

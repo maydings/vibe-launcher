@@ -386,6 +386,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         TextView clock = findViewById(R.id.clock), date = findViewById(R.id.date);
         localDate((TextClock) date, "EEEE d MMMM yyyy");
         showClockOnceTimeIsSet(findViewById(R.id.clockRow));
+        applyClockHours();
         sizeTimeBox();
         clock.addTextChangedListener(new TextWatcher() {
             @Override
@@ -634,7 +635,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (BuildConfig.STORE) StoreUpdates.check(this, this::showUpdateReady);   // Play keeps the answer
         else if (wakeCheck) wakeUpdateCheck();
         else Updater.checkIfDue(this, (newer, failed) -> showUpdateReady());   // at most once a day
-        sizeTimeBox();   // the 12/24-hour setting may have changed meanwhile
+        applyClockHours();   // the 12/24-hour setting (the TV's or ours) may have changed meanwhile
+        sizeTimeBox();
         // The pills keep their state while Home is away, and the network callback updates the network one, so
         // this only catches anything missed. Its binder calls (the Wi-Fi name, the TV's inputs) would hold up
         // the first frame back on Home, so after the first resume they run once that frame is drawn.
@@ -797,7 +799,28 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     @Override
     public void onBackPressed() {
-        // Home screen: Back goes nowhere.
+        // Home screen: Back goes nowhere, unless Settings > General > Back button says otherwise.
+        switch (settings.backAction()) {
+            case VibeSettings.BACK_FIRST_APP:
+                focusTile(0);
+                break;
+            case VibeSettings.BACK_POSTER:
+                // From a lower row its own app's picture is showing, not a dock app's: the dock tile first
+                // (Back again shows its poster), as Up only shows the picture alone from the dock.
+                boolean fromBar = topBar.hasFocus();
+                if (!fromBar && !onDock()) {
+                    focusTile(adapter.dockTileFor(lastFocused));
+                    break;
+                }
+                if (!stillShown) break;   // no picture (none, or not loaded yet)
+                // As from the top bar: the dock tile goes with the picture, focused once the rows are away.
+                if (fromBar) focusAfterSlide = adapter.dockTileFor(lastFocused);
+                showPictureOnly(SoundEffectConstants.NAVIGATION_UP);
+                break;
+            case VibeSettings.BACK_SCREENSAVER:
+                startSlideshow();
+                break;
+        }
     }
 
     // ---- glass highlight -------------------------------------------------------------------------
@@ -1829,7 +1852,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      */
     private void sizeTimeBox() {
         TextClock clock = findViewById(R.id.clock), ampm = findViewById(R.id.ampm);
-        boolean h24 = DateFormat.is24HourFormat(this);
+        boolean h24 = use24Hour();
         // Measuring every minute of the day takes a moment: only again when the format or language changed.
         String measuredFor = h24 + "|" + Locale.getDefault();
         if (measuredFor.equals(timeBoxMeasuredFor)) return;
@@ -1853,6 +1876,28 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (known == null || w > known) timeBoxWidths.put(s.length(), w);
         }
         fitTimeBox(clock.getText());
+    }
+
+    /** 24-hour time: chosen in Settings, else as the TV is set. */
+    private boolean use24Hour() {
+        int hours = settings.clockHours();
+        return hours == 0 ? DateFormat.is24HourFormat(this) : hours == 24;
+    }
+
+    /**
+     * The clocks' formats (the top bar's and the screensaver's): as the layout has them (TextClock follows the
+     * TV's setting), or both set to the format chosen in Settings, so the TV's setting no longer picks one.
+     */
+    private void applyClockHours() {
+        int hours = settings.clockHours();
+        String time = hours == 24 ? "HH:mm" : "h:mm", half = hours == 24 ? "" : "a";
+        for (int[] ids : new int[][]{{R.id.clock, R.id.ampm}, {R.id.slideTime, R.id.slideAmPm}}) {
+            TextClock clock = findViewById(ids[0]), ampm = findViewById(ids[1]);
+            clock.setFormat12Hour(hours == 0 ? "h:mm" : time);
+            clock.setFormat24Hour(hours == 0 ? "HH:mm" : time);
+            ampm.setFormat12Hour(hours == 0 ? "a" : half);
+            ampm.setFormat24Hour(hours == 0 ? "" : half);
+        }
     }
 
     /** Applies the width sizeTimeBox worked out for times as long as this one. */

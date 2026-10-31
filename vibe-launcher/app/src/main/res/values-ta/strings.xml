@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">புதிய பின்னணிகள் பதிவிறக்கப்படுகின்றன…</string>
     <string name="auto_hide_bar">தானாக மறை</string>
     <string name="slideshow_clock">ஸ்கிரீன்சேவர் கடிகாரம்</string>
+    <string name="back_button">பின் பொத்தான்</string>
+    <string name="back_first_app">முதல் ஆப்ஸ்</string>
+    <string name="back_poster">போஸ்டர் காட்சி</string>
+    <string name="back_screensaver">ஸ்கிரீன்சேவர்</string>
+    <string name="clock">கடிகாரம்</string>
+    <string name="clock_12">12 மணிநேரம்</string>
+    <string name="clock_24">24 மணிநேரம்</string>
     <string name="carets">அம்புகள்</string>
     <string name="glass_color">தனிப்படுத்தல் நிறம்</string>
     <string name="glass_white">மீட்டமை</string>

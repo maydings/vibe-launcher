@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">አዲስ ዳራዎችን በማውረድ ላይ…</string>
     <string name="auto_hide_bar">በራስ-ሰር ደብቅ</string>
     <string name="slideshow_clock">የስክሪን ቆጣቢ ሰዓት</string>
+    <string name="back_button">የተመለስ አዝራር</string>
+    <string name="back_first_app">የመጀመሪያው መተግበሪያ</string>
+    <string name="back_poster">የፖስተር እይታ</string>
+    <string name="back_screensaver">ስክሪን ቆጣቢ</string>
+    <string name="clock">ሰዓት</string>
+    <string name="clock_12">12 ሰዓት</string>
+    <string name="clock_24">24 ሰዓት</string>
     <string name="carets">ቀስቶች</string>
     <string name="glass_color">የማድመቂያ ቀለም</string>
     <string name="glass_white">ዳግም አስጀምር</string>

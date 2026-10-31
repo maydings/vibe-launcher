@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Descargando fondos nuevos…</string>
     <string name="auto_hide_bar">Ocultar automáticamente</string>
     <string name="slideshow_clock">Reloj en el salvapantallas</string>
+    <string name="back_button">Botón Atrás</string>
+    <string name="back_first_app">Primera app</string>
+    <string name="back_poster">Vista de póster</string>
+    <string name="back_screensaver">Salvapantallas</string>
+    <string name="clock">Reloj</string>
+    <string name="clock_12">12 horas</string>
+    <string name="clock_24">24 horas</string>
     <string name="carets">Flechas</string>
     <string name="glass_color">Color de resaltado</string>
     <string name="glass_white">Restablecer</string>

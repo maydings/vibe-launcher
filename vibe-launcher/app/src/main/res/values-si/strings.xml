@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">නව පසුබිම් බාගත වෙමින්…</string>
     <string name="auto_hide_bar">ස්වයංක්‍රීයව සඟවන්න</string>
     <string name="slideshow_clock">තිර සුරැකුම් ඔරලෝසුව</string>
+    <string name="back_button">ආපසු බොත්තම</string>
+    <string name="back_first_app">පළමු යෙදුම</string>
+    <string name="back_poster">පෝස්ටර් දසුන</string>
+    <string name="back_screensaver">තිර සුරැකුම</string>
+    <string name="clock">ඔරලෝසුව</string>
+    <string name="clock_12">පැය 12</string>
+    <string name="clock_24">පැය 24</string>
     <string name="carets">ඊතල</string>
     <string name="glass_color">ඉස්මතු කිරීමේ වර්ණය</string>
     <string name="glass_white">යළි සකසන්න</string>

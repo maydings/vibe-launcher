@@ -280,6 +280,7 @@
         android:importantForAccessibility="no">
 
         <TextClock
+            android:id="@+id/slideTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:format12Hour="h:mm"
@@ -291,6 +292,7 @@
             android:includeFontPadding="false" />
 
         <TextClock
+            android:id="@+id/slideAmPm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"

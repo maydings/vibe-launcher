@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Új háttérképek letöltése…</string>
     <string name="auto_hide_bar">Automatikus elrejtés</string>
     <string name="slideshow_clock">Óra a képernyővédőn</string>
+    <string name="back_button">Vissza gomb</string>
+    <string name="back_first_app">Első alkalmazás</string>
+    <string name="back_poster">Plakátnézet</string>
+    <string name="back_screensaver">Képernyővédő</string>
+    <string name="clock">Óra</string>
+    <string name="clock_12">12 órás</string>
+    <string name="clock_24">24 órás</string>
     <string name="carets">Nyilak</string>
     <string name="glass_color">Kiemelés színe</string>
     <string name="glass_white">Visszaállítás</string>

@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Téléchargement de nouveaux arrière-plans…</string>
     <string name="auto_hide_bar">Masquage automatique</string>
     <string name="slideshow_clock">Horloge de l\'écran de veille</string>
+    <string name="back_button">Bouton Retour</string>
+    <string name="back_first_app">Première appli</string>
+    <string name="back_poster">Vue affiche</string>
+    <string name="back_screensaver">Économiseur d’écran</string>
+    <string name="clock">Horloge</string>
+    <string name="clock_12">12 heures</string>
+    <string name="clock_24">24 heures</string>
     <string name="carets">Flèches</string>
     <string name="glass_color">Couleur de surbrillance</string>
     <string name="glass_white">Réinitialiser</string>

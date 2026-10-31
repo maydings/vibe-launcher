@@ -107,7 +107,7 @@ starts, so opening it is just a fade.
 | ![Vibe Launcher settings: the logo on the left, General, Appearance and API keys on the right](vibe-launcher/docs/settings-main.jpg) | ![General: its list slid over the logo, with Language, Reload backdrops, Home at power-on and the software version on the right](vibe-launcher/docs/settings-general.jpg) |
 |---|---|
 
-**General**: language, reloading the backdrops, Home at power-on, the Home button, Restart… (with the Home button service), the
+**General**: language, reloading the backdrops, Home at power-on, the Back button, the Home button, Restart… (with the Home button service), the
 software version with its update check, and **About**: who made it, the project's page (with a QR code to
 open it on a phone), where to report a problem, the license and the credits.
 
@@ -118,6 +118,9 @@ open it on a phone), where to report a problem, the license and the credits.
 - **Home at power-on**: Off (the default) or On. For TVs that wake up on the input or app they were
   left on (Sony goes back to the last HDMI input): On brings Home up just after the screen turns on. With
   the Home button service on, a button pressed in that first moment keeps you where the TV woke up.
+- **Back button**: what Back does on Home. Off (the default) does nothing; First app goes to the
+  dock's first app; Poster view shows the app's picture alone, as Up from the dock does (from a lower
+  row, the first Back goes to the dock); Screensaver starts the screensaver at once.
 - **Home button**: Off or On, at any time (shown unless Vibe Launcher is already your TV's Home). On
   explains the Home button service first, then opens Settings → Accessibility to turn it on; Off turns
   it off straight away.
@@ -126,7 +129,7 @@ open it on a phone), where to report a problem, the license and the credits.
   doesn't show.
 
 **Appearance**: tiles per row, apps in dock, hiding inactive inputs, auto-hide, the screensaver
-clock, the arrows and the highlight color.
+clock, the clock's 12- or 24-hour time, the arrows and the highlight color.
 
 - **Tiles per row**: 4, 5 or 6. Tiles shrink to fit, and a full dock holds as many apps. Until you pick,
   it follows the TV's size: 4 under 51", 5 up to 74", 6 from 74" up. A streaming box can't tell
@@ -140,6 +143,8 @@ clock, the arrows and the highlight color.
   passes the picture alone and reaches the bar.
 - **Screensaver clock**: On (the default) shows the time on the slideshow, in the same place as on the
   top bar but without the bar; Off leaves the pictures alone.
+- **Clock**: Match system (the default) follows the TV's 12/24-hour setting; 12-hour or 24-hour keeps
+  the top bar's and the screensaver's clock that way whatever the TV says.
 - **Arrows**: On (the default) shows the faint arrows that point where the remote goes: above and below
   the dock (to the picture alone, and to the rest of your apps), under the top bar, and at the screen's
   edges with the picture alone. Off hides them all.

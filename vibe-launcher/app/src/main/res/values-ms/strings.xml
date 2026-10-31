@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Memuat turun latar baharu…</string>
     <string name="auto_hide_bar">Sembunyi automatik</string>
     <string name="slideshow_clock">Jam penyelamat skrin</string>
+    <string name="back_button">Butang Kembali</string>
+    <string name="back_first_app">Apl pertama</string>
+    <string name="back_poster">Paparan poster</string>
+    <string name="back_screensaver">Penyelamat skrin</string>
+    <string name="clock">Jam</string>
+    <string name="clock_12">12 jam</string>
+    <string name="clock_24">24 jam</string>
     <string name="carets">Anak panah</string>
     <string name="glass_color">Warna serlahan</string>
     <string name="glass_white">Tetapkan semula</string>

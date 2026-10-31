@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">కొత్త బ్యాక్‌డ్రాప్‌లు డౌన్‌లోడ్ అవుతున్నాయి…</string>
     <string name="auto_hide_bar">ఆటోమేటిక్‌గా దాచు</string>
     <string name="slideshow_clock">స్క్రీన్‌సేవర్ గడియారం</string>
+    <string name="back_button">వెనుకకు బటన్</string>
+    <string name="back_first_app">మొదటి యాప్</string>
+    <string name="back_poster">పోస్టర్ వీక్షణ</string>
+    <string name="back_screensaver">స్క్రీన్‌సేవర్</string>
+    <string name="clock">గడియారం</string>
+    <string name="clock_12">12 గంటలు</string>
+    <string name="clock_24">24 గంటలు</string>
     <string name="carets">బాణాలు</string>
     <string name="glass_color">హైలైట్ రంగు</string>
     <string name="glass_white">రీసెట్</string>

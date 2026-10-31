@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Изтегляне на нови фонове…</string>
     <string name="auto_hide_bar">Автоскриване</string>
     <string name="slideshow_clock">Часовник на скрийнсейвъра</string>
+    <string name="back_button">Бутон „Назад“</string>
+    <string name="back_first_app">Първото приложение</string>
+    <string name="back_poster">Изглед с плакат</string>
+    <string name="back_screensaver">Скрийнсейвър</string>
+    <string name="clock">Часовник</string>
+    <string name="clock_12">12-часов</string>
+    <string name="clock_24">24-часов</string>
     <string name="carets">Стрелки</string>
     <string name="glass_color">Цвят на открояването</string>
     <string name="glass_white">Нулиране</string>

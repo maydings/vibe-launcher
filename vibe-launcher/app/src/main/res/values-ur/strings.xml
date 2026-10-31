@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">نئے پس منظر ڈاؤن لوڈ ہو رہے ہیں…</string>
     <string name="auto_hide_bar">خود بخود چھپائیں</string>
     <string name="slideshow_clock">اسکرین سیور گھڑی</string>
+    <string name="back_button">واپس بٹن</string>
+    <string name="back_first_app">پہلی ایپ</string>
+    <string name="back_poster">پوسٹر ویو</string>
+    <string name="back_screensaver">اسکرین سیور</string>
+    <string name="clock">گھڑی</string>
+    <string name="clock_12">12 گھنٹے</string>
+    <string name="clock_24">24 گھنٹے</string>
     <string name="carets">تیر</string>
     <string name="glass_color">نمایاں رنگ</string>
     <string name="glass_white">ری سیٹ</string>

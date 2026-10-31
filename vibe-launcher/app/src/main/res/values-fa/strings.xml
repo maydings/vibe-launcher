@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">در حال دانلود پس‌زمینه‌های تازه…</string>
     <string name="auto_hide_bar">پنهان‌سازی خودکار</string>
     <string name="slideshow_clock">ساعت محافظ صفحه</string>
+    <string name="back_button">دکمه بازگشت</string>
+    <string name="back_first_app">اولین برنامه</string>
+    <string name="back_poster">نمای پوستر</string>
+    <string name="back_screensaver">محافظ صفحه</string>
+    <string name="clock">ساعت</string>
+    <string name="clock_12">۱۲ ساعته</string>
+    <string name="clock_24">۲۴ ساعته</string>
     <string name="carets">پیکان‌ها</string>
     <string name="glass_color">رنگ برجسته‌سازی</string>
     <string name="glass_white">بازنشانی</string>

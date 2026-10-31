@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Yeni arka planlar indiriliyor…</string>
     <string name="auto_hide_bar">Otomatik gizle</string>
     <string name="slideshow_clock">Ekran koruyucuda saat</string>
+    <string name="back_button">Geri tuşu</string>
+    <string name="back_first_app">İlk uygulama</string>
+    <string name="back_poster">Afiş görünümü</string>
+    <string name="back_screensaver">Ekran koruyucu</string>
+    <string name="clock">Saat</string>
+    <string name="clock_12">12 saat</string>
+    <string name="clock_24">24 saat</string>
     <string name="carets">Oklar</string>
     <string name="glass_color">Vurgu rengi</string>
     <string name="glass_white">Sıfırla</string>

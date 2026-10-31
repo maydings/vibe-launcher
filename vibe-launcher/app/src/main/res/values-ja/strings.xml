@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">新しい背景画像をダウンロードしています…</string>
     <string name="auto_hide_bar">自動的に隠す</string>
     <string name="slideshow_clock">スクリーンセーバーの時計</string>
+    <string name="back_button">戻るボタン</string>
+    <string name="back_first_app">最初のアプリ</string>
+    <string name="back_poster">ポスター表示</string>
+    <string name="back_screensaver">スクリーンセーバー</string>
+    <string name="clock">時計</string>
+    <string name="clock_12">12時間</string>
+    <string name="clock_24">24時間</string>
     <string name="carets">矢印</string>
     <string name="glass_color">ハイライトの色</string>
     <string name="glass_white">リセット</string>

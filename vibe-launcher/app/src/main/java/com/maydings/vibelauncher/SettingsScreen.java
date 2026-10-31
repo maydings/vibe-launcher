@@ -393,6 +393,7 @@ final class SettingsScreen {
             Toast.makeText(host, R.string.backdrops_reloading, Toast.LENGTH_SHORT).show();
         });
         page.toggle(R.string.power_on_home, settings::powerOnHome, settings::setPowerOnHome);
+        page.link(R.string.back_button, () -> backName(settings.backAction()), this::backAction);
         // The Home button service, on or off at any time (Home offers it once, on its first start): while
         // Vibe Launcher isn't the TV's Home, or while it's on. On explains it first and opens Accessibility;
         // Off turns it off here.
@@ -547,6 +548,7 @@ final class SettingsScreen {
             if (home != null) home.updateTopBar();
         });
         page.toggle(R.string.slideshow_clock, settings::slideshowClock, settings::setSlideshowClock);
+        page.link(R.string.clock, () -> clockName(settings.clockHours()), this::clockHours);
         page.toggle(R.string.carets, settings::carets, settings::setCarets);
         page.link(R.string.glass_color, this::swatch, this::glassColour);
         return page;
@@ -626,6 +628,46 @@ final class SettingsScreen {
                 page.refresh();   // the tick moves
             });
             if (n == MainActivity.COLUMNS) page.opened = row;
+        }
+        return page;
+    }
+
+    private static final int[] BACK_NAMES = {R.string.off, R.string.back_first_app, R.string.back_poster,
+            R.string.back_screensaver};
+
+    private String backName(int action) {
+        return ctx.getString(BACK_NAMES[action >= 0 && action < BACK_NAMES.length ? action : 0]);
+    }
+
+    /** What Back does on Home (MainActivity.onBackPressed). Home reads it at each press. */
+    private Page backAction() {
+        Page page = new Page(ctx.getString(R.string.back_button));
+        for (int i = 0; i < BACK_NAMES.length; i++) {
+            int action = i;
+            // Picked, it's ticked and the list stays: Back or Left goes back.
+            Row row = page.add(backName(action), () -> action == settings.backAction() ? "✓" : "", () -> {
+                settings.setBackAction(action);
+                page.refresh();
+            });
+            if (action == settings.backAction()) page.opened = row;
+        }
+        return page;
+    }
+
+    private String clockName(int hours) {
+        return ctx.getString(hours == 12 ? R.string.clock_12 : hours == 24 ? R.string.clock_24 : R.string.language_system);
+    }
+
+    /** The clock: the TV's 12/24-hour setting, or either one whatever the TV says. Home takes it on resume. */
+    private Page clockHours() {
+        Page page = new Page(ctx.getString(R.string.clock));
+        for (int hours : new int[]{0, 12, 24}) {
+            // Picked, it's ticked and the list stays: Back or Left goes back.
+            Row row = page.add(clockName(hours), () -> hours == settings.clockHours() ? "✓" : "", () -> {
+                settings.setClockHours(hours);
+                page.refresh();
+            });
+            if (hours == settings.clockHours()) page.opened = row;
         }
         return page;
     }

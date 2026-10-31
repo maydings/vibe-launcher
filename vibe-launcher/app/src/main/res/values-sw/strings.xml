@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Inapakua mandhari mapya…</string>
     <string name="auto_hide_bar">Ficha kiotomatiki</string>
     <string name="slideshow_clock">Saa kwenye skrini ya kupumzisha</string>
+    <string name="back_button">Kitufe cha Nyuma</string>
+    <string name="back_first_app">Programu ya kwanza</string>
+    <string name="back_poster">Mwonekano wa bango</string>
+    <string name="back_screensaver">Taswira ya skrini</string>
+    <string name="clock">Saa</string>
+    <string name="clock_12">Saa 12</string>
+    <string name="clock_24">Saa 24</string>
     <string name="carets">Mishale</string>
     <string name="glass_color">Rangi ya kuangazia</string>
     <string name="glass_white">Weka upya</string>

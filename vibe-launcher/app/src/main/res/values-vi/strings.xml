@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Đang tải ảnh nền mới…</string>
     <string name="auto_hide_bar">Tự động ẩn</string>
     <string name="slideshow_clock">Đồng hồ trên trình bảo vệ màn hình</string>
+    <string name="back_button">Nút Quay lại</string>
+    <string name="back_first_app">Ứng dụng đầu tiên</string>
+    <string name="back_poster">Chế độ áp phích</string>
+    <string name="back_screensaver">Trình bảo vệ màn hình</string>
+    <string name="clock">Đồng hồ</string>
+    <string name="clock_12">12 giờ</string>
+    <string name="clock_24">24 giờ</string>
     <string name="carets">Mũi tên</string>
     <string name="glass_color">Màu đánh dấu</string>
     <string name="glass_white">Đặt lại</string>

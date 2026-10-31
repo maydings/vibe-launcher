@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">ਨਵੇਂ ਪਿਛੋਕੜ ਡਾਊਨਲੋਡ ਹੋ ਰਹੇ ਹਨ…</string>
     <string name="auto_hide_bar">ਆਪਣੇ-ਆਪ ਲੁਕਾਓ</string>
     <string name="slideshow_clock">ਸਕ੍ਰੀਨਸੇਵਰ ਘੜੀ</string>
+    <string name="back_button">ਪਿੱਛੇ ਬਟਨ</string>
+    <string name="back_first_app">ਪਹਿਲੀ ਐਪ</string>
+    <string name="back_poster">ਪੋਸਟਰ ਦ੍ਰਿਸ਼</string>
+    <string name="back_screensaver">ਸਕ੍ਰੀਨਸੇਵਰ</string>
+    <string name="clock">ਘੜੀ</string>
+    <string name="clock_12">12 ਘੰਟੇ</string>
+    <string name="clock_24">24 ਘੰਟੇ</string>
     <string name="carets">ਤੀਰ</string>
     <string name="glass_color">ਹਾਈਲਾਈਟ ਦਾ ਰੰਗ</string>
     <string name="glass_white">ਰੀਸੈੱਟ</string>

@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Laster ned nye bakgrunner…</string>
     <string name="auto_hide_bar">Skjul automatisk</string>
     <string name="slideshow_clock">Klokke på skjermsparer</string>
+    <string name="back_button">Tilbake-knapp</string>
+    <string name="back_first_app">Første app</string>
+    <string name="back_poster">Plakatvisning</string>
+    <string name="back_screensaver">Skjermsparer</string>
+    <string name="clock">Klokke</string>
+    <string name="clock_12">12 timer</string>
+    <string name="clock_24">24 timer</string>
     <string name="carets">Piler</string>
     <string name="glass_color">Uthevingsfarge</string>
     <string name="glass_white">Tilbakestill</string>

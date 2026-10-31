@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">नयाँ पृष्ठभूमिहरू डाउनलोड हुँदैछन्…</string>
     <string name="auto_hide_bar">स्वतः लुकाउनुहोस्</string>
     <string name="slideshow_clock">स्क्रिनसेभर घडी</string>
+    <string name="back_button">पछाडि बटन</string>
+    <string name="back_first_app">पहिलो एप</string>
+    <string name="back_poster">पोस्टर दृश्य</string>
+    <string name="back_screensaver">स्क्रिनसेभर</string>
+    <string name="clock">घडी</string>
+    <string name="clock_12">१२ घण्टा</string>
+    <string name="clock_24">२४ घण्टा</string>
     <string name="carets">तीरहरू</string>
     <string name="glass_color">हाइलाइटको रङ</string>
     <string name="glass_white">रिसेट</string>

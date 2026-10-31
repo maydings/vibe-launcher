@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Baixando fundos novos…</string>
     <string name="auto_hide_bar">Ocultar automaticamente</string>
     <string name="slideshow_clock">Relógio no protetor de tela</string>
+    <string name="back_button">Botão Voltar</string>
+    <string name="back_first_app">Primeiro app</string>
+    <string name="back_poster">Visualização do pôster</string>
+    <string name="back_screensaver">Protetor de tela</string>
+    <string name="clock">Relógio</string>
+    <string name="clock_12">12 horas</string>
+    <string name="clock_24">24 horas</string>
     <string name="carets">Setas</string>
     <string name="glass_color">Cor do destaque</string>
     <string name="glass_white">Redefinir</string>

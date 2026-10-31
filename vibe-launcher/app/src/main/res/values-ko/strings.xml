@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">새 배경을 다운로드하는 중…</string>
     <string name="auto_hide_bar">자동 숨기기</string>
     <string name="slideshow_clock">화면 보호기 시계</string>
+    <string name="back_button">뒤로 버튼</string>
+    <string name="back_first_app">첫 번째 앱</string>
+    <string name="back_poster">포스터 보기</string>
+    <string name="back_screensaver">화면 보호기</string>
+    <string name="clock">시계</string>
+    <string name="clock_12">12시간</string>
+    <string name="clock_24">24시간</string>
     <string name="carets">화살표</string>
     <string name="glass_color">강조 색상</string>
     <string name="glass_white">초기화</string>

@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">מורידים תמונות רקע חדשות…</string>
     <string name="auto_hide_bar">הסתרה אוטומטית</string>
     <string name="slideshow_clock">שעון בשומר המסך</string>
+    <string name="back_button">כפתור \"חזרה\"</string>
+    <string name="back_first_app">האפליקציה הראשונה</string>
+    <string name="back_poster">תצוגת פוסטר</string>
+    <string name="back_screensaver">שומר מסך</string>
+    <string name="clock">שעון</string>
+    <string name="clock_12">12 שעות</string>
+    <string name="clock_24">24 שעות</string>
     <string name="carets">חיצים</string>
     <string name="glass_color">צבע ההדגשה</string>
     <string name="glass_white">איפוס</string>

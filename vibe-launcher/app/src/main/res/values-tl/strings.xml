@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Nagda-download ng mga bagong backdrop…</string>
     <string name="auto_hide_bar">Awtomatikong itago</string>
     <string name="slideshow_clock">Orasan sa screensaver</string>
+    <string name="back_button">Back button</string>
+    <string name="back_first_app">Unang app</string>
+    <string name="back_poster">Poster view</string>
+    <string name="back_screensaver">Screensaver</string>
+    <string name="clock">Orasan</string>
+    <string name="clock_12">12 oras</string>
+    <string name="clock_24">24 oras</string>
     <string name="carets">Mga arrow</string>
     <string name="glass_color">Kulay ng highlight</string>
     <string name="glass_white">I-reset</string>

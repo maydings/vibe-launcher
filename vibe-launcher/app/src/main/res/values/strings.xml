@@ -91,6 +91,13 @@
     <string name="backdrops_reloading">Downloading new backdrops…</string>
     <string name="auto_hide_bar">Auto-hide</string>
     <string name="slideshow_clock">Screensaver clock</string>
+    <string name="back_button">Back button</string>
+    <string name="back_first_app">First app</string>
+    <string name="back_poster">Poster view</string>
+    <string name="back_screensaver">Screensaver</string>
+    <string name="clock">Clock</string>
+    <string name="clock_12">12-hour</string>
+    <string name="clock_24">24-hour</string>
     <string name="carets">Arrows</string>
     <string name="glass_color">Highlight color</string>
     <string name="glass_white">Reset</string>

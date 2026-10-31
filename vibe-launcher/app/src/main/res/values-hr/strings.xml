@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Preuzimanje novih pozadina…</string>
     <string name="auto_hide_bar">Automatsko skrivanje</string>
     <string name="slideshow_clock">Sat na čuvaru zaslona</string>
+    <string name="back_button">Tipka Natrag</string>
+    <string name="back_first_app">Prva aplikacija</string>
+    <string name="back_poster">Prikaz plakata</string>
+    <string name="back_screensaver">Čuvar zaslona</string>
+    <string name="clock">Sat</string>
+    <string name="clock_12">12-satni</string>
+    <string name="clock_24">24-satni</string>
     <string name="carets">Strelice</string>
     <string name="glass_color">Boja isticanja</string>
     <string name="glass_white">Vrati</string>

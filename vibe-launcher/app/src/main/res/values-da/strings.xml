@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">Henter nye baggrunde…</string>
     <string name="auto_hide_bar">Skjul automatisk</string>
     <string name="slideshow_clock">Ur på pauseskærm</string>
+    <string name="back_button">Tilbage-knap</string>
+    <string name="back_first_app">Første app</string>
+    <string name="back_poster">Plakatvisning</string>
+    <string name="back_screensaver">Pauseskærm</string>
+    <string name="clock">Ur</string>
+    <string name="clock_12">12 timer</string>
+    <string name="clock_24">24 timer</string>
     <string name="carets">Pile</string>
     <string name="glass_color">Fremhævningsfarve</string>
     <string name="glass_white">Nulstil</string>

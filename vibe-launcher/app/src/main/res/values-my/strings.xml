@@ -87,6 +87,13 @@
     <string name="backdrops_reloading">နောက်ခံပုံအသစ်များ ဒေါင်းလုဒ်လုပ်နေသည်…</string>
     <string name="auto_hide_bar">အလိုအလျောက် ဝှက်ရန်</string>
     <string name="slideshow_clock">မျက်နှာပြင်ထိန်း နာရီ</string>
+    <string name="back_button">နောက်သို့ ခလုတ်</string>
+    <string name="back_first_app">ပထမ အက်ပ်</string>
+    <string name="back_poster">ပိုစတာ မြင်ကွင်း</string>
+    <string name="back_screensaver">မျက်နှာပြင်ထိန်း</string>
+    <string name="clock">နာရီ</string>
+    <string name="clock_12">၁၂ နာရီ</string>
+    <string name="clock_24">၂၄ နာရီ</string>
     <string name="carets">မြားများ</string>
     <string name="glass_color">အသားပေး အရောင်</string>
     <string name="glass_white">ပြန်သတ်မှတ်ရန်</string>
