@@ -15,6 +15,17 @@
     <string name="network">Síť</string>
     <string name="vpn_connected">VPN připojena</string>
     <string name="move">Přesunout</string>
+    <string name="new_folder">Nová složka</string>
+    <string name="move_to_folder">Přesunout do složky</string>
+    <string name="move_to_home">Přesunout na plochu</string>
+    <string name="rename_folder">Přejmenovat</string>
+    <string name="remove_folder">Odstranit složku</string>
+    <string name="close">Zavřít</string>
+    <string name="folder_name">Název složky</string>
+    <string name="folder">Složka</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Hudba</string>
+    <string name="folder_games">Hry</string>
     <string name="move_hint">Přesuňte šipkami a stiskněte OK</string>
     <string name="remove">Odinstalovat</string>
     <string name="hide">Skrýt</string>

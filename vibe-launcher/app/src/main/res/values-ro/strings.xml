@@ -15,6 +15,17 @@
     <string name="network">Rețea</string>
     <string name="vpn_connected">VPN conectat</string>
     <string name="move">Mută</string>
+    <string name="new_folder">Dosar nou</string>
+    <string name="move_to_folder">Mută într-un dosar</string>
+    <string name="move_to_home">Mută pe ecranul principal</string>
+    <string name="rename_folder">Redenumește</string>
+    <string name="remove_folder">Elimină dosarul</string>
+    <string name="close">Închide</string>
+    <string name="folder_name">Numele dosarului</string>
+    <string name="folder">Dosar</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Muzică</string>
+    <string name="folder_games">Jocuri</string>
     <string name="move_hint">Mut-o cu săgețile, apoi apasă OK</string>
     <string name="remove">Dezinstalează</string>
     <string name="hide">Ascunde</string>

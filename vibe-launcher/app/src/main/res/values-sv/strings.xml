@@ -15,6 +15,17 @@
     <string name="network">Nätverk</string>
     <string name="vpn_connected">VPN anslutet</string>
     <string name="move">Flytta</string>
+    <string name="new_folder">Ny mapp</string>
+    <string name="move_to_folder">Flytta till mapp</string>
+    <string name="move_to_home">Flytta till Hem</string>
+    <string name="rename_folder">Byt namn</string>
+    <string name="remove_folder">Ta bort mapp</string>
+    <string name="close">Stäng</string>
+    <string name="folder_name">Mappnamn</string>
+    <string name="folder">Mapp</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Musik</string>
+    <string name="folder_games">Spel</string>
     <string name="move_hint">Flytta med pilarna och tryck sedan på OK</string>
     <string name="remove">Avinstallera</string>
     <string name="hide">Dölj</string>

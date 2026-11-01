@@ -9,3 +9,4 @@ vibe-launcher/local.properties
 backup/
 .DS_Store
 debloat/
+vibe-launcher/tools/bench/results/

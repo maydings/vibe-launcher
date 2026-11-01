@@ -15,6 +15,17 @@
     <string name="network">רשת</string>
     <string name="vpn_connected">VPN מחובר</string>
     <string name="move">העברה</string>
+    <string name="new_folder">תיקייה חדשה</string>
+    <string name="move_to_folder">העברה לתיקייה</string>
+    <string name="move_to_home">העברה למסך הבית</string>
+    <string name="rename_folder">שינוי שם</string>
+    <string name="remove_folder">הסרת התיקייה</string>
+    <string name="close">סגירה</string>
+    <string name="folder_name">שם התיקייה</string>
+    <string name="folder">תיקייה</string>
+    <string name="folder_video">וידאו</string>
+    <string name="folder_music">מוזיקה</string>
+    <string name="folder_games">משחקים</string>
     <string name="move_hint">הזיזו בעזרת החצים ולחצו על OK</string>
     <string name="remove">הסרה</string>
     <string name="hide">הסתרה</string>

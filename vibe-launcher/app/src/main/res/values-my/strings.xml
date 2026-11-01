@@ -15,6 +15,17 @@
     <string name="network">ကွန်ရက်</string>
     <string name="vpn_connected">VPN ချိတ်ဆက်ထားသည်</string>
     <string name="move">ရွှေ့ရန်</string>
+    <string name="new_folder">ဖိုင်တွဲအသစ်</string>
+    <string name="move_to_folder">ဖိုင်တွဲသို့ ရွှေ့ရန်</string>
+    <string name="move_to_home">ပင်မသို့ ရွှေ့ရန်</string>
+    <string name="rename_folder">အမည်ပြောင်းရန်</string>
+    <string name="remove_folder">ဖိုင်တွဲ ဖယ်ရှားရန်</string>
+    <string name="close">ပိတ်ရန်</string>
+    <string name="folder_name">ဖိုင်တွဲအမည်</string>
+    <string name="folder">ဖိုင်တွဲ</string>
+    <string name="folder_video">ဗီဒီယို</string>
+    <string name="folder_music">ဂီတ</string>
+    <string name="folder_games">ဂိမ်းများ</string>
     <string name="move_hint">မြှားခလုတ်များဖြင့် ရွှေ့ပြီး OK နှိပ်ပါ</string>
     <string name="remove">ဖယ်ရှားရန်</string>
     <string name="hide">ဝှက်ရန်</string>

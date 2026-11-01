@@ -15,6 +15,17 @@
     <string name="network">Hálózat</string>
     <string name="vpn_connected">VPN csatlakoztatva</string>
     <string name="move">Áthelyezés</string>
+    <string name="new_folder">Új mappa</string>
+    <string name="move_to_folder">Áthelyezés mappába</string>
+    <string name="move_to_home">Áthelyezés a kezdőképernyőre</string>
+    <string name="rename_folder">Átnevezés</string>
+    <string name="remove_folder">Mappa megszüntetése</string>
+    <string name="close">Bezárás</string>
+    <string name="folder_name">Mappa neve</string>
+    <string name="folder">Mappa</string>
+    <string name="folder_video">Videó</string>
+    <string name="folder_music">Zene</string>
+    <string name="folder_games">Játékok</string>
     <string name="move_hint">Mozgasd a nyilakkal, majd nyomd meg az OK gombot</string>
     <string name="remove">Eltávolítás</string>
     <string name="hide">Elrejtés</string>

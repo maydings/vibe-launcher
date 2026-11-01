@@ -15,6 +15,17 @@
     <string name="network">ජාලය</string>
     <string name="vpn_connected">VPN සම්බන්ධයි</string>
     <string name="move">ගෙන යන්න</string>
+    <string name="new_folder">නව ෆෝල්ඩරය</string>
+    <string name="move_to_folder">ෆෝල්ඩරයට ගෙන යන්න</string>
+    <string name="move_to_home">මුල් පිටුවට ගෙන යන්න</string>
+    <string name="rename_folder">නැවත නම් කරන්න</string>
+    <string name="remove_folder">ෆෝල්ඩරය ඉවත් කරන්න</string>
+    <string name="close">වසන්න</string>
+    <string name="folder_name">ෆෝල්ඩරයේ නම</string>
+    <string name="folder">ෆෝල්ඩරය</string>
+    <string name="folder_video">වීඩියෝ</string>
+    <string name="folder_music">සංගීතය</string>
+    <string name="folder_games">ක්‍රීඩා</string>
     <string name="move_hint">ඊතල බොත්තම්වලින් ගෙන ගොස් OK ඔබන්න</string>
     <string name="remove">ඉවත් කරන්න</string>
     <string name="hide">සඟවන්න</string>

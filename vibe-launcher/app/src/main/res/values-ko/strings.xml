@@ -15,6 +15,17 @@
     <string name="network">네트워크</string>
     <string name="vpn_connected">VPN 연결됨</string>
     <string name="move">이동</string>
+    <string name="new_folder">새 폴더</string>
+    <string name="move_to_folder">폴더로 이동</string>
+    <string name="move_to_home">홈으로 이동</string>
+    <string name="rename_folder">이름 변경</string>
+    <string name="remove_folder">폴더 해제</string>
+    <string name="close">닫기</string>
+    <string name="folder_name">폴더 이름</string>
+    <string name="folder">폴더</string>
+    <string name="folder_video">비디오</string>
+    <string name="folder_music">음악</string>
+    <string name="folder_games">게임</string>
     <string name="move_hint">화살표로 옮긴 다음 OK를 누르세요</string>
     <string name="remove">제거</string>
     <string name="hide">숨기기</string>

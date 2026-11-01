@@ -15,6 +15,17 @@
     <string name="network">Netwerk</string>
     <string name="vpn_connected">VPN verbonden</string>
     <string name="move">Verplaatsen</string>
+    <string name="new_folder">Nieuwe map</string>
+    <string name="move_to_folder">Naar map verplaatsen</string>
+    <string name="move_to_home">Naar beginscherm</string>
+    <string name="rename_folder">Naam wijzigen</string>
+    <string name="remove_folder">Map opheffen</string>
+    <string name="close">Sluiten</string>
+    <string name="folder_name">Mapnaam</string>
+    <string name="folder">Map</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Muziek</string>
+    <string name="folder_games">Games</string>
     <string name="move_hint">Verplaats met de pijltjes en druk dan op OK</string>
     <string name="remove">Verwijderen</string>
     <string name="hide">Verbergen</string>

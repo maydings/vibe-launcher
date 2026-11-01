@@ -15,6 +15,17 @@
     <string name="network">Rangkaian</string>
     <string name="vpn_connected">VPN bersambung</string>
     <string name="move">Alih</string>
+    <string name="new_folder">Folder baharu</string>
+    <string name="move_to_folder">Alih ke folder</string>
+    <string name="move_to_home">Alih ke Laman Utama</string>
+    <string name="rename_folder">Namakan semula</string>
+    <string name="remove_folder">Alih keluar folder</string>
+    <string name="close">Tutup</string>
+    <string name="folder_name">Nama folder</string>
+    <string name="folder">Folder</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Muzik</string>
+    <string name="folder_games">Permainan</string>
     <string name="move_hint">Alihkan dengan anak panah, kemudian tekan OK</string>
     <string name="remove">Nyahpasang</string>
     <string name="hide">Sembunyikan</string>

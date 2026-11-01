@@ -15,6 +15,17 @@
     <string name="network">Jaringan</string>
     <string name="vpn_connected">VPN terhubung</string>
     <string name="move">Pindahkan</string>
+    <string name="new_folder">Folder baru</string>
+    <string name="move_to_folder">Pindahkan ke folder</string>
+    <string name="move_to_home">Pindahkan ke Beranda</string>
+    <string name="rename_folder">Ganti nama</string>
+    <string name="remove_folder">Hapus folder</string>
+    <string name="close">Tutup</string>
+    <string name="folder_name">Nama folder</string>
+    <string name="folder">Folder</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Musik</string>
+    <string name="folder_games">Game</string>
     <string name="move_hint">Pindahkan dengan tombol panah, lalu tekan OK</string>
     <string name="remove">Copot</string>
     <string name="hide">Sembunyikan</string>

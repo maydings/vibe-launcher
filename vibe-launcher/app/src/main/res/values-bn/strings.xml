@@ -15,6 +15,17 @@
     <string name="network">নেটওয়ার্ক</string>
     <string name="vpn_connected">VPN সংযুক্ত</string>
     <string name="move">সরান</string>
+    <string name="new_folder">নতুন ফোল্ডার</string>
+    <string name="move_to_folder">ফোল্ডারে সরান</string>
+    <string name="move_to_home">হোমে সরান</string>
+    <string name="rename_folder">নাম বদলান</string>
+    <string name="remove_folder">ফোল্ডার সরান</string>
+    <string name="close">বন্ধ করুন</string>
+    <string name="folder_name">ফোল্ডারের নাম</string>
+    <string name="folder">ফোল্ডার</string>
+    <string name="folder_video">ভিডিও</string>
+    <string name="folder_music">মিউজিক</string>
+    <string name="folder_games">গেম</string>
     <string name="move_hint">তীর বোতাম দিয়ে সরান, তারপর OK চাপুন</string>
     <string name="remove">সরিয়ে দিন</string>
     <string name="hide">লুকান</string>

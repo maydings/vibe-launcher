@@ -15,6 +15,17 @@
     <string name="network">ਨੈੱਟਵਰਕ</string>
     <string name="vpn_connected">VPN ਕਨੈਕਟ ਹੈ</string>
     <string name="move">ਹਿਲਾਓ</string>
+    <string name="new_folder">ਨਵਾਂ ਫੋਲਡਰ</string>
+    <string name="move_to_folder">ਫੋਲਡਰ ਵਿੱਚ ਭੇਜੋ</string>
+    <string name="move_to_home">ਹੋਮ ’ਤੇ ਭੇਜੋ</string>
+    <string name="rename_folder">ਨਾਮ ਬਦਲੋ</string>
+    <string name="remove_folder">ਫੋਲਡਰ ਹਟਾਓ</string>
+    <string name="close">ਬੰਦ ਕਰੋ</string>
+    <string name="folder_name">ਫੋਲਡਰ ਦਾ ਨਾਮ</string>
+    <string name="folder">ਫੋਲਡਰ</string>
+    <string name="folder_video">ਵੀਡੀਓ</string>
+    <string name="folder_music">ਸੰਗੀਤ</string>
+    <string name="folder_games">ਗੇਮਾਂ</string>
     <string name="move_hint">ਤੀਰਾਂ ਨਾਲ ਹਿਲਾਓ, ਫਿਰ OK ਦਬਾਓ</string>
     <string name="remove">ਹਟਾਓ</string>
     <string name="hide">ਲੁਕਾਓ</string>

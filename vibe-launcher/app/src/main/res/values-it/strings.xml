@@ -15,6 +15,17 @@
     <string name="network">Rete</string>
     <string name="vpn_connected">VPN connessa</string>
     <string name="move">Sposta</string>
+    <string name="new_folder">Nuova cartella</string>
+    <string name="move_to_folder">Sposta in una cartella</string>
+    <string name="move_to_home">Sposta nella Home</string>
+    <string name="rename_folder">Rinomina</string>
+    <string name="remove_folder">Rimuovi cartella</string>
+    <string name="close">Chiudi</string>
+    <string name="folder_name">Nome della cartella</string>
+    <string name="folder">Cartella</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Musica</string>
+    <string name="folder_games">Giochi</string>
     <string name="move_hint">Spostala con le frecce, poi premi OK</string>
     <string name="remove">Disinstalla</string>
     <string name="hide">Nascondi</string>

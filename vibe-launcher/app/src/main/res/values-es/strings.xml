@@ -15,6 +15,17 @@
     <string name="network">Red</string>
     <string name="vpn_connected">VPN conectada</string>
     <string name="move">Mover</string>
+    <string name="new_folder">Nueva carpeta</string>
+    <string name="move_to_folder">Mover a carpeta</string>
+    <string name="move_to_home">Mover a Inicio</string>
+    <string name="rename_folder">Cambiar nombre</string>
+    <string name="remove_folder">Quitar carpeta</string>
+    <string name="close">Cerrar</string>
+    <string name="folder_name">Nombre de la carpeta</string>
+    <string name="folder">Carpeta</string>
+    <string name="folder_video">Vídeo</string>
+    <string name="folder_music">Música</string>
+    <string name="folder_games">Juegos</string>
     <string name="move_hint">Muévelo con las flechas y pulsa OK</string>
     <string name="remove">Desinstalar</string>
     <string name="hide">Ocultar</string>

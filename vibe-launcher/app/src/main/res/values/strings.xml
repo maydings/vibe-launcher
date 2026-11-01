@@ -15,6 +15,17 @@
     <string name="network">Network</string>
     <string name="vpn_connected">VPN connected</string>
     <string name="move">Move</string>
+    <string name="new_folder">New folder</string>
+    <string name="move_to_folder">Move to folder</string>
+    <string name="move_to_home">Move to Home</string>
+    <string name="rename_folder">Rename</string>
+    <string name="remove_folder">Remove folder</string>
+    <string name="close">Close</string>
+    <string name="folder_name">Folder name</string>
+    <string name="folder">Folder</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Music</string>
+    <string name="folder_games">Games</string>
     <string name="move_hint">Use the arrows to move it, then press OK</string>
     <string name="remove">Remove</string>
     <string name="hide">Hide</string>

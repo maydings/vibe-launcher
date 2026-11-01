@@ -15,6 +15,17 @@
     <string name="network">បណ្ដាញ</string>
     <string name="vpn_connected">VPN បានភ្ជាប់</string>
     <string name="move">ផ្លាស់ទី</string>
+    <string name="new_folder">ថតថ្មី</string>
+    <string name="move_to_folder">ផ្លាស់ទីទៅថត</string>
+    <string name="move_to_home">ផ្លាស់ទីទៅទំព័រដើម</string>
+    <string name="rename_folder">ប្ដូរឈ្មោះ</string>
+    <string name="remove_folder">ដកថតចេញ</string>
+    <string name="close">បិទ</string>
+    <string name="folder_name">ឈ្មោះថត</string>
+    <string name="folder">ថត</string>
+    <string name="folder_video">វីដេអូ</string>
+    <string name="folder_music">តន្ត្រី</string>
+    <string name="folder_games">ហ្គេម</string>
     <string name="move_hint">ផ្លាស់ទីដោយប៊ូតុងព្រួញ រួចចុច OK</string>
     <string name="remove">លុបចេញ</string>
     <string name="hide">លាក់</string>

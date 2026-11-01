@@ -15,6 +15,17 @@
     <string name="network">ನೆಟ್‌ವರ್ಕ್</string>
     <string name="vpn_connected">VPN ಸಂಪರ್ಕಗೊಂಡಿದೆ</string>
     <string name="move">ಸರಿಸು</string>
+    <string name="new_folder">ಹೊಸ ಫೋಲ್ಡರ್</string>
+    <string name="move_to_folder">ಫೋಲ್ಡರ್‌ಗೆ ಸರಿಸಿ</string>
+    <string name="move_to_home">ಹೋಮ್‌ಗೆ ಸರಿಸಿ</string>
+    <string name="rename_folder">ಮರುಹೆಸರಿಸಿ</string>
+    <string name="remove_folder">ಫೋಲ್ಡರ್ ತೆಗೆದುಹಾಕಿ</string>
+    <string name="close">ಮುಚ್ಚಿ</string>
+    <string name="folder_name">ಫೋಲ್ಡರ್ ಹೆಸರು</string>
+    <string name="folder">ಫೋಲ್ಡರ್</string>
+    <string name="folder_video">ವೀಡಿಯೊ</string>
+    <string name="folder_music">ಸಂಗೀತ</string>
+    <string name="folder_games">ಆಟಗಳು</string>
     <string name="move_hint">ಬಾಣಗಳಿಂದ ಸರಿಸಿ, ನಂತರ OK ಒತ್ತಿ</string>
     <string name="remove">ತೆಗೆದುಹಾಕು</string>
     <string name="hide">ಮರೆಮಾಡು</string>

@@ -15,6 +15,17 @@
     <string name="network">నెట్‌వర్క్</string>
     <string name="vpn_connected">VPN కనెక్ట్ అయింది</string>
     <string name="move">తరలించు</string>
+    <string name="new_folder">కొత్త ఫోల్డర్</string>
+    <string name="move_to_folder">ఫోల్డర్‌కు తరలించు</string>
+    <string name="move_to_home">హోమ్‌కు తరలించు</string>
+    <string name="rename_folder">పేరు మార్చు</string>
+    <string name="remove_folder">ఫోల్డర్‌ను తీసివేయి</string>
+    <string name="close">మూసివేయి</string>
+    <string name="folder_name">ఫోల్డర్ పేరు</string>
+    <string name="folder">ఫోల్డర్</string>
+    <string name="folder_video">వీడియో</string>
+    <string name="folder_music">సంగీతం</string>
+    <string name="folder_games">గేమ్‌లు</string>
     <string name="move_hint">బాణాలతో తరలించి, ఆపై OK నొక్కండి</string>
     <string name="remove">తీసివేయి</string>
     <string name="hide">దాచు</string>

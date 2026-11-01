@@ -15,6 +15,17 @@
     <string name="network">Ağ</string>
     <string name="vpn_connected">VPN bağlı</string>
     <string name="move">Taşı</string>
+    <string name="new_folder">Yeni klasör</string>
+    <string name="move_to_folder">Klasöre taşı</string>
+    <string name="move_to_home">Ana ekrana taşı</string>
+    <string name="rename_folder">Yeniden adlandır</string>
+    <string name="remove_folder">Klasörü kaldır</string>
+    <string name="close">Kapat</string>
+    <string name="folder_name">Klasör adı</string>
+    <string name="folder">Klasör</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Müzik</string>
+    <string name="folder_games">Oyunlar</string>
     <string name="move_hint">Ok tuşlarıyla taşıyın, sonra OK\'a basın</string>
     <string name="remove">Kaldır</string>
     <string name="hide">Gizle</string>

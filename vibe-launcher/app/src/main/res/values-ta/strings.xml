@@ -15,6 +15,17 @@
     <string name="network">நெட்வொர்க்</string>
     <string name="vpn_connected">VPN இணைக்கப்பட்டது</string>
     <string name="move">நகர்த்து</string>
+    <string name="new_folder">புதிய கோப்புறை</string>
+    <string name="move_to_folder">கோப்புறைக்கு நகர்த்து</string>
+    <string name="move_to_home">முகப்புக்கு நகர்த்து</string>
+    <string name="rename_folder">மறுபெயரிடு</string>
+    <string name="remove_folder">கோப்புறையை அகற்று</string>
+    <string name="close">மூடு</string>
+    <string name="folder_name">கோப்புறையின் பெயர்</string>
+    <string name="folder">கோப்புறை</string>
+    <string name="folder_video">வீடியோ</string>
+    <string name="folder_music">இசை</string>
+    <string name="folder_games">கேம்கள்</string>
     <string name="move_hint">அம்புகளால் நகர்த்தி, பின் OK அழுத்தவும்</string>
     <string name="remove">அகற்று</string>
     <string name="hide">மறை</string>

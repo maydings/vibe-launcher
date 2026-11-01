@@ -15,6 +15,17 @@
     <string name="network">नेटवर्क</string>
     <string name="vpn_connected">VPN जोडलेले</string>
     <string name="move">हलवा</string>
+    <string name="new_folder">नवीन फोल्डर</string>
+    <string name="move_to_folder">फोल्डरमध्ये हलवा</string>
+    <string name="move_to_home">होमवर हलवा</string>
+    <string name="rename_folder">नाव बदला</string>
+    <string name="remove_folder">फोल्डर काढा</string>
+    <string name="close">बंद करा</string>
+    <string name="folder_name">फोल्डरचे नाव</string>
+    <string name="folder">फोल्डर</string>
+    <string name="folder_video">व्हिडिओ</string>
+    <string name="folder_music">संगीत</string>
+    <string name="folder_games">गेम</string>
     <string name="move_hint">बाणांनी हलवा, मग OK दाबा</string>
     <string name="remove">काढा</string>
     <string name="hide">लपवा</string>

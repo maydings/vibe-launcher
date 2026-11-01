@@ -15,6 +15,17 @@
     <string name="network">नेटवर्क</string>
     <string name="vpn_connected">VPN कनेक्टेड</string>
     <string name="move">खिसकाएँ</string>
+    <string name="new_folder">नया फ़ोल्डर</string>
+    <string name="move_to_folder">फ़ोल्डर में ले जाएं</string>
+    <string name="move_to_home">होम पर ले जाएं</string>
+    <string name="rename_folder">नाम बदलें</string>
+    <string name="remove_folder">फ़ोल्डर हटाएं</string>
+    <string name="close">बंद करें</string>
+    <string name="folder_name">फ़ोल्डर का नाम</string>
+    <string name="folder">फ़ोल्डर</string>
+    <string name="folder_video">वीडियो</string>
+    <string name="folder_music">संगीत</string>
+    <string name="folder_games">गेम</string>
     <string name="move_hint">तीर बटनों से खिसकाएँ, फिर OK दबाएँ</string>
     <string name="remove">हटाएँ</string>
     <string name="hide">छिपाएँ</string>

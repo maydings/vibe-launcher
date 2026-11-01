@@ -15,6 +15,17 @@
     <string name="network">Мережа</string>
     <string name="vpn_connected">VPN підключено</string>
     <string name="move">Перемістити</string>
+    <string name="new_folder">Нова папка</string>
+    <string name="move_to_folder">Перемістити в папку</string>
+    <string name="move_to_home">Перемістити на головний екран</string>
+    <string name="rename_folder">Перейменувати</string>
+    <string name="remove_folder">Прибрати папку</string>
+    <string name="close">Закрити</string>
+    <string name="folder_name">Назва папки</string>
+    <string name="folder">Папка</string>
+    <string name="folder_video">Відео</string>
+    <string name="folder_music">Музика</string>
+    <string name="folder_games">Ігри</string>
     <string name="move_hint">Переміщуйте стрілками, потім натисніть OK</string>
     <string name="remove">Видалити</string>
     <string name="hide">Сховати</string>

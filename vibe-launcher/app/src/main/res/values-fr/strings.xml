@@ -15,6 +15,17 @@
     <string name="network">Réseau</string>
     <string name="vpn_connected">VPN connecté</string>
     <string name="move">Déplacer</string>
+    <string name="new_folder">Nouveau dossier</string>
+    <string name="move_to_folder">Déplacer vers un dossier</string>
+    <string name="move_to_home">Déplacer vers l’accueil</string>
+    <string name="rename_folder">Renommer</string>
+    <string name="remove_folder">Supprimer le dossier</string>
+    <string name="close">Fermer</string>
+    <string name="folder_name">Nom du dossier</string>
+    <string name="folder">Dossier</string>
+    <string name="folder_video">Vidéo</string>
+    <string name="folder_music">Musique</string>
+    <string name="folder_games">Jeux</string>
     <string name="move_hint">Déplacez-la avec les flèches, puis appuyez sur OK</string>
     <string name="remove">Désinstaller</string>
     <string name="hide">Masquer</string>

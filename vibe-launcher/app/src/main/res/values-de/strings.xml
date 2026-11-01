@@ -15,6 +15,17 @@
     <string name="network">Netzwerk</string>
     <string name="vpn_connected">VPN verbunden</string>
     <string name="move">Verschieben</string>
+    <string name="new_folder">Neuer Ordner</string>
+    <string name="move_to_folder">In Ordner verschieben</string>
+    <string name="move_to_home">Auf den Startbildschirm</string>
+    <string name="rename_folder">Umbenennen</string>
+    <string name="remove_folder">Ordner auflösen</string>
+    <string name="close">Schließen</string>
+    <string name="folder_name">Ordnername</string>
+    <string name="folder">Ordner</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Musik</string>
+    <string name="folder_games">Spiele</string>
     <string name="move_hint">Mit den Pfeiltasten verschieben, dann OK drücken</string>
     <string name="remove">Deinstallieren</string>
     <string name="hide">Ausblenden</string>

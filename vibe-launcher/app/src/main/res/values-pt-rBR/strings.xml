@@ -15,6 +15,17 @@
     <string name="network">Rede</string>
     <string name="vpn_connected">VPN conectada</string>
     <string name="move">Mover</string>
+    <string name="new_folder">Nova pasta</string>
+    <string name="move_to_folder">Mover para pasta</string>
+    <string name="move_to_home">Mover para o Início</string>
+    <string name="rename_folder">Renomear</string>
+    <string name="remove_folder">Remover pasta</string>
+    <string name="close">Fechar</string>
+    <string name="folder_name">Nome da pasta</string>
+    <string name="folder">Pasta</string>
+    <string name="folder_video">Vídeo</string>
+    <string name="folder_music">Música</string>
+    <string name="folder_games">Jogos</string>
     <string name="move_hint">Use as setas para mover e depois pressione OK</string>
     <string name="remove">Desinstalar</string>
     <string name="hide">Ocultar</string>

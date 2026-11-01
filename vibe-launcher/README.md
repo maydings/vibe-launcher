@@ -38,6 +38,9 @@ client in [`tools/`](tools/) where macOS blocks adb on the local network:
 
 Or by hand: `./gradlew assembleAdbDebug`, then `adb install -r -g app/build/outputs/apk/adb/debug/app-adb-debug.apk`.
 
+To check a change didn't make it slower: the speed tests in [`tools/bench/`](tools/bench/) (cold start,
+first picture, memory, idle CPU, frame times at the display), with the last numbers to compare against.
+
 **Two builds** come from the same code (`app/build.gradle`):
 
 | | `adb` (the GitHub releases, `build-and-install.sh`) | `store` (Google Play) |

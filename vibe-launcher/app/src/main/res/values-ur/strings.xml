@@ -15,6 +15,17 @@
     <string name="network">نیٹ ورک</string>
     <string name="vpn_connected">VPN منسلک</string>
     <string name="move">منتقل کریں</string>
+    <string name="new_folder">نیا فولڈر</string>
+    <string name="move_to_folder">فولڈر میں منتقل کریں</string>
+    <string name="move_to_home">ہوم پر منتقل کریں</string>
+    <string name="rename_folder">نام تبدیل کریں</string>
+    <string name="remove_folder">فولڈر ہٹائیں</string>
+    <string name="close">بند کریں</string>
+    <string name="folder_name">فولڈر کا نام</string>
+    <string name="folder">فولڈر</string>
+    <string name="folder_video">ویڈیو</string>
+    <string name="folder_music">موسیقی</string>
+    <string name="folder_games">گیمز</string>
     <string name="move_hint">تیر کے بٹنوں سے منتقل کریں، پھر OK دبائیں</string>
     <string name="remove">ہٹائیں</string>
     <string name="hide">چھپائیں</string>

@@ -15,6 +15,17 @@
     <string name="network">شبکه</string>
     <string name="vpn_connected">VPN وصل است</string>
     <string name="move">جابه‌جایی</string>
+    <string name="new_folder">پوشه جدید</string>
+    <string name="move_to_folder">انتقال به پوشه</string>
+    <string name="move_to_home">انتقال به صفحه اصلی</string>
+    <string name="rename_folder">تغییر نام</string>
+    <string name="remove_folder">حذف پوشه</string>
+    <string name="close">بستن</string>
+    <string name="folder_name">نام پوشه</string>
+    <string name="folder">پوشه</string>
+    <string name="folder_video">ویدیو</string>
+    <string name="folder_music">موسیقی</string>
+    <string name="folder_games">بازی‌ها</string>
     <string name="move_hint">با دکمه‌های جهت جابه‌جا کنید، سپس OK را بزنید</string>
     <string name="remove">حذف</string>
     <string name="hide">پنهان کردن</string>

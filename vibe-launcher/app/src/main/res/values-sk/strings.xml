@@ -15,6 +15,17 @@
     <string name="network">Sieť</string>
     <string name="vpn_connected">VPN pripojená</string>
     <string name="move">Presunúť</string>
+    <string name="new_folder">Nový priečinok</string>
+    <string name="move_to_folder">Presunúť do priečinka</string>
+    <string name="move_to_home">Presunúť na plochu</string>
+    <string name="rename_folder">Premenovať</string>
+    <string name="remove_folder">Odstrániť priečinok</string>
+    <string name="close">Zavrieť</string>
+    <string name="folder_name">Názov priečinka</string>
+    <string name="folder">Priečinok</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Hudba</string>
+    <string name="folder_games">Hry</string>
     <string name="move_hint">Presuňte šípkami a stlačte OK</string>
     <string name="remove">Odinštalovať</string>
     <string name="hide">Skryť</string>

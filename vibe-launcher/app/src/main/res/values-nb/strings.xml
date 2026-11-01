@@ -15,6 +15,17 @@
     <string name="network">Nettverk</string>
     <string name="vpn_connected">VPN tilkoblet</string>
     <string name="move">Flytt</string>
+    <string name="new_folder">Ny mappe</string>
+    <string name="move_to_folder">Flytt til mappe</string>
+    <string name="move_to_home">Flytt til Hjem</string>
+    <string name="rename_folder">Gi nytt navn</string>
+    <string name="remove_folder">Fjern mappe</string>
+    <string name="close">Lukk</string>
+    <string name="folder_name">Mappenavn</string>
+    <string name="folder">Mappe</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Musikk</string>
+    <string name="folder_games">Spill</string>
     <string name="move_hint">Flytt med pilene, og trykk så OK</string>
     <string name="remove">Avinstaller</string>
     <string name="hide">Skjul</string>

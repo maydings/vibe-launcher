@@ -15,6 +15,17 @@
     <string name="network">Mreža</string>
     <string name="vpn_connected">VPN povezan</string>
     <string name="move">Premjesti</string>
+    <string name="new_folder">Nova mapa</string>
+    <string name="move_to_folder">Premjesti u mapu</string>
+    <string name="move_to_home">Premjesti na početni zaslon</string>
+    <string name="rename_folder">Preimenuj</string>
+    <string name="remove_folder">Ukloni mapu</string>
+    <string name="close">Zatvori</string>
+    <string name="folder_name">Naziv mape</string>
+    <string name="folder">Mapa</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Glazba</string>
+    <string name="folder_games">Igre</string>
     <string name="move_hint">Premjestite strelicama pa pritisnite OK</string>
     <string name="remove">Deinstaliraj</string>
     <string name="hide">Sakrij</string>

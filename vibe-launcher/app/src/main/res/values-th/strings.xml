@@ -15,6 +15,17 @@
     <string name="network">เครือข่าย</string>
     <string name="vpn_connected">เชื่อมต่อ VPN แล้ว</string>
     <string name="move">ย้าย</string>
+    <string name="new_folder">โฟลเดอร์ใหม่</string>
+    <string name="move_to_folder">ย้ายไปที่โฟลเดอร์</string>
+    <string name="move_to_home">ย้ายไปหน้าหลัก</string>
+    <string name="rename_folder">เปลี่ยนชื่อ</string>
+    <string name="remove_folder">นำโฟลเดอร์ออก</string>
+    <string name="close">ปิด</string>
+    <string name="folder_name">ชื่อโฟลเดอร์</string>
+    <string name="folder">โฟลเดอร์</string>
+    <string name="folder_video">วิดีโอ</string>
+    <string name="folder_music">เพลง</string>
+    <string name="folder_games">เกม</string>
     <string name="move_hint">ใช้ปุ่มลูกศรย้าย แล้วกด OK</string>
     <string name="remove">ถอนการติดตั้ง</string>
     <string name="hide">ซ่อน</string>

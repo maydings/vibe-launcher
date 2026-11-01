@@ -15,6 +15,17 @@
     <string name="network">Δίκτυο</string>
     <string name="vpn_connected">VPN συνδεδεμένο</string>
     <string name="move">Μετακίνηση</string>
+    <string name="new_folder">Νέος φάκελος</string>
+    <string name="move_to_folder">Μετακίνηση σε φάκελο</string>
+    <string name="move_to_home">Μετακίνηση στην αρχική</string>
+    <string name="rename_folder">Μετονομασία</string>
+    <string name="remove_folder">Κατάργηση φακέλου</string>
+    <string name="close">Κλείσιμο</string>
+    <string name="folder_name">Όνομα φακέλου</string>
+    <string name="folder">Φάκελος</string>
+    <string name="folder_video">Βίντεο</string>
+    <string name="folder_music">Μουσική</string>
+    <string name="folder_games">Παιχνίδια</string>
     <string name="move_hint">Μετακινήστε με τα βέλη και πατήστε OK</string>
     <string name="remove">Απεγκατάσταση</string>
     <string name="hide">Απόκρυψη</string>

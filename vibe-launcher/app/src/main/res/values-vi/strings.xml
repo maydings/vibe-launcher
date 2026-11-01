@@ -15,6 +15,17 @@
     <string name="network">Mạng</string>
     <string name="vpn_connected">VPN đã kết nối</string>
     <string name="move">Di chuyển</string>
+    <string name="new_folder">Thư mục mới</string>
+    <string name="move_to_folder">Chuyển vào thư mục</string>
+    <string name="move_to_home">Chuyển ra Màn hình chính</string>
+    <string name="rename_folder">Đổi tên</string>
+    <string name="remove_folder">Gỡ thư mục</string>
+    <string name="close">Đóng</string>
+    <string name="folder_name">Tên thư mục</string>
+    <string name="folder">Thư mục</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Âm nhạc</string>
+    <string name="folder_games">Trò chơi</string>
     <string name="move_hint">Dùng phím mũi tên để di chuyển, rồi nhấn OK</string>
     <string name="remove">Gỡ cài đặt</string>
     <string name="hide">Ẩn</string>

@@ -15,6 +15,17 @@
     <string name="network">አውታረ መረብ</string>
     <string name="vpn_connected">VPN ተገናኝቷል</string>
     <string name="move">አንቀሳቅስ</string>
+    <string name="new_folder">አዲስ አቃፊ</string>
+    <string name="move_to_folder">ወደ አቃፊ ውሰድ</string>
+    <string name="move_to_home">ወደ መነሻ ውሰድ</string>
+    <string name="rename_folder">ዳግም ሰይም</string>
+    <string name="remove_folder">አቃፊ አስወግድ</string>
+    <string name="close">ዝጋ</string>
+    <string name="folder_name">የአቃፊ ስም</string>
+    <string name="folder">አቃፊ</string>
+    <string name="folder_video">ቪዲዮ</string>
+    <string name="folder_music">ሙዚቃ</string>
+    <string name="folder_games">ጨዋታዎች</string>
     <string name="move_hint">በቀስቶቹ ያንቀሳቅሱ፣ ከዚያ OK ይጫኑ</string>
     <string name="remove">አስወግድ</string>
     <string name="hide">ደብቅ</string>

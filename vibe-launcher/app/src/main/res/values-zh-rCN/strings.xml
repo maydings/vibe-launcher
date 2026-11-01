@@ -15,6 +15,17 @@
     <string name="network">网络</string>
     <string name="vpn_connected">VPN 已连接</string>
     <string name="move">移动</string>
+    <string name="new_folder">新建文件夹</string>
+    <string name="move_to_folder">移到文件夹</string>
+    <string name="move_to_home">移到主屏幕</string>
+    <string name="rename_folder">重命名</string>
+    <string name="remove_folder">移除文件夹</string>
+    <string name="close">关闭</string>
+    <string name="folder_name">文件夹名称</string>
+    <string name="folder">文件夹</string>
+    <string name="folder_video">视频</string>
+    <string name="folder_music">音乐</string>
+    <string name="folder_games">游戏</string>
     <string name="move_hint">用方向键移动，然后按确定</string>
     <string name="remove">卸载</string>
     <string name="hide">隐藏</string>

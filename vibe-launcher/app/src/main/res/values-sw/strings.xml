@@ -15,6 +15,17 @@
     <string name="network">Mtandao</string>
     <string name="vpn_connected">VPN imeunganishwa</string>
     <string name="move">Hamisha</string>
+    <string name="new_folder">Folda mpya</string>
+    <string name="move_to_folder">Hamishia kwenye folda</string>
+    <string name="move_to_home">Hamishia Mwanzo</string>
+    <string name="rename_folder">Badilisha jina</string>
+    <string name="remove_folder">Ondoa folda</string>
+    <string name="close">Funga</string>
+    <string name="folder_name">Jina la folda</string>
+    <string name="folder">Folda</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Muziki</string>
+    <string name="folder_games">Michezo</string>
     <string name="move_hint">Hamisha kwa vitufe vya mishale, kisha bonyeza OK</string>
     <string name="remove">Ondoa</string>
     <string name="hide">Ficha</string>

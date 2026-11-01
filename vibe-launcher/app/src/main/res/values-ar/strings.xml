@@ -15,6 +15,17 @@
     <string name="network">الشبكة</string>
     <string name="vpn_connected">VPN متصل</string>
     <string name="move">نقل</string>
+    <string name="new_folder">مجلد جديد</string>
+    <string name="move_to_folder">نقل إلى مجلد</string>
+    <string name="move_to_home">نقل إلى الشاشة الرئيسية</string>
+    <string name="rename_folder">إعادة تسمية</string>
+    <string name="remove_folder">إزالة المجلد</string>
+    <string name="close">إغلاق</string>
+    <string name="folder_name">اسم المجلد</string>
+    <string name="folder">مجلد</string>
+    <string name="folder_video">فيديو</string>
+    <string name="folder_music">موسيقى</string>
+    <string name="folder_games">ألعاب</string>
     <string name="move_hint">استخدم الأسهم لنقله، ثم اضغط OK</string>
     <string name="remove">إزالة</string>
     <string name="hide">إخفاء</string>

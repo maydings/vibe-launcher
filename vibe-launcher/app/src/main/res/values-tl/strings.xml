@@ -15,6 +15,17 @@
     <string name="network">Network</string>
     <string name="vpn_connected">Nakakonekta ang VPN</string>
     <string name="move">Ilipat</string>
+    <string name="new_folder">Bagong folder</string>
+    <string name="move_to_folder">Ilipat sa folder</string>
+    <string name="move_to_home">Ilipat sa Home</string>
+    <string name="rename_folder">Palitan ang pangalan</string>
+    <string name="remove_folder">Alisin ang folder</string>
+    <string name="close">Isara</string>
+    <string name="folder_name">Pangalan ng folder</string>
+    <string name="folder">Folder</string>
+    <string name="folder_video">Video</string>
+    <string name="folder_music">Musika</string>
+    <string name="folder_games">Mga Laro</string>
     <string name="move_hint">Ilipat gamit ang mga arrow, saka pindutin ang OK</string>
     <string name="remove">Alisin</string>
     <string name="hide">Itago</string>
