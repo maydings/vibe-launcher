@@ -833,15 +833,21 @@ final class Backdrops {
     /** Renders a choice into new files in the app's folder: its still, and the title's logo if any. Null if it fails. */
     private Entry renderStill(Choice c, File dir) {
         long made = System.currentTimeMillis();
+        // Settings > General > Picture format: lossless PNG, or JPEG at a quality where the darkened pictures
+        // show no blocks (several times smaller, and quicker to open on every focus change).
+        boolean jpeg = settings.jpegStills();
+        String ext = jpeg ? ".jpg" : ".png";
         String name = String.valueOf(made);
-        for (int n = 1; new File(dir, name + ".png").exists(); n++) name = made + "-" + n;
-        File still = new File(dir, name + ".png"), logo = null;
+        for (int n = 1; new File(dir, name + ".png").exists() || new File(dir, name + ".jpg").exists(); n++) {
+            name = made + "-" + n;
+        }
+        File still = new File(dir, name + ext), logo = null;
         try {
             Bitmap b = render(c);
             if (b == null) return null;
             b.setHasAlpha(false);   // opaque: stored as RGB, a quarter smaller than RGBA
             try (FileOutputStream out = new FileOutputStream(still)) {
-                b.compress(Bitmap.CompressFormat.PNG, 100, out);
+                b.compress(jpeg ? Bitmap.CompressFormat.JPEG : Bitmap.CompressFormat.PNG, jpeg ? 92 : 100, out);
             } finally {
                 b.recycle();
             }

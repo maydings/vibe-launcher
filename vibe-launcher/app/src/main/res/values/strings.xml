@@ -88,6 +88,9 @@
     <string name="cant_open">Can\'t open %1$s</string>
     <string name="play">Play</string>
     <string name="reload_backdrops">Reload backdrops</string>
+    <string name="picture_format">Picture format</string>
+    <string name="picture_png">PNG (best quality)</string>
+    <string name="picture_jpeg">JPEG (faster, smaller)</string>
     <string name="backdrops_reloading">Downloading new backdrops…</string>
     <string name="auto_hide_bar">Auto-hide</string>
     <string name="slideshow_clock">Screensaver clock</string>

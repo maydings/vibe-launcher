@@ -3,6 +3,12 @@
 Everything Play Console asks for, ready to paste. The app is the **store** flavor
 (`./gradlew bundleStoreRelease` → `app/build/outputs/bundle/storeRelease/app-store-release.aab`).
 
+**The first release has no Home button service** (`BuildConfig.HOME_BUTTON` is false in the store flavor,
+and `src/store/AndroidManifest.xml` removes the service): no accessibility declaration or video for Play to
+review. Where the TV lets apps become Home, Vibe Launcher does; elsewhere it opens from the apps row. The
+service can come in a later update, with the declaration and video in [Accessibility API
+declaration](#accessibility-api-declaration-for-a-later-release).
+
 ## 1. Signing: keep our own key
 
 So the Play install and the GitHub APKs stay signed alike (either can replace the other without losing
@@ -66,8 +72,8 @@ A HOME SCREEN THAT STAYS OUT OF THE WAY
 • Full-screen settings that apply as you change them, in 50 languages.
 • Light: built for TVs with 1 to 2 GB of memory.
 
-THE HOME BUTTON
-Android TV has no setting for choosing the home screen, so Vibe Launcher includes an optional accessibility service, "Vibe Launcher Home button". With it on, pressing Home opens Vibe Launcher and holding Home opens your TV's Settings. It hears only when the TV's own home screen comes up, and the remote's keys: it keeps Home and passes every other key on. It reads nothing on screen, stores nothing and sends nothing anywhere. Vibe Launcher explains this before you turn it on, and you can turn it off at any time in Settings > Accessibility.
+YOUR HOME SCREEN
+Where your TV lets apps become the home screen, Vibe Launcher offers to when you first open it. Some TVs, Google TV among them, keep the remote's Home button for their own home screen: there, open Vibe Launcher from your apps row.
 
 PRIVACY
 No ads, no analytics, no accounts. Vibe Launcher goes online only for pictures: from your apps, and from the services you give it a key for. The full list is in the privacy policy.
@@ -130,7 +136,9 @@ choosing under-13 ages brings the Families policy.
 - Location: foreground only, used to read the connected Wi-Fi network's name for the network pill; never
   sent anywhere. No background location.
 
-### Accessibility API declaration
+### Accessibility API declaration (for a later release)
+
+Not needed while the store build has no Home button service. For the update that adds it:
 
 **Is your app an accessibility tool?** No.
 

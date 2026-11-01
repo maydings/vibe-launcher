@@ -19,6 +19,7 @@ import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
@@ -286,6 +287,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         public void onReceive(Context context, Intent intent) {
             if (Intent.ACTION_PACKAGE_REMOVED.equals(intent.getAction())
                     && intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)) return;
+            if (intent.getData() != null) adapter.markUpdated(intent.getData().getSchemeSpecificPart());
             if (!started) {   // behind an app: the tiles are rebuilt once, on the way back
                 appsChanged = true;
                 return;
@@ -627,6 +629,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     @Override
     protected void onResume() {
         super.onResume();
+        removePickerBackdrop();   // back from the default-Home picker
         inSettings = false;
         applyHighlight();   // chosen in Settings meanwhile
         lastKeyAt = SystemClock.uptimeMillis();
@@ -1865,13 +1868,15 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             }
         }
         float extra = ((ViewGroup.MarginLayoutParams) ampm.getLayoutParams()).getMarginStart() + half;
+        // Each hour once, with every digit as the font's widest: as wide as any minute of that hour gets, in
+        // 24 measurements instead of one per minute of the day (1,440, on the main thread at a cold start).
         Calendar time = Calendar.getInstance();
+        time.set(Calendar.MINUTE, 0);
         timeBoxWidths.clear();
-        for (int minute = 0; minute < 24 * 60; minute++) {
-            time.set(Calendar.HOUR_OF_DAY, minute / 60);
-            time.set(Calendar.MINUTE, minute % 60);
+        for (int hour = 0; hour < 24; hour++) {
+            time.set(Calendar.HOUR_OF_DAY, hour);
             String s = DateFormat.format(format, time).toString();
-            int w = (int) Math.ceil(clock.getPaint().measureText(s) + extra);
+            int w = (int) Math.ceil(clock.getPaint().measureText(widestDigits(s, clock.getPaint())) + extra);
             Integer known = timeBoxWidths.get(s.length());
             if (known == null || w > known) timeBoxWidths.put(s.length(), w);
         }
@@ -1898,6 +1903,33 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             ampm.setFormat12Hour(hours == 0 ? "a" : half);
             ampm.setFormat24Hour(hours == 0 ? "" : half);
         }
+    }
+
+    /**
+     * The text with each digit as the widest of its script's ten (the digits differ in width). Any script:
+     * the time can come in Arabic-Indic or Devanagari digits, which a plain [0-9] would miss.
+     */
+    private static String widestDigits(String text, Paint paint) {
+        StringBuilder out = new StringBuilder(text.length());
+        char zero = 0, widest = 0;
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            int value = Character.digit(c, 10);
+            if (value < 0) {
+                out.append(c);
+                continue;
+            }
+            char z = (char) (c - value);
+            if (z != zero) {   // this script's widest digit, worked out once
+                zero = z;
+                widest = z;
+                for (char d = z; d < z + 10; d++) {
+                    if (paint.measureText(String.valueOf(d)) > paint.measureText(String.valueOf(widest))) widest = d;
+                }
+            }
+            out.append(widest);
+        }
+        return out.toString();
     }
 
     /** Applies the width sizeTimeBox worked out for times as long as this one. */
@@ -1985,16 +2017,37 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (!DefaultHome.homeButtonOn(this)) offerHome();
     }
 
-    /** The system's own screen for choosing the default Home (DefaultHome.request). */
+    /**
+     * The system's own screen for choosing the default Home (DefaultHome.request), over black: Android 14's
+     * picker (permissioncontroller) is see-through, and its text sat on the tiles (upstream cleanyourtv,
+     * Haier MatrixTV DE). The black goes when Home is back in front (onResume).
+     */
     private void makeHome(Intent request) {
+        if (pickerBackdrop == null) {
+            pickerBackdrop = new View(this);
+            pickerBackdrop.setBackgroundColor(Color.BLACK);
+            pickerBackdrop.setElevation(100 * density);   // over the glass and the bar, which have elevation
+            root.addView(pickerBackdrop, new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        }
         try {
             // The Android 10+ dialog answers with a result; Android 9's chooser is plain Home.
             if (Build.VERSION.SDK_INT >= 29) startActivityForResult(request, 2);
             else startActivity(request);
         } catch (ActivityNotFoundException | SecurityException e) {
+            removePickerBackdrop();
             // There's another way: the Home button service.
             HomeButtonLink.offer(this);
         }
+    }
+
+    /** Black behind the default-Home picker while it's up (makeHome). */
+    private View pickerBackdrop;
+
+    private void removePickerBackdrop() {
+        if (pickerBackdrop == null) return;
+        root.removeView(pickerBackdrop);
+        pickerBackdrop = null;
     }
 
     /**

@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube ei asentunut</string>
     <string name="play">Toista</string>
     <string name="reload_backdrops">Lataa taustakuvat uudelleen</string>
+    <string name="picture_format">Kuvamuoto</string>
+    <string name="picture_png">PNG (paras laatu)</string>
+    <string name="picture_jpeg">JPEG (nopeampi, pienempi)</string>
     <string name="backdrops_reloading">Ladataan uusia taustakuvia…</string>
     <string name="auto_hide_bar">Piilota automaattisesti</string>
     <string name="slideshow_clock">Kello näytönsäästäjässä</string>

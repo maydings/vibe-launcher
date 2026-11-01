@@ -9,6 +9,8 @@ import android.media.tv.TvContract;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Asks apps to publish their home screen cards. Some (Prime Video) only create their channel when the
@@ -19,12 +21,19 @@ import java.util.Set;
 final class ChannelSetup {
 
     private static final String FILE = "channel_setup";
+    /** One at a time, off the main thread: a question to Android per app, on every rebuild of Home. */
+    private static final ExecutorService worker = Executors.newSingleThreadExecutor();
 
     private ChannelSetup() {
     }
 
     /** Sends the broadcast to each app that listens for it and hasn't had it since it was installed or updated. */
     static void run(Context context) {
+        Context app = context.getApplicationContext();
+        worker.execute(() -> send(app));
+    }
+
+    private static void send(Context context) {
         PackageManager pm = context.getPackageManager();
         SharedPreferences sent = context.getSharedPreferences(FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = sent.edit();

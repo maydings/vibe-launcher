@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube انسٹال نہیں ہوا</string>
     <string name="play">چلائیں</string>
     <string name="reload_backdrops">پس منظر دوبارہ لوڈ کریں</string>
+    <string name="picture_format">تصویر کا فارمیٹ</string>
+    <string name="picture_png">PNG (بہترین معیار)</string>
+    <string name="picture_jpeg">JPEG (تیز، چھوٹا)</string>
     <string name="backdrops_reloading">نئے پس منظر ڈاؤن لوڈ ہو رہے ہیں…</string>
     <string name="auto_hide_bar">خود بخود چھپائیں</string>
     <string name="slideshow_clock">اسکرین سیور گھڑی</string>

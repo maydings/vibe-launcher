@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube 未能安裝</string>
     <string name="play">播放</string>
     <string name="reload_backdrops">重新載入背景圖</string>
+    <string name="picture_format">圖片格式</string>
+    <string name="picture_png">PNG (最佳畫質)</string>
+    <string name="picture_jpeg">JPEG (更快、更小)</string>
     <string name="backdrops_reloading">正在下載新的背景圖…</string>
     <string name="auto_hide_bar">自動隱藏</string>
     <string name="slideshow_clock">螢幕保護程式時鐘</string>

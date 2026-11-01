@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube не се инсталира</string>
     <string name="play">Пусни</string>
     <string name="reload_backdrops">Презареди фоновете</string>
+    <string name="picture_format">Формат на картините</string>
+    <string name="picture_png">PNG (най-добро качество)</string>
+    <string name="picture_jpeg">JPEG (по-бързо, по-малко)</string>
     <string name="backdrops_reloading">Изтегляне на нови фонове…</string>
     <string name="auto_hide_bar">Автоскриване</string>
     <string name="slideshow_clock">Часовник на скрийнсейвъра</string>

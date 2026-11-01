@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube sa nenainštaloval</string>
     <string name="play">Prehrať</string>
     <string name="reload_backdrops">Znova načítať pozadia</string>
+    <string name="picture_format">Formát obrázkov</string>
+    <string name="picture_png">PNG (najlepšia kvalita)</string>
+    <string name="picture_jpeg">JPEG (rýchlejšie, menšie)</string>
     <string name="backdrops_reloading">Sťahujú sa nové pozadia…</string>
     <string name="auto_hide_bar">Automaticky skryť</string>
     <string name="slideshow_clock">Hodiny na šetriči</string>

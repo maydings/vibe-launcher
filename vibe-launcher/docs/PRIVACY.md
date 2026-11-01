@@ -28,10 +28,10 @@ Uninstalling Vibe Launcher, or clearing its data in Settings > Apps, deletes all
 | Uninstall requests (`REQUEST_DELETE_PACKAGES`) | so the tile menu can open Android's own uninstall screen |
 | **GitHub build only:** install packages (`REQUEST_INSTALL_PACKAGES`), close background apps (`KILL_BACKGROUND_PROCESSES`) | to install its own updates and SmartTube when you ask; Android asks you to confirm each install. The second closes the TV's Settings in the background so its install switch shows Vibe Launcher's name |
 
-## The Home button service
+## The Home button service (GitHub build only)
 
-Installed without a computer (from an app store, or this project's APK with a file manager), Vibe Launcher
-can't turn the TV's own launcher off, so it offers an accessibility service, *Vibe Launcher Home button*, which you turn on yourself in Settings > Accessibility after a note
+The app store build doesn't have this service. Installed from this project's APK without a computer (with
+a file manager), Vibe Launcher can't turn the TV's own launcher off, so it offers an accessibility service, *Vibe Launcher Home button*, which you turn on yourself in Settings > Accessibility after a note
 explaining it. It:
 
 - hears when one of the TV's own home screens comes up (from those launchers only), and opens Vibe

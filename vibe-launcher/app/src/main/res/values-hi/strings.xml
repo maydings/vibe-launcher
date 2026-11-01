@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube इंस्टॉल नहीं हुआ</string>
     <string name="play">चलाएं</string>
     <string name="reload_backdrops">बैकड्रॉप फिर से लोड करें</string>
+    <string name="picture_format">चित्र फ़ॉर्मैट</string>
+    <string name="picture_png">PNG (सबसे अच्छी क्वालिटी)</string>
+    <string name="picture_jpeg">JPEG (तेज़, छोटा)</string>
     <string name="backdrops_reloading">नए बैकड्रॉप डाउनलोड हो रहे हैं…</string>
     <string name="auto_hide_bar">अपने-आप छिपाएं</string>
     <string name="slideshow_clock">स्क्रीनसेवर घड़ी</string>

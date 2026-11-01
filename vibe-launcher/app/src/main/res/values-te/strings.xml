@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube ఇన్‌స్టాల్ కాలేదు</string>
     <string name="play">ప్లే చేయి</string>
     <string name="reload_backdrops">బ్యాక్‌డ్రాప్‌లను మళ్లీ లోడ్ చేయి</string>
+    <string name="picture_format">చిత్ర ఫార్మాట్</string>
+    <string name="picture_png">PNG (ఉత్తమ నాణ్యత)</string>
+    <string name="picture_jpeg">JPEG (వేగంగా, చిన్నది)</string>
     <string name="backdrops_reloading">కొత్త బ్యాక్‌డ్రాప్‌లు డౌన్‌లోడ్ అవుతున్నాయి…</string>
     <string name="auto_hide_bar">ఆటోమేటిక్‌గా దాచు</string>
     <string name="slideshow_clock">స్క్రీన్‌సేవర్ గడియారం</string>

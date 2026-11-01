@@ -84,6 +84,9 @@
     <string name="smarttube_failed">Το SmartTube δεν εγκαταστάθηκε</string>
     <string name="play">Αναπαραγωγή</string>
     <string name="reload_backdrops">Επαναφόρτωση φόντων</string>
+    <string name="picture_format">Μορφή εικόνων</string>
+    <string name="picture_png">PNG (καλύτερη ποιότητα)</string>
+    <string name="picture_jpeg">JPEG (πιο γρήγορο, μικρότερο)</string>
     <string name="backdrops_reloading">Λήψη νέων φόντων…</string>
     <string name="auto_hide_bar">Αυτόματη απόκρυψη</string>
     <string name="slideshow_clock">Ρολόι προφύλαξης οθόνης</string>

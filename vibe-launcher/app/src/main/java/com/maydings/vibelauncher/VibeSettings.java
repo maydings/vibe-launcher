@@ -22,6 +22,7 @@ final class VibeSettings {
     private static final String CARETS = "carets";
     private static final String CLOCK_HOURS = "clockHours";
     private static final String BACK_ACTION = "backAction";
+    private static final String JPEG_STILLS = "jpegStills";
 
     private final SharedPreferences prefs;
 
@@ -136,6 +137,18 @@ final class VibeSettings {
 
     void setBackAction(int action) {
         prefs.edit().putInt(BACK_ACTION, action).apply();
+    }
+
+    /**
+     * Backdrops saved as JPEG (smaller, quicker to open) instead of lossless PNG, the default. Read by the
+     * pool thread as it saves each picture.
+     */
+    boolean jpegStills() {
+        return prefs.getBoolean(JPEG_STILLS, false);
+    }
+
+    void setJpegStills(boolean jpeg) {
+        prefs.edit().putBoolean(JPEG_STILLS, jpeg).apply();
     }
 
     /** Home shortly after the screen turns on, over whatever the TV woke up on (off by default; PowerOnHome). */

@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube ഇൻസ്റ്റാൾ ആയില്ല</string>
     <string name="play">പ്ലേ ചെയ്യുക</string>
     <string name="reload_backdrops">പശ്ചാത്തലങ്ങൾ വീണ്ടും ലോഡ് ചെയ്യുക</string>
+    <string name="picture_format">ചിത്ര ഫോർമാറ്റ്</string>
+    <string name="picture_png">PNG (മികച്ച നിലവാരം)</string>
+    <string name="picture_jpeg">JPEG (വേഗത്തിൽ, ചെറുത്)</string>
     <string name="backdrops_reloading">പുതിയ പശ്ചാത്തലങ്ങൾ ഡൗൺലോഡ് ചെയ്യുന്നു…</string>
     <string name="auto_hide_bar">സ്വയം മറയ്ക്കുക</string>
     <string name="slideshow_clock">സ്ക്രീൻസേവർ ക്ലോക്ക്</string>

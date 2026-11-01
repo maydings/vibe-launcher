@@ -107,7 +107,7 @@ starts, so opening it is just a fade.
 | ![Vibe Launcher settings: the logo on the left, General, Appearance and API keys on the right](vibe-launcher/docs/settings-main.jpg) | ![General: its list slid over the logo, with Language, Reload backdrops, Home at power-on and the software version on the right](vibe-launcher/docs/settings-general.jpg) |
 |---|---|
 
-**General**: language, reloading the backdrops, Home at power-on, the Back button, the Home button, Restart… (with the Home button service), the
+**General**: language, reloading the backdrops, the picture format, Home at power-on, the Back button, the Home button, Restart… (with the Home button service), the
 software version with its update check, and **About**: who made it, the project's page (with a QR code to
 open it on a phone), where to report a problem, the license and the credits.
 
@@ -115,6 +115,8 @@ open it on a phone), where to report a problem, the license and the credits.
   clock and date follow it.
 - **Reload backdrops**: empties the saved pictures and downloads them all again, each
   app's first one first.
+- **Picture format**: PNG (the default), lossless, or JPEG, several times smaller and quicker to
+  open on slower TVs. Changing it reloads the backdrops in the new format.
 - **Home at power-on**: Off (the default) or On. For TVs that wake up on the input or app they were
   left on (Sony goes back to the last HDMI input): On brings Home up just after the screen turns on. With
   the Home button service on, a button pressed in that first moment keeps you where the TV woke up.

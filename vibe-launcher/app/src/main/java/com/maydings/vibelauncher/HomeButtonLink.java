@@ -29,6 +29,10 @@ final class HomeButtonLink {
      * it on: app stores ask for this up front for any accessibility service that isn't an accessibility tool.
      */
     static void offer(Activity activity) {
+        if (!BuildConfig.HOME_BUTTON) {   // the store build has no service: only a computer can change Home
+            Toast.makeText(activity, R.string.home_not_changeable, Toast.LENGTH_LONG).show();
+            return;
+        }
         // What it does, then what to do in Settings: the user reads it here, before the list opens.
         String text = activity.getString(R.string.home_key_disclosure) + "\n\n"
                 + activity.getString(R.string.home_key_disclosure_more, activity.getString(R.string.power_on_home),

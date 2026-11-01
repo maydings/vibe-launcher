@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube ಇನ್‌ಸ್ಟಾಲ್ ಆಗಲಿಲ್ಲ</string>
     <string name="play">ಪ್ಲೇ ಮಾಡಿ</string>
     <string name="reload_backdrops">ಹಿನ್ನೆಲೆಗಳನ್ನು ಮರುಲೋಡ್ ಮಾಡಿ</string>
+    <string name="picture_format">ಚಿತ್ರ ಸ್ವರೂಪ</string>
+    <string name="picture_png">PNG (ಅತ್ಯುತ್ತಮ ಗುಣಮಟ್ಟ)</string>
+    <string name="picture_jpeg">JPEG (ವೇಗ, ಚಿಕ್ಕದು)</string>
     <string name="backdrops_reloading">ಹೊಸ ಹಿನ್ನೆಲೆಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ…</string>
     <string name="auto_hide_bar">ಸ್ವಯಂ ಮರೆಮಾಡು</string>
     <string name="slideshow_clock">ಸ್ಕ್ರೀನ್‌ಸೇವರ್ ಗಡಿಯಾರ</string>

@@ -48,6 +48,7 @@ final class DefaultHome {
 
     /** The Home button (HomeKeyService) is on under Settings > Accessibility. */
     static boolean homeButtonOn(Context context) {
+        if (!BuildConfig.HOME_BUTTON) return false;   // the store build has none
         String on = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
         if (on == null) return false;
         String pkg = context.getPackageName();

@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube haikusakinishwa</string>
     <string name="play">Cheza</string>
     <string name="reload_backdrops">Pakia upya mandhari</string>
+    <string name="picture_format">Muundo wa picha</string>
+    <string name="picture_png">PNG (ubora bora)</string>
+    <string name="picture_jpeg">JPEG (haraka, ndogo)</string>
     <string name="backdrops_reloading">Inapakua mandhari mapya…</string>
     <string name="auto_hide_bar">Ficha kiotomatiki</string>
     <string name="slideshow_clock">Saa kwenye skrini ya kupumzisha</string>

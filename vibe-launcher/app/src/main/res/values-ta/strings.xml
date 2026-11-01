@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube நிறுவப்படவில்லை</string>
     <string name="play">இயக்கு</string>
     <string name="reload_backdrops">பின்னணிகளை மீண்டும் ஏற்று</string>
+    <string name="picture_format">பட வடிவம்</string>
+    <string name="picture_png">PNG (சிறந்த தரம்)</string>
+    <string name="picture_jpeg">JPEG (வேகமானது, சிறியது)</string>
     <string name="backdrops_reloading">புதிய பின்னணிகள் பதிவிறக்கப்படுகின்றன…</string>
     <string name="auto_hide_bar">தானாக மறை</string>
     <string name="slideshow_clock">ஸ்கிரீன்சேவர் கடிகாரம்</string>

@@ -15,8 +15,8 @@ android {
         applicationId 'com.maydings.vibelauncher'
         minSdk 26
         targetSdk 34
-        versionCode 64
-        versionName '2.9.0'
+        versionCode 65
+        versionName '2.9.1'
     }
 
     buildFeatures {
@@ -27,18 +27,21 @@ android {
     // adb: the GitHub releases' vibe-launcher.apk (or build-and-install.sh). Updates itself from the releases
     //   and can install SmartTube. Where the stock launcher is turned off over adb, Home comes here by itself;
     //   where it stays on, the Home button service (HomeKeyService) brings the Home button here instead.
-    // store: for an app store (bundleStoreRelease). The same Home button service, but stores don't allow apps
-    //   that install apps, so no self-update or SmartTube install, and none of their permissions
-    //   (src/adb/AndroidManifest.xml): Play updates it (StoreUpdates).
+    // store: for an app store (bundleStoreRelease). Stores don't allow apps that install apps, so no
+    //   self-update or SmartTube install, and none of their permissions (src/adb/AndroidManifest.xml): Play
+    //   updates it (StoreUpdates). No Home button service either (HOME_BUTTON; src/store/AndroidManifest.xml):
+    //   Play reviews any accessibility service that isn't an accessibility tool, so it's left for later.
     flavorDimensions = ['channel']
     productFlavors {
         adb {
             dimension 'channel'
             buildConfigField 'boolean', 'STORE', 'false'
+            buildConfigField 'boolean', 'HOME_BUTTON', 'true'
         }
         store {
             dimension 'channel'
             buildConfigField 'boolean', 'STORE', 'true'
+            buildConfigField 'boolean', 'HOME_BUTTON', 'false'
         }
     }
 

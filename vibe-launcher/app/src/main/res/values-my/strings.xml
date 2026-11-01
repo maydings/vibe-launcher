@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube မထည့်သွင်းနိုင်ပါ</string>
     <string name="play">ဖွင့်ရန်</string>
     <string name="reload_backdrops">နောက်ခံပုံများကို ပြန်ဖွင့်ရန်</string>
+    <string name="picture_format">ပုံ ဖော်မတ်</string>
+    <string name="picture_png">PNG (အကောင်းဆုံး အရည်အသွေး)</string>
+    <string name="picture_jpeg">JPEG (ပိုမြန်၊ ပိုသေး)</string>
     <string name="backdrops_reloading">နောက်ခံပုံအသစ်များ ဒေါင်းလုဒ်လုပ်နေသည်…</string>
     <string name="auto_hide_bar">အလိုအလျောက် ဝှက်ရန်</string>
     <string name="slideshow_clock">မျက်နှာပြင်ထိန်း နာရီ</string>

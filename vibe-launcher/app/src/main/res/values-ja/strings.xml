@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube をインストールできませんでした</string>
     <string name="play">再生</string>
     <string name="reload_backdrops">背景画像を再読み込み</string>
+    <string name="picture_format">画像形式</string>
+    <string name="picture_png">PNG (最高画質)</string>
+    <string name="picture_jpeg">JPEG (高速・小容量)</string>
     <string name="backdrops_reloading">新しい背景画像をダウンロードしています…</string>
     <string name="auto_hide_bar">自動的に隠す</string>
     <string name="slideshow_clock">スクリーンセーバーの時計</string>

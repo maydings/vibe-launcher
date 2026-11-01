@@ -1,0 +1,4 @@
+* New: Settings > General > Picture format: PNG (best quality) or JPEG (faster, smaller).
+* Fixed: with a shorter dock (4 apps over 5 columns), Down and Up no longer walk the cursor to the right.
+* Fixed: an app's tile shows its new banner right after the app updates.
+* Black behind Android 14's Default home picker; quicker start-up.

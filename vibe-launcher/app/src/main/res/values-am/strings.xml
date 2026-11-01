@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube አልተጫነም</string>
     <string name="play">አጫውት</string>
     <string name="reload_backdrops">ዳራዎችን እንደገና ጫን</string>
+    <string name="picture_format">የምስል ቅርጸት</string>
+    <string name="picture_png">PNG (ምርጥ ጥራት)</string>
+    <string name="picture_jpeg">JPEG (ፈጣን፣ ትንሽ)</string>
     <string name="backdrops_reloading">አዲስ ዳራዎችን በማውረድ ላይ…</string>
     <string name="auto_hide_bar">በራስ-ሰር ደብቅ</string>
     <string name="slideshow_clock">የስክሪን ቆጣቢ ሰዓት</string>

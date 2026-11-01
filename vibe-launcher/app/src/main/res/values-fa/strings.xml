@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube نصب نشد</string>
     <string name="play">پخش</string>
     <string name="reload_backdrops">بارگذاری دوبارهٔ پس‌زمینه‌ها</string>
+    <string name="picture_format">قالب تصویر</string>
+    <string name="picture_png">PNG (بهترین کیفیت)</string>
+    <string name="picture_jpeg">JPEG (سریع‌تر، کم‌حجم‌تر)</string>
     <string name="backdrops_reloading">در حال دانلود پس‌زمینه‌های تازه…</string>
     <string name="auto_hide_bar">پنهان‌سازی خودکار</string>
     <string name="slideshow_clock">ساعت محافظ صفحه</string>

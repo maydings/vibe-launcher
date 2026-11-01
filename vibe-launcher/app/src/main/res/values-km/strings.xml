@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube មិនបានដំឡើងទេ</string>
     <string name="play">ចាក់</string>
     <string name="reload_backdrops">ផ្ទុកផ្ទៃខាងក្រោយឡើងវិញ</string>
+    <string name="picture_format">ទម្រង់រូបភាព</string>
+    <string name="picture_png">PNG (គុណភាពល្អបំផុត)</string>
+    <string name="picture_jpeg">JPEG (លឿនជាង តូចជាង)</string>
     <string name="backdrops_reloading">កំពុងទាញយកផ្ទៃខាងក្រោយថ្មី…</string>
     <string name="auto_hide_bar">លាក់ដោយស្វ័យប្រវត្តិ</string>
     <string name="slideshow_clock">នាឡិកាលើធាតុរក្សាអេក្រង់</string>

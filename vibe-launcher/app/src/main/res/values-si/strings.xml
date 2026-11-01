@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube ස්ථාපනය නොවීය</string>
     <string name="play">වාදනය කරන්න</string>
     <string name="reload_backdrops">පසුබිම් නැවත පූරණය කරන්න</string>
+    <string name="picture_format">පින්තූර ආකෘතිය</string>
+    <string name="picture_png">PNG (හොඳම ගුණත්වය)</string>
+    <string name="picture_jpeg">JPEG (වේගවත්, කුඩා)</string>
     <string name="backdrops_reloading">නව පසුබිම් බාගත වෙමින්…</string>
     <string name="auto_hide_bar">ස්වයංක්‍රීයව සඟවන්න</string>
     <string name="slideshow_clock">තිර සුරැකුම් ඔරලෝසුව</string>

@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube ble ikke installert</string>
     <string name="play">Spill av</string>
     <string name="reload_backdrops">Last inn bakgrunner på nytt</string>
+    <string name="picture_format">Bildeformat</string>
+    <string name="picture_png">PNG (beste kvalitet)</string>
+    <string name="picture_jpeg">JPEG (raskere, mindre)</string>
     <string name="backdrops_reloading">Laster ned nye bakgrunner…</string>
     <string name="auto_hide_bar">Skjul automatisk</string>
     <string name="slideshow_clock">Klokke på skjermsparer</string>

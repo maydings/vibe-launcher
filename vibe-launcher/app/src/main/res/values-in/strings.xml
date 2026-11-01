@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube tidak terinstal</string>
     <string name="play">Putar</string>
     <string name="reload_backdrops">Muat ulang latar</string>
+    <string name="picture_format">Format gambar</string>
+    <string name="picture_png">PNG (kualitas terbaik)</string>
+    <string name="picture_jpeg">JPEG (lebih cepat, lebih kecil)</string>
     <string name="backdrops_reloading">Mengunduh latar baru…</string>
     <string name="auto_hide_bar">Sembunyikan otomatis</string>
     <string name="slideshow_clock">Jam di screensaver</string>

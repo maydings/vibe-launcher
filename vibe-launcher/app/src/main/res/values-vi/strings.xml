@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube chưa được cài đặt</string>
     <string name="play">Phát</string>
     <string name="reload_backdrops">Tải lại ảnh nền</string>
+    <string name="picture_format">Định dạng ảnh</string>
+    <string name="picture_png">PNG (chất lượng tốt nhất)</string>
+    <string name="picture_jpeg">JPEG (nhanh hơn, nhẹ hơn)</string>
     <string name="backdrops_reloading">Đang tải ảnh nền mới…</string>
     <string name="auto_hide_bar">Tự động ẩn</string>
     <string name="slideshow_clock">Đồng hồ trên trình bảo vệ màn hình</string>

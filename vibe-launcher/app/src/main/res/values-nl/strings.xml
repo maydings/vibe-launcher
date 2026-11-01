@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube is niet geïnstalleerd</string>
     <string name="play">Afspelen</string>
     <string name="reload_backdrops">Achtergronden opnieuw laden</string>
+    <string name="picture_format">Afbeeldingsformaat</string>
+    <string name="picture_png">PNG (beste kwaliteit)</string>
+    <string name="picture_jpeg">JPEG (sneller, kleiner)</string>
     <string name="backdrops_reloading">Nieuwe achtergronden downloaden…</string>
     <string name="auto_hide_bar">Automatisch verbergen</string>
     <string name="slideshow_clock">Klok op screensaver</string>

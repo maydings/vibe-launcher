@@ -84,6 +84,9 @@
     <string name="smarttube_failed">A SmartTube nem települt</string>
     <string name="play">Lejátszás</string>
     <string name="reload_backdrops">Háttérképek újratöltése</string>
+    <string name="picture_format">Képformátum</string>
+    <string name="picture_png">PNG (legjobb minőség)</string>
+    <string name="picture_jpeg">JPEG (gyorsabb, kisebb)</string>
     <string name="backdrops_reloading">Új háttérképek letöltése…</string>
     <string name="auto_hide_bar">Automatikus elrejtés</string>
     <string name="slideshow_clock">Óra a képernyővédőn</string>

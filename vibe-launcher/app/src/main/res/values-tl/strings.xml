@@ -84,6 +84,9 @@
     <string name="smarttube_failed">Hindi na-install ang SmartTube</string>
     <string name="play">I-play</string>
     <string name="reload_backdrops">I-reload ang mga backdrop</string>
+    <string name="picture_format">Format ng larawan</string>
+    <string name="picture_png">PNG (pinakamahusay na kalidad)</string>
+    <string name="picture_jpeg">JPEG (mas mabilis, mas maliit)</string>
     <string name="backdrops_reloading">Nagda-download ng mga bagong backdrop…</string>
     <string name="auto_hide_bar">Awtomatikong itago</string>
     <string name="slideshow_clock">Orasan sa screensaver</string>

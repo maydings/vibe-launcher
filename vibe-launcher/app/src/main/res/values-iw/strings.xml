@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube לא הותקן</string>
     <string name="play">הפעל</string>
     <string name="reload_backdrops">טעינה מחדש של תמונות הרקע</string>
+    <string name="picture_format">פורמט תמונה</string>
+    <string name="picture_png">PNG (האיכות הטובה ביותר)</string>
+    <string name="picture_jpeg">JPEG (מהיר יותר, קטן יותר)</string>
     <string name="backdrops_reloading">מורידים תמונות רקע חדשות…</string>
     <string name="auto_hide_bar">הסתרה אוטומטית</string>
     <string name="slideshow_clock">שעון בשומר המסך</string>

@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube nu s-a instalat</string>
     <string name="play">Redă</string>
     <string name="reload_backdrops">Reîncarcă fundalurile</string>
+    <string name="picture_format">Formatul imaginilor</string>
+    <string name="picture_png">PNG (cea mai bună calitate)</string>
+    <string name="picture_jpeg">JPEG (mai rapid, mai mic)</string>
     <string name="backdrops_reloading">Se descarcă fundaluri noi…</string>
     <string name="auto_hide_bar">Ascundere automată</string>
     <string name="slideshow_clock">Ceas pe screensaver</string>

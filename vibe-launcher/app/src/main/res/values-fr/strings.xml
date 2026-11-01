@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube ne s\'est pas installé</string>
     <string name="play">Lire</string>
     <string name="reload_backdrops">Recharger les arrière-plans</string>
+    <string name="picture_format">Format des images</string>
+    <string name="picture_png">PNG (meilleure qualité)</string>
+    <string name="picture_jpeg">JPEG (plus rapide, plus léger)</string>
     <string name="backdrops_reloading">Téléchargement de nouveaux arrière-plans…</string>
     <string name="auto_hide_bar">Masquage automatique</string>
     <string name="slideshow_clock">Horloge de l\'écran de veille</string>

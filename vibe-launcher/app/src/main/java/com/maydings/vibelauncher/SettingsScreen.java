@@ -392,6 +392,8 @@ final class SettingsScreen {
             if (home != null) home.reloadBackdrops();
             Toast.makeText(host, R.string.backdrops_reloading, Toast.LENGTH_SHORT).show();
         });
+        page.link(R.string.picture_format, () -> ctx.getString(settings.jpegStills() ? R.string.picture_jpeg
+                : R.string.picture_png), this::pictureFormat);
         page.toggle(R.string.power_on_home, settings::powerOnHome, settings::setPowerOnHome);
         page.link(R.string.back_button, () -> backName(settings.backAction()), this::backAction);
         // The Home button service, on or off at any time (Home offers it once, on its first start): while
@@ -410,8 +412,8 @@ final class SettingsScreen {
                     }
                 });
         homeButtonRow.about = R.string.home_button_short;
-        homeButtonRow.view.setVisibility(DefaultHome.homeButtonOn(ctx) || !DefaultHome.isHome(ctx)
-                ? View.VISIBLE : View.GONE);
+        homeButtonRow.view.setVisibility(BuildConfig.HOME_BUTTON
+                && (DefaultHome.homeButtonOn(ctx) || !DefaultHome.isHome(ctx)) ? View.VISIBLE : View.GONE);
         // The TV's power menu, which asks before it restarts: only the Home button service can open it (an
         // app may not restart the TV), so only while that's on.
         restartRow = page.add(R.string.restart, null, () -> {
@@ -628,6 +630,28 @@ final class SettingsScreen {
                 page.refresh();   // the tick moves
             });
             if (n == MainActivity.COLUMNS) page.opened = row;
+        }
+        return page;
+    }
+
+    /**
+     * PNG or JPEG for the backdrops. A change reloads them all, as Reload backdrops does, so the new format
+     * shows at once instead of over the next six hours.
+     */
+    private Page pictureFormat() {
+        Page page = new Page(ctx.getString(R.string.picture_format));
+        for (boolean jpeg : new boolean[]{false, true}) {
+            // Picked, it's ticked and the list stays: Back or Left goes back.
+            Row row = page.add(ctx.getString(jpeg ? R.string.picture_jpeg : R.string.picture_png),
+                    () -> jpeg == settings.jpegStills() ? "✓" : "", () -> {
+                        if (jpeg == settings.jpegStills()) return;
+                        settings.setJpegStills(jpeg);
+                        MainActivity home = home();
+                        if (home != null) home.reloadBackdrops();
+                        Toast.makeText(host, R.string.backdrops_reloading, Toast.LENGTH_SHORT).show();
+                        page.refresh();
+                    });
+            if (jpeg == settings.jpegStills()) page.opened = row;
         }
         return page;
     }

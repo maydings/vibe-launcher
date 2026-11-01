@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube не встановився</string>
     <string name="play">Дивитися</string>
     <string name="reload_backdrops">Оновити фони</string>
+    <string name="picture_format">Формат зображень</string>
+    <string name="picture_png">PNG (найкраща якість)</string>
+    <string name="picture_jpeg">JPEG (швидше, менше)</string>
     <string name="backdrops_reloading">Завантаження нових фонів…</string>
     <string name="auto_hide_bar">Автоприховування</string>
     <string name="slideshow_clock">Годинник на заставці</string>

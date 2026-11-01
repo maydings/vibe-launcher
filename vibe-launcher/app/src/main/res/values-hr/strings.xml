@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube se nije instalirao</string>
     <string name="play">Reproduciraj</string>
     <string name="reload_backdrops">Ponovno učitaj pozadine</string>
+    <string name="picture_format">Format slika</string>
+    <string name="picture_png">PNG (najbolja kvaliteta)</string>
+    <string name="picture_jpeg">JPEG (brže, manje)</string>
     <string name="backdrops_reloading">Preuzimanje novih pozadina…</string>
     <string name="auto_hide_bar">Automatsko skrivanje</string>
     <string name="slideshow_clock">Sat na čuvaru zaslona</string>

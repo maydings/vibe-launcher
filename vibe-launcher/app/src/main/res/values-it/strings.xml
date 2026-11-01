@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube non è stato installato</string>
     <string name="play">Riproduci</string>
     <string name="reload_backdrops">Ricarica gli sfondi</string>
+    <string name="picture_format">Formato immagini</string>
+    <string name="picture_png">PNG (qualità migliore)</string>
+    <string name="picture_jpeg">JPEG (più veloce, più leggero)</string>
     <string name="backdrops_reloading">Download di nuovi sfondi…</string>
     <string name="auto_hide_bar">Nascondi automaticamente</string>
     <string name="slideshow_clock">Orologio nel salvaschermo</string>

@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube yüklenmedi</string>
     <string name="play">Oynat</string>
     <string name="reload_backdrops">Arka planları yeniden yükle</string>
+    <string name="picture_format">Resim biçimi</string>
+    <string name="picture_png">PNG (en iyi kalite)</string>
+    <string name="picture_jpeg">JPEG (daha hızlı, daha küçük)</string>
     <string name="backdrops_reloading">Yeni arka planlar indiriliyor…</string>
     <string name="auto_hide_bar">Otomatik gizle</string>
     <string name="slideshow_clock">Ekran koruyucuda saat</string>

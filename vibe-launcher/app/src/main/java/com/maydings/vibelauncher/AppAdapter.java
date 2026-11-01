@@ -99,6 +99,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
     private final SharedPreferences prefs;
     /** Position of the tile being moved, or -1. */
     private int moving = -1;
+    /** Apps installed or updated since the last reload: their tiles are drawn again (a new banner). */
+    private final Set<String> updated = new HashSet<>();
 
     AppAdapter(Context ctx, TileListener listener, int columns, int dockSize) {
         this.ctx = ctx;
@@ -154,6 +156,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
                 null, ctx.getDrawable(R.drawable.ic_all_apps), true));
         moving = -1;
         if (items.isEmpty()) {
+            updated.clear();   // every tile is drawn anew anyway
             items.addAll(fresh);
             notifyDataSetChanged();
             return;
@@ -179,14 +182,21 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
 
             @Override
             public boolean areContentsTheSame(int o, int n) {
-                return old.get(o).label.equals(fresh.get(n).label);
+                // Same name isn't enough: an update can bring a new banner.
+                return old.get(o).label.equals(fresh.get(n).label) && !updated.contains(fresh.get(n).pkg);
             }
         });
+        updated.clear();
         items.clear();
         items.addAll(fresh);
         diff.dispatchUpdatesTo(this);
         // Tiles that crossed the dock edge show or hide their name.
         notifyItemRangeChanged(0, items.size(), PAYLOAD_STATE);
+    }
+
+    /** An app was installed or updated: the next reload draws its tile again, whatever its name. */
+    void markUpdated(String pkg) {
+        updated.add(pkg);
     }
 
     /** Lets go of every tile and its artwork (Home is in the background and memory is short). */
@@ -350,7 +360,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         if (position < dock) return -1;
         int col = position - dock;
         if (col >= columns) return position - columns;
-        return Math.max(0, Math.min(dock - 1, Math.round(col - dockInset())));
+        return dockOver(col);
     }
 
     /** The tile below, the nearest under a dock tile; the same position on the last row (nowhere to go). */
@@ -358,7 +368,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         int dock = dockCount(), count = items.size();
         if (position < dock) {
             if (count <= dock) return position;
-            return Math.min(count - 1, dock + Math.max(0, Math.min(columns - 1, Math.round(position + dockInset()))));
+            return Math.min(count - 1, dock + columnUnder(position));
         }
         if (rowStart(position) + columns >= count) return position;   // the last row
         return Math.min(position + columns, count - 1);
@@ -369,7 +379,24 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         int dock = dockCount();
         if (dock == 0) return 0;
         if (position < dock) return position;
-        return Math.max(0, Math.min(dock - 1, Math.round((position - dock) % columns - dockInset())));
+        return dockOver((position - dock) % columns);
+    }
+
+    /*
+     * A shorter dock is centred, so with an odd difference (4 apps over 5 columns) each dock tile sits half
+     * over two columns. Down takes the left one, and Up from a column takes the dock tile over its middle,
+     * which is the one Down came from: rounding both ways (half up) moved one column right on every Down
+     * and Up, all the way to the end of the row.
+     */
+
+    /** The column under dock tile i: the left one of the two it half covers. */
+    private int columnUnder(int i) {
+        return Math.max(0, Math.min(columns - 1, (int) Math.floor(i + dockInset())));
+    }
+
+    /** The dock tile over the middle of column col. */
+    private int dockOver(int col) {
+        return Math.max(0, Math.min(dockCount() - 1, (int) Math.floor(col + 0.5f - dockInset())));
     }
 
     /**

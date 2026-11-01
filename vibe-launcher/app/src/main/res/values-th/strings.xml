@@ -84,6 +84,9 @@
     <string name="smarttube_failed">ติดตั้ง SmartTube ไม่สำเร็จ</string>
     <string name="play">เล่น</string>
     <string name="reload_backdrops">โหลดภาพพื้นหลังใหม่</string>
+    <string name="picture_format">รูปแบบภาพ</string>
+    <string name="picture_png">PNG (คุณภาพดีที่สุด)</string>
+    <string name="picture_jpeg">JPEG (เร็วกว่า เล็กกว่า)</string>
     <string name="backdrops_reloading">กำลังดาวน์โหลดภาพพื้นหลังใหม่…</string>
     <string name="auto_hide_bar">ซ่อนอัตโนมัติ</string>
     <string name="slideshow_clock">นาฬิกาบนภาพพักหน้าจอ</string>

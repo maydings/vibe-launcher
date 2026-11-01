@@ -84,6 +84,9 @@
     <string name="smarttube_failed">SmartTube wurde nicht installiert</string>
     <string name="play">Abspielen</string>
     <string name="reload_backdrops">Hintergründe neu laden</string>
+    <string name="picture_format">Bildformat</string>
+    <string name="picture_png">PNG (beste Qualität)</string>
+    <string name="picture_jpeg">JPEG (schneller, kleiner)</string>
     <string name="backdrops_reloading">Neue Hintergründe werden geladen…</string>
     <string name="auto_hide_bar">Automatisch ausblenden</string>
     <string name="slideshow_clock">Uhr im Bildschirmschoner</string>
