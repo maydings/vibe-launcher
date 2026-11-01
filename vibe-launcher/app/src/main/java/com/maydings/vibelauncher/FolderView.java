@@ -32,10 +32,10 @@ final class FolderView extends FrameLayout {
 
     /**
      * titlePressed: OK on the folder's name, which is focusable as on tvOS (Up from the first row); the name
-     * shows in a pill of the highlight color while it has focus.
+     * shows in a pill of the highlight color while it has focus. close: Up from the name, out of the folder.
      */
     FolderView(Context context, String folderId, String name, int columns, int gridWidth, int highlight,
-               AppAdapter.TileListener listener, Runnable titlePressed) {
+               AppAdapter.TileListener listener, Runnable titlePressed, Runnable close) {
         super(context);
         this.folderId = folderId;
         this.columns = columns;
@@ -59,6 +59,7 @@ final class FolderView extends FrameLayout {
         pill.setAlpha(0);
         title.setBackground(pill);
         title.setFocusable(true);
+        title.setDefaultFocusHighlightEnabled(false);   // the pill is its focused look, not Android's grey box
         title.setOnFocusChangeListener((v, focused) -> {
             pill.setAlpha(focused ? 255 : 0);
             title.setTextColor(focused ? Highlight.on(highlight) : 0xFFFFFFFF);
@@ -72,9 +73,12 @@ final class FolderView extends FrameLayout {
                 focus(lastTile);
                 return true;
             }
-            // Nothing above, and nothing beside: the name keeps focus.
-            return keyCode == KeyEvent.KEYCODE_DPAD_UP || keyCode == KeyEvent.KEYCODE_DPAD_LEFT
-                    || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT;
+            if (keyCode == KeyEvent.KEYCODE_DPAD_UP) {   // up past the name: out of the folder, as Back
+                close.run();
+                return true;
+            }
+            // Nothing beside it: the name keeps focus.
+            return keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT;
         });
         LayoutParams titleLp = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,
                 Gravity.TOP | Gravity.CENTER_HORIZONTAL);

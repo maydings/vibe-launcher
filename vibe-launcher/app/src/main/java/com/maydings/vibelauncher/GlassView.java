@@ -105,9 +105,9 @@ public class GlassView extends View {
         canvas.drawRect(rect.left, rect.top, rect.right, rect.top + rect.height() * 0.45f, specular);
         canvas.restore();
 
-        // Rim: keep the stroke inside the edge, concentric with the tile's corners.
-        float half = rim.getStrokeWidth() / 2f;
-        rect.inset(half, half);
-        canvas.drawRoundRect(rect, radius - half, radius - half, rim);
+        // Rim: centred on the edge, so its smooth stroke covers the glow's inner edge there, which clipOutPath
+        // leaves hard and stepped (Android doesn't smooth clips): kept inside the edge, the steps showed at the
+        // corners.
+        canvas.drawRoundRect(rect, radius, radius, rim);
     }
 }

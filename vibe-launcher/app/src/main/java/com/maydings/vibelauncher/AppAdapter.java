@@ -313,6 +313,24 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         return position >= 0 && position < items.size() && items.get(position).folderId != null;
     }
 
+    /** A folder's apps as shown (installed, not hidden), in its order; none for any other tile. */
+    List<Entry> membersAt(int position) {
+        return isFolder(position) ? items.get(position).members : Collections.emptyList();
+    }
+
+    /** The dock position of the folder holding pkg, or -1 (not in a folder, or the folder isn't in the dock). */
+    int dockFolderHolding(String pkg) {
+        for (int i = 0; i < dockCount(); i++) {
+            for (Entry m : membersAt(i)) if (m.pkg.equals(pkg)) return i;
+        }
+        return -1;
+    }
+
+    /** Opens the app (a folder's, from the dock's shelf). */
+    void launchApp(Entry e) {
+        launch(e, null);
+    }
+
     String folderIdAt(int position) {
         return isFolder(position) ? items.get(position).folderId : null;
     }
