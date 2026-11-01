@@ -21,6 +21,15 @@
     <string name="rename_folder">Namakan semula</string>
     <string name="remove_folder">Alih keluar folder</string>
     <string name="close">Tutup</string>
+    <string name="edit_tile">Edit</string>
+    <string name="change_picture">Tukar gambar</string>
+    <string name="use_icon">Guna ikon</string>
+    <string name="use_banner">Guna sepanduk</string>
+    <string name="reset_tile">Tetapkan semula</string>
+    <string name="tile_name">Nama</string>
+    <string name="picture_scan">Imbas kod dengan telefon, kemudian pilih gambar untuk %1$s.</string>
+    <string name="picture_saved">Gambar disimpan</string>
+    <string name="picture_failed">Gambar tidak dapat digunakan</string>
     <string name="folder_name">Nama folder</string>
     <string name="folder">Folder</string>
     <string name="folder_video">Video</string>

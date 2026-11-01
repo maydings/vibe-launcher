@@ -21,6 +21,15 @@
     <string name="rename_folder">အမည်ပြောင်းရန်</string>
     <string name="remove_folder">ဖိုင်တွဲ ဖယ်ရှားရန်</string>
     <string name="close">ပိတ်ရန်</string>
+    <string name="edit_tile">ပြင်ရန်</string>
+    <string name="change_picture">ပုံ ပြောင်းရန်</string>
+    <string name="use_icon">အိုင်ကွန် သုံးရန်</string>
+    <string name="use_banner">ဘန်နာ သုံးရန်</string>
+    <string name="reset_tile">ပြန်သတ်မှတ်ရန်</string>
+    <string name="tile_name">အမည်</string>
+    <string name="picture_scan">ဖုန်းဖြင့် ကုဒ်ကို စကင်ဖတ်ပြီး %1$s အတွက် ပုံရွေးပါ။</string>
+    <string name="picture_saved">ပုံ သိမ်းပြီး</string>
+    <string name="picture_failed">ပုံကို သုံး၍ မရပါ</string>
     <string name="folder_name">ဖိုင်တွဲအမည်</string>
     <string name="folder">ဖိုင်တွဲ</string>
     <string name="folder_video">ဗီဒီယို</string>

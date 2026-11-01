@@ -21,6 +21,15 @@
     <string name="rename_folder">Palitan ang pangalan</string>
     <string name="remove_folder">Alisin ang folder</string>
     <string name="close">Isara</string>
+    <string name="edit_tile">I-edit</string>
+    <string name="change_picture">Palitan ang larawan</string>
+    <string name="use_icon">Gamitin ang icon</string>
+    <string name="use_banner">Gamitin ang banner</string>
+    <string name="reset_tile">I-reset</string>
+    <string name="tile_name">Pangalan</string>
+    <string name="picture_scan">I-scan ang code gamit ang phone, saka pumili ng larawan para sa %1$s.</string>
+    <string name="picture_saved">Nai-save ang larawan</string>
+    <string name="picture_failed">Hindi magamit ang larawan</string>
     <string name="folder_name">Pangalan ng folder</string>
     <string name="folder">Folder</string>
     <string name="folder_video">Video</string>

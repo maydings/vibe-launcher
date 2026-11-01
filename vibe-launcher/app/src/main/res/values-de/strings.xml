@@ -21,6 +21,15 @@
     <string name="rename_folder">Umbenennen</string>
     <string name="remove_folder">Ordner auflösen</string>
     <string name="close">Schließen</string>
+    <string name="edit_tile">Bearbeiten</string>
+    <string name="change_picture">Bild ändern</string>
+    <string name="use_icon">Symbol verwenden</string>
+    <string name="use_banner">Banner verwenden</string>
+    <string name="reset_tile">Zurücksetzen</string>
+    <string name="tile_name">Name</string>
+    <string name="picture_scan">Scanne den Code mit dem Handy und wähle ein Bild für %1$s.</string>
+    <string name="picture_saved">Bild gespeichert</string>
+    <string name="picture_failed">Das Bild konnte nicht verwendet werden</string>
     <string name="folder_name">Ordnername</string>
     <string name="folder">Ordner</string>
     <string name="folder_video">Video</string>

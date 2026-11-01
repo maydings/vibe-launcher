@@ -21,6 +21,15 @@
     <string name="rename_folder">שינוי שם</string>
     <string name="remove_folder">הסרת התיקייה</string>
     <string name="close">סגירה</string>
+    <string name="edit_tile">עריכה</string>
+    <string name="change_picture">החלפת תמונה</string>
+    <string name="use_icon">שימוש בסמל</string>
+    <string name="use_banner">שימוש בבאנר</string>
+    <string name="reset_tile">איפוס</string>
+    <string name="tile_name">שם</string>
+    <string name="picture_scan">סרקו את הקוד בטלפון ובחרו תמונה עבור %1$s.</string>
+    <string name="picture_saved">התמונה נשמרה</string>
+    <string name="picture_failed">לא ניתן להשתמש בתמונה</string>
     <string name="folder_name">שם התיקייה</string>
     <string name="folder">תיקייה</string>
     <string name="folder_video">וידאו</string>

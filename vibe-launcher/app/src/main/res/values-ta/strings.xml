@@ -21,6 +21,15 @@
     <string name="rename_folder">மறுபெயரிடு</string>
     <string name="remove_folder">கோப்புறையை அகற்று</string>
     <string name="close">மூடு</string>
+    <string name="edit_tile">திருத்து</string>
+    <string name="change_picture">படத்தை மாற்று</string>
+    <string name="use_icon">ஐகானைப் பயன்படுத்து</string>
+    <string name="use_banner">பேனரைப் பயன்படுத்து</string>
+    <string name="reset_tile">மீட்டமை</string>
+    <string name="tile_name">பெயர்</string>
+    <string name="picture_scan">ஃபோனில் குறியீட்டை ஸ்கேன் செய்து, %1$s-க்கு ஒரு படத்தைத் தேர்வுசெய்யவும்.</string>
+    <string name="picture_saved">படம் சேமிக்கப்பட்டது</string>
+    <string name="picture_failed">படத்தைப் பயன்படுத்த முடியவில்லை</string>
     <string name="folder_name">கோப்புறையின் பெயர்</string>
     <string name="folder">கோப்புறை</string>
     <string name="folder_video">வீடியோ</string>

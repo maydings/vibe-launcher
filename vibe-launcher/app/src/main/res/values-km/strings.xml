@@ -21,6 +21,15 @@
     <string name="rename_folder">ប្ដូរឈ្មោះ</string>
     <string name="remove_folder">ដកថតចេញ</string>
     <string name="close">បិទ</string>
+    <string name="edit_tile">កែ</string>
+    <string name="change_picture">ប្ដូររូបភាព</string>
+    <string name="use_icon">ប្រើរូបតំណាង</string>
+    <string name="use_banner">ប្រើបដា</string>
+    <string name="reset_tile">កំណត់ឡើងវិញ</string>
+    <string name="tile_name">ឈ្មោះ</string>
+    <string name="picture_scan">ស្កេនកូដដោយទូរសព្ទ រួចជ្រើសរូបភាពសម្រាប់ %1$s។</string>
+    <string name="picture_saved">បានរក្សាទុករូបភាព</string>
+    <string name="picture_failed">មិនអាចប្រើរូបភាពបានទេ</string>
     <string name="folder_name">ឈ្មោះថត</string>
     <string name="folder">ថត</string>
     <string name="folder_video">វីដេអូ</string>

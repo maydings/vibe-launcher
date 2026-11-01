@@ -21,6 +21,15 @@
     <string name="rename_folder">名前を変更</string>
     <string name="remove_folder">フォルダを解除</string>
     <string name="close">閉じる</string>
+    <string name="edit_tile">編集</string>
+    <string name="change_picture">画像を変更</string>
+    <string name="use_icon">アイコンを使用</string>
+    <string name="use_banner">バナーを使用</string>
+    <string name="reset_tile">リセット</string>
+    <string name="tile_name">名前</string>
+    <string name="picture_scan">スマートフォンでコードを読み取り、%1$s の画像を選んでください。</string>
+    <string name="picture_saved">画像を保存しました</string>
+    <string name="picture_failed">この画像は使用できません</string>
     <string name="folder_name">フォルダ名</string>
     <string name="folder">フォルダ</string>
     <string name="folder_video">ビデオ</string>

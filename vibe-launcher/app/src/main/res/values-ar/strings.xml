@@ -21,6 +21,15 @@
     <string name="rename_folder">إعادة تسمية</string>
     <string name="remove_folder">إزالة المجلد</string>
     <string name="close">إغلاق</string>
+    <string name="edit_tile">تعديل</string>
+    <string name="change_picture">تغيير الصورة</string>
+    <string name="use_icon">استخدام الأيقونة</string>
+    <string name="use_banner">استخدام اللافتة</string>
+    <string name="reset_tile">إعادة الضبط</string>
+    <string name="tile_name">الاسم</string>
+    <string name="picture_scan">امسح الرمز بهاتفك، ثم اختر صورة لـ %1$s.</string>
+    <string name="picture_saved">تم حفظ الصورة</string>
+    <string name="picture_failed">تعذّر استخدام الصورة</string>
     <string name="folder_name">اسم المجلد</string>
     <string name="folder">مجلد</string>
     <string name="folder_video">فيديو</string>

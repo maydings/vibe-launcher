@@ -21,6 +21,15 @@
     <string name="rename_folder">Átnevezés</string>
     <string name="remove_folder">Mappa megszüntetése</string>
     <string name="close">Bezárás</string>
+    <string name="edit_tile">Szerkesztés</string>
+    <string name="change_picture">Kép cseréje</string>
+    <string name="use_icon">Ikon használata</string>
+    <string name="use_banner">Banner használata</string>
+    <string name="reset_tile">Visszaállítás</string>
+    <string name="tile_name">Név</string>
+    <string name="picture_scan">Olvasd be a kódot a telefonoddal, és válassz képet ehhez: %1$s.</string>
+    <string name="picture_saved">Kép mentve</string>
+    <string name="picture_failed">A képet nem lehetett használni</string>
     <string name="folder_name">Mappa neve</string>
     <string name="folder">Mappa</string>
     <string name="folder_video">Videó</string>

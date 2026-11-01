@@ -21,6 +21,15 @@
     <string name="rename_folder">重命名</string>
     <string name="remove_folder">移除文件夹</string>
     <string name="close">关闭</string>
+    <string name="edit_tile">编辑</string>
+    <string name="change_picture">更换图片</string>
+    <string name="use_icon">使用图标</string>
+    <string name="use_banner">使用横幅</string>
+    <string name="reset_tile">重置</string>
+    <string name="tile_name">名称</string>
+    <string name="picture_scan">用手机扫描二维码，然后为 %1$s 选择一张图片。</string>
+    <string name="picture_saved">图片已保存</string>
+    <string name="picture_failed">无法使用此图片</string>
     <string name="folder_name">文件夹名称</string>
     <string name="folder">文件夹</string>
     <string name="folder_video">视频</string>

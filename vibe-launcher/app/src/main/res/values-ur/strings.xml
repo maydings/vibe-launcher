@@ -21,6 +21,15 @@
     <string name="rename_folder">نام تبدیل کریں</string>
     <string name="remove_folder">فولڈر ہٹائیں</string>
     <string name="close">بند کریں</string>
+    <string name="edit_tile">ترمیم</string>
+    <string name="change_picture">تصویر بدلیں</string>
+    <string name="use_icon">آئیکن استعمال کریں</string>
+    <string name="use_banner">بینر استعمال کریں</string>
+    <string name="reset_tile">ری سیٹ</string>
+    <string name="tile_name">نام</string>
+    <string name="picture_scan">فون سے کوڈ اسکین کریں، پھر %1$s کے لیے تصویر چنیں۔</string>
+    <string name="picture_saved">تصویر محفوظ ہو گئی</string>
+    <string name="picture_failed">تصویر استعمال نہیں ہو سکی</string>
     <string name="folder_name">فولڈر کا نام</string>
     <string name="folder">فولڈر</string>
     <string name="folder_video">ویڈیو</string>

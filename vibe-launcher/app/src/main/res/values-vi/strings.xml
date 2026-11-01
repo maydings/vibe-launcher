@@ -21,6 +21,15 @@
     <string name="rename_folder">Đổi tên</string>
     <string name="remove_folder">Gỡ thư mục</string>
     <string name="close">Đóng</string>
+    <string name="edit_tile">Chỉnh sửa</string>
+    <string name="change_picture">Đổi ảnh</string>
+    <string name="use_icon">Dùng biểu tượng</string>
+    <string name="use_banner">Dùng biểu ngữ</string>
+    <string name="reset_tile">Đặt lại</string>
+    <string name="tile_name">Tên</string>
+    <string name="picture_scan">Quét mã bằng điện thoại rồi chọn ảnh cho %1$s.</string>
+    <string name="picture_saved">Đã lưu ảnh</string>
+    <string name="picture_failed">Không dùng được ảnh này</string>
     <string name="folder_name">Tên thư mục</string>
     <string name="folder">Thư mục</string>
     <string name="folder_video">Video</string>

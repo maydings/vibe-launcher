@@ -21,6 +21,15 @@
     <string name="rename_folder">Перейменувати</string>
     <string name="remove_folder">Прибрати папку</string>
     <string name="close">Закрити</string>
+    <string name="edit_tile">Редагувати</string>
+    <string name="change_picture">Змінити зображення</string>
+    <string name="use_icon">Використати значок</string>
+    <string name="use_banner">Використати банер</string>
+    <string name="reset_tile">Скинути</string>
+    <string name="tile_name">Назва</string>
+    <string name="picture_scan">Відскануйте код телефоном і виберіть зображення для %1$s.</string>
+    <string name="picture_saved">Зображення збережено</string>
+    <string name="picture_failed">Не вдалося використати зображення</string>
     <string name="folder_name">Назва папки</string>
     <string name="folder">Папка</string>
     <string name="folder_video">Відео</string>

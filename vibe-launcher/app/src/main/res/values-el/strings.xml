@@ -21,6 +21,15 @@
     <string name="rename_folder">Μετονομασία</string>
     <string name="remove_folder">Κατάργηση φακέλου</string>
     <string name="close">Κλείσιμο</string>
+    <string name="edit_tile">Επεξεργασία</string>
+    <string name="change_picture">Αλλαγή εικόνας</string>
+    <string name="use_icon">Χρήση εικονιδίου</string>
+    <string name="use_banner">Χρήση banner</string>
+    <string name="reset_tile">Επαναφορά</string>
+    <string name="tile_name">Όνομα</string>
+    <string name="picture_scan">Σαρώστε τον κωδικό με το τηλέφωνο και επιλέξτε εικόνα για το %1$s.</string>
+    <string name="picture_saved">Η εικόνα αποθηκεύτηκε</string>
+    <string name="picture_failed">Η εικόνα δεν μπόρεσε να χρησιμοποιηθεί</string>
     <string name="folder_name">Όνομα φακέλου</string>
     <string name="folder">Φάκελος</string>
     <string name="folder_video">Βίντεο</string>

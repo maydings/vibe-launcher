@@ -21,6 +21,15 @@
     <string name="rename_folder">പേര് മാറ്റുക</string>
     <string name="remove_folder">ഫോൾഡർ നീക്കം ചെയ്യുക</string>
     <string name="close">അടയ്ക്കുക</string>
+    <string name="edit_tile">എഡിറ്റ്</string>
+    <string name="change_picture">ചിത്രം മാറ്റുക</string>
+    <string name="use_icon">ഐക്കൺ ഉപയോഗിക്കുക</string>
+    <string name="use_banner">ബാനർ ഉപയോഗിക്കുക</string>
+    <string name="reset_tile">റീസെറ്റ്</string>
+    <string name="tile_name">പേര്</string>
+    <string name="picture_scan">ഫോണിൽ കോഡ് സ്കാൻ ചെയ്ത് %1$s-നായി ഒരു ചിത്രം തിരഞ്ഞെടുക്കുക.</string>
+    <string name="picture_saved">ചിത്രം സംരക്ഷിച്ചു</string>
+    <string name="picture_failed">ചിത്രം ഉപയോഗിക്കാനായില്ല</string>
     <string name="folder_name">ഫോൾഡറിന്റെ പേര്</string>
     <string name="folder">ഫോൾഡർ</string>
     <string name="folder_video">വീഡിയോ</string>

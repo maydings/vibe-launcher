@@ -21,6 +21,15 @@
     <string name="rename_folder">Přejmenovat</string>
     <string name="remove_folder">Odstranit složku</string>
     <string name="close">Zavřít</string>
+    <string name="edit_tile">Upravit</string>
+    <string name="change_picture">Změnit obrázek</string>
+    <string name="use_icon">Použít ikonu</string>
+    <string name="use_banner">Použít banner</string>
+    <string name="reset_tile">Obnovit</string>
+    <string name="tile_name">Název</string>
+    <string name="picture_scan">Naskenujte kód telefonem a vyberte obrázek pro %1$s.</string>
+    <string name="picture_saved">Obrázek uložen</string>
+    <string name="picture_failed">Obrázek nelze použít</string>
     <string name="folder_name">Název složky</string>
     <string name="folder">Složka</string>
     <string name="folder_video">Video</string>

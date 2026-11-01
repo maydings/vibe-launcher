@@ -21,6 +21,15 @@
     <string name="rename_folder">Naam wijzigen</string>
     <string name="remove_folder">Map opheffen</string>
     <string name="close">Sluiten</string>
+    <string name="edit_tile">Bewerken</string>
+    <string name="change_picture">Afbeelding wijzigen</string>
+    <string name="use_icon">Pictogram gebruiken</string>
+    <string name="use_banner">Banner gebruiken</string>
+    <string name="reset_tile">Herstellen</string>
+    <string name="tile_name">Naam</string>
+    <string name="picture_scan">Scan de code met je telefoon en kies een afbeelding voor %1$s.</string>
+    <string name="picture_saved">Afbeelding opgeslagen</string>
+    <string name="picture_failed">De afbeelding kon niet worden gebruikt</string>
     <string name="folder_name">Mapnaam</string>
     <string name="folder">Map</string>
     <string name="folder_video">Video</string>

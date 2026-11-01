@@ -9,11 +9,13 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.Settings;
@@ -31,6 +33,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -69,6 +72,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         final Drawable icon;
         /** The fixed last tile that opens the system Apps screen. */
         final boolean allApps;
+        /** The app has a banner of its own (Edit offers its icon instead, and back). */
+        boolean ownBanner;
         /** A folder's tile: its id and its apps, in order; null for an app. */
         final String folderId;
         final List<Entry> members;
@@ -178,6 +183,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         // Some system apps declare two Home entries under one name (Sony's Timers & Clock on some
         // BRAVIAs), which would show as two identical tiles: keep the first per package and label.
         Set<String> seen = new HashSet<>();
+        TileCustom custom = new TileCustom(ctx);
         for (ResolveInfo ri : found) {
             if (ri.activityInfo == null) continue;
             String pkg = ri.activityInfo.packageName;
@@ -189,9 +195,19 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
             // A small square "banner" (Rockchip's Media Center ships a 64 px one) is a blur cropped over a
             // wide tile: treat it as none, so the tile shows the icon and name instead.
             if (banner != null && !isBannerShaped(banner.getIntrinsicWidth(), banner.getIntrinsicHeight())) banner = null;
+            boolean ownBanner = banner != null;
+            // Tile menu > Edit: a picture of the user's own, or the icon instead of the banner, and a name.
+            File picture = custom.picture(pkg);
+            Bitmap chosen = picture != null ? BitmapFactory.decodeFile(picture.getPath()) : null;
+            if (chosen != null) banner = new BitmapDrawable(ctx.getResources(), chosen);
+            else if (custom.useIcon(pkg)) banner = null;
+            String name = custom.name(pkg);
+            if (name != null) label = name;
             // The icon only shows on a tile without a banner (and only colours the glow then too).
             Drawable icon = banner == null ? ri.loadIcon(pm) : null;
-            fresh.add(new Entry(label, new ComponentName(pkg, ri.activityInfo.name), banner, icon));
+            Entry entry = new Entry(label, new ComponentName(pkg, ri.activityInfo.name), banner, icon);
+            entry.ownBanner = ownBanner;
+            fresh.add(entry);
         }
         if (openFolder != null) {
             // An open folder: its apps, in its order.
@@ -649,9 +665,16 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         Entry e = items.get(position);
         h.name.setText(e.label);
         bindState(h, position);
-        h.name.setAlpha(0f);
-        h.card.setScaleX(1f);
-        h.card.setScaleY(1f);
+        // Drawn again while it has focus (a new picture, an app update): it stays zoomed with its name shown, as
+        // the focus listener left it; otherwise it came back at normal size until focus moved away and back.
+        boolean focused = h.card.isFocused();
+        h.card.animate().cancel();
+        h.name.animate().cancel();
+        float density = ctx.getResources().getDisplayMetrics().density;
+        h.name.setAlpha(focused ? 1f : 0f);
+        h.name.setTranslationY(focused ? density * 4f : -density * 6f);
+        h.card.setScaleX(focused ? FOCUS_SCALE : 1f);
+        h.card.setScaleY(focused ? FOCUS_SCALE : 1f);
         // An opaque banner covers the whole card (centerCrop), so the card's dark fill under it would be drawn
         // for nothing on every frame; it stays under banners with see-through parts and under icon tiles.
         h.card.setBackground(e.banner != null && e.banner.getOpacity() == PixelFormat.OPAQUE ? null : h.cardBackground);
@@ -722,6 +745,12 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
 
     String packageAt(int position) {
         return isApp(position) ? items.get(position).pkg : null;
+    }
+
+    /** This app's tile, or null when it isn't here. */
+    Entry entryOf(String pkg) {
+        int at = positionOf(pkg);
+        return at >= 0 ? items.get(at) : null;
     }
 
     /** Where this app's tile is now, or -1 when it's gone. */

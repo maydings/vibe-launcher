@@ -21,6 +21,15 @@
     <string name="rename_folder">Zmień nazwę</string>
     <string name="remove_folder">Usuń folder</string>
     <string name="close">Zamknij</string>
+    <string name="edit_tile">Edytuj</string>
+    <string name="change_picture">Zmień obraz</string>
+    <string name="use_icon">Użyj ikony</string>
+    <string name="use_banner">Użyj banera</string>
+    <string name="reset_tile">Przywróć</string>
+    <string name="tile_name">Nazwa</string>
+    <string name="picture_scan">Zeskanuj kod telefonem i wybierz obraz dla %1$s.</string>
+    <string name="picture_saved">Obraz zapisany</string>
+    <string name="picture_failed">Nie można użyć obrazu</string>
     <string name="folder_name">Nazwa folderu</string>
     <string name="folder">Folder</string>
     <string name="folder_video">Wideo</string>

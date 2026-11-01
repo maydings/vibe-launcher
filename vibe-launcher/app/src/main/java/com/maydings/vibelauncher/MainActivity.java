@@ -2743,6 +2743,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 adapter.startMove(at);
                 Toast.makeText(this, R.string.move_hint, Toast.LENGTH_LONG).show();
             });
+            addInputRow(rows, popup, R.drawable.ic_edit, getString(R.string.edit_tile), -1, () -> editTile(pkg, card, adapter));
             addInputRow(rows, popup, R.drawable.ic_folder, getString(R.string.new_folder), -1, () -> newFolder(pkg));
             if (!shownFolders().isEmpty()) {
                 addInputRow(rows, popup, R.drawable.ic_folder, getString(R.string.move_to_folder), -1,
@@ -3151,8 +3152,17 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         adapter.folders.reread();
         Folders.Folder f = adapter.folders.get(id);
         if (f == null) return;
+        askText(R.string.folder_name, f.name, typed -> {
+            adapter.folders.reread();
+            adapter.folders.rename(id, typed);
+            folderChanged();
+        });
+    }
+
+    /** The TV's keyboard on a name: done with OK (or the keyboard's Done), with what was typed. */
+    private void askText(int title, String current, java.util.function.Consumer<String> done) {
         EditText name = new EditText(this);
-        name.setText(f.name);
+        name.setText(current);
         name.setSingleLine(true);
         name.setSelectAllOnFocus(true);
         name.setImeOptions(android.view.inputmethod.EditorInfo.IME_ACTION_DONE);
@@ -3162,13 +3172,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         box.addView(name);
         android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(this,
                 android.R.style.Theme_DeviceDefault_Dialog_Alert)
-                .setTitle(R.string.folder_name)
+                .setTitle(title)
                 .setView(box)
-                .setPositiveButton(android.R.string.ok, (d, w) -> {
-                    adapter.folders.reread();
-                    adapter.folders.rename(id, name.getText().toString());
-                    folderChanged();
-                })
+                .setPositiveButton(android.R.string.ok, (d, w) -> done.accept(name.getText().toString()))
                 .setNegativeButton(R.string.cancel, null)
                 .create();
         name.setOnEditorActionListener((v, action, event) -> {
@@ -3177,6 +3183,115 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         });
         dialog.show();
         name.requestFocus();
+    }
+
+    // ---- tile menu > Edit: an app tile's picture, icon and name ------------------------------------------
+
+    /**
+     * Edit: a picture of the user's own from their phone, the app's icon instead of its banner (when it has
+     * one), a name, or Reset to the app's own. On Home or in a folder (tiles: whichever shows it).
+     */
+    private void editTile(String pkg, View anchor, AppAdapter tiles) {
+        AppAdapter.Entry e = tiles.entryOf(pkg);
+        if (e == null) return;
+        TileCustom custom = new TileCustom(this);
+        View panel = getLayoutInflater().inflate(R.layout.popup_inputs, root, false);
+        LinearLayout rows = panel.findViewById(R.id.rows);
+        PopupWindow popup = newMenu(panel);
+        addInputRow(rows, popup, R.drawable.ic_image, getString(R.string.change_picture), -1,
+                () -> changePicture(pkg, e.label));
+        if (custom.picture(pkg) == null && (e.ownBanner || custom.useIcon(pkg))) {
+            boolean icon = custom.useIcon(pkg);
+            addInputRow(rows, popup, R.drawable.ic_all_apps, getString(icon ? R.string.use_banner : R.string.use_icon), -1,
+                    () -> {
+                        new TileCustom(this).setUseIcon(pkg, !icon);
+                        tileChanged(pkg);
+                    });
+        }
+        addInputRow(rows, popup, R.drawable.ic_edit, getString(R.string.rename_folder), -1,
+                () -> askText(R.string.tile_name, e.label, typed -> {
+                    new TileCustom(this).setName(pkg, typed);   // empty: the app's own name again
+                    tileChanged(pkg);
+                }));
+        if (custom.changed(pkg)) {
+            addInputRow(rows, popup, R.drawable.ic_restore, getString(R.string.reset_tile), -1, () -> {
+                new TileCustom(this).reset(pkg);
+                tileChanged(pkg);
+            });
+        }
+        showMenu(popup, panel, rows, anchor, Gravity.START);
+    }
+
+    /** An app's tile changed (Edit): drawn again wherever it shows, in a folder's preview and shelf too. */
+    private void tileChanged(String pkg) {
+        adapter.markUpdated(pkg);
+        if (folderView != null) folderView.adapter.markUpdated(pkg);
+        shelfContents = null;   // the dock folder's row is made again
+        folderChanged();
+    }
+
+    /**
+     * Change picture: a QR code for a page on the phone (PhoneLink), where a picture is chosen, cropped or
+     * fitted to the tile and sent; it becomes the tile's, and the note closes.
+     */
+    private void changePicture(String pkg, String label) {
+        Dialog[] shown = {null};
+        PhoneLink link = new PhoneLink(fields -> {
+            Bitmap picture = decodePicture(fields.get("picture"));
+            if (picture != null && new TileCustom(this).setPicture(pkg, picture)) {
+                tileChanged(pkg);
+                Toast.makeText(this, R.string.picture_saved, Toast.LENGTH_SHORT).show();
+                if (shown[0] != null) shown[0].dismiss();
+            } else {
+                Toast.makeText(this, R.string.picture_failed, Toast.LENGTH_LONG).show();
+            }
+        }, settings, label);
+        String url = link.start();
+        if (url == null) {   // offline: no home network for the phone to reach the TV on
+            Toast.makeText(this, R.string.not_available, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        View panel = getLayoutInflater().inflate(R.layout.dialog_update, findViewById(android.R.id.content), false);
+        ((TextView) panel.findViewById(R.id.updateTitle)).setText(R.string.change_picture);
+        ((TextView) panel.findViewById(R.id.notes)).setText(getString(R.string.picture_scan, label));
+        ImageView qr = new ImageView(this);
+        int size = Math.round(220 * density);
+        qr.setImageBitmap(PhoneLink.qr(url, size));
+        LinearLayout.LayoutParams qrLp = new LinearLayout.LayoutParams(size, size);
+        qrLp.gravity = Gravity.CENTER_HORIZONTAL;
+        qrLp.topMargin = Math.round(18 * density);
+        qrLp.bottomMargin = Math.round(6 * density);
+        ((LinearLayout) panel).addView(qr, 2, qrLp);
+        panel.findViewById(R.id.install).setVisibility(View.GONE);   // nothing to confirm: the phone sends it
+        Dialog dialog = new Dialog(this, android.R.style.Theme_Material_Dialog_NoActionBar);
+        dialog.setContentView(panel);
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            window.setLayout(Math.round(560 * density), ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+        panel.findViewById(R.id.cancelUpdate).setOnClickListener(v -> dialog.dismiss());
+        dialog.setOnDismissListener(d -> link.stop());
+        shown[0] = dialog;
+        dialog.show();
+        panel.findViewById(R.id.cancelUpdate).requestFocus();
+    }
+
+    /** The phone's "data:image/...;base64,..." picture, or null when it isn't one (or is unreasonably large). */
+    private static Bitmap decodePicture(String dataUrl) {
+        if (dataUrl == null || !dataUrl.startsWith("data:image/")) return null;
+        int comma = dataUrl.indexOf(',');
+        if (comma < 0) return null;
+        try {
+            byte[] bytes = android.util.Base64.decode(dataUrl.substring(comma + 1), android.util.Base64.DEFAULT);
+            android.graphics.BitmapFactory.Options o = new android.graphics.BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.length, o);
+            if (o.outWidth <= 0 || o.outHeight <= 0 || o.outWidth > 4096 || o.outHeight > 4096) return null;
+            return android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        } catch (IllegalArgumentException | OutOfMemoryError e) {
+            return null;
+        }
     }
 
     /** OK on an open folder's name: Rename, Remove folder, or Close (as Back). */
@@ -3210,6 +3325,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             tiles.startMove(at);
             Toast.makeText(this, R.string.move_hint, Toast.LENGTH_LONG).show();
         });
+        addInputRow(rows, popup, R.drawable.ic_edit, getString(R.string.edit_tile), -1, () -> editTile(pkg, card, tiles));
         addInputRow(rows, popup, R.drawable.ic_home, getString(R.string.move_to_home), -1, () -> {
             adapter.folders.reread();
             List<String> keys = adapter.orderKeys();

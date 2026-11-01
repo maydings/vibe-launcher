@@ -21,6 +21,15 @@
     <string name="rename_folder">ዳግም ሰይም</string>
     <string name="remove_folder">አቃፊ አስወግድ</string>
     <string name="close">ዝጋ</string>
+    <string name="edit_tile">አርትዕ</string>
+    <string name="change_picture">ምስል ቀይር</string>
+    <string name="use_icon">አዶ ተጠቀም</string>
+    <string name="use_banner">ባነር ተጠቀም</string>
+    <string name="reset_tile">ዳግም አስጀምር</string>
+    <string name="tile_name">ስም</string>
+    <string name="picture_scan">ኮዱን በስልክዎ ይቃኙ፣ ከዚያ ለ%1$s ምስል ይምረጡ።</string>
+    <string name="picture_saved">ምስሉ ተቀምጧል</string>
+    <string name="picture_failed">ምስሉን መጠቀም አልተቻለም</string>
     <string name="folder_name">የአቃፊ ስም</string>
     <string name="folder">አቃፊ</string>
     <string name="folder_video">ቪዲዮ</string>

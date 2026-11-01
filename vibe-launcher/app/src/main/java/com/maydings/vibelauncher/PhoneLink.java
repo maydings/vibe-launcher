@@ -41,17 +41,27 @@ final class PhoneLink {
 
     private static final int PORT = 8765;
     private static final int MAX_BODY = 8 * 1024;
+    /** A tile's picture: the phone sends it already cropped and shrunk to 640 x 360, as a JPEG data URL. */
+    private static final int MAX_PICTURE = 1024 * 1024;
 
     private final Listener listener;
     private final VibeSettings settings;
+    /** The app whose tile picture the page is for (tile menu > Edit > Change picture); null for the keys page. */
+    private final String pictureFor;
     private final Handler main = new Handler(Looper.getMainLooper());
     private final String code;
     private ServerSocket server;
     private String url;
 
     PhoneLink(Listener listener, VibeSettings settings) {
+        this(listener, settings, null);
+    }
+
+    /** The page for choosing a picture for this app's tile; it arrives as the field "picture", a data URL. */
+    PhoneLink(Listener listener, VibeSettings settings, String pictureFor) {
         this.listener = listener;
         this.settings = settings;
+        this.pictureFor = pictureFor;
         SecureRandom r = new SecureRandom();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 8; i++) sb.append("abcdefghjkmnpqrstuvwxyz23456789".charAt(r.nextInt(31)));
@@ -105,12 +115,17 @@ final class PhoneLink {
             respond(s, "404 Not Found", page("This link has expired. Scan the code on the TV again."));
             return;
         }
-        if (request[0].equals("POST")) {
-            Map<String, String> fields = parseForm(readBody(in, contentLength(head)));
+        if (request[0].equals("POST") && pictureFor != null) {
+            Map<String, String> fields = new HashMap<>();
+            fields.put("picture", readBody(in, contentLength(head, MAX_PICTURE)));
+            main.post(() -> listener.onReceived(fields));
+            respond(s, "200 OK", page("Sent. The picture is on your TV."));
+        } else if (request[0].equals("POST")) {
+            Map<String, String> fields = parseForm(readBody(in, contentLength(head, MAX_BODY)));
             main.post(() -> listener.onReceived(fields));
             respond(s, "200 OK", page("Sent. The keys are saved on your TV."));
         } else {
-            respond(s, "200 OK", form());
+            respond(s, "200 OK", pictureFor != null ? pictureForm() : form());
         }
     }
 
@@ -126,11 +141,11 @@ final class PhoneLink {
         return null;
     }
 
-    private static int contentLength(String head) {
+    private static int contentLength(String head, int max) {
         for (String line : head.split("\r\n")) {
             if (line.toLowerCase(Locale.ROOT).startsWith("content-length:")) {
                 try {
-                    return Math.min(MAX_BODY, Integer.parseInt(line.substring(15).trim()));
+                    return Math.max(0, Math.min(max, Integer.parseInt(line.substring(15).trim())));
                 } catch (NumberFormatException e) {
                     return 0;
                 }
@@ -185,6 +200,67 @@ final class PhoneLink {
                 + field("youtubeKey", "YouTube API key", settings.youtubeKey())
                 + field("plexToken", "Plex token", settings.plexToken())
                 + "<button>Send to TV</button></form>";
+    }
+
+    /**
+     * Choosing a tile's picture on the phone, as sites crop a profile picture: the picture behind a fixed
+     * 16:9 frame, dragged to pan, pinched (or the slider, or a mouse wheel) to zoom, from the whole of it
+     * fitting (Fit) to four times covering the frame. What's in the frame is drawn at 640 x 360 right there,
+     * so only a small JPEG crosses the network.
+     */
+    private String pictureForm() {
+        return "<!doctype html><title>Vibe Launcher</title>" + STYLE
+                + "<style>canvas{width:100%;border-radius:12px;margin-top:20px;background:#1c1c1e;touch-action:none;"
+                + "display:block}input[type=range]{width:100%;margin-top:18px;padding:0;border:0;background:none}"
+                + ".row{display:flex;gap:10px;margin-top:14px}.row button{margin-top:0;background:#333;color:#fff}"
+                + "#hint{font-size:14px;margin-top:8px}</style>"
+                + "<h1>Picture for " + escape(pictureFor) + "</h1>"
+                + "<p>Choose a picture, then drag it and pinch to fit the tile.</p>"
+                + "<input type=file id=f accept='image/*'>"
+                + "<canvas id=c width=640 height=360></canvas>"
+                + "<p id=hint></p>"
+                + "<input type=range id=z min=0 max=1000 value=0>"
+                + "<div class=row><button id=fill>Fill</button><button id=fit>Fit</button></div>"
+                + "<button id=send disabled>Send to TV</button><p id=m></p>"
+                + "<script>"
+                + "var W=640,H=360,img=null,s=1,x=0,y=0,lo=1,hi=1,c=document.getElementById('c'),g=c.getContext('2d'),"
+                + "z=document.getElementById('z'),pts={},last=null;"
+                // the picture's size on the frame, and where its top left is, kept so it covers the frame where it can
+                + "function clamp(){var w=img.width*s,h=img.height*s;"
+                + "x=w<=W?(W-w)/2:Math.min(0,Math.max(W-w,x));y=h<=H?(H-h)/2:Math.min(0,Math.max(H-h,y));}"
+                + "function draw(){if(!img)return;clamp();g.fillStyle='#1c1c1e';g.fillRect(0,0,W,H);"
+                + "g.imageSmoothingQuality='high';g.drawImage(img,x,y,img.width*s,img.height*s);"
+                + "z.value=Math.round(1000*Math.log(s/lo)/Math.log(hi/lo));}"
+                // zoom to scale n about the point (px,py) of the frame, which stays put
+                + "function zoom(n,px,py){n=Math.min(hi,Math.max(lo,n));x=px-(px-x)*n/s;y=py-(py-y)*n/s;s=n;draw();}"
+                + "function cover(){return Math.max(W/img.width,H/img.height);}"
+                + "function contain(){return Math.min(W/img.width,H/img.height);}"
+                + "document.getElementById('f').onchange=function(e){var u=URL.createObjectURL(e.target.files[0]);"
+                + "var i=new Image();i.onload=function(){img=i;lo=contain();hi=cover()*4;if(hi<=lo)hi=lo*4;s=cover();"
+                + "x=(W-img.width*s)/2;y=(H-img.height*s)/2;draw();document.getElementById('send').disabled=false;"
+                + "document.getElementById('hint').textContent='Drag to move, pinch to zoom.';};i.src=u;};"
+                + "z.oninput=function(){if(img)zoom(lo*Math.pow(hi/lo,z.value/1000),W/2,H/2);};"
+                + "document.getElementById('fill').onclick=function(){if(img){s=cover();x=(W-img.width*s)/2;"
+                + "y=(H-img.height*s)/2;draw();}};"
+                + "document.getElementById('fit').onclick=function(){if(img){s=contain();draw();}};"
+                // frame points from screen points: the canvas is drawn smaller than its 640 x 360
+                + "function at(e){var r=c.getBoundingClientRect();return{x:(e.clientX-r.left)*W/r.width,"
+                + "y:(e.clientY-r.top)*H/r.height};}"
+                + "c.onpointerdown=function(e){c.setPointerCapture(e.pointerId);pts[e.pointerId]=at(e);last=null;};"
+                + "c.onpointermove=function(e){if(!img||!pts[e.pointerId])return;var p=at(e),ids=Object.keys(pts);"
+                + "if(ids.length==1){x+=p.x-pts[e.pointerId].x;y+=p.y-pts[e.pointerId].y;pts[e.pointerId]=p;draw();return;}"
+                + "pts[e.pointerId]=p;var a=pts[ids[0]],b=pts[ids[1]],d=Math.hypot(a.x-b.x,a.y-b.y),"
+                + "m={x:(a.x+b.x)/2,y:(a.y+b.y)/2};"
+                + "if(last){x+=m.x-last.m.x;y+=m.y-last.m.y;zoom(s*d/last.d,m.x,m.y);}last={d:d,m:m};};"
+                + "c.onpointerup=c.onpointercancel=function(e){delete pts[e.pointerId];last=null;};"
+                + "c.onwheel=function(e){if(!img)return;e.preventDefault();var p=at(e);"
+                + "zoom(s*Math.exp(-e.deltaY*0.0015),p.x,p.y);};"
+                + "document.getElementById('send').onclick=function(){var b=this;b.disabled=true;"
+                + "fetch(location.pathname,{method:'POST',headers:{'Content-Type':'text/plain'},"
+                + "body:c.toDataURL('image/jpeg',0.92)}).then(function(r){return r.text();}).then(function(){"
+                + "document.getElementById('m').textContent='Sent. The picture is on your TV.';b.disabled=false;})"
+                + ".catch(function(){b.disabled=false;document.getElementById('m').textContent='Not sent: try again.';});};"
+                + "</script>";
     }
 
     /**

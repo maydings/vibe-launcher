@@ -21,6 +21,15 @@
     <string name="rename_folder">Badilisha jina</string>
     <string name="remove_folder">Ondoa folda</string>
     <string name="close">Funga</string>
+    <string name="edit_tile">Hariri</string>
+    <string name="change_picture">Badilisha picha</string>
+    <string name="use_icon">Tumia aikoni</string>
+    <string name="use_banner">Tumia bango</string>
+    <string name="reset_tile">Weka upya</string>
+    <string name="tile_name">Jina</string>
+    <string name="picture_scan">Changanua msimbo kwa simu, kisha uchague picha ya %1$s.</string>
+    <string name="picture_saved">Picha imehifadhiwa</string>
+    <string name="picture_failed">Picha haikuweza kutumika</string>
     <string name="folder_name">Jina la folda</string>
     <string name="folder">Folda</string>
     <string name="folder_video">Video</string>

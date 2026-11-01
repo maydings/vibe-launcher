@@ -21,6 +21,15 @@
     <string name="rename_folder">Nimeä uudelleen</string>
     <string name="remove_folder">Poista kansio</string>
     <string name="close">Sulje</string>
+    <string name="edit_tile">Muokkaa</string>
+    <string name="change_picture">Vaihda kuva</string>
+    <string name="use_icon">Käytä kuvaketta</string>
+    <string name="use_banner">Käytä banneria</string>
+    <string name="reset_tile">Palauta</string>
+    <string name="tile_name">Nimi</string>
+    <string name="picture_scan">Skannaa koodi puhelimella ja valitse kuva sovellukselle %1$s.</string>
+    <string name="picture_saved">Kuva tallennettu</string>
+    <string name="picture_failed">Kuvaa ei voitu käyttää</string>
     <string name="folder_name">Kansion nimi</string>
     <string name="folder">Kansio</string>
     <string name="folder_video">Video</string>

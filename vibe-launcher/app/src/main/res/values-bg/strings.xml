@@ -21,6 +21,15 @@
     <string name="rename_folder">Преименуване</string>
     <string name="remove_folder">Премахване на папката</string>
     <string name="close">Затваряне</string>
+    <string name="edit_tile">Редактиране</string>
+    <string name="change_picture">Смяна на картината</string>
+    <string name="use_icon">Използване на иконата</string>
+    <string name="use_banner">Използване на банера</string>
+    <string name="reset_tile">Нулиране</string>
+    <string name="tile_name">Име</string>
+    <string name="picture_scan">Сканирайте кода с телефона си и изберете картина за %1$s.</string>
+    <string name="picture_saved">Картината е запазена</string>
+    <string name="picture_failed">Картината не може да се използва</string>
     <string name="folder_name">Име на папката</string>
     <string name="folder">Папка</string>
     <string name="folder_video">Видео</string>

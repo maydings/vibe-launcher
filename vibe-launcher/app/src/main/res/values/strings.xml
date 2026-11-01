@@ -21,6 +21,15 @@
     <string name="rename_folder">Rename</string>
     <string name="remove_folder">Remove folder</string>
     <string name="close">Close</string>
+    <string name="edit_tile">Edit</string>
+    <string name="change_picture">Change picture</string>
+    <string name="use_icon">Use icon</string>
+    <string name="use_banner">Use banner</string>
+    <string name="reset_tile">Reset</string>
+    <string name="tile_name">Name</string>
+    <string name="picture_scan">Scan the code with your phone, then choose a picture for %1$s.</string>
+    <string name="picture_saved">Picture saved</string>
+    <string name="picture_failed">The picture couldn\'t be used</string>
     <string name="folder_name">Folder name</string>
     <string name="folder">Folder</string>
     <string name="folder_video">Video</string>

@@ -21,6 +21,15 @@
     <string name="rename_folder">이름 변경</string>
     <string name="remove_folder">폴더 해제</string>
     <string name="close">닫기</string>
+    <string name="edit_tile">편집</string>
+    <string name="change_picture">사진 변경</string>
+    <string name="use_icon">아이콘 사용</string>
+    <string name="use_banner">배너 사용</string>
+    <string name="reset_tile">재설정</string>
+    <string name="tile_name">이름</string>
+    <string name="picture_scan">휴대폰으로 코드를 스캔한 다음 %1$s의 사진을 선택하세요.</string>
+    <string name="picture_saved">사진이 저장되었습니다</string>
+    <string name="picture_failed">사진을 사용할 수 없습니다</string>
     <string name="folder_name">폴더 이름</string>
     <string name="folder">폴더</string>
     <string name="folder_video">비디오</string>

@@ -21,6 +21,15 @@
     <string name="rename_folder">Renommer</string>
     <string name="remove_folder">Supprimer le dossier</string>
     <string name="close">Fermer</string>
+    <string name="edit_tile">Modifier</string>
+    <string name="change_picture">Changer l’image</string>
+    <string name="use_icon">Utiliser l’icône</string>
+    <string name="use_banner">Utiliser la bannière</string>
+    <string name="reset_tile">Réinitialiser</string>
+    <string name="tile_name">Nom</string>
+    <string name="picture_scan">Scannez le code avec votre téléphone, puis choisissez une image pour %1$s.</string>
+    <string name="picture_saved">Image enregistrée</string>
+    <string name="picture_failed">Impossible d’utiliser l’image</string>
     <string name="folder_name">Nom du dossier</string>
     <string name="folder">Dossier</string>
     <string name="folder_video">Vidéo</string>

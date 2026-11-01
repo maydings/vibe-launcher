@@ -21,6 +21,15 @@
     <string name="rename_folder">Premenovať</string>
     <string name="remove_folder">Odstrániť priečinok</string>
     <string name="close">Zavrieť</string>
+    <string name="edit_tile">Upraviť</string>
+    <string name="change_picture">Zmeniť obrázok</string>
+    <string name="use_icon">Použiť ikonu</string>
+    <string name="use_banner">Použiť banner</string>
+    <string name="reset_tile">Obnoviť</string>
+    <string name="tile_name">Názov</string>
+    <string name="picture_scan">Naskenujte kód telefónom a vyberte obrázok pre %1$s.</string>
+    <string name="picture_saved">Obrázok uložený</string>
+    <string name="picture_failed">Obrázok sa nedá použiť</string>
     <string name="folder_name">Názov priečinka</string>
     <string name="folder">Priečinok</string>
     <string name="folder_video">Video</string>

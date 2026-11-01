@@ -21,6 +21,15 @@
     <string name="rename_folder">ಮರುಹೆಸರಿಸಿ</string>
     <string name="remove_folder">ಫೋಲ್ಡರ್ ತೆಗೆದುಹಾಕಿ</string>
     <string name="close">ಮುಚ್ಚಿ</string>
+    <string name="edit_tile">ಎಡಿಟ್</string>
+    <string name="change_picture">ಚಿತ್ರ ಬದಲಿಸಿ</string>
+    <string name="use_icon">ಐಕಾನ್ ಬಳಸಿ</string>
+    <string name="use_banner">ಬ್ಯಾನರ್ ಬಳಸಿ</string>
+    <string name="reset_tile">ರೀಸೆಟ್</string>
+    <string name="tile_name">ಹೆಸರು</string>
+    <string name="picture_scan">ಫೋನ್‌ನಿಂದ ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ, ನಂತರ %1$s ಗೆ ಚಿತ್ರ ಆರಿಸಿ.</string>
+    <string name="picture_saved">ಚಿತ್ರ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="picture_failed">ಚಿತ್ರವನ್ನು ಬಳಸಲಾಗಲಿಲ್ಲ</string>
     <string name="folder_name">ಫೋಲ್ಡರ್ ಹೆಸರು</string>
     <string name="folder">ಫೋಲ್ಡರ್</string>
     <string name="folder_video">ವೀಡಿಯೊ</string>

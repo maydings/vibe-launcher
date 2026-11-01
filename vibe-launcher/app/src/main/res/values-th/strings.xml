@@ -21,6 +21,15 @@
     <string name="rename_folder">เปลี่ยนชื่อ</string>
     <string name="remove_folder">นำโฟลเดอร์ออก</string>
     <string name="close">ปิด</string>
+    <string name="edit_tile">แก้ไข</string>
+    <string name="change_picture">เปลี่ยนภาพ</string>
+    <string name="use_icon">ใช้ไอคอน</string>
+    <string name="use_banner">ใช้แบนเนอร์</string>
+    <string name="reset_tile">รีเซ็ต</string>
+    <string name="tile_name">ชื่อ</string>
+    <string name="picture_scan">สแกนโค้ดด้วยโทรศัพท์ แล้วเลือกภาพสำหรับ %1$s</string>
+    <string name="picture_saved">บันทึกภาพแล้ว</string>
+    <string name="picture_failed">ใช้ภาพนี้ไม่ได้</string>
     <string name="folder_name">ชื่อโฟลเดอร์</string>
     <string name="folder">โฟลเดอร์</string>
     <string name="folder_video">วิดีโอ</string>

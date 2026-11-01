@@ -21,6 +21,15 @@
     <string name="rename_folder">Rinomina</string>
     <string name="remove_folder">Rimuovi cartella</string>
     <string name="close">Chiudi</string>
+    <string name="edit_tile">Modifica</string>
+    <string name="change_picture">Cambia immagine</string>
+    <string name="use_icon">Usa icona</string>
+    <string name="use_banner">Usa banner</string>
+    <string name="reset_tile">Ripristina</string>
+    <string name="tile_name">Nome</string>
+    <string name="picture_scan">Scansiona il codice con il telefono e scegli un’immagine per %1$s.</string>
+    <string name="picture_saved">Immagine salvata</string>
+    <string name="picture_failed">Impossibile usare l’immagine</string>
     <string name="folder_name">Nome della cartella</string>
     <string name="folder">Cartella</string>
     <string name="folder_video">Video</string>

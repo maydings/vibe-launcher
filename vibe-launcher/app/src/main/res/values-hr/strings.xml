@@ -21,6 +21,15 @@
     <string name="rename_folder">Preimenuj</string>
     <string name="remove_folder">Ukloni mapu</string>
     <string name="close">Zatvori</string>
+    <string name="edit_tile">Uredi</string>
+    <string name="change_picture">Promijeni sliku</string>
+    <string name="use_icon">Koristi ikonu</string>
+    <string name="use_banner">Koristi banner</string>
+    <string name="reset_tile">Vrati</string>
+    <string name="tile_name">Naziv</string>
+    <string name="picture_scan">Skenirajte kod telefonom i odaberite sliku za %1$s.</string>
+    <string name="picture_saved">Slika je spremljena</string>
+    <string name="picture_failed">Slika se ne može koristiti</string>
     <string name="folder_name">Naziv mape</string>
     <string name="folder">Mapa</string>
     <string name="folder_video">Video</string>

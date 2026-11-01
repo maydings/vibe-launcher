@@ -21,6 +21,15 @@
     <string name="rename_folder">Gi nytt navn</string>
     <string name="remove_folder">Fjern mappe</string>
     <string name="close">Lukk</string>
+    <string name="edit_tile">Rediger</string>
+    <string name="change_picture">Bytt bilde</string>
+    <string name="use_icon">Bruk ikon</string>
+    <string name="use_banner">Bruk banner</string>
+    <string name="reset_tile">Tilbakestill</string>
+    <string name="tile_name">Navn</string>
+    <string name="picture_scan">Skann koden med telefonen, og velg et bilde for %1$s.</string>
+    <string name="picture_saved">Bildet er lagret</string>
+    <string name="picture_failed">Bildet kunne ikke brukes</string>
     <string name="folder_name">Mappenavn</string>
     <string name="folder">Mappe</string>
     <string name="folder_video">Video</string>

@@ -21,6 +21,15 @@
     <string name="rename_folder">Renomear</string>
     <string name="remove_folder">Remover pasta</string>
     <string name="close">Fechar</string>
+    <string name="edit_tile">Editar</string>
+    <string name="change_picture">Trocar imagem</string>
+    <string name="use_icon">Usar ícone</string>
+    <string name="use_banner">Usar banner</string>
+    <string name="reset_tile">Redefinir</string>
+    <string name="tile_name">Nome</string>
+    <string name="picture_scan">Leia o código com o celular e escolha uma imagem para %1$s.</string>
+    <string name="picture_saved">Imagem salva</string>
+    <string name="picture_failed">Não foi possível usar a imagem</string>
     <string name="folder_name">Nome da pasta</string>
     <string name="folder">Pasta</string>
     <string name="folder_video">Vídeo</string>

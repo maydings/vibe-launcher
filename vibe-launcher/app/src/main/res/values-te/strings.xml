@@ -21,6 +21,15 @@
     <string name="rename_folder">పేరు మార్చు</string>
     <string name="remove_folder">ఫోల్డర్‌ను తీసివేయి</string>
     <string name="close">మూసివేయి</string>
+    <string name="edit_tile">ఎడిట్</string>
+    <string name="change_picture">చిత్రం మార్చు</string>
+    <string name="use_icon">ఐకాన్ వాడు</string>
+    <string name="use_banner">బ్యానర్ వాడు</string>
+    <string name="reset_tile">రీసెట్</string>
+    <string name="tile_name">పేరు</string>
+    <string name="picture_scan">ఫోన్‌తో కోడ్‌ను స్కాన్ చేసి, %1$s కోసం చిత్రాన్ని ఎంచుకోండి.</string>
+    <string name="picture_saved">చిత్రం సేవ్ అయింది</string>
+    <string name="picture_failed">చిత్రాన్ని ఉపయోగించలేకపోయాం</string>
     <string name="folder_name">ఫోల్డర్ పేరు</string>
     <string name="folder">ఫోల్డర్</string>
     <string name="folder_video">వీడియో</string>

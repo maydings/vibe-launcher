@@ -21,6 +21,15 @@
     <string name="rename_folder">නැවත නම් කරන්න</string>
     <string name="remove_folder">ෆෝල්ඩරය ඉවත් කරන්න</string>
     <string name="close">වසන්න</string>
+    <string name="edit_tile">සංස්කරණය</string>
+    <string name="change_picture">පින්තූරය වෙනස් කරන්න</string>
+    <string name="use_icon">නිරූපකය භාවිත කරන්න</string>
+    <string name="use_banner">බැනරය භාවිත කරන්න</string>
+    <string name="reset_tile">යළි සකසන්න</string>
+    <string name="tile_name">නම</string>
+    <string name="picture_scan">දුරකථනයෙන් කේතය ස්කෑන් කර %1$s සඳහා පින්තූරයක් තෝරන්න.</string>
+    <string name="picture_saved">පින්තූරය සුරැකිණි</string>
+    <string name="picture_failed">පින්තූරය භාවිත කළ නොහැකි විය</string>
     <string name="folder_name">ෆෝල්ඩරයේ නම</string>
     <string name="folder">ෆෝල්ඩරය</string>
     <string name="folder_video">වීඩියෝ</string>

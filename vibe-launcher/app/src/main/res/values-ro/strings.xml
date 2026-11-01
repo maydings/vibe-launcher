@@ -21,6 +21,15 @@
     <string name="rename_folder">Redenumește</string>
     <string name="remove_folder">Elimină dosarul</string>
     <string name="close">Închide</string>
+    <string name="edit_tile">Editează</string>
+    <string name="change_picture">Schimbă imaginea</string>
+    <string name="use_icon">Folosește pictograma</string>
+    <string name="use_banner">Folosește bannerul</string>
+    <string name="reset_tile">Resetează</string>
+    <string name="tile_name">Nume</string>
+    <string name="picture_scan">Scanează codul cu telefonul, apoi alege o imagine pentru %1$s.</string>
+    <string name="picture_saved">Imagine salvată</string>
+    <string name="picture_failed">Imaginea nu a putut fi folosită</string>
     <string name="folder_name">Numele dosarului</string>
     <string name="folder">Dosar</string>
     <string name="folder_video">Video</string>

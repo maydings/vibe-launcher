@@ -21,6 +21,15 @@
     <string name="rename_folder">تغییر نام</string>
     <string name="remove_folder">حذف پوشه</string>
     <string name="close">بستن</string>
+    <string name="edit_tile">ویرایش</string>
+    <string name="change_picture">تغییر تصویر</string>
+    <string name="use_icon">استفاده از نماد</string>
+    <string name="use_banner">استفاده از بنر</string>
+    <string name="reset_tile">بازنشانی</string>
+    <string name="tile_name">نام</string>
+    <string name="picture_scan">کد را با تلفن اسکن کنید و تصویری برای %1$s انتخاب کنید.</string>
+    <string name="picture_saved">تصویر ذخیره شد</string>
+    <string name="picture_failed">از تصویر نمی‌توان استفاده کرد</string>
     <string name="folder_name">نام پوشه</string>
     <string name="folder">پوشه</string>
     <string name="folder_video">ویدیو</string>
