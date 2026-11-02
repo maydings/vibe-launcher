@@ -154,4 +154,23 @@
     <string name="restore_failed">לא ניתן היה לקרוא את הגיבוי הזה</string>
     <string name="restored">ההגדרות שוחזרו</string>
     <string name="storage_denied">Vibe Launcher צריך גישה לאחסון בשביל זה</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">אפליקציות</string>
+    <string name="apps_short">כבו אפליקציות שאתם לא משתמשים בהן: הן נשארות מותקנות, אבל לא יכולות לפעול, למלא את מסך הבית או להתעדכן עד שתפעילו אותן שוב. רכיבים שהטלוויזיה צריכה כדי לעבוד לא מופיעים ברשימה.</string>
+    <string name="adb_connection">ניפוי באגים ברשת</string>
+    <string name="adb_connection_short">Vibe Launcher מכבה אפליקציות דרך ניפוי הבאגים ברשת של הטלוויזיה, כמו שמחשב היה עושה. הפעילו אותו באפשרויות למפתחים, ואז לחצו כאן על OK ואשרו את Vibe Launcher בטלוויזיה.</string>
+    <string name="adb_ready">מחובר</string>
+    <string name="adb_not_allowed">עדיין לא אושר</string>
+    <string name="adb_checking">בבדיקה…</string>
+    <string name="adb_allow_prompt">בשאלה בטלוויזיה, סמנו את האפשרות לאפשר תמיד, ואז בחרו OK</string>
+    <string name="adb_turn_on">הפעילו ניפוי באגים ברשת (או ניפוי באגים ב-ADB) באפשרויות למפתחים, ואז חזרו לכאן</string>
+    <string name="adb_failed">הטלוויזיה לא אישרה את זה</string>
+    <string name="apps_turn_all_on">להפעיל הכול מחדש</string>
+    <string name="apps_turn_all_on_short">מפעיל מחדש כל אפליקציה ש-Vibe Launcher כיבה.</string>
+    <string name="apps_all_on">הכול הופעל מחדש</string>
+    <string name="adb_no_key">הטלוויזיה הזו לא יכולה לשמור את המפתח ש-Vibe Launcher צריך</string>
+    <string name="apps_can_turn_off">אפליקציות שאפשר לכבות</string>
+    <string name="apps_tv_needs">אפליקציות שהטלוויזיה צריכה</string>
+    <string name="app_protected">הטלוויזיה צריכה את זה כדי לעבוד כמו שצריך, ולכן Vibe Launcher לא יכבה את זה. כך הטלוויזיה שלכם נשארת בטוחה.</string>
+    <string name="adb_dev_options">קודם הפעילו את האפשרויות למפתחים: במידע כללי, לחצו OK על גרסת Build שבע פעמים, ואז חזרו לכאן.</string>
 </resources>

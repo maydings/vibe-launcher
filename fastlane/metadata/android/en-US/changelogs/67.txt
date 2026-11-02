@@ -1,0 +1,2 @@
+* New: Settings > Apps turns off the apps you don't use, from the TV itself through its network debugging, with help to turn that on. The parts your TV needs are protected; Turn all back on undoes it.
+* Fixed: Up and Right from a dock folder's row of apps no longer land back on the row instead of the top bar.

@@ -154,4 +154,23 @@
     <string name="restore_failed">ያንን ምትኬ ማንበብ አልተቻለም</string>
     <string name="restored">ቅንብሮች ተመልሰዋል</string>
     <string name="storage_denied">Vibe Launcher ለዚህ የማከማቻ ፈቃድ ያስፈልገዋል</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">መተግበሪያዎች</string>
+    <string name="apps_short">የማይጠቀሙባቸውን መተግበሪያዎች ያጥፉ፦ እንደተጫኑ ይቆያሉ፣ ግን መልሰው እስኪያበሯቸው ድረስ መሥራት፣ የመነሻ ማያ ገጹን መሙላት ወይም መዘመን አይችሉም። ቲቪው እንዲሠራ የሚያስፈልጉት ክፍሎች አልተዘረዘሩም።</string>
+    <string name="adb_connection">የአውታረ መረብ ስህተት ማረሚያ</string>
+    <string name="adb_connection_short">Vibe Launcher ልክ እንደ ኮምፒውተር በቲቪው የአውታረ መረብ ስህተት ማረሚያ በኩል መተግበሪያዎችን ያጠፋል። በገንቢ አማራጮች ውስጥ ያብሩት፣ ከዚያ እዚህ OKን ይጫኑ እና በቲቪው ላይ Vibe Launcherን ይፍቀዱ።</string>
+    <string name="adb_ready">ተገናኝቷል</string>
+    <string name="adb_not_allowed">እስካሁን አልተፈቀደም</string>
+    <string name="adb_checking">በመፈተሽ ላይ…</string>
+    <string name="adb_allow_prompt">በቲቪው ጥያቄ ላይ ሁልጊዜ ፍቀድን ምልክት ያድርጉ፣ ከዚያ OKን ይምረጡ</string>
+    <string name="adb_turn_on">በገንቢ አማራጮች ውስጥ የአውታረ መረብ ስህተት ማረሚያን (ወይም የADB ስህተት ማረሚያን) ያብሩ፣ ከዚያ ወደዚህ ይመለሱ</string>
+    <string name="adb_failed">ቲቪው ያንን አልፈቀደም</string>
+    <string name="apps_turn_all_on">ሁሉንም መልሰው ያብሩ</string>
+    <string name="apps_turn_all_on_short">Vibe Launcher ያጠፋቸውን መተግበሪያዎች በሙሉ መልሶ ያበራል።</string>
+    <string name="apps_all_on">ሁሉም መልሰው በርተዋል</string>
+    <string name="adb_no_key">ይህ ቲቪ Vibe Launcher የሚፈልገውን ቁልፍ ማስቀመጥ አይችልም</string>
+    <string name="apps_can_turn_off">ሊያጠፏቸው የሚችሏቸው መተግበሪያዎች</string>
+    <string name="apps_tv_needs">ቲቪው የሚፈልጋቸው መተግበሪያዎች</string>
+    <string name="app_protected">ቲቪዎ በትክክል እንዲሠራ ይህ ያስፈልገዋል፣ ስለዚህ Vibe Launcher አያጠፋውም። ይህ ቲቪዎን ደህንነቱ የተጠበቀ ያደርገዋል።</string>
+    <string name="adb_dev_options">መጀመሪያ የገንቢ አማራጮችን ያብሩ፦ በስለ ውስጥ ግንባታ ላይ OKን ሰባት ጊዜ ይጫኑ፣ ከዚያ ወደዚህ ይመለሱ።</string>
 </resources>

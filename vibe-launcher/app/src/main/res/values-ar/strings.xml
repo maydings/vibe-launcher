@@ -154,4 +154,23 @@
     <string name="restore_failed">تعذّرت قراءة تلك النسخة الاحتياطية</string>
     <string name="restored">تمت استعادة الإعدادات</string>
     <string name="storage_denied">يحتاج Vibe Launcher إلى إذن الوصول إلى مساحة التخزين لهذا</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">التطبيقات</string>
+    <string name="apps_short">أوقف التطبيقات التي لا تستخدمها: تبقى مثبّتة، لكن لا يمكنها العمل أو ملء الشاشة الرئيسية أو التحديث إلى أن تعيد تفعيلها. لا تظهر الأجزاء التي يحتاجها التلفزيون ليعمل.</string>
+    <string name="adb_connection">تصحيح الأخطاء عبر الشبكة</string>
+    <string name="adb_connection_short">يوقف Vibe Launcher التطبيقات عبر تصحيح الأخطاء عبر الشبكة في التلفزيون، كما يفعل الكمبيوتر. شغّله من خيارات المطوّرين، ثم اضغط على OK هنا واسمح لـ Vibe Launcher على التلفزيون.</string>
+    <string name="adb_ready">متصل</string>
+    <string name="adb_not_allowed">غير مسموح بعد</string>
+    <string name="adb_checking">جارٍ التحقق…</string>
+    <string name="adb_allow_prompt">في سؤال التلفزيون، ضع علامة على السماح دائمًا، ثم اختر OK</string>
+    <string name="adb_turn_on">شغّل تصحيح الأخطاء عبر الشبكة (أو تصحيح أخطاء ADB) من خيارات المطوّرين، ثم ارجع إلى هنا</string>
+    <string name="adb_failed">لم يسمح التلفزيون بذلك</string>
+    <string name="apps_turn_all_on">إعادة تفعيل الكل</string>
+    <string name="apps_turn_all_on_short">يعيد تفعيل كل تطبيق أوقفه Vibe Launcher.</string>
+    <string name="apps_all_on">تمت إعادة تفعيل الكل</string>
+    <string name="adb_no_key">لا يمكن لهذا التلفزيون الاحتفاظ بالمفتاح الذي يحتاجه Vibe Launcher</string>
+    <string name="apps_can_turn_off">تطبيقات يمكنك إيقافها</string>
+    <string name="apps_tv_needs">تطبيقات يحتاجها التلفزيون</string>
+    <string name="app_protected">يحتاج تلفزيونك إلى هذا ليعمل بشكل صحيح، لذلك لن يوقفه Vibe Launcher. هذا يحافظ على سلامة تلفزيونك.</string>
+    <string name="adb_dev_options">شغّل خيارات المطوّرين أولاً: في حول، اضغط على OK فوق الإصدار سبع مرات، ثم ارجع إلى هنا.</string>
 </resources>

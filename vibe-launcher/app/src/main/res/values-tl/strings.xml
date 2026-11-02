@@ -154,4 +154,23 @@
     <string name="restore_failed">Hindi mabasa ang backup na iyon</string>
     <string name="restored">Na-restore ang mga setting</string>
     <string name="storage_denied">Kailangan ng Vibe Launcher ng access sa storage para dito</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Mga app</string>
+    <string name="apps_short">I-off ang mga app na hindi mo ginagamit: mananatiling naka-install ang mga ito, pero hindi makakatakbo, makakapuno sa home screen, o makakapag-update hanggang i-on mo ulit. Hindi nakalista ang mga bahaging kailangan ng TV para gumana.</string>
+    <string name="adb_connection">Network debugging</string>
+    <string name="adb_connection_short">Ino-off ng Vibe Launcher ang mga app sa pamamagitan ng network debugging ng TV, gaya ng gagawin ng isang computer. I-on ito sa Mga opsyon ng developer, pagkatapos ay pindutin ang OK dito at payagan ang Vibe Launcher sa TV.</string>
+    <string name="adb_ready">Nakakonekta</string>
+    <string name="adb_not_allowed">Hindi pa pinapayagan</string>
+    <string name="adb_checking">Sinusuri…</string>
+    <string name="adb_allow_prompt">Sa tanong ng TV, lagyan ng check ang Palaging payagan, pagkatapos ay piliin ang OK</string>
+    <string name="adb_turn_on">I-on ang network debugging (o ADB debugging) sa Mga opsyon ng developer, pagkatapos ay bumalik dito</string>
+    <string name="adb_failed">Hindi ito pinayagan ng TV</string>
+    <string name="apps_turn_all_on">I-on ulit lahat</string>
+    <string name="apps_turn_all_on_short">Ino-on ulit ang bawat app na in-off ng Vibe Launcher.</string>
+    <string name="apps_all_on">Na-on ulit ang lahat</string>
+    <string name="adb_no_key">Hindi kayang itago ng TV na ito ang key na kailangan ng Vibe Launcher</string>
+    <string name="apps_can_turn_off">Mga app na puwede mong i-off</string>
+    <string name="apps_tv_needs">Mga app na kailangan ng TV</string>
+    <string name="app_protected">Kailangan ito ng TV mo para gumana nang maayos, kaya hindi ito io-off ng Vibe Launcher. Pinapanatili nitong ligtas ang TV mo.</string>
+    <string name="adb_dev_options">I-on muna ang Mga opsyon ng developer: sa Tungkol sa, pindutin nang pitong beses ang OK sa Build, pagkatapos ay bumalik dito.</string>
 </resources>

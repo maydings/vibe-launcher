@@ -154,4 +154,23 @@
     <string name="restore_failed">آن پشتیبان خوانده نشد</string>
     <string name="restored">تنظیمات بازیابی شد</string>
     <string name="storage_denied">Vibe Launcher برای این کار به دسترسی حافظه نیاز دارد</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">برنامه‌ها</string>
+    <string name="apps_short">برنامه‌هایی را که استفاده نمی‌کنید خاموش کنید: نصب‌شده می‌مانند، اما تا وقتی دوباره روشنشان نکنید نمی‌توانند اجرا شوند، صفحه اصلی را پر کنند یا به‌روز شوند. بخش‌هایی که تلویزیون برای کار کردن لازم دارد فهرست نمی‌شوند.</string>
+    <string name="adb_connection">اشکال‌زدایی شبکه</string>
+    <string name="adb_connection_short">Vibe Launcher برنامه‌ها را از طریق اشکال‌زدایی شبکه تلویزیون خاموش می‌کند، همان‌طور که یک رایانه این کار را می‌کند. آن را در گزینه‌های برنامه‌نویسی روشن کنید، سپس اینجا OK را فشار دهید و در تلویزیون به Vibe Launcher اجازه دهید.</string>
+    <string name="adb_ready">متصل</string>
+    <string name="adb_not_allowed">هنوز اجازه داده نشده</string>
+    <string name="adb_checking">درحال بررسی…</string>
+    <string name="adb_allow_prompt">در پرسش تلویزیون، همیشه اجازه داده شود را علامت بزنید و سپس OK را انتخاب کنید</string>
+    <string name="adb_turn_on">اشکال‌زدایی شبکه (یا اشکال‌زدایی ADB) را در گزینه‌های برنامه‌نویسی روشن کنید و سپس به اینجا برگردید</string>
+    <string name="adb_failed">تلویزیون اجازه نداد</string>
+    <string name="apps_turn_all_on">همه را دوباره روشن کن</string>
+    <string name="apps_turn_all_on_short">همه برنامه‌هایی را که Vibe Launcher خاموش کرده بود دوباره روشن می‌کند.</string>
+    <string name="apps_all_on">همه دوباره روشن شدند</string>
+    <string name="adb_no_key">این تلویزیون نمی‌تواند کلیدی را که Vibe Launcher لازم دارد نگه دارد</string>
+    <string name="apps_can_turn_off">برنامه‌هایی که می‌توانید خاموش کنید</string>
+    <string name="apps_tv_needs">برنامه‌هایی که تلویزیون لازم دارد</string>
+    <string name="app_protected">تلویزیون شما برای درست کار کردن به این نیاز دارد، پس Vibe Launcher آن را خاموش نمی‌کند. این کار تلویزیون شما را ایمن نگه می‌دارد.</string>
+    <string name="adb_dev_options">ابتدا گزینه‌های برنامه‌نویسی را روشن کنید: در درباره، هفت بار روی ساخت OK را فشار دهید و سپس به اینجا برگردید.</string>
 </resources>

@@ -154,4 +154,23 @@
     <string name="restore_failed">Sikkerhedskopien kunne ikke læses</string>
     <string name="restored">Indstillinger gendannet</string>
     <string name="storage_denied">Vibe Launcher skal have adgang til lagerplads for at gøre dette</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Apps</string>
+    <string name="apps_short">Slå apps fra, som du ikke bruger: De forbliver installeret, men kan ikke køre, fylde startskærmen eller opdateres, før du slår dem til igen. Dele, som tv\'et har brug for for at fungere, vises ikke.</string>
+    <string name="adb_connection">Netværksfejlretning</string>
+    <string name="adb_connection_short">Vibe Launcher slår apps fra via tv\'ets netværksfejlretning, som en computer ville gøre. Slå det til i Indstillinger for udviklere, tryk derefter på OK her, og tillad Vibe Launcher på tv\'et.</string>
+    <string name="adb_ready">Forbundet</string>
+    <string name="adb_not_allowed">Ikke tilladt endnu</string>
+    <string name="adb_checking">Tjekker…</string>
+    <string name="adb_allow_prompt">Sæt flueben ved Tillad altid i tv\'ets spørgsmål, og vælg derefter OK</string>
+    <string name="adb_turn_on">Slå netværksfejlretning (eller ADB-fejlretning) til i Indstillinger for udviklere, og vend så tilbage hertil</string>
+    <string name="adb_failed">Tv\'et tillod det ikke</string>
+    <string name="apps_turn_all_on">Slå alle til igen</string>
+    <string name="apps_turn_all_on_short">Slår alle apps til igen, som Vibe Launcher har slået fra.</string>
+    <string name="apps_all_on">Alle er slået til igen</string>
+    <string name="adb_no_key">Dette tv kan ikke gemme den nøgle, som Vibe Launcher skal bruge</string>
+    <string name="apps_can_turn_off">Apps, du kan slå fra</string>
+    <string name="apps_tv_needs">Apps, som tv\'et har brug for</string>
+    <string name="app_protected">Dit tv har brug for dette for at fungere korrekt, så Vibe Launcher slår det ikke fra. Det holder dit tv sikkert.</string>
+    <string name="adb_dev_options">Slå først Indstillinger for udviklere til: Tryk syv gange på OK ved Build under Om, og vend så tilbage hertil.</string>
 </resources>

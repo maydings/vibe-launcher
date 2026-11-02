@@ -23,6 +23,7 @@ final class VibeSettings {
     private static final String CLOCK_HOURS = "clockHours";
     private static final String BACK_ACTION = "backAction";
     private static final String JPEG_STILLS = "jpegStills";
+    private static final String APPS_OFF = "appsOff";
 
     private final SharedPreferences prefs;
 
@@ -167,6 +168,15 @@ final class VibeSettings {
 
     void setGlassTint(int rgb) {
         prefs.edit().putInt(GLASS_TINT, rgb & 0xFFFFFF).apply();
+    }
+
+    /** The apps turned off in Settings > Apps (TvApps), by package: what Turn all back on turns on. */
+    java.util.Set<String> appsOff() {
+        return prefs.getStringSet(APPS_OFF, java.util.Collections.emptySet());
+    }
+
+    void setAppsOff(java.util.Set<String> pkgs) {
+        prefs.edit().putStringSet(APPS_OFF, new java.util.HashSet<>(pkgs)).apply();
     }
 
     void save(String tmdbKey, String youtubeKey, String plexToken) {

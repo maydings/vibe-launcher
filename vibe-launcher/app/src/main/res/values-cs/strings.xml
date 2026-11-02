@@ -154,4 +154,23 @@
     <string name="restore_failed">Tuto zálohu nelze přečíst</string>
     <string name="restored">Nastavení obnoveno</string>
     <string name="storage_denied">Vibe Launcher k tomu potřebuje přístup k úložišti</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Aplikace</string>
+    <string name="apps_short">Vypněte aplikace, které nepoužíváte: zůstanou nainstalované, ale nebudou se moci spouštět, zaplňovat domovskou obrazovku ani aktualizovat, dokud je znovu nezapnete. Části, které televizor potřebuje ke svému chodu, nejsou uvedeny.</string>
+    <string name="adb_connection">Síťové ladění</string>
+    <string name="adb_connection_short">Vibe Launcher vypíná aplikace pomocí síťového ladění televizoru, stejně jako by to udělal počítač. Zapněte ho v sekci Pro vývojáře, potom zde stiskněte OK a na televizoru povolte Vibe Launcher.</string>
+    <string name="adb_ready">Připojeno</string>
+    <string name="adb_not_allowed">Zatím nepovoleno</string>
+    <string name="adb_checking">Kontrola…</string>
+    <string name="adb_allow_prompt">V dotazu na televizoru zaškrtněte Vždy povolit a pak zvolte OK</string>
+    <string name="adb_turn_on">Zapněte síťové ladění (nebo ladění ADB) v sekci Pro vývojáře a pak se sem vraťte</string>
+    <string name="adb_failed">Televizor to nepovolil</string>
+    <string name="apps_turn_all_on">Znovu zapnout vše</string>
+    <string name="apps_turn_all_on_short">Znovu zapne všechny aplikace, které Vibe Launcher vypnul.</string>
+    <string name="apps_all_on">Vše je znovu zapnuto</string>
+    <string name="adb_no_key">Tento televizor nemůže uchovat klíč, který Vibe Launcher potřebuje</string>
+    <string name="apps_can_turn_off">Aplikace, které můžete vypnout</string>
+    <string name="apps_tv_needs">Aplikace, které televizor potřebuje</string>
+    <string name="app_protected">Televizor to potřebuje ke správnému fungování, proto to Vibe Launcher nevypne. Váš televizor tak zůstane v bezpečí.</string>
+    <string name="adb_dev_options">Nejprve zapněte sekci Pro vývojáře: v části Informace stiskněte sedmkrát OK na položce Sestavení a pak se sem vraťte.</string>
 </resources>

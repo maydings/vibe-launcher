@@ -47,7 +47,8 @@ import java.util.function.Supplier;
  * on), backup and restore (Backup, on the TV or through the phone) and updates (Updater). Appearance: tiles per row, inputs, the top bar and the slideshow's clock. API
  * keys: the TMDB, YouTube and Plex keys, edited in place and explained under the list, SmartTube to install
  * or sign in to (the key-free way to YouTube backdrops), and a QR code for pasting the keys from a phone
- * (PhoneLink).
+ * (PhoneLink). Apps (adb build only): turning the TV's apps off and on through its own network debugging
+ * (Adb, TvApps).
  */
 final class SettingsScreen {
 
@@ -107,6 +108,7 @@ final class SettingsScreen {
         Supplier<CharSequence> valueOf;
         Runnable action;
         int about;   // the text under the list while it's focused; 0 for none
+        CharSequence aboutText;   // or text of its own (an app's package name, in Apps)
 
         Row(View view) {
             this.view = view;
@@ -290,6 +292,8 @@ final class SettingsScreen {
         generalRow = root.link(R.string.tab_general, null, this::general);
         root.link(R.string.tab_appearance, null, this::appearance);
         root.link(R.string.tab_keys, null, this::apiKeys);
+        // Turning apps off goes through the TV's ADB, which Play wouldn't take: the adb build only.
+        if (!BuildConfig.STORE) root.link(R.string.tab_apps, null, this::apps);
         place(root, 0);
         languagePage = new Page(ctx.getString(R.string.language));   // its rows: addLanguages
         place(languagePage, screenW - rightX);   // off the screen until Language is picked
@@ -955,6 +959,239 @@ final class SettingsScreen {
         return page;
     }
 
+    // ---- apps -------------------------------------------------------------------------------------
+
+    /** ADB calls one at a time, in order, off the main thread (Adb). */
+    private java.util.concurrent.ExecutorService adbThread;
+    /** The last Adb answer (Adb.OK, OFF, …), or -1 while the first check runs. */
+    private int adbStatus = -1;
+    private boolean adbBusy;
+    /** The apps on the Apps page now, with their rows: what Turn all back on brings up to date. */
+    private final List<TvApps.App> shownApps = new ArrayList<>();
+
+    /**
+     * Apps: the TV's own network debugging (Adb) and whether Vibe Launcher may use it, Turn all back on, then
+     * the two lists (appList): the apps you can turn off, and the ones the TV needs. OK on Network debugging, or
+     * the first switch, makes the TV ask whether to allow Vibe Launcher.
+     */
+    private Page apps() {
+        Page page = new Page(ctx.getString(R.string.tab_apps));
+        page.footnote = R.string.apps_short;
+        Row connection = page.add(R.string.adb_connection, this::adbStatusText, null);
+        connection.about = R.string.adb_connection_short;
+        connection.action = () -> {
+            if (adbStatus == Adb.OK) return;
+            runAdb(page, null, r -> {
+            });
+        };
+        Row undo = page.add(R.string.apps_turn_all_on, () -> {
+            int n = TvApps.turnedOff(ctx).size();
+            return n == 0 ? "" : String.valueOf(n);
+        }, () -> turnAllOn(page));
+        undo.about = R.string.apps_turn_all_on_short;
+        // Whether it's allowed already, without making the TV ask.
+        adbStatus = -1;
+        adb().execute(() -> {
+            Adb.Result r = Adb.check(false);
+            handler.post(() -> {
+                adbStatus = r.status;
+                page.refresh();
+            });
+        });
+        page.link(R.string.apps_can_turn_off, null, () -> appList(false));
+        page.link(R.string.apps_tv_needs, null, () -> appList(true));
+        return page;
+    }
+
+    /**
+     * The apps you can turn off (needed false), On or Off, OK switching each; or (true) the ones the TV needs,
+     * grayed, where OK only says why they stay on. Made off the main thread (each app's name is read from it)
+     * and its rows a few at a time, so the page slides in at once.
+     */
+    private Page appList(boolean needed) {
+        Page page = new Page(ctx.getString(needed ? R.string.apps_tv_needs : R.string.apps_can_turn_off));
+        page.footnote = needed ? R.string.app_protected : R.string.apps_short;
+        if (!needed) shownApps.clear();
+        Context app = ctx.getApplicationContext();
+        new Thread(() -> {
+            List<TvApps.App> apps = TvApps.list(app, needed);
+            handler.post(() -> addAppRows(page, apps, 0));
+        }, "TvApps").start();
+        return page;
+    }
+
+    private java.util.concurrent.ExecutorService adb() {
+        if (adbThread == null) adbThread = java.util.concurrent.Executors.newSingleThreadExecutor();
+        return adbThread;
+    }
+
+    /** A dozen more rows a frame, while the page is still open. */
+    private void addAppRows(Page page, List<TvApps.App> apps, int from) {
+        if (!pages.contains(page)) return;
+        int to = Math.min(apps.size(), from + 12);
+        for (int i = from; i < to; i++) {
+            TvApps.App a = apps.get(i);
+            Row row = page.add(a.label, () -> ctx.getString(a.on ? R.string.on : R.string.off), null);
+            if (a.needed) {
+                // Grayed, but still focusable, so OK can say why: the TV needs it, and it stays as it is.
+                row.label.setAlpha(0.45f);
+                row.value.setAlpha(0.45f);
+                row.aboutText = a.pkg + "\n" + ctx.getString(R.string.app_protected);
+                row.action = () -> Toast.makeText(host, R.string.app_protected, Toast.LENGTH_LONG).show();
+                continue;
+            }
+            row.aboutText = a.pkg;
+            row.action = () -> runAdb(page, TvApps.command(a.pkg, !a.on), r -> {
+                boolean wanted = !a.on;
+                a.on = TvApps.isOn(ctx.getPackageManager(), a.pkg);
+                if (a.on == wanted) TvApps.remember(ctx, a.pkg, a.on);
+                else Toast.makeText(host, R.string.adb_failed, Toast.LENGTH_SHORT).show();
+            });
+            shownApps.add(a);
+        }
+        if (to < apps.size()) handler.postDelayed(() -> addAppRows(page, apps, to), 16);
+    }
+
+    /** Every app turned off here and still off, back on in one go. */
+    private void turnAllOn(Page page) {
+        List<String> off = TvApps.turnedOff(ctx);
+        StringBuilder cmd = new StringBuilder();
+        for (String pkg : off) cmd.append(cmd.length() == 0 ? "" : "; ").append(TvApps.command(pkg, true));
+        Runnable tidy = () -> {
+            // The record keeps only what's still off (anything turned on by other means is forgotten too).
+            android.content.pm.PackageManager pm = ctx.getPackageManager();
+            java.util.Set<String> still = new java.util.HashSet<>();
+            for (String pkg : settings.appsOff()) if (!TvApps.isOn(pm, pkg)) still.add(pkg);
+            settings.setAppsOff(still);
+            for (TvApps.App a : shownApps) a.on = TvApps.isOn(pm, a.pkg);
+            Toast.makeText(host, still.isEmpty() ? R.string.apps_all_on : R.string.adb_failed, Toast.LENGTH_SHORT).show();
+            page.refresh();
+        };
+        if (off.isEmpty()) tidy.run();   // nothing to ask the TV for
+        else runAdb(page, cmd.toString(), r -> tidy.run());
+    }
+
+    /**
+     * Runs a shell command through the TV's ADB (or, command null, only connects), asking the TV to allow
+     * Vibe Launcher if it hasn't yet; then, back on the main thread and only if it got in, then. Debugging off
+     * opens Developer options, saying what to turn on. One at a time: OK pressed meanwhile does nothing.
+     */
+    private void runAdb(Page page, String command, java.util.function.Consumer<Adb.Result> then) {
+        if (adbBusy || host == null) return;
+        // What's off can be seen before trying: Developer options not unlocked yet (its About screen, to unlock
+        // them), or USB/ADB debugging off (Developer options). Both are Global settings any app may read.
+        int devOptions = adbSetting(android.provider.Settings.Global.DEVELOPMENT_SETTINGS_ENABLED);
+        int debugging = adbSetting(android.provider.Settings.Global.ADB_ENABLED);
+        if (debugging != 1 && devOptions != 1) {
+            adbStatus = Adb.OFF;
+            explainThenOpen(R.string.adb_dev_options, this::openAbout);
+            page.refresh();
+            return;
+        }
+        if (debugging == 0) {
+            adbStatus = Adb.OFF;
+            openDeveloperOptions();
+            page.refresh();
+            return;
+        }
+        adbBusy = true;
+        if (adbStatus != Adb.OK && adbStatus != Adb.OFF) {
+            Toast.makeText(host, R.string.adb_allow_prompt, Toast.LENGTH_LONG).show();
+        }
+        adb().execute(() -> {
+            Adb.Result r = command != null ? Adb.shell(command, true) : Adb.check(true);
+            handler.post(() -> {
+                adbBusy = false;
+                adbStatus = r.status;
+                if (host == null) return;
+                if (r.status == Adb.OK) {
+                    then.accept(r);
+                } else if (r.status == Adb.OFF) {   // debugging on, but not over the network (port 5555 closed)
+                    openDeveloperOptions();
+                } else {
+                    Toast.makeText(host, r.status == Adb.NO_KEY ? R.string.adb_no_key : R.string.adb_failed,
+                            Toast.LENGTH_LONG).show();
+                }
+                page.refresh();
+            });
+        });
+    }
+
+    /** A Global setting's number, or -1 when the TV doesn't have it. */
+    private int adbSetting(String name) {
+        return android.provider.Settings.Global.getInt(ctx.getContentResolver(), name, -1);
+    }
+
+    /** Developer options, once the window has said what to turn on there. */
+    private void openDeveloperOptions() {
+        explainThenOpen(R.string.adb_turn_on, () -> {
+            try {
+                host.startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
+            } catch (RuntimeException e) {
+                // not there on this TV: the window said where to look
+            }
+        });
+    }
+
+    /**
+     * What to do in Android's settings, in a window like the update's (a message at the bottom of the screen went
+     * before it could be read), and Continue to open them; Cancel stays here.
+     */
+    private void explainThenOpen(int message, Runnable open) {
+        if (host == null) return;
+        Activity activity = host;
+        View panel = LayoutInflater.from(ctx).inflate(R.layout.dialog_update,
+                activity.findViewById(android.R.id.content), false);
+        ((TextView) panel.findViewById(R.id.updateTitle)).setText(R.string.adb_connection);
+        ((TextView) panel.findViewById(R.id.notes)).setText(message);
+        TextView go = panel.findViewById(R.id.install), cancel = panel.findViewById(R.id.cancelUpdate);
+        go.setText(R.string.continue_button);
+        Dialog dialog = new Dialog(activity, android.R.style.Theme_Material_Dialog_NoActionBar);
+        dialog.setContentView(panel);
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            window.setLayout((int) (560 * density), ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+        Highlight.pill(go, highlight);
+        Highlight.pill(cancel, highlight);
+        cancel.setOnClickListener(v -> dialog.dismiss());
+        go.setOnClickListener(v -> {
+            dialog.dismiss();
+            if (host == activity) open.run();
+        });
+        dialog.show();
+        go.requestFocus();
+    }
+
+    /**
+     * The TV's About screen, where pressing Build seven times unlocks Developer options. Its action can lead to
+     * several screens (Sony's Settings answers it with four, About among them, which would show a chooser): the
+     * one named About, or the only one; failing that, Settings itself.
+     */
+    private void openAbout() {
+        Intent about = new Intent(android.provider.Settings.ACTION_DEVICE_INFO_SETTINGS);
+        List<android.content.pm.ResolveInfo> found = host.getPackageManager().queryIntentActivities(about, 0);
+        android.content.pm.ActivityInfo pick = found.size() == 1 ? found.get(0).activityInfo : null;
+        for (android.content.pm.ResolveInfo r : found) {
+            if (r.activityInfo.name.toLowerCase(java.util.Locale.ROOT).contains("about")) pick = r.activityInfo;
+        }
+        Intent open = pick != null ? about.setClassName(pick.packageName, pick.name)
+                : new Intent(android.provider.Settings.ACTION_SETTINGS);
+        try {
+            host.startActivity(open);
+        } catch (RuntimeException e) {
+            // the window said where to look
+        }
+    }
+
+    private CharSequence adbStatusText() {
+        if (adbStatus == -1) return ctx.getString(R.string.adb_checking);
+        if (adbStatus == Adb.OK) return ctx.getString(R.string.adb_ready);
+        if (adbStatus == Adb.OFF) return ctx.getString(R.string.off);
+        return ctx.getString(R.string.adb_not_allowed);
+    }
+
     // ---- sliding between pages ---------------------------------------------------------------------
 
     /** Puts a page's list in the right column (offset 0) or the left one (offset leftX - rightX). */
@@ -1051,6 +1288,10 @@ final class SettingsScreen {
     }
 
     private void showAbout(Page page, Row row) {
+        if (row.aboutText != null) {
+            page.about.setText(row.aboutText);
+            return;
+        }
         int text = row.about != 0 ? row.about : page.footnote;
         if (text == 0) page.about.setText(null);
         else page.about.setText(text);

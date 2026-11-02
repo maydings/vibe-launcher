@@ -154,4 +154,23 @@
     <string name="restore_failed">Nakala hiyo haikuweza kusomwa</string>
     <string name="restored">Mipangilio imerejeshwa</string>
     <string name="storage_denied">Vibe Launcher inahitaji ruhusa ya hifadhi kwa hili</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Programu</string>
+    <string name="apps_short">Zima programu usizotumia: zinabaki zimesakinishwa, lakini haziwezi kufanya kazi, kujaza skrini ya mwanzo au kusasishwa hadi uziwashe tena. Sehemu ambazo TV inahitaji ili ifanye kazi hazijaorodheshwa.</string>
+    <string name="adb_connection">Utatuzi kupitia mtandao</string>
+    <string name="adb_connection_short">Vibe Launcher huzima programu kupitia utatuzi wa mtandao wa TV, kama kompyuta ingefanya. Uwashe katika Chaguo za wasanidi programu, kisha ubonyeze OK hapa na uruhusu Vibe Launcher kwenye TV.</string>
+    <string name="adb_ready">Imeunganishwa</string>
+    <string name="adb_not_allowed">Bado hairuhusiwi</string>
+    <string name="adb_checking">Inakagua…</string>
+    <string name="adb_allow_prompt">Kwenye swali la TV, weka tiki kwenye Ruhusu kila wakati, kisha uchague OK</string>
+    <string name="adb_turn_on">Washa utatuzi kupitia mtandao (au utatuzi wa ADB) katika Chaguo za wasanidi programu, kisha urudi hapa</string>
+    <string name="adb_failed">TV haikuruhusu hilo</string>
+    <string name="apps_turn_all_on">Washa zote tena</string>
+    <string name="apps_turn_all_on_short">Huwasha tena kila programu ambayo Vibe Launcher ilizima.</string>
+    <string name="apps_all_on">Zote zimewashwa tena</string>
+    <string name="adb_no_key">TV hii haiwezi kuhifadhi ufunguo ambao Vibe Launcher inahitaji</string>
+    <string name="apps_can_turn_off">Programu unazoweza kuzima</string>
+    <string name="apps_tv_needs">Programu ambazo TV inahitaji</string>
+    <string name="app_protected">TV yako inahitaji hii ili ifanye kazi ipasavyo, kwa hivyo Vibe Launcher haitaizima. Hii huweka TV yako salama.</string>
+    <string name="adb_dev_options">Washa Chaguo za wasanidi programu kwanza: katika Kuhusu, bonyeza OK kwenye Muundo mara saba, kisha urudi hapa.</string>
 </resources>

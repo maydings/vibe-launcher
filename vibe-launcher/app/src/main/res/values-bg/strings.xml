@@ -154,4 +154,23 @@
     <string name="restore_failed">Това копие не може да бъде прочетено</string>
     <string name="restored">Настройките са възстановени</string>
     <string name="storage_denied">Vibe Launcher се нуждае от достъп до хранилището за това</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Приложения</string>
+    <string name="apps_short">Изключете приложенията, които не използвате: те остават инсталирани, но не могат да се изпълняват, да пълнят началния екран или да се актуализират, докато не ги включите отново. Частите, нужни на телевизора, за да работи, не са показани.</string>
+    <string name="adb_connection">Отстраняване на грешки през мрежата</string>
+    <string name="adb_connection_short">Vibe Launcher изключва приложения чрез отстраняването на грешки през мрежата на телевизора, както би го направил компютър. Включете го в „Опции за програмисти“, след това натиснете OK тук и разрешете Vibe Launcher на телевизора.</string>
+    <string name="adb_ready">Свързано</string>
+    <string name="adb_not_allowed">Още не е разрешено</string>
+    <string name="adb_checking">Проверява се…</string>
+    <string name="adb_allow_prompt">Във въпроса на телевизора отметнете „Винаги да се разрешава“, след това изберете OK</string>
+    <string name="adb_turn_on">Включете отстраняването на грешки през мрежата (или през ADB) в „Опции за програмисти“ и се върнете тук</string>
+    <string name="adb_failed">Телевизорът не го разреши</string>
+    <string name="apps_turn_all_on">Включване на всички отново</string>
+    <string name="apps_turn_all_on_short">Включва отново всички приложения, които Vibe Launcher е изключил.</string>
+    <string name="apps_all_on">Всички са включени отново</string>
+    <string name="adb_no_key">Този телевизор не може да съхрани ключа, нужен на Vibe Launcher</string>
+    <string name="apps_can_turn_off">Приложения, които можете да изключите</string>
+    <string name="apps_tv_needs">Приложения, нужни на телевизора</string>
+    <string name="app_protected">Телевизорът ви се нуждае от това, за да работи правилно, затова Vibe Launcher няма да го изключи. Така телевизорът ви остава защитен.</string>
+    <string name="adb_dev_options">Първо включете „Опции за програмисти“: в „Информация“ натиснете OK върху „Компилация“ седем пъти, след това се върнете тук.</string>
 </resources>

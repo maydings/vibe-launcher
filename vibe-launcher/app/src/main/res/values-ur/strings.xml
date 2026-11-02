@@ -154,4 +154,23 @@
     <string name="restore_failed">وہ بیک اپ پڑھا نہیں جا سکا</string>
     <string name="restored">ترتیبات بحال ہو گئیں</string>
     <string name="storage_denied">اس کے لیے Vibe Launcher کو اسٹوریج تک رسائی درکار ہے</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">ایپس</string>
+    <string name="apps_short">جو ایپس آپ استعمال نہیں کرتے انہیں آف کریں: وہ انسٹال رہتی ہیں، لیکن جب تک آپ انہیں دوبارہ آن نہ کریں، نہ چل سکتی ہیں، نہ ہوم اسکرین بھر سکتی ہیں اور نہ اپڈیٹ ہو سکتی ہیں۔ ٹی وی کے کام کرنے کے لیے ضروری حصے یہاں نہیں دکھائے جاتے۔</string>
+    <string name="adb_connection">نیٹ ورک ڈیبگنگ</string>
+    <string name="adb_connection_short">Vibe Launcher کمپیوٹر کی طرح ٹی وی کی نیٹ ورک ڈیبگنگ کے ذریعے ایپس آف کرتا ہے۔ اسے ڈویلپر کے اختیارات میں آن کریں، پھر یہاں OK دبائیں اور ٹی وی پر Vibe Launcher کو اجازت دیں۔</string>
+    <string name="adb_ready">منسلک ہے</string>
+    <string name="adb_not_allowed">ابھی اجازت نہیں ملی</string>
+    <string name="adb_checking">جانچ ہو رہی ہے…</string>
+    <string name="adb_allow_prompt">ٹی وی کے سوال پر ہمیشہ اجازت دیں پر نشان لگائیں، پھر OK منتخب کریں</string>
+    <string name="adb_turn_on">ڈویلپر کے اختیارات میں نیٹ ورک ڈیبگنگ (یا ADB ڈیبگنگ) آن کریں، پھر یہاں واپس آئیں</string>
+    <string name="adb_failed">ٹی وی نے اس کی اجازت نہیں دی</string>
+    <string name="apps_turn_all_on">سب دوبارہ آن کریں</string>
+    <string name="apps_turn_all_on_short">Vibe Launcher نے جو بھی ایپس آف کیں، ان سب کو دوبارہ آن کرتا ہے۔</string>
+    <string name="apps_all_on">سب دوبارہ آن ہو گئیں</string>
+    <string name="adb_no_key">یہ ٹی وی وہ کلید نہیں رکھ سکتا جس کی Vibe Launcher کو ضرورت ہے</string>
+    <string name="apps_can_turn_off">ایپس جنہیں آپ آف کر سکتے ہیں</string>
+    <string name="apps_tv_needs">ایپس جن کی ٹی وی کو ضرورت ہے</string>
+    <string name="app_protected">آپ کے ٹی وی کو ٹھیک سے کام کرنے کے لیے اس کی ضرورت ہے، اس لیے Vibe Launcher اسے آف نہیں کرے گا۔ اس سے آپ کا ٹی وی محفوظ رہتا ہے۔</string>
+    <string name="adb_dev_options">پہلے ڈویلپر کے اختیارات آن کریں: تعارف میں بلڈ پر سات بار OK دبائیں، پھر یہاں واپس آئیں۔</string>
 </resources>

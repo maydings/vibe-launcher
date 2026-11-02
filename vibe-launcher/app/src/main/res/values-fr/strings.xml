@@ -154,4 +154,23 @@
     <string name="restore_failed">Impossible de lire cette sauvegarde</string>
     <string name="restored">Réglages restaurés</string>
     <string name="storage_denied">Vibe Launcher a besoin d\'accéder au stockage pour cela</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Applis</string>
+    <string name="apps_short">Désactivez les applis que vous n\'utilisez pas : elles restent installées, mais ne peuvent plus s\'exécuter, remplir l\'écran d\'accueil ni se mettre à jour tant que vous ne les réactivez pas. Les éléments dont le téléviseur a besoin pour fonctionner ne sont pas listés.</string>
+    <string name="adb_connection">Débogage réseau</string>
+    <string name="adb_connection_short">Vibe Launcher désactive les applis via le débogage réseau du téléviseur, comme le ferait un ordinateur. Activez-le dans les Options pour les développeurs, puis appuyez sur OK ici et autorisez Vibe Launcher sur le téléviseur.</string>
+    <string name="adb_ready">Connecté</string>
+    <string name="adb_not_allowed">Pas encore autorisé</string>
+    <string name="adb_checking">Vérification…</string>
+    <string name="adb_allow_prompt">Dans la question affichée sur le téléviseur, cochez Toujours autoriser, puis choisissez OK</string>
+    <string name="adb_turn_on">Activez le débogage réseau (ou le débogage ADB) dans les Options pour les développeurs, puis revenez ici</string>
+    <string name="adb_failed">Le téléviseur ne l\'a pas autorisé</string>
+    <string name="apps_turn_all_on">Tout réactiver</string>
+    <string name="apps_turn_all_on_short">Réactive toutes les applis que Vibe Launcher a désactivées.</string>
+    <string name="apps_all_on">Tout a été réactivé</string>
+    <string name="adb_no_key">Ce téléviseur ne peut pas conserver la clé dont Vibe Launcher a besoin</string>
+    <string name="apps_can_turn_off">Applis que vous pouvez désactiver</string>
+    <string name="apps_tv_needs">Applis dont le téléviseur a besoin</string>
+    <string name="app_protected">Votre téléviseur en a besoin pour fonctionner correctement, Vibe Launcher ne le désactivera donc pas. Cela protège votre téléviseur.</string>
+    <string name="adb_dev_options">Activez d\'abord les Options pour les développeurs : dans À propos, appuyez sept fois sur OK sur Build, puis revenez ici.</string>
 </resources>

@@ -154,4 +154,23 @@
     <string name="restore_failed">Αυτό το αντίγραφο δεν μπόρεσε να διαβαστεί</string>
     <string name="restored">Οι ρυθμίσεις επαναφέρθηκαν</string>
     <string name="storage_denied">Το Vibe Launcher χρειάζεται πρόσβαση στον αποθηκευτικό χώρο για αυτό</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Εφαρμογές</string>
+    <string name="apps_short">Απενεργοποιήστε τις εφαρμογές που δεν χρησιμοποιείτε: παραμένουν εγκατεστημένες, αλλά δεν μπορούν να εκτελούνται, να γεμίζουν την αρχική οθόνη ή να ενημερώνονται μέχρι να τις ενεργοποιήσετε ξανά. Τα μέρη που χρειάζεται η τηλεόραση για να λειτουργεί δεν εμφανίζονται.</string>
+    <string name="adb_connection">Εντοπισμός σφαλμάτων μέσω δικτύου</string>
+    <string name="adb_connection_short">Το Vibe Launcher απενεργοποιεί εφαρμογές μέσω του εντοπισμού σφαλμάτων δικτύου της τηλεόρασης, όπως θα έκανε ένας υπολογιστής. Ενεργοποιήστε τον στις Επιλογές για προγραμματιστές, έπειτα πατήστε OK εδώ και επιτρέψτε το Vibe Launcher στην τηλεόραση.</string>
+    <string name="adb_ready">Συνδέθηκε</string>
+    <string name="adb_not_allowed">Δεν επιτρέπεται ακόμα</string>
+    <string name="adb_checking">Έλεγχος…</string>
+    <string name="adb_allow_prompt">Στην ερώτηση της τηλεόρασης, επιλέξτε Να επιτρέπεται πάντα και, στη συνέχεια, OK</string>
+    <string name="adb_turn_on">Ενεργοποιήστε τον εντοπισμό σφαλμάτων μέσω δικτύου (ή μέσω ADB) στις Επιλογές για προγραμματιστές και επιστρέψτε εδώ</string>
+    <string name="adb_failed">Η τηλεόραση δεν το επέτρεψε</string>
+    <string name="apps_turn_all_on">Επανενεργοποίηση όλων</string>
+    <string name="apps_turn_all_on_short">Ενεργοποιεί ξανά κάθε εφαρμογή που απενεργοποίησε το Vibe Launcher.</string>
+    <string name="apps_all_on">Όλες ενεργοποιήθηκαν ξανά</string>
+    <string name="adb_no_key">Αυτή η τηλεόραση δεν μπορεί να διατηρήσει το κλειδί που χρειάζεται το Vibe Launcher</string>
+    <string name="apps_can_turn_off">Εφαρμογές που μπορείτε να απενεργοποιήσετε</string>
+    <string name="apps_tv_needs">Εφαρμογές που χρειάζεται η τηλεόραση</string>
+    <string name="app_protected">Η τηλεόρασή σας το χρειάζεται για να λειτουργεί σωστά, οπότε το Vibe Launcher δεν θα το απενεργοποιήσει. Έτσι η τηλεόρασή σας παραμένει ασφαλής.</string>
+    <string name="adb_dev_options">Ενεργοποιήστε πρώτα τις Επιλογές για προγραμματιστές: στις Πληροφορίες, πατήστε OK στην Έκδοση επτά φορές και επιστρέψτε εδώ.</string>
 </resources>

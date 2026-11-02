@@ -154,4 +154,23 @@
     <string name="restore_failed">Säkerhetskopian kunde inte läsas</string>
     <string name="restored">Inställningarna återställdes</string>
     <string name="storage_denied">Vibe Launcher behöver lagringsåtkomst för det här</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Appar</string>
+    <string name="apps_short">Stäng av appar du inte använder: de förblir installerade men kan inte köras, fylla startskärmen eller uppdateras förrän du slår på dem igen. Delar som tv:n behöver för att fungera visas inte.</string>
+    <string name="adb_connection">Nätverksfelsökning</string>
+    <string name="adb_connection_short">Vibe Launcher stänger av appar via tv:ns nätverksfelsökning, precis som en dator skulle göra. Slå på det i Utvecklaralternativ, tryck sedan på OK här och tillåt Vibe Launcher på tv:n.</string>
+    <string name="adb_ready">Ansluten</string>
+    <string name="adb_not_allowed">Inte tillåtet än</string>
+    <string name="adb_checking">Kontrollerar…</string>
+    <string name="adb_allow_prompt">Markera Tillåt alltid i frågan på tv:n och välj sedan OK</string>
+    <string name="adb_turn_on">Slå på nätverksfelsökning (eller ADB-felsökning) i Utvecklaralternativ och kom sedan tillbaka hit</string>
+    <string name="adb_failed">Tv:n tillät inte det</string>
+    <string name="apps_turn_all_on">Slå på alla igen</string>
+    <string name="apps_turn_all_on_short">Slår på alla appar igen som Vibe Launcher har stängt av.</string>
+    <string name="apps_all_on">Alla är påslagna igen</string>
+    <string name="adb_no_key">Den här tv:n kan inte spara nyckeln som Vibe Launcher behöver</string>
+    <string name="apps_can_turn_off">Appar du kan stänga av</string>
+    <string name="apps_tv_needs">Appar som tv:n behöver</string>
+    <string name="app_protected">Tv:n behöver detta för att fungera som den ska, så Vibe Launcher stänger inte av det. Det håller din tv säker.</string>
+    <string name="adb_dev_options">Slå först på Utvecklaralternativ: under Om trycker du på OK på Version sju gånger och kommer sedan tillbaka hit.</string>
 </resources>

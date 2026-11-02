@@ -154,4 +154,23 @@
     <string name="restore_failed">Túto zálohu sa nepodarilo prečítať</string>
     <string name="restored">Nastavenia obnovené</string>
     <string name="storage_denied">Vibe Launcher na to potrebuje prístup k úložisku</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Aplikácie</string>
+    <string name="apps_short">Vypnite aplikácie, ktoré nepoužívate: zostanú nainštalované, ale nebudú sa môcť spúšťať, zapĺňať domovskú obrazovku ani aktualizovať, kým ich znova nezapnete. Časti, ktoré televízor potrebuje na fungovanie, tu nie sú uvedené.</string>
+    <string name="adb_connection">Ladenie cez sieť</string>
+    <string name="adb_connection_short">Vibe Launcher vypína aplikácie pomocou ladenia cez sieť v televízore, rovnako ako by to urobil počítač. Zapnite ho v sekcii Pre vývojárov, potom tu stlačte OK a v televízore povoľte Vibe Launcher.</string>
+    <string name="adb_ready">Pripojené</string>
+    <string name="adb_not_allowed">Zatiaľ nepovolené</string>
+    <string name="adb_checking">Kontroluje sa…</string>
+    <string name="adb_allow_prompt">V otázke na televízore začiarknite Vždy povoliť a potom vyberte OK</string>
+    <string name="adb_turn_on">Zapnite ladenie cez sieť (alebo ladenie ADB) v sekcii Pre vývojárov a potom sa sem vráťte</string>
+    <string name="adb_failed">Televízor to nepovolil</string>
+    <string name="apps_turn_all_on">Znova zapnúť všetky</string>
+    <string name="apps_turn_all_on_short">Znova zapne všetky aplikácie, ktoré Vibe Launcher vypol.</string>
+    <string name="apps_all_on">Všetky sú znova zapnuté</string>
+    <string name="adb_no_key">Tento televízor nemôže uchovať kľúč, ktorý Vibe Launcher potrebuje</string>
+    <string name="apps_can_turn_off">Aplikácie, ktoré môžete vypnúť</string>
+    <string name="apps_tv_needs">Aplikácie, ktoré televízor potrebuje</string>
+    <string name="app_protected">Televízor to potrebuje na správne fungovanie, preto to Vibe Launcher nevypne. Váš televízor tak zostane v bezpečí.</string>
+    <string name="adb_dev_options">Najprv zapnite sekciu Pre vývojárov: v časti Informácie stlačte sedemkrát OK na položke Zostava a potom sa sem vráťte.</string>
 </resources>

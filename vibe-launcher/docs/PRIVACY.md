@@ -31,6 +31,12 @@ saved in the Download folder, which stays until you delete it.
 | Uninstall requests (`REQUEST_DELETE_PACKAGES`) | so the tile menu can open Android's own uninstall screen |
 | Storage (`WRITE_EXTERNAL_STORAGE`, Android 10 and older only) | to save a settings backup in the Download folder and read it back, asked the first time you do |
 | **GitHub build only:** install packages (`REQUEST_INSTALL_PACKAGES`), close background apps (`KILL_BACKGROUND_PROCESSES`) | to install its own updates and SmartTube when you ask; Android asks you to confirm each install. The second closes the TV's Settings in the background so its install switch shows Vibe Launcher's name |
+| **GitHub build only:** see all apps (`QUERY_ALL_PACKAGES`) | so Settings > Apps can list every app on the TV, system parts too, to turn them off and on. The list stays on the TV |
+
+**Settings > Apps (GitHub build only)** turns apps off through the TV's own network debugging, which you
+turn on and allow yourself. Vibe Launcher connects only to the TV itself (`127.0.0.1`), never to another
+device, with a key it keeps in the TV's Android Keystore. It runs only the commands that turn an app off
+or on, when you choose them; which apps it turned off is kept with its settings (and in a backup).
 
 ## The Home button service (GitHub build only)
 

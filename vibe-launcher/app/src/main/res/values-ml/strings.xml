@@ -154,4 +154,23 @@
     <string name="restore_failed">ആ ബാക്കപ്പ് വായിക്കാനായില്ല</string>
     <string name="restored">ക്രമീകരണം പുനഃസ്ഥാപിച്ചു</string>
     <string name="storage_denied">ഇതിന് Vibe Launcher-ന് സ്റ്റോറേജ് ആക്സസ് വേണം</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">ആപ്പുകൾ</string>
+    <string name="apps_short">നിങ്ങൾ ഉപയോഗിക്കാത്ത ആപ്പുകൾ ഓഫാക്കുക: അവ ഇൻസ്റ്റാൾ ചെയ്‌തുതന്നെ നിലനിൽക്കും, എന്നാൽ വീണ്ടും ഓണാക്കുന്നത് വരെ അവയ്ക്ക് പ്രവർത്തിക്കാനോ ഹോം സ്‌ക്രീൻ നിറയ്ക്കാനോ അപ്‌ഡേറ്റ് ചെയ്യാനോ കഴിയില്ല. ടിവി പ്രവർത്തിക്കാൻ ആവശ്യമായ ഭാഗങ്ങൾ ലിസ്റ്റ് ചെയ്യുന്നില്ല.</string>
+    <string name="adb_connection">നെറ്റ്‌വർക്ക് ഡീബഗ്ഗിംഗ്</string>
+    <string name="adb_connection_short">ഒരു കമ്പ്യൂട്ടർ ചെയ്യുന്നതുപോലെ, ടിവിയുടെ നെറ്റ്‌വർക്ക് ഡീബഗ്ഗിംഗ് വഴി Vibe Launcher ആപ്പുകൾ ഓഫാക്കുന്നു. ഡെവലപ്പർ ഓപ്ഷനുകളിൽ ഇത് ഓണാക്കുക, തുടർന്ന് ഇവിടെ OK അമർത്തി ടിവിയിൽ Vibe Launcher-നെ അനുവദിക്കുക.</string>
+    <string name="adb_ready">കണക്റ്റ് ചെയ്‌തു</string>
+    <string name="adb_not_allowed">ഇതുവരെ അനുവദിച്ചിട്ടില്ല</string>
+    <string name="adb_checking">പരിശോധിക്കുന്നു…</string>
+    <string name="adb_allow_prompt">ടിവിയുടെ ചോദ്യത്തിൽ എപ്പോഴും അനുവദിക്കുക എന്നത് ടിക്ക് ചെയ്‌ത്, തുടർന്ന് OK തിരഞ്ഞെടുക്കുക</string>
+    <string name="adb_turn_on">ഡെവലപ്പർ ഓപ്ഷനുകളിൽ നെറ്റ്‌വർക്ക് ഡീബഗ്ഗിംഗ് (അല്ലെങ്കിൽ ADB ഡീബഗ്ഗിംഗ്) ഓണാക്കുക, തുടർന്ന് ഇവിടേക്ക് മടങ്ങിവരിക</string>
+    <string name="adb_failed">ടിവി അത് അനുവദിച്ചില്ല</string>
+    <string name="apps_turn_all_on">എല്ലാം വീണ്ടും ഓണാക്കുക</string>
+    <string name="apps_turn_all_on_short">Vibe Launcher ഓഫാക്കിയ എല്ലാ ആപ്പും വീണ്ടും ഓണാക്കുന്നു.</string>
+    <string name="apps_all_on">എല്ലാം വീണ്ടും ഓണാക്കി</string>
+    <string name="adb_no_key">Vibe Launcher-ന് ആവശ്യമായ കീ സൂക്ഷിക്കാൻ ഈ ടിവിക്ക് കഴിയില്ല</string>
+    <string name="apps_can_turn_off">ഓഫാക്കാൻ കഴിയുന്ന ആപ്പുകൾ</string>
+    <string name="apps_tv_needs">ടിവിക്ക് ആവശ്യമായ ആപ്പുകൾ</string>
+    <string name="app_protected">നിങ്ങളുടെ ടിവി ശരിയായി പ്രവർത്തിക്കാൻ ഇത് ആവശ്യമാണ്, അതിനാൽ Vibe Launcher ഇത് ഓഫാക്കില്ല. ഇത് നിങ്ങളുടെ ടിവി സുരക്ഷിതമായി നിലനിർത്തുന്നു.</string>
+    <string name="adb_dev_options">ആദ്യം ഡെവലപ്പർ ഓപ്ഷനുകൾ ഓണാക്കുക: ആമുഖം എന്നതിൽ ബിൽഡ് എന്നതിൽ ഏഴ് തവണ OK അമർത്തുക, തുടർന്ന് ഇവിടേക്ക് മടങ്ങിവരിക.</string>
 </resources>

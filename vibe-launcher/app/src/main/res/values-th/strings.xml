@@ -154,4 +154,23 @@
     <string name="restore_failed">อ่านข้อมูลสำรองนั้นไม่ได้</string>
     <string name="restored">กู้คืนการตั้งค่าแล้ว</string>
     <string name="storage_denied">Vibe Launcher ต้องได้รับสิทธิ์เข้าถึงพื้นที่เก็บข้อมูลจึงจะทำสิ่งนี้ได้</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">แอป</string>
+    <string name="apps_short">ปิดใช้แอปที่คุณไม่ได้ใช้ แอปจะยังติดตั้งอยู่ แต่จะทำงาน แสดงเต็มหน้าแรก หรืออัปเดตไม่ได้จนกว่าคุณจะเปิดใช้อีกครั้ง ส่วนที่ทีวีต้องใช้ในการทำงานจะไม่แสดงในรายการ</string>
+    <string name="adb_connection">การแก้ไขข้อบกพร่องผ่านเครือข่าย</string>
+    <string name="adb_connection_short">Vibe Launcher ปิดใช้แอปผ่านการแก้ไขข้อบกพร่องผ่านเครือข่ายของทีวี เช่นเดียวกับที่คอมพิวเตอร์ทำ เปิดฟีเจอร์นี้ในตัวเลือกสำหรับนักพัฒนาซอฟต์แวร์ จากนั้นกด OK ที่นี่ และอนุญาต Vibe Launcher บนทีวี</string>
+    <string name="adb_ready">เชื่อมต่อแล้ว</string>
+    <string name="adb_not_allowed">ยังไม่ได้รับอนุญาต</string>
+    <string name="adb_checking">กำลังตรวจสอบ…</string>
+    <string name="adb_allow_prompt">ในคำถามบนทีวี ให้เลือกช่องอนุญาตเสมอ แล้วเลือก OK</string>
+    <string name="adb_turn_on">เปิดการแก้ไขข้อบกพร่องผ่านเครือข่าย (หรือการแก้ไขข้อบกพร่อง ADB) ในตัวเลือกสำหรับนักพัฒนาซอฟต์แวร์ แล้วกลับมาที่นี่</string>
+    <string name="adb_failed">ทีวีไม่อนุญาต</string>
+    <string name="apps_turn_all_on">เปิดใช้ทั้งหมดอีกครั้ง</string>
+    <string name="apps_turn_all_on_short">เปิดใช้แอปทุกแอปที่ Vibe Launcher ปิดใช้ไว้อีกครั้ง</string>
+    <string name="apps_all_on">เปิดใช้ทั้งหมดอีกครั้งแล้ว</string>
+    <string name="adb_no_key">ทีวีนี้เก็บคีย์ที่ Vibe Launcher ต้องใช้ไม่ได้</string>
+    <string name="apps_can_turn_off">แอปที่คุณปิดใช้ได้</string>
+    <string name="apps_tv_needs">แอปที่ทีวีต้องใช้</string>
+    <string name="app_protected">ทีวีของคุณต้องใช้ส่วนนี้เพื่อให้ทำงานได้อย่างถูกต้อง Vibe Launcher จึงจะไม่ปิดใช้ส่วนนี้ ซึ่งช่วยให้ทีวีของคุณปลอดภัย</string>
+    <string name="adb_dev_options">เปิดตัวเลือกสำหรับนักพัฒนาซอฟต์แวร์ก่อน โดยไปที่เกี่ยวกับ แล้วกด OK ที่บิลด์เจ็ดครั้ง จากนั้นกลับมาที่นี่</string>
 </resources>

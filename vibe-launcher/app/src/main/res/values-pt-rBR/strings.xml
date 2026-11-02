@@ -154,4 +154,23 @@
     <string name="restore_failed">Não foi possível ler esse backup</string>
     <string name="restored">Configurações restauradas</string>
     <string name="storage_denied">O Vibe Launcher precisa de acesso ao armazenamento para isso</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Apps</string>
+    <string name="apps_short">Desative os apps que você não usa: eles continuam instalados, mas não podem ser executados, ocupar a tela inicial nem ser atualizados até você ativá-los de novo. Partes de que a TV precisa para funcionar não aparecem na lista.</string>
+    <string name="adb_connection">Depuração de rede</string>
+    <string name="adb_connection_short">O Vibe Launcher desativa apps pela depuração de rede da TV, como um computador faria. Ative-a nas Opções do desenvolvedor, depois pressione OK aqui e permita o Vibe Launcher na TV.</string>
+    <string name="adb_ready">Conectado</string>
+    <string name="adb_not_allowed">Ainda não permitido</string>
+    <string name="adb_checking">Verificando…</string>
+    <string name="adb_allow_prompt">Na pergunta da TV, marque Sempre permitir e escolha OK</string>
+    <string name="adb_turn_on">Ative a depuração de rede (ou depuração ADB) nas Opções do desenvolvedor e depois volte aqui</string>
+    <string name="adb_failed">A TV não permitiu isso</string>
+    <string name="apps_turn_all_on">Reativar todos</string>
+    <string name="apps_turn_all_on_short">Reativa todos os apps que o Vibe Launcher desativou.</string>
+    <string name="apps_all_on">Todos reativados</string>
+    <string name="adb_no_key">Esta TV não consegue guardar a chave de que o Vibe Launcher precisa</string>
+    <string name="apps_can_turn_off">Apps que você pode desativar</string>
+    <string name="apps_tv_needs">Apps de que a TV precisa</string>
+    <string name="app_protected">Sua TV precisa disto para funcionar corretamente, então o Vibe Launcher não vai desativá-lo. Isso mantém sua TV segura.</string>
+    <string name="adb_dev_options">Ative primeiro as Opções do desenvolvedor: em Sobre, pressione OK em Versão sete vezes e depois volte aqui.</string>
 </resources>

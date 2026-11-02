@@ -7,6 +7,12 @@
     <!-- Closes the TV's Settings while it's in the background before opening its Install unknown apps
          switch, so it lists Vibe Launcher by name (Updater). -->
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <!-- Settings > Apps lists every app on the TV, system parts with no tile too, to turn them off (TvApps):
+         Android 11+ hides those without this. Not in the store build, which has no Settings > Apps. -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:ignore="QueryAllPackagesPermission" />
 
     <application>
         <!-- The installer's answer about an update: its confirmation screen, or why it didn't install;

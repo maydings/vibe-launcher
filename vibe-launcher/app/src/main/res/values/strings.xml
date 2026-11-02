@@ -159,4 +159,23 @@
     <string name="restore_failed">That backup couldn\'t be read</string>
     <string name="restored">Settings restored</string>
     <string name="storage_denied">Vibe Launcher needs storage access for this</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Apps</string>
+    <string name="apps_short">Turn off apps you don\'t use: they stay installed, but can\'t run, fill the home screen or update until you turn them back on. Parts the TV needs to work aren\'t listed.</string>
+    <string name="adb_connection">Network debugging</string>
+    <string name="adb_connection_short">Vibe Launcher turns apps off through the TV\'s network debugging, as a computer would. Turn it on in Developer options, then press OK here and allow Vibe Launcher on the TV.</string>
+    <string name="adb_ready">Connected</string>
+    <string name="adb_not_allowed">Not allowed yet</string>
+    <string name="adb_checking">Checking…</string>
+    <string name="adb_allow_prompt">On the TV\'s question, tick Always allow, then choose OK</string>
+    <string name="adb_turn_on">Turn on network debugging (or ADB debugging) in Developer options, then come back here</string>
+    <string name="adb_failed">The TV didn\'t allow that</string>
+    <string name="apps_turn_all_on">Turn all back on</string>
+    <string name="apps_turn_all_on_short">Turns back on every app Vibe Launcher turned off.</string>
+    <string name="apps_all_on">All turned back on</string>
+    <string name="adb_no_key">This TV can\'t keep the key Vibe Launcher needs</string>
+    <string name="apps_can_turn_off">Apps you can turn off</string>
+    <string name="apps_tv_needs">Apps the TV needs</string>
+    <string name="app_protected">Your TV needs this to work properly, so Vibe Launcher won\'t turn it off. This keeps your TV safe.</string>
+    <string name="adb_dev_options">Turn on Developer options first: in About, press OK on Build seven times, then come back here.</string>
 </resources>

@@ -585,9 +585,19 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 handler.postDelayed(showPictureFromBar, PICTURE_DELAY_MS);
                 return true;
             }
-            if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && (v.getId() == R.id.btnInputs
-                    || (v.getId() == R.id.btnWifi && btnInputs.getVisibility() != View.VISIBLE))) return true;
-            return keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && v.getId() == R.id.btnSettings;
+            // Left and Right only along the bar, to the next pill showing, and nowhere at its ends: left to
+            // Android's focus search, Right could reach a dock folder's mini row, which sits below the bar.
+            if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+                View[] bar = topBarPills();
+                int to = Arrays.asList(bar).indexOf(v) + (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT ? 1 : -1);
+                if (to >= 0 && to < bar.length && bar[to] != v) {
+                    bar[to].requestFocus();
+                    grid.playSoundEffect(keyCode == KeyEvent.KEYCODE_DPAD_RIGHT
+                            ? SoundEffectConstants.NAVIGATION_RIGHT : SoundEffectConstants.NAVIGATION_LEFT);
+                }
+                return true;
+            }
+            return false;
         };
         btnInputs.setOnKeyListener(pillKeys);
         btnWifi.setOnKeyListener(pillKeys);
@@ -1194,8 +1204,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (rowsStay) rowsAway = true;
             else ms = Math.max(ms, slide(rows, 0f));
             if (toTopBar) {
+                // The pill above the tile, or the first: above a dock folder, Android's focus search found its
+                // mini row instead, between the dock and the bar.
                 View card = getCurrentFocus();
                 View above = card != null ? card.focusSearch(View.FOCUS_UP) : null;
+                View[] pills = topBarPills();
+                if (!isPill(above)) above = pills.length > 0 ? pills[0] : null;
                 if (above != null) above.requestFocus();   // its highlight comes down with the top bar
             }
             // The app's name and the tile's glass stay where they are; they show once the rows are back.

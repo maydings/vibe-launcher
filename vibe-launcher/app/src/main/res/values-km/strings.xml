@@ -154,4 +154,23 @@
     <string name="restore_failed">មិនអាចអានការបម្រុងទុកនោះបានទេ</string>
     <string name="restored">បានស្ដារការកំណត់</string>
     <string name="storage_denied">Vibe Launcher ត្រូវការសិទ្ធិចូលប្រើទំហំផ្ទុកសម្រាប់ការនេះ</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">កម្មវិធី</string>
+    <string name="apps_short">បិទកម្មវិធីដែលអ្នកមិនប្រើ៖ វានៅតែបានដំឡើង ប៉ុន្តែមិនអាចដំណើរការ បំពេញអេក្រង់ដើម ឬធ្វើបច្ចុប្បន្នភាពបានទេ រហូតដល់អ្នកបើកវាវិញ។ ផ្នែកដែលទូរទស្សន៍ត្រូវការដើម្បីដំណើរការ មិនត្រូវបានរាយបញ្ជីទេ។</string>
+    <string name="adb_connection">ការជួសជុលកំហុសតាមបណ្ដាញ</string>
+    <string name="adb_connection_short">Vibe Launcher បិទកម្មវិធីតាមរយៈការជួសជុលកំហុសតាមបណ្ដាញរបស់ទូរទស្សន៍ ដូចកុំព្យូទ័រធ្វើដែរ។ បើកវានៅក្នុងជម្រើសអ្នកអភិវឌ្ឍន៍ បន្ទាប់មកចុច OK នៅទីនេះ ហើយអនុញ្ញាត Vibe Launcher នៅលើទូរទស្សន៍។</string>
+    <string name="adb_ready">បានភ្ជាប់</string>
+    <string name="adb_not_allowed">មិនទាន់បានអនុញ្ញាតនៅឡើយ</string>
+    <string name="adb_checking">កំពុងពិនិត្យ…</string>
+    <string name="adb_allow_prompt">នៅក្នុងសំណួររបស់ទូរទស្សន៍ ធីក អនុញ្ញាតជានិច្ច បន្ទាប់មកជ្រើសរើស OK</string>
+    <string name="adb_turn_on">បើកការជួសជុលកំហុសតាមបណ្ដាញ (ឬការជួសជុលកំហុស ADB) នៅក្នុងជម្រើសអ្នកអភិវឌ្ឍន៍ បន្ទាប់មកត្រឡប់មកទីនេះវិញ</string>
+    <string name="adb_failed">ទូរទស្សន៍មិនបានអនុញ្ញាតទេ</string>
+    <string name="apps_turn_all_on">បើកទាំងអស់វិញ</string>
+    <string name="apps_turn_all_on_short">បើកវិញនូវកម្មវិធីទាំងអស់ដែល Vibe Launcher បានបិទ។</string>
+    <string name="apps_all_on">បានបើកទាំងអស់វិញហើយ</string>
+    <string name="adb_no_key">ទូរទស្សន៍នេះមិនអាចរក្សាសោដែល Vibe Launcher ត្រូវការបានទេ</string>
+    <string name="apps_can_turn_off">កម្មវិធីដែលអ្នកអាចបិទបាន</string>
+    <string name="apps_tv_needs">កម្មវិធីដែលទូរទស្សន៍ត្រូវការ</string>
+    <string name="app_protected">ទូរទស្សន៍របស់អ្នកត្រូវការវា ដើម្បីដំណើរការបានត្រឹមត្រូវ ដូច្នេះ Vibe Launcher នឹងមិនបិទវាទេ។ វាជួយរក្សាទូរទស្សន៍របស់អ្នកឱ្យមានសុវត្ថិភាព។</string>
+    <string name="adb_dev_options">បើកជម្រើសអ្នកអភិវឌ្ឍន៍ជាមុនសិន៖ នៅក្នុង អំពី ចុច OK លើ កំណែបង្កើត ប្រាំពីរដង បន្ទាប់មកត្រឡប់មកទីនេះវិញ។</string>
 </resources>

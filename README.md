@@ -10,7 +10,7 @@ and gets out of the way. It works well enough for us that I'd like to share it w
 ![Vibe Launcher: Netflix focused in a four-app dock, with Wake Up Dead Man's backdrop and title logo filling the screen](vibe-launcher/docs/home.jpg)
 
 **[Download the latest APK](https://github.com/maydings/vibe-launcher/releases/latest/download/vibe-launcher.apk)**
-· on the TV, Downloader code **5573341** · Android TV and Google TV, Android 8.0 or newer · about 1.4 MB
+· on the TV, Downloader code **5573341** · Android TV and Google TV, Android 8.0 or newer · about 1.5 MB
 
 ## Highlights
 
@@ -23,6 +23,8 @@ and gets out of the way. It works well enough for us that I'd like to share it w
   your own, chosen and cropped on your phone.
 - **Backup and restore.** Keep everything you've set up in a file on the TV or on your phone, and put
   it back, or on another TV, in one go.
+- **Turn off apps you don't use, no computer needed.** Settings → Apps switches the TV's preinstalled
+  apps off and back on through its own network debugging; the parts your TV needs are protected.
 - **Inputs at a glance.** HDMI ports with what's connected, devices behind a switch listed by name.
 - **A slideshow when idle.** Leave Home alone for a minute and every app's backdrops play full screen.
 - **50 languages.** Follows your TV, or pick one.
@@ -103,8 +105,8 @@ slides in when you press Up from the picture alone, or move down into the app gr
 
 ## Settings
 
-Full screen: the logo on the left and **General**, **Appearance** and
-**API keys** on the right. Picking one slides its list over the logo and its page in on the right;
+Full screen: the logo on the left and **General**, **Appearance**,
+**API keys** and **Apps** (GitHub build) on the right. Picking one slides its list over the logo and its page in on the right;
 Back or Left slides back. Changes apply as you make them: a new number of tiles per row rebuilds Home
 behind Settings, ready when you leave, and a new language rebuilds both (Settings comes back on General
 after a moment). The focused row's explanation shows under the list. Settings is built when Home
@@ -184,6 +186,22 @@ checksum) or opens it to sign in.
 
 | ![API keys: Instructions first, then the TMDB, YouTube and Plex keys, SmartTube and Paste keys from your phone](vibe-launcher/docs/settings-keys.jpg) | ![Instructions: what each key adds and where to get it, a section for each](vibe-launcher/docs/settings-instructions.jpg) |
 |---|---|
+
+**Apps** (the GitHub build): turn off the apps you don't use, as a computer with ADB would, but from the
+TV itself. A turned-off app stays installed, but can't run, fill the home screen or update until you turn
+it back on.
+
+- **Network debugging**: whether Vibe Launcher may use the TV's network debugging. The first time, OK
+  walks you through it: with Developer options still hidden, a window explains how to unlock them and
+  opens About; with debugging off, it says what to turn on and opens Developer options; then the TV asks
+  whether to allow Vibe Launcher (tick Always allow). Vibe Launcher connects to the TV itself
+  (`127.0.0.1:5555`), with a key that never leaves it. Plain network debugging only: TVs that offer
+  just Android 11's Wireless debugging (with a pairing code) aren't supported yet.
+- **Turn all back on**: turns on every app Vibe Launcher turned off, and nothing else.
+- **Apps you can turn off**: every app on the TV by name, On or Off; OK switches it.
+- **Apps the TV needs**: the parts it can't do without, grayed: Android itself, Google Play, Settings,
+  the keyboard, the remote and Bluetooth, Wi-Fi, the inputs and the app that plays them, setup, the
+  launchers, and the TV maker's system parts. Vibe Launcher won't turn these off.
 
 ## Updates
 

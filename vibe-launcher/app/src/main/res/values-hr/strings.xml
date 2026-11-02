@@ -154,4 +154,23 @@
     <string name="restore_failed">Ta se kopija nije mogla pročitati</string>
     <string name="restored">Postavke su vraćene</string>
     <string name="storage_denied">Vibe Launcher za to treba pristup pohrani</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Aplikacije</string>
+    <string name="apps_short">Isključite aplikacije koje ne koristite: ostaju instalirane, ali se ne mogu pokretati, popunjavati početni zaslon ni ažurirati dok ih ponovno ne uključite. Dijelovi koji su televizoru potrebni za rad nisu navedeni.</string>
+    <string name="adb_connection">Otklanjanje pogrešaka putem mreže</string>
+    <string name="adb_connection_short">Vibe Launcher isključuje aplikacije putem mrežnog otklanjanja pogrešaka na televizoru, kao što bi to učinilo računalo. Uključite ga u Opcijama za razvojne programere, zatim ovdje pritisnite OK i dopustite Vibe Launcher na televizoru.</string>
+    <string name="adb_ready">Povezano</string>
+    <string name="adb_not_allowed">Još nije dopušteno</string>
+    <string name="adb_checking">Provjera…</string>
+    <string name="adb_allow_prompt">U pitanju na televizoru označite Uvijek dopusti, a zatim odaberite OK</string>
+    <string name="adb_turn_on">Uključite otklanjanje pogrešaka putem mreže (ili putem ADB-a) u Opcijama za razvojne programere, a zatim se vratite ovamo</string>
+    <string name="adb_failed">Televizor to nije dopustio</string>
+    <string name="apps_turn_all_on">Ponovno uključi sve</string>
+    <string name="apps_turn_all_on_short">Ponovno uključuje sve aplikacije koje je Vibe Launcher isključio.</string>
+    <string name="apps_all_on">Sve je ponovno uključeno</string>
+    <string name="adb_no_key">Ovaj televizor ne može zadržati ključ koji Vibe Launcher treba</string>
+    <string name="apps_can_turn_off">Aplikacije koje možete isključiti</string>
+    <string name="apps_tv_needs">Aplikacije koje su potrebne televizoru</string>
+    <string name="app_protected">Televizoru je ovo potrebno za ispravan rad, pa ga Vibe Launcher neće isključiti. Tako vaš televizor ostaje siguran.</string>
+    <string name="adb_dev_options">Najprije uključite Opcije za razvojne programere: u odjeljku O uređaju sedam puta pritisnite OK na stavci Međuverzija, a zatim se vratite ovamo.</string>
 </resources>

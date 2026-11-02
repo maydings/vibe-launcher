@@ -154,4 +154,23 @@
     <string name="restore_failed">Acel backup nu a putut fi citit</string>
     <string name="restored">Setări restabilite</string>
     <string name="storage_denied">Vibe Launcher are nevoie de acces la stocare pentru asta</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Aplicații</string>
+    <string name="apps_short">Dezactivați aplicațiile pe care nu le folosiți: rămân instalate, dar nu pot rula, nu pot umple ecranul de pornire și nu se pot actualiza până când nu le reactivați. Componentele de care televizorul are nevoie ca să funcționeze nu sunt afișate.</string>
+    <string name="adb_connection">Depanare prin rețea</string>
+    <string name="adb_connection_short">Vibe Launcher dezactivează aplicații prin depanarea prin rețea a televizorului, așa cum ar face un computer. Activați-o din Opțiuni pentru dezvoltatori, apoi apăsați OK aici și permiteți Vibe Launcher pe televizor.</string>
+    <string name="adb_ready">Conectat</string>
+    <string name="adb_not_allowed">Încă nepermis</string>
+    <string name="adb_checking">Se verifică…</string>
+    <string name="adb_allow_prompt">La întrebarea de pe televizor, bifați Permiteți întotdeauna, apoi alegeți OK</string>
+    <string name="adb_turn_on">Activați depanarea prin rețea (sau depanarea ADB) din Opțiuni pentru dezvoltatori, apoi reveniți aici</string>
+    <string name="adb_failed">Televizorul nu a permis acest lucru</string>
+    <string name="apps_turn_all_on">Reactivați-le pe toate</string>
+    <string name="apps_turn_all_on_short">Reactivează toate aplicațiile dezactivate de Vibe Launcher.</string>
+    <string name="apps_all_on">Toate au fost reactivate</string>
+    <string name="adb_no_key">Acest televizor nu poate păstra cheia de care are nevoie Vibe Launcher</string>
+    <string name="apps_can_turn_off">Aplicații pe care le puteți dezactiva</string>
+    <string name="apps_tv_needs">Aplicații de care televizorul are nevoie</string>
+    <string name="app_protected">Televizorul are nevoie de aceasta ca să funcționeze corect, așa că Vibe Launcher nu o va dezactiva. Astfel, televizorul rămâne în siguranță.</string>
+    <string name="adb_dev_options">Mai întâi activați Opțiuni pentru dezvoltatori: în Despre, apăsați OK pe Versiune de șapte ori, apoi reveniți aici.</string>
 </resources>

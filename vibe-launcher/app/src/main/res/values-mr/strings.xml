@@ -154,4 +154,23 @@
     <string name="restore_failed">तो बॅकअप वाचता आला नाही</string>
     <string name="restored">सेटिंग्ज रिस्टोअर केल्या</string>
     <string name="storage_denied">यासाठी Vibe Launcher ला स्टोरेज ॲक्सेस हवा</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">अ‍ॅप्स</string>
+    <string name="apps_short">तुम्ही वापरत नसलेली अ‍ॅप्स बंद करा: ती इंस्टॉल राहतात, पण तुम्ही ती पुन्हा सुरू करेपर्यंत ती चालू शकत नाहीत, होम स्क्रीन भरू शकत नाहीत किंवा अपडेट होऊ शकत नाहीत. टीव्हीला काम करण्यासाठी आवश्यक भाग येथे दाखवले जात नाहीत.</string>
+    <string name="adb_connection">नेटवर्क डीबगिंग</string>
+    <string name="adb_connection_short">Vibe Launcher संगणकाप्रमाणेच टीव्हीच्या नेटवर्क डीबगिंगद्वारे अ‍ॅप्स बंद करते. ते डेव्हलपर पर्याय मध्ये सुरू करा, नंतर येथे OK दाबा आणि टीव्हीवर Vibe Launcher ला अनुमती द्या.</string>
+    <string name="adb_ready">कनेक्ट झाले</string>
+    <string name="adb_not_allowed">अद्याप अनुमती नाही</string>
+    <string name="adb_checking">तपासत आहे…</string>
+    <string name="adb_allow_prompt">टीव्हीच्या प्रश्नावर नेहमी अनुमती द्या वर खूण करा, नंतर OK निवडा</string>
+    <string name="adb_turn_on">डेव्हलपर पर्याय मध्ये नेटवर्क डीबगिंग (किंवा ADB डीबगिंग) सुरू करा, नंतर येथे परत या</string>
+    <string name="adb_failed">टीव्हीने याची अनुमती दिली नाही</string>
+    <string name="apps_turn_all_on">सर्व पुन्हा सुरू करा</string>
+    <string name="apps_turn_all_on_short">Vibe Launcher ने बंद केलेली सर्व अ‍ॅप्स पुन्हा सुरू करते.</string>
+    <string name="apps_all_on">सर्व पुन्हा सुरू झाली</string>
+    <string name="adb_no_key">हा टीव्ही Vibe Launcher ला लागणारी की ठेवू शकत नाही</string>
+    <string name="apps_can_turn_off">तुम्ही बंद करू शकता ती अ‍ॅप्स</string>
+    <string name="apps_tv_needs">टीव्हीला आवश्यक असलेली अ‍ॅप्स</string>
+    <string name="app_protected">तुमच्या टीव्हीला व्यवस्थित काम करण्यासाठी याची आवश्यकता आहे, त्यामुळे Vibe Launcher ते बंद करणार नाही. यामुळे तुमचा टीव्ही सुरक्षित राहतो.</string>
+    <string name="adb_dev_options">आधी डेव्हलपर पर्याय सुरू करा: बद्दल मध्ये बिल्ड वर सात वेळा OK दाबा, नंतर येथे परत या.</string>
 </resources>

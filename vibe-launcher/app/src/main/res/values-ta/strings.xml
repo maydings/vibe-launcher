@@ -154,4 +154,23 @@
     <string name="restore_failed">அந்தக் காப்புப் பிரதியைப் படிக்க முடியவில்லை</string>
     <string name="restored">அமைப்புகள் மீட்டமைக்கப்பட்டன</string>
     <string name="storage_denied">இதற்கு Vibe Launcher-க்குச் சேமிப்பக அணுகல் தேவை</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">ஆப்ஸ்</string>
+    <string name="apps_short">நீங்கள் பயன்படுத்தாத ஆப்ஸை முடக்கவும்: அவை நிறுவப்பட்டே இருக்கும், ஆனால் மீண்டும் இயக்கும் வரை அவற்றால் இயங்கவோ, முகப்புத் திரையை நிரப்பவோ, புதுப்பிக்கப்படவோ முடியாது. டிவி இயங்கத் தேவையான பகுதிகள் பட்டியலிடப்படாது.</string>
+    <string name="adb_connection">நெட்வொர்க் பிழைதிருத்தம்</string>
+    <string name="adb_connection_short">Vibe Launcher ஒரு கம்ப்யூட்டரைப் போலவே டிவியின் நெட்வொர்க் பிழைதிருத்தம் மூலம் ஆப்ஸை முடக்குகிறது. டெவெலப்பர் விருப்பங்களில் அதை இயக்கி, பிறகு இங்கே OK-ஐ அழுத்தி, டிவியில் Vibe Launcher-ஐ அனுமதிக்கவும்.</string>
+    <string name="adb_ready">இணைக்கப்பட்டது</string>
+    <string name="adb_not_allowed">இன்னும் அனுமதிக்கப்படவில்லை</string>
+    <string name="adb_checking">சரிபார்க்கிறது…</string>
+    <string name="adb_allow_prompt">டிவியின் கேள்வியில் எப்போதும் அனுமதி என்பதைத் தேர்வுசெய்து, பிறகு OK-ஐத் தேர்ந்தெடுக்கவும்</string>
+    <string name="adb_turn_on">டெவெலப்பர் விருப்பங்களில் நெட்வொர்க் பிழைதிருத்தத்தை (அல்லது ADB பிழைதிருத்தத்தை) இயக்கி, பிறகு இங்கே திரும்பவும்</string>
+    <string name="adb_failed">டிவி அதை அனுமதிக்கவில்லை</string>
+    <string name="apps_turn_all_on">அனைத்தையும் மீண்டும் இயக்கு</string>
+    <string name="apps_turn_all_on_short">Vibe Launcher முடக்கிய எல்லா ஆப்ஸையும் மீண்டும் இயக்கும்.</string>
+    <string name="apps_all_on">அனைத்தும் மீண்டும் இயக்கப்பட்டன</string>
+    <string name="adb_no_key">Vibe Launcher-க்குத் தேவையான சாவியை இந்த டிவியால் வைத்திருக்க முடியாது</string>
+    <string name="apps_can_turn_off">நீங்கள் முடக்கக்கூடிய ஆப்ஸ்</string>
+    <string name="apps_tv_needs">டிவிக்குத் தேவையான ஆப்ஸ்</string>
+    <string name="app_protected">உங்கள் டிவி சரியாக இயங்க இது தேவை, எனவே Vibe Launcher இதை முடக்காது. இது உங்கள் டிவியைப் பாதுகாப்பாக வைத்திருக்கும்.</string>
+    <string name="adb_dev_options">முதலில் டெவெலப்பர் விருப்பங்களை இயக்கவும்: அறிமுகம் என்பதில் பதிப்பு என்பதில் ஏழு முறை OK-ஐ அழுத்தி, பிறகு இங்கே திரும்பவும்.</string>
 </resources>

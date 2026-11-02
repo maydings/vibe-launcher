@@ -154,4 +154,23 @@
     <string name="restore_failed">ਉਹ ਬੈਕਅੱਪ ਪੜ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ</string>
     <string name="restored">ਸੈਟਿੰਗਾਂ ਰੀਸਟੋਰ ਹੋ ਗਈਆਂ</string>
     <string name="storage_denied">ਇਸ ਲਈ Vibe Launcher ਨੂੰ ਸਟੋਰੇਜ ਪਹੁੰਚ ਚਾਹੀਦੀ ਹੈ</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">ਐਪਾਂ</string>
+    <string name="apps_short">ਜਿਹੜੀਆਂ ਐਪਾਂ ਤੁਸੀਂ ਨਹੀਂ ਵਰਤਦੇ, ਉਨ੍ਹਾਂ ਨੂੰ ਬੰਦ ਕਰੋ: ਉਹ ਸਥਾਪਤ ਰਹਿੰਦੀਆਂ ਹਨ, ਪਰ ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਉਨ੍ਹਾਂ ਨੂੰ ਮੁੜ ਚਾਲੂ ਨਹੀਂ ਕਰਦੇ, ਉਹ ਚੱਲ ਨਹੀਂ ਸਕਦੀਆਂ, ਹੋਮ ਸਕ੍ਰੀਨ ਨਹੀਂ ਭਰ ਸਕਦੀਆਂ ਜਾਂ ਅੱਪਡੇਟ ਨਹੀਂ ਹੋ ਸਕਦੀਆਂ। ਟੀਵੀ ਨੂੰ ਚੱਲਣ ਲਈ ਲੋੜੀਂਦੇ ਹਿੱਸੇ ਇੱਥੇ ਨਹੀਂ ਦਿਖਾਏ ਜਾਂਦੇ।</string>
+    <string name="adb_connection">ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ</string>
+    <string name="adb_connection_short">Vibe Launcher ਕੰਪਿਊਟਰ ਵਾਂਗ ਹੀ ਟੀਵੀ ਦੀ ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ ਰਾਹੀਂ ਐਪਾਂ ਬੰਦ ਕਰਦਾ ਹੈ। ਇਸਨੂੰ ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ ਚਾਲੂ ਕਰੋ, ਫਿਰ ਇੱਥੇ OK ਦਬਾਓ ਅਤੇ ਟੀਵੀ ਉੱਤੇ Vibe Launcher ਨੂੰ ਇਜਾਜ਼ਤ ਦਿਓ।</string>
+    <string name="adb_ready">ਕਨੈਕਟ ਹੈ</string>
+    <string name="adb_not_allowed">ਹਾਲੇ ਇਜਾਜ਼ਤ ਨਹੀਂ</string>
+    <string name="adb_checking">ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…</string>
+    <string name="adb_allow_prompt">ਟੀਵੀ ਦੇ ਸਵਾਲ ਵਿੱਚ ਹਮੇਸ਼ਾਂ ਇਜਾਜ਼ਤ ਦਿਓ ਉੱਤੇ ਨਿਸ਼ਾਨ ਲਗਾਓ, ਫਿਰ OK ਚੁਣੋ</string>
+    <string name="adb_turn_on">ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ (ਜਾਂ ADB ਡੀਬੱਗਿੰਗ) ਚਾਲੂ ਕਰੋ, ਫਿਰ ਇੱਥੇ ਵਾਪਸ ਆਓ</string>
+    <string name="adb_failed">ਟੀਵੀ ਨੇ ਇਸਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਦਿੱਤੀ</string>
+    <string name="apps_turn_all_on">ਸਭ ਮੁੜ ਚਾਲੂ ਕਰੋ</string>
+    <string name="apps_turn_all_on_short">Vibe Launcher ਵੱਲੋਂ ਬੰਦ ਕੀਤੀ ਹਰ ਐਪ ਨੂੰ ਮੁੜ ਚਾਲੂ ਕਰਦਾ ਹੈ।</string>
+    <string name="apps_all_on">ਸਭ ਮੁੜ ਚਾਲੂ ਹੋ ਗਈਆਂ</string>
+    <string name="adb_no_key">ਇਹ ਟੀਵੀ Vibe Launcher ਨੂੰ ਲੋੜੀਂਦੀ ਕੁੰਜੀ ਨਹੀਂ ਰੱਖ ਸਕਦਾ</string>
+    <string name="apps_can_turn_off">ਐਪਾਂ ਜਿਨ੍ਹਾਂ ਨੂੰ ਤੁਸੀਂ ਬੰਦ ਕਰ ਸਕਦੇ ਹੋ</string>
+    <string name="apps_tv_needs">ਐਪਾਂ ਜਿਨ੍ਹਾਂ ਦੀ ਟੀਵੀ ਨੂੰ ਲੋੜ ਹੈ</string>
+    <string name="app_protected">ਤੁਹਾਡੇ ਟੀਵੀ ਨੂੰ ਠੀਕ ਤਰ੍ਹਾਂ ਚੱਲਣ ਲਈ ਇਸਦੀ ਲੋੜ ਹੈ, ਇਸ ਲਈ Vibe Launcher ਇਸਨੂੰ ਬੰਦ ਨਹੀਂ ਕਰੇਗਾ। ਇਸ ਨਾਲ ਤੁਹਾਡਾ ਟੀਵੀ ਸੁਰੱਖਿਅਤ ਰਹਿੰਦਾ ਹੈ।</string>
+    <string name="adb_dev_options">ਪਹਿਲਾਂ ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਚਾਲੂ ਕਰੋ: ਇਸ ਬਾਰੇ ਵਿੱਚ ਬਿਲਡ ਉੱਤੇ ਸੱਤ ਵਾਰ OK ਦਬਾਓ, ਫਿਰ ਇੱਥੇ ਵਾਪਸ ਆਓ।</string>
 </resources>

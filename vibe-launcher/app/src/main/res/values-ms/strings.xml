@@ -154,4 +154,23 @@
     <string name="restore_failed">Sandaran itu tidak dapat dibaca</string>
     <string name="restored">Tetapan dipulihkan</string>
     <string name="storage_denied">Vibe Launcher memerlukan akses storan untuk ini</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Apl</string>
+    <string name="apps_short">Lumpuhkan apl yang tidak anda gunakan: apl kekal dipasang tetapi tidak boleh berjalan, memenuhi skrin utama atau dikemas kini sehingga anda mendayakannya semula. Bahagian yang diperlukan TV untuk berfungsi tidak disenaraikan.</string>
+    <string name="adb_connection">Penyahpepijatan rangkaian</string>
+    <string name="adb_connection_short">Vibe Launcher melumpuhkan apl melalui penyahpepijatan rangkaian TV, sama seperti komputer. Hidupkan ciri ini dalam Pilihan pembangun, kemudian tekan OK di sini dan benarkan Vibe Launcher pada TV.</string>
+    <string name="adb_ready">Disambungkan</string>
+    <string name="adb_not_allowed">Belum dibenarkan</string>
+    <string name="adb_checking">Menyemak…</string>
+    <string name="adb_allow_prompt">Pada soalan TV, tandakan Sentiasa benarkan, kemudian pilih OK</string>
+    <string name="adb_turn_on">Hidupkan penyahpepijatan rangkaian (atau penyahpepijatan ADB) dalam Pilihan pembangun, kemudian kembali ke sini</string>
+    <string name="adb_failed">TV tidak membenarkannya</string>
+    <string name="apps_turn_all_on">Dayakan semula semua</string>
+    <string name="apps_turn_all_on_short">Mendayakan semula setiap apl yang dilumpuhkan oleh Vibe Launcher.</string>
+    <string name="apps_all_on">Semua telah didayakan semula</string>
+    <string name="adb_no_key">TV ini tidak dapat menyimpan kunci yang diperlukan oleh Vibe Launcher</string>
+    <string name="apps_can_turn_off">Apl yang boleh anda lumpuhkan</string>
+    <string name="apps_tv_needs">Apl yang diperlukan TV</string>
+    <string name="app_protected">TV anda memerlukan ini untuk berfungsi dengan betul, jadi Vibe Launcher tidak akan melumpuhkannya. Ini memastikan TV anda selamat.</string>
+    <string name="adb_dev_options">Hidupkan Pilihan pembangun dahulu: dalam Perihal, tekan OK pada Binaan sebanyak tujuh kali, kemudian kembali ke sini.</string>
 </resources>

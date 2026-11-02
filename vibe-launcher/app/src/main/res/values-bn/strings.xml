@@ -154,4 +154,23 @@
     <string name="restore_failed">ব্যাকআপটি পড়া যায়নি</string>
     <string name="restored">সেটিংস রিস্টোর হয়েছে</string>
     <string name="storage_denied">এর জন্য Vibe Launcher-এর স্টোরেজ অ্যাক্সেস দরকার</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">অ্যাপ</string>
+    <string name="apps_short">যেসব অ্যাপ আপনি ব্যবহার করেন না সেগুলো বন্ধ করুন: সেগুলো ইনস্টল থাকে, কিন্তু আবার চালু না করা পর্যন্ত চলতে, হোম স্ক্রিন ভরাতে বা আপডেট হতে পারে না। টিভি চলার জন্য যে অংশগুলো দরকার সেগুলো তালিকায় নেই।</string>
+    <string name="adb_connection">নেটওয়ার্ক ডিবাগিং</string>
+    <string name="adb_connection_short">Vibe Launcher কম্পিউটারের মতোই টিভির নেটওয়ার্ক ডিবাগিংয়ের মাধ্যমে অ্যাপ বন্ধ করে। ডেভেলপার বিকল্পে এটি চালু করুন, তারপর এখানে OK টিপুন এবং টিভিতে Vibe Launcher-কে অনুমতি দিন।</string>
+    <string name="adb_ready">কানেক্ট হয়েছে</string>
+    <string name="adb_not_allowed">এখনও অনুমতি দেওয়া হয়নি</string>
+    <string name="adb_checking">যাচাই করা হচ্ছে…</string>
+    <string name="adb_allow_prompt">টিভির প্রশ্নে সবসময় অনুমতি দিন-এ টিক দিন, তারপর OK বেছে নিন</string>
+    <string name="adb_turn_on">ডেভেলপার বিকল্পে নেটওয়ার্ক ডিবাগিং (বা ADB ডিবাগিং) চালু করুন, তারপর এখানে ফিরে আসুন</string>
+    <string name="adb_failed">টিভি এটির অনুমতি দেয়নি</string>
+    <string name="apps_turn_all_on">সব আবার চালু করুন</string>
+    <string name="apps_turn_all_on_short">Vibe Launcher যেসব অ্যাপ বন্ধ করেছে সেগুলো সব আবার চালু করে।</string>
+    <string name="apps_all_on">সব আবার চালু হয়েছে</string>
+    <string name="adb_no_key">এই টিভি Vibe Launcher-এর দরকারি কী রাখতে পারে না</string>
+    <string name="apps_can_turn_off">যেসব অ্যাপ আপনি বন্ধ করতে পারেন</string>
+    <string name="apps_tv_needs">টিভির দরকারি অ্যাপ</string>
+    <string name="app_protected">আপনার টিভি ঠিকভাবে চলার জন্য এটি দরকার, তাই Vibe Launcher এটি বন্ধ করবে না। এতে আপনার টিভি সুরক্ষিত থাকে।</string>
+    <string name="adb_dev_options">প্রথমে ডেভেলপার বিকল্প চালু করুন: সম্পর্কে-তে গিয়ে বিল্ড-এ সাতবার OK টিপুন, তারপর এখানে ফিরে আসুন।</string>
 </resources>

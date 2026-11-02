@@ -154,4 +154,23 @@
     <string name="restore_failed">Sikkerhetskopien kunne ikke leses</string>
     <string name="restored">Innstillinger gjenopprettet</string>
     <string name="storage_denied">Vibe Launcher trenger lagringstilgang for dette</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">Apper</string>
+    <string name="apps_short">Slå av apper du ikke bruker: De forblir installert, men kan ikke kjøre, fylle startsiden eller oppdateres før du slår dem på igjen. Deler TV-en trenger for å fungere, vises ikke.</string>
+    <string name="adb_connection">Nettverksfeilsøking</string>
+    <string name="adb_connection_short">Vibe Launcher slår av apper via TV-ens nettverksfeilsøking, slik en datamaskin ville gjort. Slå det på i Utvikleralternativer, trykk deretter OK her og tillat Vibe Launcher på TV-en.</string>
+    <string name="adb_ready">Tilkoblet</string>
+    <string name="adb_not_allowed">Ikke tillatt ennå</string>
+    <string name="adb_checking">Sjekker…</string>
+    <string name="adb_allow_prompt">Huk av for Alltid tillat i spørsmålet på TV-en, og velg deretter OK</string>
+    <string name="adb_turn_on">Slå på nettverksfeilsøking (eller ADB-feilsøking) i Utvikleralternativer, og kom så tilbake hit</string>
+    <string name="adb_failed">TV-en tillot ikke det</string>
+    <string name="apps_turn_all_on">Slå på alle igjen</string>
+    <string name="apps_turn_all_on_short">Slår på igjen alle apper Vibe Launcher har slått av.</string>
+    <string name="apps_all_on">Alle er slått på igjen</string>
+    <string name="adb_no_key">Denne TV-en kan ikke beholde nøkkelen Vibe Launcher trenger</string>
+    <string name="apps_can_turn_off">Apper du kan slå av</string>
+    <string name="apps_tv_needs">Apper TV-en trenger</string>
+    <string name="app_protected">TV-en din trenger dette for å fungere som den skal, så Vibe Launcher slår det ikke av. Dette holder TV-en din trygg.</string>
+    <string name="adb_dev_options">Slå på Utvikleralternativer først: Under Om trykker du OK på Delversjon sju ganger, og kom så tilbake hit.</string>
 </resources>

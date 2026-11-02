@@ -154,4 +154,23 @@
     <string name="restore_failed">તે બેકઅપ વાંચી શકાયું નહીં</string>
     <string name="restored">સેટિંગ્સ રિસ્ટોર થયા</string>
     <string name="storage_denied">આ માટે Vibe Launcher ને સ્ટોરેજ ઍક્સેસ જોઈએ</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">ઍપ</string>
+    <string name="apps_short">તમે ઉપયોગ ન કરતા હો તે ઍપ બંધ કરો: તે ઇન્સ્ટૉલ રહે છે, પણ તમે ફરી ચાલુ ન કરો ત્યાં સુધી ચાલી શકતી નથી, હોમ સ્ક્રીન ભરી શકતી નથી કે અપડેટ થઈ શકતી નથી. ટીવીને ચાલવા માટે જરૂરી ભાગો અહીં બતાવાતા નથી.</string>
+    <string name="adb_connection">નેટવર્ક ડીબગીંગ</string>
+    <string name="adb_connection_short">Vibe Launcher કમ્પ્યૂટરની જેમ જ ટીવીના નેટવર્ક ડીબગીંગ દ્વારા ઍપ બંધ કરે છે. તેને ડેવલપરના વિકલ્પોમાં ચાલુ કરો, પછી અહીં OK દબાવો અને ટીવી પર Vibe Launcherને મંજૂરી આપો.</string>
+    <string name="adb_ready">કનેક્ટ થયું</string>
+    <string name="adb_not_allowed">હજી મંજૂરી નથી</string>
+    <string name="adb_checking">તપાસી રહ્યાં છીએ…</string>
+    <string name="adb_allow_prompt">ટીવીના પ્રશ્નમાં હંમેશાં મંજૂરી આપો પર ટિક કરો, પછી OK પસંદ કરો</string>
+    <string name="adb_turn_on">ડેવલપરના વિકલ્પોમાં નેટવર્ક ડીબગીંગ (અથવા ADB ડીબગીંગ) ચાલુ કરો, પછી અહીં પાછા આવો</string>
+    <string name="adb_failed">ટીવીએ તેની મંજૂરી આપી નહીં</string>
+    <string name="apps_turn_all_on">બધી ફરી ચાલુ કરો</string>
+    <string name="apps_turn_all_on_short">Vibe Launcherએ બંધ કરેલી દરેક ઍપ ફરી ચાલુ કરે છે.</string>
+    <string name="apps_all_on">બધી ફરી ચાલુ થઈ</string>
+    <string name="adb_no_key">આ ટીવી Vibe Launcherને જોઈતી કી રાખી શકતું નથી</string>
+    <string name="apps_can_turn_off">તમે બંધ કરી શકો તે ઍપ</string>
+    <string name="apps_tv_needs">ટીવીને જરૂરી ઍપ</string>
+    <string name="app_protected">તમારા ટીવીને બરાબર ચાલવા માટે આની જરૂર છે, તેથી Vibe Launcher તેને બંધ નહીં કરે. આનાથી તમારું ટીવી સુરક્ષિત રહે છે.</string>
+    <string name="adb_dev_options">પહેલાં ડેવલપરના વિકલ્પો ચાલુ કરો: વિશે માં બિલ્ડ પર સાત વાર OK દબાવો, પછી અહીં પાછા આવો.</string>
 </resources>

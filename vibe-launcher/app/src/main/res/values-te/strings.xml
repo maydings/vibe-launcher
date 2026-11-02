@@ -154,4 +154,23 @@
     <string name="restore_failed">ఆ బ్యాకప్‌ను చదవలేకపోయాం</string>
     <string name="restored">సెట్టింగ్‌లు రీస్టోర్ అయ్యాయి</string>
     <string name="storage_denied">దీనికి Vibe Launcher‌కు స్టోరేజ్ యాక్సెస్ అవసరం</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">యాప్‌లు</string>
+    <string name="apps_short">మీరు ఉపయోగించని యాప్‌లను ఆఫ్ చేయండి: అవి ఇన్‌స్టాల్ అయ్యే ఉంటాయి, కానీ మీరు మళ్లీ ఆన్ చేసే వరకు అవి రన్ కావు, హోమ్ స్క్రీన్‌ను నింపవు, అప్‌డేట్ కావు. టీవీ పనిచేయడానికి అవసరమైన భాగాలు ఇక్కడ చూపబడవు.</string>
+    <string name="adb_connection">నెట్‌వర్క్ డీబగ్గింగ్</string>
+    <string name="adb_connection_short">Vibe Launcher కంప్యూటర్ లాగే టీవీ నెట్‌వర్క్ డీబగ్గింగ్ ద్వారా యాప్‌లను ఆఫ్ చేస్తుంది. డెవలపర్ ఆప్షన్‌లలో దాన్ని ఆన్ చేసి, ఆపై ఇక్కడ OK నొక్కి, టీవీలో Vibe Launcherను అనుమతించండి.</string>
+    <string name="adb_ready">కనెక్ట్ అయింది</string>
+    <string name="adb_not_allowed">ఇంకా అనుమతించలేదు</string>
+    <string name="adb_checking">చెక్ చేస్తోంది…</string>
+    <string name="adb_allow_prompt">టీవీ ప్రశ్నలో ఎల్లప్పుడూ అనుమతించు అని టిక్ చేసి, ఆపై OK ఎంచుకోండి</string>
+    <string name="adb_turn_on">డెవలపర్ ఆప్షన్‌లలో నెట్‌వర్క్ డీబగ్గింగ్ (లేదా ADB డీబగ్గింగ్) ఆన్ చేసి, ఆపై ఇక్కడికి తిరిగి రండి</string>
+    <string name="adb_failed">టీవీ దాన్ని అనుమతించలేదు</string>
+    <string name="apps_turn_all_on">అన్నీ మళ్లీ ఆన్ చేయండి</string>
+    <string name="apps_turn_all_on_short">Vibe Launcher ఆఫ్ చేసిన ప్రతి యాప్‌ను మళ్లీ ఆన్ చేస్తుంది.</string>
+    <string name="apps_all_on">అన్నీ మళ్లీ ఆన్ అయ్యాయి</string>
+    <string name="adb_no_key">ఈ టీవీ Vibe Launcherకు అవసరమైన కీని ఉంచుకోలేదు</string>
+    <string name="apps_can_turn_off">మీరు ఆఫ్ చేయగల యాప్‌లు</string>
+    <string name="apps_tv_needs">టీవీకి అవసరమైన యాప్‌లు</string>
+    <string name="app_protected">మీ టీవీ సరిగ్గా పనిచేయడానికి ఇది అవసరం, కాబట్టి Vibe Launcher దీన్ని ఆఫ్ చేయదు. ఇది మీ టీవీని సురక్షితంగా ఉంచుతుంది.</string>
+    <string name="adb_dev_options">ముందుగా డెవలపర్ ఆప్షన్‌లను ఆన్ చేయండి: పరిచయంలో బిల్డ్‌పై ఏడుసార్లు OK నొక్కి, ఆపై ఇక్కడికి తిరిగి రండి.</string>
 </resources>

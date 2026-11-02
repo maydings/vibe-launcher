@@ -154,4 +154,23 @@
     <string name="restore_failed">无法读取该备份</string>
     <string name="restored">设置已恢复</string>
     <string name="storage_denied">Vibe Launcher 需要存储权限才能执行此操作</string>
+    <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
+    <string name="tab_apps">应用</string>
+    <string name="apps_short">停用不用的应用：应用仍保持安装，但在重新启用前无法运行、出现在主屏幕上或更新。电视正常运行所需的部分不会列出。</string>
+    <string name="adb_connection">网络调试</string>
+    <string name="adb_connection_short">Vibe Launcher 会像电脑一样，通过电视的网络调试来停用应用。请在开发者选项中开启网络调试，然后在此按 OK，并在电视上允许 Vibe Launcher。</string>
+    <string name="adb_ready">已连接</string>
+    <string name="adb_not_allowed">尚未允许</string>
+    <string name="adb_checking">正在检查…</string>
+    <string name="adb_allow_prompt">在电视的提示中勾选“一律允许”，然后选择 OK</string>
+    <string name="adb_turn_on">请在开发者选项中开启网络调试（或 ADB 调试），然后回到这里</string>
+    <string name="adb_failed">电视未允许此操作</string>
+    <string name="apps_turn_all_on">全部重新启用</string>
+    <string name="apps_turn_all_on_short">重新启用 Vibe Launcher 停用的所有应用。</string>
+    <string name="apps_all_on">已全部重新启用</string>
+    <string name="adb_no_key">这台电视无法保存 Vibe Launcher 所需的密钥</string>
+    <string name="apps_can_turn_off">可以停用的应用</string>
+    <string name="apps_tv_needs">电视需要的应用</string>
+    <string name="app_protected">电视需要它才能正常运行，所以 Vibe Launcher 不会停用它。这样可以保护你的电视。</string>
+    <string name="adb_dev_options">请先开启开发者选项：在“关于”中，对“版本号”按七次 OK，然后回到这里。</string>
 </resources>
