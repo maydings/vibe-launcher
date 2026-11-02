@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Apps, die Vibe Launcher schon ausgeschaltet hatte und die hier jetzt eingeschaltet sind: aus einem auf diesem Fernseher wiederhergestellten Backup oder durch ein Update wieder eingeschaltet.</string>
     <string name="apps_turn_off_now">Jetzt ausschalten</string>
     <string name="apps_all_off">Alle wieder ausgeschaltet</string>
+    <string name="cyt_lists">Aufräumlisten</string>
+    <string name="cyt_lists_short">Getestete Listen, was du ausschalten kannst, Fernseher für Fernseher, aus der Clean Your TV-Community. Wähle die für deinen Fernseher, prüfe sie und schalte die Apps dann aus.</string>
+    <string name="cyt_credit">Listen aus der Clean Your TV-Community (github.com/Gathin23/cleanyourtv), MIT-Lizenz, jede von der Person, die sie erstellt hat, auf ihrem Fernseher getestet. Die besten Treffer für diesen Fernseher stehen oben.</string>
+    <string name="cyt_loading">Wird geladen…</string>
+    <string name="cyt_failed">Die Listen konnten nicht geladen werden. Prüfe die Internetverbindung des Fernsehers.</string>
+    <string name="cyt_plan_short">✓ markiert, was ausgeschaltet wird; OK ändert das. Apps, die es auf diesem Fernseher nicht gibt, fehlen, ebenso Teile, die er braucht. Was die Person, die die Liste erstellt hat, bewusst eingeschaltet ließ, ist anfangs nicht angehakt.</string>
+    <string name="cyt_turn_off_n">Apps ausschalten: %1$d</string>
+    <string name="cyt_done">Apps ausgeschaltet: %1$d</string>
 </resources>

@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Sovellukset, jotka Vibe Launcher poisti aiemmin käytöstä mutta jotka ovat nyt täällä käytössä: tähän televisioon palautetusta varmuuskopiosta tai päivityksen takaisin käyttöön ottamina.</string>
     <string name="apps_turn_off_now">Poista käytöstä nyt</string>
     <string name="apps_all_off">Kaikki poistettu taas käytöstä</string>
+    <string name="cyt_lists">Siivouslistat</string>
+    <string name="cyt_lists_short">Testattuja listoja siitä, mitä poistaa käytöstä, televisio kerrallaan, Clean Your TV -yhteisöltä. Valitse televisiollesi sopiva, tarkista se ja poista sovellukset sitten käytöstä.</string>
+    <string name="cyt_credit">Listat on tehnyt Clean Your TV -yhteisö (github.com/Gathin23/cleanyourtv), MIT-lisenssi, ja jokaisen on testannut omassa televisiossaan sen tekijä. Tähän televisioon parhaiten sopivat näkyvät ensin.</string>
+    <string name="cyt_loading">Ladataan…</string>
+    <string name="cyt_failed">Listoja ei voitu ladata. Tarkista television internetyhteys.</string>
+    <string name="cyt_plan_short">✓ merkitsee, mitä poistetaan käytöstä; OK muuttaa sitä. Sovellukset, joita tässä televisiossa ei ole, jätetään pois, samoin osat, joita televisio tarvitsee. Se, minkä listan tekijä jätti tarkoituksella käyttöön, on aluksi valitsematta.</string>
+    <string name="cyt_turn_off_n">Poista käytöstä sovellukset: %1$d</string>
+    <string name="cyt_done">Käytöstä poistetut sovellukset: %1$d</string>
 </resources>

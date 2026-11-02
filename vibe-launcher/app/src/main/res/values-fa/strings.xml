@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">برنامه‌هایی که Vibe Launcher قبلاً خاموش کرده بود و اکنون اینجا روشن هستند: از پشتیبانی که در این تلویزیون بازیابی شده، یا با یک به‌روزرسانی دوباره روشن شده‌اند.</string>
     <string name="apps_turn_off_now">اکنون خاموش کن</string>
     <string name="apps_all_off">همه دوباره خاموش شدند</string>
+    <string name="cyt_lists">فهرست‌های پاک‌سازی</string>
+    <string name="cyt_lists_short">فهرست‌های آزموده‌شده از آنچه می‌توان خاموش کرد، برای هر تلویزیون جداگانه، از جامعهٔ Clean Your TV. فهرست تلویزیون خود را انتخاب کنید، آن را بررسی کنید و سپس برنامه‌ها را خاموش کنید.</string>
+    <string name="cyt_credit">فهرست‌ها از جامعهٔ Clean Your TV (github.com/Gathin23/cleanyourtv)، با مجوز MIT، که هر کدام را سازنده‌اش روی تلویزیون خودش آزموده است. مناسب‌ترین فهرست‌ها برای این تلویزیون اول می‌آیند.</string>
+    <string name="cyt_loading">درحال بارگیری…</string>
+    <string name="cyt_failed">فهرست‌ها بارگیری نشدند. اتصال اینترنت تلویزیون را بررسی کنید.</string>
+    <string name="cyt_plan_short">✓ نشان می‌دهد چه چیزی خاموش می‌شود؛ OK آن را تغییر می‌دهد. برنامه‌هایی که روی این تلویزیون نیستند کنار گذاشته شده‌اند، و همچنین بخش‌هایی که تلویزیون لازم دارد. آنچه سازندهٔ فهرست عمداً روشن نگه داشته، بدون علامت شروع می‌شود.</string>
+    <string name="cyt_turn_off_n">خاموش کردن %1$d برنامه</string>
+    <string name="cyt_done">%1$d برنامه خاموش شد</string>
 </resources>

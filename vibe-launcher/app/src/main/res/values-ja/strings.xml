@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">以前 Vibe Launcher がオフにしたのに、今ここでオンになっているアプリです。このテレビで復元したバックアップによるものか、アップデートでオンに戻ったものです。</string>
     <string name="apps_turn_off_now">今すぐオフにする</string>
     <string name="apps_all_off">すべてもう一度オフにしました</string>
+    <string name="cyt_lists">クリーンアップリスト</string>
+    <string name="cyt_lists_short">Clean Your TV コミュニティによる、テレビごとに試された「オフにするもの」のリストです。お使いのテレビ用のリストを選んで確認し、オフにしてください。</string>
+    <string name="cyt_credit">Clean Your TV コミュニティのリスト（github.com/Gathin23/cleanyourtv）、MIT ライセンス。それぞれ作成者が自分のテレビで試したものです。このテレビに最も合うものが先頭に表示されます。</string>
+    <string name="cyt_loading">読み込み中…</string>
+    <string name="cyt_failed">リストを読み込めませんでした。テレビのインターネット接続を確認してください。</string>
+    <string name="cyt_plan_short">✓ はオフにするものを示し、OK で切り替えます。このテレビにないアプリと、テレビに必要な部分は除かれます。リストの作成者があえてオンのままにしたものは、最初はチェックが外れています。</string>
+    <string name="cyt_turn_off_n">%1$d 個のアプリをオフにする</string>
+    <string name="cyt_done">%1$d 個のアプリをオフにしました</string>
 </resources>

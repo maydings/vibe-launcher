@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">وہ ایپس جنہیں Vibe Launcher نے پہلے آف کیا تھا لیکن اب یہاں آن ہیں: اس ٹی وی پر بحال کیے گئے بیک اپ سے، یا کسی اپڈیٹ نے انہیں دوبارہ آن کر دیا۔</string>
     <string name="apps_turn_off_now">ابھی آف کریں</string>
     <string name="apps_all_off">سب دوبارہ آف ہو گئیں</string>
+    <string name="cyt_lists">صفائی کی فہرستیں</string>
+    <string name="cyt_lists_short">Clean Your TV کمیونٹی کی، ہر ٹی وی کے لیے الگ آزمائی ہوئی فہرستیں کہ کیا آف کرنا ہے۔ اپنے ٹی وی کی فہرست منتخب کریں، اسے دیکھ لیں، پھر وہ ایپس آف کریں۔</string>
+    <string name="cyt_credit">فہرستیں Clean Your TV کمیونٹی کی ہیں (github.com/Gathin23/cleanyourtv)، MIT لائسنس، ہر فہرست اسے بنانے والے نے اپنے ٹی وی پر آزمائی ہے۔ اس ٹی وی سے سب سے زیادہ ملنے والی فہرستیں پہلے آتی ہیں۔</string>
+    <string name="cyt_loading">لوڈ ہو رہا ہے…</string>
+    <string name="cyt_failed">فہرستیں لوڈ نہیں ہو سکیں۔ ٹی وی کا انٹرنیٹ کنکشن چیک کریں۔</string>
+    <string name="cyt_plan_short">✓ بتاتا ہے کہ کیا آف ہوگا؛ OK اسے بدلتا ہے۔ جو ایپس اس ٹی وی پر نہیں ہیں وہ شامل نہیں کی گئیں، اور ٹی وی کے ضروری حصے بھی نہیں۔ فہرست بنانے والے نے جو جان بوجھ کر آن رکھا تھا، اس پر شروع میں نشان نہیں ہوتا۔</string>
+    <string name="cyt_turn_off_n">ایپس آف کریں: %1$d</string>
+    <string name="cyt_done">آف کی گئی ایپس: %1$d</string>
 </resources>

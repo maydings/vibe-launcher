@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Appar som Vibe Launcher har stängt av tidigare men som är på här nu: från en säkerhetskopia som återställts på den här tv:n, eller påslagna igen av en uppdatering.</string>
     <string name="apps_turn_off_now">Stäng av nu</string>
     <string name="apps_all_off">Alla är avstängda igen</string>
+    <string name="cyt_lists">Rensningslistor</string>
+    <string name="cyt_lists_short">Testade listor över vad som kan stängas av, tv för tv, från Clean Your TV-communityn. Välj den för din tv, granska den och stäng sedan av apparna.</string>
+    <string name="cyt_credit">Listor från Clean Your TV-communityn (github.com/Gathin23/cleanyourtv), MIT-licens, var och en testad på sin tv av den som gjorde den. De bästa träffarna för den här tv:n visas först.</string>
+    <string name="cyt_loading">Läser in…</string>
+    <string name="cyt_failed">Listorna kunde inte läsas in. Kontrollera tv:ns internetanslutning.</string>
+    <string name="cyt_plan_short">✓ markerar vad som stängs av; OK ändrar det. Appar som inte finns på den här tv:n är utelämnade, liksom delar som tv:n behöver. Det som listans skapare medvetet lät vara på är avmarkerat från början.</string>
+    <string name="cyt_turn_off_n">Stäng av appar: %1$d</string>
+    <string name="cyt_done">Appar avstängda: %1$d</string>
 </resources>

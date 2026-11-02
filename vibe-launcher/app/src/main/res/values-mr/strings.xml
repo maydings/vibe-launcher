@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Vibe Launcher ने आधी बंद केलेली पण आता येथे सुरू असलेली अ‍ॅप्स: या टीव्हीवर रिस्टोअर केलेल्या बॅकअपमधून, किंवा अपडेटने पुन्हा सुरू केलेली.</string>
     <string name="apps_turn_off_now">आता बंद करा</string>
     <string name="apps_all_off">सर्व पुन्हा बंद झाली</string>
+    <string name="cyt_lists">साफसफाई याद्या</string>
+    <string name="cyt_lists_short">Clean Your TV समुदायाच्या, प्रत्येक टीव्हीसाठी वेगळ्या तपासलेल्या, काय बंद करायचे याच्या याद्या. तुमच्या टीव्हीची यादी निवडा, ती तपासा, नंतर ती अ‍ॅप्स बंद करा.</string>
+    <string name="cyt_credit">Clean Your TV समुदायाच्या याद्या (github.com/Gathin23/cleanyourtv), MIT परवाना, प्रत्येक यादी ती बनवणाऱ्या व्यक्तीने स्वतःच्या टीव्हीवर तपासलेली. या टीव्हीशी सर्वात जुळणाऱ्या याद्या आधी येतात.</string>
+    <string name="cyt_loading">लोड होत आहे…</string>
+    <string name="cyt_failed">याद्या लोड करता आल्या नाहीत. टीव्हीचे इंटरनेट कनेक्शन तपासा.</string>
+    <string name="cyt_plan_short">✓ काय बंद होईल ते दाखवते; OK ते बदलते. या टीव्हीवर नसलेली अ‍ॅप्स वगळली आहेत, आणि टीव्हीला आवश्यक भागही. यादी बनवणाऱ्याने मुद्दाम सुरू ठेवलेल्या गोष्टींवर सुरुवातीला खूण नसते.</string>
+    <string name="cyt_turn_off_n">अ‍ॅप्स बंद करा: %1$d</string>
+    <string name="cyt_done">बंद केलेली अ‍ॅप्स: %1$d</string>
 </resources>

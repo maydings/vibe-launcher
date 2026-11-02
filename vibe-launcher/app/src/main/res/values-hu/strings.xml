@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Alkalmazások, amelyeket a Vibe Launcher korábban kikapcsolt, de most itt be vannak kapcsolva: ezen a tévén visszaállított biztonsági mentésből, vagy egy frissítés visszakapcsolta őket.</string>
     <string name="apps_turn_off_now">Kikapcsolás most</string>
     <string name="apps_all_off">Mind újra kikapcsolva</string>
+    <string name="cyt_lists">Tisztítási listák</string>
+    <string name="cyt_lists_short">Kipróbált listák arról, mit érdemes kikapcsolni, tévénként, a Clean Your TV közösségtől. Válassza ki a tévéjéhez valót, nézze át, majd kapcsolja ki az alkalmazásokat.</string>
+    <string name="cyt_credit">A listák a Clean Your TV közösségtől származnak (github.com/Gathin23/cleanyourtv), MIT-licenc, mindegyiket a készítője próbálta ki a saját tévéjén. Az ehhez a tévéhez legjobban illők állnak elöl.</string>
+    <string name="cyt_loading">Betöltés…</string>
+    <string name="cyt_failed">A listákat nem sikerült betölteni. Ellenőrizze a tévé internetkapcsolatát.</string>
+    <string name="cyt_plan_short">A ✓ jelzi, mi lesz kikapcsolva; az OK módosítja. Az ezen a tévén nem található alkalmazások kimaradnak, és a tévé működéséhez szükséges részek is. Amit a lista készítője szándékosan bekapcsolva hagyott, az kezdetben nincs bejelölve.</string>
+    <string name="cyt_turn_off_n">%1$d alkalmazás kikapcsolása</string>
+    <string name="cyt_done">%1$d alkalmazás kikapcsolva</string>
 </resources>

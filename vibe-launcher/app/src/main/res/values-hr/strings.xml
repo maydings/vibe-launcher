@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Aplikacije koje je Vibe Launcher prije isključio, a sada su ovdje uključene: iz sigurnosne kopije vraćene na ovom televizoru ili ih je ponovno uključilo ažuriranje.</string>
     <string name="apps_turn_off_now">Isključi sada</string>
     <string name="apps_all_off">Sve je ponovno isključeno</string>
+    <string name="cyt_lists">Popisi za čišćenje</string>
+    <string name="cyt_lists_short">Isprobani popisi onoga što isključiti, televizor po televizor, od zajednice Clean Your TV. Odaberite onaj za svoj televizor, provjerite ga, a zatim isključite aplikacije.</string>
+    <string name="cyt_credit">Popisi zajednice Clean Your TV (github.com/Gathin23/cleanyourtv), licenca MIT, a svaki je na svojem televizoru isprobala osoba koja ga je izradila. Najbolja podudaranja za ovaj televizor prikazuju se prva.</string>
+    <string name="cyt_loading">Učitavanje…</string>
+    <string name="cyt_failed">Popisi se nisu mogli učitati. Provjerite internetsku vezu televizora.</string>
+    <string name="cyt_plan_short">✓ označava što će se isključiti; OK to mijenja. Aplikacije koje nisu na ovom televizoru izostavljene su, kao i dijelovi koji su mu potrebni. Ono što je autor popisa namjerno ostavio uključeno u početku nije označeno.</string>
+    <string name="cyt_turn_off_n">Isključi aplikacije: %1$d</string>
+    <string name="cyt_done">Isključene aplikacije: %1$d</string>
 </resources>

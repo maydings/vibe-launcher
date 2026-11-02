@@ -204,6 +204,13 @@ it back on.
 - **Turn off again** (only when there's something to do): the apps Vibe Launcher turned off before that
   are on here now, from a backup restored on this TV or turned back on by an update. It lists them first,
   then **Turn off now** turns them all off in one go.
+- **Clean-up lists**: the tested lists of the [Clean Your TV](https://github.com/Gathin23/cleanyourtv)
+  community (MIT), read from GitHub as they are now, so new TVs and fixes come without an update. Your
+  TV's brand comes first, the lists that name its own model and platform at the top; pick one and its
+  plan shows only what's installed here, each with the list's reason under it. ✓ marks what goes (OK
+  changes it), what the list's maker turned off only by choice (Chromecast, the phone remote) starts
+  unticked, and the parts your TV needs stay. **Turn off N apps** does the rest, and Turn all back on
+  undoes it, whatever the list says later.
 - **Apps you can turn off**: every app on the TV by name, On or Off; OK switches it.
 - **Apps the TV needs**: the parts it can't do without, grayed: Android itself, Google Play, Settings,
   the keyboard, the remote and Bluetooth, Wi-Fi, the inputs and the app that plays them, setup, the

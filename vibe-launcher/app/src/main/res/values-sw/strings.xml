@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Programu ambazo Vibe Launcher ilizima awali lakini sasa zimewashwa hapa: kutoka kwa nakala iliyorejeshwa kwenye TV hii, au zimewashwa tena na sasisho.</string>
     <string name="apps_turn_off_now">Zima sasa</string>
     <string name="apps_all_off">Zote zimezimwa tena</string>
+    <string name="cyt_lists">Orodha za usafishaji</string>
+    <string name="cyt_lists_short">Orodha zilizojaribiwa za vitu vya kuzima, TV moja baada ya nyingine, kutoka kwa jumuiya ya Clean Your TV. Chagua orodha ya TV yako, ikague, kisha uzime programu hizo.</string>
+    <string name="cyt_credit">Orodha za jumuiya ya Clean Your TV (github.com/Gathin23/cleanyourtv), leseni ya MIT, kila moja imejaribiwa kwenye TV yake na mtu aliyeitengeneza. Zinazolingana zaidi na TV hii zinaonyeshwa kwanza.</string>
+    <string name="cyt_loading">Inapakia…</string>
+    <string name="cyt_failed">Imeshindwa kupakia orodha. Kagua muunganisho wa intaneti wa TV.</string>
+    <string name="cyt_plan_short">✓ inaonyesha kitakachozimwa; OK inakibadilisha. Programu ambazo hazipo kwenye TV hii zimeachwa, pamoja na sehemu ambazo TV inahitaji. Vitu ambavyo mtengenezaji wa orodha aliviacha vimewashwa kwa makusudi vinaanza bila tiki.</string>
+    <string name="cyt_turn_off_n">Zima programu: %1$d</string>
+    <string name="cyt_done">Programu zilizozimwa: %1$d</string>
 </resources>

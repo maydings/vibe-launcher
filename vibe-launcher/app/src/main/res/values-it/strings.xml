@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">App che Vibe Launcher aveva già disattivato e che ora qui sono attive: da un backup ripristinato su questo televisore o riattivate da un aggiornamento.</string>
     <string name="apps_turn_off_now">Disattiva ora</string>
     <string name="apps_all_off">Tutte disattivate di nuovo</string>
+    <string name="cyt_lists">Elenchi di pulizia</string>
+    <string name="cyt_lists_short">Elenchi provati di cosa disattivare, televisore per televisore, dalla community Clean Your TV. Scegli quello per il tuo televisore, controllalo, poi disattiva le app.</string>
+    <string name="cyt_credit">Elenchi della community Clean Your TV (github.com/Gathin23/cleanyourtv), licenza MIT, ognuno provato sul proprio televisore da chi l\'ha creato. I più adatti a questo televisore compaiono per primi.</string>
+    <string name="cyt_loading">Caricamento…</string>
+    <string name="cyt_failed">Impossibile caricare gli elenchi. Controlla la connessione a Internet del televisore.</string>
+    <string name="cyt_plan_short">✓ indica cosa verrà disattivato; OK lo cambia. Le app che non sono su questo televisore vengono escluse, così come le parti che gli servono. Ciò che l\'autore dell\'elenco ha lasciato attivo di proposito parte non selezionato.</string>
+    <string name="cyt_turn_off_n">Disattiva %1$d app</string>
+    <string name="cyt_done">App disattivate: %1$d</string>
 </resources>

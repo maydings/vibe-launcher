@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Apps die Vibe Launcher eerder had uitgezet en die hier nu aanstaan: door een back-up die op deze tv is hersteld, of weer aangezet door een update.</string>
     <string name="apps_turn_off_now">Nu uitzetten</string>
     <string name="apps_all_off">Alles staat weer uit</string>
+    <string name="cyt_lists">Opruimlijsten</string>
+    <string name="cyt_lists_short">Geteste lijsten van wat je kunt uitzetten, per tv, van de Clean Your TV-community. Kies die voor jouw tv, controleer hem en zet de apps dan uit.</string>
+    <string name="cyt_credit">Lijsten van de Clean Your TV-community (github.com/Gathin23/cleanyourtv), MIT-licentie, elk getest op de eigen tv door wie hem heeft gemaakt. De beste overeenkomsten voor deze tv staan bovenaan.</string>
+    <string name="cyt_loading">Laden…</string>
+    <string name="cyt_failed">De lijsten konden niet worden geladen. Controleer de internetverbinding van de tv.</string>
+    <string name="cyt_plan_short">✓ geeft aan wat wordt uitgezet; OK verandert dat. Apps die niet op deze tv staan, zijn weggelaten, en onderdelen die de tv nodig heeft ook. Wat de maker van de lijst bewust aan liet, staat eerst niet aangevinkt.</string>
+    <string name="cyt_turn_off_n">Apps uitzetten: %1$d</string>
+    <string name="cyt_done">Apps uitgezet: %1$d</string>
 </resources>

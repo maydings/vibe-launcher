@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Apps, som Vibe Launcher har slået fra før, men som er slået til her nu: fra en sikkerhedskopi, der er gendannet på dette tv, eller slået til igen af en opdatering.</string>
     <string name="apps_turn_off_now">Slå fra nu</string>
     <string name="apps_all_off">Alle er slået fra igen</string>
+    <string name="cyt_lists">Oprydningslister</string>
+    <string name="cyt_lists_short">Testede lister over, hvad der kan slås fra, tv for tv, fra Clean Your TV-fællesskabet. Vælg den til dit tv, gennemse den, og slå derefter apps fra.</string>
+    <string name="cyt_credit">Lister fra Clean Your TV-fællesskabet (github.com/Gathin23/cleanyourtv), MIT-licens, hver testet på sit tv af den, der lavede den. De bedste match til dette tv kommer først.</string>
+    <string name="cyt_loading">Indlæser…</string>
+    <string name="cyt_failed">Listerne kunne ikke indlæses. Tjek tv\'ets internetforbindelse.</string>
+    <string name="cyt_plan_short">✓ markerer, hvad der slås fra; OK ændrer det. Apps, der ikke findes på dette tv, er udeladt, og det samme er dele, tv\'et har brug for. Det, listens skaber bevidst lod være slået til, starter uden flueben.</string>
+    <string name="cyt_turn_off_n">Slå apps fra: %1$d</string>
+    <string name="cyt_done">Apps slået fra: %1$d</string>
 </resources>

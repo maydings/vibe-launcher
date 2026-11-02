@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Aplikacje, które Vibe Launcher już wcześniej wyłączył, a które są tu teraz włączone: z kopii zapasowej przywróconej na tym telewizorze lub ponownie włączone przez aktualizację.</string>
     <string name="apps_turn_off_now">Wyłącz teraz</string>
     <string name="apps_all_off">Wszystkie ponownie wyłączone</string>
+    <string name="cyt_lists">Listy porządkowe</string>
+    <string name="cyt_lists_short">Sprawdzone listy tego, co wyłączyć, telewizor po telewizorze, od społeczności Clean Your TV. Wybierz listę dla swojego telewizora, przejrzyj ją, a potem wyłącz aplikacje.</string>
+    <string name="cyt_credit">Listy od społeczności Clean Your TV (github.com/Gathin23/cleanyourtv), licencja MIT, każda sprawdzona na swoim telewizorze przez osobę, która ją przygotowała. Najlepiej pasujące do tego telewizora są na początku.</string>
+    <string name="cyt_loading">Wczytywanie…</string>
+    <string name="cyt_failed">Nie udało się wczytać list. Sprawdź połączenie telewizora z internetem.</string>
+    <string name="cyt_plan_short">✓ oznacza to, co zostanie wyłączone; OK to zmienia. Aplikacje, których nie ma na tym telewizorze, są pominięte, podobnie jak części, których on potrzebuje. To, co autor listy celowo zostawił włączone, na początku jest niezaznaczone.</string>
+    <string name="cyt_turn_off_n">Wyłącz aplikacje: %1$d</string>
+    <string name="cyt_done">Wyłączone aplikacje: %1$d</string>
 </resources>

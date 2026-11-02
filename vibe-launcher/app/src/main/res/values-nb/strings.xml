@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Apper Vibe Launcher har slått av før, men som er på her nå: fra en sikkerhetskopi som er gjenopprettet på denne TV-en, eller slått på igjen av en oppdatering.</string>
     <string name="apps_turn_off_now">Slå av nå</string>
     <string name="apps_all_off">Alle er slått av igjen</string>
+    <string name="cyt_lists">Oppryddingslister</string>
+    <string name="cyt_lists_short">Testede lister over hva som kan slås av, TV for TV, fra Clean Your TV-fellesskapet. Velg den for TV-en din, se gjennom den, og slå deretter av appene.</string>
+    <string name="cyt_credit">Lister fra Clean Your TV-fellesskapet (github.com/Gathin23/cleanyourtv), MIT-lisens, hver testet på sin TV av den som laget den. De beste treffene for denne TV-en kommer først.</string>
+    <string name="cyt_loading">Laster inn…</string>
+    <string name="cyt_failed">Listene kunne ikke lastes inn. Sjekk TV-ens internettilkobling.</string>
+    <string name="cyt_plan_short">✓ markerer hva som slås av; OK endrer det. Apper som ikke finnes på denne TV-en, er utelatt, og det samme er deler den trenger. Det den som laget listen, lot være på med vilje, er ikke avkrysset i starten.</string>
+    <string name="cyt_turn_off_n">Slå av apper: %1$d</string>
+    <string name="cyt_done">Apper slått av: %1$d</string>
 </resources>

@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Aplikácie, ktoré Vibe Launcher predtým vypol, no teraz sú tu zapnuté: zo zálohy obnovenej v tomto televízore alebo ich znova zapla aktualizácia.</string>
     <string name="apps_turn_off_now">Vypnúť teraz</string>
     <string name="apps_all_off">Všetky sú znova vypnuté</string>
+    <string name="cyt_lists">Zoznamy na vyčistenie</string>
+    <string name="cyt_lists_short">Vyskúšané zoznamy toho, čo vypnúť, pre jednotlivé televízory, od komunity Clean Your TV. Vyberte ten pre svoj televízor, skontrolujte ho a potom aplikácie vypnite.</string>
+    <string name="cyt_credit">Zoznamy od komunity Clean Your TV (github.com/Gathin23/cleanyourtv), licencia MIT, každý vyskúšal na svojom televízore ten, kto ho vytvoril. Najlepšie zhody pre tento televízor sú prvé.</string>
+    <string name="cyt_loading">Načítava sa…</string>
+    <string name="cyt_failed">Zoznamy sa nepodarilo načítať. Skontrolujte pripojenie televízora na internet.</string>
+    <string name="cyt_plan_short">✓ označuje, čo sa vypne; OK to mení. Aplikácie, ktoré v tomto televízore nie sú, sú vynechané, rovnako ako časti, ktoré televízor potrebuje. Čo autor zoznamu zámerne nechal zapnuté, je na začiatku neoznačené.</string>
+    <string name="cyt_turn_off_n">Vypnúť aplikácie: %1$d</string>
+    <string name="cyt_done">Vypnuté aplikácie: %1$d</string>
 </resources>

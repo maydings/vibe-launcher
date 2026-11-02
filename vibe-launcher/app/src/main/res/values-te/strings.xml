@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Vibe Launcher ఇంతకు ముందు ఆఫ్ చేసినా, ఇప్పుడు ఇక్కడ ఆన్‌లో ఉన్న యాప్‌లు: ఈ టీవీలో రీస్టోర్ చేసిన బ్యాకప్ నుండి, లేదా అప్‌డేట్ వల్ల మళ్లీ ఆన్ అయినవి.</string>
     <string name="apps_turn_off_now">ఇప్పుడే ఆఫ్ చేయండి</string>
     <string name="apps_all_off">అన్నీ మళ్లీ ఆఫ్ అయ్యాయి</string>
+    <string name="cyt_lists">శుభ్రపరిచే జాబితాలు</string>
+    <string name="cyt_lists_short">Clean Your TV కమ్యూనిటీ నుండి, ఒక్కో టీవీకి విడిగా పరీక్షించిన, ఏమి ఆఫ్ చేయాలో తెలిపే జాబితాలు. మీ టీవీకి సంబంధించినదాన్ని ఎంచుకుని, చెక్ చేసి, ఆపై ఆ యాప్‌లను ఆఫ్ చేయండి.</string>
+    <string name="cyt_credit">Clean Your TV కమ్యూనిటీ జాబితాలు (github.com/Gathin23/cleanyourtv), MIT లైసెన్స్, ప్రతిదాన్నీ దాన్ని తయారు చేసిన వ్యక్తి తమ టీవీలో పరీక్షించారు. ఈ టీవీకి బాగా సరిపోయేవి ముందుగా వస్తాయి.</string>
+    <string name="cyt_loading">లోడ్ అవుతోంది…</string>
+    <string name="cyt_failed">జాబితాలను లోడ్ చేయడం సాధ్యం కాలేదు. టీవీ ఇంటర్నెట్ కనెక్షన్‌ను చెక్ చేయండి.</string>
+    <string name="cyt_plan_short">✓ ఏవి ఆఫ్ అవుతాయో చూపిస్తుంది; OK దాన్ని మారుస్తుంది. ఈ టీవీలో లేని యాప్‌లు, టీవీకి అవసరమైన భాగాలు వదిలివేయబడ్డాయి. జాబితా తయారు చేసిన వ్యక్తి కావాలనే ఆన్‌లో ఉంచినవి మొదట టిక్ చేయకుండా ఉంటాయి.</string>
+    <string name="cyt_turn_off_n">యాప్‌లను ఆఫ్ చేయండి: %1$d</string>
+    <string name="cyt_done">ఆఫ్ చేసిన యాప్‌లు: %1$d</string>
 </resources>

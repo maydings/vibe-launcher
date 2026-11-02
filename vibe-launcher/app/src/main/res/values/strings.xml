@@ -183,4 +183,12 @@
     <string name="apps_turn_off_again_short">Apps Vibe Launcher turned off before that are on here now: from a backup restored on this TV, or turned back on by an update.</string>
     <string name="apps_turn_off_now">Turn off now</string>
     <string name="apps_all_off">All turned off again</string>
+    <string name="cyt_lists">Clean-up lists</string>
+    <string name="cyt_lists_short">Tested lists of what to turn off, TV by TV, from the Clean Your TV community. Pick the one for your TV, check it, then turn them off.</string>
+    <string name="cyt_credit">Lists by the Clean Your TV community (github.com/Gathin23/cleanyourtv), MIT licence, each tested on its TV by the person who made it. The best matches for this TV come first.</string>
+    <string name="cyt_loading">Loading…</string>
+    <string name="cyt_failed">The lists couldn\'t be loaded. Check the TV\'s internet connection.</string>
+    <string name="cyt_plan_short">✓ marks what will be turned off; OK changes it. Apps that aren\'t on this TV are left out, and so are parts it needs. What the list\'s maker kept on by choice starts unticked.</string>
+    <string name="cyt_turn_off_n">Turn off %1$d apps</string>
+    <string name="cyt_done">%1$d apps turned off</string>
 </resources>

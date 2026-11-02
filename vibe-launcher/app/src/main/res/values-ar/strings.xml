@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">تطبيقات أوقفها Vibe Launcher من قبل وأصبحت مفعّلة هنا الآن: من نسخة احتياطية تمت استعادتها على هذا التلفزيون، أو أعاد تحديث تفعيلها.</string>
     <string name="apps_turn_off_now">إيقاف الآن</string>
     <string name="apps_all_off">تم إيقاف الكل مجددًا</string>
+    <string name="cyt_lists">قوائم التنظيف</string>
+    <string name="cyt_lists_short">قوائم مُجرَّبة بما يمكن إيقافه، لكل تلفزيون على حدة، من مجتمع Clean Your TV. اختر القائمة الخاصة بتلفزيونك وراجعها، ثم أوقف التطبيقات.</string>
+    <string name="cyt_credit">قوائم من مجتمع Clean Your TV (github.com/Gathin23/cleanyourtv)، بترخيص MIT، وقد جرّب كل قائمة على تلفزيونه الشخص الذي أعدّها. تظهر أولًا القوائم الأنسب لهذا التلفزيون.</string>
+    <string name="cyt_loading">جارٍ التحميل…</string>
+    <string name="cyt_failed">تعذّر تحميل القوائم. تحقق من اتصال التلفزيون بالإنترنت.</string>
+    <string name="cyt_plan_short">تشير ✓ إلى ما سيتم إيقافه، ويغيّره OK. تُستبعد التطبيقات غير الموجودة على هذا التلفزيون، وكذلك الأجزاء التي يحتاجها. وما أبقاه مُعدّ القائمة مفعّلًا عن قصد يبدأ دون علامة.</string>
+    <string name="cyt_turn_off_n">إيقاف التطبيقات: %1$d</string>
+    <string name="cyt_done">تم إيقاف التطبيقات: %1$d</string>
 </resources>

@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Aplikasi yang sebelumnya dinonaktifkan Vibe Launcher tetapi kini aktif di sini: dari cadangan yang dipulihkan di TV ini, atau diaktifkan lagi oleh update.</string>
     <string name="apps_turn_off_now">Nonaktifkan sekarang</string>
     <string name="apps_all_off">Semua sudah dinonaktifkan lagi</string>
+    <string name="cyt_lists">Daftar pembersihan</string>
+    <string name="cyt_lists_short">Daftar teruji tentang apa yang perlu dinonaktifkan, per TV, dari komunitas Clean Your TV. Pilih daftar untuk TV Anda, periksa, lalu nonaktifkan aplikasinya.</string>
+    <string name="cyt_credit">Daftar dari komunitas Clean Your TV (github.com/Gathin23/cleanyourtv), lisensi MIT, masing-masing diuji di TV-nya oleh orang yang membuatnya. Yang paling cocok untuk TV ini ditampilkan lebih dulu.</string>
+    <string name="cyt_loading">Memuat…</string>
+    <string name="cyt_failed">Daftar tidak dapat dimuat. Periksa koneksi internet TV.</string>
+    <string name="cyt_plan_short">✓ menandai yang akan dinonaktifkan; OK mengubahnya. Aplikasi yang tidak ada di TV ini tidak disertakan, begitu pula bagian yang dibutuhkan TV. Yang sengaja dibiarkan aktif oleh pembuat daftar awalnya tidak dicentang.</string>
+    <string name="cyt_turn_off_n">Nonaktifkan %1$d aplikasi</string>
+    <string name="cyt_done">%1$d aplikasi dinonaktifkan</string>
 </resources>

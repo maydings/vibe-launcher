@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Vibe Launcher 先前停用過、但現在在這裡已啟用的應用程式：來自在這台電視上還原的備份，或被更新重新啟用。</string>
     <string name="apps_turn_off_now">立即停用</string>
     <string name="apps_all_off">已全部重新停用</string>
+    <string name="cyt_lists">清理清單</string>
+    <string name="cyt_lists_short">來自 Clean Your TV 社群、依電視逐一測試過的停用清單。選擇適合你電視的清單，檢查後再停用這些應用程式。</string>
+    <string name="cyt_credit">清單由 Clean Your TV 社群提供（github.com/Gathin23/cleanyourtv），採用 MIT 授權，每份都由製作者在自己的電視上測試過。與這台電視最相符的排在最前面。</string>
+    <string name="cyt_loading">載入中…</string>
+    <string name="cyt_failed">無法載入清單。請檢查電視的網際網路連線。</string>
+    <string name="cyt_plan_short">✓ 表示將停用的項目，按 OK 可變更。這台電視上沒有的應用程式不會列出，電視所需的部分也一樣。清單製作者刻意保持啟用的項目一開始不會勾選。</string>
+    <string name="cyt_turn_off_n">停用 %1$d 個應用程式</string>
+    <string name="cyt_done">已停用 %1$d 個應用程式</string>
 </resources>

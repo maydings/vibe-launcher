@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">แอปที่ Vibe Launcher เคยปิดใช้ไว้แต่ตอนนี้เปิดใช้อยู่ที่นี่ ซึ่งมาจากข้อมูลสำรองที่กู้คืนในทีวีนี้ หรือถูกเปิดใช้อีกครั้งจากการอัปเดต</string>
     <string name="apps_turn_off_now">ปิดใช้ตอนนี้</string>
     <string name="apps_all_off">ปิดใช้ทั้งหมดอีกครั้งแล้ว</string>
+    <string name="cyt_lists">รายการทำความสะอาด</string>
+    <string name="cyt_lists_short">รายการสิ่งที่ปิดใช้ได้ซึ่งทดสอบแล้วกับทีวีแต่ละเครื่อง จากชุมชน Clean Your TV เลือกรายการสำหรับทีวีของคุณ ตรวจดู แล้วปิดใช้แอปเหล่านั้น</string>
+    <string name="cyt_credit">รายการโดยชุมชน Clean Your TV (github.com/Gathin23/cleanyourtv) สัญญาอนุญาต MIT แต่ละรายการทดสอบบนทีวีของผู้สร้างรายการนั้นเอง รายการที่ตรงกับทีวีนี้ที่สุดจะแสดงก่อน</string>
+    <string name="cyt_loading">กำลังโหลด…</string>
+    <string name="cyt_failed">โหลดรายการไม่ได้ ตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของทีวี</string>
+    <string name="cyt_plan_short">✓ ระบุสิ่งที่จะถูกปิดใช้ กด OK เพื่อเปลี่ยน แอปที่ไม่มีในทีวีนี้จะไม่แสดง รวมถึงส่วนที่ทีวีต้องใช้ด้วย สิ่งที่ผู้สร้างรายการตั้งใจเปิดใช้ไว้จะเริ่มต้นแบบไม่ได้เลือก</string>
+    <string name="cyt_turn_off_n">ปิดใช้ %1$d แอป</string>
+    <string name="cyt_done">ปิดใช้ %1$d แอปแล้ว</string>
 </resources>

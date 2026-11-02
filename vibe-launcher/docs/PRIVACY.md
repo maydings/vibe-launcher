@@ -75,6 +75,7 @@ internet address). The services' own privacy policies apply to what they receive
 | HDHomeRun (your tuner, `api.hdhomerun.com`, `img.hdhomerun.com`) | your tuner's own guide code, for the guide's pictures | when an HDHomeRun tuner is on your network |
 | Your phone, on your home network | the keys page, a tile's picture page, or the backup page (a backup to download, holding your keys), while Settings or the tile's Edit menu is open | when you scan the QR code on the TV; it has a random address that changes each time |
 | **GitHub build only:** GitHub (`api.github.com`, `github.com`) | a request for this project's latest release, and SmartTube's | daily, when the TV wakes, from the gear menu, and when you ask to install SmartTube |
+| **GitHub build only:** GitHub (`api.github.com`, `raw.githubusercontent.com`) | requests for Clean Your TV's lists of what to turn off on each TV; nothing about your TV is sent (the list for it is picked on the TV) | when you open Settings > Apps > Clean-up lists, and a list |
 
 The app store build doesn't contact GitHub: Google Play updates it. When Home comes back, it asks the Play Store app on the TV whether Play has a newer version, for the green dot on the gear.
 

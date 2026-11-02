@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Vibe Launcher ယခင်က ပိတ်ခဲ့သော်လည်း ယခု ဤနေရာတွင် ဖွင့်ထားသော အက်ပ်များ- ဤ TV တွင် ပြန်ယူထားသော အရန်မှ ဖြစ်စေ၊ အပ်ဒိတ်တစ်ခုက ပြန်ဖွင့်လိုက်၍ ဖြစ်စေ။</string>
     <string name="apps_turn_off_now">ယခု ပိတ်ရန်</string>
     <string name="apps_all_off">အားလုံး ပြန်ပိတ်ပြီးပါပြီ</string>
+    <string name="cyt_lists">ရှင်းလင်းရေး စာရင်းများ</string>
+    <string name="cyt_lists_short">Clean Your TV အသိုင်းအဝိုင်းမှ TV တစ်လုံးချင်းစီအတွက် စမ်းသပ်ထားသော ပိတ်ရမည့်အရာ စာရင်းများ။ သင့် TV အတွက် စာရင်းကို ရွေးပြီး စစ်ဆေးကာ ၎င်းအက်ပ်များကို ပိတ်ပါ။</string>
+    <string name="cyt_credit">Clean Your TV အသိုင်းအဝိုင်း၏ စာရင်းများ (github.com/Gathin23/cleanyourtv)၊ MIT လိုင်စင်၊ စာရင်းတစ်ခုစီကို ပြုလုပ်သူက မိမိ TV တွင် စမ်းသပ်ထားသည်။ ဤ TV နှင့် အကိုက်ညီဆုံးများကို ဦးစွာ ပြသည်။</string>
+    <string name="cyt_loading">ဖွင့်နေသည်…</string>
+    <string name="cyt_failed">စာရင်းများကို ဖွင့်၍ မရပါ။ TV ၏ အင်တာနက်ချိတ်ဆက်မှုကို စစ်ဆေးပါ။</string>
+    <string name="cyt_plan_short">✓ သည် ပိတ်မည့်အရာကို ပြပြီး OK ဖြင့် ပြောင်းနိုင်သည်။ ဤ TV တွင် မရှိသော အက်ပ်များနှင့် TV လိုအပ်သော အစိတ်အပိုင်းများကို ချန်ထားသည်။ စာရင်းပြုလုပ်သူက ရည်ရွယ်ချက်ရှိရှိ ဖွင့်ထားခဲ့သည့်အရာများကို အစတွင် အမှန်ခြစ် မထားပါ။</string>
+    <string name="cyt_turn_off_n">အက်ပ် %1$d ခု ပိတ်ရန်</string>
+    <string name="cyt_done">အက်ပ် %1$d ခု ပိတ်ပြီးပါပြီ</string>
 </resources>

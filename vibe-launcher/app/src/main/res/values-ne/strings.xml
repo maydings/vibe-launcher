@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Vibe Launcher ले पहिले बन्द गरेका तर अहिले यहाँ सक्रिय रहेका एपहरू: यो टिभीमा पुनर्स्थापित गरिएको ब्याकअपबाट, वा कुनै अपडेटले फेरि सक्रिय गरेका।</string>
     <string name="apps_turn_off_now">अहिले बन्द गर्नुहोस्</string>
     <string name="apps_all_off">सबै फेरि बन्द भए</string>
+    <string name="cyt_lists">सफाइ सूचीहरू</string>
+    <string name="cyt_lists_short">Clean Your TV समुदायका, हरेक टिभीका लागि छुट्टै परीक्षण गरिएका, के बन्द गर्ने भन्ने सूचीहरू। आफ्नो टिभीको सूची छान्नुहोस्, जाँच्नुहोस्, अनि ती एपहरू बन्द गर्नुहोस्।</string>
+    <string name="cyt_credit">Clean Your TV समुदायका सूचीहरू (github.com/Gathin23/cleanyourtv), MIT इजाजतपत्र, हरेक सूची बनाउने व्यक्तिले आफ्नै टिभीमा परीक्षण गरेको। यो टिभीसँग सबैभन्दा मिल्ने सूचीहरू पहिले आउँछन्।</string>
+    <string name="cyt_loading">लोड हुँदै…</string>
+    <string name="cyt_failed">सूचीहरू लोड गर्न सकिएन। टिभीको इन्टरनेट जडान जाँच गर्नुहोस्।</string>
+    <string name="cyt_plan_short">✓ ले के बन्द हुन्छ भनेर देखाउँछ; OK ले त्यसलाई बदल्छ। यो टिभीमा नभएका एपहरू छोडिएका छन्, र टिभीलाई चाहिने भागहरू पनि। सूची बनाउनेले जानाजानी सक्रिय राखेकाहरूमा सुरुमा चिन्ह लगाइएको हुँदैन।</string>
+    <string name="cyt_turn_off_n">एपहरू बन्द गर्नुहोस्: %1$d</string>
+    <string name="cyt_done">बन्द गरिएका एपहरू: %1$d</string>
 </resources>

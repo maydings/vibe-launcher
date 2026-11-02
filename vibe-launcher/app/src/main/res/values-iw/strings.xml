@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">אפליקציות ש-Vibe Launcher כיבה קודם ועכשיו הן פועלות כאן: מגיבוי ששוחזר בטלוויזיה הזו, או שעדכון הפעיל אותן מחדש.</string>
     <string name="apps_turn_off_now">לכבות עכשיו</string>
     <string name="apps_all_off">הכול כובה שוב</string>
+    <string name="cyt_lists">רשימות ניקוי</string>
+    <string name="cyt_lists_short">רשימות שנבדקו של מה לכבות, טלוויזיה אחר טלוויזיה, מקהילת Clean Your TV. בחרו את הרשימה לטלוויזיה שלכם, בדקו אותה ואז כבו את האפליקציות.</string>
+    <string name="cyt_credit">רשימות מקהילת Clean Your TV (github.com/Gathin23/cleanyourtv), ברישיון MIT, וכל אחת נבדקה בטלוויזיה של מי שיצר אותה. ההתאמות הטובות ביותר לטלוויזיה הזו מופיעות ראשונות.</string>
+    <string name="cyt_loading">בטעינה…</string>
+    <string name="cyt_failed">לא ניתן היה לטעון את הרשימות. בדקו את חיבור האינטרנט של הטלוויזיה.</string>
+    <string name="cyt_plan_short">✓ מסמן מה יכובה; OK משנה זאת. אפליקציות שאינן בטלוויזיה הזו לא נכללות, וגם לא רכיבים שהיא צריכה. מה שיוצר הרשימה השאיר פועל בכוונה מתחיל ללא סימון.</string>
+    <string name="cyt_turn_off_n">לכבות אפליקציות: %1$d</string>
+    <string name="cyt_done">אפליקציות שכובו: %1$d</string>
 </resources>

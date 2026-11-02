@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Vibe Launcher ከዚህ ቀደም ያጠፋቸው ግን አሁን እዚህ የበሩ መተግበሪያዎች፦ በዚህ ቲቪ ላይ ከተመለሰ ምትኬ፣ ወይም በዝማኔ መልሰው የበሩ።</string>
     <string name="apps_turn_off_now">አሁን ያጥፉ</string>
     <string name="apps_all_off">ሁሉም እንደገና ጠፍተዋል</string>
+    <string name="cyt_lists">የማጽጃ ዝርዝሮች</string>
+    <string name="cyt_lists_short">ምን እንደሚጠፋ የሚያሳዩ፣ ለእያንዳንዱ ቲቪ የተፈተኑ ዝርዝሮች ከClean Your TV ማኅበረሰብ። ለቲቪዎ የሚሆነውን ይምረጡ፣ ይፈትሹት፣ ከዚያ መተግበሪያዎቹን ያጥፉ።</string>
+    <string name="cyt_credit">ዝርዝሮች በClean Your TV ማኅበረሰብ (github.com/Gathin23/cleanyourtv)፣ MIT ፈቃድ፣ እያንዳንዱ ባዘጋጀው ሰው በራሱ ቲቪ ላይ የተፈተነ። ለዚህ ቲቪ በጣም የሚስማሙት መጀመሪያ ይመጣሉ።</string>
+    <string name="cyt_loading">በመጫን ላይ…</string>
+    <string name="cyt_failed">ዝርዝሮቹ ሊጫኑ አልቻሉም። የቲቪውን የኢንተርኔት ግንኙነት ይፈትሹ።</string>
+    <string name="cyt_plan_short">✓ የሚጠፉትን ያመለክታል፤ OK ይቀይረዋል። በዚህ ቲቪ ላይ የሌሉ መተግበሪያዎች አልተካተቱም፣ ቲቪው የሚያስፈልጉት ክፍሎችም እንዲሁ። የዝርዝሩ አዘጋጅ ሆን ብሎ እንደበሩ የተዋቸው ምልክት ሳይደረግባቸው ይጀምራሉ።</string>
+    <string name="cyt_turn_off_n">መተግበሪያዎችን ያጥፉ፦ %1$d</string>
+    <string name="cyt_done">የጠፉ መተግበሪያዎች፦ %1$d</string>
 </resources>

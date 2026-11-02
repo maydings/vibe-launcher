@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Apl yang pernah dilumpuhkan oleh Vibe Launcher tetapi kini didayakan di sini: daripada sandaran yang dipulihkan pada TV ini, atau didayakan semula oleh kemas kini.</string>
     <string name="apps_turn_off_now">Lumpuhkan sekarang</string>
     <string name="apps_all_off">Semua telah dilumpuhkan semula</string>
+    <string name="cyt_lists">Senarai pembersihan</string>
+    <string name="cyt_lists_short">Senarai teruji tentang apa yang perlu dilumpuhkan, mengikut TV, daripada komuniti Clean Your TV. Pilih senarai untuk TV anda, semak, kemudian lumpuhkan apl tersebut.</string>
+    <string name="cyt_credit">Senarai oleh komuniti Clean Your TV (github.com/Gathin23/cleanyourtv), lesen MIT, setiap satu diuji pada TV sendiri oleh orang yang membuatnya. Padanan terbaik untuk TV ini dipaparkan dahulu.</string>
+    <string name="cyt_loading">Memuatkan…</string>
+    <string name="cyt_failed">Senarai tidak dapat dimuatkan. Semak sambungan internet TV.</string>
+    <string name="cyt_plan_short">✓ menandakan apa yang akan dilumpuhkan; OK mengubahnya. Apl yang tiada pada TV ini tidak disertakan, begitu juga bahagian yang diperlukannya. Apa yang sengaja dibiarkan didayakan oleh pembuat senarai bermula tanpa tanda.</string>
+    <string name="cyt_turn_off_n">Lumpuhkan %1$d apl</string>
+    <string name="cyt_done">%1$d apl dilumpuhkan</string>
 </resources>

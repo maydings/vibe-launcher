@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">वे ऐप्स जिन्हें Vibe Launcher ने पहले बंद किया था, लेकिन अब यहाँ चालू हैं: इस टीवी पर रीस्टोर किए गए बैकअप से, या किसी अपडेट ने उन्हें फिर से चालू कर दिया।</string>
     <string name="apps_turn_off_now">अभी बंद करें</string>
     <string name="apps_all_off">सभी फिर से बंद हो गए</string>
+    <string name="cyt_lists">सफ़ाई सूचियाँ</string>
+    <string name="cyt_lists_short">Clean Your TV समुदाय की परखी हुई सूचियाँ कि क्या बंद करना है, हर टीवी के लिए अलग। अपने टीवी की सूची चुनें, उसे जाँच लें, फिर उन ऐप्स को बंद करें।</string>
+    <string name="cyt_credit">सूचियाँ Clean Your TV समुदाय की हैं (github.com/Gathin23/cleanyourtv), MIT लाइसेंस, हर सूची उसे बनाने वाले व्यक्ति ने अपने टीवी पर परखी है। इस टीवी से सबसे ज़्यादा मेल खाने वाली सूचियाँ पहले आती हैं।</string>
+    <string name="cyt_loading">लोड हो रहा है…</string>
+    <string name="cyt_failed">सूचियाँ लोड नहीं हो सकीं। टीवी का इंटरनेट कनेक्शन जाँचें।</string>
+    <string name="cyt_plan_short">✓ बताता है कि क्या बंद होगा; OK उसे बदलता है। जो ऐप्स इस टीवी पर नहीं हैं, वे छोड़ दिए गए हैं, और टीवी के ज़रूरी हिस्से भी। सूची बनाने वाले ने जिन्हें जानबूझकर चालू रखा था, उन पर शुरू में सही का निशान नहीं होता।</string>
+    <string name="cyt_turn_off_n">ऐप्स बंद करें: %1$d</string>
+    <string name="cyt_done">बंद किए गए ऐप्स: %1$d</string>
 </resources>

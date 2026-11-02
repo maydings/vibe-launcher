@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Vibe Launcher আগে যেসব অ্যাপ বন্ধ করেছিল কিন্তু এখন এখানে চালু আছে: এই টিভিতে রিস্টোর করা ব্যাকআপ থেকে, বা কোনো আপডেট সেগুলো আবার চালু করেছে।</string>
     <string name="apps_turn_off_now">এখনই বন্ধ করুন</string>
     <string name="apps_all_off">সব আবার বন্ধ হয়েছে</string>
+    <string name="cyt_lists">পরিষ্কারের তালিকা</string>
+    <string name="cyt_lists_short">Clean Your TV কমিউনিটির পরীক্ষিত তালিকা, প্রতিটি টিভির জন্য আলাদা, কী কী বন্ধ করবেন তা নিয়ে। আপনার টিভির তালিকাটি বেছে নিন, দেখে নিন, তারপর সেই অ্যাপগুলো বন্ধ করুন।</string>
+    <string name="cyt_credit">তালিকাগুলো Clean Your TV কমিউনিটির (github.com/Gathin23/cleanyourtv), MIT লাইসেন্স, প্রতিটি যিনি বানিয়েছেন তিনি নিজের টিভিতে পরীক্ষা করেছেন। এই টিভির সঙ্গে সবচেয়ে বেশি মেলে এমনগুলো আগে আসে।</string>
+    <string name="cyt_loading">লোড হচ্ছে…</string>
+    <string name="cyt_failed">তালিকাগুলো লোড করা যায়নি। টিভির ইন্টারনেট সংযোগ দেখুন।</string>
+    <string name="cyt_plan_short">✓ দিয়ে বোঝানো হয় কী বন্ধ হবে; OK দিয়ে তা বদলানো যায়। এই টিভিতে নেই এমন অ্যাপ বাদ দেওয়া হয়েছে, টিভির দরকারি অংশগুলোও। তালিকা নির্মাতা ইচ্ছে করে যেগুলো চালু রেখেছিলেন সেগুলোতে শুরুতে টিক থাকে না।</string>
+    <string name="cyt_turn_off_n">অ্যাপ বন্ধ করুন: %1$d</string>
+    <string name="cyt_done">বন্ধ করা অ্যাপ: %1$d</string>
 </resources>

@@ -180,6 +180,29 @@ final class TvApps {
         return apps;
     }
 
+    /**
+     * These packages as they are on this TV, in the same order: the ones not installed left out, each with its
+     * name, whether it's on, and whether the TV needs it (a clean-up list's plan, CleanLists).
+     */
+    static List<App> installed(Context context, List<String> pkgs) {
+        PackageManager pm = context.getPackageManager();
+        Set<String> keep = alsoKept(context);
+        List<App> apps = new ArrayList<>();
+        int flags = PackageManager.MATCH_DISABLED_COMPONENTS | PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS;
+        for (String pkg : pkgs) {
+            ApplicationInfo ai;
+            try {
+                ai = pm.getApplicationInfo(pkg, flags);
+            } catch (PackageManager.NameNotFoundException e) {
+                continue;
+            }
+            String label = String.valueOf(ai.loadLabel(pm));
+            boolean needed = kept(ai, keep) || pkg.equals(context.getPackageName());
+            apps.add(new App(pkg, label.isEmpty() ? pkg : label, needed, isOn(pm, pkg)));
+        }
+        return apps;
+    }
+
     /** The apps turned off here and still off: what Turn all back on would turn on. */
     static List<String> turnedOff(Context context) {
         PackageManager pm = context.getPackageManager();

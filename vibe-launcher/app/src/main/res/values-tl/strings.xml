@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Mga app na in-off na ng Vibe Launcher dati pero naka-on na rito ngayon: mula sa backup na na-restore sa TV na ito, o in-on ulit ng isang update.</string>
     <string name="apps_turn_off_now">I-off ngayon</string>
     <string name="apps_all_off">Na-off ulit ang lahat</string>
+    <string name="cyt_lists">Mga listahan ng paglilinis</string>
+    <string name="cyt_lists_short">Mga nasubukang listahan ng mga io-off, kada TV, mula sa Clean Your TV community. Piliin ang para sa TV mo, suriin ito, saka i-off ang mga app.</string>
+    <string name="cyt_credit">Mga listahan ng Clean Your TV community (github.com/Gathin23/cleanyourtv), MIT license, bawat isa ay sinubukan sa sariling TV ng gumawa nito. Nauuna ang pinakatugma sa TV na ito.</string>
+    <string name="cyt_loading">Naglo-load…</string>
+    <string name="cyt_failed">Hindi ma-load ang mga listahan. Tingnan ang koneksyon sa internet ng TV.</string>
+    <string name="cyt_plan_short">Minamarkahan ng ✓ ang mga io-off; binabago ito ng OK. Hindi isinama ang mga app na wala sa TV na ito, pati ang mga bahaging kailangan nito. Ang sadyang iniwang naka-on ng gumawa ng listahan ay nagsisimulang walang check.</string>
+    <string name="cyt_turn_off_n">I-off ang %1$d app</string>
+    <string name="cyt_done">Na-off ang %1$d app</string>
 </resources>

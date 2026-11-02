@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">ਉਹ ਐਪਾਂ ਜੋ Vibe Launcher ਨੇ ਪਹਿਲਾਂ ਬੰਦ ਕੀਤੀਆਂ ਸਨ, ਪਰ ਹੁਣ ਇੱਥੇ ਚਾਲੂ ਹਨ: ਇਸ ਟੀਵੀ ਉੱਤੇ ਰੀਸਟੋਰ ਕੀਤੇ ਬੈਕਅੱਪ ਤੋਂ, ਜਾਂ ਕਿਸੇ ਅੱਪਡੇਟ ਨੇ ਮੁੜ ਚਾਲੂ ਕਰ ਦਿੱਤੀਆਂ।</string>
     <string name="apps_turn_off_now">ਹੁਣੇ ਬੰਦ ਕਰੋ</string>
     <string name="apps_all_off">ਸਭ ਮੁੜ ਬੰਦ ਹੋ ਗਈਆਂ</string>
+    <string name="cyt_lists">ਸਫ਼ਾਈ ਸੂਚੀਆਂ</string>
+    <string name="cyt_lists_short">Clean Your TV ਭਾਈਚਾਰੇ ਦੀਆਂ, ਹਰ ਟੀਵੀ ਲਈ ਵੱਖਰੀਆਂ ਪਰਖੀਆਂ, ਕੀ ਬੰਦ ਕਰਨਾ ਹੈ ਦੀਆਂ ਸੂਚੀਆਂ। ਆਪਣੇ ਟੀਵੀ ਦੀ ਸੂਚੀ ਚੁਣੋ, ਉਸਨੂੰ ਜਾਂਚੋ, ਫਿਰ ਉਹ ਐਪਾਂ ਬੰਦ ਕਰੋ।</string>
+    <string name="cyt_credit">Clean Your TV ਭਾਈਚਾਰੇ ਦੀਆਂ ਸੂਚੀਆਂ (github.com/Gathin23/cleanyourtv), MIT ਲਾਇਸੈਂਸ, ਹਰ ਸੂਚੀ ਉਸਨੂੰ ਬਣਾਉਣ ਵਾਲੇ ਵਿਅਕਤੀ ਨੇ ਆਪਣੇ ਟੀਵੀ ਉੱਤੇ ਪਰਖੀ ਹੈ। ਇਸ ਟੀਵੀ ਨਾਲ ਸਭ ਤੋਂ ਵੱਧ ਮੇਲ ਖਾਂਦੀਆਂ ਸੂਚੀਆਂ ਪਹਿਲਾਂ ਆਉਂਦੀਆਂ ਹਨ।</string>
+    <string name="cyt_loading">ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…</string>
+    <string name="cyt_failed">ਸੂਚੀਆਂ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੀਆਂ। ਟੀਵੀ ਦਾ ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ ਜਾਂਚੋ।</string>
+    <string name="cyt_plan_short">✓ ਦੱਸਦਾ ਹੈ ਕਿ ਕੀ ਬੰਦ ਹੋਵੇਗਾ; OK ਉਸਨੂੰ ਬਦਲਦਾ ਹੈ। ਜੋ ਐਪਾਂ ਇਸ ਟੀਵੀ ਉੱਤੇ ਨਹੀਂ ਹਨ, ਉਹ ਛੱਡ ਦਿੱਤੀਆਂ ਗਈਆਂ ਹਨ, ਅਤੇ ਟੀਵੀ ਦੇ ਲੋੜੀਂਦੇ ਹਿੱਸੇ ਵੀ। ਸੂਚੀ ਬਣਾਉਣ ਵਾਲੇ ਨੇ ਜੋ ਜਾਣ-ਬੁੱਝ ਕੇ ਚਾਲੂ ਰੱਖਿਆ ਸੀ, ਉਸ ਉੱਤੇ ਸ਼ੁਰੂ ਵਿੱਚ ਨਿਸ਼ਾਨ ਨਹੀਂ ਹੁੰਦਾ।</string>
+    <string name="cyt_turn_off_n">ਐਪਾਂ ਬੰਦ ਕਰੋ: %1$d</string>
+    <string name="cyt_done">ਬੰਦ ਕੀਤੀਆਂ ਐਪਾਂ: %1$d</string>
 </resources>

@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Aplicații pe care Vibe Launcher le-a dezactivat înainte, dar care acum sunt activate aici: dintr-un backup restabilit pe acest televizor sau reactivate de o actualizare.</string>
     <string name="apps_turn_off_now">Dezactivați acum</string>
     <string name="apps_all_off">Toate au fost dezactivate din nou</string>
+    <string name="cyt_lists">Liste de curățare</string>
+    <string name="cyt_lists_short">Liste testate cu ce să dezactivați, televizor cu televizor, de la comunitatea Clean Your TV. Alegeți-o pe cea pentru televizorul dvs., verificați-o, apoi dezactivați aplicațiile.</string>
+    <string name="cyt_credit">Liste de la comunitatea Clean Your TV (github.com/Gathin23/cleanyourtv), licență MIT, fiecare testată pe televizorul său de persoana care a creat-o. Cele mai potrivite pentru acest televizor apar primele.</string>
+    <string name="cyt_loading">Se încarcă…</string>
+    <string name="cyt_failed">Listele nu au putut fi încărcate. Verificați conexiunea la internet a televizorului.</string>
+    <string name="cyt_plan_short">✓ marchează ce va fi dezactivat; OK schimbă asta. Aplicațiile care nu sunt pe acest televizor sunt omise, la fel și componentele de care are nevoie. Ce a lăsat activat intenționat autorul listei pornește nebifat.</string>
+    <string name="cyt_turn_off_n">Dezactivați aplicații: %1$d</string>
+    <string name="cyt_done">Aplicații dezactivate: %1$d</string>
 </resources>

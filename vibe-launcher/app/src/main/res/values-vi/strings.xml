@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Các ứng dụng mà Vibe Launcher đã tắt trước đó nhưng giờ đang bật ở đây: do bản sao lưu được khôi phục trên TV này, hoặc được một bản cập nhật bật lại.</string>
     <string name="apps_turn_off_now">Tắt ngay</string>
     <string name="apps_all_off">Đã tắt lại tất cả</string>
+    <string name="cyt_lists">Danh sách dọn dẹp</string>
+    <string name="cyt_lists_short">Danh sách những gì nên tắt, đã được thử trên từng TV, từ cộng đồng Clean Your TV. Chọn danh sách cho TV của bạn, xem lại, rồi tắt các ứng dụng đó.</string>
+    <string name="cyt_credit">Danh sách của cộng đồng Clean Your TV (github.com/Gathin23/cleanyourtv), giấy phép MIT, mỗi danh sách đã được người tạo thử trên TV của họ. Những danh sách phù hợp nhất với TV này được xếp trước.</string>
+    <string name="cyt_loading">Đang tải…</string>
+    <string name="cyt_failed">Không tải được danh sách. Hãy kiểm tra kết nối internet của TV.</string>
+    <string name="cyt_plan_short">✓ đánh dấu những gì sẽ bị tắt; OK để thay đổi. Các ứng dụng không có trên TV này được bỏ qua, cả những thành phần TV cần cũng vậy. Những gì người tạo danh sách cố ý để bật sẽ bắt đầu ở trạng thái không đánh dấu.</string>
+    <string name="cyt_turn_off_n">Tắt %1$d ứng dụng</string>
+    <string name="cyt_done">Đã tắt %1$d ứng dụng</string>
 </resources>

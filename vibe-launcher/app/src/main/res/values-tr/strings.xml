@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Vibe Launcher\'ın daha önce kapattığı ancak şu anda burada açık olan uygulamalar: bu TV\'de geri yüklenen bir yedekten ya da bir güncellemeyle yeniden açılmış olabilirler.</string>
     <string name="apps_turn_off_now">Şimdi kapat</string>
     <string name="apps_all_off">Tümü yeniden kapatıldı</string>
+    <string name="cyt_lists">Temizlik listeleri</string>
+    <string name="cyt_lists_short">Clean Your TV topluluğundan, her TV için ayrı ayrı denenmiş, nelerin kapatılacağını gösteren listeler. TV\'nize uygun olanı seçin, gözden geçirin, ardından uygulamaları kapatın.</string>
+    <string name="cyt_credit">Listeler Clean Your TV topluluğuna aittir (github.com/Gathin23/cleanyourtv), MIT lisansı, her biri hazırlayan kişi tarafından kendi TV\'sinde denenmiştir. Bu TV\'ye en uygun olanlar önce gelir.</string>
+    <string name="cyt_loading">Yükleniyor…</string>
+    <string name="cyt_failed">Listeler yüklenemedi. TV\'nin internet bağlantısını kontrol edin.</string>
+    <string name="cyt_plan_short">✓ kapatılacak olanları gösterir; OK bunu değiştirir. Bu TV\'de olmayan uygulamalar ve TV\'nin ihtiyaç duyduğu parçalar dahil edilmez. Listeyi hazırlayanın bilerek açık bıraktıkları işaretsiz başlar.</string>
+    <string name="cyt_turn_off_n">%1$d uygulamayı kapat</string>
+    <string name="cyt_done">%1$d uygulama kapatıldı</string>
 </resources>

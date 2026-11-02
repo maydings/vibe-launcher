@@ -178,4 +178,12 @@
     <string name="apps_turn_off_again_short">Vibe Launcher 之前停用过、但现在在这里已启用的应用：来自在这台电视上恢复的备份，或被更新重新启用。</string>
     <string name="apps_turn_off_now">立即停用</string>
     <string name="apps_all_off">已全部重新停用</string>
+    <string name="cyt_lists">清理清单</string>
+    <string name="cyt_lists_short">来自 Clean Your TV 社区、按电视逐一测试过的停用清单。选择适合你电视的清单，检查后再停用这些应用。</string>
+    <string name="cyt_credit">清单由 Clean Your TV 社区提供（github.com/Gathin23/cleanyourtv），采用 MIT 许可，每份都由制作者在自己的电视上测试过。与这台电视最匹配的排在最前。</string>
+    <string name="cyt_loading">正在加载…</string>
+    <string name="cyt_failed">无法加载清单。请检查电视的互联网连接。</string>
+    <string name="cyt_plan_short">✓ 表示将停用的项目，按 OK 可更改。这台电视上没有的应用不会列出，电视所需的部分也一样。清单制作者特意保持启用的项目一开始不会勾选。</string>
+    <string name="cyt_turn_off_n">停用 %1$d 个应用</string>
+    <string name="cyt_done">已停用 %1$d 个应用</string>
 </resources>

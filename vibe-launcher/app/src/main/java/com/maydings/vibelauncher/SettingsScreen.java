@@ -1006,6 +1006,8 @@ final class SettingsScreen {
                 page.refresh();
             });
         });
+        Row lists = page.link(R.string.cyt_lists, null, this::cleanLists);
+        lists.about = R.string.cyt_lists_short;
         page.link(R.string.apps_can_turn_off, null, () -> appList(false));
         page.link(R.string.apps_tv_needs, null, () -> appList(true));
         return page;
@@ -1058,6 +1060,133 @@ final class SettingsScreen {
             shownApps.add(a);
         }
         if (to < apps.size()) handler.postDelayed(() -> addAppRows(page, apps, to), 16);
+    }
+
+    /**
+     * Clean-up lists (CleanLists): Clean Your TV's lists, this TV's brand first and the best matches at the top,
+     * each with its TV's name, Android version and notes; OK opens its plan. Fetched as the page opens.
+     */
+    private Page cleanLists() {
+        Page page = new Page(ctx.getString(R.string.cyt_lists));
+        page.footnote = R.string.cyt_credit;
+        Row loading = page.add(R.string.cyt_loading, null, null);
+        Context app = ctx.getApplicationContext();
+        new Thread(() -> {
+            List<CleanLists.Tv> tvs;
+            try {
+                tvs = CleanLists.lists(app);
+            } catch (java.io.IOException e) {
+                handler.post(() -> loading.label.setText(R.string.cyt_failed));
+                return;
+            }
+            handler.post(() -> {
+                if (!pages.contains(page)) return;
+                addListRows(page, tvs, 0);
+                // Focus on the best match before Loading goes, or it would land wherever Android picks.
+                if (loading.view.isFocused() && page.rows.size() > 1) page.rows.get(1).view.requestFocus();
+                loading.view.setVisibility(View.GONE);
+                page.stops.remove(loading.view);
+            });
+        }, "CleanLists").start();
+        return page;
+    }
+
+    /** A dozen list rows a frame (there are hundreds), while the page is still open. */
+    private void addListRows(Page page, List<CleanLists.Tv> tvs, int from) {
+        if (!pages.contains(page)) return;
+        int to = Math.min(tvs.size(), from + 12);
+        for (int i = from; i < to; i++) {
+            CleanLists.Tv tv = tvs.get(i);
+            Row row = page.add(tv.name, () -> tv.os, null);
+            row.aboutText = tv.notes.isEmpty() ? tv.folder : tv.notes + "\n" + tv.folder;
+            row.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+            row.action = () -> open(cleanPlan(tv), row);
+        }
+        if (to < tvs.size()) handler.postDelayed(() -> addListRows(page, tvs, to), 16);
+    }
+
+    /**
+     * One list's plan for this TV: only what's installed here, each app with the list's section and reason under
+     * the list. ✓ is what Turn off N apps turns off, OK on an app changing it; the maker's "by choice" sections start
+     * unticked, what's already off shows Off, and what the TV needs is grayed and stays. Turned off, they go in our
+     * own record, so Turn all back on undoes them whatever the list says later.
+     */
+    private Page cleanPlan(CleanLists.Tv tv) {
+        Page page = new Page(tv.name);
+        page.footnote = R.string.cyt_plan_short;
+        Row go = page.add(R.string.cyt_loading, null, null);
+        Context app = ctx.getApplicationContext();
+        new Thread(() -> {
+            List<CleanLists.Item> items;
+            try {
+                items = CleanLists.items(app, tv.folder);
+            } catch (java.io.IOException e) {
+                handler.post(() -> go.label.setText(R.string.cyt_failed));
+                return;
+            }
+            java.util.Set<String> unique = new java.util.LinkedHashSet<>();   // once each, in the list's order
+            for (CleanLists.Item item : items) unique.add(item.pkg);
+            List<String> pkgs = new ArrayList<>(unique);
+            List<TvApps.App> apps = TvApps.installed(app, pkgs);
+            handler.post(() -> {
+                if (pages.contains(page)) showPlan(page, go, items, apps);
+            });
+        }, "CleanLists").start();
+        return page;
+    }
+
+    private void showPlan(Page page, Row go, List<CleanLists.Item> items, List<TvApps.App> apps) {
+        java.util.Map<String, CleanLists.Item> byPkg = new java.util.HashMap<>();
+        for (CleanLists.Item item : items) if (!byPkg.containsKey(item.pkg)) byPkg.put(item.pkg, item);
+        java.util.Set<String> ticked = new java.util.LinkedHashSet<>();
+        for (TvApps.App a : apps) {
+            if (!a.needed && a.on && !byPkg.get(a.pkg).optional) ticked.add(a.pkg);
+        }
+        Runnable count = () -> go.label.setText(ctx.getString(R.string.cyt_turn_off_n, ticked.size()));
+        count.run();
+        go.action = () -> {
+            if (ticked.isEmpty()) return;
+            List<String> chosen = new ArrayList<>(ticked);
+            StringBuilder cmd = new StringBuilder();
+            for (String pkg : chosen) cmd.append(cmd.length() == 0 ? "" : "; ").append(TvApps.command(pkg, false));
+            runAdb(page, cmd.toString(), r -> {
+                android.content.pm.PackageManager pm = ctx.getPackageManager();
+                int off = 0;
+                for (String pkg : chosen) {
+                    if (TvApps.isOn(pm, pkg)) continue;
+                    TvApps.remember(ctx, pkg, false);
+                    ticked.remove(pkg);
+                    off++;
+                }
+                for (TvApps.App a : apps) a.on = TvApps.isOn(pm, a.pkg);
+                Toast.makeText(host, off == chosen.size() ? ctx.getString(R.string.cyt_done, off)
+                        : ctx.getString(R.string.adb_failed), Toast.LENGTH_SHORT).show();
+                count.run();
+                page.refresh();
+            });
+        };
+        for (TvApps.App a : apps) {
+            CleanLists.Item item = byPkg.get(a.pkg);
+            Row row = page.add(a.label, () -> a.needed ? "" : !a.on ? ctx.getString(R.string.off)
+                    : ticked.contains(a.pkg) ? "✓" : "", null);
+            StringBuilder about = new StringBuilder();
+            if (!item.section.isEmpty()) about.append(item.section).append('\n');
+            if (!item.reason.isEmpty()) about.append(item.reason).append('\n');
+            about.append(a.pkg);
+            if (a.needed) {
+                about.append('\n').append(ctx.getString(R.string.app_protected));
+                row.label.setAlpha(0.45f);
+                row.value.setAlpha(0.45f);
+                row.action = () -> Toast.makeText(host, R.string.app_protected, Toast.LENGTH_LONG).show();
+            } else {
+                row.action = () -> {
+                    if (!a.on) return;   // off already
+                    if (!ticked.remove(a.pkg)) ticked.add(a.pkg);
+                    count.run();
+                };
+            }
+            row.aboutText = about;
+        }
     }
 
     /** Apps' Turn off again row, while that page is made: shown only while there's something to turn off. */
