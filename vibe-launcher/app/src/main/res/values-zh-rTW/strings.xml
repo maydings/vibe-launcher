@@ -138,4 +138,20 @@
     <string name="home_key_agree">同意</string>
     <string name="home_key_steps">下一步：在開啟的清單中選取「%1$s」並開啟，然後按主畫面鍵。</string>
     <string name="store_update">更新 Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">備份與還原</string>
+    <string name="backup_short">設定、圖塊、資料夾、圖塊圖片和 API 金鑰。備份包含你的金鑰，請妥善保管。</string>
+    <string name="backup_to_tv">將備份儲存在這台電視</string>
+    <string name="backup_tv_short">存放在電視的 Download 資料夾中，檔名為 vibe-launcher-backup.json，會取代上一個備份。</string>
+    <string name="restore_from_tv">從這台電視還原</string>
+    <string name="backup_none">尚無</string>
+    <string name="backup_phone">用手機備份或還原</string>
+    <string name="scan_to_backup">用手機掃描，將備份儲存到手機，或傳回一個備份</string>
+    <string name="backup_saved">備份已儲存</string>
+    <string name="backup_failed">無法儲存備份</string>
+    <string name="restore_now">立即還原</string>
+    <string name="restore_warning">設定、圖塊、資料夾和金鑰都會被備份中的內容取代，接著主畫面會重新啟動。</string>
+    <string name="restore_failed">無法讀取該備份</string>
+    <string name="restored">設定已還原</string>
+    <string name="storage_denied">Vibe Launcher 需要儲存空間存取權才能執行此操作</string>
 </resources>

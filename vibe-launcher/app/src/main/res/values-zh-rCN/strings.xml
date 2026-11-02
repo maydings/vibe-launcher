@@ -138,4 +138,20 @@
     <string name="home_key_agree">同意</string>
     <string name="home_key_steps">下一步：在打开的列表中选择“%1$s”并开启，然后按主页键。</string>
     <string name="store_update">更新 Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">备份和恢复</string>
+    <string name="backup_short">设置、图块、文件夹、图块图片和 API 密钥。备份包含你的密钥，请妥善保管。</string>
+    <string name="backup_to_tv">将备份保存到这台电视</string>
+    <string name="backup_tv_short">保存在电视的 Download 文件夹中，文件名为 vibe-launcher-backup.json，会替换上一个备份。</string>
+    <string name="restore_from_tv">从这台电视恢复</string>
+    <string name="backup_none">暂无</string>
+    <string name="backup_phone">用手机备份或恢复</string>
+    <string name="scan_to_backup">用手机扫码，把备份保存到手机上，或发回一个备份</string>
+    <string name="backup_saved">备份已保存</string>
+    <string name="backup_failed">无法保存备份</string>
+    <string name="restore_now">立即恢复</string>
+    <string name="restore_warning">设置、图块、文件夹和密钥都将被备份中的内容替换，随后主屏幕会重新启动。</string>
+    <string name="restore_failed">无法读取该备份</string>
+    <string name="restored">设置已恢复</string>
+    <string name="storage_denied">Vibe Launcher 需要存储权限才能执行此操作</string>
 </resources>

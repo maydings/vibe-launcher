@@ -44,7 +44,7 @@ import java.util.function.Supplier;
  * it back when it closes. The other pages are made as they're opened (a few rows, current values).
  *
  * General: language, reloading the backdrops, Home at power-on, the Home button service, Restart… (service
- * on) and updates (Updater). Appearance: tiles per row, inputs, the top bar and the slideshow's clock. API
+ * on), backup and restore (Backup, on the TV or through the phone) and updates (Updater). Appearance: tiles per row, inputs, the top bar and the slideshow's clock. API
  * keys: the TMDB, YouTube and Plex keys, edited in place and explained under the list, SmartTube to install
  * or sign in to (the key-free way to YouTube backdrops), and a QR code for pasting the keys from a phone
  * (PhoneLink).
@@ -421,6 +421,7 @@ final class SettingsScreen {
             if (powerMenu != null) powerMenu.run();
         });
         showHomeButton();
+        page.link(R.string.backup_restore, null, this::backups);
         Row version = page.add(R.string.updates, null, null);
         Row check = page.add(R.string.check_updates, null, null);
         showUpdates(version, check);
@@ -737,8 +738,120 @@ final class SettingsScreen {
         smartTubeRow.about = R.string.smarttube_short;
         showSmartTube();
         key(page, R.string.plex_token, 2, R.string.plex_short);
-        if (phoneUrl != null) page.link(R.string.phone_paste, null, this::phone);
+        if (phoneUrl != null) page.link(R.string.phone_paste, null,
+                () -> phone(R.string.phone_paste, phoneUrl, R.string.scan_to_paste));
         return page;
+    }
+
+    // ---- backup and restore ------------------------------------------------------------------------
+
+    /** Storage access was asked for: what to do once it's given (Backup.needsPermission). */
+    private Runnable afterStorage;
+    static final int STORAGE_REQUEST = 7;
+
+    /**
+     * Backup and restore (Backup): a copy kept on the TV, made or put back here, and the phone's page for
+     * taking one away or sending one back. What's in a backup is said under the list.
+     */
+    private Page backups() {
+        Page page = new Page(ctx.getString(R.string.backup_restore));
+        page.footnote = R.string.backup_short;
+        Row save = page.add(R.string.backup_to_tv, null, null);
+        save.about = R.string.backup_tv_short;
+        save.action = () -> withStorage(() -> {
+            Context app = ctx.getApplicationContext();
+            new Thread(() -> {
+                boolean ok = Backup.saveToTv(app);
+                handler.post(() -> {
+                    if (host == null) return;
+                    Toast.makeText(host, ok ? R.string.backup_saved : R.string.backup_failed, Toast.LENGTH_SHORT).show();
+                    page.refresh();   // the copy's new date
+                });
+            }, "Backup").start();
+        });
+        // Its value is when the TV's copy was made; it opens a page that asks first, only when there's one.
+        Row restore = page.link(R.string.restore_from_tv, this::savedOnTv, null);
+        restore.action = () -> withStorage(() -> {
+            page.refresh();
+            if (Backup.savedOnTv(ctx) == 0) Toast.makeText(host, R.string.backup_none, Toast.LENGTH_SHORT).show();
+            else open(restorePage(), restore);
+        });
+        if (phoneUrl != null) page.link(R.string.backup_phone, null,
+                () -> phone(R.string.backup_phone, link.backupUrl(), R.string.scan_to_backup));
+        return page;
+    }
+
+    /** When the TV's copy was made, or None yet; nothing while storage access hasn't been given. */
+    private CharSequence savedOnTv() {
+        if (Backup.needsPermission(ctx)) return "";
+        long made = Backup.savedOnTv(ctx);
+        if (made == 0) return ctx.getString(R.string.backup_none);
+        return android.text.format.DateUtils.formatDateTime(ctx, made, android.text.format.DateUtils.FORMAT_SHOW_DATE
+                | android.text.format.DateUtils.FORMAT_SHOW_TIME | android.text.format.DateUtils.FORMAT_ABBREV_MONTH);
+    }
+
+    /** Restoring replaces everything: a page of its own that says so, and Restore now to go ahead. */
+    private Page restorePage() {
+        Page page = new Page(ctx.getString(R.string.restore_from_tv));
+        page.footnote = R.string.restore_warning;
+        page.add(R.string.restore_now, this::savedOnTv, () -> {
+            Context app = ctx.getApplicationContext();
+            new Thread(() -> {
+                boolean ok = restore(Backup.loadFromTv(app));
+                handler.post(() -> {
+                    if (ok) restored();
+                    else if (host != null) Toast.makeText(host, R.string.restore_failed, Toast.LENGTH_LONG).show();
+                });
+            }, "Restore").start();
+        });
+        return page;
+    }
+
+    /** Off the main thread: the backup read through, then put in place; false when it isn't one, and nothing changed. */
+    private boolean restore(String json) {
+        Backup.Contents contents = Backup.read(json);
+        if (contents == null) return false;
+        restoredLanguage = contents.language;
+        return Backup.apply(ctx.getApplicationContext(), contents);
+    }
+
+    private volatile String restoredLanguage;
+
+    /**
+     * A backup is in place: Settings closes and Home is made again from it, as after a language change. Settings
+     * in another language is made again too, the next time Home prepares it.
+     */
+    private void restored() {
+        Context app = ctx.getApplicationContext();
+        if (!builtFor.equals(restoredLanguage) && prepared == this) prepared = null;
+        // Said in the backup's language: Home comes back in it.
+        Toast.makeText(app, Lang.wrap(app).getString(R.string.restored), Toast.LENGTH_SHORT).show();
+        rebuildHome();
+        if (host != null) host.finish();
+    }
+
+    /**
+     * Runs this now, or once storage access is given (up to Android 10, asked for the first time a backup is
+     * saved or restored on the TV); turned down, it says so.
+     */
+    private void withStorage(Runnable then) {
+        if (host == null) return;
+        if (!Backup.needsPermission(host)) {
+            then.run();
+            return;
+        }
+        afterStorage = then;
+        host.requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_REQUEST);
+    }
+
+    /** SettingsActivity's answer to the storage request. */
+    void onStoragePermission(boolean granted) {
+        Runnable then = afterStorage;
+        afterStorage = null;
+        if (host == null) return;
+        if (granted && then != null) then.run();
+        else if (!granted) Toast.makeText(host, R.string.storage_denied, Toast.LENGTH_LONG).show();
+        for (Page page : pages) page.refresh();   // the TV's copy can be looked at now
     }
 
     /**
@@ -799,9 +912,12 @@ final class SettingsScreen {
         });
     }
 
-    /** Typing a 32-character key with a remote is painful: a page to paste it from a phone instead. */
-    private Page phone() {
-        Page page = new Page(ctx.getString(R.string.phone_paste));
+    /**
+     * A QR code for a page on the phone (PhoneLink), with what to do there under it: pasting the keys (typing a
+     * 32-character key with a remote is painful), or a backup to take away or send back.
+     */
+    private Page phone(int title, String phoneUrl, int scanText) {
+        Page page = new Page(ctx.getString(title));
         LinearLayout box = new LinearLayout(ctx);
         box.setOrientation(LinearLayout.VERTICAL);
         box.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
@@ -819,7 +935,8 @@ final class SettingsScreen {
         qr.setPadding(pad, pad, pad, pad);
         box.addView(qr, new LinearLayout.LayoutParams(size + 2 * pad, size + 2 * pad));
         TextView scan = new TextView(ctx);
-        scan.setText(R.string.scan_to_paste);
+        scan.setText(scanText);
+        scan.setGravity(android.view.Gravity.CENTER_HORIZONTAL);   // a longer instruction wraps centred
         scan.setTextColor(0xCCFFFFFF);
         scan.setTextSize(17);
         scan.setTypeface(UiFont.get(ctx, R.string.font_regular));
@@ -987,6 +1104,27 @@ final class SettingsScreen {
             for (Page page : pages) page.refresh();
             Toast.makeText(host, R.string.saved_from_phone, Toast.LENGTH_SHORT).show();
         }, settings);
+        Context app = ctx.getApplicationContext();
+        link.backups = new PhoneLink.Backups() {
+            @Override
+            public String make() {
+                try {
+                    return Backup.make(app);
+                } catch (org.json.JSONException | java.io.IOException e) {
+                    return null;
+                }
+            }
+
+            @Override
+            public boolean restore(String json) {
+                return SettingsScreen.this.restore(json);
+            }
+
+            @Override
+            public void restored() {
+                SettingsScreen.this.restored();
+            }
+        };
         phoneUrl = link.start();
     }
 

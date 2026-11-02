@@ -138,4 +138,20 @@
     <string name="home_key_agree">Συμφωνώ</string>
     <string name="home_key_steps">Στη συνέχεια: στη λίστα που ανοίγει, επιλέξτε «%1$s», ενεργοποιήστε το και πατήστε το κουμπί αρχικής οθόνης.</string>
     <string name="store_update">Ενημέρωση του Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Αντίγραφο ασφαλείας και επαναφορά</string>
+    <string name="backup_short">Ρυθμίσεις, πλακίδια, φάκελοι, εικόνες πλακιδίων και κλειδιά API. Το αντίγραφο περιέχει τα κλειδιά σας, οπότε κρατήστε το ιδιωτικό.</string>
+    <string name="backup_to_tv">Αποθήκευση αντιγράφου σε αυτή την τηλεόραση</string>
+    <string name="backup_tv_short">Αποθηκεύεται στον φάκελο Download της τηλεόρασης ως vibe-launcher-backup.json και αντικαθιστά το προηγούμενο.</string>
+    <string name="restore_from_tv">Επαναφορά από αυτή την τηλεόραση</string>
+    <string name="backup_none">Κανένα ακόμη</string>
+    <string name="backup_phone">Αντίγραφο ή επαναφορά με το κινητό</string>
+    <string name="scan_to_backup">Σαρώστε με το κινητό για να αποθηκεύσετε εκεί ένα αντίγραφο ή να στείλετε ένα πίσω</string>
+    <string name="backup_saved">Το αντίγραφο αποθηκεύτηκε</string>
+    <string name="backup_failed">Το αντίγραφο δεν μπόρεσε να αποθηκευτεί</string>
+    <string name="restore_now">Επαναφορά τώρα</string>
+    <string name="restore_warning">Οι ρυθμίσεις, τα πλακίδια, οι φάκελοι και τα κλειδιά αντικαθίστανται όλα από του αντιγράφου και μετά η αρχική οθόνη ξεκινά ξανά.</string>
+    <string name="restore_failed">Αυτό το αντίγραφο δεν μπόρεσε να διαβαστεί</string>
+    <string name="restored">Οι ρυθμίσεις επαναφέρθηκαν</string>
+    <string name="storage_denied">Το Vibe Launcher χρειάζεται πρόσβαση στον αποθηκευτικό χώρο για αυτό</string>
 </resources>

@@ -138,4 +138,20 @@
     <string name="home_key_agree">అంగీకరిస్తున్నాను</string>
     <string name="home_key_steps">తర్వాత: తెరుచుకునే జాబితాలో “%1$s” ఎంచుకుని ఆన్ చేయండి, ఆపై హోమ్ నొక్కండి.</string>
     <string name="store_update">Vibe Launcher‌ను అప్‌డేట్ చేయండి</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">బ్యాకప్ మరియు రీస్టోర్</string>
+    <string name="backup_short">సెట్టింగ్‌లు, టైల్స్, ఫోల్డర్‌లు, టైల్ చిత్రాలు మరియు API కీలు. బ్యాకప్‌లో మీ కీలు ఉంటాయి, కాబట్టి దాన్ని గోప్యంగా ఉంచండి.</string>
+    <string name="backup_to_tv">ఈ టీవీలో బ్యాకప్ సేవ్ చేయండి</string>
+    <string name="backup_tv_short">టీవీ Download ఫోల్డర్‌లో vibe-launcher-backup.json పేరుతో ఉంచబడుతుంది, మునుపటిదాని స్థానంలో.</string>
+    <string name="restore_from_tv">ఈ టీవీ నుండి రీస్టోర్ చేయండి</string>
+    <string name="backup_none">ఇంకా ఏదీ లేదు</string>
+    <string name="backup_phone">ఫోన్‌తో బ్యాకప్ లేదా రీస్టోర్ చేయండి</string>
+    <string name="scan_to_backup">ఫోన్‌లో బ్యాకప్ సేవ్ చేయడానికి లేదా ఒకదాన్ని తిరిగి పంపడానికి ఫోన్‌తో స్కాన్ చేయండి</string>
+    <string name="backup_saved">బ్యాకప్ సేవ్ అయింది</string>
+    <string name="backup_failed">బ్యాకప్‌ను సేవ్ చేయలేకపోయాం</string>
+    <string name="restore_now">ఇప్పుడే రీస్టోర్ చేయండి</string>
+    <string name="restore_warning">సెట్టింగ్‌లు, టైల్స్, ఫోల్డర్‌లు, కీలు అన్నీ బ్యాకప్‌లోని వాటితో భర్తీ అవుతాయి, తర్వాత హోమ్ మళ్లీ ప్రారంభమవుతుంది.</string>
+    <string name="restore_failed">ఆ బ్యాకప్‌ను చదవలేకపోయాం</string>
+    <string name="restored">సెట్టింగ్‌లు రీస్టోర్ అయ్యాయి</string>
+    <string name="storage_denied">దీనికి Vibe Launcher‌కు స్టోరేజ్ యాక్సెస్ అవసరం</string>
 </resources>

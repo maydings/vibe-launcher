@@ -138,4 +138,20 @@
     <string name="home_key_agree">Zustimmen</string>
     <string name="home_key_steps">Als Nächstes: Wähle in der Liste, die sich öffnet, „%1$s“, schalte es ein und drücke dann Home.</string>
     <string name="store_update">Vibe Launcher aktualisieren</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Sichern und wiederherstellen</string>
+    <string name="backup_short">Einstellungen, Kacheln, Ordner, Kachelbilder und API-Schlüssel. Ein Backup enthält die Schlüssel, also nicht weitergeben.</string>
+    <string name="backup_to_tv">Backup auf diesem Fernseher speichern</string>
+    <string name="backup_tv_short">Liegt im Download-Ordner des Fernsehers als vibe-launcher-backup.json und ersetzt das letzte.</string>
+    <string name="restore_from_tv">Von diesem Fernseher wiederherstellen</string>
+    <string name="backup_none">Noch keins</string>
+    <string name="backup_phone">Mit dem Handy sichern oder wiederherstellen</string>
+    <string name="scan_to_backup">Mit dem Handy scannen, um dort ein Backup zu speichern oder eins zurückzuschicken</string>
+    <string name="backup_saved">Backup gespeichert</string>
+    <string name="backup_failed">Das Backup konnte nicht gespeichert werden</string>
+    <string name="restore_now">Jetzt wiederherstellen</string>
+    <string name="restore_warning">Einstellungen, Kacheln, Ordner und Schlüssel werden alle durch die aus dem Backup ersetzt, dann startet der Startbildschirm neu.</string>
+    <string name="restore_failed">Dieses Backup konnte nicht gelesen werden</string>
+    <string name="restored">Einstellungen wiederhergestellt</string>
+    <string name="storage_denied">Vibe Launcher braucht dafür Zugriff auf den Speicher</string>
 </resources>

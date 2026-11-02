@@ -16,6 +16,11 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- Lets the tile menu open the system uninstall confirmation. -->
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <!-- A settings backup in the Download folder (Backup), asked for when one is first saved or restored. Only
+         up to Android 10: from 11 on it goes through MediaStore, which needs no permission. -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
 
     <!-- Android 11+ hides other apps unless declared: the launcher lists everything with a launcher icon. -->
     <queries>
@@ -57,7 +62,9 @@
         android:icon="@mipmap/ic_launcher"
         android:banner="@drawable/banner"
         android:theme="@style/Theme.TvHome"
-        android:allowBackup="false">
+        android:allowBackup="false"
+        android:requestLegacyExternalStorage="true">
+        <!-- requestLegacyExternalStorage: on Android 10 the backup is an ordinary file in Download, as on 9. -->
 
         <activity
             android:name=".MainActivity"

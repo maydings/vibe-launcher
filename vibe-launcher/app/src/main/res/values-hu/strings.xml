@@ -138,4 +138,20 @@
     <string name="home_key_agree">Elfogadom</string>
     <string name="home_key_steps">Ezután: a megnyíló listában válassza ki ezt: „%1$s”, kapcsolja be, majd nyomja meg a Kezdőképernyő gombot.</string>
     <string name="store_update">A Vibe Launcher frissítése</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Biztonsági mentés és visszaállítás</string>
+    <string name="backup_short">Beállítások, csempék, mappák, csempeképek és API-kulcsok. A mentés tartalmazza a kulcsaidat, ezért ne add ki senkinek.</string>
+    <string name="backup_to_tv">Mentés erre a tévére</string>
+    <string name="backup_tv_short">A tévé Download mappájába kerül vibe-launcher-backup.json néven, az előző helyére.</string>
+    <string name="restore_from_tv">Visszaállítás erről a tévéről</string>
+    <string name="backup_none">Még nincs</string>
+    <string name="backup_phone">Mentés vagy visszaállítás telefonnal</string>
+    <string name="scan_to_backup">Olvasd be telefonnal, hogy oda ments, vagy visszaküldj egy mentést</string>
+    <string name="backup_saved">Mentés kész</string>
+    <string name="backup_failed">Nem sikerült menteni</string>
+    <string name="restore_now">Visszaállítás most</string>
+    <string name="restore_warning">A beállítások, csempék, mappák és kulcsok mind a mentésben lévőkre cserélődnek, majd a kezdőképernyő újraindul.</string>
+    <string name="restore_failed">Ezt a mentést nem lehetett beolvasni</string>
+    <string name="restored">Beállítások visszaállítva</string>
+    <string name="storage_denied">Ehhez a Vibe Launchernek tárhely-hozzáférés kell</string>
 </resources>

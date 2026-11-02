@@ -138,4 +138,20 @@
     <string name="home_key_agree">Setuju</string>
     <string name="home_key_steps">Berikutnya: di daftar yang terbuka, pilih “%1$s”, aktifkan, lalu tekan Beranda.</string>
     <string name="store_update">Perbarui Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Cadangkan dan pulihkan</string>
+    <string name="backup_short">Setelan, ubin, folder, gambar ubin, dan kunci API. Cadangan menyimpan kunci Anda, jadi jaga kerahasiaannya.</string>
+    <string name="backup_to_tv">Simpan cadangan di TV ini</string>
+    <string name="backup_tv_short">Disimpan di folder Download TV sebagai vibe-launcher-backup.json, menggantikan yang terakhir.</string>
+    <string name="restore_from_tv">Pulihkan dari TV ini</string>
+    <string name="backup_none">Belum ada</string>
+    <string name="backup_phone">Cadangkan atau pulihkan dengan ponsel</string>
+    <string name="scan_to_backup">Pindai dengan ponsel untuk menyimpan cadangan di sana atau mengirim satu kembali</string>
+    <string name="backup_saved">Cadangan disimpan</string>
+    <string name="backup_failed">Cadangan tidak dapat disimpan</string>
+    <string name="restore_now">Pulihkan sekarang</string>
+    <string name="restore_warning">Setelan, ubin, folder, dan kunci semuanya diganti dengan yang ada di cadangan, lalu Beranda dimulai ulang.</string>
+    <string name="restore_failed">Cadangan itu tidak dapat dibaca</string>
+    <string name="restored">Setelan dipulihkan</string>
+    <string name="storage_denied">Vibe Launcher memerlukan akses penyimpanan untuk ini</string>
 </resources>

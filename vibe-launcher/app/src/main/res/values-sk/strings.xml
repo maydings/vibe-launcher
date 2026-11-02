@@ -138,4 +138,20 @@
     <string name="home_key_agree">Súhlasím</string>
     <string name="home_key_steps">Ďalej: v zozname, ktorý sa otvorí, vyberte „%1$s“, zapnite ho a stlačte Domov.</string>
     <string name="store_update">Aktualizovať Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Záloha a obnovenie</string>
+    <string name="backup_short">Nastavenia, dlaždice, priečinky, obrázky dlaždíc a kľúče API. Záloha obsahuje vaše kľúče, preto ju nikomu nedávajte.</string>
+    <string name="backup_to_tv">Uložiť zálohu do tohto televízora</string>
+    <string name="backup_tv_short">Uloží sa do priečinka Download v televízore ako vibe-launcher-backup.json a nahradí predchádzajúcu.</string>
+    <string name="restore_from_tv">Obnoviť z tohto televízora</string>
+    <string name="backup_none">Zatiaľ žiadna</string>
+    <string name="backup_phone">Zálohovať alebo obnoviť pomocou telefónu</string>
+    <string name="scan_to_backup">Naskenujte telefónom a uložte doň zálohu alebo ju pošlite späť</string>
+    <string name="backup_saved">Záloha uložená</string>
+    <string name="backup_failed">Zálohu sa nepodarilo uložiť</string>
+    <string name="restore_now">Obnoviť teraz</string>
+    <string name="restore_warning">Nastavenia, dlaždice, priečinky aj kľúče sa nahradia tými zo zálohy a potom sa plocha znova spustí.</string>
+    <string name="restore_failed">Túto zálohu sa nepodarilo prečítať</string>
+    <string name="restored">Nastavenia obnovené</string>
+    <string name="storage_denied">Vibe Launcher na to potrebuje prístup k úložisku</string>
 </resources>

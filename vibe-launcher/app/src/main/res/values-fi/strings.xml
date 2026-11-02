@@ -138,4 +138,20 @@
     <string name="home_key_agree">Hyväksy</string>
     <string name="home_key_steps">Seuraavaksi: valitse avautuvasta luettelosta ”%1$s”, ota se käyttöön ja paina aloitusnäyttöpainiketta.</string>
     <string name="store_update">Päivitä Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Varmuuskopiointi ja palautus</string>
+    <string name="backup_short">Asetukset, ruudut, kansiot, ruutujen kuvat ja API-avaimet. Varmuuskopio sisältää avaimesi, joten pidä se omana tietonasi.</string>
+    <string name="backup_to_tv">Tallenna varmuuskopio tähän televisioon</string>
+    <string name="backup_tv_short">Tallennetaan television Download-kansioon nimellä vibe-launcher-backup.json edellisen tilalle.</string>
+    <string name="restore_from_tv">Palauta tästä televisiosta</string>
+    <string name="backup_none">Ei vielä</string>
+    <string name="backup_phone">Varmuuskopioi tai palauta puhelimella</string>
+    <string name="scan_to_backup">Skannaa puhelimella tallentaaksesi varmuuskopion sinne tai lähettääksesi sellaisen takaisin</string>
+    <string name="backup_saved">Varmuuskopio tallennettu</string>
+    <string name="backup_failed">Varmuuskopiota ei voitu tallentaa</string>
+    <string name="restore_now">Palauta nyt</string>
+    <string name="restore_warning">Asetukset, ruudut, kansiot ja avaimet korvataan kaikki varmuuskopion omilla, minkä jälkeen aloitusnäyttö käynnistyy uudelleen.</string>
+    <string name="restore_failed">Varmuuskopiota ei voitu lukea</string>
+    <string name="restored">Asetukset palautettu</string>
+    <string name="storage_denied">Vibe Launcher tarvitsee tähän tallennustilan käyttöoikeuden</string>
 </resources>

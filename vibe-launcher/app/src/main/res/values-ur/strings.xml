@@ -138,4 +138,20 @@
     <string name="home_key_agree">متفق ہوں</string>
     <string name="home_key_steps">اس کے بعد: کھلنے والی فہرست میں “%1$s” منتخب کریں، اسے آن کریں، پھر ہوم دبائیں۔</string>
     <string name="store_update">Vibe Launcher اپ ڈیٹ کریں</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">بیک اپ اور بحالی</string>
+    <string name="backup_short">ترتیبات، ٹائلیں، فولڈرز، ٹائلوں کی تصاویر اور API کلیدیں۔ بیک اپ میں آپ کی کلیدیں ہوتی ہیں، اس لیے اسے نجی رکھیں۔</string>
+    <string name="backup_to_tv">اس ٹی وی پر بیک اپ محفوظ کریں</string>
+    <string name="backup_tv_short">ٹی وی کے Download فولڈر میں vibe-launcher-backup.json کے نام سے رکھا جاتا ہے، پچھلے کی جگہ۔</string>
+    <string name="restore_from_tv">اس ٹی وی سے بحال کریں</string>
+    <string name="backup_none">ابھی کوئی نہیں</string>
+    <string name="backup_phone">فون سے بیک اپ یا بحال کریں</string>
+    <string name="scan_to_backup">فون پر بیک اپ محفوظ کرنے یا ایک واپس بھیجنے کے لیے فون سے اسکین کریں</string>
+    <string name="backup_saved">بیک اپ محفوظ ہو گیا</string>
+    <string name="backup_failed">بیک اپ محفوظ نہیں ہو سکا</string>
+    <string name="restore_now">ابھی بحال کریں</string>
+    <string name="restore_warning">ترتیبات، ٹائلیں، فولڈرز اور کلیدیں سب بیک اپ والی سے بدل دی جائیں گی، پھر ہوم دوبارہ شروع ہوگا۔</string>
+    <string name="restore_failed">وہ بیک اپ پڑھا نہیں جا سکا</string>
+    <string name="restored">ترتیبات بحال ہو گئیں</string>
+    <string name="storage_denied">اس کے لیے Vibe Launcher کو اسٹوریج تک رسائی درکار ہے</string>
 </resources>

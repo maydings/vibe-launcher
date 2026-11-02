@@ -15,8 +15,8 @@ android {
         applicationId 'com.maydings.vibelauncher'
         minSdk 26
         targetSdk 34
-        versionCode 65
-        versionName '2.9.1'
+        versionCode 66
+        versionName '3.0.0'
     }
 
     buildFeatures {

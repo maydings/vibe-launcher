@@ -138,4 +138,20 @@
     <string name="home_key_agree">Accepter</string>
     <string name="home_key_steps">Næste trin: Vælg “%1$s” på listen, der åbnes, slå den til, og tryk så på hjem.</string>
     <string name="store_update">Opdater Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Sikkerhedskopi og gendannelse</string>
+    <string name="backup_short">Indstillinger, felter, mapper, feltbilleder og API-nøgler. En sikkerhedskopi indeholder dine nøgler, så hold den privat.</string>
+    <string name="backup_to_tv">Gem sikkerhedskopi på dette tv</string>
+    <string name="backup_tv_short">Gemmes i tv\'ets Download-mappe som vibe-launcher-backup.json og erstatter den forrige.</string>
+    <string name="restore_from_tv">Gendan fra dette tv</string>
+    <string name="backup_none">Ingen endnu</string>
+    <string name="backup_phone">Sikkerhedskopiér eller gendan med telefonen</string>
+    <string name="scan_to_backup">Scan med telefonen for at gemme en sikkerhedskopi der eller sende en tilbage</string>
+    <string name="backup_saved">Sikkerhedskopi gemt</string>
+    <string name="backup_failed">Sikkerhedskopien kunne ikke gemmes</string>
+    <string name="restore_now">Gendan nu</string>
+    <string name="restore_warning">Indstillinger, felter, mapper og nøgler erstattes alle af sikkerhedskopiens, og derefter starter Hjem igen.</string>
+    <string name="restore_failed">Sikkerhedskopien kunne ikke læses</string>
+    <string name="restored">Indstillinger gendannet</string>
+    <string name="storage_denied">Vibe Launcher skal have adgang til lagerplads for at gøre dette</string>
 </resources>

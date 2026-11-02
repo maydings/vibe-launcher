@@ -138,4 +138,20 @@
     <string name="home_key_agree">सहमत आहे</string>
     <string name="home_key_steps">पुढे: उघडणाऱ्या सूचीत “%1$s” निवडा, सुरू करा, मग होम दाबा.</string>
     <string name="store_update">Vibe Launcher अपडेट करा</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">बॅकअप आणि रिस्टोअर</string>
+    <string name="backup_short">सेटिंग्ज, टाइल, फोल्डर, टाइलची चित्रे आणि API की. बॅकअपमध्ये तुमच्या की असतात, म्हणून तो खाजगी ठेवा.</string>
+    <string name="backup_to_tv">या टीव्हीवर बॅकअप सेव्ह करा</string>
+    <string name="backup_tv_short">टीव्हीच्या Download फोल्डरमध्ये vibe-launcher-backup.json नावाने ठेवला जातो, मागच्याच्या जागी.</string>
+    <string name="restore_from_tv">या टीव्हीवरून रिस्टोअर करा</string>
+    <string name="backup_none">अद्याप नाही</string>
+    <string name="backup_phone">फोनने बॅकअप किंवा रिस्टोअर करा</string>
+    <string name="scan_to_backup">फोनवर बॅकअप सेव्ह करण्यासाठी किंवा एक परत पाठवण्यासाठी फोनने स्कॅन करा</string>
+    <string name="backup_saved">बॅकअप सेव्ह केला</string>
+    <string name="backup_failed">बॅकअप सेव्ह करता आला नाही</string>
+    <string name="restore_now">आता रिस्टोअर करा</string>
+    <string name="restore_warning">सेटिंग्ज, टाइल, फोल्डर आणि की सर्व बॅकअपमधील गोष्टींनी बदलल्या जातील, मग होम पुन्हा सुरू होईल.</string>
+    <string name="restore_failed">तो बॅकअप वाचता आला नाही</string>
+    <string name="restored">सेटिंग्ज रिस्टोअर केल्या</string>
+    <string name="storage_denied">यासाठी Vibe Launcher ला स्टोरेज ॲक्सेस हवा</string>
 </resources>

@@ -143,4 +143,20 @@
     <string name="home_key_agree">Agree</string>
     <string name="home_key_steps">Next: in the list that opens, choose “%1$s”, turn it on, then press Home.</string>
     <string name="store_update">Update Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Backup and restore</string>
+    <string name="backup_short">Settings, tiles, folders, tile pictures and API keys. A backup holds your keys, so keep it private.</string>
+    <string name="backup_to_tv">Save backup on this TV</string>
+    <string name="backup_tv_short">Kept in the TV\'s Download folder as vibe-launcher-backup.json, replacing the last one.</string>
+    <string name="restore_from_tv">Restore from this TV</string>
+    <string name="backup_none">None yet</string>
+    <string name="backup_phone">Back up or restore with your phone</string>
+    <string name="scan_to_backup">Scan with your phone to save a backup there or send one back</string>
+    <string name="backup_saved">Backup saved</string>
+    <string name="backup_failed">The backup couldn\'t be saved</string>
+    <string name="restore_now">Restore now</string>
+    <string name="restore_warning">Settings, tiles, folders and keys are all replaced by the backup\'s, then Home starts again.</string>
+    <string name="restore_failed">That backup couldn\'t be read</string>
+    <string name="restored">Settings restored</string>
+    <string name="storage_denied">Vibe Launcher needs storage access for this</string>
 </resources>

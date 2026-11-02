@@ -138,4 +138,20 @@
     <string name="home_key_agree">Zgadzam się</string>
     <string name="home_key_steps">Dalej: na liście, która się otworzy, wybierz „%1$s”, włącz to i naciśnij przycisk ekranu głównego.</string>
     <string name="store_update">Zaktualizuj Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Kopia zapasowa i przywracanie</string>
+    <string name="backup_short">Ustawienia, kafelki, foldery, obrazy kafelków i klucze API. Kopia zawiera twoje klucze, więc nikomu jej nie udostępniaj.</string>
+    <string name="backup_to_tv">Zapisz kopię na tym telewizorze</string>
+    <string name="backup_tv_short">Trafia do folderu Download telewizora jako vibe-launcher-backup.json i zastępuje poprzednią.</string>
+    <string name="restore_from_tv">Przywróć z tego telewizora</string>
+    <string name="backup_none">Jeszcze brak</string>
+    <string name="backup_phone">Kopia lub przywracanie przez telefon</string>
+    <string name="scan_to_backup">Zeskanuj telefonem, aby zapisać na nim kopię lub odesłać ją z powrotem</string>
+    <string name="backup_saved">Kopia zapisana</string>
+    <string name="backup_failed">Nie udało się zapisać kopii</string>
+    <string name="restore_now">Przywróć teraz</string>
+    <string name="restore_warning">Ustawienia, kafelki, foldery i klucze zostaną w całości zastąpione tymi z kopii, a potem ekran główny uruchomi się ponownie.</string>
+    <string name="restore_failed">Nie udało się odczytać tej kopii</string>
+    <string name="restored">Ustawienia przywrócone</string>
+    <string name="storage_denied">Vibe Launcher potrzebuje do tego dostępu do pamięci</string>
 </resources>

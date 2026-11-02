@@ -138,4 +138,20 @@
     <string name="home_key_agree">موافقم</string>
     <string name="home_key_steps">بعد: در فهرستی که باز می‌شود «%1$s» را انتخاب و روشن کنید، سپس دکمه صفحه اصلی را بزنید.</string>
     <string name="store_update">به‌روزرسانی Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">پشتیبان‌گیری و بازیابی</string>
+    <string name="backup_short">تنظیمات، کاشی‌ها، پوشه‌ها، تصویر کاشی‌ها و کلیدهای API. پشتیبان کلیدهای شما را دارد، پس آن را خصوصی نگه دارید.</string>
+    <string name="backup_to_tv">ذخیره پشتیبان در این تلویزیون</string>
+    <string name="backup_tv_short">در پوشه Download تلویزیون با نام vibe-launcher-backup.json نگه داشته می‌شود و جای قبلی را می‌گیرد.</string>
+    <string name="restore_from_tv">بازیابی از این تلویزیون</string>
+    <string name="backup_none">هنوز هیچ</string>
+    <string name="backup_phone">پشتیبان‌گیری یا بازیابی با گوشی</string>
+    <string name="scan_to_backup">با گوشی اسکن کنید تا پشتیبانی آنجا ذخیره کنید یا یکی را برگردانید</string>
+    <string name="backup_saved">پشتیبان ذخیره شد</string>
+    <string name="backup_failed">پشتیبان ذخیره نشد</string>
+    <string name="restore_now">اکنون بازیابی کن</string>
+    <string name="restore_warning">تنظیمات، کاشی‌ها، پوشه‌ها و کلیدها همه با موارد پشتیبان جایگزین می‌شوند، سپس صفحه اصلی دوباره شروع می‌شود.</string>
+    <string name="restore_failed">آن پشتیبان خوانده نشد</string>
+    <string name="restored">تنظیمات بازیابی شد</string>
+    <string name="storage_denied">Vibe Launcher برای این کار به دسترسی حافظه نیاز دارد</string>
 </resources>

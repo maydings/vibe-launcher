@@ -138,4 +138,20 @@
     <string name="home_key_agree">ยอมรับ</string>
     <string name="home_key_steps">ขั้นต่อไป: ในรายการที่เปิดขึ้น เลือก “%1$s” แล้วเปิดใช้ จากนั้นกดปุ่มหน้าแรก</string>
     <string name="store_update">อัปเดต Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">สำรองและกู้คืน</string>
+    <string name="backup_short">การตั้งค่า ไทล์ โฟลเดอร์ ภาพไทล์ และคีย์ API ข้อมูลสำรองมีคีย์ของคุณอยู่ จึงควรเก็บไว้เป็นส่วนตัว</string>
+    <string name="backup_to_tv">บันทึกข้อมูลสำรองบนทีวีนี้</string>
+    <string name="backup_tv_short">เก็บไว้ในโฟลเดอร์ Download ของทีวีเป็น vibe-launcher-backup.json แทนที่ไฟล์ล่าสุด</string>
+    <string name="restore_from_tv">กู้คืนจากทีวีนี้</string>
+    <string name="backup_none">ยังไม่มี</string>
+    <string name="backup_phone">สำรองหรือกู้คืนด้วยโทรศัพท์</string>
+    <string name="scan_to_backup">สแกนด้วยโทรศัพท์เพื่อบันทึกข้อมูลสำรองไว้ที่โทรศัพท์หรือส่งกลับมา</string>
+    <string name="backup_saved">บันทึกข้อมูลสำรองแล้ว</string>
+    <string name="backup_failed">บันทึกข้อมูลสำรองไม่ได้</string>
+    <string name="restore_now">กู้คืนเลย</string>
+    <string name="restore_warning">การตั้งค่า ไทล์ โฟลเดอร์ และคีย์ทั้งหมดจะถูกแทนที่ด้วยข้อมูลสำรอง แล้วหน้าหลักจะเริ่มใหม่</string>
+    <string name="restore_failed">อ่านข้อมูลสำรองนั้นไม่ได้</string>
+    <string name="restored">กู้คืนการตั้งค่าแล้ว</string>
+    <string name="storage_denied">Vibe Launcher ต้องได้รับสิทธิ์เข้าถึงพื้นที่เก็บข้อมูลจึงจะทำสิ่งนี้ได้</string>
 </resources>

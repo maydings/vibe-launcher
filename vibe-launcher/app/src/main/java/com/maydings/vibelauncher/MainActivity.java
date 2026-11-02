@@ -565,7 +565,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
                 if (!stillShown) {   // no picture to show alone (none, or not loaded yet): the dock tile
                     cancelPictureSoon();
-                    focusTile(adapter.dockTileFor(lastFocused));
+                    focusDockFromAbove(adapter.dockTileFor(lastFocused));
                     return true;
                 }
                 if (settings.autoHideBar()) {   // the bar goes either way: the picture alone at once, no wait
@@ -576,7 +576,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 if (pictureSoon) {   // Down again straight away: scrolling down, to the dock
                     cancelPictureSoon();
                     // Back to the dock tile Up came from, not whichever tile the focus finder picks.
-                    focusTile(adapter.dockTileFor(lastFocused));
+                    focusDockFromAbove(adapter.dockTileFor(lastFocused));
                     return true;
                 }
                 // The picture alone, as Up from the dock, after the same wait.
@@ -1139,7 +1139,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void showPictureOnly(int sound) {
         if (pictureOnly || rows.getHeight() == 0) return;
         pictureOnly = true;
-        if (shelf != null) shelf.animate().alpha(0f).setDuration(CARET_FADE_MS).start();   // goes with the rows
+        if (shelfBox != null) shelfBox.animate().alpha(0f).setDuration(CARET_FADE_MS).start();   // goes with the rows
         rowsAway = false;   // the picture alone keeps them away now
         if (sound >= 0) grid.playSoundEffect(sound);
         if (!slideshow) openCarousel(true);
@@ -1156,12 +1156,15 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void showRows(boolean animate, boolean toTopBar) {
         if (!pictureOnly) return;
         pictureOnly = false;
-        if (shelf != null && shelfFolder != null) shelf.animate().alpha(1f).setDuration(260).start();
+        if (shelfBox != null && shelfFolder != null) shelfBox.animate().alpha(1f).setDuration(260).start();
         cancelHold();
-        if (focusAfterSlide >= 0) {   // left before the tile was focused: back on it, unless going up again
-            if (!toTopBar) focusTile(focusAfterSlide);
-            focusAfterSlide = -1;
+        // Down (or Back): onto the dock tile, or the one left before it was focused (focusAfterSlide), unless
+        // going up again; a folder's mini row first, as Up came through it on the way to the picture.
+        if (!toTopBar) {
+            int at = focusAfterSlide >= 0 ? focusAfterSlide : onDock() ? lastFocused : -1;
+            if (at >= 0) focusDockFromAbove(at);
         }
+        focusAfterSlide = -1;
         if (!animate) {
             rowsAway = false;
             handler.removeCallbacks(moveMenus);
@@ -2814,6 +2817,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     /** The row of a dock folder's apps over the dock, while the folder (or one of the row's apps) has focus. */
     private LinearLayout shelf;
+    /**
+     * What the row sits in, and what's moved, faded and hidden: a folder with more apps than fit across the
+     * screen slides along to the focused one instead of running off both sides.
+     */
+    private ShelfStrip shelfBox;
     /** The folder the shelf shows, its dock position, and what's in it (to make the row again when it changes). */
     private String shelfFolder, shelfContents;
     private int shelfFolderPos = -1;
@@ -2859,13 +2867,20 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             // exactly one tile's height and were cut off.
             int room = Math.round(14 * density);
             shelf.setPadding(room, room, room, room);
-            shelf.setAlpha(0f);
-            root.addView(shelf, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+            // As wide as the row while it fits (centred, as before), else the screen's width, the row sliding
+            // to the focused app (ShelfStrip). Half a tile kept clear past it: part of the next app shows at
+            // the edge, as there's more that way.
+            int tileW = Math.round(AppAdapter.tileWidthPx(grid.getWidth() - grid.getPaddingLeft()
+                    - grid.getPaddingRight(), COLUMNS, density) * 0.62f);
+            shelfBox = new ShelfStrip(this, shelf, Math.round(tileW * 0.5f));
+            shelfBox.setAlpha(0f);
+            root.addView(shelfBox, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL));
         }
         if (!contents.toString().equals(shelfContents)) {
             shelfContents = contents.toString();
             shelf.removeAllViews();
+            shelfBox.reset();   // another folder's row: from its start
             int tileW = Math.round(AppAdapter.tileWidthPx(grid.getWidth() - grid.getPaddingLeft()
                     - grid.getPaddingRight(), COLUMNS, density) * 0.62f);
             for (int i = 0; i < apps.size(); i++) shelf.addView(shelfTile(apps.get(i), i, apps.size(), tileW));
@@ -2875,9 +2890,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         int tileH = AppAdapter.tileHeightPx(Math.round(AppAdapter.tileWidthPx(grid.getWidth() - grid.getPaddingLeft()
                 - grid.getPaddingRight(), COLUMNS, density) * 0.62f));
         float top = dockPanelTop - 30 * density - tileH;
-        shelf.setY(top - shelf.getPaddingTop());   // the tiles' top where it was; the padding above it
-        shelf.setVisibility(View.VISIBLE);
-        if (!pictureOnly) shelf.animate().alpha(1f).setDuration(260).start();
+        shelfBox.setY(top - shelf.getPaddingTop());   // the tiles' top where it was; the padding above it
+        shelfBox.setVisibility(View.VISIBLE);
+        if (!pictureOnly) shelfBox.animate().alpha(1f).setDuration(260).start();
         return top;
     }
 
@@ -2885,9 +2900,22 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (shelf == null || shelfFolder == null) return;
         if (shelf.hasFocus()) return;   // focus went up into it, not away
         shelfFolder = null;
-        shelf.animate().alpha(0f).setDuration(160).withEndAction(() -> {
-            if (shelfFolder == null) shelf.setVisibility(View.INVISIBLE);
+        shelfBox.animate().alpha(0f).setDuration(160).withEndAction(() -> {
+            if (shelfFolder == null) shelfBox.setVisibility(View.INVISIBLE);
         }).start();
+    }
+
+    /**
+     * Down onto the dock from above it (the top bar, the picture alone): a folder's mini row first, which sits
+     * between them, the way Up goes through it; any other tile as before. A folder whose row isn't showing
+     * (focus never reached it this visit) is focused first, which makes the row, and focus moves on up into it.
+     */
+    private void focusDockFromAbove(int position) {
+        if (adapter.isFolder(position) && adapter.inDock(position)) {
+            if (shelfFolder == null || shelfFolderPos != position) focusTile(position);
+            if (focusShelf()) return;
+        }
+        focusTile(position);
     }
 
     /** Up from a dock folder: focus on its app whose picture is showing. False when it has no shelf. */
@@ -2951,6 +2979,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             float s = focused ? 1.12f : 1f;
             frame.animate().scaleX(s).scaleY(s).setDuration(focused ? 220 : 160).start();
             if (!focused) return;
+            if (shelfBox != null) shelfBox.follow(frame);   // into view, if the row is wider than the screen
             if (shelfFolder != null) folderPicks.put(shelfFolder, app.pkg);
             heroName.setText(app.label);   // the app's name while it's focused in the shelf
             showBackdrop(app.pkg, adapter.ambientColorAt(shelfFolderPos));

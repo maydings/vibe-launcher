@@ -138,4 +138,20 @@
     <string name="home_key_agree">එකඟයි</string>
     <string name="home_key_steps">ඊළඟට: විවෘත වන ලැයිස්තුවේ “%1$s” තෝරා සක්‍රිය කර, ඉන්පසු මුල් බොත්තම ඔබන්න.</string>
     <string name="store_update">Vibe Launcher යාවත්කාලීන කරන්න</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">උපස්ථය සහ ප්‍රතිසාධනය</string>
+    <string name="backup_short">සැකසීම්, ටයිල්, ෆෝල්ඩර, ටයිල් පින්තූර සහ API යතුරු. උපස්ථයේ ඔබේ යතුරු ඇති නිසා එය පෞද්ගලිකව තබාගන්න.</string>
+    <string name="backup_to_tv">මෙම රූපවාහිනියේ උපස්ථය සුරකින්න</string>
+    <string name="backup_tv_short">රූපවාහිනියේ Download ෆෝල්ඩරයේ vibe-launcher-backup.json ලෙස තබයි, පෙර එක වෙනුවට.</string>
+    <string name="restore_from_tv">මෙම රූපවාහිනියෙන් ප්‍රතිසාධනය කරන්න</string>
+    <string name="backup_none">තවම නැත</string>
+    <string name="backup_phone">දුරකථනයෙන් උපස්ථ කරන්න හෝ ප්‍රතිසාධනය කරන්න</string>
+    <string name="scan_to_backup">දුරකථනයේ උපස්ථයක් සුරැකීමට හෝ එකක් ආපසු යැවීමට දුරකථනයෙන් ස්කෑන් කරන්න</string>
+    <string name="backup_saved">උපස්ථය සුරැකිණි</string>
+    <string name="backup_failed">උපස්ථය සුරැකිය නොහැකි විය</string>
+    <string name="restore_now">දැන් ප්‍රතිසාධනය කරන්න</string>
+    <string name="restore_warning">සැකසීම්, ටයිල්, ෆෝල්ඩර සහ යතුරු සියල්ල උපස්ථයේ ඒවායින් ප්‍රතිස්ථාපනය වේ, ඉන්පසු මුල් පිටුව නැවත ආරම්භ වේ.</string>
+    <string name="restore_failed">එම උපස්ථය කියවිය නොහැකි විය</string>
+    <string name="restored">සැකසීම් ප්‍රතිසාධනය කෙරිණි</string>
+    <string name="storage_denied">මේ සඳහා Vibe Launcher හට ගබඩා ප්‍රවේශය අවශ්‍යයි</string>
 </resources>

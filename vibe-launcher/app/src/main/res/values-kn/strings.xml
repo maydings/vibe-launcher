@@ -138,4 +138,20 @@
     <string name="home_key_agree">ಒಪ್ಪುತ್ತೇನೆ</string>
     <string name="home_key_steps">ಮುಂದೆ: ತೆರೆಯುವ ಪಟ್ಟಿಯಲ್ಲಿ “%1$s” ಆಯ್ಕೆಮಾಡಿ, ಆನ್ ಮಾಡಿ, ನಂತರ ಹೋಮ್ ಒತ್ತಿ.</string>
     <string name="store_update">Vibe Launcher ಅಪ್‌ಡೇಟ್ ಮಾಡಿ</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">ಬ್ಯಾಕಪ್ ಮತ್ತು ಮರುಸ್ಥಾಪನೆ</string>
+    <string name="backup_short">ಸೆಟ್ಟಿಂಗ್‌ಗಳು, ಟೈಲ್‌ಗಳು, ಫೋಲ್ಡರ್‌ಗಳು, ಟೈಲ್ ಚಿತ್ರಗಳು ಮತ್ತು API ಕೀಗಳು. ಬ್ಯಾಕಪ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಕೀಗಳು ಇರುತ್ತವೆ, ಹಾಗಾಗಿ ಅದನ್ನು ಖಾಸಗಿಯಾಗಿಡಿ.</string>
+    <string name="backup_to_tv">ಈ ಟಿವಿಯಲ್ಲಿ ಬ್ಯಾಕಪ್ ಉಳಿಸಿ</string>
+    <string name="backup_tv_short">ಟಿವಿಯ Download ಫೋಲ್ಡರ್‌ನಲ್ಲಿ vibe-launcher-backup.json ಹೆಸರಿನಲ್ಲಿ ಇರಿಸಲಾಗುತ್ತದೆ, ಹಿಂದಿನದರ ಬದಲಿಗೆ.</string>
+    <string name="restore_from_tv">ಈ ಟಿವಿಯಿಂದ ಮರುಸ್ಥಾಪಿಸಿ</string>
+    <string name="backup_none">ಇನ್ನೂ ಇಲ್ಲ</string>
+    <string name="backup_phone">ಫೋನ್‌ನಿಂದ ಬ್ಯಾಕಪ್ ಅಥವಾ ಮರುಸ್ಥಾಪನೆ</string>
+    <string name="scan_to_backup">ಫೋನ್‌ನಲ್ಲಿ ಬ್ಯಾಕಪ್ ಉಳಿಸಲು ಅಥವಾ ಒಂದನ್ನು ಮರಳಿ ಕಳುಹಿಸಲು ಫೋನ್‌ನಿಂದ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
+    <string name="backup_saved">ಬ್ಯಾಕಪ್ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="backup_failed">ಬ್ಯಾಕಪ್ ಉಳಿಸಲಾಗಲಿಲ್ಲ</string>
+    <string name="restore_now">ಈಗ ಮರುಸ್ಥಾಪಿಸಿ</string>
+    <string name="restore_warning">ಸೆಟ್ಟಿಂಗ್‌ಗಳು, ಟೈಲ್‌ಗಳು, ಫೋಲ್ಡರ್‌ಗಳು ಮತ್ತು ಕೀಗಳು ಎಲ್ಲವೂ ಬ್ಯಾಕಪ್‌ನಲ್ಲಿರುವವುಗಳಿಂದ ಬದಲಾಗುತ್ತವೆ, ನಂತರ ಹೋಮ್ ಮತ್ತೆ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ.</string>
+    <string name="restore_failed">ಆ ಬ್ಯಾಕಪ್ ಓದಲಾಗಲಿಲ್ಲ</string>
+    <string name="restored">ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ</string>
+    <string name="storage_denied">ಇದಕ್ಕಾಗಿ Vibe Launcher ಗೆ ಸಂಗ್ರಹಣೆ ಪ್ರವೇಶ ಬೇಕು</string>
 </resources>

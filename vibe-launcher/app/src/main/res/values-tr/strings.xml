@@ -138,4 +138,20 @@
     <string name="home_key_agree">Kabul ediyorum</string>
     <string name="home_key_steps">Sonra: açılan listede “%1$s” seçeneğini seçip açın, ardından Ana ekran düğmesine basın.</string>
     <string name="store_update">Vibe Launcher\'ı güncelle</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Yedekleme ve geri yükleme</string>
+    <string name="backup_short">Ayarlar, kutular, klasörler, kutu resimleri ve API anahtarları. Yedek, anahtarlarınızı içerir, bu yüzden kimseyle paylaşmayın.</string>
+    <string name="backup_to_tv">Yedeği bu TV\'ye kaydet</string>
+    <string name="backup_tv_short">TV\'nin Download klasöründe vibe-launcher-backup.json olarak saklanır ve öncekinin yerine geçer.</string>
+    <string name="restore_from_tv">Bu TV\'den geri yükle</string>
+    <string name="backup_none">Henüz yok</string>
+    <string name="backup_phone">Telefonla yedekle veya geri yükle</string>
+    <string name="scan_to_backup">Orada bir yedek kaydetmek ya da birini geri göndermek için telefonla tarayın</string>
+    <string name="backup_saved">Yedek kaydedildi</string>
+    <string name="backup_failed">Yedek kaydedilemedi</string>
+    <string name="restore_now">Şimdi geri yükle</string>
+    <string name="restore_warning">Ayarlar, kutular, klasörler ve anahtarların hepsi yedektekilerle değiştirilir, ardından ana ekran yeniden başlar.</string>
+    <string name="restore_failed">Bu yedek okunamadı</string>
+    <string name="restored">Ayarlar geri yüklendi</string>
+    <string name="storage_denied">Vibe Launcher\'ın bunun için depolama erişimine ihtiyacı var</string>
 </resources>

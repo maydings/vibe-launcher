@@ -138,4 +138,20 @@
     <string name="home_key_agree">យល់ព្រម</string>
     <string name="home_key_steps">បន្ទាប់៖ ក្នុងបញ្ជីដែលបើកឡើង ជ្រើស “%1$s” បើកវា រួចចុចប៊ូតុងដើម។</string>
     <string name="store_update">ធ្វើបច្ចុប្បន្នភាព Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">បម្រុងទុក និងស្ដារ</string>
+    <string name="backup_short">ការកំណត់ ប្រអប់ ថត រូបភាពប្រអប់ និងសោ API។ ការបម្រុងទុកមានសោរបស់អ្នក ដូច្នេះសូមរក្សាវាជាឯកជន។</string>
+    <string name="backup_to_tv">រក្សាទុកការបម្រុងទុកលើទូរទស្សន៍នេះ</string>
+    <string name="backup_tv_short">រក្សាទុកក្នុងថត Download របស់ទូរទស្សន៍ ជា vibe-launcher-backup.json ដោយជំនួសឯកសារចុងក្រោយ។</string>
+    <string name="restore_from_tv">ស្ដារពីទូរទស្សន៍នេះ</string>
+    <string name="backup_none">មិនទាន់មាន</string>
+    <string name="backup_phone">បម្រុងទុក ឬស្ដារដោយទូរសព្ទ</string>
+    <string name="scan_to_backup">ស្កេនដោយទូរសព្ទដើម្បីរក្សាទុកការបម្រុងទុកនៅទីនោះ ឬផ្ញើមួយមកវិញ</string>
+    <string name="backup_saved">បានរក្សាទុកការបម្រុងទុក</string>
+    <string name="backup_failed">មិនអាចរក្សាទុកការបម្រុងទុកបានទេ</string>
+    <string name="restore_now">ស្ដារឥឡូវនេះ</string>
+    <string name="restore_warning">ការកំណត់ ប្រអប់ ថត និងសោ ទាំងអស់នឹងត្រូវជំនួសដោយរបស់ក្នុងការបម្រុងទុក បន្ទាប់មកទំព័រដើមចាប់ផ្ដើមម្ដងទៀត។</string>
+    <string name="restore_failed">មិនអាចអានការបម្រុងទុកនោះបានទេ</string>
+    <string name="restored">បានស្ដារការកំណត់</string>
+    <string name="storage_denied">Vibe Launcher ត្រូវការសិទ្ធិចូលប្រើទំហំផ្ទុកសម្រាប់ការនេះ</string>
 </resources>

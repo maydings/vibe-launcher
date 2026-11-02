@@ -138,4 +138,20 @@
     <string name="home_key_agree">Đồng ý</string>
     <string name="home_key_steps">Tiếp theo: trong danh sách mở ra, chọn “%1$s”, bật lên rồi nhấn nút Màn hình chính.</string>
     <string name="store_update">Cập nhật Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Sao lưu và khôi phục</string>
+    <string name="backup_short">Cài đặt, ô, thư mục, ảnh của ô và khóa API. Bản sao lưu chứa khóa của bạn, nên hãy giữ kín.</string>
+    <string name="backup_to_tv">Lưu bản sao lưu trên TV này</string>
+    <string name="backup_tv_short">Lưu trong thư mục Download của TV với tên vibe-launcher-backup.json, thay cho bản trước.</string>
+    <string name="restore_from_tv">Khôi phục từ TV này</string>
+    <string name="backup_none">Chưa có</string>
+    <string name="backup_phone">Sao lưu hoặc khôi phục bằng điện thoại</string>
+    <string name="scan_to_backup">Quét bằng điện thoại để lưu bản sao lưu ở đó hoặc gửi một bản trở lại</string>
+    <string name="backup_saved">Đã lưu bản sao lưu</string>
+    <string name="backup_failed">Không lưu được bản sao lưu</string>
+    <string name="restore_now">Khôi phục ngay</string>
+    <string name="restore_warning">Cài đặt, ô, thư mục và khóa đều được thay bằng nội dung trong bản sao lưu, sau đó Màn hình chính khởi động lại.</string>
+    <string name="restore_failed">Không đọc được bản sao lưu đó</string>
+    <string name="restored">Đã khôi phục cài đặt</string>
+    <string name="storage_denied">Vibe Launcher cần quyền truy cập bộ nhớ cho việc này</string>
 </resources>

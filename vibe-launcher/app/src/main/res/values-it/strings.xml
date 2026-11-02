@@ -138,4 +138,20 @@
     <string name="home_key_agree">Accetto</string>
     <string name="home_key_steps">Poi: nell\'elenco che si apre, scegli «%1$s», attivalo e premi Home.</string>
     <string name="store_update">Aggiorna Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Backup e ripristino</string>
+    <string name="backup_short">Impostazioni, riquadri, cartelle, immagini dei riquadri e chiavi API. Un backup contiene le tue chiavi, quindi tienilo per te.</string>
+    <string name="backup_to_tv">Salva il backup su questo televisore</string>
+    <string name="backup_tv_short">Salvato nella cartella Download del televisore come vibe-launcher-backup.json, al posto del precedente.</string>
+    <string name="restore_from_tv">Ripristina da questo televisore</string>
+    <string name="backup_none">Ancora nessuno</string>
+    <string name="backup_phone">Backup o ripristino con il telefono</string>
+    <string name="scan_to_backup">Inquadra con il telefono per salvarci un backup o inviarne uno indietro</string>
+    <string name="backup_saved">Backup salvato</string>
+    <string name="backup_failed">Impossibile salvare il backup</string>
+    <string name="restore_now">Ripristina ora</string>
+    <string name="restore_warning">Impostazioni, riquadri, cartelle e chiavi vengono tutti sostituiti da quelli del backup, poi la Home si riavvia.</string>
+    <string name="restore_failed">Impossibile leggere quel backup</string>
+    <string name="restored">Impostazioni ripristinate</string>
+    <string name="storage_denied">Vibe Launcher ha bisogno dell\'accesso alla memoria per questo</string>
 </resources>

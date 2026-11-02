@@ -39,12 +39,31 @@ final class PhoneLink {
         void onReceived(Map<String, String> fields);
     }
 
+    /**
+     * Backups through the page (Settings > General > Backup and restore): one made for the phone to download,
+     * and one the phone sends back. On the page's own thread, except restored.
+     */
+    interface Backups {
+        /** The backup to download, as JSON; null when it couldn't be made. */
+        String make();
+
+        /** Puts this backup in place; false when it isn't one, or couldn't be. */
+        boolean restore(String json);
+
+        /** On the main thread, once a backup from the phone is in place. */
+        void restored();
+    }
+
     private static final int PORT = 8765;
     private static final int MAX_BODY = 8 * 1024;
     /** A tile's picture: the phone sends it already cropped and shrunk to 640 x 360, as a JPEG data URL. */
     private static final int MAX_PICTURE = 1024 * 1024;
+    /** A backup: settings are a few kilobytes, each tile picture a few hundred more (as base64). */
+    private static final int MAX_BACKUP = 32 * 1024 * 1024;
 
     private final Listener listener;
+    /** Set by Settings: the backup page is there while it is. */
+    Backups backups;
     private final VibeSettings settings;
     /** The app whose tile picture the page is for (tile menu > Edit > Change picture); null for the keys page. */
     private final String pictureFor;
@@ -111,6 +130,11 @@ final class PhoneLink {
         String head = readHead(in);
         if (head == null) return;
         String[] request = head.split("\r\n", 2)[0].split(" ");
+        Backups b = backups;
+        if (b != null && request.length >= 2 && request[1].startsWith("/" + code + "/backup")) {
+            handleBackup(s, in, head, request[0], request[1].substring(code.length() + 1), b);
+            return;
+        }
         if (request.length < 2 || !request[1].equals("/" + code)) {
             respond(s, "404 Not Found", page("This link has expired. Scan the code on the TV again."));
             return;
@@ -127,6 +151,61 @@ final class PhoneLink {
         } else {
             respond(s, "200 OK", pictureFor != null ? pictureForm() : form());
         }
+    }
+
+    /**
+     * The backup page (/backup), the backup itself to download (/backup.json), and a backup sent back to restore
+     * (POST /backup), which is read through before anything on the TV changes.
+     */
+    private void handleBackup(Socket s, InputStream in, String head, String method, String path, Backups b)
+            throws IOException {
+        if (method.equals("POST") && path.equals("/backup")) {
+            // The phone's backup can take a while to arrive over Wi-Fi: more time than a form's few bytes.
+            s.setSoTimeout(30000);
+            int length = contentLength(head, MAX_BACKUP + 1);
+            if (length > MAX_BACKUP) {
+                respondText(s, "413 Payload Too Large", "Too large for a Vibe Launcher backup.");
+                return;
+            }
+            if (b.restore(readBody(in, length))) {
+                main.post(b::restored);
+                respondText(s, "200 OK", "Restored. Home is starting again on your TV.");
+            } else {
+                respondText(s, "400 Bad Request", "That isn't a Vibe Launcher backup this version can read.");
+            }
+        } else if (path.equals("/backup.json")) {
+            String json = b.make();
+            if (json == null) {
+                respondText(s, "500 Internal Server Error", "The backup couldn't be made.");
+                return;
+            }
+            String day = new java.text.SimpleDateFormat("yyyy-MM-dd", Locale.ROOT).format(new java.util.Date());
+            byte[] body = json.getBytes(StandardCharsets.UTF_8);
+            OutputStream out = s.getOutputStream();
+            out.write(("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Disposition: attachment; "
+                    + "filename=\"vibe-launcher-backup-" + day + ".json\"\r\nContent-Length: " + body.length
+                    + "\r\nCache-Control: no-store\r\nConnection: close\r\n\r\n").getBytes(StandardCharsets.UTF_8));
+            out.write(body);
+            out.flush();
+        } else if (path.equals("/backup")) {
+            respond(s, "200 OK", backupForm());
+        } else {
+            respond(s, "404 Not Found", page("This link has expired. Scan the code on the TV again."));
+        }
+    }
+
+    private static void respondText(Socket s, String status, String text) throws IOException {
+        byte[] body = text.getBytes(StandardCharsets.UTF_8);
+        OutputStream out = s.getOutputStream();
+        out.write(("HTTP/1.1 " + status + "\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: "
+                + body.length + "\r\nCache-Control: no-store\r\nConnection: close\r\n\r\n").getBytes(StandardCharsets.UTF_8));
+        out.write(body);
+        out.flush();
+    }
+
+    /** The address of the backup page, once started. */
+    String backupUrl() {
+        return url != null ? url + "/backup" : null;
     }
 
     private static String readHead(InputStream in) throws IOException {
@@ -260,6 +339,37 @@ final class PhoneLink {
                 + "body:c.toDataURL('image/jpeg',0.92)}).then(function(r){return r.text();}).then(function(){"
                 + "document.getElementById('m').textContent='Sent. The picture is on your TV.';b.disabled=false;})"
                 + ".catch(function(){b.disabled=false;document.getElementById('m').textContent='Not sent: try again.';});};"
+                + "</script>";
+    }
+
+    /**
+     * Backing up to the phone (a download), and restoring from it: a file chosen there is read on the phone,
+     * asked about once (it replaces everything), and sent as it is; the TV says whether it took it.
+     */
+    private String backupForm() {
+        return "<!doctype html><title>Vibe Launcher</title>" + STYLE
+                + "<style>a.b{display:block;box-sizing:border-box;margin-top:20px;padding:14px;text-align:center;"
+                + "font-weight:600;border-radius:12px;background:#fff;color:#000;text-decoration:none}"
+                + "h2{font-weight:500;font-size:19px;margin-top:40px}input[type=file]{margin-top:12px}</style>"
+                + "<h1>Vibe Launcher backup</h1>"
+                + "<p>Settings, tiles, folders, tile pictures and API keys. A backup holds your keys, so keep it "
+                + "private.</p>"
+                + "<a class=b href='/" + code + "/backup.json' download>Download backup</a>"
+                + "<h2>Restore</h2>"
+                + "<p>Choose a backup. Everything on the TV is replaced by the backup's, then Home starts again.</p>"
+                + "<input type=file id=f accept='.json,application/json'>"
+                + "<button id=send disabled>Restore on TV</button><p id=m></p>"
+                + "<script>"
+                + "var f=document.getElementById('f'),b=document.getElementById('send'),m=document.getElementById('m');"
+                + "f.onchange=function(){b.disabled=!f.files.length;m.textContent='';};"
+                + "b.onclick=function(){if(!f.files.length)return;"
+                + "if(!confirm('Replace all settings, tiles, folders and keys on the TV with this backup?'))return;"
+                + "b.disabled=true;m.textContent='Sending…';var r=new FileReader();"
+                + "r.onload=function(){fetch(location.pathname,{method:'POST',headers:{'Content-Type':'application/json'},"
+                + "body:r.result}).then(function(x){return x.text();}).then(function(t){m.textContent=t;b.disabled=false;})"
+                + ".catch(function(){m.textContent='Not sent: try again.';b.disabled=false;});};"
+                + "r.onerror=function(){m.textContent='The file couldn\\'t be read.';b.disabled=false;};"
+                + "r.readAsText(f.files[0]);};"
                 + "</script>";
     }
 

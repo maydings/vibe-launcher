@@ -138,4 +138,20 @@
     <string name="home_key_agree">Accepter</string>
     <string name="home_key_steps">Ensuite : dans la liste qui s\'ouvre, choisissez « %1$s », activez-le, puis appuyez sur Accueil.</string>
     <string name="store_update">Mettre à jour Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Sauvegarde et restauration</string>
+    <string name="backup_short">Réglages, vignettes, dossiers, images des vignettes et clés API. Une sauvegarde contient vos clés : gardez-la pour vous.</string>
+    <string name="backup_to_tv">Enregistrer une sauvegarde sur ce téléviseur</string>
+    <string name="backup_tv_short">Conservée dans le dossier Download du téléviseur sous le nom vibe-launcher-backup.json, à la place de la précédente.</string>
+    <string name="restore_from_tv">Restaurer depuis ce téléviseur</string>
+    <string name="backup_none">Aucune pour l\'instant</string>
+    <string name="backup_phone">Sauvegarder ou restaurer avec votre téléphone</string>
+    <string name="scan_to_backup">Scannez avec votre téléphone pour y enregistrer une sauvegarde ou en renvoyer une</string>
+    <string name="backup_saved">Sauvegarde enregistrée</string>
+    <string name="backup_failed">Impossible d\'enregistrer la sauvegarde</string>
+    <string name="restore_now">Restaurer maintenant</string>
+    <string name="restore_warning">Réglages, vignettes, dossiers et clés sont tous remplacés par ceux de la sauvegarde, puis l\'accueil redémarre.</string>
+    <string name="restore_failed">Impossible de lire cette sauvegarde</string>
+    <string name="restored">Réglages restaurés</string>
+    <string name="storage_denied">Vibe Launcher a besoin d\'accéder au stockage pour cela</string>
 </resources>

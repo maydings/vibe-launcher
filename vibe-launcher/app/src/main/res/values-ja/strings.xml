@@ -138,4 +138,20 @@
     <string name="home_key_agree">同意する</string>
     <string name="home_key_steps">次に、表示されるリストで「%1$s」を選んでオンにし、ホームボタンを押してください。</string>
     <string name="store_update">Vibe Launcher を更新</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">バックアップと復元</string>
+    <string name="backup_short">設定、タイル、フォルダ、タイルの画像、API キー。バックアップにはキーが含まれるため、他人と共有しないでください。</string>
+    <string name="backup_to_tv">このテレビにバックアップを保存</string>
+    <string name="backup_tv_short">テレビの Download フォルダに vibe-launcher-backup.json として保存され、前回のものと置き換わります。</string>
+    <string name="restore_from_tv">このテレビから復元</string>
+    <string name="backup_none">まだありません</string>
+    <string name="backup_phone">スマホでバックアップ・復元</string>
+    <string name="scan_to_backup">スマホでスキャンして、バックアップをスマホに保存するか、スマホから送り返します</string>
+    <string name="backup_saved">バックアップを保存しました</string>
+    <string name="backup_failed">バックアップを保存できませんでした</string>
+    <string name="restore_now">今すぐ復元</string>
+    <string name="restore_warning">設定、タイル、フォルダ、キーはすべてバックアップの内容に置き換えられ、その後ホームが再起動します。</string>
+    <string name="restore_failed">このバックアップを読み込めませんでした</string>
+    <string name="restored">設定を復元しました</string>
+    <string name="storage_denied">この操作には Vibe Launcher にストレージへのアクセスが必要です</string>
 </resources>

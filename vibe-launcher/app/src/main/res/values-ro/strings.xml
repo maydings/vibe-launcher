@@ -138,4 +138,20 @@
     <string name="home_key_agree">Sunt de acord</string>
     <string name="home_key_steps">Apoi: în lista care se deschide, alegeți „%1$s”, activați-l și apăsați Acasă.</string>
     <string name="store_update">Actualizați Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Backup și restabilire</string>
+    <string name="backup_short">Setări, plăci, dosare, imaginile plăcilor și chei API. Un backup conține cheile tale, așa că păstrează-l doar pentru tine.</string>
+    <string name="backup_to_tv">Salvează backupul pe acest televizor</string>
+    <string name="backup_tv_short">Stă în dosarul Download al televizorului ca vibe-launcher-backup.json, în locul celui anterior.</string>
+    <string name="restore_from_tv">Restabilește de pe acest televizor</string>
+    <string name="backup_none">Niciunul încă</string>
+    <string name="backup_phone">Backup sau restabilire cu telefonul</string>
+    <string name="scan_to_backup">Scanează cu telefonul ca să salvezi acolo un backup sau să trimiți unul înapoi</string>
+    <string name="backup_saved">Backup salvat</string>
+    <string name="backup_failed">Backupul nu a putut fi salvat</string>
+    <string name="restore_now">Restabilește acum</string>
+    <string name="restore_warning">Setările, plăcile, dosarele și cheile sunt toate înlocuite cu cele din backup, apoi ecranul principal pornește din nou.</string>
+    <string name="restore_failed">Acel backup nu a putut fi citit</string>
+    <string name="restored">Setări restabilite</string>
+    <string name="storage_denied">Vibe Launcher are nevoie de acces la stocare pentru asta</string>
 </resources>

@@ -138,4 +138,20 @@
     <string name="home_key_agree">Sumasang-ayon</string>
     <string name="home_key_steps">Susunod: sa listahang magbubukas, piliin ang “%1$s”, i-on ito, saka pindutin ang Home.</string>
     <string name="store_update">I-update ang Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Backup at restore</string>
+    <string name="backup_short">Mga setting, tile, folder, larawan ng tile at mga API key. Nasa backup ang mga key mo, kaya panatilihin itong pribado.</string>
+    <string name="backup_to_tv">I-save ang backup sa TV na ito</string>
+    <string name="backup_tv_short">Nasa Download folder ng TV bilang vibe-launcher-backup.json, kapalit ng huli.</string>
+    <string name="restore_from_tv">I-restore mula sa TV na ito</string>
+    <string name="backup_none">Wala pa</string>
+    <string name="backup_phone">Mag-backup o mag-restore gamit ang phone</string>
+    <string name="scan_to_backup">I-scan gamit ang phone para mag-save ng backup doon o magpadala ng isa pabalik</string>
+    <string name="backup_saved">Na-save ang backup</string>
+    <string name="backup_failed">Hindi ma-save ang backup</string>
+    <string name="restore_now">I-restore ngayon</string>
+    <string name="restore_warning">Papalitan ng mula sa backup ang lahat ng setting, tile, folder at key, saka magsisimula ulit ang Home.</string>
+    <string name="restore_failed">Hindi mabasa ang backup na iyon</string>
+    <string name="restored">Na-restore ang mga setting</string>
+    <string name="storage_denied">Kailangan ng Vibe Launcher ng access sa storage para dito</string>
 </resources>

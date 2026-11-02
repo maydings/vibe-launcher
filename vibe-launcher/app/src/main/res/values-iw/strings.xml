@@ -138,4 +138,20 @@
     <string name="home_key_agree">אני מסכים/ה</string>
     <string name="home_key_steps">השלב הבא: ברשימה שנפתחת בחרו “%1$s”, הפעילו אותו ולחצו על כפתור הבית.</string>
     <string name="store_update">עדכון Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">גיבוי ושחזור</string>
+    <string name="backup_short">הגדרות, אריחים, תיקיות, תמונות אריחים ומפתחות API. הגיבוי מכיל את המפתחות, לכן שמרו עליו בפרטיות.</string>
+    <string name="backup_to_tv">שמירת גיבוי בטלוויזיה הזו</string>
+    <string name="backup_tv_short">נשמר בתיקיית Download של הטלוויזיה בשם vibe-launcher-backup.json, במקום הקודם.</string>
+    <string name="restore_from_tv">שחזור מהטלוויזיה הזו</string>
+    <string name="backup_none">אין עדיין</string>
+    <string name="backup_phone">גיבוי או שחזור בעזרת הטלפון</string>
+    <string name="scan_to_backup">סרקו בטלפון כדי לשמור בו גיבוי או לשלוח גיבוי בחזרה</string>
+    <string name="backup_saved">הגיבוי נשמר</string>
+    <string name="backup_failed">לא ניתן היה לשמור את הגיבוי</string>
+    <string name="restore_now">שחזור עכשיו</string>
+    <string name="restore_warning">ההגדרות, האריחים, התיקיות והמפתחות יוחלפו כולם באלה שבגיבוי, ואז מסך הבית יופעל מחדש.</string>
+    <string name="restore_failed">לא ניתן היה לקרוא את הגיבוי הזה</string>
+    <string name="restored">ההגדרות שוחזרו</string>
+    <string name="storage_denied">Vibe Launcher צריך גישה לאחסון בשביל זה</string>
 </resources>

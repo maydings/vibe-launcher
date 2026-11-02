@@ -138,4 +138,20 @@
     <string name="home_key_agree">ਸਹਿਮਤ ਹਾਂ</string>
     <string name="home_key_steps">ਅੱਗੇ: ਖੁੱਲ੍ਹਣ ਵਾਲੀ ਸੂਚੀ ਵਿੱਚ “%1$s” ਚੁਣੋ, ਇਸਨੂੰ ਚਾਲੂ ਕਰੋ, ਫਿਰ ਹੋਮ ਦਬਾਓ।</string>
     <string name="store_update">Vibe Launcher ਅੱਪਡੇਟ ਕਰੋ</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">ਬੈਕਅੱਪ ਅਤੇ ਰੀਸਟੋਰ</string>
+    <string name="backup_short">ਸੈਟਿੰਗਾਂ, ਟਾਈਲਾਂ, ਫੋਲਡਰ, ਟਾਈਲਾਂ ਦੀਆਂ ਤਸਵੀਰਾਂ ਅਤੇ API ਕੁੰਜੀਆਂ। ਬੈਕਅੱਪ ਵਿੱਚ ਤੁਹਾਡੀਆਂ ਕੁੰਜੀਆਂ ਹੁੰਦੀਆਂ ਹਨ, ਇਸ ਲਈ ਇਸਨੂੰ ਨਿੱਜੀ ਰੱਖੋ।</string>
+    <string name="backup_to_tv">ਇਸ ਟੀਵੀ ’ਤੇ ਬੈਕਅੱਪ ਸੰਭਾਲੋ</string>
+    <string name="backup_tv_short">ਟੀਵੀ ਦੇ Download ਫੋਲਡਰ ਵਿੱਚ vibe-launcher-backup.json ਨਾਂ ਨਾਲ ਰੱਖਿਆ ਜਾਂਦਾ ਹੈ, ਪਿਛਲੇ ਦੀ ਥਾਂ।</string>
+    <string name="restore_from_tv">ਇਸ ਟੀਵੀ ਤੋਂ ਰੀਸਟੋਰ ਕਰੋ</string>
+    <string name="backup_none">ਹਾਲੇ ਕੋਈ ਨਹੀਂ</string>
+    <string name="backup_phone">ਫ਼ੋਨ ਨਾਲ ਬੈਕਅੱਪ ਜਾਂ ਰੀਸਟੋਰ ਕਰੋ</string>
+    <string name="scan_to_backup">ਫ਼ੋਨ ’ਤੇ ਬੈਕਅੱਪ ਸੰਭਾਲਣ ਜਾਂ ਇੱਕ ਵਾਪਸ ਭੇਜਣ ਲਈ ਫ਼ੋਨ ਨਾਲ ਸਕੈਨ ਕਰੋ</string>
+    <string name="backup_saved">ਬੈਕਅੱਪ ਸੰਭਾਲਿਆ ਗਿਆ</string>
+    <string name="backup_failed">ਬੈਕਅੱਪ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ</string>
+    <string name="restore_now">ਹੁਣੇ ਰੀਸਟੋਰ ਕਰੋ</string>
+    <string name="restore_warning">ਸੈਟਿੰਗਾਂ, ਟਾਈਲਾਂ, ਫੋਲਡਰ ਅਤੇ ਕੁੰਜੀਆਂ ਸਭ ਬੈਕਅੱਪ ਵਾਲੀਆਂ ਨਾਲ ਬਦਲ ਦਿੱਤੀਆਂ ਜਾਣਗੀਆਂ, ਫਿਰ ਹੋਮ ਦੁਬਾਰਾ ਸ਼ੁਰੂ ਹੋਵੇਗਾ।</string>
+    <string name="restore_failed">ਉਹ ਬੈਕਅੱਪ ਪੜ੍ਹਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ</string>
+    <string name="restored">ਸੈਟਿੰਗਾਂ ਰੀਸਟੋਰ ਹੋ ਗਈਆਂ</string>
+    <string name="storage_denied">ਇਸ ਲਈ Vibe Launcher ਨੂੰ ਸਟੋਰੇਜ ਪਹੁੰਚ ਚਾਹੀਦੀ ਹੈ</string>
 </resources>

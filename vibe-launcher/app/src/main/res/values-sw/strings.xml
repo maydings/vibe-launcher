@@ -138,4 +138,20 @@
     <string name="home_key_agree">Ninakubali</string>
     <string name="home_key_steps">Kisha: katika orodha itakayofunguka, chagua “%1$s”, iwashe, kisha ubonyeze Mwanzo.</string>
     <string name="store_update">Sasisha Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Hifadhi nakala na urejeshe</string>
+    <string name="backup_short">Mipangilio, vigae, folda, picha za vigae na funguo za API. Nakala ina funguo zako, kwa hiyo iweke faragha.</string>
+    <string name="backup_to_tv">Hifadhi nakala kwenye TV hii</string>
+    <string name="backup_tv_short">Huwekwa kwenye folda ya Download ya TV kama vibe-launcher-backup.json, ikichukua nafasi ya iliyotangulia.</string>
+    <string name="restore_from_tv">Rejesha kutoka kwenye TV hii</string>
+    <string name="backup_none">Hakuna bado</string>
+    <string name="backup_phone">Hifadhi nakala au urejeshe kwa simu</string>
+    <string name="scan_to_backup">Changanua kwa simu ili kuhifadhi nakala humo au kutuma moja kurudi</string>
+    <string name="backup_saved">Nakala imehifadhiwa</string>
+    <string name="backup_failed">Nakala haikuweza kuhifadhiwa</string>
+    <string name="restore_now">Rejesha sasa</string>
+    <string name="restore_warning">Mipangilio, vigae, folda na funguo zote hubadilishwa na zile za nakala, kisha Mwanzo huanza upya.</string>
+    <string name="restore_failed">Nakala hiyo haikuweza kusomwa</string>
+    <string name="restored">Mipangilio imerejeshwa</string>
+    <string name="storage_denied">Vibe Launcher inahitaji ruhusa ya hifadhi kwa hili</string>
 </resources>

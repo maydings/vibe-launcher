@@ -138,4 +138,20 @@
     <string name="home_key_agree">Souhlasím</string>
     <string name="home_key_steps">Dál: v seznamu, který se otevře, vyberte „%1$s“, zapněte ho a stiskněte Domů.</string>
     <string name="store_update">Aktualizovat Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Záloha a obnovení</string>
+    <string name="backup_short">Nastavení, dlaždice, složky, obrázky dlaždic a klíče API. Záloha obsahuje vaše klíče, proto ji nikomu nedávejte.</string>
+    <string name="backup_to_tv">Uložit zálohu do této televize</string>
+    <string name="backup_tv_short">Uloží se do složky Download v televizoru jako vibe-launcher-backup.json a nahradí tu předchozí.</string>
+    <string name="restore_from_tv">Obnovit z této televize</string>
+    <string name="backup_none">Zatím žádná</string>
+    <string name="backup_phone">Zálohovat nebo obnovit pomocí telefonu</string>
+    <string name="scan_to_backup">Naskenujte telefonem a uložte do něj zálohu nebo ji pošlete zpět</string>
+    <string name="backup_saved">Záloha uložena</string>
+    <string name="backup_failed">Zálohu nelze uložit</string>
+    <string name="restore_now">Obnovit nyní</string>
+    <string name="restore_warning">Nastavení, dlaždice, složky i klíče se nahradí těmi ze zálohy a poté se plocha spustí znovu.</string>
+    <string name="restore_failed">Tuto zálohu nelze přečíst</string>
+    <string name="restored">Nastavení obnoveno</string>
+    <string name="storage_denied">Vibe Launcher k tomu potřebuje přístup k úložišti</string>
 </resources>

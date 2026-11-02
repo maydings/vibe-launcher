@@ -138,4 +138,20 @@
     <string name="home_key_agree">ஏற்கிறேன்</string>
     <string name="home_key_steps">அடுத்து: திறக்கும் பட்டியலில் “%1$s”-ஐத் தேர்ந்தெடுத்து இயக்கி, பிறகு முகப்பை அழுத்தவும்.</string>
     <string name="store_update">Vibe Launcher-ஐப் புதுப்பி</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">காப்புப் பிரதியும் மீட்டமைப்பும்</string>
+    <string name="backup_short">அமைப்புகள், டைல்கள், கோப்புறைகள், டைல் படங்கள், API சாவிகள். காப்புப் பிரதியில் உங்கள் சாவிகள் இருப்பதால் அதைத் தனிப்பட்டதாக வைத்திருக்கவும்.</string>
+    <string name="backup_to_tv">இந்த டிவியில் காப்புப் பிரதியைச் சேமி</string>
+    <string name="backup_tv_short">டிவியின் Download கோப்புறையில் vibe-launcher-backup.json என்ற பெயரில் வைக்கப்படும், முந்தையதற்குப் பதிலாக.</string>
+    <string name="restore_from_tv">இந்த டிவியிலிருந்து மீட்டமை</string>
+    <string name="backup_none">இன்னும் இல்லை</string>
+    <string name="backup_phone">ஃபோன் மூலம் காப்புப் பிரதி எடு அல்லது மீட்டமை</string>
+    <string name="scan_to_backup">ஃபோனில் காப்புப் பிரதியைச் சேமிக்க அல்லது ஒன்றைத் திருப்பி அனுப்ப ஃபோனால் ஸ்கேன் செய்யவும்</string>
+    <string name="backup_saved">காப்புப் பிரதி சேமிக்கப்பட்டது</string>
+    <string name="backup_failed">காப்புப் பிரதியைச் சேமிக்க முடியவில்லை</string>
+    <string name="restore_now">இப்போது மீட்டமை</string>
+    <string name="restore_warning">அமைப்புகள், டைல்கள், கோப்புறைகள், சாவிகள் அனைத்தும் காப்புப் பிரதியில் உள்ளவற்றால் மாற்றப்படும், பிறகு முகப்பு மீண்டும் தொடங்கும்.</string>
+    <string name="restore_failed">அந்தக் காப்புப் பிரதியைப் படிக்க முடியவில்லை</string>
+    <string name="restored">அமைப்புகள் மீட்டமைக்கப்பட்டன</string>
+    <string name="storage_denied">இதற்கு Vibe Launcher-க்குச் சேமிப்பக அணுகல் தேவை</string>
 </resources>

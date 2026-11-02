@@ -138,4 +138,20 @@
     <string name="home_key_agree">သဘောတူသည်</string>
     <string name="home_key_steps">နောက်တစ်ဆင့်- ပွင့်လာသောစာရင်းတွင် “%1$s” ကို ရွေးပြီး ဖွင့်ကာ ပင်မကို နှိပ်ပါ။</string>
     <string name="store_update">Vibe Launcher ကို အပ်ဒိတ်လုပ်ရန်</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">အရန်သိမ်းခြင်းနှင့် ပြန်ယူခြင်း</string>
+    <string name="backup_short">ဆက်တင်များ၊ အကွက်များ၊ ဖိုင်တွဲများ၊ အကွက်ပုံများနှင့် API ကီးများ။ အရန်တွင် သင့်ကီးများ ပါသဖြင့် လျှို့ဝှက်ထားပါ။</string>
+    <string name="backup_to_tv">ဤ TV တွင် အရန်သိမ်းရန်</string>
+    <string name="backup_tv_short">TV ၏ Download ဖိုင်တွဲတွင် vibe-launcher-backup.json အဖြစ် သိမ်းပြီး ယခင်တစ်ခုကို အစားထိုးသည်။</string>
+    <string name="restore_from_tv">ဤ TV မှ ပြန်ယူရန်</string>
+    <string name="backup_none">မရှိသေး</string>
+    <string name="backup_phone">ဖုန်းဖြင့် အရန်သိမ်းရန် သို့မဟုတ် ပြန်ယူရန်</string>
+    <string name="scan_to_backup">ဖုန်းတွင် အရန်သိမ်းရန် သို့မဟုတ် တစ်ခု ပြန်ပို့ရန် ဖုန်းဖြင့် စကင်ဖတ်ပါ</string>
+    <string name="backup_saved">အရန် သိမ်းပြီး</string>
+    <string name="backup_failed">အရန်ကို သိမ်း၍ မရပါ</string>
+    <string name="restore_now">ယခု ပြန်ယူရန်</string>
+    <string name="restore_warning">ဆက်တင်များ၊ အကွက်များ၊ ဖိုင်တွဲများနှင့် ကီးများ အားလုံးကို အရန်ထဲမှ အရာများဖြင့် အစားထိုးပြီး ပင်မ ပြန်စမည်။</string>
+    <string name="restore_failed">ထိုအရန်ကို ဖတ်၍ မရပါ</string>
+    <string name="restored">ဆက်တင်များ ပြန်ယူပြီး</string>
+    <string name="storage_denied">ဤအတွက် Vibe Launcher သည် သိုလှောင်ခန်း ဝင်ခွင့် လိုအပ်သည်</string>
 </resources>

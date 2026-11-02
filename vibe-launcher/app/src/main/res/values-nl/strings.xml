@@ -138,4 +138,20 @@
     <string name="home_key_agree">Akkoord</string>
     <string name="home_key_steps">Daarna: kies in de lijst die opent ‘%1$s’, zet het aan en druk op de startknop.</string>
     <string name="store_update">Vibe Launcher updaten</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Back-up en herstel</string>
+    <string name="backup_short">Instellingen, tegels, mappen, tegelafbeeldingen en API-sleutels. Een back-up bevat je sleutels, dus houd hem voor jezelf.</string>
+    <string name="backup_to_tv">Back-up op deze tv opslaan</string>
+    <string name="backup_tv_short">Staat in de map Download van de tv als vibe-launcher-backup.json en vervangt de vorige.</string>
+    <string name="restore_from_tv">Herstellen vanaf deze tv</string>
+    <string name="backup_none">Nog geen</string>
+    <string name="backup_phone">Back-up maken of herstellen met je telefoon</string>
+    <string name="scan_to_backup">Scan met je telefoon om daar een back-up op te slaan of er een terug te sturen</string>
+    <string name="backup_saved">Back-up opgeslagen</string>
+    <string name="backup_failed">De back-up kon niet worden opgeslagen</string>
+    <string name="restore_now">Nu herstellen</string>
+    <string name="restore_warning">Instellingen, tegels, mappen en sleutels worden allemaal vervangen door die van de back-up, daarna start het beginscherm opnieuw.</string>
+    <string name="restore_failed">Die back-up kon niet worden gelezen</string>
+    <string name="restored">Instellingen hersteld</string>
+    <string name="storage_denied">Vibe Launcher heeft hiervoor toegang tot de opslag nodig</string>
 </resources>

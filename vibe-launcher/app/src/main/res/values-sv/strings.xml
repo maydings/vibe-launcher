@@ -138,4 +138,20 @@
     <string name="home_key_agree">Godkänn</string>
     <string name="home_key_steps">Nästa steg: välj ”%1$s” i listan som öppnas, slå på den och tryck sedan på hem.</string>
     <string name="store_update">Uppdatera Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Säkerhetskopiering och återställning</string>
+    <string name="backup_short">Inställningar, rutor, mappar, rutbilder och API-nycklar. En säkerhetskopia innehåller dina nycklar, så håll den för dig själv.</string>
+    <string name="backup_to_tv">Spara säkerhetskopia på den här tv:n</string>
+    <string name="backup_tv_short">Sparas i tv:ns Download-mapp som vibe-launcher-backup.json och ersätter den förra.</string>
+    <string name="restore_from_tv">Återställ från den här tv:n</string>
+    <string name="backup_none">Ingen än</string>
+    <string name="backup_phone">Säkerhetskopiera eller återställ med mobilen</string>
+    <string name="scan_to_backup">Skanna med mobilen för att spara en säkerhetskopia där eller skicka tillbaka en</string>
+    <string name="backup_saved">Säkerhetskopian sparades</string>
+    <string name="backup_failed">Säkerhetskopian kunde inte sparas</string>
+    <string name="restore_now">Återställ nu</string>
+    <string name="restore_warning">Inställningar, rutor, mappar och nycklar ersätts alla av säkerhetskopians, och sedan startar Hem om.</string>
+    <string name="restore_failed">Säkerhetskopian kunde inte läsas</string>
+    <string name="restored">Inställningarna återställdes</string>
+    <string name="storage_denied">Vibe Launcher behöver lagringsåtkomst för det här</string>
 </resources>

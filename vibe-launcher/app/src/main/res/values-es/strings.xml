@@ -138,4 +138,20 @@
     <string name="home_key_agree">Aceptar</string>
     <string name="home_key_steps">A continuación: en la lista que se abre, elige «%1$s», actívalo y pulsa Inicio.</string>
     <string name="store_update">Actualizar Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Copia de seguridad y restauración</string>
+    <string name="backup_short">Ajustes, mosaicos, carpetas, imágenes de mosaicos y claves de API. La copia incluye tus claves, así que guárdala en privado.</string>
+    <string name="backup_to_tv">Guardar copia en este televisor</string>
+    <string name="backup_tv_short">Se guarda en la carpeta Download del televisor como vibe-launcher-backup.json y sustituye a la anterior.</string>
+    <string name="restore_from_tv">Restaurar desde este televisor</string>
+    <string name="backup_none">Ninguna todavía</string>
+    <string name="backup_phone">Copia o restauración con el móvil</string>
+    <string name="scan_to_backup">Escanea con el móvil para guardar ahí una copia o enviar una de vuelta</string>
+    <string name="backup_saved">Copia guardada</string>
+    <string name="backup_failed">No se pudo guardar la copia</string>
+    <string name="restore_now">Restaurar ahora</string>
+    <string name="restore_warning">Los ajustes, mosaicos, carpetas y claves se sustituyen todos por los de la copia, y después Inicio se reinicia.</string>
+    <string name="restore_failed">No se pudo leer esa copia</string>
+    <string name="restored">Ajustes restaurados</string>
+    <string name="storage_denied">Vibe Launcher necesita acceso al almacenamiento para esto</string>
 </resources>

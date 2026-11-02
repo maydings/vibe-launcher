@@ -13,10 +13,13 @@ that.
 |---|---|---|
 | Settings (tiles per row, hidden apps, language, …) | to remember your choices | the app's private storage |
 | Keys you enter: TMDB, YouTube, Plex token | to fetch artwork and titles from those services | the app's private storage; never shown in full again (the phone page shows the last four characters) |
+| Tiles you've changed: names, pictures you chose, folders | to show your tiles as you set them up | the app's private storage |
+| A backup, only when you make one: the settings and keys above, and your tiles | to restore your setup, or move it to another TV | the TV's Download folder (`vibe-launcher-backup.json`), or your phone when you download it there |
 | Downloaded pictures (backdrops, logos) | to show a picture at once instead of waiting | the app's cache |
 | The Wi-Fi network's name | shown in the network pill | read from Android when shown; not stored |
 
-Uninstalling Vibe Launcher, or clearing its data in Settings > Apps, deletes all of it.
+Uninstalling Vibe Launcher, or clearing its data in Settings > Apps, deletes all of it, except a backup you
+saved in the Download folder, which stays until you delete it.
 
 ## Permissions
 
@@ -26,6 +29,7 @@ Uninstalling Vibe Launcher, or clearing its data in Settings > Apps, deletes all
 | Location (`ACCESS_FINE_LOCATION`, `ACCESS_COARSE_LOCATION`) | Android shows the Wi-Fi network's name only to apps with location. Vibe Launcher uses it for that name alone; it never asks Android where the TV is |
 | Network (`INTERNET`, `ACCESS_NETWORK_STATE`, `ACCESS_WIFI_STATE`) | to download pictures, and show the network pill |
 | Uninstall requests (`REQUEST_DELETE_PACKAGES`) | so the tile menu can open Android's own uninstall screen |
+| Storage (`WRITE_EXTERNAL_STORAGE`, Android 10 and older only) | to save a settings backup in the Download folder and read it back, asked the first time you do |
 | **GitHub build only:** install packages (`REQUEST_INSTALL_PACKAGES`), close background apps (`KILL_BACKGROUND_PROCESSES`) | to install its own updates and SmartTube when you ask; Android asks you to confirm each install. The second closes the TV's Settings in the background so its install switch shows Vibe Launcher's name |
 
 ## The Home button service (GitHub build only)
@@ -63,7 +67,7 @@ internet address). The services' own privacy policies apply to what they receive
 | YouTube (`googleapis.com`, `i.ytimg.com`) | your YouTube key, for the list of popular videos and their pictures | once you enter a YouTube key |
 | Plex (`plex.tv`, and your own Plex server) | your Plex token, to find your server and list On Deck and recently added | once you enter a Plex token |
 | HDHomeRun (your tuner, `api.hdhomerun.com`, `img.hdhomerun.com`) | your tuner's own guide code, for the guide's pictures | when an HDHomeRun tuner is on your network |
-| Your phone, on your home network | the keys page, while the keys dialog is open | when you scan the QR code to type keys on a phone; it has a random address that changes each time |
+| Your phone, on your home network | the keys page, a tile's picture page, or the backup page (a backup to download, holding your keys), while Settings or the tile's Edit menu is open | when you scan the QR code on the TV; it has a random address that changes each time |
 | **GitHub build only:** GitHub (`api.github.com`, `github.com`) | a request for this project's latest release, and SmartTube's | daily, when the TV wakes, from the gear menu, and when you ask to install SmartTube |
 
 The app store build doesn't contact GitHub: Google Play updates it. When Home comes back, it asks the Play Store app on the TV whether Play has a newer version, for the green dot on the gear.

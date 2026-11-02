@@ -138,4 +138,20 @@
     <string name="home_key_agree">Согласен</string>
     <string name="home_key_steps">Далее: в открывшемся списке выберите «%1$s», включите и нажмите «Домой».</string>
     <string name="store_update">Обновить Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Резервная копия и восстановление</string>
+    <string name="backup_short">Настройки, плитки, папки, картинки плиток и ключи API. В копии хранятся ваши ключи, поэтому никому её не передавайте.</string>
+    <string name="backup_to_tv">Сохранить копию на этом телевизоре</string>
+    <string name="backup_tv_short">Хранится в папке Download телевизора как vibe-launcher-backup.json и заменяет предыдущую.</string>
+    <string name="restore_from_tv">Восстановить с этого телевизора</string>
+    <string name="backup_none">Пока нет</string>
+    <string name="backup_phone">Копия или восстановление через телефон</string>
+    <string name="scan_to_backup">Отсканируйте телефоном, чтобы сохранить на нём копию или отправить её обратно</string>
+    <string name="backup_saved">Копия сохранена</string>
+    <string name="backup_failed">Не удалось сохранить копию</string>
+    <string name="restore_now">Восстановить сейчас</string>
+    <string name="restore_warning">Настройки, плитки, папки и ключи полностью заменяются данными из копии, затем главный экран перезапускается.</string>
+    <string name="restore_failed">Не удалось прочитать эту копию</string>
+    <string name="restored">Настройки восстановлены</string>
+    <string name="storage_denied">Для этого Vibe Launcher нужен доступ к хранилищу</string>
 </resources>

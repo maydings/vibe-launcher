@@ -10,13 +10,19 @@ and gets out of the way. It works well enough for us that I'd like to share it w
 ![Vibe Launcher: Netflix focused in a four-app dock, with Wake Up Dead Man's backdrop and title logo filling the screen](vibe-launcher/docs/home.jpg)
 
 **[Download the latest APK](https://github.com/maydings/vibe-launcher/releases/latest/download/vibe-launcher.apk)**
-· on the TV, Downloader code **5573341** · Android TV and Google TV, Android 8.0 or newer · about 1.2 MB
+· on the TV, Downloader code **5573341** · Android TV and Google TV, Android 8.0 or newer · about 1.4 MB
 
 ## Highlights
 
 - **Backdrops from your apps.** The focused app fills the screen with what it's actually showing you:
   the film or show on its home screen card, with the title's own logo.
 - **Dock and grid.** One to six favourite apps in a dock; press Down for everything else.
+- **Folders, as on tvOS.** Group apps in folders with a preview of what's inside; a folder in the dock
+  shows its apps in a row above it.
+- **Your own tiles.** Rename any app's tile, use its icon instead of its banner, or give it a picture of
+  your own, chosen and cropped on your phone.
+- **Backup and restore.** Keep everything you've set up in a file on the TV or on your phone, and put
+  it back, or on another TV, in one go.
 - **Inputs at a glance.** HDMI ports with what's connected, devices behind a switch listed by name.
 - **A slideshow when idle.** Leave Home alone for a minute and every app's backdrops play full screen.
 - **50 languages.** Follows your TV, or pick one.
@@ -107,7 +113,7 @@ starts, so opening it is just a fade.
 | ![Vibe Launcher settings: the logo on the left, General, Appearance and API keys on the right](vibe-launcher/docs/settings-main.jpg) | ![General: its list slid over the logo, with Language, Reload backdrops, Home at power-on and the software version on the right](vibe-launcher/docs/settings-general.jpg) |
 |---|---|
 
-**General**: language, reloading the backdrops, the picture format, Home at power-on, the Back button, the Home button, Restart… (with the Home button service), the
+**General**: language, reloading the backdrops, the picture format, Home at power-on, the Back button, the Home button, Restart… (with the Home button service), backup and restore, the
 software version with its update check, and **About**: who made it, the project's page (with a QR code to
 open it on a phone), where to report a problem, the license and the credits.
 
@@ -129,6 +135,15 @@ open it on a phone), where to report a problem, the license and the credits.
 - **Restart…** (with the Home button service on): opens the TV's own power menu, which asks before it
   restarts. An app can't restart the TV itself; only the service can ask the TV, so without it this
   doesn't show.
+- **Backup and restore**: everything you've set up in one file: the settings (API keys too), the tiles'
+  order, hidden apps, folders, and each tile's name, icon or picture. **Save backup on this TV** keeps it
+  in the TV's Download folder as `vibe-launcher-backup.json`, replacing the last one; **Restore from this
+  TV** shows when it was made and asks first. **Back up or restore with your phone** shows a QR code for a
+  page that downloads a backup to the phone or sends one back, which is also how to move your setup to
+  another TV. A restore replaces everything and rebuilds Home. The file holds your keys, so keep it
+  private. Up to Android 10, the TV asks for storage access the first time; from Android 11, a backup
+  saved on the TV can only be read back by the same installation of Vibe Launcher (after reinstalling,
+  restore from the phone).
 
 **Appearance**: tiles per row, apps in dock, hiding inactive inputs, auto-hide, the screensaver
 clock, the clock's 12- or 24-hour time, the arrows and the highlight color.
@@ -184,6 +199,17 @@ SHA-256 before Android asks you to confirm, and Home comes back by itself afterw
 
 Long-press OK (or press the remote's Menu key, if it has one) on any tile to **move** it (into or out of the dock), **hide** it, **uninstall** it or
 open **App info**. Hidden apps come back from the same menu.
+
+**Edit** changes the tile itself: **Change picture** shows a QR code for a page on your phone where you
+choose a picture and drag and pinch it to fit the tile; **Use icon** (or **Use banner**) swaps the app's
+art; **Rename** gives the tile a name of its own; **Reset** puts it back as the app made it.
+
+**Folders**: **New folder** from an app's menu makes one with that app in it, named from its kind (Video,
+Music, Games), and **Move to folder** adds more. A folder tile shows a preview of up to nine of its apps.
+OK opens it over a dimmed Home; its name at the top has **Rename**, **Remove folder** and **Close**, and
+**Move to Home** takes an app back out. A folder in the dock shows its apps in a row above it, as tvOS's
+Top Shelf does: Up goes into the row (it scrolls when there are more than fit), OK opens an app, and
+the backdrop shows the folder's apps' pictures in turn.
 
 ## Install
 
@@ -260,7 +286,7 @@ It should run on any Android TV or Google TV with Android 8.0 or newer.
 sent to me. Vibe Launcher goes online only to fetch artwork (looking up the titles on your apps' cards
 with TMDB or Stremio, and asking YouTube, your own Plex server or your HDHomeRun's guide) and to check
 this project's releases for updates (the Google Play version leaves updates to Play). Your API keys
-stay on the TV. The details are in the [privacy policy](vibe-launcher/docs/PRIVACY.md).
+stay on the TV, and in a backup only if you make one. The details are in the [privacy policy](vibe-launcher/docs/PRIVACY.md).
 
 ## Build it yourself
 

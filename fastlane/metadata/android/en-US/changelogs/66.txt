@@ -1,0 +1,4 @@
+* New: folders, as on tvOS. New folder and Move to folder in an app's menu; a folder in the dock shows its apps in a row above it.
+* New: your own tiles. Edit in an app's menu: a picture from your phone, the app's icon instead of its banner, or a name of your own.
+* New: Settings > General > Backup and restore, on the TV or through your phone.
+* Smoother corners on the highlight; Down from the top bar stops at a dock folder's row.

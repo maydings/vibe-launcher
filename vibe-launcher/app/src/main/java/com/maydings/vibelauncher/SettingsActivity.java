@@ -38,6 +38,14 @@ public final class SettingsActivity extends Activity {
         screen.showHomeButton();   // turned on or off in Accessibility meanwhile
     }
 
+    /** Storage access for a backup on the TV, up to Android 10 (Backup.needsPermission). */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] results) {
+        super.onRequestPermissionsResult(requestCode, permissions, results);
+        if (requestCode != SettingsScreen.STORAGE_REQUEST) return;
+        screen.onStoragePermission(results.length > 0 && results[0] == android.content.pm.PackageManager.PERMISSION_GRANTED);
+    }
+
     @Override
     public void onBackPressed() {
         screen.back();

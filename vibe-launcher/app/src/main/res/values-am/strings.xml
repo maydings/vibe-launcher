@@ -138,4 +138,20 @@
     <string name="home_key_agree">እስማማለሁ</string>
     <string name="home_key_steps">ቀጥሎ፦ በሚከፈተው ዝርዝር ውስጥ “%1$s”ን ይምረጡ፣ ያብሩት፣ ከዚያ መነሻን ይጫኑ።</string>
     <string name="store_update">Vibe Launcherን አዘምን</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">ምትኬ እና መመለስ</string>
+    <string name="backup_short">ቅንብሮች፣ ሰቆች፣ አቃፊዎች፣ የሰቅ ምስሎች እና የAPI ቁልፎች። ምትኬው ቁልፎችዎን ይይዛል፣ ስለዚህ በግል ያስቀምጡት።</string>
+    <string name="backup_to_tv">ምትኬን በዚህ ቲቪ ላይ አስቀምጥ</string>
+    <string name="backup_tv_short">በቲቪው Download አቃፊ ውስጥ እንደ vibe-launcher-backup.json ይቀመጣል፣ የቀደመውን ይተካል።</string>
+    <string name="restore_from_tv">ከዚህ ቲቪ መልስ</string>
+    <string name="backup_none">እስካሁን የለም</string>
+    <string name="backup_phone">በስልክዎ ምትኬ ያስቀምጡ ወይም ይመልሱ</string>
+    <string name="scan_to_backup">እዚያ ምትኬ ለማስቀመጥ ወይም አንዱን መልሰው ለመላክ በስልክዎ ይቃኙ</string>
+    <string name="backup_saved">ምትኬ ተቀምጧል</string>
+    <string name="backup_failed">ምትኬውን ማስቀመጥ አልተቻለም</string>
+    <string name="restore_now">አሁን መልስ</string>
+    <string name="restore_warning">ቅንብሮች፣ ሰቆች፣ አቃፊዎች እና ቁልፎች ሁሉም በምትኬው ይተካሉ፣ ከዚያ መነሻ እንደገና ይጀምራል።</string>
+    <string name="restore_failed">ያንን ምትኬ ማንበብ አልተቻለም</string>
+    <string name="restored">ቅንብሮች ተመልሰዋል</string>
+    <string name="storage_denied">Vibe Launcher ለዚህ የማከማቻ ፈቃድ ያስፈልገዋል</string>
 </resources>

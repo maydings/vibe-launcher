@@ -138,4 +138,20 @@
     <string name="home_key_agree">Slažem se</string>
     <string name="home_key_steps">Zatim: na popisu koji se otvori odaberite „%1$s”, uključite ga i pritisnite Početno.</string>
     <string name="store_update">Ažuriraj Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Sigurnosna kopija i vraćanje</string>
+    <string name="backup_short">Postavke, pločice, mape, slike pločica i API ključevi. Kopija sadrži vaše ključeve, zato je čuvajte za sebe.</string>
+    <string name="backup_to_tv">Spremi kopiju na ovaj televizor</string>
+    <string name="backup_tv_short">Čuva se u mapi Download na televizoru kao vibe-launcher-backup.json i zamjenjuje prethodnu.</string>
+    <string name="restore_from_tv">Vrati s ovog televizora</string>
+    <string name="backup_none">Još nema</string>
+    <string name="backup_phone">Kopija ili vraćanje putem telefona</string>
+    <string name="scan_to_backup">Skenirajte telefonom da biste ondje spremili kopiju ili poslali jednu natrag</string>
+    <string name="backup_saved">Kopija je spremljena</string>
+    <string name="backup_failed">Kopija se nije mogla spremiti</string>
+    <string name="restore_now">Vrati sada</string>
+    <string name="restore_warning">Postavke, pločice, mape i ključevi zamjenjuju se onima iz kopije, a zatim se početni zaslon ponovno pokreće.</string>
+    <string name="restore_failed">Ta se kopija nije mogla pročitati</string>
+    <string name="restored">Postavke su vraćene</string>
+    <string name="storage_denied">Vibe Launcher za to treba pristup pohrani</string>
 </resources>

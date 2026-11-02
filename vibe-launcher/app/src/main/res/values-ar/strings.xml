@@ -138,4 +138,20 @@
     <string name="home_key_agree">موافق</string>
     <string name="home_key_steps">التالي: في القائمة التي تفتح، اختر “%1$s” وشغّله، ثم اضغط على زر الشاشة الرئيسية.</string>
     <string name="store_update">تحديث Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">النسخ الاحتياطي والاستعادة</string>
+    <string name="backup_short">الإعدادات والمربعات والمجلدات وصور المربعات ومفاتيح API. تحتوي النسخة الاحتياطية على مفاتيحك، لذا احتفظ بها لنفسك.</string>
+    <string name="backup_to_tv">حفظ نسخة احتياطية على هذا التلفزيون</string>
+    <string name="backup_tv_short">تُحفظ في مجلد Download على التلفزيون باسم vibe-launcher-backup.json، وتحلّ محل النسخة السابقة.</string>
+    <string name="restore_from_tv">الاستعادة من هذا التلفزيون</string>
+    <string name="backup_none">لا يوجد بعد</string>
+    <string name="backup_phone">النسخ الاحتياطي أو الاستعادة بهاتفك</string>
+    <string name="scan_to_backup">امسح بهاتفك لحفظ نسخة احتياطية عليه أو لإرسال نسخة إلى هنا</string>
+    <string name="backup_saved">تم حفظ النسخة الاحتياطية</string>
+    <string name="backup_failed">تعذّر حفظ النسخة الاحتياطية</string>
+    <string name="restore_now">الاستعادة الآن</string>
+    <string name="restore_warning">ستُستبدل الإعدادات والمربعات والمجلدات والمفاتيح كلها بما في النسخة الاحتياطية، ثم تبدأ الشاشة الرئيسية من جديد.</string>
+    <string name="restore_failed">تعذّرت قراءة تلك النسخة الاحتياطية</string>
+    <string name="restored">تمت استعادة الإعدادات</string>
+    <string name="storage_denied">يحتاج Vibe Launcher إلى إذن الوصول إلى مساحة التخزين لهذا</string>
 </resources>

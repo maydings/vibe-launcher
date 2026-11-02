@@ -138,4 +138,20 @@
     <string name="home_key_agree">Setuju</string>
     <string name="home_key_steps">Seterusnya: dalam senarai yang dibuka, pilih “%1$s”, hidupkannya, kemudian tekan Laman Utama.</string>
     <string name="store_update">Kemas kini Vibe Launcher</string>
+    <!-- Settings backup and restore (Backup, SettingsScreen). -->
+    <string name="backup_restore">Sandaran dan pemulihan</string>
+    <string name="backup_short">Tetapan, jubin, folder, gambar jubin dan kunci API. Sandaran menyimpan kunci anda, jadi rahsiakannya.</string>
+    <string name="backup_to_tv">Simpan sandaran pada TV ini</string>
+    <string name="backup_tv_short">Disimpan dalam folder Download TV sebagai vibe-launcher-backup.json, menggantikan yang terakhir.</string>
+    <string name="restore_from_tv">Pulihkan daripada TV ini</string>
+    <string name="backup_none">Belum ada</string>
+    <string name="backup_phone">Sandarkan atau pulihkan dengan telefon</string>
+    <string name="scan_to_backup">Imbas dengan telefon untuk menyimpan sandaran di sana atau menghantar satu kembali</string>
+    <string name="backup_saved">Sandaran disimpan</string>
+    <string name="backup_failed">Sandaran tidak dapat disimpan</string>
+    <string name="restore_now">Pulihkan sekarang</string>
+    <string name="restore_warning">Tetapan, jubin, folder dan kunci semuanya diganti dengan yang dalam sandaran, kemudian Laman Utama bermula semula.</string>
+    <string name="restore_failed">Sandaran itu tidak dapat dibaca</string>
+    <string name="restored">Tetapan dipulihkan</string>
+    <string name="storage_denied">Vibe Launcher memerlukan akses storan untuk ini</string>
 </resources>
