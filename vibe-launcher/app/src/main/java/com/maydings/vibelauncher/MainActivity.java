@@ -616,10 +616,15 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         });
     }
 
+    /** Keeps the clocks (the top bar's, the slideshow's) moving before Android 12 where the firmware stops ACTION_TIME_TICK. */
+    private ClockRefresh clockRefresh;
+
     @Override
     protected void onStart() {
         super.onStart();
         started = true;
+        if (clockRefresh == null) clockRefresh = new ClockRefresh(root);
+        clockRefresh.start();   // while Home is on screen, paused or not
         // Back to the rows for this visit. Here rather than in onStop: Home can still be on screen while
         // the app it opened animates in, and the rows jumping back would show.
         showRows(false, false);
@@ -743,6 +748,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     protected void onStop() {
         super.onStop();
         started = false;
+        if (clockRefresh != null) clockRefresh.stop();
         backFromApp = !inSettings;   // Settings is part of Home: no new picture for coming back from it
     }
 

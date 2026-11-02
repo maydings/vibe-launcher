@@ -81,6 +81,8 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.COMMON_HOME" />
+                <!-- ColorOS TV (OPPO) only starts a Home that declares this (from upstream cleanyourtv). -->
+                <category android:name="com.heytap.tv.launcher.category.MODERN_HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <!-- Also in the TV's app list, so it can be opened after an install without adb and file

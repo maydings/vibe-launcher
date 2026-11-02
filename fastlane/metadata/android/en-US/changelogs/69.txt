@@ -1,0 +1,2 @@
+* Fixed: on TVs that stop the minute tick after standby (TCL Android 9), the clocks no longer freeze (from upstream).
+* OPPO ColorOS TVs can now use Vibe Launcher as Home (from upstream).
