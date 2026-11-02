@@ -158,12 +158,13 @@
     <string name="tab_apps">應用程式</string>
     <string name="apps_short">停用不使用的應用程式：應用程式仍會保持安裝，但在重新啟用前無法執行、出現在主畫面上或更新。電視正常運作所需的部分不會列出。</string>
     <string name="adb_connection">網路偵錯</string>
-    <string name="adb_connection_short">Vibe Launcher 會像電腦一樣，透過電視的網路偵錯停用應用程式。請在開發人員選項中開啟網路偵錯，然後在此按下 OK，並在電視上允許 Vibe Launcher。</string>
+    <string name="adb_connection_short">Vibe Launcher 會像電腦一樣，透過電視的偵錯功能停用應用程式。請在開發人員選項中開啟 USB 偵錯（部分電視為 ADB 偵錯或網路偵錯），然後在此按下 OK，並在電視上允許 Vibe Launcher。</string>
     <string name="adb_ready">已連線</string>
     <string name="adb_not_allowed">尚未允許</string>
     <string name="adb_checking">正在檢查…</string>
     <string name="adb_allow_prompt">在電視的提示中勾選「一律允許」，然後選擇 OK</string>
-    <string name="adb_turn_on">請在開發人員選項中開啟網路偵錯（或 ADB 偵錯），然後回到這裡</string>
+    <string name="adb_turn_on">請在開發人員選項中開啟 USB 偵錯（部分電視稱為 ADB 偵錯或網路偵錯），然後回到這裡。</string>
+    <string name="adb_network_closed">偵錯已開啟，但這台電視目前還不允許應用程式連線。請在開發人員選項中找到網路偵錯或網路 ADB 並將其開啟。如果只有無線偵錯，Vibe Launcher 目前還無法使用。</string>
     <string name="adb_failed">電視不允許這項操作</string>
     <string name="apps_turn_all_on">全部重新啟用</string>
     <string name="apps_turn_all_on_short">重新啟用 Vibe Launcher 停用的所有應用程式。</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">電視需要的應用程式</string>
     <string name="app_protected">電視需要這個項目才能正常運作，所以 Vibe Launcher 不會停用它。這樣可以確保電視安全無虞。</string>
     <string name="adb_dev_options">請先開啟開發人員選項：在「關於」中，對「版本號碼」按七次 OK，然後回到這裡。</string>
+    <string name="apps_turn_off_again">重新停用</string>
+    <string name="apps_turn_off_again_short">Vibe Launcher 先前停用過、但現在在這裡已啟用的應用程式：來自在這台電視上還原的備份，或被更新重新啟用。</string>
+    <string name="apps_turn_off_now">立即停用</string>
+    <string name="apps_all_off">已全部重新停用</string>
 </resources>

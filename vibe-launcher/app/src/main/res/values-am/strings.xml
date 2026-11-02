@@ -158,12 +158,13 @@
     <string name="tab_apps">መተግበሪያዎች</string>
     <string name="apps_short">የማይጠቀሙባቸውን መተግበሪያዎች ያጥፉ፦ እንደተጫኑ ይቆያሉ፣ ግን መልሰው እስኪያበሯቸው ድረስ መሥራት፣ የመነሻ ማያ ገጹን መሙላት ወይም መዘመን አይችሉም። ቲቪው እንዲሠራ የሚያስፈልጉት ክፍሎች አልተዘረዘሩም።</string>
     <string name="adb_connection">የአውታረ መረብ ስህተት ማረሚያ</string>
-    <string name="adb_connection_short">Vibe Launcher ልክ እንደ ኮምፒውተር በቲቪው የአውታረ መረብ ስህተት ማረሚያ በኩል መተግበሪያዎችን ያጠፋል። በገንቢ አማራጮች ውስጥ ያብሩት፣ ከዚያ እዚህ OKን ይጫኑ እና በቲቪው ላይ Vibe Launcherን ይፍቀዱ።</string>
+    <string name="adb_connection_short">Vibe Launcher ልክ እንደ ኮምፒውተር በቲቪው ስህተት ማረሚያ በኩል መተግበሪያዎችን ያጠፋል። በገንቢ አማራጮች ውስጥ የUSB ስህተት ማረሚያን (በአንዳንድ ቲቪዎች ላይ የADB ስህተት ማረሚያ ወይም የአውታረ መረብ ስህተት ማረሚያ) ያብሩ፣ ከዚያ እዚህ OKን ይጫኑ እና በቲቪው ላይ Vibe Launcherን ይፍቀዱ።</string>
     <string name="adb_ready">ተገናኝቷል</string>
     <string name="adb_not_allowed">እስካሁን አልተፈቀደም</string>
     <string name="adb_checking">በመፈተሽ ላይ…</string>
     <string name="adb_allow_prompt">በቲቪው ጥያቄ ላይ ሁልጊዜ ፍቀድን ምልክት ያድርጉ፣ ከዚያ OKን ይምረጡ</string>
-    <string name="adb_turn_on">በገንቢ አማራጮች ውስጥ የአውታረ መረብ ስህተት ማረሚያን (ወይም የADB ስህተት ማረሚያን) ያብሩ፣ ከዚያ ወደዚህ ይመለሱ</string>
+    <string name="adb_turn_on">በገንቢ አማራጮች ውስጥ የUSB ስህተት ማረሚያን ያብሩ (በአንዳንድ ቲቪዎች ላይ የADB ስህተት ማረሚያ ወይም የአውታረ መረብ ስህተት ማረሚያ ይባላል)፣ ከዚያ ወደዚህ ይመለሱ።</string>
+    <string name="adb_network_closed">ስህተት ማረሚያ በርቷል፣ ግን ይህ ቲቪ መተግበሪያዎች እንዲደርሱበት ገና አይፈቅድም። በገንቢ አማራጮች ውስጥ የአውታረ መረብ ስህተት ማረሚያን ወይም ADB በአውታረ መረብ ላይን ይፈልጉ እና ያብሩት። ገመድ አልባ ስህተት ማረሚያ ብቻ ካለው፣ Vibe Launcher ገና ሊጠቀምበት አይችልም።</string>
     <string name="adb_failed">ቲቪው ያንን አልፈቀደም</string>
     <string name="apps_turn_all_on">ሁሉንም መልሰው ያብሩ</string>
     <string name="apps_turn_all_on_short">Vibe Launcher ያጠፋቸውን መተግበሪያዎች በሙሉ መልሶ ያበራል።</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">ቲቪው የሚፈልጋቸው መተግበሪያዎች</string>
     <string name="app_protected">ቲቪዎ በትክክል እንዲሠራ ይህ ያስፈልገዋል፣ ስለዚህ Vibe Launcher አያጠፋውም። ይህ ቲቪዎን ደህንነቱ የተጠበቀ ያደርገዋል።</string>
     <string name="adb_dev_options">መጀመሪያ የገንቢ አማራጮችን ያብሩ፦ በስለ ውስጥ ግንባታ ላይ OKን ሰባት ጊዜ ይጫኑ፣ ከዚያ ወደዚህ ይመለሱ።</string>
+    <string name="apps_turn_off_again">እንደገና ያጥፉ</string>
+    <string name="apps_turn_off_again_short">Vibe Launcher ከዚህ ቀደም ያጠፋቸው ግን አሁን እዚህ የበሩ መተግበሪያዎች፦ በዚህ ቲቪ ላይ ከተመለሰ ምትኬ፣ ወይም በዝማኔ መልሰው የበሩ።</string>
+    <string name="apps_turn_off_now">አሁን ያጥፉ</string>
+    <string name="apps_all_off">ሁሉም እንደገና ጠፍተዋል</string>
 </resources>

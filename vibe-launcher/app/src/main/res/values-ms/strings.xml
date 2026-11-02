@@ -158,12 +158,13 @@
     <string name="tab_apps">Apl</string>
     <string name="apps_short">Lumpuhkan apl yang tidak anda gunakan: apl kekal dipasang tetapi tidak boleh berjalan, memenuhi skrin utama atau dikemas kini sehingga anda mendayakannya semula. Bahagian yang diperlukan TV untuk berfungsi tidak disenaraikan.</string>
     <string name="adb_connection">Penyahpepijatan rangkaian</string>
-    <string name="adb_connection_short">Vibe Launcher melumpuhkan apl melalui penyahpepijatan rangkaian TV, sama seperti komputer. Hidupkan ciri ini dalam Pilihan pembangun, kemudian tekan OK di sini dan benarkan Vibe Launcher pada TV.</string>
+    <string name="adb_connection_short">Vibe Launcher melumpuhkan apl melalui penyahpepijatan TV, sama seperti komputer. Hidupkan penyahpepijatan USB (penyahpepijatan ADB atau penyahpepijatan rangkaian pada sesetengah TV) dalam Pilihan pembangun, kemudian tekan OK di sini dan benarkan Vibe Launcher pada TV.</string>
     <string name="adb_ready">Disambungkan</string>
     <string name="adb_not_allowed">Belum dibenarkan</string>
     <string name="adb_checking">Menyemak…</string>
     <string name="adb_allow_prompt">Pada soalan TV, tandakan Sentiasa benarkan, kemudian pilih OK</string>
-    <string name="adb_turn_on">Hidupkan penyahpepijatan rangkaian (atau penyahpepijatan ADB) dalam Pilihan pembangun, kemudian kembali ke sini</string>
+    <string name="adb_turn_on">Dalam Pilihan pembangun, hidupkan penyahpepijatan USB (dipanggil penyahpepijatan ADB atau penyahpepijatan rangkaian pada sesetengah TV), kemudian kembali ke sini.</string>
+    <string name="adb_network_closed">Penyahpepijatan sudah dihidupkan, tetapi TV ini belum membenarkan apl mencapainya. Dalam Pilihan pembangun, cari penyahpepijatan rangkaian atau ADB melalui rangkaian dan hidupkannya. Jika hanya ada penyahpepijatan wayarles, Vibe Launcher belum dapat menggunakannya.</string>
     <string name="adb_failed">TV tidak membenarkannya</string>
     <string name="apps_turn_all_on">Dayakan semula semua</string>
     <string name="apps_turn_all_on_short">Mendayakan semula setiap apl yang dilumpuhkan oleh Vibe Launcher.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">Apl yang diperlukan TV</string>
     <string name="app_protected">TV anda memerlukan ini untuk berfungsi dengan betul, jadi Vibe Launcher tidak akan melumpuhkannya. Ini memastikan TV anda selamat.</string>
     <string name="adb_dev_options">Hidupkan Pilihan pembangun dahulu: dalam Perihal, tekan OK pada Binaan sebanyak tujuh kali, kemudian kembali ke sini.</string>
+    <string name="apps_turn_off_again">Lumpuhkan semula</string>
+    <string name="apps_turn_off_again_short">Apl yang pernah dilumpuhkan oleh Vibe Launcher tetapi kini didayakan di sini: daripada sandaran yang dipulihkan pada TV ini, atau didayakan semula oleh kemas kini.</string>
+    <string name="apps_turn_off_now">Lumpuhkan sekarang</string>
+    <string name="apps_all_off">Semua telah dilumpuhkan semula</string>
 </resources>

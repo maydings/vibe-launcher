@@ -158,12 +158,13 @@
     <string name="tab_apps">앱</string>
     <string name="apps_short">사용하지 않는 앱을 사용 중지하세요. 앱은 설치된 상태로 남지만, 다시 사용 설정할 때까지 실행, 홈 화면 표시, 업데이트가 되지 않습니다. TV 작동에 필요한 부분은 목록에 없습니다.</string>
     <string name="adb_connection">네트워크 디버깅</string>
-    <string name="adb_connection_short">Vibe Launcher는 컴퓨터처럼 TV의 네트워크 디버깅을 통해 앱을 사용 중지합니다. 개발자 옵션에서 사용 설정한 다음 여기에서 OK를 누르고 TV에서 Vibe Launcher를 허용하세요.</string>
+    <string name="adb_connection_short">Vibe Launcher는 컴퓨터처럼 TV의 디버깅을 통해 앱을 사용 중지합니다. 개발자 옵션에서 USB 디버깅(일부 TV에서는 ADB 디버깅 또는 네트워크 디버깅)을 사용 설정한 다음 여기에서 OK를 누르고 TV에서 Vibe Launcher를 허용하세요.</string>
     <string name="adb_ready">연결됨</string>
     <string name="adb_not_allowed">아직 허용되지 않음</string>
     <string name="adb_checking">확인 중…</string>
     <string name="adb_allow_prompt">TV의 질문에서 ‘항상 허용’에 체크한 다음 OK를 선택하세요</string>
-    <string name="adb_turn_on">개발자 옵션에서 네트워크 디버깅(또는 ADB 디버깅)을 사용 설정한 다음 여기로 돌아오세요</string>
+    <string name="adb_turn_on">개발자 옵션에서 USB 디버깅(일부 TV에서는 ADB 디버깅 또는 네트워크 디버깅)을 사용 설정한 다음 여기로 돌아오세요.</string>
+    <string name="adb_network_closed">디버깅이 사용 설정되어 있지만 이 TV에서는 아직 앱이 연결할 수 없습니다. 개발자 옵션에서 네트워크 디버깅 또는 네트워크를 통한 ADB를 찾아 사용 설정하세요. 무선 디버깅만 있다면 Vibe Launcher는 아직 이를 사용할 수 없습니다.</string>
     <string name="adb_failed">TV에서 허용하지 않았습니다</string>
     <string name="apps_turn_all_on">모두 다시 사용 설정</string>
     <string name="apps_turn_all_on_short">Vibe Launcher가 사용 중지한 모든 앱을 다시 사용 설정합니다.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">TV에 필요한 앱</string>
     <string name="app_protected">TV가 제대로 작동하려면 이 항목이 필요하므로 Vibe Launcher에서 사용 중지하지 않습니다. 이렇게 하면 TV를 안전하게 유지할 수 있습니다.</string>
     <string name="adb_dev_options">먼저 개발자 옵션을 사용 설정하세요. ‘정보’에서 ‘빌드’에 OK를 일곱 번 누른 다음 여기로 돌아오세요.</string>
+    <string name="apps_turn_off_again">다시 사용 중지</string>
+    <string name="apps_turn_off_again_short">Vibe Launcher가 전에 사용 중지했지만 지금 여기에서 사용 설정된 앱입니다. 이 TV에서 복원한 백업 때문이거나 업데이트로 다시 사용 설정되었습니다.</string>
+    <string name="apps_turn_off_now">지금 사용 중지</string>
+    <string name="apps_all_off">모두 다시 사용 중지됨</string>
 </resources>

@@ -989,6 +989,14 @@ final class SettingsScreen {
             return n == 0 ? "" : String.valueOf(n);
         }, () -> turnAllOn(page));
         undo.about = R.string.apps_turn_all_on_short;
+        // After a restore (or an update turning some back on): there only while there's something to do.
+        Row again = page.link(R.string.apps_turn_off_again, () -> {
+            int n = TvApps.toTurnOffAgain(ctx).size();
+            return n == 0 ? "" : String.valueOf(n);
+        }, () -> turnOffAgain(page));
+        again.about = R.string.apps_turn_off_again_short;
+        turnOffAgainRow = again;
+        showTurnOffAgain();
         // Whether it's allowed already, without making the TV ask.
         adbStatus = -1;
         adb().execute(() -> {
@@ -1052,6 +1060,46 @@ final class SettingsScreen {
         if (to < apps.size()) handler.postDelayed(() -> addAppRows(page, apps, to), 16);
     }
 
+    /** Apps' Turn off again row, while that page is made: shown only while there's something to turn off. */
+    private Row turnOffAgainRow;
+
+    private void showTurnOffAgain() {
+        if (turnOffAgainRow == null) return;
+        turnOffAgainRow.view.setVisibility(TvApps.toTurnOffAgain(ctx).isEmpty() ? View.GONE : View.VISIBLE);
+    }
+
+    /**
+     * The apps to turn off again (TvApps.toTurnOffAgain), listed first so it's clear what goes, with Turn off
+     * now at the top doing them all in one go; then back to Apps, its row gone once there's nothing left.
+     */
+    private Page turnOffAgain(Page apps) {
+        Page page = new Page(ctx.getString(R.string.apps_turn_off_again));
+        page.footnote = R.string.apps_turn_off_again_short;
+        List<TvApps.App> list = TvApps.toTurnOffAgain(ctx);
+        page.add(R.string.apps_turn_off_now, () -> String.valueOf(list.size()), () -> {
+            StringBuilder cmd = new StringBuilder();
+            for (TvApps.App a : list) cmd.append(cmd.length() == 0 ? "" : "; ").append(TvApps.command(a.pkg, false));
+            if (list.isEmpty()) return;
+            runAdb(page, cmd.toString(), r -> {
+                android.content.pm.PackageManager pm = ctx.getPackageManager();
+                boolean all = true;
+                for (TvApps.App a : list) {
+                    a.on = TvApps.isOn(pm, a.pkg);
+                    all &= !a.on;
+                }
+                Toast.makeText(host, all ? R.string.apps_all_off : R.string.adb_failed, Toast.LENGTH_SHORT).show();
+                page.refresh();
+                showTurnOffAgain();   // gone from Apps once there's nothing left
+                if (all) back();
+            });
+        });
+        for (TvApps.App a : list) {
+            Row row = page.add(a.label, () -> ctx.getString(a.on ? R.string.on : R.string.off), null);
+            row.aboutText = a.pkg;
+        }
+        return page;
+    }
+
     /** Every app turned off here and still off, back on in one go. */
     private void turnAllOn(Page page) {
         List<String> off = TvApps.turnedOff(ctx);
@@ -1066,6 +1114,7 @@ final class SettingsScreen {
             for (TvApps.App a : shownApps) a.on = TvApps.isOn(pm, a.pkg);
             Toast.makeText(host, still.isEmpty() ? R.string.apps_all_on : R.string.adb_failed, Toast.LENGTH_SHORT).show();
             page.refresh();
+            showTurnOffAgain();   // what was on is forgotten now: nothing left to turn off again
         };
         if (off.isEmpty()) tidy.run();   // nothing to ask the TV for
         else runAdb(page, cmd.toString(), r -> tidy.run());
@@ -1106,8 +1155,10 @@ final class SettingsScreen {
                 if (host == null) return;
                 if (r.status == Adb.OK) {
                     then.accept(r);
-                } else if (r.status == Adb.OFF) {   // debugging on, but not over the network (port 5555 closed)
-                    openDeveloperOptions();
+                } else if (r.status == Adb.OFF) {
+                    // Debugging on, but nothing on port 5555: this TV keeps it to USB (or offers only Wireless
+                    // debugging, with its pairing code); a switch of its own may open it to the network.
+                    explainThenOpen(R.string.adb_network_closed, this::openDeveloperOptionsNow);
                 } else {
                     Toast.makeText(host, r.status == Adb.NO_KEY ? R.string.adb_no_key : R.string.adb_failed,
                             Toast.LENGTH_LONG).show();
@@ -1124,13 +1175,15 @@ final class SettingsScreen {
 
     /** Developer options, once the window has said what to turn on there. */
     private void openDeveloperOptions() {
-        explainThenOpen(R.string.adb_turn_on, () -> {
-            try {
-                host.startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
-            } catch (RuntimeException e) {
-                // not there on this TV: the window said where to look
-            }
-        });
+        explainThenOpen(R.string.adb_turn_on, this::openDeveloperOptionsNow);
+    }
+
+    private void openDeveloperOptionsNow() {
+        try {
+            host.startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
+        } catch (RuntimeException e) {
+            // not there on this TV: the window said where to look
+        }
     }
 
     /**

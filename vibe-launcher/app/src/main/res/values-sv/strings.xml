@@ -158,12 +158,13 @@
     <string name="tab_apps">Appar</string>
     <string name="apps_short">Stäng av appar du inte använder: de förblir installerade men kan inte köras, fylla startskärmen eller uppdateras förrän du slår på dem igen. Delar som tv:n behöver för att fungera visas inte.</string>
     <string name="adb_connection">Nätverksfelsökning</string>
-    <string name="adb_connection_short">Vibe Launcher stänger av appar via tv:ns nätverksfelsökning, precis som en dator skulle göra. Slå på det i Utvecklaralternativ, tryck sedan på OK här och tillåt Vibe Launcher på tv:n.</string>
+    <string name="adb_connection_short">Vibe Launcher stänger av appar via tv:ns felsökning, precis som en dator skulle göra. Slå på USB-felsökning (ADB-felsökning eller nätverksfelsökning på vissa tv-apparater) i Utvecklaralternativ, tryck sedan på OK här och tillåt Vibe Launcher på tv:n.</string>
     <string name="adb_ready">Ansluten</string>
     <string name="adb_not_allowed">Inte tillåtet än</string>
     <string name="adb_checking">Kontrollerar…</string>
     <string name="adb_allow_prompt">Markera Tillåt alltid i frågan på tv:n och välj sedan OK</string>
-    <string name="adb_turn_on">Slå på nätverksfelsökning (eller ADB-felsökning) i Utvecklaralternativ och kom sedan tillbaka hit</string>
+    <string name="adb_turn_on">Slå på USB-felsökning i Utvecklaralternativ (kallas ADB-felsökning eller nätverksfelsökning på vissa tv-apparater) och kom sedan tillbaka hit.</string>
+    <string name="adb_network_closed">Felsökning är på, men den här tv:n låter inte appar nå den än. Leta efter nätverksfelsökning eller ADB via nätverk i Utvecklaralternativ och slå på det. Om det bara finns trådlös felsökning kan Vibe Launcher inte använda det än.</string>
     <string name="adb_failed">Tv:n tillät inte det</string>
     <string name="apps_turn_all_on">Slå på alla igen</string>
     <string name="apps_turn_all_on_short">Slår på alla appar igen som Vibe Launcher har stängt av.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">Appar som tv:n behöver</string>
     <string name="app_protected">Tv:n behöver detta för att fungera som den ska, så Vibe Launcher stänger inte av det. Det håller din tv säker.</string>
     <string name="adb_dev_options">Slå först på Utvecklaralternativ: under Om trycker du på OK på Version sju gånger och kommer sedan tillbaka hit.</string>
+    <string name="apps_turn_off_again">Stäng av igen</string>
+    <string name="apps_turn_off_again_short">Appar som Vibe Launcher har stängt av tidigare men som är på här nu: från en säkerhetskopia som återställts på den här tv:n, eller påslagna igen av en uppdatering.</string>
+    <string name="apps_turn_off_now">Stäng av nu</string>
+    <string name="apps_all_off">Alla är avstängda igen</string>
 </resources>

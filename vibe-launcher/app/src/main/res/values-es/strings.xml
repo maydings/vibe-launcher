@@ -158,12 +158,13 @@
     <string name="tab_apps">Apps</string>
     <string name="apps_short">Desactiva las apps que no uses: siguen instaladas, pero no pueden ejecutarse, llenar la pantalla de inicio ni actualizarse hasta que las vuelvas a activar. No se muestran las partes que el televisor necesita para funcionar.</string>
     <string name="adb_connection">Depuración por red</string>
-    <string name="adb_connection_short">Vibe Launcher desactiva apps mediante la depuración por red del televisor, como lo haría un ordenador. Actívala en Opciones para desarrolladores, pulsa OK aquí y permite Vibe Launcher en el televisor.</string>
+    <string name="adb_connection_short">Vibe Launcher desactiva apps mediante la depuración del televisor, como lo haría un ordenador. Activa la depuración por USB (depuración ADB o depuración por red en algunos televisores) en Opciones para desarrolladores, pulsa OK aquí y permite Vibe Launcher en el televisor.</string>
     <string name="adb_ready">Conectado</string>
     <string name="adb_not_allowed">Aún no permitido</string>
     <string name="adb_checking">Comprobando…</string>
     <string name="adb_allow_prompt">En la pregunta del televisor, marca Permitir siempre y elige OK</string>
-    <string name="adb_turn_on">Activa la depuración por red (o depuración ADB) en Opciones para desarrolladores y vuelve aquí</string>
+    <string name="adb_turn_on">En Opciones para desarrolladores, activa la depuración por USB (llamada depuración ADB o depuración por red en algunos televisores) y vuelve aquí.</string>
+    <string name="adb_network_closed">La depuración está activada, pero este televisor aún no deja que las apps accedan a ella. En Opciones para desarrolladores, busca la opción depuración por red o ADB por red y actívala. Si solo tiene depuración inalámbrica, Vibe Launcher aún no puede usarla.</string>
     <string name="adb_failed">El televisor no lo ha permitido</string>
     <string name="apps_turn_all_on">Volver a activar todas</string>
     <string name="apps_turn_all_on_short">Vuelve a activar todas las apps que Vibe Launcher desactivó.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">Apps que necesita el televisor</string>
     <string name="app_protected">Tu televisor necesita esto para funcionar correctamente, así que Vibe Launcher no lo desactivará. Así tu televisor está protegido.</string>
     <string name="adb_dev_options">Primero activa Opciones para desarrolladores: en Información, pulsa OK siete veces sobre Compilación y vuelve aquí.</string>
+    <string name="apps_turn_off_again">Volver a desactivar</string>
+    <string name="apps_turn_off_again_short">Apps que Vibe Launcher ya había desactivado y que ahora están activadas aquí: por una copia de seguridad restaurada en este televisor o porque una actualización las volvió a activar.</string>
+    <string name="apps_turn_off_now">Desactivar ahora</string>
+    <string name="apps_all_off">Todas se han vuelto a desactivar</string>
 </resources>

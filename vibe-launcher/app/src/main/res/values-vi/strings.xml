@@ -158,12 +158,13 @@
     <string name="tab_apps">Ứng dụng</string>
     <string name="apps_short">Tắt các ứng dụng bạn không dùng: chúng vẫn được cài đặt nhưng không thể chạy, chiếm màn hình chính hay cập nhật cho đến khi bạn bật lại. Các thành phần mà TV cần để hoạt động không được liệt kê.</string>
     <string name="adb_connection">Gỡ lỗi qua mạng</string>
-    <string name="adb_connection_short">Vibe Launcher tắt ứng dụng thông qua tính năng gỡ lỗi qua mạng của TV, giống như máy tính. Hãy bật tính năng này trong Tùy chọn cho nhà phát triển, sau đó nhấn OK tại đây và cho phép Vibe Launcher trên TV.</string>
+    <string name="adb_connection_short">Vibe Launcher tắt ứng dụng thông qua tính năng gỡ lỗi của TV, giống như máy tính. Hãy bật gỡ lỗi qua USB (trên một số TV là gỡ lỗi ADB hoặc gỡ lỗi qua mạng) trong Tùy chọn cho nhà phát triển, sau đó nhấn OK tại đây và cho phép Vibe Launcher trên TV.</string>
     <string name="adb_ready">Đã kết nối</string>
     <string name="adb_not_allowed">Chưa được cho phép</string>
     <string name="adb_checking">Đang kiểm tra…</string>
     <string name="adb_allow_prompt">Trong câu hỏi trên TV, đánh dấu Luôn cho phép rồi chọn OK</string>
-    <string name="adb_turn_on">Bật gỡ lỗi qua mạng (hoặc gỡ lỗi ADB) trong Tùy chọn cho nhà phát triển, rồi quay lại đây</string>
+    <string name="adb_turn_on">Trong Tùy chọn cho nhà phát triển, bật gỡ lỗi qua USB (trên một số TV gọi là gỡ lỗi ADB hoặc gỡ lỗi qua mạng), rồi quay lại đây.</string>
+    <string name="adb_network_closed">Tính năng gỡ lỗi đang bật, nhưng TV này chưa cho phép ứng dụng truy cập. Trong Tùy chọn cho nhà phát triển, hãy tìm gỡ lỗi qua mạng hoặc ADB qua mạng rồi bật lên. Nếu chỉ có gỡ lỗi không dây, Vibe Launcher chưa thể dùng tính năng đó.</string>
     <string name="adb_failed">TV không cho phép thao tác đó</string>
     <string name="apps_turn_all_on">Bật lại tất cả</string>
     <string name="apps_turn_all_on_short">Bật lại mọi ứng dụng mà Vibe Launcher đã tắt.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">Ứng dụng TV cần</string>
     <string name="app_protected">TV của bạn cần mục này để hoạt động bình thường, vì vậy Vibe Launcher sẽ không tắt mục này. Điều này giúp TV của bạn luôn an toàn.</string>
     <string name="adb_dev_options">Hãy bật Tùy chọn cho nhà phát triển trước: trong Giới thiệu, nhấn OK vào Bản dựng bảy lần, rồi quay lại đây.</string>
+    <string name="apps_turn_off_again">Tắt lại</string>
+    <string name="apps_turn_off_again_short">Các ứng dụng mà Vibe Launcher đã tắt trước đó nhưng giờ đang bật ở đây: do bản sao lưu được khôi phục trên TV này, hoặc được một bản cập nhật bật lại.</string>
+    <string name="apps_turn_off_now">Tắt ngay</string>
+    <string name="apps_all_off">Đã tắt lại tất cả</string>
 </resources>

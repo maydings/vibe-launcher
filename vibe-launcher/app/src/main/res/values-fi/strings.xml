@@ -158,12 +158,13 @@
     <string name="tab_apps">Sovellukset</string>
     <string name="apps_short">Poista käytöstä sovellukset, joita et käytä: ne pysyvät asennettuina, mutta eivät voi käynnistyä, täyttää aloitusnäyttöä tai päivittyä, ennen kuin otat ne taas käyttöön. Television toiminnalle tarpeellisia osia ei näytetä.</string>
     <string name="adb_connection">Verkon vianetsintä</string>
-    <string name="adb_connection_short">Vibe Launcher poistaa sovelluksia käytöstä television verkon vianetsinnän kautta, kuten tietokone tekisi. Ota se käyttöön Kehittäjäasetuksissa, paina sitten tässä OK ja salli Vibe Launcher televisiossa.</string>
+    <string name="adb_connection_short">Vibe Launcher poistaa sovelluksia käytöstä television vianetsinnän kautta, kuten tietokone tekisi. Ota USB-vianetsintä (joissakin televisioissa ADB-vianetsintä tai verkon vianetsintä) käyttöön Kehittäjäasetuksissa, paina sitten tässä OK ja salli Vibe Launcher televisiossa.</string>
     <string name="adb_ready">Yhdistetty</string>
     <string name="adb_not_allowed">Ei vielä sallittu</string>
     <string name="adb_checking">Tarkistetaan…</string>
     <string name="adb_allow_prompt">Valitse television kysymyksessä Salli aina ja valitse sitten OK</string>
-    <string name="adb_turn_on">Ota verkon vianetsintä (tai ADB-vianetsintä) käyttöön Kehittäjäasetuksissa ja palaa sitten tänne</string>
+    <string name="adb_turn_on">Ota Kehittäjäasetuksissa käyttöön USB-vianetsintä (joissakin televisioissa nimeltään ADB-vianetsintä tai verkon vianetsintä) ja palaa sitten tänne.</string>
+    <string name="adb_network_closed">Vianetsintä on käytössä, mutta tämä televisio ei vielä päästä sovelluksia siihen. Etsi Kehittäjäasetuksista verkon vianetsintä tai ADB verkon kautta ja ota se käyttöön. Jos vaihtoehtona on vain langaton virheenkorjaus, Vibe Launcher ei voi vielä käyttää sitä.</string>
     <string name="adb_failed">Televisio ei sallinut sitä</string>
     <string name="apps_turn_all_on">Ota kaikki takaisin käyttöön</string>
     <string name="apps_turn_all_on_short">Ottaa takaisin käyttöön kaikki sovellukset, jotka Vibe Launcher poisti käytöstä.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">Sovellukset, joita televisio tarvitsee</string>
     <string name="app_protected">Televisiosi tarvitsee tätä toimiakseen oikein, joten Vibe Launcher ei poista sitä käytöstä. Näin televisiosi pysyy turvassa.</string>
     <string name="adb_dev_options">Ota ensin Kehittäjäasetukset käyttöön: paina Tietoja-kohdassa seitsemän kertaa OK kohdassa Koontiversio ja palaa sitten tänne.</string>
+    <string name="apps_turn_off_again">Poista taas käytöstä</string>
+    <string name="apps_turn_off_again_short">Sovellukset, jotka Vibe Launcher poisti aiemmin käytöstä mutta jotka ovat nyt täällä käytössä: tähän televisioon palautetusta varmuuskopiosta tai päivityksen takaisin käyttöön ottamina.</string>
+    <string name="apps_turn_off_now">Poista käytöstä nyt</string>
+    <string name="apps_all_off">Kaikki poistettu taas käytöstä</string>
 </resources>

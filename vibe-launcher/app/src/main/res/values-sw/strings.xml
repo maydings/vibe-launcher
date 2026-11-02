@@ -158,12 +158,13 @@
     <string name="tab_apps">Programu</string>
     <string name="apps_short">Zima programu usizotumia: zinabaki zimesakinishwa, lakini haziwezi kufanya kazi, kujaza skrini ya mwanzo au kusasishwa hadi uziwashe tena. Sehemu ambazo TV inahitaji ili ifanye kazi hazijaorodheshwa.</string>
     <string name="adb_connection">Utatuzi kupitia mtandao</string>
-    <string name="adb_connection_short">Vibe Launcher huzima programu kupitia utatuzi wa mtandao wa TV, kama kompyuta ingefanya. Uwashe katika Chaguo za wasanidi programu, kisha ubonyeze OK hapa na uruhusu Vibe Launcher kwenye TV.</string>
+    <string name="adb_connection_short">Vibe Launcher huzima programu kupitia utatuzi wa TV, kama kompyuta ingefanya. Washa utatuzi wa USB (kwenye baadhi ya TV ni utatuzi wa ADB au utatuzi kupitia mtandao) katika Chaguo za wasanidi programu, kisha ubonyeze OK hapa na uruhusu Vibe Launcher kwenye TV.</string>
     <string name="adb_ready">Imeunganishwa</string>
     <string name="adb_not_allowed">Bado hairuhusiwi</string>
     <string name="adb_checking">Inakagua…</string>
     <string name="adb_allow_prompt">Kwenye swali la TV, weka tiki kwenye Ruhusu kila wakati, kisha uchague OK</string>
-    <string name="adb_turn_on">Washa utatuzi kupitia mtandao (au utatuzi wa ADB) katika Chaguo za wasanidi programu, kisha urudi hapa</string>
+    <string name="adb_turn_on">Katika Chaguo za wasanidi programu, washa utatuzi wa USB (kwenye baadhi ya TV huitwa utatuzi wa ADB au utatuzi kupitia mtandao), kisha urudi hapa.</string>
+    <string name="adb_network_closed">Utatuzi umewashwa, lakini TV hii bado hairuhusu programu kuufikia. Katika Chaguo za wasanidi programu, tafuta utatuzi kupitia mtandao au ADB kupitia mtandao kisha uuwashe. Ikiwa ina utatuzi usiotumia waya pekee, Vibe Launcher bado haiwezi kuutumia.</string>
     <string name="adb_failed">TV haikuruhusu hilo</string>
     <string name="apps_turn_all_on">Washa zote tena</string>
     <string name="apps_turn_all_on_short">Huwasha tena kila programu ambayo Vibe Launcher ilizima.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">Programu ambazo TV inahitaji</string>
     <string name="app_protected">TV yako inahitaji hii ili ifanye kazi ipasavyo, kwa hivyo Vibe Launcher haitaizima. Hii huweka TV yako salama.</string>
     <string name="adb_dev_options">Washa Chaguo za wasanidi programu kwanza: katika Kuhusu, bonyeza OK kwenye Muundo mara saba, kisha urudi hapa.</string>
+    <string name="apps_turn_off_again">Zima tena</string>
+    <string name="apps_turn_off_again_short">Programu ambazo Vibe Launcher ilizima awali lakini sasa zimewashwa hapa: kutoka kwa nakala iliyorejeshwa kwenye TV hii, au zimewashwa tena na sasisho.</string>
+    <string name="apps_turn_off_now">Zima sasa</string>
+    <string name="apps_all_off">Zote zimezimwa tena</string>
 </resources>

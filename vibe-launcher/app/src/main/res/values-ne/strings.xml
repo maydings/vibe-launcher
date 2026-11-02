@@ -158,12 +158,13 @@
     <string name="tab_apps">एपहरू</string>
     <string name="apps_short">तपाईंले प्रयोग नगर्ने एपहरू बन्द गर्नुहोस्: तिनीहरू इन्स्टल नै रहन्छन्, तर तपाईंले फेरि सक्रिय नगरेसम्म चल्न, होम स्क्रिन भर्न वा अपडेट हुन सक्दैनन्। टिभीलाई चल्न चाहिने भागहरू सूचीमा देखाइँदैनन्।</string>
     <string name="adb_connection">नेटवर्क डिबगिङ</string>
-    <string name="adb_connection_short">Vibe Launcher ले कम्प्युटरले जस्तै टिभीको नेटवर्क डिबगिङमार्फत एपहरू बन्द गर्छ। यसलाई विकासकर्ताका विकल्पहरूमा सक्रिय गर्नुहोस्, त्यसपछि यहाँ OK थिच्नुहोस् र टिभीमा Vibe Launcher लाई अनुमति दिनुहोस्।</string>
+    <string name="adb_connection_short">Vibe Launcher ले कम्प्युटरले जस्तै टिभीको डिबगिङमार्फत एपहरू बन्द गर्छ। विकासकर्ताका विकल्पहरूमा USB डिबगिङ (केही टिभीमा ADB डिबगिङ वा नेटवर्क डिबगिङ) सक्रिय गर्नुहोस्, त्यसपछि यहाँ OK थिच्नुहोस् र टिभीमा Vibe Launcher लाई अनुमति दिनुहोस्।</string>
     <string name="adb_ready">जडान भयो</string>
     <string name="adb_not_allowed">अझै अनुमति छैन</string>
     <string name="adb_checking">जाँच गर्दै…</string>
     <string name="adb_allow_prompt">टिभीको प्रश्नमा सधैँ अनुमति दिनुहोस् मा चिन्ह लगाउनुहोस्, त्यसपछि OK छान्नुहोस्</string>
-    <string name="adb_turn_on">विकासकर्ताका विकल्पहरूमा नेटवर्क डिबगिङ (वा ADB डिबगिङ) सक्रिय गर्नुहोस्, त्यसपछि यहाँ फर्कनुहोस्</string>
+    <string name="adb_turn_on">विकासकर्ताका विकल्पहरूमा USB डिबगिङ सक्रिय गर्नुहोस् (केही टिभीमा यसलाई ADB डिबगिङ वा नेटवर्क डिबगिङ भनिन्छ), त्यसपछि यहाँ फर्कनुहोस्।</string>
+    <string name="adb_network_closed">डिबगिङ सक्रिय छ, तर यो टिभीले अझै एपहरूलाई त्यहाँसम्म पुग्न दिँदैन। विकासकर्ताका विकल्पहरूमा नेटवर्क डिबगिङ वा नेटवर्कमार्फत ADB खोज्नुहोस् र त्यसलाई सक्रिय गर्नुहोस्। यदि यसमा वायरलेस डिबगिङ मात्र छ भने, Vibe Launcher ले अझै त्यो प्रयोग गर्न सक्दैन।</string>
     <string name="adb_failed">टिभीले यसको अनुमति दिएन</string>
     <string name="apps_turn_all_on">सबै फेरि सक्रिय गर्नुहोस्</string>
     <string name="apps_turn_all_on_short">Vibe Launcher ले बन्द गरेका सबै एपहरू फेरि सक्रिय गर्छ।</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">टिभीलाई चाहिने एपहरू</string>
     <string name="app_protected">तपाईंको टिभीलाई राम्ररी चल्न यो चाहिन्छ, त्यसैले Vibe Launcher ले यसलाई बन्द गर्दैन। यसले तपाईंको टिभीलाई सुरक्षित राख्छ।</string>
     <string name="adb_dev_options">पहिले विकासकर्ताका विकल्पहरू सक्रिय गर्नुहोस्: बारेमा मा गई बिल्ड मा सात पटक OK थिच्नुहोस्, त्यसपछि यहाँ फर्कनुहोस्।</string>
+    <string name="apps_turn_off_again">फेरि बन्द गर्नुहोस्</string>
+    <string name="apps_turn_off_again_short">Vibe Launcher ले पहिले बन्द गरेका तर अहिले यहाँ सक्रिय रहेका एपहरू: यो टिभीमा पुनर्स्थापित गरिएको ब्याकअपबाट, वा कुनै अपडेटले फेरि सक्रिय गरेका।</string>
+    <string name="apps_turn_off_now">अहिले बन्द गर्नुहोस्</string>
+    <string name="apps_all_off">सबै फेरि बन्द भए</string>
 </resources>

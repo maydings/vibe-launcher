@@ -158,12 +158,13 @@
     <string name="tab_apps">アプリ</string>
     <string name="apps_short">使わないアプリをオフにできます。インストールされたままですが、オンに戻すまで起動、ホーム画面への表示、更新はできません。テレビの動作に必要な部分は表示されません。</string>
     <string name="adb_connection">ネットワーク デバッグ</string>
-    <string name="adb_connection_short">Vibe Launcher は、パソコンと同じようにテレビのネットワーク デバッグを使ってアプリをオフにします。開発者向けオプションでオンにしてから、ここで OK を押し、テレビで Vibe Launcher を許可してください。</string>
+    <string name="adb_connection_short">Vibe Launcher は、パソコンと同じようにテレビのデバッグを使ってアプリをオフにします。開発者向けオプションで USB デバッグ（一部のテレビでは ADB デバッグまたはネットワーク デバッグ）をオンにしてから、ここで OK を押し、テレビで Vibe Launcher を許可してください。</string>
     <string name="adb_ready">接続済み</string>
     <string name="adb_not_allowed">まだ許可されていません</string>
     <string name="adb_checking">確認中…</string>
     <string name="adb_allow_prompt">テレビの確認画面で「常に許可」にチェックを入れ、OK を選んでください</string>
-    <string name="adb_turn_on">開発者向けオプションでネットワーク デバッグ（または ADB デバッグ）をオンにしてから、ここに戻ってください</string>
+    <string name="adb_turn_on">開発者向けオプションで USB デバッグ（一部のテレビでは ADB デバッグまたはネットワーク デバッグ）をオンにしてから、ここに戻ってください。</string>
+    <string name="adb_network_closed">デバッグはオンですが、このテレビではまだアプリから接続できません。開発者向けオプションでネットワーク デバッグまたはネットワーク経由の ADB を探してオンにしてください。ワイヤレス デバッグしかない場合、Vibe Launcher はまだそれを使用できません。</string>
     <string name="adb_failed">テレビで許可されませんでした</string>
     <string name="apps_turn_all_on">すべてオンに戻す</string>
     <string name="apps_turn_all_on_short">Vibe Launcher がオフにしたアプリをすべてオンに戻します。</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">テレビに必要なアプリ</string>
     <string name="app_protected">これはテレビが正しく動作するために必要なため、Vibe Launcher はオフにしません。これによりテレビを安全に保ちます。</string>
     <string name="adb_dev_options">先に開発者向けオプションをオンにしてください。「デバイス情報」で「ビルド」を選んで OK を 7 回押してから、ここに戻ってください。</string>
+    <string name="apps_turn_off_again">もう一度オフにする</string>
+    <string name="apps_turn_off_again_short">以前 Vibe Launcher がオフにしたのに、今ここでオンになっているアプリです。このテレビで復元したバックアップによるものか、アップデートでオンに戻ったものです。</string>
+    <string name="apps_turn_off_now">今すぐオフにする</string>
+    <string name="apps_all_off">すべてもう一度オフにしました</string>
 </resources>

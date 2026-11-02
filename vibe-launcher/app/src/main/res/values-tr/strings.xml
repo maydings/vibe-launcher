@@ -158,12 +158,13 @@
     <string name="tab_apps">Uygulamalar</string>
     <string name="apps_short">Kullanmadığınız uygulamaları kapatın: yüklü kalırlar, ancak siz tekrar açana kadar çalışamaz, ana ekranı dolduramaz veya güncellenemezler. TV\'nin çalışması için gereken parçalar listelenmez.</string>
     <string name="adb_connection">Ağ hata ayıklaması</string>
-    <string name="adb_connection_short">Vibe Launcher, uygulamaları bir bilgisayarın yapacağı gibi TV\'nin ağ hata ayıklaması üzerinden kapatır. Bunu Geliştirici seçeneklerinde açın, ardından burada OK\'e basın ve TV\'de Vibe Launcher\'a izin verin.</string>
+    <string name="adb_connection_short">Vibe Launcher, uygulamaları bir bilgisayarın yapacağı gibi TV\'nin hata ayıklaması üzerinden kapatır. Geliştirici seçeneklerinde USB hata ayıklamayı (bazı TV\'lerde ADB hata ayıklama veya ağ hata ayıklama) açın, ardından burada OK\'e basın ve TV\'de Vibe Launcher\'a izin verin.</string>
     <string name="adb_ready">Bağlandı</string>
     <string name="adb_not_allowed">Henüz izin verilmedi</string>
     <string name="adb_checking">Kontrol ediliyor…</string>
     <string name="adb_allow_prompt">TV\'nin sorusunda Her zaman izin ver seçeneğini işaretleyin, ardından OK\'i seçin</string>
-    <string name="adb_turn_on">Geliştirici seçeneklerinde ağ hata ayıklamasını (veya ADB hata ayıklamasını) açın, ardından buraya dönün</string>
+    <string name="adb_turn_on">Geliştirici seçeneklerinde USB hata ayıklamayı açın (bazı TV\'lerde adı ADB hata ayıklama veya ağ hata ayıklama), ardından buraya dönün.</string>
+    <string name="adb_network_closed">Hata ayıklama açık, ancak bu TV uygulamaların ona erişmesine henüz izin vermiyor. Geliştirici seçeneklerinde ağ hata ayıklama veya ağ üzerinden ADB seçeneğini bulun ve açın. Yalnızca kablosuz hata ayıklama varsa Vibe Launcher bunu henüz kullanamaz.</string>
     <string name="adb_failed">TV buna izin vermedi</string>
     <string name="apps_turn_all_on">Tümünü yeniden aç</string>
     <string name="apps_turn_all_on_short">Vibe Launcher\'ın kapattığı tüm uygulamaları yeniden açar.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">TV\'nin ihtiyaç duyduğu uygulamalar</string>
     <string name="app_protected">TV\'nizin düzgün çalışması için bu gereklidir, bu yüzden Vibe Launcher bunu kapatmaz. Bu, TV\'nizi güvende tutar.</string>
     <string name="adb_dev_options">Önce Geliştirici seçeneklerini açın: Hakkında bölümünde Derleme üzerinde yedi kez OK\'e basın, ardından buraya dönün.</string>
+    <string name="apps_turn_off_again">Yeniden kapat</string>
+    <string name="apps_turn_off_again_short">Vibe Launcher\'ın daha önce kapattığı ancak şu anda burada açık olan uygulamalar: bu TV\'de geri yüklenen bir yedekten ya da bir güncellemeyle yeniden açılmış olabilirler.</string>
+    <string name="apps_turn_off_now">Şimdi kapat</string>
+    <string name="apps_all_off">Tümü yeniden kapatıldı</string>
 </resources>

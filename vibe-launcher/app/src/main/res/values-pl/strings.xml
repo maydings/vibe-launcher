@@ -158,12 +158,13 @@
     <string name="tab_apps">Aplikacje</string>
     <string name="apps_short">Wyłącz aplikacje, których nie używasz: pozostaną zainstalowane, ale nie będą mogły działać, zapełniać ekranu głównego ani się aktualizować, dopóki ich znowu nie włączysz. Części potrzebne telewizorowi do działania nie są wyświetlane.</string>
     <string name="adb_connection">Debugowanie sieciowe</string>
-    <string name="adb_connection_short">Vibe Launcher wyłącza aplikacje przez debugowanie sieciowe telewizora, tak jak zrobiłby to komputer. Włącz je w Opcjach programisty, a potem naciśnij tutaj OK i zezwól Vibe Launcher na telewizorze.</string>
+    <string name="adb_connection_short">Vibe Launcher wyłącza aplikacje przez debugowanie telewizora, tak jak zrobiłby to komputer. Włącz debugowanie USB (na niektórych telewizorach debugowanie ADB lub debugowanie sieciowe) w Opcjach programisty, a potem naciśnij tutaj OK i zezwól Vibe Launcher na telewizorze.</string>
     <string name="adb_ready">Połączono</string>
     <string name="adb_not_allowed">Jeszcze bez zgody</string>
     <string name="adb_checking">Sprawdzanie…</string>
     <string name="adb_allow_prompt">W pytaniu na telewizorze zaznacz Zawsze zezwalaj, a potem wybierz OK</string>
-    <string name="adb_turn_on">Włącz debugowanie sieciowe (lub debugowanie ADB) w Opcjach programisty, a potem wróć tutaj</string>
+    <string name="adb_turn_on">W Opcjach programisty włącz debugowanie USB (na niektórych telewizorach nazywa się debugowanie ADB lub debugowanie sieciowe), a potem wróć tutaj.</string>
+    <string name="adb_network_closed">Debugowanie jest włączone, ale ten telewizor nie pozwala jeszcze aplikacjom się z nim połączyć. W Opcjach programisty poszukaj opcji debugowanie sieciowe lub ADB przez sieć i ją włącz. Jeśli jest tylko debugowanie bezprzewodowe, Vibe Launcher nie może go jeszcze używać.</string>
     <string name="adb_failed">Telewizor na to nie zezwolił</string>
     <string name="apps_turn_all_on">Włącz wszystkie ponownie</string>
     <string name="apps_turn_all_on_short">Ponownie włącza wszystkie aplikacje wyłączone przez Vibe Launcher.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">Aplikacje potrzebne telewizorowi</string>
     <string name="app_protected">Telewizor potrzebuje tego do prawidłowego działania, więc Vibe Launcher tego nie wyłączy. Dzięki temu telewizor pozostaje bezpieczny.</string>
     <string name="adb_dev_options">Najpierw włącz Opcje programisty: w sekcji Informacje naciśnij siedem razy OK na pozycji Kompilacja, a potem wróć tutaj.</string>
+    <string name="apps_turn_off_again">Wyłącz ponownie</string>
+    <string name="apps_turn_off_again_short">Aplikacje, które Vibe Launcher już wcześniej wyłączył, a które są tu teraz włączone: z kopii zapasowej przywróconej na tym telewizorze lub ponownie włączone przez aktualizację.</string>
+    <string name="apps_turn_off_now">Wyłącz teraz</string>
+    <string name="apps_all_off">Wszystkie ponownie wyłączone</string>
 </resources>

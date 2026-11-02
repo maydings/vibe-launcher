@@ -153,6 +153,33 @@ final class TvApps {
         settings.setAppsOff(off);
     }
 
+    /**
+     * The apps turned off here before that are on now and may be turned off: from a backup restored on this
+     * TV (the record comes with the settings; the apps don't change), or turned back on by an update. Not the
+     * ones missing here (they may come later) or that this TV needs. By name.
+     */
+    static List<App> toTurnOffAgain(Context context) {
+        PackageManager pm = context.getPackageManager();
+        Set<String> keep = alsoKept(context);
+        List<App> apps = new ArrayList<>();
+        int flags = PackageManager.MATCH_DISABLED_COMPONENTS | PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS;
+        for (String pkg : new VibeSettings(context).appsOff()) {
+            ApplicationInfo ai;
+            try {
+                ai = pm.getApplicationInfo(pkg, flags);
+            } catch (PackageManager.NameNotFoundException e) {
+                continue;
+            }
+            if (!isOn(pm, pkg) || kept(ai, keep) || pkg.equals(context.getPackageName())) continue;
+            String label = String.valueOf(ai.loadLabel(pm));
+            apps.add(new App(pkg, label.isEmpty() ? pkg : label, false, true));
+        }
+        Collator byName = Collator.getInstance();
+        byName.setStrength(Collator.PRIMARY);
+        Collections.sort(apps, (a, b) -> byName.compare(a.label, b.label));
+        return apps;
+    }
+
     /** The apps turned off here and still off: what Turn all back on would turn on. */
     static List<String> turnedOff(Context context) {
         PackageManager pm = context.getPackageManager();

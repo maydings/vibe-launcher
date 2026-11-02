@@ -158,12 +158,13 @@
     <string name="tab_apps">Aplikasi</string>
     <string name="apps_short">Nonaktifkan aplikasi yang tidak Anda gunakan: aplikasi tetap terinstal, tetapi tidak bisa berjalan, memenuhi layar beranda, atau diupdate sampai Anda mengaktifkannya lagi. Bagian yang dibutuhkan TV agar berfungsi tidak dicantumkan.</string>
     <string name="adb_connection">Proses debug jaringan</string>
-    <string name="adb_connection_short">Vibe Launcher menonaktifkan aplikasi melalui proses debug jaringan TV, seperti yang dilakukan komputer. Aktifkan di Opsi developer, lalu tekan OK di sini dan izinkan Vibe Launcher di TV.</string>
+    <string name="adb_connection_short">Vibe Launcher menonaktifkan aplikasi melalui proses debug TV, seperti yang dilakukan komputer. Aktifkan proses debug USB (di beberapa TV proses debug ADB atau proses debug jaringan) di Opsi developer, lalu tekan OK di sini dan izinkan Vibe Launcher di TV.</string>
     <string name="adb_ready">Terhubung</string>
     <string name="adb_not_allowed">Belum diizinkan</string>
     <string name="adb_checking">Memeriksa…</string>
     <string name="adb_allow_prompt">Pada pertanyaan di TV, centang Selalu izinkan, lalu pilih OK</string>
-    <string name="adb_turn_on">Aktifkan proses debug jaringan (atau proses debug ADB) di Opsi developer, lalu kembali ke sini</string>
+    <string name="adb_turn_on">Di Opsi developer, aktifkan proses debug USB (di beberapa TV disebut proses debug ADB atau proses debug jaringan), lalu kembali ke sini.</string>
+    <string name="adb_network_closed">Proses debug sudah aktif, tetapi TV ini belum mengizinkan aplikasi mengaksesnya. Di Opsi developer, cari proses debug jaringan atau ADB melalui jaringan, lalu aktifkan. Jika hanya ada proses debug nirkabel, Vibe Launcher belum dapat menggunakannya.</string>
     <string name="adb_failed">TV tidak mengizinkannya</string>
     <string name="apps_turn_all_on">Aktifkan lagi semua</string>
     <string name="apps_turn_all_on_short">Mengaktifkan lagi setiap aplikasi yang dinonaktifkan Vibe Launcher.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">Aplikasi yang dibutuhkan TV</string>
     <string name="app_protected">TV Anda membutuhkan ini agar berfungsi dengan baik, jadi Vibe Launcher tidak akan menonaktifkannya. Ini menjaga TV Anda tetap aman.</string>
     <string name="adb_dev_options">Aktifkan Opsi developer terlebih dahulu: di Tentang, tekan OK pada Build sebanyak tujuh kali, lalu kembali ke sini.</string>
+    <string name="apps_turn_off_again">Nonaktifkan lagi</string>
+    <string name="apps_turn_off_again_short">Aplikasi yang sebelumnya dinonaktifkan Vibe Launcher tetapi kini aktif di sini: dari cadangan yang dipulihkan di TV ini, atau diaktifkan lagi oleh update.</string>
+    <string name="apps_turn_off_now">Nonaktifkan sekarang</string>
+    <string name="apps_all_off">Semua sudah dinonaktifkan lagi</string>
 </resources>

@@ -158,12 +158,13 @@
     <string name="tab_apps">App</string>
     <string name="apps_short">Disattiva le app che non usi: restano installate, ma non possono avviarsi, riempire la schermata Home o aggiornarsi finché non le riattivi. Le parti che servono al televisore per funzionare non sono elencate.</string>
     <string name="adb_connection">Debug di rete</string>
-    <string name="adb_connection_short">Vibe Launcher disattiva le app tramite il debug di rete del televisore, come farebbe un computer. Attivalo in Opzioni sviluppatore, poi premi OK qui e consenti Vibe Launcher sul televisore.</string>
+    <string name="adb_connection_short">Vibe Launcher disattiva le app tramite il debug del televisore, come farebbe un computer. Attiva il debug USB (debug ADB o debug di rete su alcuni televisori) in Opzioni sviluppatore, poi premi OK qui e consenti Vibe Launcher sul televisore.</string>
     <string name="adb_ready">Connesso</string>
     <string name="adb_not_allowed">Non ancora consentito</string>
     <string name="adb_checking">Verifica in corso…</string>
     <string name="adb_allow_prompt">Nella domanda sul televisore, seleziona Consenti sempre, poi scegli OK</string>
-    <string name="adb_turn_on">Attiva il debug di rete (o debug ADB) in Opzioni sviluppatore, poi torna qui</string>
+    <string name="adb_turn_on">In Opzioni sviluppatore, attiva il debug USB (su alcuni televisori si chiama debug ADB o debug di rete), poi torna qui.</string>
+    <string name="adb_network_closed">Il debug è attivo, ma questo televisore non permette ancora alle app di raggiungerlo. In Opzioni sviluppatore, cerca l\'opzione debug di rete o ADB in rete e attivala. Se c\'è solo il debug wireless, Vibe Launcher non può ancora usarlo.</string>
     <string name="adb_failed">Il televisore non l\'ha consentito</string>
     <string name="apps_turn_all_on">Riattiva tutte</string>
     <string name="apps_turn_all_on_short">Riattiva tutte le app che Vibe Launcher ha disattivato.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">App che servono al televisore</string>
     <string name="app_protected">Il televisore ne ha bisogno per funzionare correttamente, quindi Vibe Launcher non lo disattiverà. Così il televisore resta al sicuro.</string>
     <string name="adb_dev_options">Prima attiva Opzioni sviluppatore: in Informazioni, premi OK su Build sette volte, poi torna qui.</string>
+    <string name="apps_turn_off_again">Disattiva di nuovo</string>
+    <string name="apps_turn_off_again_short">App che Vibe Launcher aveva già disattivato e che ora qui sono attive: da un backup ripristinato su questo televisore o riattivate da un aggiornamento.</string>
+    <string name="apps_turn_off_now">Disattiva ora</string>
+    <string name="apps_all_off">Tutte disattivate di nuovo</string>
 </resources>

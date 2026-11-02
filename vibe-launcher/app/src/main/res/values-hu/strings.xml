@@ -158,12 +158,13 @@
     <string name="tab_apps">Alkalmazások</string>
     <string name="apps_short">Kapcsolja ki azokat az alkalmazásokat, amelyeket nem használ: telepítve maradnak, de nem futhatnak, nem tölthetik meg a kezdőképernyőt és nem frissülhetnek, amíg vissza nem kapcsolja őket. A tévé működéséhez szükséges részek nem szerepelnek a listában.</string>
     <string name="adb_connection">Hálózati hibakeresés</string>
-    <string name="adb_connection_short">A Vibe Launcher a tévé hálózati hibakeresésén keresztül kapcsolja ki az alkalmazásokat, ahogy egy számítógép tenné. Kapcsolja be a Fejlesztői beállításokban, majd nyomja meg itt az OK gombot, és engedélyezze a Vibe Launchert a tévén.</string>
+    <string name="adb_connection_short">A Vibe Launcher a tévé hibakeresésén keresztül kapcsolja ki az alkalmazásokat, ahogy egy számítógép tenné. Kapcsolja be az USB-hibakeresést (egyes tévéken ADB-hibakeresés vagy hálózati hibakeresés) a Fejlesztői beállításokban, majd nyomja meg itt az OK gombot, és engedélyezze a Vibe Launchert a tévén.</string>
     <string name="adb_ready">Csatlakoztatva</string>
     <string name="adb_not_allowed">Még nincs engedélyezve</string>
     <string name="adb_checking">Ellenőrzés…</string>
     <string name="adb_allow_prompt">A tévé kérdésénél jelölje be a Mindig engedélyezze lehetőséget, majd válassza az OK gombot</string>
-    <string name="adb_turn_on">Kapcsolja be a hálózati hibakeresést (vagy az ADB-hibakeresést) a Fejlesztői beállításokban, majd térjen vissza ide</string>
+    <string name="adb_turn_on">Kapcsolja be az USB-hibakeresést a Fejlesztői beállításokban (egyes tévéken ADB-hibakeresés vagy hálózati hibakeresés a neve), majd térjen vissza ide.</string>
+    <string name="adb_network_closed">A hibakeresés be van kapcsolva, de ez a tévé még nem engedi, hogy az alkalmazások hozzáférjenek. A Fejlesztői beállításokban keresse meg a hálózati hibakeresés vagy az ADB hálózaton keresztül lehetőséget, és kapcsolja be. Ha csak vezeték nélküli hibakeresés van, azt a Vibe Launcher még nem tudja használni.</string>
     <string name="adb_failed">A tévé ezt nem engedélyezte</string>
     <string name="apps_turn_all_on">Az összes visszakapcsolása</string>
     <string name="apps_turn_all_on_short">Visszakapcsol minden alkalmazást, amelyet a Vibe Launcher kikapcsolt.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">A tévé számára szükséges alkalmazások</string>
     <string name="app_protected">A tévének erre szüksége van a megfelelő működéshez, ezért a Vibe Launcher nem kapcsolja ki. Így a tévé biztonságban marad.</string>
     <string name="adb_dev_options">Először kapcsolja be a Fejlesztői beállításokat: a Névjegy részben nyomja meg hétszer az OK gombot a Build elemen, majd térjen vissza ide.</string>
+    <string name="apps_turn_off_again">Újbóli kikapcsolás</string>
+    <string name="apps_turn_off_again_short">Alkalmazások, amelyeket a Vibe Launcher korábban kikapcsolt, de most itt be vannak kapcsolva: ezen a tévén visszaállított biztonsági mentésből, vagy egy frissítés visszakapcsolta őket.</string>
+    <string name="apps_turn_off_now">Kikapcsolás most</string>
+    <string name="apps_all_off">Mind újra kikapcsolva</string>
 </resources>

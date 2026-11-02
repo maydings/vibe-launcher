@@ -193,11 +193,17 @@ it back on.
 
 - **Network debugging**: whether Vibe Launcher may use the TV's network debugging. The first time, OK
   walks you through it: with Developer options still hidden, a window explains how to unlock them and
-  opens About; with debugging off, it says what to turn on and opens Developer options; then the TV asks
-  whether to allow Vibe Launcher (tick Always allow). Vibe Launcher connects to the TV itself
-  (`127.0.0.1:5555`), with a key that never leaves it. Plain network debugging only: TVs that offer
-  just Android 11's Wireless debugging (with a pairing code) aren't supported yet.
+  opens About; with debugging off, it says to turn on USB debugging (called ADB debugging or Network
+  debugging on some TVs) and opens Developer options; then the TV asks whether to allow Vibe Launcher
+  (tick Always allow). Vibe Launcher connects to the TV itself (`127.0.0.1:5555`), with a key that never
+  leaves it. Most TVs open that port with USB debugging alone (the onn 4K stick does, even after a
+  restart), or have a Network debugging switch of their own (NVIDIA Shield). TVs that offer only Android
+  11's Wireless debugging, with a pairing code (Chromecast with Google TV, Google TV Streamer), aren't
+  supported yet: there a window says so.
 - **Turn all back on**: turns on every app Vibe Launcher turned off, and nothing else.
+- **Turn off again** (only when there's something to do): the apps Vibe Launcher turned off before that
+  are on here now, from a backup restored on this TV or turned back on by an update. It lists them first,
+  then **Turn off now** turns them all off in one go.
 - **Apps you can turn off**: every app on the TV by name, On or Off; OK switches it.
 - **Apps the TV needs**: the parts it can't do without, grayed: Android itself, Google Play, Settings,
   the keyboard, the remote and Bluetooth, Wi-Fi, the inputs and the app that plays them, setup, the

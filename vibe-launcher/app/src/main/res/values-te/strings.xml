@@ -158,12 +158,13 @@
     <string name="tab_apps">యాప్‌లు</string>
     <string name="apps_short">మీరు ఉపయోగించని యాప్‌లను ఆఫ్ చేయండి: అవి ఇన్‌స్టాల్ అయ్యే ఉంటాయి, కానీ మీరు మళ్లీ ఆన్ చేసే వరకు అవి రన్ కావు, హోమ్ స్క్రీన్‌ను నింపవు, అప్‌డేట్ కావు. టీవీ పనిచేయడానికి అవసరమైన భాగాలు ఇక్కడ చూపబడవు.</string>
     <string name="adb_connection">నెట్‌వర్క్ డీబగ్గింగ్</string>
-    <string name="adb_connection_short">Vibe Launcher కంప్యూటర్ లాగే టీవీ నెట్‌వర్క్ డీబగ్గింగ్ ద్వారా యాప్‌లను ఆఫ్ చేస్తుంది. డెవలపర్ ఆప్షన్‌లలో దాన్ని ఆన్ చేసి, ఆపై ఇక్కడ OK నొక్కి, టీవీలో Vibe Launcherను అనుమతించండి.</string>
+    <string name="adb_connection_short">Vibe Launcher కంప్యూటర్ లాగే టీవీ డీబగ్గింగ్ ద్వారా యాప్‌లను ఆఫ్ చేస్తుంది. డెవలపర్ ఆప్షన్‌లలో USB డీబగ్గింగ్ (కొన్ని టీవీలలో ADB డీబగ్గింగ్ లేదా నెట్‌వర్క్ డీబగ్గింగ్) ఆన్ చేసి, ఆపై ఇక్కడ OK నొక్కి, టీవీలో Vibe Launcherను అనుమతించండి.</string>
     <string name="adb_ready">కనెక్ట్ అయింది</string>
     <string name="adb_not_allowed">ఇంకా అనుమతించలేదు</string>
     <string name="adb_checking">చెక్ చేస్తోంది…</string>
     <string name="adb_allow_prompt">టీవీ ప్రశ్నలో ఎల్లప్పుడూ అనుమతించు అని టిక్ చేసి, ఆపై OK ఎంచుకోండి</string>
-    <string name="adb_turn_on">డెవలపర్ ఆప్షన్‌లలో నెట్‌వర్క్ డీబగ్గింగ్ (లేదా ADB డీబగ్గింగ్) ఆన్ చేసి, ఆపై ఇక్కడికి తిరిగి రండి</string>
+    <string name="adb_turn_on">డెవలపర్ ఆప్షన్‌లలో USB డీబగ్గింగ్ (కొన్ని టీవీలలో దీన్ని ADB డీబగ్గింగ్ లేదా నెట్‌వర్క్ డీబగ్గింగ్ అంటారు) ఆన్ చేసి, ఆపై ఇక్కడికి తిరిగి రండి.</string>
+    <string name="adb_network_closed">డీబగ్గింగ్ ఆన్‌లో ఉంది, కానీ ఈ టీవీ ఇంకా యాప్‌లను దాన్ని చేరుకోనివ్వదు. డెవలపర్ ఆప్షన్‌లలో నెట్‌వర్క్ డీబగ్గింగ్ లేదా నెట్‌వర్క్ ద్వారా ADB కోసం వెతికి దాన్ని ఆన్ చేయండి. అందులో వైర్‌లెస్ డీబగ్గింగ్ మాత్రమే ఉంటే, Vibe Launcher దాన్ని ఉపయోగించడం ఇంకా సాధ్యం కాదు.</string>
     <string name="adb_failed">టీవీ దాన్ని అనుమతించలేదు</string>
     <string name="apps_turn_all_on">అన్నీ మళ్లీ ఆన్ చేయండి</string>
     <string name="apps_turn_all_on_short">Vibe Launcher ఆఫ్ చేసిన ప్రతి యాప్‌ను మళ్లీ ఆన్ చేస్తుంది.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">టీవీకి అవసరమైన యాప్‌లు</string>
     <string name="app_protected">మీ టీవీ సరిగ్గా పనిచేయడానికి ఇది అవసరం, కాబట్టి Vibe Launcher దీన్ని ఆఫ్ చేయదు. ఇది మీ టీవీని సురక్షితంగా ఉంచుతుంది.</string>
     <string name="adb_dev_options">ముందుగా డెవలపర్ ఆప్షన్‌లను ఆన్ చేయండి: పరిచయంలో బిల్డ్‌పై ఏడుసార్లు OK నొక్కి, ఆపై ఇక్కడికి తిరిగి రండి.</string>
+    <string name="apps_turn_off_again">మళ్లీ ఆఫ్ చేయండి</string>
+    <string name="apps_turn_off_again_short">Vibe Launcher ఇంతకు ముందు ఆఫ్ చేసినా, ఇప్పుడు ఇక్కడ ఆన్‌లో ఉన్న యాప్‌లు: ఈ టీవీలో రీస్టోర్ చేసిన బ్యాకప్ నుండి, లేదా అప్‌డేట్ వల్ల మళ్లీ ఆన్ అయినవి.</string>
+    <string name="apps_turn_off_now">ఇప్పుడే ఆఫ్ చేయండి</string>
+    <string name="apps_all_off">అన్నీ మళ్లీ ఆఫ్ అయ్యాయి</string>
 </resources>

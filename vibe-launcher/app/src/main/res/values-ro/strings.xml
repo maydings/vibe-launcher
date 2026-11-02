@@ -158,12 +158,13 @@
     <string name="tab_apps">Aplicații</string>
     <string name="apps_short">Dezactivați aplicațiile pe care nu le folosiți: rămân instalate, dar nu pot rula, nu pot umple ecranul de pornire și nu se pot actualiza până când nu le reactivați. Componentele de care televizorul are nevoie ca să funcționeze nu sunt afișate.</string>
     <string name="adb_connection">Depanare prin rețea</string>
-    <string name="adb_connection_short">Vibe Launcher dezactivează aplicații prin depanarea prin rețea a televizorului, așa cum ar face un computer. Activați-o din Opțiuni pentru dezvoltatori, apoi apăsați OK aici și permiteți Vibe Launcher pe televizor.</string>
+    <string name="adb_connection_short">Vibe Launcher dezactivează aplicații prin depanarea televizorului, așa cum ar face un computer. Activați depanarea prin USB (depanare ADB sau depanare prin rețea pe unele televizoare) din Opțiuni pentru dezvoltatori, apoi apăsați OK aici și permiteți Vibe Launcher pe televizor.</string>
     <string name="adb_ready">Conectat</string>
     <string name="adb_not_allowed">Încă nepermis</string>
     <string name="adb_checking">Se verifică…</string>
     <string name="adb_allow_prompt">La întrebarea de pe televizor, bifați Permiteți întotdeauna, apoi alegeți OK</string>
-    <string name="adb_turn_on">Activați depanarea prin rețea (sau depanarea ADB) din Opțiuni pentru dezvoltatori, apoi reveniți aici</string>
+    <string name="adb_turn_on">În Opțiuni pentru dezvoltatori, activați depanarea prin USB (numită depanare ADB sau depanare prin rețea pe unele televizoare), apoi reveniți aici.</string>
+    <string name="adb_network_closed">Depanarea este activată, dar acest televizor nu permite încă aplicațiilor să ajungă la ea. În Opțiuni pentru dezvoltatori, căutați opțiunea depanare prin rețea sau ADB prin rețea și activați-o. Dacă are doar depanare wireless, Vibe Launcher nu o poate folosi încă.</string>
     <string name="adb_failed">Televizorul nu a permis acest lucru</string>
     <string name="apps_turn_all_on">Reactivați-le pe toate</string>
     <string name="apps_turn_all_on_short">Reactivează toate aplicațiile dezactivate de Vibe Launcher.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">Aplicații de care televizorul are nevoie</string>
     <string name="app_protected">Televizorul are nevoie de aceasta ca să funcționeze corect, așa că Vibe Launcher nu o va dezactiva. Astfel, televizorul rămâne în siguranță.</string>
     <string name="adb_dev_options">Mai întâi activați Opțiuni pentru dezvoltatori: în Despre, apăsați OK pe Versiune de șapte ori, apoi reveniți aici.</string>
+    <string name="apps_turn_off_again">Dezactivați din nou</string>
+    <string name="apps_turn_off_again_short">Aplicații pe care Vibe Launcher le-a dezactivat înainte, dar care acum sunt activate aici: dintr-un backup restabilit pe acest televizor sau reactivate de o actualizare.</string>
+    <string name="apps_turn_off_now">Dezactivați acum</string>
+    <string name="apps_all_off">Toate au fost dezactivate din nou</string>
 </resources>

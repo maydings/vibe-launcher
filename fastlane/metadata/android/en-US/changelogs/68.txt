@@ -1,0 +1,2 @@
+* New: Settings > Apps > Turn off again: after restoring a backup, or when an update turns apps back on, turns off again what Vibe Launcher had turned off.
+* Clearer help for turning on debugging (USB, ADB or Network debugging), and a note for TVs that only offer Wireless debugging.

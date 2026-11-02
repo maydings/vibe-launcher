@@ -158,12 +158,13 @@
     <string name="tab_apps">ਐਪਾਂ</string>
     <string name="apps_short">ਜਿਹੜੀਆਂ ਐਪਾਂ ਤੁਸੀਂ ਨਹੀਂ ਵਰਤਦੇ, ਉਨ੍ਹਾਂ ਨੂੰ ਬੰਦ ਕਰੋ: ਉਹ ਸਥਾਪਤ ਰਹਿੰਦੀਆਂ ਹਨ, ਪਰ ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਉਨ੍ਹਾਂ ਨੂੰ ਮੁੜ ਚਾਲੂ ਨਹੀਂ ਕਰਦੇ, ਉਹ ਚੱਲ ਨਹੀਂ ਸਕਦੀਆਂ, ਹੋਮ ਸਕ੍ਰੀਨ ਨਹੀਂ ਭਰ ਸਕਦੀਆਂ ਜਾਂ ਅੱਪਡੇਟ ਨਹੀਂ ਹੋ ਸਕਦੀਆਂ। ਟੀਵੀ ਨੂੰ ਚੱਲਣ ਲਈ ਲੋੜੀਂਦੇ ਹਿੱਸੇ ਇੱਥੇ ਨਹੀਂ ਦਿਖਾਏ ਜਾਂਦੇ।</string>
     <string name="adb_connection">ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ</string>
-    <string name="adb_connection_short">Vibe Launcher ਕੰਪਿਊਟਰ ਵਾਂਗ ਹੀ ਟੀਵੀ ਦੀ ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ ਰਾਹੀਂ ਐਪਾਂ ਬੰਦ ਕਰਦਾ ਹੈ। ਇਸਨੂੰ ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ ਚਾਲੂ ਕਰੋ, ਫਿਰ ਇੱਥੇ OK ਦਬਾਓ ਅਤੇ ਟੀਵੀ ਉੱਤੇ Vibe Launcher ਨੂੰ ਇਜਾਜ਼ਤ ਦਿਓ।</string>
+    <string name="adb_connection_short">Vibe Launcher ਕੰਪਿਊਟਰ ਵਾਂਗ ਹੀ ਟੀਵੀ ਦੀ ਡੀਬੱਗਿੰਗ ਰਾਹੀਂ ਐਪਾਂ ਬੰਦ ਕਰਦਾ ਹੈ। ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ USB ਡੀਬੱਗਿੰਗ (ਕੁਝ ਟੀਵੀ ਉੱਤੇ ADB ਡੀਬੱਗਿੰਗ ਜਾਂ ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ) ਚਾਲੂ ਕਰੋ, ਫਿਰ ਇੱਥੇ OK ਦਬਾਓ ਅਤੇ ਟੀਵੀ ਉੱਤੇ Vibe Launcher ਨੂੰ ਇਜਾਜ਼ਤ ਦਿਓ।</string>
     <string name="adb_ready">ਕਨੈਕਟ ਹੈ</string>
     <string name="adb_not_allowed">ਹਾਲੇ ਇਜਾਜ਼ਤ ਨਹੀਂ</string>
     <string name="adb_checking">ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…</string>
     <string name="adb_allow_prompt">ਟੀਵੀ ਦੇ ਸਵਾਲ ਵਿੱਚ ਹਮੇਸ਼ਾਂ ਇਜਾਜ਼ਤ ਦਿਓ ਉੱਤੇ ਨਿਸ਼ਾਨ ਲਗਾਓ, ਫਿਰ OK ਚੁਣੋ</string>
-    <string name="adb_turn_on">ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ (ਜਾਂ ADB ਡੀਬੱਗਿੰਗ) ਚਾਲੂ ਕਰੋ, ਫਿਰ ਇੱਥੇ ਵਾਪਸ ਆਓ</string>
+    <string name="adb_turn_on">ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ USB ਡੀਬੱਗਿੰਗ ਚਾਲੂ ਕਰੋ (ਕੁਝ ਟੀਵੀ ਉੱਤੇ ਇਸਨੂੰ ADB ਡੀਬੱਗਿੰਗ ਜਾਂ ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ ਕਿਹਾ ਜਾਂਦਾ ਹੈ), ਫਿਰ ਇੱਥੇ ਵਾਪਸ ਆਓ।</string>
+    <string name="adb_network_closed">ਡੀਬੱਗਿੰਗ ਚਾਲੂ ਹੈ, ਪਰ ਇਹ ਟੀਵੀ ਹਾਲੇ ਐਪਾਂ ਨੂੰ ਉਸ ਤੱਕ ਪਹੁੰਚਣ ਨਹੀਂ ਦਿੰਦਾ। ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ ਜਾਂ ਨੈੱਟਵਰਕ ਰਾਹੀਂ ADB ਲੱਭੋ ਅਤੇ ਉਸਨੂੰ ਚਾਲੂ ਕਰੋ। ਜੇ ਇਸ ਵਿੱਚ ਸਿਰਫ਼ ਵਾਇਰਲੈੱਸ ਡੀਬੱਗਿੰਗ ਹੈ, ਤਾਂ Vibe Launcher ਹਾਲੇ ਉਸਨੂੰ ਵਰਤ ਨਹੀਂ ਸਕਦਾ।</string>
     <string name="adb_failed">ਟੀਵੀ ਨੇ ਇਸਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਦਿੱਤੀ</string>
     <string name="apps_turn_all_on">ਸਭ ਮੁੜ ਚਾਲੂ ਕਰੋ</string>
     <string name="apps_turn_all_on_short">Vibe Launcher ਵੱਲੋਂ ਬੰਦ ਕੀਤੀ ਹਰ ਐਪ ਨੂੰ ਮੁੜ ਚਾਲੂ ਕਰਦਾ ਹੈ।</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">ਐਪਾਂ ਜਿਨ੍ਹਾਂ ਦੀ ਟੀਵੀ ਨੂੰ ਲੋੜ ਹੈ</string>
     <string name="app_protected">ਤੁਹਾਡੇ ਟੀਵੀ ਨੂੰ ਠੀਕ ਤਰ੍ਹਾਂ ਚੱਲਣ ਲਈ ਇਸਦੀ ਲੋੜ ਹੈ, ਇਸ ਲਈ Vibe Launcher ਇਸਨੂੰ ਬੰਦ ਨਹੀਂ ਕਰੇਗਾ। ਇਸ ਨਾਲ ਤੁਹਾਡਾ ਟੀਵੀ ਸੁਰੱਖਿਅਤ ਰਹਿੰਦਾ ਹੈ।</string>
     <string name="adb_dev_options">ਪਹਿਲਾਂ ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਚਾਲੂ ਕਰੋ: ਇਸ ਬਾਰੇ ਵਿੱਚ ਬਿਲਡ ਉੱਤੇ ਸੱਤ ਵਾਰ OK ਦਬਾਓ, ਫਿਰ ਇੱਥੇ ਵਾਪਸ ਆਓ।</string>
+    <string name="apps_turn_off_again">ਮੁੜ ਬੰਦ ਕਰੋ</string>
+    <string name="apps_turn_off_again_short">ਉਹ ਐਪਾਂ ਜੋ Vibe Launcher ਨੇ ਪਹਿਲਾਂ ਬੰਦ ਕੀਤੀਆਂ ਸਨ, ਪਰ ਹੁਣ ਇੱਥੇ ਚਾਲੂ ਹਨ: ਇਸ ਟੀਵੀ ਉੱਤੇ ਰੀਸਟੋਰ ਕੀਤੇ ਬੈਕਅੱਪ ਤੋਂ, ਜਾਂ ਕਿਸੇ ਅੱਪਡੇਟ ਨੇ ਮੁੜ ਚਾਲੂ ਕਰ ਦਿੱਤੀਆਂ।</string>
+    <string name="apps_turn_off_now">ਹੁਣੇ ਬੰਦ ਕਰੋ</string>
+    <string name="apps_all_off">ਸਭ ਮੁੜ ਬੰਦ ਹੋ ਗਈਆਂ</string>
 </resources>

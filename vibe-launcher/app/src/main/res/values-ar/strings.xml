@@ -158,12 +158,13 @@
     <string name="tab_apps">التطبيقات</string>
     <string name="apps_short">أوقف التطبيقات التي لا تستخدمها: تبقى مثبّتة، لكن لا يمكنها العمل أو ملء الشاشة الرئيسية أو التحديث إلى أن تعيد تفعيلها. لا تظهر الأجزاء التي يحتاجها التلفزيون ليعمل.</string>
     <string name="adb_connection">تصحيح الأخطاء عبر الشبكة</string>
-    <string name="adb_connection_short">يوقف Vibe Launcher التطبيقات عبر تصحيح الأخطاء عبر الشبكة في التلفزيون، كما يفعل الكمبيوتر. شغّله من خيارات المطوّرين، ثم اضغط على OK هنا واسمح لـ Vibe Launcher على التلفزيون.</string>
+    <string name="adb_connection_short">يوقف Vibe Launcher التطبيقات عبر تصحيح الأخطاء في التلفزيون، كما يفعل الكمبيوتر. شغّل تصحيح أخطاء USB (تصحيح أخطاء ADB أو تصحيح الأخطاء عبر الشبكة في بعض أجهزة التلفزيون) من خيارات المطوّرين، ثم اضغط على OK هنا واسمح لـ Vibe Launcher على التلفزيون.</string>
     <string name="adb_ready">متصل</string>
     <string name="adb_not_allowed">غير مسموح بعد</string>
     <string name="adb_checking">جارٍ التحقق…</string>
     <string name="adb_allow_prompt">في سؤال التلفزيون، ضع علامة على السماح دائمًا، ثم اختر OK</string>
-    <string name="adb_turn_on">شغّل تصحيح الأخطاء عبر الشبكة (أو تصحيح أخطاء ADB) من خيارات المطوّرين، ثم ارجع إلى هنا</string>
+    <string name="adb_turn_on">من خيارات المطوّرين، شغّل تصحيح أخطاء USB (يُسمّى في بعض أجهزة التلفزيون تصحيح أخطاء ADB أو تصحيح الأخطاء عبر الشبكة)، ثم ارجع إلى هنا.</string>
+    <string name="adb_network_closed">تصحيح الأخطاء مفعّل، لكن هذا التلفزيون لا يسمح للتطبيقات بالوصول إليه بعد. في خيارات المطوّرين، ابحث عن تصحيح الأخطاء عبر الشبكة أو ADB عبر الشبكة وشغّله. إذا كان يحتوي على تصحيح الأخطاء اللاسلكي فقط، فلا يمكن لـ Vibe Launcher استخدامه بعد.</string>
     <string name="adb_failed">لم يسمح التلفزيون بذلك</string>
     <string name="apps_turn_all_on">إعادة تفعيل الكل</string>
     <string name="apps_turn_all_on_short">يعيد تفعيل كل تطبيق أوقفه Vibe Launcher.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">تطبيقات يحتاجها التلفزيون</string>
     <string name="app_protected">يحتاج تلفزيونك إلى هذا ليعمل بشكل صحيح، لذلك لن يوقفه Vibe Launcher. هذا يحافظ على سلامة تلفزيونك.</string>
     <string name="adb_dev_options">شغّل خيارات المطوّرين أولاً: في حول، اضغط على OK فوق الإصدار سبع مرات، ثم ارجع إلى هنا.</string>
+    <string name="apps_turn_off_again">إيقاف مجددًا</string>
+    <string name="apps_turn_off_again_short">تطبيقات أوقفها Vibe Launcher من قبل وأصبحت مفعّلة هنا الآن: من نسخة احتياطية تمت استعادتها على هذا التلفزيون، أو أعاد تحديث تفعيلها.</string>
+    <string name="apps_turn_off_now">إيقاف الآن</string>
+    <string name="apps_all_off">تم إيقاف الكل مجددًا</string>
 </resources>

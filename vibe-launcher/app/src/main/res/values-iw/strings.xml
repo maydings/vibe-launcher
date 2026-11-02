@@ -158,12 +158,13 @@
     <string name="tab_apps">אפליקציות</string>
     <string name="apps_short">כבו אפליקציות שאתם לא משתמשים בהן: הן נשארות מותקנות, אבל לא יכולות לפעול, למלא את מסך הבית או להתעדכן עד שתפעילו אותן שוב. רכיבים שהטלוויזיה צריכה כדי לעבוד לא מופיעים ברשימה.</string>
     <string name="adb_connection">ניפוי באגים ברשת</string>
-    <string name="adb_connection_short">Vibe Launcher מכבה אפליקציות דרך ניפוי הבאגים ברשת של הטלוויזיה, כמו שמחשב היה עושה. הפעילו אותו באפשרויות למפתחים, ואז לחצו כאן על OK ואשרו את Vibe Launcher בטלוויזיה.</string>
+    <string name="adb_connection_short">Vibe Launcher מכבה אפליקציות דרך ניפוי הבאגים של הטלוויזיה, כמו שמחשב היה עושה. הפעילו ניפוי באגים ב-USB (בחלק מהטלוויזיות ניפוי באגים ב-ADB או ניפוי באגים ברשת) באפשרויות למפתחים, ואז לחצו כאן על OK ואשרו את Vibe Launcher בטלוויזיה.</string>
     <string name="adb_ready">מחובר</string>
     <string name="adb_not_allowed">עדיין לא אושר</string>
     <string name="adb_checking">בבדיקה…</string>
     <string name="adb_allow_prompt">בשאלה בטלוויזיה, סמנו את האפשרות לאפשר תמיד, ואז בחרו OK</string>
-    <string name="adb_turn_on">הפעילו ניפוי באגים ברשת (או ניפוי באגים ב-ADB) באפשרויות למפתחים, ואז חזרו לכאן</string>
+    <string name="adb_turn_on">באפשרויות למפתחים, הפעילו ניפוי באגים ב-USB (בחלק מהטלוויזיות הוא נקרא ניפוי באגים ב-ADB או ניפוי באגים ברשת), ואז חזרו לכאן.</string>
+    <string name="adb_network_closed">ניפוי הבאגים מופעל, אבל הטלוויזיה הזו עדיין לא מאפשרת לאפליקציות לגשת אליו. באפשרויות למפתחים, חפשו ניפוי באגים ברשת או ADB דרך הרשת והפעילו אותו. אם יש רק ניפוי באגים אלחוטי, Vibe Launcher עדיין לא יכול להשתמש בו.</string>
     <string name="adb_failed">הטלוויזיה לא אישרה את זה</string>
     <string name="apps_turn_all_on">להפעיל הכול מחדש</string>
     <string name="apps_turn_all_on_short">מפעיל מחדש כל אפליקציה ש-Vibe Launcher כיבה.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">אפליקציות שהטלוויזיה צריכה</string>
     <string name="app_protected">הטלוויזיה צריכה את זה כדי לעבוד כמו שצריך, ולכן Vibe Launcher לא יכבה את זה. כך הטלוויזיה שלכם נשארת בטוחה.</string>
     <string name="adb_dev_options">קודם הפעילו את האפשרויות למפתחים: במידע כללי, לחצו OK על גרסת Build שבע פעמים, ואז חזרו לכאן.</string>
+    <string name="apps_turn_off_again">לכבות שוב</string>
+    <string name="apps_turn_off_again_short">אפליקציות ש-Vibe Launcher כיבה קודם ועכשיו הן פועלות כאן: מגיבוי ששוחזר בטלוויזיה הזו, או שעדכון הפעיל אותן מחדש.</string>
+    <string name="apps_turn_off_now">לכבות עכשיו</string>
+    <string name="apps_all_off">הכול כובה שוב</string>
 </resources>

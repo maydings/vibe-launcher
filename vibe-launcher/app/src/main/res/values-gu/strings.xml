@@ -158,12 +158,13 @@
     <string name="tab_apps">ઍપ</string>
     <string name="apps_short">તમે ઉપયોગ ન કરતા હો તે ઍપ બંધ કરો: તે ઇન્સ્ટૉલ રહે છે, પણ તમે ફરી ચાલુ ન કરો ત્યાં સુધી ચાલી શકતી નથી, હોમ સ્ક્રીન ભરી શકતી નથી કે અપડેટ થઈ શકતી નથી. ટીવીને ચાલવા માટે જરૂરી ભાગો અહીં બતાવાતા નથી.</string>
     <string name="adb_connection">નેટવર્ક ડીબગીંગ</string>
-    <string name="adb_connection_short">Vibe Launcher કમ્પ્યૂટરની જેમ જ ટીવીના નેટવર્ક ડીબગીંગ દ્વારા ઍપ બંધ કરે છે. તેને ડેવલપરના વિકલ્પોમાં ચાલુ કરો, પછી અહીં OK દબાવો અને ટીવી પર Vibe Launcherને મંજૂરી આપો.</string>
+    <string name="adb_connection_short">Vibe Launcher કમ્પ્યૂટરની જેમ જ ટીવીના ડીબગીંગ દ્વારા ઍપ બંધ કરે છે. ડેવલપરના વિકલ્પોમાં USB ડીબગીંગ (કેટલાક ટીવી પર ADB ડીબગીંગ અથવા નેટવર્ક ડીબગીંગ) ચાલુ કરો, પછી અહીં OK દબાવો અને ટીવી પર Vibe Launcherને મંજૂરી આપો.</string>
     <string name="adb_ready">કનેક્ટ થયું</string>
     <string name="adb_not_allowed">હજી મંજૂરી નથી</string>
     <string name="adb_checking">તપાસી રહ્યાં છીએ…</string>
     <string name="adb_allow_prompt">ટીવીના પ્રશ્નમાં હંમેશાં મંજૂરી આપો પર ટિક કરો, પછી OK પસંદ કરો</string>
-    <string name="adb_turn_on">ડેવલપરના વિકલ્પોમાં નેટવર્ક ડીબગીંગ (અથવા ADB ડીબગીંગ) ચાલુ કરો, પછી અહીં પાછા આવો</string>
+    <string name="adb_turn_on">ડેવલપરના વિકલ્પોમાં USB ડીબગીંગ ચાલુ કરો (કેટલાક ટીવી પર તેને ADB ડીબગીંગ અથવા નેટવર્ક ડીબગીંગ કહેવાય છે), પછી અહીં પાછા આવો.</string>
+    <string name="adb_network_closed">ડીબગીંગ ચાલુ છે, પણ આ ટીવી હજી ઍપને તેના સુધી પહોંચવા દેતું નથી. ડેવલપરના વિકલ્પોમાં નેટવર્ક ડીબગીંગ અથવા નેટવર્ક પર ADB શોધો અને તેને ચાલુ કરો. જો તેમાં ફક્ત વાયરલેસ ડીબગીંગ હોય, તો Vibe Launcher હજી તેનો ઉપયોગ કરી શકતું નથી.</string>
     <string name="adb_failed">ટીવીએ તેની મંજૂરી આપી નહીં</string>
     <string name="apps_turn_all_on">બધી ફરી ચાલુ કરો</string>
     <string name="apps_turn_all_on_short">Vibe Launcherએ બંધ કરેલી દરેક ઍપ ફરી ચાલુ કરે છે.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">ટીવીને જરૂરી ઍપ</string>
     <string name="app_protected">તમારા ટીવીને બરાબર ચાલવા માટે આની જરૂર છે, તેથી Vibe Launcher તેને બંધ નહીં કરે. આનાથી તમારું ટીવી સુરક્ષિત રહે છે.</string>
     <string name="adb_dev_options">પહેલાં ડેવલપરના વિકલ્પો ચાલુ કરો: વિશે માં બિલ્ડ પર સાત વાર OK દબાવો, પછી અહીં પાછા આવો.</string>
+    <string name="apps_turn_off_again">ફરી બંધ કરો</string>
+    <string name="apps_turn_off_again_short">Vibe Launcherએ પહેલાં બંધ કરેલી પણ હવે અહીં ચાલુ હોય તે ઍપ: આ ટીવી પર રિસ્ટોર કરેલા બેકઅપમાંથી, અથવા કોઈ અપડેટે ફરી ચાલુ કરેલી.</string>
+    <string name="apps_turn_off_now">હમણાં બંધ કરો</string>
+    <string name="apps_all_off">બધી ફરી બંધ થઈ</string>
 </resources>

@@ -163,12 +163,13 @@
     <string name="tab_apps">Apps</string>
     <string name="apps_short">Turn off apps you don\'t use: they stay installed, but can\'t run, fill the home screen or update until you turn them back on. Parts the TV needs to work aren\'t listed.</string>
     <string name="adb_connection">Network debugging</string>
-    <string name="adb_connection_short">Vibe Launcher turns apps off through the TV\'s network debugging, as a computer would. Turn it on in Developer options, then press OK here and allow Vibe Launcher on the TV.</string>
+    <string name="adb_connection_short">Vibe Launcher turns apps off through the TV\'s debugging, as a computer would. Turn on USB debugging (ADB debugging or Network debugging on some TVs) in Developer options, then press OK here and allow Vibe Launcher on the TV.</string>
     <string name="adb_ready">Connected</string>
     <string name="adb_not_allowed">Not allowed yet</string>
     <string name="adb_checking">Checking…</string>
     <string name="adb_allow_prompt">On the TV\'s question, tick Always allow, then choose OK</string>
-    <string name="adb_turn_on">Turn on network debugging (or ADB debugging) in Developer options, then come back here</string>
+    <string name="adb_turn_on">In Developer options, turn on USB debugging (called ADB debugging or Network debugging on some TVs), then come back here.</string>
+    <string name="adb_network_closed">Debugging is on, but this TV doesn\'t let apps reach it yet. In Developer options, look for Network debugging or ADB over network and turn it on. If it only has Wireless debugging, Vibe Launcher can\'t use that yet.</string>
     <string name="adb_failed">The TV didn\'t allow that</string>
     <string name="apps_turn_all_on">Turn all back on</string>
     <string name="apps_turn_all_on_short">Turns back on every app Vibe Launcher turned off.</string>
@@ -178,4 +179,8 @@
     <string name="apps_tv_needs">Apps the TV needs</string>
     <string name="app_protected">Your TV needs this to work properly, so Vibe Launcher won\'t turn it off. This keeps your TV safe.</string>
     <string name="adb_dev_options">Turn on Developer options first: in About, press OK on Build seven times, then come back here.</string>
+    <string name="apps_turn_off_again">Turn off again</string>
+    <string name="apps_turn_off_again_short">Apps Vibe Launcher turned off before that are on here now: from a backup restored on this TV, or turned back on by an update.</string>
+    <string name="apps_turn_off_now">Turn off now</string>
+    <string name="apps_all_off">All turned off again</string>
 </resources>

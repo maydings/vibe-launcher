@@ -158,12 +158,13 @@
     <string name="tab_apps">Aplikace</string>
     <string name="apps_short">Vypněte aplikace, které nepoužíváte: zůstanou nainstalované, ale nebudou se moci spouštět, zaplňovat domovskou obrazovku ani aktualizovat, dokud je znovu nezapnete. Části, které televizor potřebuje ke svému chodu, nejsou uvedeny.</string>
     <string name="adb_connection">Síťové ladění</string>
-    <string name="adb_connection_short">Vibe Launcher vypíná aplikace pomocí síťového ladění televizoru, stejně jako by to udělal počítač. Zapněte ho v sekci Pro vývojáře, potom zde stiskněte OK a na televizoru povolte Vibe Launcher.</string>
+    <string name="adb_connection_short">Vibe Launcher vypíná aplikace pomocí ladění televizoru, stejně jako by to udělal počítač. Zapněte ladění přes USB (na některých televizorech ladění ADB nebo síťové ladění) v sekci Pro vývojáře, potom zde stiskněte OK a na televizoru povolte Vibe Launcher.</string>
     <string name="adb_ready">Připojeno</string>
     <string name="adb_not_allowed">Zatím nepovoleno</string>
     <string name="adb_checking">Kontrola…</string>
     <string name="adb_allow_prompt">V dotazu na televizoru zaškrtněte Vždy povolit a pak zvolte OK</string>
-    <string name="adb_turn_on">Zapněte síťové ladění (nebo ladění ADB) v sekci Pro vývojáře a pak se sem vraťte</string>
+    <string name="adb_turn_on">V sekci Pro vývojáře zapněte ladění přes USB (na některých televizorech se jmenuje ladění ADB nebo síťové ladění) a pak se sem vraťte.</string>
+    <string name="adb_network_closed">Ladění je zapnuté, ale tento televizor k němu aplikace zatím nepustí. V sekci Pro vývojáře vyhledejte síťové ladění nebo ADB přes síť a zapněte ho. Pokud je k dispozici jen bezdrátové ladění, Vibe Launcher ho zatím použít nemůže.</string>
     <string name="adb_failed">Televizor to nepovolil</string>
     <string name="apps_turn_all_on">Znovu zapnout vše</string>
     <string name="apps_turn_all_on_short">Znovu zapne všechny aplikace, které Vibe Launcher vypnul.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">Aplikace, které televizor potřebuje</string>
     <string name="app_protected">Televizor to potřebuje ke správnému fungování, proto to Vibe Launcher nevypne. Váš televizor tak zůstane v bezpečí.</string>
     <string name="adb_dev_options">Nejprve zapněte sekci Pro vývojáře: v části Informace stiskněte sedmkrát OK na položce Sestavení a pak se sem vraťte.</string>
+    <string name="apps_turn_off_again">Znovu vypnout</string>
+    <string name="apps_turn_off_again_short">Aplikace, které Vibe Launcher dříve vypnul, ale teď jsou tu zapnuté: ze zálohy obnovené v tomto televizoru, nebo je znovu zapnula aktualizace.</string>
+    <string name="apps_turn_off_now">Vypnout teď</string>
+    <string name="apps_all_off">Vše je znovu vypnuto</string>
 </resources>

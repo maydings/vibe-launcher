@@ -158,12 +158,13 @@
     <string name="tab_apps">Apps</string>
     <string name="apps_short">Zet apps uit die je niet gebruikt: ze blijven geïnstalleerd, maar kunnen niet starten, het startscherm vullen of updaten tot je ze weer aanzet. Onderdelen die de tv nodig heeft om te werken, staan er niet tussen.</string>
     <string name="adb_connection">Netwerkfoutopsporing</string>
-    <string name="adb_connection_short">Vibe Launcher zet apps uit via de netwerkfoutopsporing van de tv, zoals een computer dat zou doen. Zet het aan in Ontwikkelaarsopties, druk dan hier op OK en sta Vibe Launcher toe op de tv.</string>
+    <string name="adb_connection_short">Vibe Launcher zet apps uit via de foutopsporing van de tv, zoals een computer dat zou doen. Zet USB-foutopsporing (op sommige tv\'s ADB-foutopsporing of netwerkfoutopsporing) aan in Ontwikkelaarsopties, druk dan hier op OK en sta Vibe Launcher toe op de tv.</string>
     <string name="adb_ready">Verbonden</string>
     <string name="adb_not_allowed">Nog niet toegestaan</string>
     <string name="adb_checking">Controleren…</string>
     <string name="adb_allow_prompt">Vink bij de vraag op de tv Altijd toestaan aan en kies dan OK</string>
-    <string name="adb_turn_on">Zet netwerkfoutopsporing (of ADB-foutopsporing) aan in Ontwikkelaarsopties en kom dan hier terug</string>
+    <string name="adb_turn_on">Zet in Ontwikkelaarsopties USB-foutopsporing aan (op sommige tv\'s ADB-foutopsporing of netwerkfoutopsporing genoemd) en kom dan hier terug.</string>
+    <string name="adb_network_closed">Foutopsporing staat aan, maar deze tv laat apps er nog niet bij. Zoek in Ontwikkelaarsopties naar netwerkfoutopsporing of ADB via netwerk en zet het aan. Als er alleen draadloze foutopsporing is, kan Vibe Launcher die nog niet gebruiken.</string>
     <string name="adb_failed">De tv heeft dat niet toegestaan</string>
     <string name="apps_turn_all_on">Alles weer aanzetten</string>
     <string name="apps_turn_all_on_short">Zet elke app weer aan die Vibe Launcher heeft uitgezet.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">Apps die de tv nodig heeft</string>
     <string name="app_protected">Je tv heeft dit nodig om goed te werken, dus Vibe Launcher zet het niet uit. Zo blijft je tv veilig.</string>
     <string name="adb_dev_options">Zet eerst Ontwikkelaarsopties aan: druk bij Over zeven keer op OK op Build en kom dan hier terug.</string>
+    <string name="apps_turn_off_again">Weer uitzetten</string>
+    <string name="apps_turn_off_again_short">Apps die Vibe Launcher eerder had uitgezet en die hier nu aanstaan: door een back-up die op deze tv is hersteld, of weer aangezet door een update.</string>
+    <string name="apps_turn_off_now">Nu uitzetten</string>
+    <string name="apps_all_off">Alles staat weer uit</string>
 </resources>

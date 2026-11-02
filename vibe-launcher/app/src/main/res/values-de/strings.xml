@@ -158,12 +158,13 @@
     <string name="tab_apps">Apps</string>
     <string name="apps_short">Schalte Apps aus, die du nicht nutzt: Sie bleiben installiert, können aber nicht laufen, den Startbildschirm füllen oder sich aktualisieren, bis du sie wieder einschaltest. Teile, die der Fernseher zum Funktionieren braucht, werden nicht aufgeführt.</string>
     <string name="adb_connection">Netzwerk-Debugging</string>
-    <string name="adb_connection_short">Vibe Launcher schaltet Apps über das Netzwerk-Debugging des Fernsehers aus, wie es ein Computer tun würde. Schalte es in den Entwickleroptionen ein, drücke dann hier OK und erlaube Vibe Launcher auf dem Fernseher.</string>
+    <string name="adb_connection_short">Vibe Launcher schaltet Apps über das Debugging des Fernsehers aus, wie es ein Computer tun würde. Schalte in den Entwickleroptionen USB-Debugging ein (auf manchen Fernsehern ADB-Debugging oder Netzwerk-Debugging), drücke dann hier OK und erlaube Vibe Launcher auf dem Fernseher.</string>
     <string name="adb_ready">Verbunden</string>
     <string name="adb_not_allowed">Noch nicht erlaubt</string>
     <string name="adb_checking">Wird geprüft…</string>
     <string name="adb_allow_prompt">Setze bei der Frage auf dem Fernseher ein Häkchen bei Immer zulassen und wähle dann OK</string>
-    <string name="adb_turn_on">Schalte in den Entwickleroptionen Netzwerk-Debugging (oder ADB-Debugging) ein und komm dann hierher zurück</string>
+    <string name="adb_turn_on">Schalte in den Entwickleroptionen USB-Debugging ein (auf manchen Fernsehern heißt es ADB-Debugging oder Netzwerk-Debugging) und komm dann hierher zurück.</string>
+    <string name="adb_network_closed">Debugging ist eingeschaltet, aber dieser Fernseher lässt Apps noch nicht darauf zugreifen. Suche in den Entwickleroptionen nach Netzwerk-Debugging oder ADB über Netzwerk und schalte es ein. Wenn es nur Kabelloses Debugging gibt, kann Vibe Launcher das noch nicht nutzen.</string>
     <string name="adb_failed">Der Fernseher hat das nicht erlaubt</string>
     <string name="apps_turn_all_on">Alle wieder einschalten</string>
     <string name="apps_turn_all_on_short">Schaltet jede App wieder ein, die Vibe Launcher ausgeschaltet hat.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">Apps, die der Fernseher braucht</string>
     <string name="app_protected">Dein Fernseher braucht das, um richtig zu funktionieren, deshalb schaltet Vibe Launcher es nicht aus. So bleibt dein Fernseher geschützt.</string>
     <string name="adb_dev_options">Schalte zuerst die Entwickleroptionen ein: Drücke unter Info sieben Mal OK auf Build und komm dann hierher zurück.</string>
+    <string name="apps_turn_off_again">Wieder ausschalten</string>
+    <string name="apps_turn_off_again_short">Apps, die Vibe Launcher schon ausgeschaltet hatte und die hier jetzt eingeschaltet sind: aus einem auf diesem Fernseher wiederhergestellten Backup oder durch ein Update wieder eingeschaltet.</string>
+    <string name="apps_turn_off_now">Jetzt ausschalten</string>
+    <string name="apps_all_off">Alle wieder ausgeschaltet</string>
 </resources>

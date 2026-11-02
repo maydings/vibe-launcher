@@ -158,12 +158,13 @@
     <string name="tab_apps">යෙදුම්</string>
     <string name="apps_short">ඔබ භාවිත නොකරන යෙදුම් ක්‍රියාවිරහිත කරන්න: ඒවා ස්ථාපිතව පවතී, නමුත් ඔබ නැවත සක්‍රිය කරන තුරු ඒවාට ධාවනය වීමට, මුල් තිරය පිරවීමට හෝ යාවත්කාලීන වීමට නොහැක. රූපවාහිනිය ක්‍රියා කිරීමට අවශ්‍ය කොටස් ලැයිස්තුගත කර නැත.</string>
     <string name="adb_connection">ජාල නිදොස්කරණය</string>
-    <string name="adb_connection_short">Vibe Launcher පරිගණකයක් මෙන්ම රූපවාහිනියේ ජාල නිදොස්කරණය හරහා යෙදුම් ක්‍රියාවිරහිත කරයි. එය සංවර්ධක විකල්ප තුළ සක්‍රිය කර, ඉන්පසු මෙහි OK ඔබා රූපවාහිනියේ Vibe Launcher හට ඉඩ දෙන්න.</string>
+    <string name="adb_connection_short">Vibe Launcher පරිගණකයක් මෙන්ම රූපවාහිනියේ නිදොස්කරණය හරහා යෙදුම් ක්‍රියාවිරහිත කරයි. සංවර්ධක විකල්ප තුළ USB නිදොස්කරණය (සමහර රූපවාහිනීවල ADB නිදොස්කරණය හෝ ජාල නිදොස්කරණය) සක්‍රිය කර, ඉන්පසු මෙහි OK ඔබා රූපවාහිනියේ Vibe Launcher හට ඉඩ දෙන්න.</string>
     <string name="adb_ready">සම්බන්ධයි</string>
     <string name="adb_not_allowed">තවම ඉඩ දී නැත</string>
     <string name="adb_checking">පරීක්ෂා කරමින්…</string>
     <string name="adb_allow_prompt">රූපවාහිනියේ ප්‍රශ්නයේ සැමවිට ඉඩ දෙන්න සලකුණු කර, ඉන්පසු OK තෝරන්න</string>
-    <string name="adb_turn_on">සංවර්ධක විකල්ප තුළ ජාල නිදොස්කරණය (හෝ ADB නිදොස්කරණය) සක්‍රිය කර, ඉන්පසු මෙතැනට ආපසු එන්න</string>
+    <string name="adb_turn_on">සංවර්ධක විකල්ප තුළ USB නිදොස්කරණය සක්‍රිය කර (සමහර රූපවාහිනීවල එය ADB නිදොස්කරණය හෝ ජාල නිදොස්කරණය ලෙස හැඳින්වේ), ඉන්පසු මෙතැනට ආපසු එන්න.</string>
+    <string name="adb_network_closed">නිදොස්කරණය සක්‍රියයි, නමුත් මෙම රූපවාහිනිය තවමත් යෙදුම්වලට එයට ළඟා වීමට ඉඩ නොදේ. සංවර්ධක විකල්ප තුළ ජාල නිදොස්කරණය හෝ ජාලය හරහා ADB සොයා එය සක්‍රිය කරන්න. එහි රැහැන් රහිත නිදොස්කරණය පමණක් ඇත්නම්, Vibe Launcher හට තවමත් එය භාවිත කළ නොහැක.</string>
     <string name="adb_failed">රූපවාහිනිය එයට ඉඩ දුන්නේ නැත</string>
     <string name="apps_turn_all_on">සියල්ල නැවත සක්‍රිය කරන්න</string>
     <string name="apps_turn_all_on_short">Vibe Launcher ක්‍රියාවිරහිත කළ සෑම යෙදුමක්ම නැවත සක්‍රිය කරයි.</string>
@@ -173,4 +174,8 @@
     <string name="apps_tv_needs">රූපවාහිනියට අවශ්‍ය යෙදුම්</string>
     <string name="app_protected">ඔබේ රූපවාහිනිය නිසි ලෙස ක්‍රියා කිරීමට මෙය අවශ්‍ය නිසා, Vibe Launcher එය ක්‍රියාවිරහිත නොකරයි. මෙය ඔබේ රූපවාහිනිය ආරක්ෂිතව තබයි.</string>
     <string name="adb_dev_options">පළමුව සංවර්ධක විකල්ප සක්‍රිය කරන්න: පිළිබඳ තුළ නිමැවුම මත OK සත් වරක් ඔබා, ඉන්පසු මෙතැනට ආපසු එන්න.</string>
+    <string name="apps_turn_off_again">නැවත ක්‍රියාවිරහිත කරන්න</string>
+    <string name="apps_turn_off_again_short">Vibe Launcher කලින් ක්‍රියාවිරහිත කළ නමුත් දැන් මෙහි සක්‍රිය වී ඇති යෙදුම්: මෙම රූපවාහිනියේ ප්‍රතිසාධනය කළ උපස්ථයකින්, හෝ යාවත්කාලීනයකින් නැවත සක්‍රිය වූ ඒවා.</string>
+    <string name="apps_turn_off_now">දැන් ක්‍රියාවිරහිත කරන්න</string>
+    <string name="apps_all_off">සියල්ල නැවත ක්‍රියාවිරහිත කළා</string>
 </resources>
