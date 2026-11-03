@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ marca o que será desativado; OK muda isso. Apps que não estão nesta TV ficam de fora, assim como as partes de que ela precisa. O que o criador da lista deixou ativado de propósito começa desmarcado.</string>
     <string name="cyt_turn_off_n">Desativar apps: %1$d</string>
     <string name="cyt_done">Apps desativados: %1$d</string>
+    <string name="debug_off_when_done">Desativar a depuração ao terminar</string>
+    <string name="debug_off_when_done_short">Quando você sai das Configurações, o Vibe Launcher desativa de novo a depuração da TV e a ativa sozinho na próxima vez que precisar. Enquanto ela está desativada, um computador não consegue acessar a TV por ADB.</string>
+    <string name="home_make">Tornar o Vibe Launcher a tela inicial</string>
+    <string name="home_make_short">Desativa a tela inicial própria da TV, para que o botão Início abra o Vibe Launcher, sem precisar do serviço do botão Início.</string>
+    <string name="home_make_warning">A tela inicial própria da TV é desativada e o Vibe Launcher vira a tela inicial. Se isso não funcionar, tudo volta ao que era na hora. “Voltar para a tela inicial da TV” desfaz isso.</string>
+    <string name="home_restore">Voltar para a tela inicial da TV</string>
+    <string name="home_done">O Vibe Launcher agora é a tela inicial</string>
+    <string name="home_failed">A TV não aceitou, então a tela inicial dela voltou</string>
+    <string name="home_unsupported">Neste dispositivo, uma tela inicial diferente faz a transmissão (Cast) parar de funcionar, então o Vibe Launcher não mexe na tela inicial dele.</string>
+    <string name="anim_speed">Velocidade das animações</string>
+    <string name="anim_normal">Normal</string>
+    <string name="anim_fast">Mais rápida</string>
+    <string name="anim_short">As animações da própria TV ao abrir apps e menus: mais rápidas, elas deixam uma TV antiga mais ágil. É preciso ter permitido Configurações &gt; Apps uma vez.</string>
+    <string name="free_memory">Liberar memória</string>
+    <string name="free_memory_short">Fecha os apps em execução em segundo plano, como a TV faz quando a memória está acabando.</string>
+    <string name="memory_freed">%1$s liberados</string>
 </resources>

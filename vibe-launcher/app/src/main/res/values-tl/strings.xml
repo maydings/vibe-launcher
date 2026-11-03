@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">Minamarkahan ng ✓ ang mga io-off; binabago ito ng OK. Hindi isinama ang mga app na wala sa TV na ito, pati ang mga bahaging kailangan nito. Ang sadyang iniwang naka-on ng gumawa ng listahan ay nagsisimulang walang check.</string>
     <string name="cyt_turn_off_n">I-off ang %1$d app</string>
     <string name="cyt_done">Na-off ang %1$d app</string>
+    <string name="debug_off_when_done">I-off ang debugging kapag tapos na</string>
+    <string name="debug_off_when_done_short">Kapag umalis ka sa Mga setting, ino-off muli ng Vibe Launcher ang debugging ng TV, at kusa itong ino-on muli sa susunod na kailanganin nito. Hindi maaabot ng isang computer ang TV sa pamamagitan ng ADB habang naka-off ito.</string>
+    <string name="home_make">Gawing Home ang Vibe Launcher</string>
+    <string name="home_make_short">Ino-off ang sariling home screen ng TV, para buksan ng Home button ang Vibe Launcher, nang hindi na kailangan ang serbisyo ng Home button.</string>
+    <string name="home_make_warning">Ino-off ang sariling home screen ng TV at nagiging Home ang Vibe Launcher. Kung hindi ito tumalab, ibinabalik agad ang lahat. Ina-undo ito ng “Bumalik sa sariling home screen ng TV”.</string>
+    <string name="home_restore">Bumalik sa sariling home screen ng TV</string>
+    <string name="home_done">Home na ngayon ang Vibe Launcher</string>
+    <string name="home_failed">Hindi ito tinanggap ng TV na ito, kaya bumalik ang sarili nitong home screen</string>
+    <string name="home_unsupported">Sa device na ito, humihinto sa paggana ang pag-cast kapag iba ang Home, kaya hindi ginagalaw ng Vibe Launcher ang sarili nitong home screen.</string>
+    <string name="anim_speed">Bilis ng animation</string>
+    <string name="anim_normal">Normal</string>
+    <string name="anim_fast">Mas mabilis</string>
+    <string name="anim_short">Ang sariling mga animation ng TV habang bumubukas ang mga app at menu: pinaparamdam ng mas mabibilis na animation na mas maliksi ang lumang TV. Kailangang napayagan na nang isang beses ang Mga setting &gt; Mga app.</string>
+    <string name="free_memory">Magbakante ng memory</string>
+    <string name="free_memory_short">Isinasara ang mga app na tumatakbo sa background, gaya ng ginagawa ng TV kapag kinakapos ito sa memory.</string>
+    <string name="memory_freed">Nabakante ang %1$s</string>
 </resources>

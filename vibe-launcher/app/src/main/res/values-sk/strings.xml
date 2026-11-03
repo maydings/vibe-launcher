@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ označuje, čo sa vypne; OK to mení. Aplikácie, ktoré v tomto televízore nie sú, sú vynechané, rovnako ako časti, ktoré televízor potrebuje. Čo autor zoznamu zámerne nechal zapnuté, je na začiatku neoznačené.</string>
     <string name="cyt_turn_off_n">Vypnúť aplikácie: %1$d</string>
     <string name="cyt_done">Vypnuté aplikácie: %1$d</string>
+    <string name="debug_off_when_done">Po dokončení vypnúť ladenie</string>
+    <string name="debug_off_when_done_short">Keď opustíte Nastavenia, Vibe Launcher ladenie v televízore znova vypne a nabudúce, keď ho bude potrebovať, ho sám opäť zapne. Kým je vypnuté, počítač sa k televízoru cez ADB nedostane.</string>
+    <string name="home_make">Nastaviť Vibe Launcher ako domovskú obrazovku</string>
+    <string name="home_make_short">Vypne vlastnú domovskú obrazovku televízora, takže tlačidlo Domov otvorí Vibe Launcher, bez potreby služby Tlačidlo Domov.</string>
+    <string name="home_make_warning">Vlastná domovská obrazovka televízora sa vypne a Vibe Launcher sa stane domovskou obrazovkou. Ak sa to neujme, všetko sa hneď vráti späť. Voľba „Späť na vlastnú domovskú obrazovku televízora“ to vráti.</string>
+    <string name="home_restore">Späť na vlastnú domovskú obrazovku televízora</string>
+    <string name="home_done">Vibe Launcher je teraz domovská obrazovka</string>
+    <string name="home_failed">Tento televízor to neprijal, takže jeho vlastná domovská obrazovka je späť</string>
+    <string name="home_unsupported">Na tomto zariadení by iná domovská obrazovka vyradila z prevádzky prenos obsahu (Cast), preto Vibe Launcher jeho vlastnú domovskú obrazovku nechá tak.</string>
+    <string name="anim_speed">Rýchlosť animácií</string>
+    <string name="anim_normal">Normálna</string>
+    <string name="anim_fast">Rýchlejšia</string>
+    <string name="anim_short">Vlastné animácie televízora pri otváraní aplikácií a ponúk: s rýchlejšími pôsobí starší televízor svižnejšie. Vyžaduje, aby bolo raz povolené Nastavenia &gt; Aplikácie.</string>
+    <string name="free_memory">Uvoľniť pamäť</string>
+    <string name="free_memory_short">Zatvorí aplikácie bežiace na pozadí, ako to robí televízor, keď mu dochádza pamäť.</string>
+    <string name="memory_freed">Uvoľnené: %1$s</string>
 </resources>

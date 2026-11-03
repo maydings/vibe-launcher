@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">تشير ✓ إلى ما سيتم إيقافه، ويغيّره OK. تُستبعد التطبيقات غير الموجودة على هذا التلفزيون، وكذلك الأجزاء التي يحتاجها. وما أبقاه مُعدّ القائمة مفعّلًا عن قصد يبدأ دون علامة.</string>
     <string name="cyt_turn_off_n">إيقاف التطبيقات: %1$d</string>
     <string name="cyt_done">تم إيقاف التطبيقات: %1$d</string>
+    <string name="debug_off_when_done">إيقاف تصحيح الأخطاء عند الانتهاء</string>
+    <string name="debug_off_when_done_short">عند مغادرة الإعدادات، يوقف Vibe Launcher تصحيح الأخطاء في التلفزيون مجددًا، ويشغّله من تلقاء نفسه في المرة التالية التي يحتاج إليه فيها. لا يمكن لأي كمبيوتر الوصول إلى التلفزيون عبر ADB أثناء إيقافه.</string>
+    <string name="home_make">جعل Vibe Launcher الشاشة الرئيسية</string>
+    <string name="home_make_short">يوقف الشاشة الرئيسية الخاصة بالتلفزيون، فيفتح زر الشاشة الرئيسية Vibe Launcher دون الحاجة إلى خدمة زر الشاشة الرئيسية.</string>
+    <string name="home_make_warning">تُوقَف الشاشة الرئيسية الخاصة بالتلفزيون ويصبح Vibe Launcher الشاشة الرئيسية. إذا لم ينجح ذلك، يُعاد كل شيء كما كان فورًا. ويتراجع خيار «العودة إلى الشاشة الرئيسية الخاصة بالتلفزيون» عن ذلك.</string>
+    <string name="home_restore">العودة إلى الشاشة الرئيسية الخاصة بالتلفزيون</string>
+    <string name="home_done">أصبح Vibe Launcher الشاشة الرئيسية الآن</string>
+    <string name="home_failed">لم يقبل هذا التلفزيون ذلك، لذا عادت شاشته الرئيسية الخاصة</string>
+    <string name="home_unsupported">على هذا الجهاز، تؤدي شاشة رئيسية مختلفة إلى توقف البث (Cast) عن العمل، لذلك يترك Vibe Launcher الشاشة الرئيسية الخاصة به كما هي.</string>
+    <string name="anim_speed">سرعة الرسوم المتحركة</string>
+    <string name="anim_normal">عادية</string>
+    <string name="anim_fast">أسرع</string>
+    <string name="anim_short">الرسوم المتحركة الخاصة بالتلفزيون عند فتح التطبيقات والقوائم: الأسرع منها تجعل التلفزيون القديم يبدو أسرع. يجب أن يكون قد تم السماح مرة واحدة في الإعدادات &gt; التطبيقات.</string>
+    <string name="free_memory">تحرير الذاكرة</string>
+    <string name="free_memory_short">يغلق التطبيقات التي تعمل في الخلفية، كما يفعل التلفزيون عندما تنفد ذاكرته.</string>
+    <string name="memory_freed">تم تحرير %1$s</string>
 </resources>

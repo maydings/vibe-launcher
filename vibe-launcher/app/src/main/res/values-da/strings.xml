@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ markerer, hvad der slås fra; OK ændrer det. Apps, der ikke findes på dette tv, er udeladt, og det samme er dele, tv\'et har brug for. Det, listens skaber bevidst lod være slået til, starter uden flueben.</string>
     <string name="cyt_turn_off_n">Slå apps fra: %1$d</string>
     <string name="cyt_done">Apps slået fra: %1$d</string>
+    <string name="debug_off_when_done">Slå fejlretning fra bagefter</string>
+    <string name="debug_off_when_done_short">Når du forlader Indstillinger, slår Vibe Launcher tv\'ets fejlretning fra igen og selv til igen, næste gang den skal bruge den. En computer kan ikke nå tv\'et via ADB, mens den er slået fra.</string>
+    <string name="home_make">Gør Vibe Launcher til startskærm</string>
+    <string name="home_make_short">Slår tv\'ets egen startskærm fra, så hjemknappen åbner Vibe Launcher, uden at der skal bruges en hjemknap-tjeneste.</string>
+    <string name="home_make_warning">Tv\'ets egen startskærm slås fra, og Vibe Launcher bliver startskærm. Hvis det ikke lykkes, sættes alt straks tilbage. »Tilbage til tv\'ets egen startskærm« fortryder det.</string>
+    <string name="home_restore">Tilbage til tv\'ets egen startskærm</string>
+    <string name="home_done">Vibe Launcher er startskærm nu</string>
+    <string name="home_failed">Tv\'et godtog det ikke, så dets egen startskærm er tilbage</string>
+    <string name="home_unsupported">På denne enhed holder casting op med at virke med en anden startskærm, så Vibe Launcher lader dens egen startskærm være.</string>
+    <string name="anim_speed">Animationshastighed</string>
+    <string name="anim_normal">Normal</string>
+    <string name="anim_fast">Hurtigere</string>
+    <string name="anim_short">Tv\'ets egne animationer, når apps og menuer åbnes: hurtigere animationer får et ældre tv til at føles hurtigere. Kræver, at Indstillinger &gt; Apps er blevet tilladt én gang.</string>
+    <string name="free_memory">Frigør hukommelse</string>
+    <string name="free_memory_short">Lukker de apps, der kører i baggrunden, som tv\'et gør, når det mangler hukommelse.</string>
+    <string name="memory_freed">%1$s frigjort</string>
 </resources>

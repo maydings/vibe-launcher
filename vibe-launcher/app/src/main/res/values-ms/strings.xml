@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ menandakan apa yang akan dilumpuhkan; OK mengubahnya. Apl yang tiada pada TV ini tidak disertakan, begitu juga bahagian yang diperlukannya. Apa yang sengaja dibiarkan didayakan oleh pembuat senarai bermula tanpa tanda.</string>
     <string name="cyt_turn_off_n">Lumpuhkan %1$d apl</string>
     <string name="cyt_done">%1$d apl dilumpuhkan</string>
+    <string name="debug_off_when_done">Matikan penyahpepijatan selepas selesai</string>
+    <string name="debug_off_when_done_short">Apabila anda keluar dari Tetapan, Vibe Launcher mematikan semula penyahpepijatan TV, dan menghidupkannya semula sendiri apabila memerlukannya lagi. Semasa ia dimatikan, komputer tidak dapat mencapai TV melalui ADB.</string>
+    <string name="home_make">Jadikan Vibe Launcher Laman Utama</string>
+    <string name="home_make_short">Mematikan skrin utama TV sendiri, supaya butang Laman Utama membuka Vibe Launcher, tanpa memerlukan perkhidmatan Butang Laman Utama.</string>
+    <string name="home_make_warning">Skrin utama TV sendiri dimatikan dan Vibe Launcher menjadi Laman Utama. Jika tidak berjaya, semuanya dipulihkan serta-merta. “Kembali ke skrin utama TV sendiri” membatalkannya.</string>
+    <string name="home_restore">Kembali ke skrin utama TV sendiri</string>
+    <string name="home_done">Vibe Launcher kini Laman Utama</string>
+    <string name="home_failed">TV ini tidak menerimanya, jadi skrin utamanya sendiri telah kembali</string>
+    <string name="home_unsupported">Pada peranti ini, Laman Utama yang lain menyebabkan penghantaran (Cast) berhenti berfungsi, jadi Vibe Launcher membiarkan skrin utamanya sendiri.</string>
+    <string name="anim_speed">Kelajuan animasi</string>
+    <string name="anim_normal">Biasa</string>
+    <string name="anim_fast">Lebih pantas</string>
+    <string name="anim_short">Animasi TV sendiri semasa apl dan menu dibuka: animasi yang lebih pantas membuatkan TV lama terasa lebih tangkas. Tetapan &gt; Apl perlu pernah dibenarkan sekali.</string>
+    <string name="free_memory">Kosongkan memori</string>
+    <string name="free_memory_short">Menutup apl yang berjalan di latar belakang, seperti yang dilakukan TV apabila memorinya hampir habis.</string>
+    <string name="memory_freed">%1$s dikosongkan</string>
 </resources>

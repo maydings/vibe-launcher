@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ מסמן מה יכובה; OK משנה זאת. אפליקציות שאינן בטלוויזיה הזו לא נכללות, וגם לא רכיבים שהיא צריכה. מה שיוצר הרשימה השאיר פועל בכוונה מתחיל ללא סימון.</string>
     <string name="cyt_turn_off_n">לכבות אפליקציות: %1$d</string>
     <string name="cyt_done">אפליקציות שכובו: %1$d</string>
+    <string name="debug_off_when_done">כיבוי ניפוי הבאגים בסיום</string>
+    <string name="debug_off_when_done_short">כשיוצאים מההגדרות, Vibe Launcher מכבה שוב את ניפוי הבאגים של הטלוויזיה, ומפעיל אותו מעצמו בפעם הבאה שהוא צריך אותו. כל עוד הוא כבוי, מחשב לא יכול להגיע לטלוויזיה דרך ADB.</string>
+    <string name="home_make">הגדרת Vibe Launcher כמסך הבית</string>
+    <string name="home_make_short">מכבה את מסך הבית של הטלוויזיה עצמה, כך שכפתור הבית פותח את Vibe Launcher, בלי צורך בשירות כפתור הבית.</string>
+    <string name="home_make_warning">מסך הבית של הטלוויזיה עצמה נכבה ו-Vibe Launcher הופך למסך הבית. אם זה לא נקלט, הכול מוחזר מיד. ”חזרה למסך הבית של הטלוויזיה” מבטל זאת.</string>
+    <string name="home_restore">חזרה למסך הבית של הטלוויזיה</string>
+    <string name="home_done">Vibe Launcher הוא עכשיו מסך הבית</string>
+    <string name="home_failed">הטלוויזיה לא קיבלה את זה, ולכן מסך הבית שלה חזר</string>
+    <string name="home_unsupported">במכשיר הזה, מסך בית אחר גורם להעברה (Cast) להפסיק לעבוד, ולכן Vibe Launcher משאיר את מסך הבית שלו כמו שהוא.</string>
+    <string name="anim_speed">מהירות אנימציה</string>
+    <string name="anim_normal">רגילה</string>
+    <string name="anim_fast">מהירה יותר</string>
+    <string name="anim_short">האנימציות של הטלוויזיה עצמה, כשאפליקציות ותפריטים נפתחים: אנימציות מהירות יותר גורמות לטלוויזיה ישנה להרגיש זריזה יותר. נדרש שהגדרות &gt; אפליקציות אושר פעם אחת.</string>
+    <string name="free_memory">פינוי זיכרון</string>
+    <string name="free_memory_short">סוגר את האפליקציות שפועלות ברקע, כמו שהטלוויזיה עושה כשחסר לה זיכרון.</string>
+    <string name="memory_freed">פונו %1$s</string>
 </resources>

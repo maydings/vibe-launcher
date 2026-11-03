@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ inaonyesha kitakachozimwa; OK inakibadilisha. Programu ambazo hazipo kwenye TV hii zimeachwa, pamoja na sehemu ambazo TV inahitaji. Vitu ambavyo mtengenezaji wa orodha aliviacha vimewashwa kwa makusudi vinaanza bila tiki.</string>
     <string name="cyt_turn_off_n">Zima programu: %1$d</string>
     <string name="cyt_done">Programu zilizozimwa: %1$d</string>
+    <string name="debug_off_when_done">Zima utatuzi ukimaliza</string>
+    <string name="debug_off_when_done_short">Ukitoka kwenye Mipangilio, Vibe Launcher huzima tena utatuzi wa TV, na kuuwasha yenyewe tena wakati ujao itakapouhitaji. Ukiwa umezimwa, kompyuta haiwezi kufikia TV kupitia ADB.</string>
+    <string name="home_make">Fanya Vibe Launcher iwe Mwanzo</string>
+    <string name="home_make_short">Huzima skrini ya mwanzo ya TV yenyewe, ili kitufe cha Mwanzo kifungue Vibe Launcher, bila kuhitaji huduma ya Kitufe cha Mwanzo.</string>
+    <string name="home_make_warning">Skrini ya mwanzo ya TV yenyewe inazimwa na Vibe Launcher inakuwa Mwanzo. Isipofanikiwa, kila kitu kinarudishwa mara moja. “Rudi kwenye skrini ya mwanzo ya TV yenyewe” hutendua hili.</string>
+    <string name="home_restore">Rudi kwenye skrini ya mwanzo ya TV yenyewe</string>
+    <string name="home_done">Vibe Launcher sasa ndiyo Mwanzo</string>
+    <string name="home_failed">TV hii haikukubali, kwa hivyo skrini yake ya mwanzo imerudi</string>
+    <string name="home_unsupported">Kwenye kifaa hiki, Mwanzo tofauti hufanya utumaji (Cast) uache kufanya kazi, kwa hivyo Vibe Launcher haiguzi skrini yake ya mwanzo.</string>
+    <string name="anim_speed">Kasi ya uhuishaji</string>
+    <string name="anim_normal">Kawaida</string>
+    <string name="anim_fast">Haraka zaidi</string>
+    <string name="anim_short">Uhuishaji wa TV yenyewe programu na menyu zinapofunguka: uhuishaji wa haraka zaidi hufanya TV ya zamani ihisi kuwa ya kasi zaidi. Inahitaji Mipangilio &gt; Programu iwe imeruhusiwa mara moja.</string>
+    <string name="free_memory">Achilia kumbukumbu</string>
+    <string name="free_memory_short">Hufunga programu zinazoendeshwa chinichini, kama TV inavyofanya kumbukumbu inapopungua.</string>
+    <string name="memory_freed">Imeachilia %1$s</string>
 </resources>

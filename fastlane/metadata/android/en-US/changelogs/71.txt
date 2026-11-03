@@ -1,0 +1,2 @@
+* New: Settings > Apps > Make Vibe Launcher Home: turns the TV's own home screen off and makes Vibe Launcher Home, with no Home button service needed; Back to the TV's own home screen undoes it.
+* New: Appearance > Animation speed, Apps > Free memory, and Turn debugging off when done.

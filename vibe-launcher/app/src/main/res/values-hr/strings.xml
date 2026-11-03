@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ označava što će se isključiti; OK to mijenja. Aplikacije koje nisu na ovom televizoru izostavljene su, kao i dijelovi koji su mu potrebni. Ono što je autor popisa namjerno ostavio uključeno u početku nije označeno.</string>
     <string name="cyt_turn_off_n">Isključi aplikacije: %1$d</string>
     <string name="cyt_done">Isključene aplikacije: %1$d</string>
+    <string name="debug_off_when_done">Isključi otklanjanje pogrešaka nakon toga</string>
+    <string name="debug_off_when_done_short">Kad izađete iz Postavki, Vibe Launcher ponovno isključuje otklanjanje pogrešaka na televizoru, a sljedeći put kad mu zatreba sam ga opet uključuje. Dok je isključeno, računalo ne može pristupiti televizoru putem ADB-a.</string>
+    <string name="home_make">Postavi Vibe Launcher kao početni zaslon</string>
+    <string name="home_make_short">Isključuje vlastiti početni zaslon televizora, pa tipka Početno otvara Vibe Launcher, bez potrebe za uslugom Tipka Početno.</string>
+    <string name="home_make_warning">Vlastiti početni zaslon televizora isključuje se i Vibe Launcher postaje početni zaslon. Ako to ne uspije, sve se odmah vraća. „Natrag na vlastiti početni zaslon televizora” to poništava.</string>
+    <string name="home_restore">Natrag na vlastiti početni zaslon televizora</string>
+    <string name="home_done">Vibe Launcher je sada početni zaslon</string>
+    <string name="home_failed">Ovaj televizor to nije prihvatio, pa je njegov vlastiti početni zaslon vraćen</string>
+    <string name="home_unsupported">Na ovom uređaju drugi početni zaslon onemogućuje emitiranje (Cast), pa Vibe Launcher ne dira njegov vlastiti početni zaslon.</string>
+    <string name="anim_speed">Brzina animacija</string>
+    <string name="anim_normal">Normalna</string>
+    <string name="anim_fast">Brža</string>
+    <string name="anim_short">Vlastite animacije televizora pri otvaranju aplikacija i izbornika: s bržima se stariji televizor čini žustrijim. Potrebno je da je Postavke &gt; Aplikacije jednom dopušteno.</string>
+    <string name="free_memory">Oslobodi memoriju</string>
+    <string name="free_memory_short">Zatvara aplikacije koje rade u pozadini, kao što to televizor čini kad mu ponestane memorije.</string>
+    <string name="memory_freed">Oslobođeno: %1$s</string>
 </resources>

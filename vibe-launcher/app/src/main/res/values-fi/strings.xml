@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ merkitsee, mitä poistetaan käytöstä; OK muuttaa sitä. Sovellukset, joita tässä televisiossa ei ole, jätetään pois, samoin osat, joita televisio tarvitsee. Se, minkä listan tekijä jätti tarkoituksella käyttöön, on aluksi valitsematta.</string>
     <string name="cyt_turn_off_n">Poista käytöstä sovellukset: %1$d</string>
     <string name="cyt_done">Käytöstä poistetut sovellukset: %1$d</string>
+    <string name="debug_off_when_done">Poista vianetsintä käytöstä lopuksi</string>
+    <string name="debug_off_when_done_short">Kun poistut Asetuksista, Vibe Launcher poistaa television vianetsinnän taas käytöstä ja ottaa sen itse käyttöön, kun tarvitsee sitä seuraavan kerran. Kun se on pois käytöstä, tietokone ei saa yhteyttä televisioon ADB:n kautta.</string>
+    <string name="home_make">Tee Vibe Launcherista aloitusnäyttö</string>
+    <string name="home_make_short">Poistaa television oman aloitusnäytön käytöstä, jolloin aloitusnäyttöpainike avaa Vibe Launcherin ilman aloitusnäyttöpainikkeen palvelua.</string>
+    <string name="home_make_warning">Television oma aloitusnäyttö poistetaan käytöstä ja Vibe Launcherista tulee aloitusnäyttö. Jos se ei onnistu, kaikki palautetaan heti. ”Takaisin television omaan aloitusnäyttöön” kumoaa sen.</string>
+    <string name="home_restore">Takaisin television omaan aloitusnäyttöön</string>
+    <string name="home_done">Vibe Launcher on nyt aloitusnäyttö</string>
+    <string name="home_failed">Televisio ei hyväksynyt sitä, joten sen oma aloitusnäyttö on palautettu</string>
+    <string name="home_unsupported">Tällä laitteella toinen aloitusnäyttö estää suoratoiston (Cast) toiminnan, joten Vibe Launcher jättää laitteen oman aloitusnäytön rauhaan.</string>
+    <string name="anim_speed">Animaatioiden nopeus</string>
+    <string name="anim_normal">Normaali</string>
+    <string name="anim_fast">Nopeampi</string>
+    <string name="anim_short">Television omat animaatiot sovellusten ja valikoiden avautuessa: nopeammat saavat vanhemman television tuntumaan ripeämmältä. Edellyttää, että Asetukset &gt; Sovellukset on sallittu kerran.</string>
+    <string name="free_memory">Vapauta muistia</string>
+    <string name="free_memory_short">Sulkee taustalla toimivat sovellukset, kuten televisio tekee, kun muisti käy vähiin.</string>
+    <string name="memory_freed">%1$s vapautettu</string>
 </resources>

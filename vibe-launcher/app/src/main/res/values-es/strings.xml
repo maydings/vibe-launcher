@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ marca lo que se desactivará; OK lo cambia. Se omiten las apps que no están en este televisor, y también las partes que necesita. Lo que quien hizo la lista dejó activado a propósito empieza sin marcar.</string>
     <string name="cyt_turn_off_n">Desactivar apps: %1$d</string>
     <string name="cyt_done">Apps desactivadas: %1$d</string>
+    <string name="debug_off_when_done">Desactivar la depuración al terminar</string>
+    <string name="debug_off_when_done_short">Cuando sales de Ajustes, Vibe Launcher vuelve a desactivar la depuración del televisor y la activa por sí solo la próxima vez que la necesite. Mientras está desactivada, un ordenador no puede acceder al televisor por ADB.</string>
+    <string name="home_make">Hacer de Vibe Launcher la pantalla de inicio</string>
+    <string name="home_make_short">Desactiva la pantalla de inicio propia del televisor, para que el botón de inicio abra Vibe Launcher, sin necesidad del servicio del botón de inicio.</string>
+    <string name="home_make_warning">Se desactiva la pantalla de inicio propia del televisor y Vibe Launcher pasa a ser la pantalla de inicio. Si no funciona, todo se restablece al instante. «Volver a la pantalla de inicio del televisor» lo deshace.</string>
+    <string name="home_restore">Volver a la pantalla de inicio del televisor</string>
+    <string name="home_done">Vibe Launcher ya es la pantalla de inicio</string>
+    <string name="home_failed">Este televisor no lo aceptó, así que ha vuelto su propia pantalla de inicio</string>
+    <string name="home_unsupported">En este dispositivo, otra pantalla de inicio impide que funcione el envío de contenido (Cast), así que Vibe Launcher no toca su propia pantalla de inicio.</string>
+    <string name="anim_speed">Velocidad de las animaciones</string>
+    <string name="anim_normal">Normal</string>
+    <string name="anim_fast">Más rápida</string>
+    <string name="anim_short">Las animaciones propias del televisor al abrirse apps y menús: con las más rápidas, un televisor antiguo parece más ágil. Requiere haber permitido una vez Ajustes &gt; Apps.</string>
+    <string name="free_memory">Liberar memoria</string>
+    <string name="free_memory_short">Cierra las apps que se ejecutan en segundo plano, como hace el televisor cuando le falta memoria.</string>
+    <string name="memory_freed">%1$s liberados</string>
 </resources>

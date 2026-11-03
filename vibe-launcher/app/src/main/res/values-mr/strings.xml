@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ काय बंद होईल ते दाखवते; OK ते बदलते. या टीव्हीवर नसलेली अ‍ॅप्स वगळली आहेत, आणि टीव्हीला आवश्यक भागही. यादी बनवणाऱ्याने मुद्दाम सुरू ठेवलेल्या गोष्टींवर सुरुवातीला खूण नसते.</string>
     <string name="cyt_turn_off_n">अ‍ॅप्स बंद करा: %1$d</string>
     <string name="cyt_done">बंद केलेली अ‍ॅप्स: %1$d</string>
+    <string name="debug_off_when_done">काम झाल्यावर डीबगिंग बंद करा</string>
+    <string name="debug_off_when_done_short">तुम्ही सेटिंग्जमधून बाहेर पडल्यावर Vibe Launcher टीव्हीचे डीबगिंग पुन्हा बंद करते, आणि पुढच्या वेळी गरज पडल्यावर स्वतःच पुन्हा सुरू करते. ते बंद असताना संगणक ADB द्वारे टीव्हीपर्यंत पोहोचू शकत नाही.</string>
+    <string name="home_make">Vibe Launcher ला होम बनवा</string>
+    <string name="home_make_short">टीव्हीची स्वतःची होम स्क्रीन बंद करते, ज्यामुळे होम बटण Vibe Launcher उघडते, होम बटण सेवेची गरज न पडता.</string>
+    <string name="home_make_warning">टीव्हीची स्वतःची होम स्क्रीन बंद होते आणि Vibe Launcher होम बनते. ते न जमल्यास, सर्व काही लगेच पूर्ववत केले जाते. “टीव्हीच्या स्वतःच्या होम स्क्रीनवर परत जा” हे पूर्ववत करते.</string>
+    <string name="home_restore">टीव्हीच्या स्वतःच्या होम स्क्रीनवर परत जा</string>
+    <string name="home_done">Vibe Launcher आता होम आहे</string>
+    <string name="home_failed">या टीव्हीने ते स्वीकारले नाही, म्हणून त्याची स्वतःची होम स्क्रीन परत आली आहे</string>
+    <string name="home_unsupported">या डिव्हाइसवर वेगळे होम असल्यास कास्टिंग काम करणे थांबते, म्हणून Vibe Launcher त्याच्या स्वतःच्या होम स्क्रीनला हात लावत नाही.</string>
+    <string name="anim_speed">अ‍ॅनिमेशनचा वेग</string>
+    <string name="anim_normal">सामान्य</string>
+    <string name="anim_fast">अधिक वेगवान</string>
+    <string name="anim_short">अ‍ॅप्स आणि मेनू उघडताना टीव्हीचे स्वतःचे अ‍ॅनिमेशन: वेगवान अ‍ॅनिमेशनमुळे जुना टीव्ही अधिक चपळ वाटतो. यासाठी सेटिंग्ज &gt; अ‍ॅप्स ला एकदा अनुमती दिलेली असणे आवश्यक आहे.</string>
+    <string name="free_memory">मेमरी मोकळी करा</string>
+    <string name="free_memory_short">पार्श्वभूमीत चालू असलेली अ‍ॅप्स बंद करते, जसे टीव्हीची मेमरी कमी पडल्यावर तो करतो.</string>
+    <string name="memory_freed">%1$s मोकळी झाली</string>
 </resources>

@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ ಏನು ಆಫ್ ಆಗುತ್ತದೆ ಎಂಬುದನ್ನು ಗುರುತಿಸುತ್ತದೆ; OK ಅದನ್ನು ಬದಲಾಯಿಸುತ್ತದೆ. ಈ ಟಿವಿಯಲ್ಲಿ ಇಲ್ಲದ ಆ್ಯಪ್‌ಗಳನ್ನು ಬಿಡಲಾಗಿದೆ, ಟಿವಿಗೆ ಬೇಕಾದ ಭಾಗಗಳನ್ನೂ ಸಹ. ಪಟ್ಟಿ ರಚಿಸಿದವರು ಉದ್ದೇಶಪೂರ್ವಕವಾಗಿ ಆನ್ ಇಟ್ಟಿದ್ದವು ಆರಂಭದಲ್ಲಿ ಟಿಕ್ ಆಗಿರುವುದಿಲ್ಲ.</string>
     <string name="cyt_turn_off_n">ಆ್ಯಪ್‌ಗಳನ್ನು ಆಫ್ ಮಾಡಿ: %1$d</string>
     <string name="cyt_done">ಆಫ್ ಮಾಡಿದ ಆ್ಯಪ್‌ಗಳು: %1$d</string>
+    <string name="debug_off_when_done">ಮುಗಿದ ನಂತರ ಡೀಬಗ್ ಮಾಡುವಿಕೆ ಆಫ್ ಮಾಡಿ</string>
+    <string name="debug_off_when_done_short">ನೀವು ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಂದ ಹೊರಬಂದಾಗ Vibe Launcher ಟಿವಿಯ ಡೀಬಗ್ ಮಾಡುವಿಕೆಯನ್ನು ಮತ್ತೆ ಆಫ್ ಮಾಡುತ್ತದೆ, ಮತ್ತು ಮುಂದಿನ ಬಾರಿ ಅಗತ್ಯವಿದ್ದಾಗ ತಾನೇ ಮತ್ತೆ ಆನ್ ಮಾಡುತ್ತದೆ. ಅದು ಆಫ್ ಆಗಿರುವಾಗ ಕಂಪ್ಯೂಟರ್ ADB ಮೂಲಕ ಟಿವಿಯನ್ನು ತಲುಪಲು ಸಾಧ್ಯವಿಲ್ಲ.</string>
+    <string name="home_make">Vibe Launcher ಅನ್ನು ಹೋಮ್ ಮಾಡಿ</string>
+    <string name="home_make_short">ಟಿವಿಯ ಸ್ವಂತ ಹೋಮ್ ಸ್ಕ್ರೀನ್ ಅನ್ನು ಆಫ್ ಮಾಡುತ್ತದೆ, ಹಾಗಾಗಿ ಹೋಮ್ ಬಟನ್ Vibe Launcher ತೆರೆಯುತ್ತದೆ, ಹೋಮ್ ಬಟನ್ ಸೇವೆಯ ಅಗತ್ಯವಿಲ್ಲದೆ.</string>
+    <string name="home_make_warning">ಟಿವಿಯ ಸ್ವಂತ ಹೋಮ್ ಸ್ಕ್ರೀನ್ ಆಫ್ ಆಗುತ್ತದೆ ಮತ್ತು Vibe Launcher ಹೋಮ್ ಆಗುತ್ತದೆ. ಅದು ಕೆಲಸ ಮಾಡದಿದ್ದರೆ, ಎಲ್ಲವನ್ನೂ ತಕ್ಷಣ ಹಿಂದಿನಂತೆ ಮಾಡಲಾಗುತ್ತದೆ. “ಟಿವಿಯ ಸ್ವಂತ ಹೋಮ್ ಸ್ಕ್ರೀನ್‌ಗೆ ಹಿಂತಿರುಗಿ” ಇದನ್ನು ರದ್ದುಗೊಳಿಸುತ್ತದೆ.</string>
+    <string name="home_restore">ಟಿವಿಯ ಸ್ವಂತ ಹೋಮ್ ಸ್ಕ್ರೀನ್‌ಗೆ ಹಿಂತಿರುಗಿ</string>
+    <string name="home_done">Vibe Launcher ಈಗ ಹೋಮ್ ಆಗಿದೆ</string>
+    <string name="home_failed">ಈ ಟಿವಿ ಅದನ್ನು ಸ್ವೀಕರಿಸಲಿಲ್ಲ, ಹಾಗಾಗಿ ಅದರ ಸ್ವಂತ ಹೋಮ್ ಸ್ಕ್ರೀನ್ ಮರಳಿ ಬಂದಿದೆ</string>
+    <string name="home_unsupported">ಈ ಸಾಧನದಲ್ಲಿ ಬೇರೆ ಹೋಮ್ ಇದ್ದರೆ ಕ್ಯಾಸ್ಟಿಂಗ್ ಕೆಲಸ ಮಾಡುವುದಿಲ್ಲ, ಹಾಗಾಗಿ Vibe Launcher ಅದರ ಸ್ವಂತ ಹೋಮ್ ಸ್ಕ್ರೀನ್ ಅನ್ನು ಮುಟ್ಟುವುದಿಲ್ಲ.</string>
+    <string name="anim_speed">ಆನಿಮೇಷನ್ ವೇಗ</string>
+    <string name="anim_normal">ಸಾಮಾನ್ಯ</string>
+    <string name="anim_fast">ಹೆಚ್ಚು ವೇಗ</string>
+    <string name="anim_short">ಆ್ಯಪ್‌ಗಳು ಮತ್ತು ಮೆನುಗಳು ತೆರೆಯುವಾಗ ಟಿವಿಯ ಸ್ವಂತ ಆನಿಮೇಷನ್‌ಗಳು: ವೇಗದವುಗಳು ಹಳೆಯ ಟಿವಿಯನ್ನು ಚುರುಕಾಗಿ ಅನಿಸುವಂತೆ ಮಾಡುತ್ತವೆ. ಇದಕ್ಕೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು &gt; ಆ್ಯಪ್‌ಗಳು ಒಮ್ಮೆ ಅನುಮತಿಸಲ್ಪಟ್ಟಿರಬೇಕು.</string>
+    <string name="free_memory">ಮೆಮೊರಿ ಖಾಲಿ ಮಾಡಿ</string>
+    <string name="free_memory_short">ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಚಾಲನೆಯಲ್ಲಿರುವ ಆ್ಯಪ್‌ಗಳನ್ನು ಮುಚ್ಚುತ್ತದೆ, ಟಿವಿಗೆ ಮೆಮೊರಿ ಕಡಿಮೆಯಾದಾಗ ಅದು ಮಾಡುವಂತೆ.</string>
+    <string name="memory_freed">%1$s ಖಾಲಿ ಮಾಡಲಾಗಿದೆ</string>
 </resources>

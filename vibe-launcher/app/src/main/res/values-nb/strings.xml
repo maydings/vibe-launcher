@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ markerer hva som slås av; OK endrer det. Apper som ikke finnes på denne TV-en, er utelatt, og det samme er deler den trenger. Det den som laget listen, lot være på med vilje, er ikke avkrysset i starten.</string>
     <string name="cyt_turn_off_n">Slå av apper: %1$d</string>
     <string name="cyt_done">Apper slått av: %1$d</string>
+    <string name="debug_off_when_done">Slå av feilsøking etterpå</string>
+    <string name="debug_off_when_done_short">Når du går ut av Innstillinger, slår Vibe Launcher av TV-ens feilsøking igjen, og på igjen av seg selv neste gang den trenger det. En datamaskin kan ikke nå TV-en over ADB mens den er av.</string>
+    <string name="home_make">Gjør Vibe Launcher til startside</string>
+    <string name="home_make_short">Slår av TV-ens egen startside, så hjemknappen åpner Vibe Launcher, uten at det trengs noen hjemknapptjeneste.</string>
+    <string name="home_make_warning">TV-ens egen startside slås av, og Vibe Launcher blir startside. Hvis det ikke fester seg, settes alt tilbake med en gang. «Tilbake til TV-ens egen startside» angrer det.</string>
+    <string name="home_restore">Tilbake til TV-ens egen startside</string>
+    <string name="home_done">Vibe Launcher er startside nå</string>
+    <string name="home_failed">TV-en godtok det ikke, så dens egen startside er tilbake</string>
+    <string name="home_unsupported">På denne enheten slutter casting å virke med en annen startside, så Vibe Launcher lar enhetens egen startside være.</string>
+    <string name="anim_speed">Animasjonshastighet</string>
+    <string name="anim_normal">Normal</string>
+    <string name="anim_fast">Raskere</string>
+    <string name="anim_short">TV-ens egne animasjoner når apper og menyer åpnes: raskere animasjoner får en eldre TV til å føles kjappere. Krever at Innstillinger &gt; Apper er blitt tillatt én gang.</string>
+    <string name="free_memory">Frigjør minne</string>
+    <string name="free_memory_short">Lukker appene som kjører i bakgrunnen, slik TV-en gjør når den får lite minne.</string>
+    <string name="memory_freed">%1$s frigjort</string>
 </resources>

@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ menandai yang akan dinonaktifkan; OK mengubahnya. Aplikasi yang tidak ada di TV ini tidak disertakan, begitu pula bagian yang dibutuhkan TV. Yang sengaja dibiarkan aktif oleh pembuat daftar awalnya tidak dicentang.</string>
     <string name="cyt_turn_off_n">Nonaktifkan %1$d aplikasi</string>
     <string name="cyt_done">%1$d aplikasi dinonaktifkan</string>
+    <string name="debug_off_when_done">Matikan proses debug setelah selesai</string>
+    <string name="debug_off_when_done_short">Saat Anda keluar dari Setelan, Vibe Launcher mematikan lagi proses debug TV, dan mengaktifkannya sendiri saat dibutuhkan lagi. Selama mati, komputer tidak bisa menjangkau TV melalui ADB.</string>
+    <string name="home_make">Jadikan Vibe Launcher sebagai Beranda</string>
+    <string name="home_make_short">Mematikan layar beranda bawaan TV, sehingga tombol Beranda membuka Vibe Launcher, tanpa perlu layanan Tombol Beranda.</string>
+    <string name="home_make_warning">Layar beranda bawaan TV dimatikan dan Vibe Launcher menjadi Beranda. Jika tidak berhasil, semuanya langsung dikembalikan. “Kembali ke layar beranda bawaan TV” membatalkannya.</string>
+    <string name="home_restore">Kembali ke layar beranda bawaan TV</string>
+    <string name="home_done">Vibe Launcher kini menjadi Beranda</string>
+    <string name="home_failed">TV ini tidak menerimanya, jadi layar berandanya sendiri kembali</string>
+    <string name="home_unsupported">Di perangkat ini, Beranda lain membuat transmisi (Cast) tidak berfungsi, jadi Vibe Launcher membiarkan layar beranda bawaannya.</string>
+    <string name="anim_speed">Kecepatan animasi</string>
+    <string name="anim_normal">Normal</string>
+    <string name="anim_fast">Lebih cepat</string>
+    <string name="anim_short">Animasi bawaan TV saat aplikasi dan menu terbuka: animasi yang lebih cepat membuat TV lama terasa lebih gesit. Perlu Setelan &gt; Aplikasi sudah pernah diizinkan sekali.</string>
+    <string name="free_memory">Kosongkan memori</string>
+    <string name="free_memory_short">Menutup aplikasi yang berjalan di latar belakang, seperti yang dilakukan TV saat memorinya hampir habis.</string>
+    <string name="memory_freed">%1$s dikosongkan</string>
 </resources>

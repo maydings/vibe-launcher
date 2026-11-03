@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ đánh dấu những gì sẽ bị tắt; OK để thay đổi. Các ứng dụng không có trên TV này được bỏ qua, cả những thành phần TV cần cũng vậy. Những gì người tạo danh sách cố ý để bật sẽ bắt đầu ở trạng thái không đánh dấu.</string>
     <string name="cyt_turn_off_n">Tắt %1$d ứng dụng</string>
     <string name="cyt_done">Đã tắt %1$d ứng dụng</string>
+    <string name="debug_off_when_done">Tắt gỡ lỗi khi xong</string>
+    <string name="debug_off_when_done_short">Khi bạn rời Cài đặt, Vibe Launcher sẽ tắt lại tính năng gỡ lỗi của TV, và tự bật lại vào lần tiếp theo cần đến. Trong lúc tắt, máy tính không thể kết nối với TV qua ADB.</string>
+    <string name="home_make">Đặt Vibe Launcher làm Màn hình chính</string>
+    <string name="home_make_short">Tắt màn hình chính riêng của TV, để nút Màn hình chính mở Vibe Launcher mà không cần dịch vụ Nút Màn hình chính.</string>
+    <string name="home_make_warning">Màn hình chính riêng của TV sẽ bị tắt và Vibe Launcher trở thành Màn hình chính. Nếu không thành công, mọi thứ sẽ được khôi phục ngay. “Quay lại màn hình chính riêng của TV” sẽ hoàn tác việc này.</string>
+    <string name="home_restore">Quay lại màn hình chính riêng của TV</string>
+    <string name="home_done">Vibe Launcher hiện là Màn hình chính</string>
+    <string name="home_failed">TV này không nhận, nên màn hình chính riêng của TV đã được khôi phục</string>
+    <string name="home_unsupported">Trên thiết bị này, dùng Màn hình chính khác sẽ khiến tính năng truyền (Cast) ngừng hoạt động, nên Vibe Launcher không động đến màn hình chính riêng của thiết bị.</string>
+    <string name="anim_speed">Tốc độ hiệu ứng động</string>
+    <string name="anim_normal">Bình thường</string>
+    <string name="anim_fast">Nhanh hơn</string>
+    <string name="anim_short">Hiệu ứng động riêng của TV khi mở ứng dụng và menu: hiệu ứng nhanh hơn giúp TV cũ có cảm giác nhanh nhạy hơn. Cần đã cho phép Cài đặt &gt; Ứng dụng một lần.</string>
+    <string name="free_memory">Giải phóng bộ nhớ</string>
+    <string name="free_memory_short">Đóng các ứng dụng đang chạy trong nền, như TV vẫn làm khi sắp hết bộ nhớ.</string>
+    <string name="memory_freed">Đã giải phóng %1$s</string>
 </resources>

@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">A ✓ jelzi, mi lesz kikapcsolva; az OK módosítja. Az ezen a tévén nem található alkalmazások kimaradnak, és a tévé működéséhez szükséges részek is. Amit a lista készítője szándékosan bekapcsolva hagyott, az kezdetben nincs bejelölve.</string>
     <string name="cyt_turn_off_n">%1$d alkalmazás kikapcsolása</string>
     <string name="cyt_done">%1$d alkalmazás kikapcsolva</string>
+    <string name="debug_off_when_done">Hibakeresés kikapcsolása a végén</string>
+    <string name="debug_off_when_done_short">Amikor kilép a Beállításokból, a Vibe Launcher újra kikapcsolja a tévé hibakeresését, és legközelebb, amikor szüksége van rá, magától visszakapcsolja. Amíg ki van kapcsolva, számítógép nem érheti el a tévét ADB-n keresztül.</string>
+    <string name="home_make">A Vibe Launcher legyen a kezdőképernyő</string>
+    <string name="home_make_short">Kikapcsolja a tévé saját kezdőképernyőjét, így a Kezdőképernyő gomb a Vibe Launchert nyitja meg, a Kezdőképernyő gomb szolgáltatásra nincs szükség.</string>
+    <string name="home_make_warning">A tévé saját kezdőképernyője kikapcsol, és a Vibe Launcher lesz a kezdőképernyő. Ha ez nem sikerül, azonnal minden visszaáll. A „Vissza a tévé saját kezdőképernyőjére” visszavonja.</string>
+    <string name="home_restore">Vissza a tévé saját kezdőképernyőjére</string>
+    <string name="home_done">Most már a Vibe Launcher a kezdőképernyő</string>
+    <string name="home_failed">A tévé nem fogadta el, ezért visszaállt a saját kezdőképernyője</string>
+    <string name="home_unsupported">Ezen az eszközön egy másik kezdőképernyő miatt nem működik a képernyőküldés (Cast), ezért a Vibe Launcher nem nyúl a saját kezdőképernyőjéhez.</string>
+    <string name="anim_speed">Animációk sebessége</string>
+    <string name="anim_normal">Normál</string>
+    <string name="anim_fast">Gyorsabb</string>
+    <string name="anim_short">A tévé saját animációi alkalmazások és menük megnyitásakor: a gyorsabbaktól egy régebbi tévé fürgébbnek érződik. Ehhez a Beállítások &gt; Alkalmazások részt egyszer engedélyezni kellett.</string>
+    <string name="free_memory">Memória felszabadítása</string>
+    <string name="free_memory_short">Bezárja a háttérben futó alkalmazásokat, ahogy a tévé is teszi, amikor kevés a memóriája.</string>
+    <string name="memory_freed">%1$s felszabadítva</string>
 </resources>

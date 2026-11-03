@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ ระบุสิ่งที่จะถูกปิดใช้ กด OK เพื่อเปลี่ยน แอปที่ไม่มีในทีวีนี้จะไม่แสดง รวมถึงส่วนที่ทีวีต้องใช้ด้วย สิ่งที่ผู้สร้างรายการตั้งใจเปิดใช้ไว้จะเริ่มต้นแบบไม่ได้เลือก</string>
     <string name="cyt_turn_off_n">ปิดใช้ %1$d แอป</string>
     <string name="cyt_done">ปิดใช้ %1$d แอปแล้ว</string>
+    <string name="debug_off_when_done">ปิดการแก้ไขข้อบกพร่องเมื่อเสร็จ</string>
+    <string name="debug_off_when_done_short">เมื่อคุณออกจากการตั้งค่า Vibe Launcher จะปิดการแก้ไขข้อบกพร่องของทีวีอีกครั้ง และเปิดขึ้นเองในครั้งถัดไปที่ต้องใช้ ขณะที่ปิดอยู่ คอมพิวเตอร์จะเข้าถึงทีวีผ่าน ADB ไม่ได้</string>
+    <string name="home_make">ตั้ง Vibe Launcher เป็นหน้าแรก</string>
+    <string name="home_make_short">ปิดหน้าแรกของทีวีเอง เพื่อให้ปุ่มหน้าแรกเปิด Vibe Launcher โดยไม่ต้องใช้บริการปุ่มหน้าแรก</string>
+    <string name="home_make_warning">หน้าแรกของทีวีเองจะถูกปิด และ Vibe Launcher จะกลายเป็นหน้าแรก หากไม่สำเร็จ ทุกอย่างจะถูกคืนค่าทันที “กลับไปใช้หน้าแรกของทีวีเอง” จะยกเลิกการเปลี่ยนแปลงนี้</string>
+    <string name="home_restore">กลับไปใช้หน้าแรกของทีวีเอง</string>
+    <string name="home_done">Vibe Launcher เป็นหน้าแรกแล้ว</string>
+    <string name="home_failed">ทีวีเครื่องนี้ไม่ยอมรับ จึงกลับไปใช้หน้าแรกของตัวเองแล้ว</string>
+    <string name="home_unsupported">ในอุปกรณ์นี้ หน้าแรกอื่นจะทำให้การแคสต์ใช้งานไม่ได้ Vibe Launcher จึงไม่แตะหน้าแรกของอุปกรณ์</string>
+    <string name="anim_speed">ความเร็วภาพเคลื่อนไหว</string>
+    <string name="anim_normal">ปกติ</string>
+    <string name="anim_fast">เร็วขึ้น</string>
+    <string name="anim_short">ภาพเคลื่อนไหวของทีวีเองขณะเปิดแอปและเมนู: ภาพเคลื่อนไหวที่เร็วขึ้นทำให้ทีวีรุ่นเก่ารู้สึกเร็วขึ้น ต้องเคยอนุญาต การตั้งค่า &gt; แอป แล้วหนึ่งครั้ง</string>
+    <string name="free_memory">ล้างหน่วยความจำ</string>
+    <string name="free_memory_short">ปิดแอปที่ทำงานอยู่เบื้องหลัง เหมือนที่ทีวีทำเมื่อหน่วยความจำเหลือน้อย</string>
+    <string name="memory_freed">คืนหน่วยความจำ %1$s แล้ว</string>
 </resources>

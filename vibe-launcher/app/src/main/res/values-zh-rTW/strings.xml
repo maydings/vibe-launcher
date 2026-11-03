@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ 表示將停用的項目，按 OK 可變更。這台電視上沒有的應用程式不會列出，電視所需的部分也一樣。清單製作者刻意保持啟用的項目一開始不會勾選。</string>
     <string name="cyt_turn_off_n">停用 %1$d 個應用程式</string>
     <string name="cyt_done">已停用 %1$d 個應用程式</string>
+    <string name="debug_off_when_done">用完後關閉偵錯</string>
+    <string name="debug_off_when_done_short">離開設定時，Vibe Launcher 會再次關閉電視的偵錯功能，下次需要時再自動開啟。關閉期間，電腦無法透過 ADB 連線到電視。</string>
+    <string name="home_make">將 Vibe Launcher 設為主畫面</string>
+    <string name="home_make_short">關閉電視自帶的主畫面，讓主畫面鍵開啟 Vibe Launcher，不需要主畫面鍵服務。</string>
+    <string name="home_make_warning">電視自帶的主畫面會被關閉，Vibe Launcher 成為主畫面。如果沒有生效，會立即全部還原。「返回電視自帶的主畫面」可復原此操作。</string>
+    <string name="home_restore">返回電視自帶的主畫面</string>
+    <string name="home_done">Vibe Launcher 現在是主畫面</string>
+    <string name="home_failed">這台電視未接受此設定，已恢復其自帶的主畫面</string>
+    <string name="home_unsupported">在這部裝置上，換用其他主畫面會導致投放（Cast）無法使用，因此 Vibe Launcher 不會變更其自帶的主畫面。</string>
+    <string name="anim_speed">動畫速度</string>
+    <string name="anim_normal">正常</string>
+    <string name="anim_fast">更快</string>
+    <string name="anim_short">電視自帶的應用程式和選單開啟動畫：動畫更快會讓舊電視用起來更流暢。需要曾允許過一次 設定 &gt; 應用程式。</string>
+    <string name="free_memory">釋放記憶體</string>
+    <string name="free_memory_short">關閉在背景執行的應用程式，就像電視記憶體不足時那樣。</string>
+    <string name="memory_freed">已釋放 %1$s</string>
 </resources>

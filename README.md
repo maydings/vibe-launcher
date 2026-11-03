@@ -10,7 +10,7 @@ and gets out of the way. It works well enough for us that I'd like to share it w
 ![Vibe Launcher: Netflix focused in a four-app dock, with Wake Up Dead Man's backdrop and title logo filling the screen](vibe-launcher/docs/home.jpg)
 
 **[Download the latest APK](https://github.com/maydings/vibe-launcher/releases/latest/download/vibe-launcher.apk)**
-· on the TV, Downloader code **5573341** · Android TV and Google TV, Android 8.0 or newer · about 1.5 MB
+· on the TV, Downloader code **5573341** · Android TV and Google TV, Android 8.0 or newer · about 1.8 MB
 
 ## Highlights
 
@@ -172,6 +172,9 @@ clock, the clock's 12- or 24-hour time, the arrows and the highlight color.
   readable). Pick one on a color wheel with
   the arrows (paler towards the middle, OK when done), with a preview of the glass on a white tile: a colored
   highlight makes it easier to see which white tile (YouTube, Netflix) is focused. **Reset** puts it back to white.
+- **Animation speed** (GitHub build): the TV's own animations as apps and menus open: Normal, Faster
+  (half) or Off, as Developer options sets them; faster makes an older TV feel quicker. It needs Settings
+  → Apps to have connected once, which gives Vibe Launcher the permission to change it.
 
 | ![Appearance: tiles per row, apps in dock, hide inactive inputs, auto-hide, the screensaver clock, arrows and the highlight color](vibe-launcher/docs/settings-appearance.jpg) | ![The language list, each language in its own name, with General slid to the left](vibe-launcher/docs/language.jpg) |
 |---|---|
@@ -200,6 +203,11 @@ it back on.
   restart), or have a Network debugging switch of their own (NVIDIA Shield). TVs that offer only Android
   11's Wireless debugging, with a pairing code (Chromecast with Google TV, Google TV Streamer), aren't
   supported yet: there a window says so.
+- **Make Vibe Launcher Home**: turns the TV's own home screen off (and Google TV's setup app, which
+  can take Home back) and sets Vibe Launcher as Home, in one go that puts everything back if a step
+  fails; then checks the Home button really comes here. No Home button service needed after it.
+  **Back to the TV's own home screen** undoes it. Not offered on Chromecast with Google TV and the
+  Google TV Streamer, where another Home stops casting.
 - **Turn all back on**: turns on every app Vibe Launcher turned off, and nothing else.
 - **Turn off again** (only when there's something to do): the apps Vibe Launcher turned off before that
   are on here now, from a backup restored on this TV or turned back on by an update. It lists them first,
@@ -215,6 +223,12 @@ it back on.
 - **Apps the TV needs**: the parts it can't do without, grayed: Android itself, Google Play, Settings,
   the keyboard, the remote and Bluetooth, Wi-Fi, the inputs and the app that plays them, setup, the
   launchers, and the TV maker's system parts. Vibe Launcher won't turn these off.
+- **Free memory**: closes the apps running in the background, and says how much that gave back.
+- **Turn debugging off when done**: Off (the default) or On. The first time Vibe Launcher connects, the
+  TV's ADB gives it the `WRITE_SECURE_SETTINGS` permission, which it uses only to turn debugging on and
+  off and for the animation speed. With this On, leaving Settings turns debugging off again, closing the
+  TV's debugging port, and Vibe Launcher turns it back on by itself the next time it needs it. Leave it
+  Off if you also use ADB from a computer: while debugging is off, the computer can't reach the TV.
 
 ## Updates
 

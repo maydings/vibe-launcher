@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ बताता है कि क्या बंद होगा; OK उसे बदलता है। जो ऐप्स इस टीवी पर नहीं हैं, वे छोड़ दिए गए हैं, और टीवी के ज़रूरी हिस्से भी। सूची बनाने वाले ने जिन्हें जानबूझकर चालू रखा था, उन पर शुरू में सही का निशान नहीं होता।</string>
     <string name="cyt_turn_off_n">ऐप्स बंद करें: %1$d</string>
     <string name="cyt_done">बंद किए गए ऐप्स: %1$d</string>
+    <string name="debug_off_when_done">काम पूरा होने पर डीबगिंग बंद करें</string>
+    <string name="debug_off_when_done_short">सेटिंग्स से बाहर निकलने पर Vibe Launcher टीवी की डीबगिंग फिर से बंद कर देता है, और अगली बार ज़रूरत पड़ने पर खुद ही फिर चालू कर लेता है। बंद रहने पर कोई कंप्यूटर ADB के ज़रिए टीवी तक नहीं पहुँच सकता।</string>
+    <string name="home_make">Vibe Launcher को होम बनाएँ</string>
+    <string name="home_make_short">टीवी की अपनी होम स्क्रीन बंद कर देता है, ताकि होम बटन Vibe Launcher खोले, होम बटन सेवा की ज़रूरत के बिना।</string>
+    <string name="home_make_warning">टीवी की अपनी होम स्क्रीन बंद हो जाती है और Vibe Launcher होम बन जाता है। अगर यह काम न करे, तो सब कुछ तुरंत पहले जैसा कर दिया जाता है। “टीवी की अपनी होम स्क्रीन पर वापस जाएँ” इसे पहले जैसा कर देता है।</string>
+    <string name="home_restore">टीवी की अपनी होम स्क्रीन पर वापस जाएँ</string>
+    <string name="home_done">Vibe Launcher अब होम है</string>
+    <string name="home_failed">इस टीवी ने इसे नहीं अपनाया, इसलिए उसकी अपनी होम स्क्रीन वापस आ गई है</string>
+    <string name="home_unsupported">इस डिवाइस पर अलग होम होने से कास्टिंग काम करना बंद कर देती है, इसलिए Vibe Launcher इसकी अपनी होम स्क्रीन को नहीं छूता।</string>
+    <string name="anim_speed">ऐनिमेशन की गति</string>
+    <string name="anim_normal">सामान्य</string>
+    <string name="anim_fast">तेज़</string>
+    <string name="anim_short">ऐप्स और मेनू खुलते समय टीवी के अपने ऐनिमेशन: तेज़ ऐनिमेशन से पुराना टीवी ज़्यादा फुर्तीला लगता है। इसके लिए सेटिंग्स &gt; ऐप्स को एक बार अनुमति दी गई होनी चाहिए।</string>
+    <string name="free_memory">मेमोरी खाली करें</string>
+    <string name="free_memory_short">बैकग्राउंड में चल रहे ऐप्स बंद करता है, जैसे टीवी मेमोरी कम पड़ने पर करता है।</string>
+    <string name="memory_freed">%1$s खाली हुई</string>
 </resources>

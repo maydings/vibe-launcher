@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ សម្គាល់អ្វីដែលនឹងត្រូវបិទ ហើយ OK ផ្លាស់ប្ដូរវា។ កម្មវិធីដែលមិនមាននៅលើទូរទស្សន៍នេះត្រូវបានរំលង ហើយផ្នែកដែលទូរទស្សន៍ត្រូវការក៏ដូច្នោះដែរ។ អ្វីដែលអ្នកបង្កើតបញ្ជីបានទុកឱ្យបើកដោយចេតនា នឹងចាប់ផ្ដើមដោយមិនបានធីក។</string>
     <string name="cyt_turn_off_n">បិទកម្មវិធី %1$d</string>
     <string name="cyt_done">បានបិទកម្មវិធី %1$d</string>
+    <string name="debug_off_when_done">បិទការជួសជុលកំហុសពេលរួចរាល់</string>
+    <string name="debug_off_when_done_short">ពេលអ្នកចាកចេញពីការកំណត់ Vibe Launcher បិទការជួសជុលកំហុសរបស់ទូរទស្សន៍វិញ ហើយបើកវាឡើងវិញដោយខ្លួនឯងនៅពេលបន្ទាប់ដែលវាត្រូវការ។ ពេលវាបិទ កុំព្យូទ័រមិនអាចភ្ជាប់ទៅទូរទស្សន៍តាម ADB បានទេ។</string>
+    <string name="home_make">ធ្វើឲ្យ Vibe Launcher ជាអេក្រង់ដើម</string>
+    <string name="home_make_short">បិទអេក្រង់ដើមផ្ទាល់ខ្លួនរបស់ទូរទស្សន៍ ដើម្បីឲ្យប៊ូតុងដើមបើក Vibe Launcher ដោយមិនត្រូវការសេវាប៊ូតុងដើម។</string>
+    <string name="home_make_warning">អេក្រង់ដើមផ្ទាល់ខ្លួនរបស់ទូរទស្សន៍ត្រូវបានបិទ ហើយ Vibe Launcher ក្លាយជាអេក្រង់ដើម។ ប្រសិនបើវាមិនដំណើរការទេ អ្វីៗទាំងអស់ត្រូវបានដាក់មកវិញភ្លាមៗ។ «ត្រឡប់ទៅអេក្រង់ដើមផ្ទាល់ខ្លួនរបស់ទូរទស្សន៍» លុបចោលការផ្លាស់ប្ដូរនេះ។</string>
+    <string name="home_restore">ត្រឡប់ទៅអេក្រង់ដើមផ្ទាល់ខ្លួនរបស់ទូរទស្សន៍</string>
+    <string name="home_done">Vibe Launcher ជាអេក្រង់ដើមឥឡូវនេះ</string>
+    <string name="home_failed">ទូរទស្សន៍នេះមិនទទួលយកទេ ដូច្នេះអេក្រង់ដើមផ្ទាល់ខ្លួនរបស់វាត្រូវបានដាក់មកវិញ</string>
+    <string name="home_unsupported">នៅលើឧបករណ៍នេះ អេក្រង់ដើមផ្សេងធ្វើឲ្យការខាស (Cast) ឈប់ដំណើរការ ដូច្នេះ Vibe Launcher ទុកអេក្រង់ដើមផ្ទាល់ខ្លួនរបស់វាដដែល។</string>
+    <string name="anim_speed">ល្បឿនចលនា</string>
+    <string name="anim_normal">ធម្មតា</string>
+    <string name="anim_fast">លឿនជាង</string>
+    <string name="anim_short">ចលនាផ្ទាល់ខ្លួនរបស់ទូរទស្សន៍ ពេលកម្មវិធី និងម៉ឺនុយបើក៖ ចលនាលឿនជាងធ្វើឲ្យទូរទស្សន៍ចាស់មានអារម្មណ៍រហ័សជាង។ ត្រូវតែបានអនុញ្ញាត ការកំណត់ &gt; កម្មវិធី ម្ដងរួចហើយ។</string>
+    <string name="free_memory">សម្អាតអង្គចងចាំ</string>
+    <string name="free_memory_short">បិទកម្មវិធីដែលកំពុងដំណើរការនៅផ្ទៃខាងក្រោយ ដូចដែលទូរទស្សន៍ធ្វើពេលខ្វះអង្គចងចាំ។</string>
+    <string name="memory_freed">បានសម្អាត %1$s</string>
 </resources>

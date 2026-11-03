@@ -345,6 +345,13 @@ final class SettingsScreen {
         if (host != activity) return;
         if (editing != null) endEdit();
         link.stop();
+        // Turn debugging off when done: the port closes with Settings, once nothing more is queued for it.
+        if (usedAdb && settings.adbOffWhenDone() && TvControl.canWrite(ctx)) {
+            Context app = ctx.getApplicationContext();
+            adb().execute(() -> TvControl.setDebugging(app, false));
+            adbStatus = Adb.OFF;
+        }
+        usedAdb = false;
         host.unregisterReceiver(packages);
         smartTubeRow = null;
         for (Page page : pages) {
@@ -558,6 +565,36 @@ final class SettingsScreen {
         page.link(R.string.clock, () -> clockName(settings.clockHours()), this::clockHours);
         page.toggle(R.string.carets, settings::carets, settings::setCarets);
         page.link(R.string.glass_color, this::swatch, this::glassColour);
+        // The TV's own animation speed: only with WRITE_SECURE_SETTINGS, which only the adb build is ever given.
+        if (!BuildConfig.STORE) {
+            Row speed = page.link(R.string.anim_speed, () -> animName(TvControl.animationScale(ctx)), this::animSpeed);
+            speed.about = R.string.anim_short;
+        }
+        return page;
+    }
+
+    private String animName(float scale) {
+        return ctx.getString(scale == 0f ? R.string.off : scale < 1f ? R.string.anim_fast : R.string.anim_normal);
+    }
+
+    /**
+     * Normal, Faster (half) or Off for the TV's three animation scales, as Developer options sets them. Before
+     * Settings > Apps has been allowed once there's no permission to: the row says where to go.
+     */
+    private Page animSpeed() {
+        Page page = new Page(ctx.getString(R.string.anim_speed));
+        page.footnote = R.string.anim_short;
+        for (float scale : new float[]{1f, 0.5f, 0f}) {
+            // Picked, it's ticked and the list stays: Back or Left goes back.
+            Row row = page.add(animName(scale), () -> animName(TvControl.animationScale(ctx)).equals(animName(scale))
+                    ? "✓" : "", () -> {
+                if (!TvControl.setAnimationScale(ctx, scale)) {
+                    Toast.makeText(host, R.string.anim_short, Toast.LENGTH_LONG).show();
+                }
+                page.refresh();
+            });
+            if (animName(TvControl.animationScale(ctx)).equals(animName(scale))) page.opened = row;
+        }
         return page;
     }
 
@@ -961,6 +998,9 @@ final class SettingsScreen {
 
     // ---- apps -------------------------------------------------------------------------------------
 
+    /** ADB was used while Settings was open: what Turn debugging off when done turns off as it closes. */
+    private boolean usedAdb;
+
     /** ADB calls one at a time, in order, off the main thread (Adb). */
     private java.util.concurrent.ExecutorService adbThread;
     /** The last Adb answer (Adb.OK, OFF, …), or -1 while the first check runs. */
@@ -1006,11 +1046,93 @@ final class SettingsScreen {
                 page.refresh();
             });
         });
+        // Home: Vibe Launcher made Home with the TV's own launcher off, or back to that one.
+        homeMakeRow = page.add(R.string.home_make, null, null);
+        homeMakeRow.about = TvControl.homeUnsupported() ? R.string.home_unsupported : R.string.home_make_short;
+        homeMakeRow.action = () -> {
+            if (TvControl.homeUnsupported()) {
+                Toast.makeText(host, R.string.home_unsupported, Toast.LENGTH_LONG).show();
+                return;
+            }
+            explainThenDo(R.string.home_make, R.string.home_make_warning, () -> makeHome(page));
+        };
+        homeRestoreRow = page.add(R.string.home_restore, null, () -> restoreHome(page));
+        showHomeRows();
         Row lists = page.link(R.string.cyt_lists, null, this::cleanLists);
         lists.about = R.string.cyt_lists_short;
         page.link(R.string.apps_can_turn_off, null, () -> appList(false));
         page.link(R.string.apps_tv_needs, null, () -> appList(true));
+        Row memory = page.add(R.string.free_memory, null, () -> freeMemory(page));
+        memory.about = R.string.free_memory_short;
+        // Last: a choice most people never touch (and one that locks a computer's ADB out while it's on).
+        Row offWhenDone = page.toggle(R.string.debug_off_when_done, settings::adbOffWhenDone, settings::setAdbOffWhenDone);
+        offWhenDone.about = R.string.debug_off_when_done_short;
         return page;
+    }
+
+    private Row homeMakeRow, homeRestoreRow;
+
+    /**
+     * Make Vibe Launcher Home while it isn't (or a stock launcher is still on, which some TVs send Home to
+     * whatever is chosen); Back to the TV's own home screen while one is off and Vibe Launcher is Home.
+     */
+    private void showHomeRows() {
+        if (homeMakeRow == null) return;
+        boolean home = DefaultHome.isHome(ctx);
+        homeMakeRow.view.setVisibility(!home || !TvControl.stockOn(ctx).isEmpty() ? View.VISIBLE : View.GONE);
+        homeRestoreRow.view.setVisibility(home && !TvControl.stockOff(ctx).isEmpty() ? View.VISIBLE : View.GONE);
+    }
+
+    /**
+     * The TV's own launchers off and Vibe Launcher set as Home, in one command that turns them back on if a step
+     * fails; then Android asked where Home goes now. Not here: the launchers back on, and saying so. Here: they
+     * go in our record, so Turn all back on brings them back too.
+     */
+    private void makeHome(Page page) {
+        List<String> stock = TvControl.stockOn(ctx);
+        runAdb(page, TvControl.makeHomeCommand(ctx, stock), r -> {
+            boolean failed = r.output.contains("FAILED") || !DefaultHome.isHome(ctx);
+            if (failed && !r.output.contains("FAILED") && !stock.isEmpty()) {
+                // Set, but Home still goes elsewhere: the launchers back on, as they were.
+                adb().execute(() -> Adb.shell(TvControl.restoreHomeCommand(ctx, stock), false));
+            }
+            if (!failed) for (String pkg : stock) TvApps.remember(ctx, pkg, false);
+            Toast.makeText(host, failed ? R.string.home_failed : R.string.home_done, Toast.LENGTH_LONG).show();
+            showHomeRows();
+            showTurnOffAgain();
+        });
+    }
+
+    /** The TV's own launchers back on, Home given to the first, and taken out of our record. */
+    private void restoreHome(Page page) {
+        List<String> stock = TvControl.stockOff(ctx);
+        if (stock.isEmpty()) return;
+        runAdb(page, TvControl.restoreHomeCommand(ctx, stock), r -> {
+            android.content.pm.PackageManager pm = ctx.getPackageManager();
+            for (String pkg : stock) if (TvApps.isOn(pm, pkg)) TvApps.remember(ctx, pkg, true);
+            // The Home button service would cover the TV's own home screen as soon as it showed, and going back
+            // would seem not to work: off with it, as its own switch in General does (the service itself, not
+            // WRITE_SECURE_SETTINGS, which never touches accessibility).
+            Runnable serviceOff = HomeButtonLink.turnOff;
+            if (DefaultHome.homeButtonOn(ctx) && serviceOff != null) serviceOff.run();
+            showHomeRows();
+            showTurnOffAgain();
+        });
+    }
+
+    /** Background apps closed (as the TV does when it runs short), and how much memory that gave back. */
+    private void freeMemory(Page page) {
+        android.app.ActivityManager am = (android.app.ActivityManager) ctx.getSystemService(Context.ACTIVITY_SERVICE);
+        android.app.ActivityManager.MemoryInfo before = new android.app.ActivityManager.MemoryInfo();
+        am.getMemoryInfo(before);
+        runAdb(page, "am kill-all", r -> handler.postDelayed(() -> {   // a moment for the memory to come back
+            if (host == null) return;
+            android.app.ActivityManager.MemoryInfo after = new android.app.ActivityManager.MemoryInfo();
+            am.getMemoryInfo(after);
+            long freed = Math.max(0, after.availMem - before.availMem);
+            Toast.makeText(host, ctx.getString(R.string.memory_freed,
+                    android.text.format.Formatter.formatShortFileSize(ctx, freed)), Toast.LENGTH_SHORT).show();
+        }, 800));
     }
 
     /**
@@ -1260,6 +1382,13 @@ final class SettingsScreen {
         // them), or USB/ADB debugging off (Developer options). Both are Global settings any app may read.
         int devOptions = adbSetting(android.provider.Settings.Global.DEVELOPMENT_SETTINGS_ENABLED);
         int debugging = adbSetting(android.provider.Settings.Global.ADB_ENABLED);
+        // Given WRITE_SECURE_SETTINGS before (TvControl), Vibe Launcher turns debugging back on itself, with no
+        // trip to Developer options, and waits for its port before connecting.
+        boolean waitForPort = false;
+        if (debugging != 1 && TvControl.setDebugging(ctx, true)) {
+            debugging = 1;
+            waitForPort = true;
+        }
         if (debugging != 1 && devOptions != 1) {
             adbStatus = Adb.OFF;
             explainThenOpen(R.string.adb_dev_options, this::openAbout);
@@ -1276,11 +1405,25 @@ final class SettingsScreen {
         if (adbStatus != Adb.OK && adbStatus != Adb.OFF) {
             Toast.makeText(host, R.string.adb_allow_prompt, Toast.LENGTH_LONG).show();
         }
+        boolean wait = waitForPort;
+        Context app = ctx.getApplicationContext();
         adb().execute(() -> {
+            if (wait) {   // adbd takes a moment to open its port once debugging is on: up to ten seconds
+                for (int i = 0; i < 20 && Adb.check(false).status == Adb.OFF; i++) {
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        return;
+                    }
+                }
+            }
             Adb.Result r = command != null ? Adb.shell(command, true) : Adb.check(true);
+            // In, and not given WRITE_SECURE_SETTINGS yet: given now, once (what it's used for: TvControl).
+            if (r.status == Adb.OK && !TvControl.canWrite(app)) Adb.shell(TvControl.grantCommand(app), false);
             handler.post(() -> {
                 adbBusy = false;
                 adbStatus = r.status;
+                if (r.status == Adb.OK) usedAdb = true;
                 if (host == null) return;
                 if (r.status == Adb.OK) {
                     then.accept(r);
@@ -1320,11 +1463,16 @@ final class SettingsScreen {
      * before it could be read), and Continue to open them; Cancel stays here.
      */
     private void explainThenOpen(int message, Runnable open) {
+        explainThenDo(R.string.adb_connection, message, open);
+    }
+
+    /** The same window with a title of its own: Continue runs then. */
+    private void explainThenDo(int title, int message, Runnable open) {
         if (host == null) return;
         Activity activity = host;
         View panel = LayoutInflater.from(ctx).inflate(R.layout.dialog_update,
                 activity.findViewById(android.R.id.content), false);
-        ((TextView) panel.findViewById(R.id.updateTitle)).setText(R.string.adb_connection);
+        ((TextView) panel.findViewById(R.id.updateTitle)).setText(title);
         ((TextView) panel.findViewById(R.id.notes)).setText(message);
         TextView go = panel.findViewById(R.id.install), cancel = panel.findViewById(R.id.cancelUpdate);
         go.setText(R.string.continue_button);

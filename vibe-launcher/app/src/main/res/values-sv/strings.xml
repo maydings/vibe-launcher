@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ markerar vad som stängs av; OK ändrar det. Appar som inte finns på den här tv:n är utelämnade, liksom delar som tv:n behöver. Det som listans skapare medvetet lät vara på är avmarkerat från början.</string>
     <string name="cyt_turn_off_n">Stäng av appar: %1$d</string>
     <string name="cyt_done">Appar avstängda: %1$d</string>
+    <string name="debug_off_when_done">Stäng av felsökning efteråt</string>
+    <string name="debug_off_when_done_short">När du lämnar Inställningar stänger Vibe Launcher av tv:ns felsökning igen, och slår på den av sig själv nästa gång den behövs. En dator kan inte nå tv:n via ADB medan den är avstängd.</string>
+    <string name="home_make">Gör Vibe Launcher till startskärm</string>
+    <string name="home_make_short">Stänger av tv:ns egen startskärm, så att hemknappen öppnar Vibe Launcher, utan att någon hemknappstjänst behövs.</string>
+    <string name="home_make_warning">Tv:ns egen startskärm stängs av och Vibe Launcher blir startskärm. Om det inte fastnar återställs allt direkt. ”Tillbaka till tv:ns egen startskärm” ångrar det.</string>
+    <string name="home_restore">Tillbaka till tv:ns egen startskärm</string>
+    <string name="home_done">Vibe Launcher är startskärm nu</string>
+    <string name="home_failed">Tv:n godtog det inte, så dess egen startskärm är tillbaka</string>
+    <string name="home_unsupported">På den här enheten slutar castning att fungera med en annan startskärm, så Vibe Launcher låter enhetens egen startskärm vara.</string>
+    <string name="anim_speed">Animationshastighet</string>
+    <string name="anim_normal">Normal</string>
+    <string name="anim_fast">Snabbare</string>
+    <string name="anim_short">Tv:ns egna animationer när appar och menyer öppnas: snabbare animationer får en äldre tv att kännas kvickare. Kräver att Inställningar &gt; Appar har tillåtits en gång.</string>
+    <string name="free_memory">Frigör minne</string>
+    <string name="free_memory_short">Stänger apparna som körs i bakgrunden, som tv:n gör när minnet tar slut.</string>
+    <string name="memory_freed">%1$s frigjort</string>
 </resources>

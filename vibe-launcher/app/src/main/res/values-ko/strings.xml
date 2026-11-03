@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓는 사용 중지될 항목을 표시하며, OK로 바꿀 수 있습니다. 이 TV에 없는 앱과 TV에 필요한 부분은 제외됩니다. 목록을 만든 사람이 일부러 사용 설정한 채로 둔 항목은 처음에 체크되어 있지 않습니다.</string>
     <string name="cyt_turn_off_n">앱 %1$d개 사용 중지</string>
     <string name="cyt_done">앱 %1$d개 사용 중지됨</string>
+    <string name="debug_off_when_done">완료 후 디버깅 사용 중지</string>
+    <string name="debug_off_when_done_short">설정에서 나가면 Vibe Launcher가 TV의 디버깅을 다시 사용 중지하고, 다음에 필요할 때 자동으로 다시 사용 설정합니다. 사용 중지된 동안에는 컴퓨터가 ADB로 TV에 연결할 수 없습니다.</string>
+    <string name="home_make">Vibe Launcher를 홈으로 설정</string>
+    <string name="home_make_short">TV 자체 홈 화면을 사용 중지해 홈 버튼을 누르면 Vibe Launcher가 열리도록 합니다. 홈 버튼 서비스가 필요 없습니다.</string>
+    <string name="home_make_warning">TV 자체 홈 화면이 사용 중지되고 Vibe Launcher가 홈이 됩니다. 제대로 적용되지 않으면 즉시 모두 원래대로 돌아갑니다. ‘TV 자체 홈 화면으로 돌아가기’를 선택하면 되돌릴 수 있습니다.</string>
+    <string name="home_restore">TV 자체 홈 화면으로 돌아가기</string>
+    <string name="home_done">이제 Vibe Launcher가 홈입니다</string>
+    <string name="home_failed">이 TV에서 적용되지 않아 자체 홈 화면으로 돌아갔습니다</string>
+    <string name="home_unsupported">이 기기에서는 다른 홈을 사용하면 전송(Cast)이 작동하지 않으므로 Vibe Launcher는 기기 자체 홈 화면을 그대로 둡니다.</string>
+    <string name="anim_speed">애니메이션 속도</string>
+    <string name="anim_normal">보통</string>
+    <string name="anim_fast">빠르게</string>
+    <string name="anim_short">앱과 메뉴가 열릴 때 나오는 TV 자체 애니메이션입니다. 빠르게 하면 오래된 TV도 더 빠릿하게 느껴집니다. 설정 &gt; 앱을 한 번 허용해야 합니다.</string>
+    <string name="free_memory">메모리 확보</string>
+    <string name="free_memory_short">TV가 메모리가 부족할 때처럼, 백그라운드에서 실행 중인 앱을 닫습니다.</string>
+    <string name="memory_freed">%1$s 확보됨</string>
 </resources>

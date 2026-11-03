@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ marchează ce va fi dezactivat; OK schimbă asta. Aplicațiile care nu sunt pe acest televizor sunt omise, la fel și componentele de care are nevoie. Ce a lăsat activat intenționat autorul listei pornește nebifat.</string>
     <string name="cyt_turn_off_n">Dezactivați aplicații: %1$d</string>
     <string name="cyt_done">Aplicații dezactivate: %1$d</string>
+    <string name="debug_off_when_done">Dezactivează depanarea la final</string>
+    <string name="debug_off_when_done_short">Când ieșiți din Setări, Vibe Launcher dezactivează din nou depanarea televizorului și o reactivează singur data viitoare când are nevoie de ea. Cât timp este dezactivată, un computer nu poate accesa televizorul prin ADB.</string>
+    <string name="home_make">Setează Vibe Launcher ca ecran de pornire</string>
+    <string name="home_make_short">Dezactivează ecranul de pornire propriu al televizorului, astfel încât butonul Acasă deschide Vibe Launcher, fără să fie nevoie de serviciul butonului Acasă.</string>
+    <string name="home_make_warning">Ecranul de pornire propriu al televizorului este dezactivat și Vibe Launcher devine ecranul de pornire. Dacă nu reușește, totul este restabilit imediat. „Înapoi la ecranul de pornire al televizorului” anulează schimbarea.</string>
+    <string name="home_restore">Înapoi la ecranul de pornire al televizorului</string>
+    <string name="home_done">Vibe Launcher este acum ecranul de pornire</string>
+    <string name="home_failed">Televizorul nu l-a acceptat, așa că ecranul său de pornire a revenit</string>
+    <string name="home_unsupported">Pe acest dispozitiv, alt ecran de pornire face ca proiectarea (Cast) să nu mai funcționeze, așa că Vibe Launcher nu se atinge de ecranul său de pornire.</string>
+    <string name="anim_speed">Viteza animațiilor</string>
+    <string name="anim_normal">Normală</string>
+    <string name="anim_fast">Mai rapidă</string>
+    <string name="anim_short">Animațiile proprii ale televizorului, la deschiderea aplicațiilor și meniurilor: cele mai rapide fac un televizor mai vechi să pară mai vioi. Necesită ca Setări &gt; Aplicații să fi fost permis o dată.</string>
+    <string name="free_memory">Eliberează memorie</string>
+    <string name="free_memory_short">Închide aplicațiile care rulează în fundal, așa cum face televizorul când nu mai are memorie suficientă.</string>
+    <string name="memory_freed">Eliberat: %1$s</string>
 </resources>

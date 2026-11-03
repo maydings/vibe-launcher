@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ označuje, co bude vypnuto; OK to mění. Aplikace, které v tomto televizoru nejsou, jsou vynechány, stejně jako části, které televizor potřebuje. Co autor seznamu záměrně ponechal zapnuté, je na začátku nezaškrtnuté.</string>
     <string name="cyt_turn_off_n">Vypnout aplikace: %1$d</string>
     <string name="cyt_done">Vypnuté aplikace: %1$d</string>
+    <string name="debug_off_when_done">Po dokončení vypnout ladění</string>
+    <string name="debug_off_when_done_short">Když opustíte Nastavení, Vibe Launcher ladění televizoru znovu vypne a příště, až ho bude potřebovat, ho sám zase zapne. Dokud je vypnuté, počítač se k televizoru přes ADB nedostane.</string>
+    <string name="home_make">Nastavit Vibe Launcher jako domovskou obrazovku</string>
+    <string name="home_make_short">Vypne vlastní domovskou obrazovku televizoru, takže tlačítko Domů otevře Vibe Launcher, bez potřeby služby Tlačítko Domů.</string>
+    <string name="home_make_warning">Vlastní domovská obrazovka televizoru se vypne a Vibe Launcher se stane domovskou obrazovkou. Pokud se to neujme, vše se hned vrátí zpět. Volba „Zpět na vlastní domovskou obrazovku televizoru“ to vrátí.</string>
+    <string name="home_restore">Zpět na vlastní domovskou obrazovku televizoru</string>
+    <string name="home_done">Vibe Launcher je teď domovská obrazovka</string>
+    <string name="home_failed">Tento televizor to nepřijal, takže jeho vlastní domovská obrazovka je zpět</string>
+    <string name="home_unsupported">Na tomto zařízení by jiná domovská obrazovka vyřadila z provozu odesílání obsahu (Cast), proto Vibe Launcher jeho vlastní domovskou obrazovku nechává být.</string>
+    <string name="anim_speed">Rychlost animací</string>
+    <string name="anim_normal">Normální</string>
+    <string name="anim_fast">Rychlejší</string>
+    <string name="anim_short">Vlastní animace televizoru při otevírání aplikací a nabídek: s rychlejšími působí starší televizor svižněji. Vyžaduje, aby bylo jednou povoleno Nastavení &gt; Aplikace.</string>
+    <string name="free_memory">Uvolnit paměť</string>
+    <string name="free_memory_short">Zavře aplikace běžící na pozadí, jako to televizor dělá, když mu dochází paměť.</string>
+    <string name="memory_freed">Uvolněno: %1$s</string>
 </resources>

@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ indique ce qui sera désactivé ; OK le modifie. Les applis absentes de ce téléviseur sont ignorées, tout comme les éléments dont il a besoin. Ce que l\'auteur de la liste a volontairement laissé activé commence décoché.</string>
     <string name="cyt_turn_off_n">Désactiver les applis : %1$d</string>
     <string name="cyt_done">Applis désactivées : %1$d</string>
+    <string name="debug_off_when_done">Désactiver le débogage une fois terminé</string>
+    <string name="debug_off_when_done_short">Quand vous quittez les Réglages, Vibe Launcher désactive à nouveau le débogage du téléviseur, et le réactive de lui-même la prochaine fois qu\'il en a besoin. Tant qu\'il est désactivé, un ordinateur ne peut pas accéder au téléviseur via ADB.</string>
+    <string name="home_make">Faire de Vibe Launcher l\'écran d\'accueil</string>
+    <string name="home_make_short">Désactive l\'écran d\'accueil propre au téléviseur, pour que le bouton Accueil ouvre Vibe Launcher, sans avoir besoin du service Bouton Accueil.</string>
+    <string name="home_make_warning">L\'écran d\'accueil propre au téléviseur est désactivé et Vibe Launcher devient l\'écran d\'accueil. Si cela ne prend pas, tout est rétabli aussitôt. « Revenir à l\'écran d\'accueil du téléviseur » annule l\'opération.</string>
+    <string name="home_restore">Revenir à l\'écran d\'accueil du téléviseur</string>
+    <string name="home_done">Vibe Launcher est désormais l\'écran d\'accueil</string>
+    <string name="home_failed">Ce téléviseur ne l\'a pas accepté, son propre écran d\'accueil est donc revenu</string>
+    <string name="home_unsupported">Sur cet appareil, un autre écran d\'accueil empêche la diffusion (Cast) de fonctionner, donc Vibe Launcher ne touche pas à son propre écran d\'accueil.</string>
+    <string name="anim_speed">Vitesse des animations</string>
+    <string name="anim_normal">Normale</string>
+    <string name="anim_fast">Plus rapide</string>
+    <string name="anim_short">Les animations propres au téléviseur, à l\'ouverture des applis et des menus : plus rapides, elles rendent un ancien téléviseur plus réactif. Nécessite d\'avoir autorisé une fois Réglages &gt; Applis.</string>
+    <string name="free_memory">Libérer de la mémoire</string>
+    <string name="free_memory_short">Ferme les applis qui tournent en arrière-plan, comme le fait le téléviseur quand il manque de mémoire.</string>
+    <string name="memory_freed">%1$s libérés</string>
 </resources>

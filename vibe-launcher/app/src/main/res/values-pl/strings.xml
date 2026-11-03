@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ oznacza to, co zostanie wyłączone; OK to zmienia. Aplikacje, których nie ma na tym telewizorze, są pominięte, podobnie jak części, których on potrzebuje. To, co autor listy celowo zostawił włączone, na początku jest niezaznaczone.</string>
     <string name="cyt_turn_off_n">Wyłącz aplikacje: %1$d</string>
     <string name="cyt_done">Wyłączone aplikacje: %1$d</string>
+    <string name="debug_off_when_done">Wyłącz debugowanie po zakończeniu</string>
+    <string name="debug_off_when_done_short">Gdy wychodzisz z Ustawień, Vibe Launcher znowu wyłącza debugowanie telewizora, a następnym razem, gdy będzie go potrzebować, sam je włącza. Gdy jest wyłączone, komputer nie może połączyć się z telewizorem przez ADB.</string>
+    <string name="home_make">Ustaw Vibe Launcher jako ekran główny</string>
+    <string name="home_make_short">Wyłącza własny ekran główny telewizora, aby przycisk ekranu głównego otwierał Vibe Launcher, bez potrzeby usługi przycisku ekranu głównego.</string>
+    <string name="home_make_warning">Własny ekran główny telewizora zostaje wyłączony, a Vibe Launcher staje się ekranem głównym. Jeśli to się nie przyjmie, wszystko od razu wraca do poprzedniego stanu. „Wróć do własnego ekranu głównego telewizora” cofa zmianę.</string>
+    <string name="home_restore">Wróć do własnego ekranu głównego telewizora</string>
+    <string name="home_done">Vibe Launcher jest teraz ekranem głównym</string>
+    <string name="home_failed">Ten telewizor tego nie przyjął, więc jego własny ekran główny wrócił</string>
+    <string name="home_unsupported">Na tym urządzeniu inny ekran główny powoduje, że przesyłanie (Cast) przestaje działać, więc Vibe Launcher nie zmienia jego własnego ekranu głównego.</string>
+    <string name="anim_speed">Szybkość animacji</string>
+    <string name="anim_normal">Normalna</string>
+    <string name="anim_fast">Szybsza</string>
+    <string name="anim_short">Własne animacje telewizora przy otwieraniu aplikacji i menu: szybsze sprawiają, że starszy telewizor wydaje się żwawszy. Wymaga jednorazowego zezwolenia w Ustawienia &gt; Aplikacje.</string>
+    <string name="free_memory">Zwolnij pamięć</string>
+    <string name="free_memory_short">Zamyka aplikacje działające w tle, tak jak robi to telewizor, gdy brakuje mu pamięci.</string>
+    <string name="memory_freed">Zwolniono %1$s</string>
 </resources>

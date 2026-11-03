@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ بتاتا ہے کہ کیا آف ہوگا؛ OK اسے بدلتا ہے۔ جو ایپس اس ٹی وی پر نہیں ہیں وہ شامل نہیں کی گئیں، اور ٹی وی کے ضروری حصے بھی نہیں۔ فہرست بنانے والے نے جو جان بوجھ کر آن رکھا تھا، اس پر شروع میں نشان نہیں ہوتا۔</string>
     <string name="cyt_turn_off_n">ایپس آف کریں: %1$d</string>
     <string name="cyt_done">آف کی گئی ایپس: %1$d</string>
+    <string name="debug_off_when_done">کام ختم ہونے پر ڈیبگنگ آف کریں</string>
+    <string name="debug_off_when_done_short">جب آپ ترتیبات سے باہر نکلتے ہیں تو Vibe Launcher ٹی وی کی ڈیبگنگ دوبارہ آف کر دیتا ہے، اور اگلی بار ضرورت پڑنے پر خود ہی دوبارہ آن کر لیتا ہے۔ آف ہونے کے دوران کوئی کمپیوٹر ADB کے ذریعے ٹی وی تک نہیں پہنچ سکتا۔</string>
+    <string name="home_make">Vibe Launcher کو ہوم بنائیں</string>
+    <string name="home_make_short">ٹی وی کی اپنی ہوم اسکرین آف کرتا ہے، تاکہ ہوم بٹن Vibe Launcher کھولے، ہوم بٹن سروس کی ضرورت کے بغیر۔</string>
+    <string name="home_make_warning">ٹی وی کی اپنی ہوم اسکرین آف ہو جاتی ہے اور Vibe Launcher ہوم بن جاتا ہے۔ اگر یہ کام نہ کرے تو سب کچھ فوراً پہلے جیسا کر دیا جاتا ہے۔ “ٹی وی کی اپنی ہوم اسکرین پر واپس جائیں” اسے واپس پہلے جیسا کر دیتا ہے۔</string>
+    <string name="home_restore">ٹی وی کی اپنی ہوم اسکرین پر واپس جائیں</string>
+    <string name="home_done">Vibe Launcher اب ہوم ہے</string>
+    <string name="home_failed">اس ٹی وی نے اسے قبول نہیں کیا، اس لیے اس کی اپنی ہوم اسکرین واپس آ گئی ہے</string>
+    <string name="home_unsupported">اس ڈیوائس پر مختلف ہوم ہونے سے کاسٹنگ کام کرنا بند کر دیتی ہے، اس لیے Vibe Launcher اس کی اپنی ہوم اسکرین کو نہیں چھیڑتا۔</string>
+    <string name="anim_speed">اینیمیشن کی رفتار</string>
+    <string name="anim_normal">عام</string>
+    <string name="anim_fast">زیادہ تیز</string>
+    <string name="anim_short">ایپس اور مینو کھلتے وقت ٹی وی کی اپنی اینیمیشنز: تیز اینیمیشنز سے پرانا ٹی وی زیادہ پھرتیلا محسوس ہوتا ہے۔ اس کے لیے ترتیبات &gt; ایپس کو ایک بار اجازت دی گئی ہونی چاہیے۔</string>
+    <string name="free_memory">میموری خالی کریں</string>
+    <string name="free_memory_short">پس منظر میں چل رہی ایپس بند کرتا ہے، جیسے ٹی وی میموری کم پڑنے پر کرتا ہے۔</string>
+    <string name="memory_freed">%1$s خالی ہوئی</string>
 </resources>

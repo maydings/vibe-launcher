@@ -24,6 +24,7 @@ final class VibeSettings {
     private static final String BACK_ACTION = "backAction";
     private static final String JPEG_STILLS = "jpegStills";
     private static final String APPS_OFF = "appsOff";
+    private static final String ADB_OFF_WHEN_DONE = "adbOffWhenDone";
 
     private final SharedPreferences prefs;
 
@@ -177,6 +178,15 @@ final class VibeSettings {
 
     void setAppsOff(java.util.Set<String> pkgs) {
         prefs.edit().putStringSet(APPS_OFF, new java.util.HashSet<>(pkgs)).apply();
+    }
+
+    /** Debugging turned off when Settings closes, once Settings > Apps has used it (off by default; TvControl). */
+    boolean adbOffWhenDone() {
+        return prefs.getBoolean(ADB_OFF_WHEN_DONE, false);
+    }
+
+    void setAdbOffWhenDone(boolean off) {
+        prefs.edit().putBoolean(ADB_OFF_WHEN_DONE, off).apply();
     }
 
     void save(String tmdbKey, String youtubeKey, String plexToken) {

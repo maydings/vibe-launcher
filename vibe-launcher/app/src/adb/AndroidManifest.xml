@@ -9,6 +9,12 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <!-- Settings > Apps lists every app on the TV, system parts with no tile too, to turn them off (TvApps):
          Android 11+ hides those without this. Not in the store build, which has no Settings > Apps. -->
+    <!-- Granted by the TV's own ADB the first time Settings > Apps connects (pm grant), never by installing:
+         debugging on and off, and the animation speeds, and nothing else (TvControl). -->
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         xmlns:tools="http://schemas.android.com/tools"

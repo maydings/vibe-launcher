@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ نشان می‌دهد چه چیزی خاموش می‌شود؛ OK آن را تغییر می‌دهد. برنامه‌هایی که روی این تلویزیون نیستند کنار گذاشته شده‌اند، و همچنین بخش‌هایی که تلویزیون لازم دارد. آنچه سازندهٔ فهرست عمداً روشن نگه داشته، بدون علامت شروع می‌شود.</string>
     <string name="cyt_turn_off_n">خاموش کردن %1$d برنامه</string>
     <string name="cyt_done">%1$d برنامه خاموش شد</string>
+    <string name="debug_off_when_done">خاموش کردن اشکال‌زدایی پس از اتمام</string>
+    <string name="debug_off_when_done_short">وقتی از تنظیمات خارج می‌شوید، Vibe Launcher اشکال‌زدایی تلویزیون را دوباره خاموش می‌کند و دفعه بعد که به آن نیاز داشته باشد، خودش آن را روشن می‌کند. تا وقتی خاموش است، رایانه نمی‌تواند از طریق ADB به تلویزیون دسترسی پیدا کند.</string>
+    <string name="home_make">تنظیم Vibe Launcher به‌عنوان صفحه اصلی</string>
+    <string name="home_make_short">صفحه اصلی خود تلویزیون را خاموش می‌کند تا دکمه صفحه اصلی، Vibe Launcher را باز کند، بدون نیاز به سرویس دکمه صفحه اصلی.</string>
+    <string name="home_make_warning">صفحه اصلی خود تلویزیون خاموش می‌شود و Vibe Launcher صفحه اصلی می‌شود. اگر این کار نگیرد، همه‌چیز فوراً به حالت قبل برمی‌گردد. گزینه «بازگشت به صفحه اصلی خود تلویزیون» آن را لغو می‌کند.</string>
+    <string name="home_restore">بازگشت به صفحه اصلی خود تلویزیون</string>
+    <string name="home_done">Vibe Launcher اکنون صفحه اصلی است</string>
+    <string name="home_failed">این تلویزیون آن را نپذیرفت، بنابراین صفحه اصلی خودش برگشت</string>
+    <string name="home_unsupported">در این دستگاه، صفحه اصلی دیگر باعث می‌شود پخش (Cast) کار نکند، بنابراین Vibe Launcher به صفحه اصلی خود دستگاه دست نمی‌زند.</string>
+    <string name="anim_speed">سرعت پویانمایی</string>
+    <string name="anim_normal">عادی</string>
+    <string name="anim_fast">سریع‌تر</string>
+    <string name="anim_short">پویانمایی‌های خود تلویزیون هنگام باز شدن برنامه‌ها و منوها: پویانمایی‌های سریع‌تر باعث می‌شوند تلویزیون قدیمی‌تر چابک‌تر به نظر برسد. لازم است تنظیمات &gt; برنامه‌ها یک بار مجاز شده باشد.</string>
+    <string name="free_memory">آزاد کردن حافظه</string>
+    <string name="free_memory_short">برنامه‌هایی را که در پس‌زمینه اجرا می‌شوند می‌بندد، همان‌طور که تلویزیون وقتی حافظه کم می‌آورد این کار را می‌کند.</string>
+    <string name="memory_freed">%1$s آزاد شد</string>
 </resources>

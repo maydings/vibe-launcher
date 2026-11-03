@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ මඟින් ක්‍රියාවිරහිත වන දේ සලකුණු කරයි; OK මඟින් එය වෙනස් කරයි. මෙම රූපවාහිනියේ නැති යෙදුම් ඉවත් කර ඇත, රූපවාහිනියට අවශ්‍ය කොටස් ද එසේමය. ලැයිස්තුව සෑදූ අය හිතාමතාම සක්‍රියව තැබූ දේ මුලින් සලකුණු කර නැත.</string>
     <string name="cyt_turn_off_n">යෙදුම් ක්‍රියාවිරහිත කරන්න: %1$d</string>
     <string name="cyt_done">ක්‍රියාවිරහිත කළ යෙදුම්: %1$d</string>
+    <string name="debug_off_when_done">අවසන් වූ පසු නිදොස්කරණය අක්‍රිය කරන්න</string>
+    <string name="debug_off_when_done_short">ඔබ සැකසීම් වලින් ඉවත් වූ විට Vibe Launcher රූපවාහිනියේ නිදොස්කරණය නැවත අක්‍රිය කරයි, ඊළඟ වතාවේ අවශ්‍ය වූ විට එය ඉබේම නැවත සක්‍රිය කරයි. එය අක්‍රියව ඇති විට පරිගණකයකට ADB හරහා රූපවාහිනියට ළඟා විය නොහැක.</string>
+    <string name="home_make">Vibe Launcher මුල් තිරය කරන්න</string>
+    <string name="home_make_short">රූපවාහිනියේම මුල් තිරය අක්‍රිය කරයි, එවිට මුල් බොත්තම Vibe Launcher විවෘත කරයි, මුල් බොත්තම් සේවාවක් අවශ්‍ය නොවේ.</string>
+    <string name="home_make_warning">රූපවාහිනියේම මුල් තිරය අක්‍රිය කර Vibe Launcher මුල් තිරය බවට පත් වේ. එය සාර්ථක නොවුණොත්, සියල්ල වහාම පෙර තත්ත්වයට පත් කෙරේ. “රූපවාහිනියේම මුල් තිරයට ආපසු” එය අහෝසි කරයි.</string>
+    <string name="home_restore">රූපවාහිනියේම මුල් තිරයට ආපසු</string>
+    <string name="home_done">Vibe Launcher දැන් මුල් තිරයයි</string>
+    <string name="home_failed">මෙම රූපවාහිනිය එය පිළිගත්තේ නැත, එබැවින් එහිම මුල් තිරය නැවත පැමිණ ඇත</string>
+    <string name="home_unsupported">මෙම උපාංගයේ වෙනත් මුල් තිරයක් තිබුණොත් විකාශය (Cast) ක්‍රියා නොකරයි, එබැවින් Vibe Launcher එහිම මුල් තිරය වෙනස් නොකරයි.</string>
+    <string name="anim_speed">සජීවිකරණ වේගය</string>
+    <string name="anim_normal">සාමාන්‍ය</string>
+    <string name="anim_fast">වේගවත්</string>
+    <string name="anim_short">යෙදුම් සහ මෙනු විවෘත වන විට රූපවාහිනියේම සජීවිකරණ: වේගවත් ඒවා පැරණි රූපවාහිනියක් වඩා ඉක්මන් ලෙස දැනීමට සලස්වයි. මේ සඳහා සැකසීම් &gt; යෙදුම් වෙත වරක් ඉඩ දී තිබිය යුතුය.</string>
+    <string name="free_memory">මතකය නිදහස් කරන්න</string>
+    <string name="free_memory_short">පසුබිමේ ධාවනය වන යෙදුම් වසයි, රූපවාහිනියට මතකය අඩු වූ විට එය කරන ආකාරයටම.</string>
+    <string name="memory_freed">%1$s නිදහස් කළා</string>
 </resources>

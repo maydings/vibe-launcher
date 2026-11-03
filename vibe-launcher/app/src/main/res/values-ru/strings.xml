@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ отмечает то, что будет отключено; OK меняет отметку. Приложения, которых нет на этом телевизоре, не показаны, как и компоненты, нужные телевизору. То, что автор списка намеренно оставил включённым, изначально не отмечено.</string>
     <string name="cyt_turn_off_n">Отключить приложения: %1$d</string>
     <string name="cyt_done">Отключено приложений: %1$d</string>
+    <string name="debug_off_when_done">Отключать отладку после работы</string>
+    <string name="debug_off_when_done_short">Когда вы выходите из настроек, Vibe Launcher снова отключает отладку телевизора и сам включает её в следующий раз, когда она понадобится. Пока она отключена, компьютер не может подключиться к телевизору по ADB.</string>
+    <string name="home_make">Сделать Vibe Launcher главным экраном</string>
+    <string name="home_make_short">Отключает собственный главный экран телевизора, чтобы кнопка «Домой» открывала Vibe Launcher, без службы кнопки «Домой».</string>
+    <string name="home_make_warning">Собственный главный экран телевизора отключается, и Vibe Launcher становится главным экраном. Если это не сработает, всё сразу вернётся как было. «Вернуться к главному экрану телевизора» отменяет это.</string>
+    <string name="home_restore">Вернуться к главному экрану телевизора</string>
+    <string name="home_done">Vibe Launcher теперь главный экран</string>
+    <string name="home_failed">Телевизор не принял это, поэтому его главный экран возвращён</string>
+    <string name="home_unsupported">На этом устройстве с другим главным экраном перестаёт работать трансляция (Cast), поэтому Vibe Launcher не трогает его собственный главный экран.</string>
+    <string name="anim_speed">Скорость анимации</string>
+    <string name="anim_normal">Обычная</string>
+    <string name="anim_fast">Быстрее</string>
+    <string name="anim_short">Собственные анимации телевизора при открытии приложений и меню: с более быстрыми старый телевизор кажется шустрее. Нужно, чтобы Настройки &gt; Приложения хотя бы раз было разрешено.</string>
+    <string name="free_memory">Освободить память</string>
+    <string name="free_memory_short">Закрывает приложения, работающие в фоне, как это делает телевизор, когда ему не хватает памяти.</string>
+    <string name="memory_freed">Освобождено: %1$s</string>
 </resources>

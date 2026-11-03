@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ দিয়ে বোঝানো হয় কী বন্ধ হবে; OK দিয়ে তা বদলানো যায়। এই টিভিতে নেই এমন অ্যাপ বাদ দেওয়া হয়েছে, টিভির দরকারি অংশগুলোও। তালিকা নির্মাতা ইচ্ছে করে যেগুলো চালু রেখেছিলেন সেগুলোতে শুরুতে টিক থাকে না।</string>
     <string name="cyt_turn_off_n">অ্যাপ বন্ধ করুন: %1$d</string>
     <string name="cyt_done">বন্ধ করা অ্যাপ: %1$d</string>
+    <string name="debug_off_when_done">কাজ শেষে ডিবাগিং বন্ধ করুন</string>
+    <string name="debug_off_when_done_short">আপনি সেটিংস থেকে বেরোলে Vibe Launcher টিভির ডিবাগিং আবার বন্ধ করে দেয়, আর পরের বার দরকার হলে নিজেই আবার চালু করে। বন্ধ থাকার সময় কোনো কম্পিউটার ADB দিয়ে টিভিতে পৌঁছাতে পারে না।</string>
+    <string name="home_make">Vibe Launcher-কে হোম করুন</string>
+    <string name="home_make_short">টিভির নিজের হোম স্ক্রিন বন্ধ করে, যাতে হোম বোতাম Vibe Launcher খোলে, হোম বোতাম পরিষেবার দরকার ছাড়াই।</string>
+    <string name="home_make_warning">টিভির নিজের হোম স্ক্রিন বন্ধ করা হয় এবং Vibe Launcher হোম হয়ে যায়। তা কাজ না করলে সবকিছু সঙ্গে সঙ্গে আগের মতো ফিরিয়ে দেওয়া হয়। “টিভির নিজের হোম স্ক্রিনে ফিরে যান” এটি আগের মতো করে দেয়।</string>
+    <string name="home_restore">টিভির নিজের হোম স্ক্রিনে ফিরে যান</string>
+    <string name="home_done">Vibe Launcher এখন হোম</string>
+    <string name="home_failed">এই টিভি এটি গ্রহণ করেনি, তাই এর নিজের হোম স্ক্রিন ফিরে এসেছে</string>
+    <string name="home_unsupported">এই ডিভাইসে অন্য হোম থাকলে কাস্টিং কাজ করে না, তাই Vibe Launcher এর নিজের হোম স্ক্রিনে হাত দেয় না।</string>
+    <string name="anim_speed">অ্যানিমেশনের গতি</string>
+    <string name="anim_normal">স্বাভাবিক</string>
+    <string name="anim_fast">দ্রুততর</string>
+    <string name="anim_short">অ্যাপ ও মেনু খোলার সময় টিভির নিজের অ্যানিমেশন: দ্রুততরগুলো পুরোনো টিভিকে আরও চটপটে মনে করায়। এর জন্য সেটিংস &gt; অ্যাপ একবার অনুমতি দেওয়া থাকতে হবে।</string>
+    <string name="free_memory">মেমরি খালি করুন</string>
+    <string name="free_memory_short">পটভূমিতে চলা অ্যাপগুলো বন্ধ করে, যেমন টিভি মেমরি কম পড়লে করে।</string>
+    <string name="memory_freed">%1$s খালি হয়েছে</string>
 </resources>

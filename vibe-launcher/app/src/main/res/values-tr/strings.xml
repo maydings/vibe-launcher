@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ kapatılacak olanları gösterir; OK bunu değiştirir. Bu TV\'de olmayan uygulamalar ve TV\'nin ihtiyaç duyduğu parçalar dahil edilmez. Listeyi hazırlayanın bilerek açık bıraktıkları işaretsiz başlar.</string>
     <string name="cyt_turn_off_n">%1$d uygulamayı kapat</string>
     <string name="cyt_done">%1$d uygulama kapatıldı</string>
+    <string name="debug_off_when_done">İş bitince hata ayıklamayı kapat</string>
+    <string name="debug_off_when_done_short">Ayarlar\'dan çıktığınızda Vibe Launcher TV\'nin hata ayıklamasını yeniden kapatır ve bir dahaki sefere ihtiyaç duyduğunda kendisi tekrar açar. Kapalıyken bir bilgisayar TV\'ye ADB üzerinden erişemez.</string>
+    <string name="home_make">Vibe Launcher\'ı ana ekran yap</string>
+    <string name="home_make_short">TV\'nin kendi ana ekranını kapatır; böylece Ana ekran düğmesi Vibe Launcher\'ı açar ve Ana ekran düğmesi hizmetine gerek kalmaz.</string>
+    <string name="home_make_warning">TV\'nin kendi ana ekranı kapatılır ve Vibe Launcher ana ekran olur. Bu tutmazsa her şey hemen eski haline getirilir. “TV\'nin kendi ana ekranına dön” bunu geri alır.</string>
+    <string name="home_restore">TV\'nin kendi ana ekranına dön</string>
+    <string name="home_done">Vibe Launcher artık ana ekran</string>
+    <string name="home_failed">Bu TV bunu kabul etmedi, bu yüzden kendi ana ekranı geri geldi</string>
+    <string name="home_unsupported">Bu cihazda farklı bir ana ekran, yayınlamanın (Cast) çalışmasını engeller, bu yüzden Vibe Launcher cihazın kendi ana ekranına dokunmaz.</string>
+    <string name="anim_speed">Animasyon hızı</string>
+    <string name="anim_normal">Normal</string>
+    <string name="anim_fast">Daha hızlı</string>
+    <string name="anim_short">Uygulamalar ve menüler açılırken TV\'nin kendi animasyonları: daha hızlı olanlar eski bir TV\'yi daha çevik hissettirir. Ayarlar &gt; Uygulamalar\'a bir kez izin verilmiş olması gerekir.</string>
+    <string name="free_memory">Belleği boşalt</string>
+    <string name="free_memory_short">Arka planda çalışan uygulamaları kapatır, tıpkı TV\'nin belleği azaldığında yaptığı gibi.</string>
+    <string name="memory_freed">%1$s boşaltıldı</string>
 </resources>

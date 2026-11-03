@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ indica cosa verrà disattivato; OK lo cambia. Le app che non sono su questo televisore vengono escluse, così come le parti che gli servono. Ciò che l\'autore dell\'elenco ha lasciato attivo di proposito parte non selezionato.</string>
     <string name="cyt_turn_off_n">Disattiva %1$d app</string>
     <string name="cyt_done">App disattivate: %1$d</string>
+    <string name="debug_off_when_done">Disattiva il debug alla fine</string>
+    <string name="debug_off_when_done_short">Quando esci dalle Impostazioni, Vibe Launcher disattiva di nuovo il debug del televisore e lo riattiva da solo la prossima volta che gli serve. Mentre è disattivato, un computer non può raggiungere il televisore tramite ADB.</string>
+    <string name="home_make">Rendi Vibe Launcher la Home</string>
+    <string name="home_make_short">Disattiva la schermata Home propria del televisore, così il tasto Home apre Vibe Launcher, senza bisogno del servizio Tasto Home.</string>
+    <string name="home_make_warning">La schermata Home propria del televisore viene disattivata e Vibe Launcher diventa la Home. Se non funziona, tutto viene ripristinato subito. «Torna alla schermata Home del televisore» lo annulla.</string>
+    <string name="home_restore">Torna alla schermata Home del televisore</string>
+    <string name="home_done">Ora Vibe Launcher è la Home</string>
+    <string name="home_failed">Il televisore non l\'ha accettato, quindi è tornata la sua schermata Home</string>
+    <string name="home_unsupported">Su questo dispositivo, una Home diversa impedisce alla trasmissione (Cast) di funzionare, quindi Vibe Launcher non tocca la sua schermata Home.</string>
+    <string name="anim_speed">Velocità animazioni</string>
+    <string name="anim_normal">Normale</string>
+    <string name="anim_fast">Più veloce</string>
+    <string name="anim_short">Le animazioni proprie del televisore all\'apertura di app e menu: più veloci, fanno sembrare più scattante un televisore datato. Richiede che Impostazioni &gt; App sia stato consentito una volta.</string>
+    <string name="free_memory">Libera memoria</string>
+    <string name="free_memory_short">Chiude le app in esecuzione in background, come fa il televisore quando ha poca memoria.</string>
+    <string name="memory_freed">%1$s liberati</string>
 </resources>

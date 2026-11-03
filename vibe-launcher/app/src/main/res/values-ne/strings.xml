@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ ले के बन्द हुन्छ भनेर देखाउँछ; OK ले त्यसलाई बदल्छ। यो टिभीमा नभएका एपहरू छोडिएका छन्, र टिभीलाई चाहिने भागहरू पनि। सूची बनाउनेले जानाजानी सक्रिय राखेकाहरूमा सुरुमा चिन्ह लगाइएको हुँदैन।</string>
     <string name="cyt_turn_off_n">एपहरू बन्द गर्नुहोस्: %1$d</string>
     <string name="cyt_done">बन्द गरिएका एपहरू: %1$d</string>
+    <string name="debug_off_when_done">सकिएपछि डिबगिङ बन्द गर्नुहोस्</string>
+    <string name="debug_off_when_done_short">तपाईं सेटिङहरूबाट निस्केपछि Vibe Launcher ले टिभीको डिबगिङ फेरि बन्द गर्छ, र अर्को पटक आवश्यक पर्दा आफैँ फेरि सक्रिय गर्छ। यो बन्द हुँदा कम्प्युटरले ADB मार्फत टिभीमा पहुँच गर्न सक्दैन।</string>
+    <string name="home_make">Vibe Launcher लाई होम बनाउनुहोस्</string>
+    <string name="home_make_short">टिभीको आफ्नै होम स्क्रिन बन्द गर्छ, ताकि होम बटनले Vibe Launcher खोलोस्, होम बटन सेवा चाहिँदैन।</string>
+    <string name="home_make_warning">टिभीको आफ्नै होम स्क्रिन बन्द हुन्छ र Vibe Launcher होम बन्छ। यसले काम नगरे सबै कुरा तुरुन्तै पहिलेकै अवस्थामा फर्काइन्छ। “टिभीको आफ्नै होम स्क्रिनमा फर्कनुहोस्” ले यसलाई पूर्ववत गर्छ।</string>
+    <string name="home_restore">टिभीको आफ्नै होम स्क्रिनमा फर्कनुहोस्</string>
+    <string name="home_done">Vibe Launcher अब होम हो</string>
+    <string name="home_failed">यो टिभीले यसलाई स्वीकार गरेन, त्यसैले यसको आफ्नै होम स्क्रिन फर्किएको छ</string>
+    <string name="home_unsupported">यो डिभाइसमा फरक होम हुँदा कास्टिङ काम गर्न छोड्छ, त्यसैले Vibe Launcher ले यसको आफ्नै होम स्क्रिन छुँदैन।</string>
+    <string name="anim_speed">एनिमेसनको गति</string>
+    <string name="anim_normal">सामान्य</string>
+    <string name="anim_fast">अझ छिटो</string>
+    <string name="anim_short">एप र मेनु खुल्दा टिभीका आफ्नै एनिमेसनहरू: छिटा एनिमेसनले पुरानो टिभीलाई अझ फुर्तिलो महसुस गराउँछ। यसका लागि सेटिङहरू &gt; एपहरू एक पटक अनुमति दिइएको हुनुपर्छ।</string>
+    <string name="free_memory">मेमोरी खाली गर्नुहोस्</string>
+    <string name="free_memory_short">पृष्ठभूमिमा चलिरहेका एपहरू बन्द गर्छ, जसरी टिभीले मेमोरी कम हुँदा गर्छ।</string>
+    <string name="memory_freed">%1$s खाली भयो</string>
 </resources>

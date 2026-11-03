@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ બતાવે છે કે શું બંધ થશે; OK તેને બદલે છે. આ ટીવી પર ન હોય તે ઍપ છોડી દેવાઈ છે, અને ટીવીને જરૂરી ભાગો પણ. યાદી બનાવનારે જાણીજોઈને ચાલુ રાખેલી વસ્તુઓ પર શરૂઆતમાં ટિક હોતી નથી.</string>
     <string name="cyt_turn_off_n">ઍપ બંધ કરો: %1$d</string>
     <string name="cyt_done">બંધ કરેલી ઍપ: %1$d</string>
+    <string name="debug_off_when_done">પૂર્ણ થાય ત્યારે ડીબગીંગ બંધ કરો</string>
+    <string name="debug_off_when_done_short">તમે સેટિંગ્સમાંથી બહાર નીકળો ત્યારે Vibe Launcher ટીવીનું ડીબગીંગ ફરી બંધ કરે છે, અને આગલી વખતે જરૂર પડે ત્યારે જાતે જ ફરી ચાલુ કરે છે. તે બંધ હોય ત્યારે કોઈ કમ્પ્યુટર ADB દ્વારા ટીવી સુધી પહોંચી શકતું નથી.</string>
+    <string name="home_make">Vibe Launcher ને હોમ બનાવો</string>
+    <string name="home_make_short">ટીવીની પોતાની હોમ સ્ક્રીન બંધ કરે છે, જેથી હોમ બટન Vibe Launcher ખોલે, હોમ બટન સેવાની જરૂર વગર.</string>
+    <string name="home_make_warning">ટીવીની પોતાની હોમ સ્ક્રીન બંધ થાય છે અને Vibe Launcher હોમ બને છે. જો તે ન થાય, તો બધું તરત જ પાછું હતું તેમ કરવામાં આવે છે. “ટીવીની પોતાની હોમ સ્ક્રીન પર પાછા જાઓ” તેને રદ કરે છે.</string>
+    <string name="home_restore">ટીવીની પોતાની હોમ સ્ક્રીન પર પાછા જાઓ</string>
+    <string name="home_done">Vibe Launcher હવે હોમ છે</string>
+    <string name="home_failed">આ ટીવીએ તે સ્વીકાર્યું નહીં, તેથી તેની પોતાની હોમ સ્ક્રીન પાછી આવી છે</string>
+    <string name="home_unsupported">આ ડિવાઇસ પર અલગ હોમથી કાસ્ટિંગ કામ કરતું બંધ થાય છે, તેથી Vibe Launcher તેની પોતાની હોમ સ્ક્રીનને અડતું નથી.</string>
+    <string name="anim_speed">એનિમેશનની ઝડપ</string>
+    <string name="anim_normal">સામાન્ય</string>
+    <string name="anim_fast">વધુ ઝડપી</string>
+    <string name="anim_short">ઍપ અને મેનૂ ખૂલે ત્યારે ટીવીના પોતાના એનિમેશન: વધુ ઝડપી એનિમેશનથી જૂનું ટીવી વધુ ચપળ લાગે છે. આ માટે સેટિંગ્સ &gt; ઍપને એકવાર મંજૂરી આપેલી હોવી જોઈએ.</string>
+    <string name="free_memory">મેમરી ખાલી કરો</string>
+    <string name="free_memory_short">બૅકગ્રાઉન્ડમાં ચાલતી ઍપ બંધ કરે છે, જેમ ટીવી મેમરી ઓછી પડે ત્યારે કરે છે.</string>
+    <string name="memory_freed">%1$s ખાલી થઈ</string>
 </resources>

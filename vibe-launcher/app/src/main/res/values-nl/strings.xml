@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ geeft aan wat wordt uitgezet; OK verandert dat. Apps die niet op deze tv staan, zijn weggelaten, en onderdelen die de tv nodig heeft ook. Wat de maker van de lijst bewust aan liet, staat eerst niet aangevinkt.</string>
     <string name="cyt_turn_off_n">Apps uitzetten: %1$d</string>
     <string name="cyt_done">Apps uitgezet: %1$d</string>
+    <string name="debug_off_when_done">Foutopsporing daarna uitzetten</string>
+    <string name="debug_off_when_done_short">Als je Instellingen verlaat, zet Vibe Launcher de foutopsporing van de tv weer uit, en de volgende keer dat het die nodig heeft vanzelf weer aan. Zolang die uit staat, kan een computer de tv niet via ADB bereiken.</string>
+    <string name="home_make">Vibe Launcher het startscherm maken</string>
+    <string name="home_make_short">Zet het eigen startscherm van de tv uit, zodat de startknop Vibe Launcher opent, zonder dat er een startknopservice nodig is.</string>
+    <string name="home_make_warning">Het eigen startscherm van de tv wordt uitgezet en Vibe Launcher wordt het startscherm. Lukt dat niet, dan wordt alles meteen teruggezet. ‘Terug naar het eigen startscherm van de tv’ maakt het ongedaan.</string>
+    <string name="home_restore">Terug naar het eigen startscherm van de tv</string>
+    <string name="home_done">Vibe Launcher is nu het startscherm</string>
+    <string name="home_failed">Deze tv nam het niet over, dus het eigen startscherm is terug</string>
+    <string name="home_unsupported">Op dit apparaat werkt casten niet meer met een ander startscherm, dus laat Vibe Launcher het eigen startscherm met rust.</string>
+    <string name="anim_speed">Animatiesnelheid</string>
+    <string name="anim_normal">Normaal</string>
+    <string name="anim_fast">Sneller</string>
+    <string name="anim_short">De eigen animaties van de tv bij het openen van apps en menu\'s: snellere laten een oudere tv vlotter aanvoelen. Instellingen &gt; Apps moet één keer zijn toegestaan.</string>
+    <string name="free_memory">Geheugen vrijmaken</string>
+    <string name="free_memory_short">Sluit de apps die op de achtergrond draaien, zoals de tv doet als het geheugen bijna op is.</string>
+    <string name="memory_freed">%1$s vrijgemaakt</string>
 </resources>

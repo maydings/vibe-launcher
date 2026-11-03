@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ የሚጠፉትን ያመለክታል፤ OK ይቀይረዋል። በዚህ ቲቪ ላይ የሌሉ መተግበሪያዎች አልተካተቱም፣ ቲቪው የሚያስፈልጉት ክፍሎችም እንዲሁ። የዝርዝሩ አዘጋጅ ሆን ብሎ እንደበሩ የተዋቸው ምልክት ሳይደረግባቸው ይጀምራሉ።</string>
     <string name="cyt_turn_off_n">መተግበሪያዎችን ያጥፉ፦ %1$d</string>
     <string name="cyt_done">የጠፉ መተግበሪያዎች፦ %1$d</string>
+    <string name="debug_off_when_done">ሲጨርሱ ስህተት ማረሚያን ያጥፉ</string>
+    <string name="debug_off_when_done_short">ቅንብሮችን ሲለቁ Vibe Launcher የቲቪውን ስህተት ማረሚያ እንደገና ያጠፋል፣ በሚቀጥለው ጊዜ ሲያስፈልገውም በራሱ መልሶ ያበራዋል። ጠፍቶ ሳለ ኮምፒውተር በADB በኩል ቲቪውን መድረስ አይችልም።</string>
+    <string name="home_make">Vibe Launcherን መነሻ ያድርጉት</string>
+    <string name="home_make_short">የቲቪውን የራሱን መነሻ ማያ ገጽ ያጠፋል፣ ስለዚህ የመነሻ አዝራሩ Vibe Launcherን ይከፍታል፤ የመነሻ አዝራር አገልግሎት አያስፈልግም።</string>
+    <string name="home_make_warning">የቲቪው የራሱ መነሻ ማያ ገጽ ይጠፋል፣ Vibe Launcherም መነሻ ይሆናል። ይህ ካልሠራ ሁሉም ነገር ወዲያውኑ ወደ ነበረበት ይመለሳል። «ወደ ቲቪው የራሱ መነሻ ማያ ገጽ ተመለስ» ይህንን ይቀለብሰዋል።</string>
+    <string name="home_restore">ወደ ቲቪው የራሱ መነሻ ማያ ገጽ ተመለስ</string>
+    <string name="home_done">Vibe Launcher አሁን መነሻ ነው</string>
+    <string name="home_failed">ይህ ቲቪ አልተቀበለውም፣ ስለዚህ የራሱ መነሻ ማያ ገጽ ተመልሷል</string>
+    <string name="home_unsupported">በዚህ መሣሪያ ላይ ሌላ መነሻ መውሰድ (Cast) እንዳይሠራ ያደርጋል፣ ስለዚህ Vibe Launcher የመሣሪያውን የራሱን መነሻ ማያ ገጽ አይነካም።</string>
+    <string name="anim_speed">የእነማ ፍጥነት</string>
+    <string name="anim_normal">መደበኛ</string>
+    <string name="anim_fast">ፈጣን</string>
+    <string name="anim_short">መተግበሪያዎችና ምናሌዎች ሲከፈቱ የሚታዩት የቲቪው የራሱ እነማዎች፦ ፈጣኖቹ የቆየ ቲቪ ፈጣን እንዲመስል ያደርጋሉ። ቅንብሮች &gt; መተግበሪያዎች አንድ ጊዜ መፈቀድ አለበት።</string>
+    <string name="free_memory">ማህደረ ትውስታ አስለቅቅ</string>
+    <string name="free_memory_short">ከበስተጀርባ እየሠሩ ያሉትን መተግበሪያዎች ይዘጋል፣ ቲቪው ማህደረ ትውስታ ሲያንሰው እንደሚያደርገው።</string>
+    <string name="memory_freed">%1$s ተለቅቋል</string>
 </resources>

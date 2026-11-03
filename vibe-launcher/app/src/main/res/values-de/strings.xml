@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ markiert, was ausgeschaltet wird; OK ändert das. Apps, die es auf diesem Fernseher nicht gibt, fehlen, ebenso Teile, die er braucht. Was die Person, die die Liste erstellt hat, bewusst eingeschaltet ließ, ist anfangs nicht angehakt.</string>
     <string name="cyt_turn_off_n">Apps ausschalten: %1$d</string>
     <string name="cyt_done">Apps ausgeschaltet: %1$d</string>
+    <string name="debug_off_when_done">Debugging danach ausschalten</string>
+    <string name="debug_off_when_done_short">Wenn du die Einstellungen verlässt, schaltet Vibe Launcher das Debugging des Fernsehers wieder aus und beim nächsten Mal, wenn es gebraucht wird, von selbst wieder ein. Solange es aus ist, kann ein Computer den Fernseher nicht über ADB erreichen.</string>
+    <string name="home_make">Vibe Launcher als Startbildschirm festlegen</string>
+    <string name="home_make_short">Schaltet den eigenen Startbildschirm des Fernsehers aus, sodass die Home-Taste Vibe Launcher öffnet, ganz ohne den Dienst für die Home-Taste.</string>
+    <string name="home_make_warning">Der eigene Startbildschirm des Fernsehers wird ausgeschaltet und Vibe Launcher wird zum Startbildschirm. Klappt das nicht, wird sofort alles zurückgesetzt. „Zurück zum eigenen Startbildschirm des Fernsehers“ macht es rückgängig.</string>
+    <string name="home_restore">Zurück zum eigenen Startbildschirm des Fernsehers</string>
+    <string name="home_done">Vibe Launcher ist jetzt der Startbildschirm</string>
+    <string name="home_failed">Der Fernseher hat es nicht übernommen, daher ist sein eigener Startbildschirm zurück</string>
+    <string name="home_unsupported">Auf diesem Gerät funktioniert Casting mit einem anderen Startbildschirm nicht mehr, deshalb lässt Vibe Launcher den eigenen Startbildschirm des Geräts unverändert.</string>
+    <string name="anim_speed">Animationsgeschwindigkeit</string>
+    <string name="anim_normal">Normal</string>
+    <string name="anim_fast">Schneller</string>
+    <string name="anim_short">Die eigenen Animationen des Fernsehers beim Öffnen von Apps und Menüs: Schnellere lassen einen älteren Fernseher flotter wirken. Dafür muss Einstellungen &gt; Apps einmal erlaubt worden sein.</string>
+    <string name="free_memory">Speicher freigeben</string>
+    <string name="free_memory_short">Schließt die Apps, die im Hintergrund laufen, wie es der Fernseher tut, wenn der Speicher knapp wird.</string>
+    <string name="memory_freed">%1$s freigegeben</string>
 </resources>

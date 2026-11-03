@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ ਦੱਸਦਾ ਹੈ ਕਿ ਕੀ ਬੰਦ ਹੋਵੇਗਾ; OK ਉਸਨੂੰ ਬਦਲਦਾ ਹੈ। ਜੋ ਐਪਾਂ ਇਸ ਟੀਵੀ ਉੱਤੇ ਨਹੀਂ ਹਨ, ਉਹ ਛੱਡ ਦਿੱਤੀਆਂ ਗਈਆਂ ਹਨ, ਅਤੇ ਟੀਵੀ ਦੇ ਲੋੜੀਂਦੇ ਹਿੱਸੇ ਵੀ। ਸੂਚੀ ਬਣਾਉਣ ਵਾਲੇ ਨੇ ਜੋ ਜਾਣ-ਬੁੱਝ ਕੇ ਚਾਲੂ ਰੱਖਿਆ ਸੀ, ਉਸ ਉੱਤੇ ਸ਼ੁਰੂ ਵਿੱਚ ਨਿਸ਼ਾਨ ਨਹੀਂ ਹੁੰਦਾ।</string>
     <string name="cyt_turn_off_n">ਐਪਾਂ ਬੰਦ ਕਰੋ: %1$d</string>
     <string name="cyt_done">ਬੰਦ ਕੀਤੀਆਂ ਐਪਾਂ: %1$d</string>
+    <string name="debug_off_when_done">ਕੰਮ ਪੂਰਾ ਹੋਣ \'ਤੇ ਡੀਬੱਗਿੰਗ ਬੰਦ ਕਰੋ</string>
+    <string name="debug_off_when_done_short">ਜਦੋਂ ਤੁਸੀਂ ਸੈਟਿੰਗਾਂ ਤੋਂ ਬਾਹਰ ਜਾਂਦੇ ਹੋ, Vibe Launcher ਟੀਵੀ ਦੀ ਡੀਬੱਗਿੰਗ ਫਿਰ ਬੰਦ ਕਰ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਅਗਲੀ ਵਾਰ ਲੋੜ ਪੈਣ \'ਤੇ ਆਪਣੇ ਆਪ ਫਿਰ ਚਾਲੂ ਕਰ ਲੈਂਦਾ ਹੈ। ਬੰਦ ਹੋਣ ਦੌਰਾਨ ਕੋਈ ਕੰਪਿਊਟਰ ADB ਰਾਹੀਂ ਟੀਵੀ ਤੱਕ ਨਹੀਂ ਪਹੁੰਚ ਸਕਦਾ।</string>
+    <string name="home_make">Vibe Launcher ਨੂੰ ਹੋਮ ਬਣਾਓ</string>
+    <string name="home_make_short">ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ ਬੰਦ ਕਰਦਾ ਹੈ, ਤਾਂ ਜੋ ਹੋਮ ਬਟਨ Vibe Launcher ਖੋਲ੍ਹੇ, ਹੋਮ ਬਟਨ ਸੇਵਾ ਦੀ ਲੋੜ ਤੋਂ ਬਿਨਾਂ।</string>
+    <string name="home_make_warning">ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ ਬੰਦ ਹੋ ਜਾਂਦੀ ਹੈ ਅਤੇ Vibe Launcher ਹੋਮ ਬਣ ਜਾਂਦਾ ਹੈ। ਜੇ ਇਹ ਕੰਮ ਨਾ ਕਰੇ, ਤਾਂ ਸਭ ਕੁਝ ਤੁਰੰਤ ਪਹਿਲਾਂ ਵਾਂਗ ਕਰ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ। “ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ \'ਤੇ ਵਾਪਸ ਜਾਓ” ਇਸਨੂੰ ਵਾਪਸ ਪਹਿਲਾਂ ਵਾਂਗ ਕਰਦਾ ਹੈ।</string>
+    <string name="home_restore">ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ \'ਤੇ ਵਾਪਸ ਜਾਓ</string>
+    <string name="home_done">Vibe Launcher ਹੁਣ ਹੋਮ ਹੈ</string>
+    <string name="home_failed">ਇਸ ਟੀਵੀ ਨੇ ਇਸਨੂੰ ਸਵੀਕਾਰ ਨਹੀਂ ਕੀਤਾ, ਇਸ ਲਈ ਇਸਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ ਵਾਪਸ ਆ ਗਈ ਹੈ</string>
+    <string name="home_unsupported">ਇਸ ਡਿਵਾਈਸ \'ਤੇ ਵੱਖਰਾ ਹੋਮ ਹੋਣ ਨਾਲ ਕਾਸਟਿੰਗ ਕੰਮ ਕਰਨਾ ਬੰਦ ਕਰ ਦਿੰਦੀ ਹੈ, ਇਸ ਲਈ Vibe Launcher ਇਸਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ ਨੂੰ ਨਹੀਂ ਛੇੜਦਾ।</string>
+    <string name="anim_speed">ਐਨੀਮੇਸ਼ਨ ਦੀ ਗਤੀ</string>
+    <string name="anim_normal">ਆਮ</string>
+    <string name="anim_fast">ਹੋਰ ਤੇਜ਼</string>
+    <string name="anim_short">ਐਪਾਂ ਅਤੇ ਮੀਨੂ ਖੁੱਲ੍ਹਣ ਵੇਲੇ ਟੀਵੀ ਦੀਆਂ ਆਪਣੀਆਂ ਐਨੀਮੇਸ਼ਨਾਂ: ਤੇਜ਼ ਐਨੀਮੇਸ਼ਨਾਂ ਨਾਲ ਪੁਰਾਣਾ ਟੀਵੀ ਵੱਧ ਫੁਰਤੀਲਾ ਲੱਗਦਾ ਹੈ। ਇਸ ਲਈ ਸੈਟਿੰਗਾਂ &gt; ਐਪਾਂ ਨੂੰ ਇੱਕ ਵਾਰ ਇਜਾਜ਼ਤ ਦਿੱਤੀ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ।</string>
+    <string name="free_memory">ਮੈਮਰੀ ਖਾਲੀ ਕਰੋ</string>
+    <string name="free_memory_short">ਬੈਕਗ੍ਰਾਊਂਡ ਵਿੱਚ ਚੱਲ ਰਹੀਆਂ ਐਪਾਂ ਬੰਦ ਕਰਦਾ ਹੈ, ਜਿਵੇਂ ਟੀਵੀ ਮੈਮਰੀ ਘੱਟ ਹੋਣ \'ਤੇ ਕਰਦਾ ਹੈ।</string>
+    <string name="memory_freed">%1$s ਖਾਲੀ ਹੋਈ</string>
 </resources>

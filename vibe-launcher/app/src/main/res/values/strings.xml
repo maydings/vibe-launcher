@@ -191,4 +191,20 @@
     <string name="cyt_plan_short">✓ marks what will be turned off; OK changes it. Apps that aren\'t on this TV are left out, and so are parts it needs. What the list\'s maker kept on by choice starts unticked.</string>
     <string name="cyt_turn_off_n">Turn off %1$d apps</string>
     <string name="cyt_done">%1$d apps turned off</string>
+    <string name="debug_off_when_done">Turn debugging off when done</string>
+    <string name="debug_off_when_done_short">When you leave Settings, Vibe Launcher turns the TV\'s debugging off again, and back on by itself the next time it needs it. A computer can\'t reach the TV over ADB while it\'s off.</string>
+    <string name="home_make">Make Vibe Launcher Home</string>
+    <string name="home_make_short">Turns the TV\'s own home screen off, so the Home button opens Vibe Launcher, with no Home button service needed.</string>
+    <string name="home_make_warning">The TV\'s own home screen is turned off and Vibe Launcher becomes Home. If that doesn\'t take, everything is put back at once. Back to the TV\'s own home screen undoes it.</string>
+    <string name="home_restore">Back to the TV\'s own home screen</string>
+    <string name="home_done">Vibe Launcher is Home now</string>
+    <string name="home_failed">This TV didn\'t take it, so its own home screen is back</string>
+    <string name="home_unsupported">On this device, a different Home stops casting from working, so Vibe Launcher leaves its own home screen alone.</string>
+    <string name="anim_speed">Animation speed</string>
+    <string name="anim_normal">Normal</string>
+    <string name="anim_fast">Faster</string>
+    <string name="anim_short">The TV\'s own animations, as apps and menus open: faster ones make an older TV feel quicker. Needs Settings &gt; Apps to have been allowed once.</string>
+    <string name="free_memory">Free memory</string>
+    <string name="free_memory_short">Closes the apps running in the background, as the TV does when it runs short.</string>
+    <string name="memory_freed">%1$s freed</string>
 </resources>

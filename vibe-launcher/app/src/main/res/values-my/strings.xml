@@ -186,4 +186,20 @@
     <string name="cyt_plan_short">✓ သည် ပိတ်မည့်အရာကို ပြပြီး OK ဖြင့် ပြောင်းနိုင်သည်။ ဤ TV တွင် မရှိသော အက်ပ်များနှင့် TV လိုအပ်သော အစိတ်အပိုင်းများကို ချန်ထားသည်။ စာရင်းပြုလုပ်သူက ရည်ရွယ်ချက်ရှိရှိ ဖွင့်ထားခဲ့သည့်အရာများကို အစတွင် အမှန်ခြစ် မထားပါ။</string>
     <string name="cyt_turn_off_n">အက်ပ် %1$d ခု ပိတ်ရန်</string>
     <string name="cyt_done">အက်ပ် %1$d ခု ပိတ်ပြီးပါပြီ</string>
+    <string name="debug_off_when_done">ပြီးလျှင် အမှားရှာပြင်ခြင်းကို ပိတ်ရန်</string>
+    <string name="debug_off_when_done_short">ဆက်တင်များမှ ထွက်သောအခါ Vibe Launcher သည် TV ၏ အမှားရှာပြင်ခြင်းကို ပြန်ပိတ်ပြီး နောက်တစ်ကြိမ် လိုအပ်သည့်အခါ ၎င်းဘာသာ ပြန်ဖွင့်သည်။ ပိတ်ထားစဉ် ကွန်ပျူတာသည် ADB ဖြင့် TV သို့ ချိတ်ဆက်၍ မရပါ။</string>
+    <string name="home_make">Vibe Launcher ကို ပင်မအဖြစ် ထားရန်</string>
+    <string name="home_make_short">TV ၏ ကိုယ်ပိုင် ပင်မစခရင်ကို ပိတ်၍ ပင်မခလုတ်က Vibe Launcher ကို ဖွင့်စေသည်။ ပင်မခလုတ် ဝန်ဆောင်မှု မလိုပါ။</string>
+    <string name="home_make_warning">TV ၏ ကိုယ်ပိုင် ပင်မစခရင်ကို ပိတ်ပြီး Vibe Launcher သည် ပင်မ ဖြစ်လာသည်။ ၎င်း အလုပ်မဖြစ်ပါက အားလုံးကို ချက်ချင်း ပြန်ထားပေးသည်။ “TV ၏ ကိုယ်ပိုင် ပင်မစခရင်သို့ ပြန်သွားရန်” က ၎င်းကို ပြန်ဖျက်သည်။</string>
+    <string name="home_restore">TV ၏ ကိုယ်ပိုင် ပင်မစခရင်သို့ ပြန်သွားရန်</string>
+    <string name="home_done">Vibe Launcher သည် ယခု ပင်မ ဖြစ်ပါပြီ</string>
+    <string name="home_failed">ဤ TV က လက်မခံသဖြင့် ၎င်း၏ ကိုယ်ပိုင် ပင်မစခရင် ပြန်ရောက်လာပါပြီ</string>
+    <string name="home_unsupported">ဤစက်ပစ္စည်းတွင် အခြား ပင်မ ထားလျှင် ကာစ်လုပ်ခြင်း (Cast) အလုပ်မလုပ်တော့သဖြင့် Vibe Launcher သည် ၎င်း၏ ကိုယ်ပိုင် ပင်မစခရင်ကို မထိပါ။</string>
+    <string name="anim_speed">လှုပ်ရှားသက်ဝင်မှု အမြန်နှုန်း</string>
+    <string name="anim_normal">ပုံမှန်</string>
+    <string name="anim_fast">ပိုမြန်</string>
+    <string name="anim_short">အက်ပ်များနှင့် မီနူးများ ဖွင့်စဉ် TV ၏ ကိုယ်ပိုင် လှုပ်ရှားသက်ဝင်မှုများ- ပိုမြန်သည့်အခါ TV အဟောင်းကို ပိုသွက်သည်ဟု ခံစားရစေသည်။ ဆက်တင်များ &gt; အက်ပ်များကို တစ်ကြိမ် ခွင့်ပြုထားရန် လိုသည်။</string>
+    <string name="free_memory">မှတ်ဉာဏ် ရှင်းရန်</string>
+    <string name="free_memory_short">TV က မှတ်ဉာဏ် နည်းသည့်အခါ လုပ်သကဲ့သို့ နောက်ခံတွင် အလုပ်လုပ်နေသော အက်ပ်များကို ပိတ်သည်။</string>
+    <string name="memory_freed">%1$s ရှင်းပြီး</string>
 </resources>
