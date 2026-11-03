@@ -200,6 +200,8 @@
     <string name="anim_fast">अझ छिटो</string>
     <string name="anim_short">एप र मेनु खुल्दा टिभीका आफ्नै एनिमेसनहरू: छिटा एनिमेसनले पुरानो टिभीलाई अझ फुर्तिलो महसुस गराउँछ। यसका लागि सेटिङहरू &gt; एपहरू एक पटक अनुमति दिइएको हुनुपर्छ।</string>
     <string name="free_memory">मेमोरी खाली गर्नुहोस्</string>
-    <string name="free_memory_short">पृष्ठभूमिमा चलिरहेका एपहरू बन्द गर्छ, जसरी टिभीले मेमोरी कम हुँदा गर्छ।</string>
     <string name="memory_freed">%1$s खाली भयो</string>
+    <string name="debloat">एपहरूको सफाइ</string>
+    <string name="default_launcher">डिफल्ट होम एप</string>
+    <string name="home_stock">टिभीको आफ्नै होम स्क्रिन</string>
 </resources>

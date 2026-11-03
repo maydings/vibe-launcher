@@ -200,6 +200,8 @@
     <string name="anim_fast">Швидша</string>
     <string name="anim_short">Власні анімації телевізора під час відкриття застосунків і меню: зі швидшими старий телевізор здається жвавішим. Потрібно, щоб Налаштування &gt; Застосунки хоча б раз було дозволено.</string>
     <string name="free_memory">Звільнити пам’ять</string>
-    <string name="free_memory_short">Закриває застосунки, що працюють у фоні, як це робить телевізор, коли йому бракує пам’яті.</string>
     <string name="memory_freed">Звільнено: %1$s</string>
+    <string name="debloat">Очищення застосунків</string>
+    <string name="default_launcher">Головний екран за замовчуванням</string>
+    <string name="home_stock">Власний головний екран телевізора</string>
 </resources>

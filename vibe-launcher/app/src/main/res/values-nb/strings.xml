@@ -200,6 +200,8 @@
     <string name="anim_fast">Raskere</string>
     <string name="anim_short">TV-ens egne animasjoner når apper og menyer åpnes: raskere animasjoner får en eldre TV til å føles kjappere. Krever at Innstillinger &gt; Apper er blitt tillatt én gang.</string>
     <string name="free_memory">Frigjør minne</string>
-    <string name="free_memory_short">Lukker appene som kjører i bakgrunnen, slik TV-en gjør når den får lite minne.</string>
     <string name="memory_freed">%1$s frigjort</string>
+    <string name="debloat">Opprydding i apper</string>
+    <string name="default_launcher">Standard startside</string>
+    <string name="home_stock">TV-ens egen startside</string>
 </resources>

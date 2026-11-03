@@ -200,6 +200,8 @@
     <string name="anim_fast">高速</string>
     <string name="anim_short">アプリやメニューを開くときのテレビ独自のアニメーションです。速くすると古いテレビでもきびきび感じられます。設定 &gt; アプリを一度許可している必要があります。</string>
     <string name="free_memory">メモリを解放</string>
-    <string name="free_memory_short">テレビがメモリ不足のときと同じように、バックグラウンドで動いているアプリを閉じます。</string>
     <string name="memory_freed">%1$s 解放しました</string>
+    <string name="debloat">アプリのクリーンアップ</string>
+    <string name="default_launcher">デフォルトのホームアプリ</string>
+    <string name="home_stock">テレビ独自のホーム画面</string>
 </resources>

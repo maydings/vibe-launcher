@@ -200,6 +200,8 @@
     <string name="anim_fast">Plus rapide</string>
     <string name="anim_short">Les animations propres au téléviseur, à l\'ouverture des applis et des menus : plus rapides, elles rendent un ancien téléviseur plus réactif. Nécessite d\'avoir autorisé une fois Réglages &gt; Applis.</string>
     <string name="free_memory">Libérer de la mémoire</string>
-    <string name="free_memory_short">Ferme les applis qui tournent en arrière-plan, comme le fait le téléviseur quand il manque de mémoire.</string>
     <string name="memory_freed">%1$s libérés</string>
+    <string name="debloat">Nettoyage des applis</string>
+    <string name="default_launcher">Écran d\'accueil par défaut</string>
+    <string name="home_stock">L\'écran d\'accueil du téléviseur</string>
 </resources>

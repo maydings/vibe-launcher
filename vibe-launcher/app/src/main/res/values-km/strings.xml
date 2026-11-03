@@ -200,6 +200,8 @@
     <string name="anim_fast">លឿនជាង</string>
     <string name="anim_short">ចលនាផ្ទាល់ខ្លួនរបស់ទូរទស្សន៍ ពេលកម្មវិធី និងម៉ឺនុយបើក៖ ចលនាលឿនជាងធ្វើឲ្យទូរទស្សន៍ចាស់មានអារម្មណ៍រហ័សជាង។ ត្រូវតែបានអនុញ្ញាត ការកំណត់ &gt; កម្មវិធី ម្ដងរួចហើយ។</string>
     <string name="free_memory">សម្អាតអង្គចងចាំ</string>
-    <string name="free_memory_short">បិទកម្មវិធីដែលកំពុងដំណើរការនៅផ្ទៃខាងក្រោយ ដូចដែលទូរទស្សន៍ធ្វើពេលខ្វះអង្គចងចាំ។</string>
     <string name="memory_freed">បានសម្អាត %1$s</string>
+    <string name="debloat">សម្អាតកម្មវិធី</string>
+    <string name="default_launcher">អេក្រង់ដើមលំនាំដើម</string>
+    <string name="home_stock">អេក្រង់ដើមផ្ទាល់ខ្លួនរបស់ទូរទស្សន៍</string>
 </resources>

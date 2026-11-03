@@ -200,6 +200,8 @@
     <string name="anim_fast">سریع‌تر</string>
     <string name="anim_short">پویانمایی‌های خود تلویزیون هنگام باز شدن برنامه‌ها و منوها: پویانمایی‌های سریع‌تر باعث می‌شوند تلویزیون قدیمی‌تر چابک‌تر به نظر برسد. لازم است تنظیمات &gt; برنامه‌ها یک بار مجاز شده باشد.</string>
     <string name="free_memory">آزاد کردن حافظه</string>
-    <string name="free_memory_short">برنامه‌هایی را که در پس‌زمینه اجرا می‌شوند می‌بندد، همان‌طور که تلویزیون وقتی حافظه کم می‌آورد این کار را می‌کند.</string>
     <string name="memory_freed">%1$s آزاد شد</string>
+    <string name="debloat">پاک‌سازی برنامه‌ها</string>
+    <string name="default_launcher">صفحه اصلی پیش‌فرض</string>
+    <string name="home_stock">صفحه اصلی خود تلویزیون</string>
 </resources>

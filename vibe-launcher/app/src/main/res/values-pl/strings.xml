@@ -200,6 +200,8 @@
     <string name="anim_fast">Szybsza</string>
     <string name="anim_short">Własne animacje telewizora przy otwieraniu aplikacji i menu: szybsze sprawiają, że starszy telewizor wydaje się żwawszy. Wymaga jednorazowego zezwolenia w Ustawienia &gt; Aplikacje.</string>
     <string name="free_memory">Zwolnij pamięć</string>
-    <string name="free_memory_short">Zamyka aplikacje działające w tle, tak jak robi to telewizor, gdy brakuje mu pamięci.</string>
     <string name="memory_freed">Zwolniono %1$s</string>
+    <string name="debloat">Porządkowanie aplikacji</string>
+    <string name="default_launcher">Domyślny ekran główny</string>
+    <string name="home_stock">Własny ekran główny telewizora</string>
 </resources>

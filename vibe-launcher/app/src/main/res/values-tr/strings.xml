@@ -200,6 +200,8 @@
     <string name="anim_fast">Daha hızlı</string>
     <string name="anim_short">Uygulamalar ve menüler açılırken TV\'nin kendi animasyonları: daha hızlı olanlar eski bir TV\'yi daha çevik hissettirir. Ayarlar &gt; Uygulamalar\'a bir kez izin verilmiş olması gerekir.</string>
     <string name="free_memory">Belleği boşalt</string>
-    <string name="free_memory_short">Arka planda çalışan uygulamaları kapatır, tıpkı TV\'nin belleği azaldığında yaptığı gibi.</string>
     <string name="memory_freed">%1$s boşaltıldı</string>
+    <string name="debloat">Uygulama temizliği</string>
+    <string name="default_launcher">Varsayılan ana ekran</string>
+    <string name="home_stock">TV\'nin kendi ana ekranı</string>
 </resources>

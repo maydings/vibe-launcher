@@ -200,6 +200,8 @@
     <string name="anim_fast">Haraka zaidi</string>
     <string name="anim_short">Uhuishaji wa TV yenyewe programu na menyu zinapofunguka: uhuishaji wa haraka zaidi hufanya TV ya zamani ihisi kuwa ya kasi zaidi. Inahitaji Mipangilio &gt; Programu iwe imeruhusiwa mara moja.</string>
     <string name="free_memory">Achilia kumbukumbu</string>
-    <string name="free_memory_short">Hufunga programu zinazoendeshwa chinichini, kama TV inavyofanya kumbukumbu inapopungua.</string>
     <string name="memory_freed">Imeachilia %1$s</string>
+    <string name="debloat">Usafishaji wa programu</string>
+    <string name="default_launcher">Skrini ya mwanzo chaguomsingi</string>
+    <string name="home_stock">Skrini ya mwanzo ya TV yenyewe</string>
 </resources>

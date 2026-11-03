@@ -200,6 +200,8 @@
     <string name="anim_fast">빠르게</string>
     <string name="anim_short">앱과 메뉴가 열릴 때 나오는 TV 자체 애니메이션입니다. 빠르게 하면 오래된 TV도 더 빠릿하게 느껴집니다. 설정 &gt; 앱을 한 번 허용해야 합니다.</string>
     <string name="free_memory">메모리 확보</string>
-    <string name="free_memory_short">TV가 메모리가 부족할 때처럼, 백그라운드에서 실행 중인 앱을 닫습니다.</string>
     <string name="memory_freed">%1$s 확보됨</string>
+    <string name="debloat">앱 정리</string>
+    <string name="default_launcher">기본 홈 앱</string>
+    <string name="home_stock">TV 자체 홈 화면</string>
 </resources>

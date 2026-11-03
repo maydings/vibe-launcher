@@ -200,6 +200,8 @@
     <string name="anim_fast">দ্রুততর</string>
     <string name="anim_short">অ্যাপ ও মেনু খোলার সময় টিভির নিজের অ্যানিমেশন: দ্রুততরগুলো পুরোনো টিভিকে আরও চটপটে মনে করায়। এর জন্য সেটিংস &gt; অ্যাপ একবার অনুমতি দেওয়া থাকতে হবে।</string>
     <string name="free_memory">মেমরি খালি করুন</string>
-    <string name="free_memory_short">পটভূমিতে চলা অ্যাপগুলো বন্ধ করে, যেমন টিভি মেমরি কম পড়লে করে।</string>
     <string name="memory_freed">%1$s খালি হয়েছে</string>
+    <string name="debloat">অ্যাপ পরিষ্কার</string>
+    <string name="default_launcher">ডিফল্ট হোম অ্যাপ</string>
+    <string name="home_stock">টিভির নিজের হোম স্ক্রিন</string>
 </resources>

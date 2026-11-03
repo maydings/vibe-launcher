@@ -200,6 +200,8 @@
     <string name="anim_fast">Schneller</string>
     <string name="anim_short">Die eigenen Animationen des Fernsehers beim Öffnen von Apps und Menüs: Schnellere lassen einen älteren Fernseher flotter wirken. Dafür muss Einstellungen &gt; Apps einmal erlaubt worden sein.</string>
     <string name="free_memory">Speicher freigeben</string>
-    <string name="free_memory_short">Schließt die Apps, die im Hintergrund laufen, wie es der Fernseher tut, wenn der Speicher knapp wird.</string>
     <string name="memory_freed">%1$s freigegeben</string>
+    <string name="debloat">Apps aufräumen</string>
+    <string name="default_launcher">Standard-Startbildschirm</string>
+    <string name="home_stock">Eigener Startbildschirm des Fernsehers</string>
 </resources>

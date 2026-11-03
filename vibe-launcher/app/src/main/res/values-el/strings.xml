@@ -200,6 +200,8 @@
     <string name="anim_fast">Ταχύτερη</string>
     <string name="anim_short">Οι κινούμενες εικόνες της ίδιας της τηλεόρασης καθώς ανοίγουν εφαρμογές και μενού: οι ταχύτερες κάνουν μια παλαιότερη τηλεόραση να φαίνεται πιο γρήγορη. Χρειάζεται να έχει επιτραπεί μία φορά το Ρυθμίσεις &gt; Εφαρμογές.</string>
     <string name="free_memory">Απελευθέρωση μνήμης</string>
-    <string name="free_memory_short">Κλείνει τις εφαρμογές που εκτελούνται στο παρασκήνιο, όπως κάνει η τηλεόραση όταν της λείπει μνήμη.</string>
     <string name="memory_freed">Ελευθερώθηκαν %1$s</string>
+    <string name="debloat">Καθαρισμός εφαρμογών</string>
+    <string name="default_launcher">Προεπιλεγμένη αρχική οθόνη</string>
+    <string name="home_stock">Η αρχική οθόνη της τηλεόρασης</string>
 </resources>

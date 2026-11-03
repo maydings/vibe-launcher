@@ -200,6 +200,8 @@
     <string name="anim_fast">अधिक वेगवान</string>
     <string name="anim_short">अ‍ॅप्स आणि मेनू उघडताना टीव्हीचे स्वतःचे अ‍ॅनिमेशन: वेगवान अ‍ॅनिमेशनमुळे जुना टीव्ही अधिक चपळ वाटतो. यासाठी सेटिंग्ज &gt; अ‍ॅप्स ला एकदा अनुमती दिलेली असणे आवश्यक आहे.</string>
     <string name="free_memory">मेमरी मोकळी करा</string>
-    <string name="free_memory_short">पार्श्वभूमीत चालू असलेली अ‍ॅप्स बंद करते, जसे टीव्हीची मेमरी कमी पडल्यावर तो करतो.</string>
     <string name="memory_freed">%1$s मोकळी झाली</string>
+    <string name="debloat">अ‍ॅप्सची साफसफाई</string>
+    <string name="default_launcher">डीफॉल्ट होम अ‍ॅप</string>
+    <string name="home_stock">टीव्हीची स्वतःची होम स्क्रीन</string>
 </resources>

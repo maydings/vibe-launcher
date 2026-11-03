@@ -200,6 +200,8 @@
     <string name="anim_fast">ਹੋਰ ਤੇਜ਼</string>
     <string name="anim_short">ਐਪਾਂ ਅਤੇ ਮੀਨੂ ਖੁੱਲ੍ਹਣ ਵੇਲੇ ਟੀਵੀ ਦੀਆਂ ਆਪਣੀਆਂ ਐਨੀਮੇਸ਼ਨਾਂ: ਤੇਜ਼ ਐਨੀਮੇਸ਼ਨਾਂ ਨਾਲ ਪੁਰਾਣਾ ਟੀਵੀ ਵੱਧ ਫੁਰਤੀਲਾ ਲੱਗਦਾ ਹੈ। ਇਸ ਲਈ ਸੈਟਿੰਗਾਂ &gt; ਐਪਾਂ ਨੂੰ ਇੱਕ ਵਾਰ ਇਜਾਜ਼ਤ ਦਿੱਤੀ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ।</string>
     <string name="free_memory">ਮੈਮਰੀ ਖਾਲੀ ਕਰੋ</string>
-    <string name="free_memory_short">ਬੈਕਗ੍ਰਾਊਂਡ ਵਿੱਚ ਚੱਲ ਰਹੀਆਂ ਐਪਾਂ ਬੰਦ ਕਰਦਾ ਹੈ, ਜਿਵੇਂ ਟੀਵੀ ਮੈਮਰੀ ਘੱਟ ਹੋਣ \'ਤੇ ਕਰਦਾ ਹੈ।</string>
     <string name="memory_freed">%1$s ਖਾਲੀ ਹੋਈ</string>
+    <string name="debloat">ਐਪਾਂ ਦੀ ਸਫ਼ਾਈ</string>
+    <string name="default_launcher">ਡਿਫ਼ੌਲਟ ਹੋਮ ਐਪ</string>
+    <string name="home_stock">ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ</string>
 </resources>

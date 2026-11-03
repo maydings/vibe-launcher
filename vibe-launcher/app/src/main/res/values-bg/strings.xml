@@ -200,6 +200,8 @@
     <string name="anim_fast">По-бърза</string>
     <string name="anim_short">Собствените анимации на телевизора при отваряне на приложения и менюта: по-бързите правят по-стар телевизор да изглежда по-пъргав. Нужно е Настройки &gt; Приложения да е било разрешено веднъж.</string>
     <string name="free_memory">Освобождаване на памет</string>
-    <string name="free_memory_short">Затваря приложенията, работещи на заден план, както прави телевизорът, когато паметта му не стига.</string>
     <string name="memory_freed">Освободени: %1$s</string>
+    <string name="debloat">Почистване на приложения</string>
+    <string name="default_launcher">Начален екран по подразбиране</string>
+    <string name="home_stock">Собственият начален екран на телевизора</string>
 </resources>

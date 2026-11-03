@@ -200,6 +200,8 @@
     <string name="anim_fast">வேகமாக</string>
     <string name="anim_short">ஆப்ஸும் மெனுக்களும் திறக்கும்போது வரும் டிவியின் சொந்த அனிமேஷன்கள்: வேகமானவை பழைய டிவியை விரைவாக உணர வைக்கும். இதற்கு அமைப்புகள் &gt; ஆப்ஸ் ஒருமுறை அனுமதிக்கப்பட்டிருக்க வேண்டும்.</string>
     <string name="free_memory">நினைவகத்தைக் காலியாக்கு</string>
-    <string name="free_memory_short">பின்னணியில் இயங்கும் ஆப்ஸை மூடும், நினைவகம் குறையும்போது டிவி செய்வது போலவே.</string>
     <string name="memory_freed">%1$s காலியாக்கப்பட்டது</string>
+    <string name="debloat">ஆப்ஸைச் சுத்தம் செய்தல்</string>
+    <string name="default_launcher">இயல்பு முகப்பு ஆப்ஸ்</string>
+    <string name="home_stock">டிவியின் சொந்த முகப்புத் திரை</string>
 </resources>

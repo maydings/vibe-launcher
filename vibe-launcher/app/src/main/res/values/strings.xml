@@ -205,6 +205,8 @@
     <string name="anim_fast">Faster</string>
     <string name="anim_short">The TV\'s own animations, as apps and menus open: faster ones make an older TV feel quicker. Needs Settings &gt; Apps to have been allowed once.</string>
     <string name="free_memory">Free memory</string>
-    <string name="free_memory_short">Closes the apps running in the background, as the TV does when it runs short.</string>
     <string name="memory_freed">%1$s freed</string>
+    <string name="debloat">Debloat</string>
+    <string name="default_launcher">Default launcher</string>
+    <string name="home_stock">The TV\'s own home screen</string>
 </resources>

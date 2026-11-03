@@ -200,6 +200,8 @@
     <string name="anim_fast">Mas mabilis</string>
     <string name="anim_short">Ang sariling mga animation ng TV habang bumubukas ang mga app at menu: pinaparamdam ng mas mabibilis na animation na mas maliksi ang lumang TV. Kailangang napayagan na nang isang beses ang Mga setting &gt; Mga app.</string>
     <string name="free_memory">Magbakante ng memory</string>
-    <string name="free_memory_short">Isinasara ang mga app na tumatakbo sa background, gaya ng ginagawa ng TV kapag kinakapos ito sa memory.</string>
     <string name="memory_freed">Nabakante ang %1$s</string>
+    <string name="debloat">Paglilinis ng mga app</string>
+    <string name="default_launcher">Default na Home</string>
+    <string name="home_stock">Sariling home screen ng TV</string>
 </resources>

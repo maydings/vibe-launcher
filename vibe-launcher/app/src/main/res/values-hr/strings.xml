@@ -200,6 +200,8 @@
     <string name="anim_fast">Brža</string>
     <string name="anim_short">Vlastite animacije televizora pri otvaranju aplikacija i izbornika: s bržima se stariji televizor čini žustrijim. Potrebno je da je Postavke &gt; Aplikacije jednom dopušteno.</string>
     <string name="free_memory">Oslobodi memoriju</string>
-    <string name="free_memory_short">Zatvara aplikacije koje rade u pozadini, kao što to televizor čini kad mu ponestane memorije.</string>
     <string name="memory_freed">Oslobođeno: %1$s</string>
+    <string name="debloat">Čišćenje aplikacija</string>
+    <string name="default_launcher">Zadani početni zaslon</string>
+    <string name="home_stock">Vlastiti početni zaslon televizora</string>
 </resources>

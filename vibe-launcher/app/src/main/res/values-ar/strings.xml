@@ -200,6 +200,8 @@
     <string name="anim_fast">أسرع</string>
     <string name="anim_short">الرسوم المتحركة الخاصة بالتلفزيون عند فتح التطبيقات والقوائم: الأسرع منها تجعل التلفزيون القديم يبدو أسرع. يجب أن يكون قد تم السماح مرة واحدة في الإعدادات &gt; التطبيقات.</string>
     <string name="free_memory">تحرير الذاكرة</string>
-    <string name="free_memory_short">يغلق التطبيقات التي تعمل في الخلفية، كما يفعل التلفزيون عندما تنفد ذاكرته.</string>
     <string name="memory_freed">تم تحرير %1$s</string>
+    <string name="debloat">تنظيف التطبيقات</string>
+    <string name="default_launcher">تطبيق الشاشة الرئيسية التلقائي</string>
+    <string name="home_stock">الشاشة الرئيسية الخاصة بالتلفزيون</string>
 </resources>

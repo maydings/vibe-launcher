@@ -200,6 +200,8 @@
     <string name="anim_fast">更快</string>
     <string name="anim_short">電視自帶的應用程式和選單開啟動畫：動畫更快會讓舊電視用起來更流暢。需要曾允許過一次 設定 &gt; 應用程式。</string>
     <string name="free_memory">釋放記憶體</string>
-    <string name="free_memory_short">關閉在背景執行的應用程式，就像電視記憶體不足時那樣。</string>
     <string name="memory_freed">已釋放 %1$s</string>
+    <string name="debloat">清理應用程式</string>
+    <string name="default_launcher">預設主畫面</string>
+    <string name="home_stock">電視自帶的主畫面</string>
 </resources>

@@ -200,6 +200,8 @@
     <string name="anim_fast">زیادہ تیز</string>
     <string name="anim_short">ایپس اور مینو کھلتے وقت ٹی وی کی اپنی اینیمیشنز: تیز اینیمیشنز سے پرانا ٹی وی زیادہ پھرتیلا محسوس ہوتا ہے۔ اس کے لیے ترتیبات &gt; ایپس کو ایک بار اجازت دی گئی ہونی چاہیے۔</string>
     <string name="free_memory">میموری خالی کریں</string>
-    <string name="free_memory_short">پس منظر میں چل رہی ایپس بند کرتا ہے، جیسے ٹی وی میموری کم پڑنے پر کرتا ہے۔</string>
     <string name="memory_freed">%1$s خالی ہوئی</string>
+    <string name="debloat">ایپس کی صفائی</string>
+    <string name="default_launcher">ڈیفالٹ ہوم ایپ</string>
+    <string name="home_stock">ٹی وی کی اپنی ہوم اسکرین</string>
 </resources>

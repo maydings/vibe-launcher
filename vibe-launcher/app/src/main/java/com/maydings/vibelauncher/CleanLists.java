@@ -63,6 +63,40 @@ final class CleanLists {
             this.sameBrand = sameBrand;
             this.score = score;
         }
+
+        /**
+         * The name before its brackets, for a row and a page title: "Sony BRAVIA 4K GB" of "Sony BRAVIA 4K GB
+         * (KD-75XE8596, XBR-49X705D; BRAVIA_ATV2_EU, BRAVIA_ATV2_BR)", which a row cut short and a title wrapped.
+         */
+        String shortName() {
+            int open = name.indexOf(" (");
+            String s = open > 0 ? name.substring(0, open).trim() : name;
+            return s.isEmpty() ? folder : s;
+        }
+
+        /**
+         * What goes under the list: the models and platforms from the brackets, then the notes' first part (they
+         * run to several lines, more than the space under the list holds), then the folder.
+         */
+        CharSequence about() {
+            StringBuilder b = new StringBuilder();
+            int open = name.indexOf(" ("), close = name.lastIndexOf(')');
+            if (open > 0 && close > open) b.append(name, open + 2, close).append('\n');
+            if (!notes.isEmpty()) b.append(trim(notes, 150)).append('\n');
+            return b.append(folder);
+        }
+    }
+
+    /**
+     * At most about this many characters: cut at the last "; " or ", " before it (a list's clauses), else at a
+     * space, with an ellipsis.
+     */
+    static String trim(String s, int max) {
+        if (s.length() <= max) return s;
+        String head = s.substring(0, max);
+        int cut = Math.max(head.lastIndexOf("; "), head.lastIndexOf(", "));
+        if (cut < max / 2) cut = head.lastIndexOf(' ');
+        return (cut > 0 ? head.substring(0, cut) : head).trim() + "…";
     }
 
     /** One line of a list: the package, why (after its #), its section, and whether the maker kept it by choice. */

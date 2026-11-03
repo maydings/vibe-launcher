@@ -200,6 +200,8 @@
     <string name="anim_fast">Rychlejší</string>
     <string name="anim_short">Vlastní animace televizoru při otevírání aplikací a nabídek: s rychlejšími působí starší televizor svižněji. Vyžaduje, aby bylo jednou povoleno Nastavení &gt; Aplikace.</string>
     <string name="free_memory">Uvolnit paměť</string>
-    <string name="free_memory_short">Zavře aplikace běžící na pozadí, jako to televizor dělá, když mu dochází paměť.</string>
     <string name="memory_freed">Uvolněno: %1$s</string>
+    <string name="debloat">Vyčištění aplikací</string>
+    <string name="default_launcher">Výchozí domovská obrazovka</string>
+    <string name="home_stock">Vlastní domovská obrazovka televizoru</string>
 </resources>

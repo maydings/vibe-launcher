@@ -200,6 +200,8 @@
     <string name="anim_fast">เร็วขึ้น</string>
     <string name="anim_short">ภาพเคลื่อนไหวของทีวีเองขณะเปิดแอปและเมนู: ภาพเคลื่อนไหวที่เร็วขึ้นทำให้ทีวีรุ่นเก่ารู้สึกเร็วขึ้น ต้องเคยอนุญาต การตั้งค่า &gt; แอป แล้วหนึ่งครั้ง</string>
     <string name="free_memory">ล้างหน่วยความจำ</string>
-    <string name="free_memory_short">ปิดแอปที่ทำงานอยู่เบื้องหลัง เหมือนที่ทีวีทำเมื่อหน่วยความจำเหลือน้อย</string>
     <string name="memory_freed">คืนหน่วยความจำ %1$s แล้ว</string>
+    <string name="debloat">ทำความสะอาดแอป</string>
+    <string name="default_launcher">แอปหน้าแรกเริ่มต้น</string>
+    <string name="home_stock">หน้าแรกของทีวีเอง</string>
 </resources>

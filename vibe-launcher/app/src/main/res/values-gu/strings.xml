@@ -200,6 +200,8 @@
     <string name="anim_fast">વધુ ઝડપી</string>
     <string name="anim_short">ઍપ અને મેનૂ ખૂલે ત્યારે ટીવીના પોતાના એનિમેશન: વધુ ઝડપી એનિમેશનથી જૂનું ટીવી વધુ ચપળ લાગે છે. આ માટે સેટિંગ્સ &gt; ઍપને એકવાર મંજૂરી આપેલી હોવી જોઈએ.</string>
     <string name="free_memory">મેમરી ખાલી કરો</string>
-    <string name="free_memory_short">બૅકગ્રાઉન્ડમાં ચાલતી ઍપ બંધ કરે છે, જેમ ટીવી મેમરી ઓછી પડે ત્યારે કરે છે.</string>
     <string name="memory_freed">%1$s ખાલી થઈ</string>
+    <string name="debloat">ઍપની સફાઈ</string>
+    <string name="default_launcher">ડિફૉલ્ટ હોમ ઍપ</string>
+    <string name="home_stock">ટીવીની પોતાની હોમ સ્ક્રીન</string>
 </resources>

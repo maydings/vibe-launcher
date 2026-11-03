@@ -200,6 +200,8 @@
     <string name="anim_fast">Mai rapidă</string>
     <string name="anim_short">Animațiile proprii ale televizorului, la deschiderea aplicațiilor și meniurilor: cele mai rapide fac un televizor mai vechi să pară mai vioi. Necesită ca Setări &gt; Aplicații să fi fost permis o dată.</string>
     <string name="free_memory">Eliberează memorie</string>
-    <string name="free_memory_short">Închide aplicațiile care rulează în fundal, așa cum face televizorul când nu mai are memorie suficientă.</string>
     <string name="memory_freed">Eliberat: %1$s</string>
+    <string name="debloat">Curățarea aplicațiilor</string>
+    <string name="default_launcher">Ecran de pornire implicit</string>
+    <string name="home_stock">Ecranul de pornire al televizorului</string>
 </resources>

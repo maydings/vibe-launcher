@@ -200,6 +200,8 @@
     <string name="anim_fast">מהירה יותר</string>
     <string name="anim_short">האנימציות של הטלוויזיה עצמה, כשאפליקציות ותפריטים נפתחים: אנימציות מהירות יותר גורמות לטלוויזיה ישנה להרגיש זריזה יותר. נדרש שהגדרות &gt; אפליקציות אושר פעם אחת.</string>
     <string name="free_memory">פינוי זיכרון</string>
-    <string name="free_memory_short">סוגר את האפליקציות שפועלות ברקע, כמו שהטלוויזיה עושה כשחסר לה זיכרון.</string>
     <string name="memory_freed">פונו %1$s</string>
+    <string name="debloat">ניקוי אפליקציות</string>
+    <string name="default_launcher">מסך בית ברירת מחדל</string>
+    <string name="home_stock">מסך הבית של הטלוויזיה</string>
 </resources>

@@ -200,6 +200,8 @@
     <string name="anim_fast">तेज़</string>
     <string name="anim_short">ऐप्स और मेनू खुलते समय टीवी के अपने ऐनिमेशन: तेज़ ऐनिमेशन से पुराना टीवी ज़्यादा फुर्तीला लगता है। इसके लिए सेटिंग्स &gt; ऐप्स को एक बार अनुमति दी गई होनी चाहिए।</string>
     <string name="free_memory">मेमोरी खाली करें</string>
-    <string name="free_memory_short">बैकग्राउंड में चल रहे ऐप्स बंद करता है, जैसे टीवी मेमोरी कम पड़ने पर करता है।</string>
     <string name="memory_freed">%1$s खाली हुई</string>
+    <string name="debloat">ऐप्स की सफ़ाई</string>
+    <string name="default_launcher">डिफ़ॉल्ट होम ऐप</string>
+    <string name="home_stock">टीवी की अपनी होम स्क्रीन</string>
 </resources>

@@ -200,6 +200,8 @@
     <string name="anim_fast">Lebih cepat</string>
     <string name="anim_short">Animasi bawaan TV saat aplikasi dan menu terbuka: animasi yang lebih cepat membuat TV lama terasa lebih gesit. Perlu Setelan &gt; Aplikasi sudah pernah diizinkan sekali.</string>
     <string name="free_memory">Kosongkan memori</string>
-    <string name="free_memory_short">Menutup aplikasi yang berjalan di latar belakang, seperti yang dilakukan TV saat memorinya hampir habis.</string>
     <string name="memory_freed">%1$s dikosongkan</string>
+    <string name="debloat">Pembersihan aplikasi</string>
+    <string name="default_launcher">Beranda default</string>
+    <string name="home_stock">Layar beranda bawaan TV</string>
 </resources>

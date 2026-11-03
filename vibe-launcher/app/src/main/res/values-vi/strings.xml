@@ -200,6 +200,8 @@
     <string name="anim_fast">Nhanh hơn</string>
     <string name="anim_short">Hiệu ứng động riêng của TV khi mở ứng dụng và menu: hiệu ứng nhanh hơn giúp TV cũ có cảm giác nhanh nhạy hơn. Cần đã cho phép Cài đặt &gt; Ứng dụng một lần.</string>
     <string name="free_memory">Giải phóng bộ nhớ</string>
-    <string name="free_memory_short">Đóng các ứng dụng đang chạy trong nền, như TV vẫn làm khi sắp hết bộ nhớ.</string>
     <string name="memory_freed">Đã giải phóng %1$s</string>
+    <string name="debloat">Dọn dẹp ứng dụng</string>
+    <string name="default_launcher">Màn hình chính mặc định</string>
+    <string name="home_stock">Màn hình chính riêng của TV</string>
 </resources>

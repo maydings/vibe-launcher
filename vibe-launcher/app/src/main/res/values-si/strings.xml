@@ -200,6 +200,8 @@
     <string name="anim_fast">වේගවත්</string>
     <string name="anim_short">යෙදුම් සහ මෙනු විවෘත වන විට රූපවාහිනියේම සජීවිකරණ: වේගවත් ඒවා පැරණි රූපවාහිනියක් වඩා ඉක්මන් ලෙස දැනීමට සලස්වයි. මේ සඳහා සැකසීම් &gt; යෙදුම් වෙත වරක් ඉඩ දී තිබිය යුතුය.</string>
     <string name="free_memory">මතකය නිදහස් කරන්න</string>
-    <string name="free_memory_short">පසුබිමේ ධාවනය වන යෙදුම් වසයි, රූපවාහිනියට මතකය අඩු වූ විට එය කරන ආකාරයටම.</string>
     <string name="memory_freed">%1$s නිදහස් කළා</string>
+    <string name="debloat">යෙදුම් පිරිසිදු කිරීම</string>
+    <string name="default_launcher">පෙරනිමි මුල් තිරය</string>
+    <string name="home_stock">රූපවාහිනියේම මුල් තිරය</string>
 </resources>

@@ -200,6 +200,8 @@
     <string name="anim_fast">ပိုမြန်</string>
     <string name="anim_short">အက်ပ်များနှင့် မီနူးများ ဖွင့်စဉ် TV ၏ ကိုယ်ပိုင် လှုပ်ရှားသက်ဝင်မှုများ- ပိုမြန်သည့်အခါ TV အဟောင်းကို ပိုသွက်သည်ဟု ခံစားရစေသည်။ ဆက်တင်များ &gt; အက်ပ်များကို တစ်ကြိမ် ခွင့်ပြုထားရန် လိုသည်။</string>
     <string name="free_memory">မှတ်ဉာဏ် ရှင်းရန်</string>
-    <string name="free_memory_short">TV က မှတ်ဉာဏ် နည်းသည့်အခါ လုပ်သကဲ့သို့ နောက်ခံတွင် အလုပ်လုပ်နေသော အက်ပ်များကို ပိတ်သည်။</string>
     <string name="memory_freed">%1$s ရှင်းပြီး</string>
+    <string name="debloat">အက်ပ်များ ရှင်းလင်းရန်</string>
+    <string name="default_launcher">မူရင်း ပင်မအက်ပ်</string>
+    <string name="home_stock">TV ၏ ကိုယ်ပိုင် ပင်မစခရင်</string>
 </resources>

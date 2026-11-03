@@ -98,7 +98,9 @@ slides in when you press Up from the picture alone, or move down into the app gr
   PlayStation behind an HDMI switch each get their own row. Names and hidden inputs from the TV's own
   settings carry over.
 - **Network** shows each connection with its IP address (and the Wi-Fi link speed), and VPNs.
-- **Settings** shows live memory and disk use and opens Vibe Launcher's settings or Android's.
+- **Settings** shows live memory and disk use and opens Vibe Launcher's settings or Android's. Last in
+  it (GitHub build), **Free memory** closes the apps running in the background, through the TV's
+  debugging once Settings → Apps has been allowed, and says how much that gave back.
 
 | ![The Inputs menu: HDMI 2 with a PlayStation 5 and an Apple TV behind it, both connected](vibe-launcher/docs/inputs-menu.jpg) | ![The Settings menu with live RAM use](vibe-launcher/docs/settings-menu.jpg) |
 |---|---|
@@ -203,27 +205,28 @@ it back on.
   restart), or have a Network debugging switch of their own (NVIDIA Shield). TVs that offer only Android
   11's Wireless debugging, with a pairing code (Chromecast with Google TV, Google TV Streamer), aren't
   supported yet: there a window says so.
-- **Make Vibe Launcher Home**: turns the TV's own home screen off (and Google TV's setup app, which
-  can take Home back) and sets Vibe Launcher as Home, in one go that puts everything back if a step
-  fails; then checks the Home button really comes here. No Home button service needed after it.
-  **Back to the TV's own home screen** undoes it. Not offered on Chromecast with Google TV and the
-  Google TV Streamer, where another Home stops casting.
-- **Turn all back on**: turns on every app Vibe Launcher turned off, and nothing else.
-- **Turn off again** (only when there's something to do): the apps Vibe Launcher turned off before that
-  are on here now, from a backup restored on this TV or turned back on by an update. It lists them first,
-  then **Turn off now** turns them all off in one go.
-- **Clean-up lists**: the tested lists of the [Clean Your TV](https://github.com/Gathin23/cleanyourtv)
-  community (MIT), read from GitHub as they are now, so new TVs and fixes come without an update. Your
-  TV's brand comes first, the lists that name its own model and platform at the top; pick one and its
-  plan shows only what's installed here, each with the list's reason under it. ✓ marks what goes (OK
-  changes it), what the list's maker turned off only by choice (Chromecast, the phone remote) starts
-  unticked, and the parts your TV needs stay. **Turn off N apps** does the rest, and Turn all back on
-  undoes it, whatever the list says later.
-- **Apps you can turn off**: every app on the TV by name, On or Off; OK switches it.
-- **Apps the TV needs**: the parts it can't do without, grayed: Android itself, Google Play, Settings,
-  the keyboard, the remote and Bluetooth, Wi-Fi, the inputs and the app that plays them, setup, the
-  launchers, and the TV maker's system parts. Vibe Launcher won't turn these off.
-- **Free memory**: closes the apps running in the background, and says how much that gave back.
+- **Debloat**:
+  - **Clean-up lists**: the tested lists of the [Clean Your TV](https://github.com/Gathin23/cleanyourtv)
+    community (MIT), read from GitHub as they are now, so new TVs and fixes come without an update. Your
+    TV's brand comes first, the lists that name its own model and platform at the top; pick one and its
+    plan shows only what's installed here, each with the list's reason under it. ✓ marks what goes (OK
+    changes it), what the list's maker turned off only by choice (Chromecast, the phone remote) starts
+    unticked, and the parts your TV needs stay. **Turn off N apps** does the rest.
+  - **Turn all back on**: turns on every app Vibe Launcher turned off, and nothing else, whatever a list
+    says later.
+  - **Turn off again** (only when there's something to do): the apps Vibe Launcher turned off before that
+    are on here now, from a backup restored on this TV or turned back on by an update. It lists them first,
+    then **Turn off now** turns them all off in one go.
+  - **Apps you can turn off**: every app on the TV by name, On or Off; OK switches it.
+  - **Apps the TV needs**: the parts it can't do without, grayed: Android itself, Google Play, Settings,
+    the keyboard, the remote and Bluetooth, Wi-Fi, the inputs and the app that plays them, setup, the
+    launchers, and the TV maker's system parts. Vibe Launcher won't turn these off.
+- **Default launcher**: Vibe Launcher or the TV's own home screen, the one in use ticked. Picking Vibe
+  Launcher turns the TV's own home screen off (and Google TV's setup app, which can take Home back) and
+  sets Vibe Launcher as Home, in one go that puts everything back if a step fails, then checks the Home
+  button really comes here: no Home button service needed after it. Picking the TV's own puts it back
+  (and turns the Home button service off, which would otherwise cover it). Not offered on Chromecast with
+  Google TV and the Google TV Streamer, where another Home stops casting.
 - **Turn debugging off when done**: Off (the default) or On. The first time Vibe Launcher connects, the
   TV's ADB gives it the `WRITE_SECURE_SETTINGS` permission, which it uses only to turn debugging on and
   off and for the animation speed. With this On, leaving Settings turns debugging off again, closing the

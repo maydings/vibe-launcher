@@ -200,6 +200,8 @@
     <string name="anim_fast">Gyorsabb</string>
     <string name="anim_short">A tévé saját animációi alkalmazások és menük megnyitásakor: a gyorsabbaktól egy régebbi tévé fürgébbnek érződik. Ehhez a Beállítások &gt; Alkalmazások részt egyszer engedélyezni kellett.</string>
     <string name="free_memory">Memória felszabadítása</string>
-    <string name="free_memory_short">Bezárja a háttérben futó alkalmazásokat, ahogy a tévé is teszi, amikor kevés a memóriája.</string>
     <string name="memory_freed">%1$s felszabadítva</string>
+    <string name="debloat">Alkalmazások tisztítása</string>
+    <string name="default_launcher">Alapértelmezett kezdőképernyő</string>
+    <string name="home_stock">A tévé saját kezdőképernyője</string>
 </resources>

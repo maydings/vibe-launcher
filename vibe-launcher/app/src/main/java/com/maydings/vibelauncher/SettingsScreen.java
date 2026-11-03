@@ -137,7 +137,19 @@ final class SettingsScreen {
             this.title = title;
             view = new LinearLayout(ctx);
             view.setOrientation(LinearLayout.VERTICAL);
-            ScrollView scroll = new ScrollView(ctx);
+            // A long list (a clean-up list's plan, the lists themselves) stops short of the column's bottom: the
+            // text under it keeps room for five lines, where it had none and was cut off.
+            int maxListH = screenH - (int) ((82 + 16) * density) - (int) (110 * density);
+            ScrollView scroll = new ScrollView(ctx) {
+                @Override
+                protected void onMeasure(int widthSpec, int heightSpec) {
+                    int size = View.MeasureSpec.getSize(heightSpec);
+                    if (View.MeasureSpec.getMode(heightSpec) == View.MeasureSpec.UNSPECIFIED || size > maxListH) {
+                        heightSpec = View.MeasureSpec.makeMeasureSpec(maxListH, View.MeasureSpec.AT_MOST);
+                    }
+                    super.onMeasure(widthSpec, heightSpec);
+                }
+            };
             scroll.setVerticalScrollBarEnabled(false);
             // A ScrollView takes focus itself when Up or Down finds no row: on the left list it would hold
             // focus out of sight, so only the rows can have it.
@@ -1010,9 +1022,9 @@ final class SettingsScreen {
     private final List<TvApps.App> shownApps = new ArrayList<>();
 
     /**
-     * Apps: the TV's own network debugging (Adb) and whether Vibe Launcher may use it, Turn all back on, then
-     * the two lists (appList): the apps you can turn off, and the ones the TV needs. OK on Network debugging, or
-     * the first switch, makes the TV ask whether to allow Vibe Launcher.
+     * Apps: the TV's own network debugging (Adb) and whether Vibe Launcher may use it (OK on it, or the first
+     * thing done through it, makes the TV ask), then Debloat (the clean-up lists, then the apps one by one),
+     * Default launcher (Vibe Launcher or the TV's own) and, last, Turn debugging off when done.
      */
     private Page apps() {
         Page page = new Page(ctx.getString(R.string.tab_apps));
@@ -1024,6 +1036,35 @@ final class SettingsScreen {
             runAdb(page, null, r -> {
             });
         };
+        // Whether it's allowed already, without making the TV ask.
+        adbStatus = -1;
+        adb().execute(() -> {
+            Adb.Result r = Adb.check(false);
+            handler.post(() -> {
+                adbStatus = r.status;
+                page.refresh();
+            });
+        });
+        Row debloat = page.link(R.string.debloat, null, this::debloat);
+        debloat.about = R.string.apps_short;
+        Row launcher = page.link(R.string.default_launcher, () -> ctx.getString(DefaultHome.isHome(ctx)
+                ? R.string.app_name : R.string.home_stock), this::defaultLauncher);
+        launcher.about = TvControl.homeUnsupported() ? R.string.home_unsupported : R.string.home_make_short;
+        // Last: a choice most people never touch (and one that locks a computer's ADB out while it's on).
+        Row offWhenDone = page.toggle(R.string.debug_off_when_done, settings::adbOffWhenDone, settings::setAdbOffWhenDone);
+        offWhenDone.about = R.string.debug_off_when_done_short;
+        return page;
+    }
+
+    /**
+     * Debloat: Clean Your TV's lists first, then the options: Turn all back on, Turn off again (only while there's
+     * something to), and the apps one by one, those you can turn off and those the TV needs.
+     */
+    private Page debloat() {
+        Page page = new Page(ctx.getString(R.string.debloat));
+        page.footnote = R.string.apps_short;
+        Row lists = page.link(R.string.cyt_lists, null, this::cleanLists);
+        lists.about = R.string.cyt_lists_short;
         Row undo = page.add(R.string.apps_turn_all_on, () -> {
             int n = TvApps.turnedOff(ctx).size();
             return n == 0 ? "" : String.valueOf(n);
@@ -1037,50 +1078,35 @@ final class SettingsScreen {
         again.about = R.string.apps_turn_off_again_short;
         turnOffAgainRow = again;
         showTurnOffAgain();
-        // Whether it's allowed already, without making the TV ask.
-        adbStatus = -1;
-        adb().execute(() -> {
-            Adb.Result r = Adb.check(false);
-            handler.post(() -> {
-                adbStatus = r.status;
-                page.refresh();
-            });
-        });
-        // Home: Vibe Launcher made Home with the TV's own launcher off, or back to that one.
-        homeMakeRow = page.add(R.string.home_make, null, null);
-        homeMakeRow.about = TvControl.homeUnsupported() ? R.string.home_unsupported : R.string.home_make_short;
-        homeMakeRow.action = () -> {
-            if (TvControl.homeUnsupported()) {
+        page.link(R.string.apps_can_turn_off, null, () -> appList(false));
+        page.link(R.string.apps_tv_needs, null, () -> appList(true));
+        return page;
+    }
+
+    /**
+     * Default launcher: Vibe Launcher or the TV's own home screen, the one in use ticked; picking the other
+     * switches (Vibe Launcher after a window saying what happens). The TV's own is only there while it has one
+     * that can come back; on Google's own players only the TV's own is offered (another Home stops casting).
+     */
+    private Page defaultLauncher() {
+        Page page = new Page(ctx.getString(R.string.default_launcher));
+        boolean unsupported = TvControl.homeUnsupported();
+        page.footnote = unsupported ? R.string.home_unsupported : R.string.home_make_warning;
+        Row vibe = page.add(ctx.getString(R.string.app_name), () -> DefaultHome.isHome(ctx) ? "✓" : "", () -> {
+            if (DefaultHome.isHome(ctx) && TvControl.stockOn(ctx).isEmpty()) return;   // already
+            if (unsupported) {
                 Toast.makeText(host, R.string.home_unsupported, Toast.LENGTH_LONG).show();
                 return;
             }
             explainThenDo(R.string.home_make, R.string.home_make_warning, () -> makeHome(page));
-        };
-        homeRestoreRow = page.add(R.string.home_restore, null, () -> restoreHome(page));
-        showHomeRows();
-        Row lists = page.link(R.string.cyt_lists, null, this::cleanLists);
-        lists.about = R.string.cyt_lists_short;
-        page.link(R.string.apps_can_turn_off, null, () -> appList(false));
-        page.link(R.string.apps_tv_needs, null, () -> appList(true));
-        Row memory = page.add(R.string.free_memory, null, () -> freeMemory(page));
-        memory.about = R.string.free_memory_short;
-        // Last: a choice most people never touch (and one that locks a computer's ADB out while it's on).
-        Row offWhenDone = page.toggle(R.string.debug_off_when_done, settings::adbOffWhenDone, settings::setAdbOffWhenDone);
-        offWhenDone.about = R.string.debug_off_when_done_short;
+        });
+        Row stock = page.add(R.string.home_stock, () -> DefaultHome.isHome(ctx) ? "" : "✓", () -> {
+            if (DefaultHome.isHome(ctx)) restoreHome(page);
+        });
+        // The TV's own only while there's one turned off to bring back (or it's in use now).
+        stock.view.setVisibility(!DefaultHome.isHome(ctx) || !TvControl.stockOff(ctx).isEmpty() ? View.VISIBLE : View.GONE);
+        page.opened = DefaultHome.isHome(ctx) ? vibe : stock;
         return page;
-    }
-
-    private Row homeMakeRow, homeRestoreRow;
-
-    /**
-     * Make Vibe Launcher Home while it isn't (or a stock launcher is still on, which some TVs send Home to
-     * whatever is chosen); Back to the TV's own home screen while one is off and Vibe Launcher is Home.
-     */
-    private void showHomeRows() {
-        if (homeMakeRow == null) return;
-        boolean home = DefaultHome.isHome(ctx);
-        homeMakeRow.view.setVisibility(!home || !TvControl.stockOn(ctx).isEmpty() ? View.VISIBLE : View.GONE);
-        homeRestoreRow.view.setVisibility(home && !TvControl.stockOff(ctx).isEmpty() ? View.VISIBLE : View.GONE);
     }
 
     /**
@@ -1098,7 +1124,7 @@ final class SettingsScreen {
             }
             if (!failed) for (String pkg : stock) TvApps.remember(ctx, pkg, false);
             Toast.makeText(host, failed ? R.string.home_failed : R.string.home_done, Toast.LENGTH_LONG).show();
-            showHomeRows();
+            page.refresh();   // the tick moves (runAdb refreshes once before the restore above lands)
             showTurnOffAgain();
         });
     }
@@ -1115,24 +1141,9 @@ final class SettingsScreen {
             // WRITE_SECURE_SETTINGS, which never touches accessibility).
             Runnable serviceOff = HomeButtonLink.turnOff;
             if (DefaultHome.homeButtonOn(ctx) && serviceOff != null) serviceOff.run();
-            showHomeRows();
+            page.refresh();
             showTurnOffAgain();
         });
-    }
-
-    /** Background apps closed (as the TV does when it runs short), and how much memory that gave back. */
-    private void freeMemory(Page page) {
-        android.app.ActivityManager am = (android.app.ActivityManager) ctx.getSystemService(Context.ACTIVITY_SERVICE);
-        android.app.ActivityManager.MemoryInfo before = new android.app.ActivityManager.MemoryInfo();
-        am.getMemoryInfo(before);
-        runAdb(page, "am kill-all", r -> handler.postDelayed(() -> {   // a moment for the memory to come back
-            if (host == null) return;
-            android.app.ActivityManager.MemoryInfo after = new android.app.ActivityManager.MemoryInfo();
-            am.getMemoryInfo(after);
-            long freed = Math.max(0, after.availMem - before.availMem);
-            Toast.makeText(host, ctx.getString(R.string.memory_freed,
-                    android.text.format.Formatter.formatShortFileSize(ctx, freed)), Toast.LENGTH_SHORT).show();
-        }, 800));
     }
 
     /**
@@ -1219,8 +1230,8 @@ final class SettingsScreen {
         int to = Math.min(tvs.size(), from + 12);
         for (int i = from; i < to; i++) {
             CleanLists.Tv tv = tvs.get(i);
-            Row row = page.add(tv.name, () -> tv.os, null);
-            row.aboutText = tv.notes.isEmpty() ? tv.folder : tv.notes + "\n" + tv.folder;
+            Row row = page.add(tv.shortName(), () -> tv.os, null);
+            row.aboutText = tv.about();
             row.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
             row.action = () -> open(cleanPlan(tv), row);
         }
@@ -1234,7 +1245,7 @@ final class SettingsScreen {
      * own record, so Turn all back on undoes them whatever the list says later.
      */
     private Page cleanPlan(CleanLists.Tv tv) {
-        Page page = new Page(tv.name);
+        Page page = new Page(tv.shortName());
         page.footnote = R.string.cyt_plan_short;
         Row go = page.add(R.string.cyt_loading, null, null);
         Context app = ctx.getApplicationContext();
@@ -1292,8 +1303,9 @@ final class SettingsScreen {
             Row row = page.add(a.label, () -> a.needed ? "" : !a.on ? ctx.getString(R.string.off)
                     : ticked.contains(a.pkg) ? "✓" : "", null);
             StringBuilder about = new StringBuilder();
-            if (!item.section.isEmpty()) about.append(item.section).append('\n');
-            if (!item.reason.isEmpty()) about.append(item.reason).append('\n');
+            // Short enough for the space under the list: some sections are a sentence long.
+            if (!item.section.isEmpty()) about.append(CleanLists.trim(item.section, 70)).append('\n');
+            if (!item.reason.isEmpty()) about.append(CleanLists.trim(item.reason, 90)).append('\n');
             about.append(a.pkg);
             if (a.needed) {
                 about.append('\n').append(ctx.getString(R.string.app_protected));

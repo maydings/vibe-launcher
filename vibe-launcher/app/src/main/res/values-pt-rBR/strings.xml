@@ -200,6 +200,8 @@
     <string name="anim_fast">Mais rápida</string>
     <string name="anim_short">As animações da própria TV ao abrir apps e menus: mais rápidas, elas deixam uma TV antiga mais ágil. É preciso ter permitido Configurações &gt; Apps uma vez.</string>
     <string name="free_memory">Liberar memória</string>
-    <string name="free_memory_short">Fecha os apps em execução em segundo plano, como a TV faz quando a memória está acabando.</string>
     <string name="memory_freed">%1$s liberados</string>
+    <string name="debloat">Limpeza de apps</string>
+    <string name="default_launcher">Tela inicial padrão</string>
+    <string name="home_stock">A tela inicial da TV</string>
 </resources>

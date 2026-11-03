@@ -200,6 +200,8 @@
     <string name="anim_fast">ಹೆಚ್ಚು ವೇಗ</string>
     <string name="anim_short">ಆ್ಯಪ್‌ಗಳು ಮತ್ತು ಮೆನುಗಳು ತೆರೆಯುವಾಗ ಟಿವಿಯ ಸ್ವಂತ ಆನಿಮೇಷನ್‌ಗಳು: ವೇಗದವುಗಳು ಹಳೆಯ ಟಿವಿಯನ್ನು ಚುರುಕಾಗಿ ಅನಿಸುವಂತೆ ಮಾಡುತ್ತವೆ. ಇದಕ್ಕೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು &gt; ಆ್ಯಪ್‌ಗಳು ಒಮ್ಮೆ ಅನುಮತಿಸಲ್ಪಟ್ಟಿರಬೇಕು.</string>
     <string name="free_memory">ಮೆಮೊರಿ ಖಾಲಿ ಮಾಡಿ</string>
-    <string name="free_memory_short">ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಚಾಲನೆಯಲ್ಲಿರುವ ಆ್ಯಪ್‌ಗಳನ್ನು ಮುಚ್ಚುತ್ತದೆ, ಟಿವಿಗೆ ಮೆಮೊರಿ ಕಡಿಮೆಯಾದಾಗ ಅದು ಮಾಡುವಂತೆ.</string>
     <string name="memory_freed">%1$s ಖಾಲಿ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="debloat">ಆ್ಯಪ್ ಸ್ವಚ್ಛತೆ</string>
+    <string name="default_launcher">ಡೀಫಾಲ್ಟ್ ಹೋಮ್ ಆ್ಯಪ್</string>
+    <string name="home_stock">ಟಿವಿಯ ಸ್ವಂತ ಹೋಮ್ ಸ್ಕ್ರೀನ್</string>
 </resources>

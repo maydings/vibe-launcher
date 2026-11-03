@@ -1,0 +1,3 @@
+* Settings > Apps is reordered: Network debugging, Debloat (the clean-up lists and each app), Default launcher (Vibe Launcher or the TV's own), then Turn debugging off when done.
+* Free memory moves to the end of the top bar's Settings menu.
+* Clean-up lists show short TV names; long help text fits under the list.

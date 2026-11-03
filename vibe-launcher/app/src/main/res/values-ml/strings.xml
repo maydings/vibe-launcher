@@ -200,6 +200,8 @@
     <string name="anim_fast">കൂടുതൽ വേഗത്തിൽ</string>
     <string name="anim_short">ആപ്പുകളും മെനുകളും തുറക്കുമ്പോഴുള്ള ടിവിയുടെ സ്വന്തം ആനിമേഷനുകൾ: വേഗതയേറിയവ പഴയ ടിവിയെ കൂടുതൽ ചുറുചുറുക്കുള്ളതായി തോന്നിപ്പിക്കും. ക്രമീകരണം &gt; ആപ്പുകൾ ഒരിക്കൽ അനുവദിച്ചിരിക്കണം.</string>
     <string name="free_memory">മെമ്മറി സ്വതന്ത്രമാക്കുക</string>
-    <string name="free_memory_short">പശ്ചാത്തലത്തിൽ പ്രവർത്തിക്കുന്ന ആപ്പുകൾ അടയ്ക്കുന്നു, മെമ്മറി കുറയുമ്പോൾ ടിവി ചെയ്യുന്നതുപോലെ.</string>
     <string name="memory_freed">%1$s സ്വതന്ത്രമാക്കി</string>
+    <string name="debloat">ആപ്പ് വൃത്തിയാക്കൽ</string>
+    <string name="default_launcher">ഡിഫോൾട്ട് ഹോം ആപ്പ്</string>
+    <string name="home_stock">ടിവിയുടെ സ്വന്തം ഹോം സ്‌ക്രീൻ</string>
 </resources>

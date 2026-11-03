@@ -200,6 +200,8 @@
     <string name="anim_fast">వేగంగా</string>
     <string name="anim_short">యాప్‌లు, మెనూలు తెరుచుకునేటప్పుడు టీవీ సొంత యానిమేషన్‌లు: వేగవంతమైనవి పాత టీవీని చురుగ్గా అనిపించేలా చేస్తాయి. దీనికి సెట్టింగ్‌లు &gt; యాప్‌లు ఒకసారి అనుమతించబడి ఉండాలి.</string>
     <string name="free_memory">మెమరీని ఖాళీ చేయండి</string>
-    <string name="free_memory_short">బ్యాక్‌గ్రౌండ్‌లో రన్ అవుతున్న యాప్‌లను మూసివేస్తుంది, మెమరీ తక్కువైనప్పుడు టీవీ చేసినట్లే.</string>
     <string name="memory_freed">%1$s ఖాళీ అయింది</string>
+    <string name="debloat">యాప్‌ల శుభ్రత</string>
+    <string name="default_launcher">డిఫాల్ట్ హోమ్ యాప్</string>
+    <string name="home_stock">టీవీ సొంత హోమ్ స్క్రీన్</string>
 </resources>

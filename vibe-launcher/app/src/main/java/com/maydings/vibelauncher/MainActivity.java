@@ -2337,6 +2337,31 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     /** Dropdown under the gear: the launcher's own settings, or the system's. */
+    /**
+     * The Settings menu's Free memory: "am kill-all" (the background apps closed, as Android does when it runs short)
+     * over the TV's ADB, without asking it; then how much memory came back, or that it didn't take.
+     */
+    private void freeMemory() {
+        android.app.ActivityManager am = getSystemService(android.app.ActivityManager.class);
+        android.app.ActivityManager.MemoryInfo before = new android.app.ActivityManager.MemoryInfo();
+        am.getMemoryInfo(before);
+        Context app = getApplicationContext();
+        new Thread(() -> {
+            Adb.Result r = TvControl.shellQuietly(app, "am kill-all");
+            handler.postDelayed(() -> {   // a moment for the memory to come back
+                if (r.status != Adb.OK) {
+                    Toast.makeText(this, R.string.adb_failed, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                android.app.ActivityManager.MemoryInfo after = new android.app.ActivityManager.MemoryInfo();
+                am.getMemoryInfo(after);
+                long freed = Math.max(0, after.availMem - before.availMem);
+                Toast.makeText(this, getString(R.string.memory_freed,
+                        android.text.format.Formatter.formatShortFileSize(this, freed)), Toast.LENGTH_SHORT).show();
+            }, 800);
+        }, "FreeMemory").start();
+    }
+
     private void showSettingsMenu(View anchor) {
         View panel = getLayoutInflater().inflate(R.layout.popup_inputs, root, false);
         LinearLayout rows = panel.findViewById(R.id.rows);
@@ -2384,6 +2409,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (!DefaultHome.isHome(this) && !DefaultHome.homeButtonOn(this)) {
             // The stock launcher stays on: the TV's default-Home dialog where it has one, else HomeKeyService.
             addInputRow(rows, popup, R.drawable.ic_home, getString(R.string.make_home), -1, this::offerHome);
+        }
+        // Last, under the meters' menu: the background apps closed through the TV's ADB (the adb build, once
+        // Settings > Apps has been allowed), and how much memory that gave back.
+        if (!BuildConfig.STORE) {
+            addInputRow(rows, popup, R.drawable.ic_memory, getString(R.string.free_memory), -1, this::freeMemory);
         }
         // Live while the menu is open.
         Runnable tick = new Runnable() {

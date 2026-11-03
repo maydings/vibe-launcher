@@ -59,6 +59,29 @@ final class TvControl {
         }
     }
 
+    /**
+     * One shell command from outside Settings > Apps (the top bar's Free memory), never asking the TV: Vibe Launcher
+     * has to have been allowed there before. Debugging off, it's turned on for it (with the permission) and, with
+     * Turn debugging off when done, off again after. Worker thread.
+     */
+    static Adb.Result shellQuietly(Context context, String command) {
+        boolean turnedOn = false;
+        if (Settings.Global.getInt(context.getContentResolver(), Settings.Global.ADB_ENABLED, 0) != 1) {
+            if (!setDebugging(context, true)) return new Adb.Result(Adb.OFF, "");
+            turnedOn = true;
+            for (int i = 0; i < 20 && Adb.check(false).status == Adb.OFF; i++) {   // its port, up to ten seconds
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    break;
+                }
+            }
+        }
+        Adb.Result r = Adb.shell(command, false);
+        if (turnedOn && new VibeSettings(context).adbOffWhenDone()) setDebugging(context, false);
+        return r;
+    }
+
     /** The animation speed the TV uses now: 1 normal, 0.5 faster, 0 off (the window animations' scale stands for all three). */
     static float animationScale(Context context) {
         return Settings.Global.getFloat(context.getContentResolver(), Settings.Global.ANIMATOR_DURATION_SCALE, 1f);
