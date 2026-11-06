@@ -95,6 +95,7 @@
     <string name="youtube_info">Ukiwa umeingia kwenye SmartTube, kigae cha YouTube huonyesha video kutoka kwenye mlisho wako wa YouTube. Hakuna ufunguo unaohitajika.\n\nBila hiyo, ufunguo huonyesha video maarufu zaidi nchini mwako. Ufunguo wa bure: console.cloud.google.com → mradi mpya → washa YouTube Data API v3 → Vitambulisho → Unda ufunguo wa API.\n\nBila vyote viwili, huonyesha trela za filamu maarufu.</string>
     <string name="plex_info">Mandhari kutoka kwenye seva yako ya Plex: Endelea kutazama na vilivyoongezwa hivi karibuni.\n\nKuupata: app.plex.tv → fungua mada yoyote → ⋯ → Pata Maelezo → Tazama XML, kisha nakili kinachofuata X-Plex-Token= kwenye anwani. Iweke siri kama nenosiri.</string>
     <string name="saved_from_phone">Imehifadhiwa kutoka kwenye simu yako</string>
+    <string name="screen_missing">TV hii haina skrini hiyo ya mipangilio. Itafute katika Mipangilio ya TV yenyewe.</string>
     <string name="not_available">Haipatikani kwenye TV hii</string>
     <string name="cant_open">Haiwezi kufungua %1$s</string>
     <string name="smarttube_install">Sakinisha SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">Zimebaki %1$s</string>
     <string name="home_key_name">Kitufe cha Mwanzo cha Vibe Launcher</string>
     <string name="home_key_description">Hufanya kitufe cha Mwanzo cha rimoti kifungue Vibe Launcher badala ya skrini ya mwanzo ya TV yenyewe, na ukikibonyeza kwa muda mipangilio ya TV ifunguke. Haisomi chochote kwenye skrini na huacha vitufe vingine vyote vipite.</string>
-    <string name="home_key_turn_on">Washa “%1$s” hapa ili kitufe cha Mwanzo kifungue Vibe Launcher.</string>
     <string name="permissions_title">Ruhusa mbili</string>
     <string name="permissions_why">Kisha Vibe Launcher itaomba ruhusa mbili.\n\nOrodha za TV: ili kuonyesha picha kutoka kwenye kadi ambazo programu zako huchapisha kwa skrini ya mwanzo.\n\nMahali: Android huonyesha jina la mtandao wa Wi-Fi kwa programu zenye ruhusa hii pekee. Vibe Launcher huitumia kwa jina hilo tu na haitafuti kamwe mahali TV ilipo.\n\nHakuna kati ya hizo kinachotoka kwenye TV.</string>
     <string name="continue_button">Endelea</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Kwa TV zinazobaki na skrini yao ya mwanzo: kitufe cha Mwanzo cha rimoti hufungua Vibe Launcher, na kukishikilia hufungua Mipangilio ya TV.</string>
     <string name="home_key_agree">Ninakubali</string>
     <string name="home_key_steps">Kisha: katika orodha itakayofunguka, chagua “%1$s”, iwashe, kisha ubonyeze Mwanzo.</string>
+    <string name="home_key_steps_settings">Kisha: TV hii haina njia ya moja kwa moja ya kufikia mipangilio yake ya Ufikivu, kwa hivyo Mipangilio ya Android itafunguka badala yake. Hapo, nenda kwenye Mapendeleo ya Kifaa &gt; Ufikivu, chagua “%1$s”, iwashe, kisha ubonyeze Mwanzo.</string>
     <string name="store_update">Sasisha Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Hifadhi nakala na urejeshe</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Programu</string>
     <string name="apps_short">Zima programu usizotumia: zinabaki zimesakinishwa, lakini haziwezi kufanya kazi, kujaza skrini ya mwanzo au kusasishwa hadi uziwashe tena. Sehemu ambazo TV inahitaji ili ifanye kazi hazijaorodheshwa.</string>
-    <string name="adb_connection">Utatuzi kupitia mtandao</string>
-    <string name="adb_connection_short">Vibe Launcher huzima programu kupitia utatuzi wa TV, kama kompyuta ingefanya. Washa utatuzi wa USB (kwenye baadhi ya TV ni utatuzi wa ADB au utatuzi kupitia mtandao) katika Chaguo za wasanidi programu, kisha ubonyeze OK hapa na uruhusu Vibe Launcher kwenye TV.</string>
-    <string name="adb_ready">Imeunganishwa</string>
-    <string name="adb_not_allowed">Bado hairuhusiwi</string>
+    <string name="adb_connection">Muunganisho wa ADB</string>
+    <string name="adb_connection_short">Vibe Launcher huzima programu kupitia ADB ya TV yenyewe, kama ambavyo kompyuta ingefanya. Fungua hii ili uone kilichowashwa na uunganishe.</string>
     <string name="adb_checking">Inakagua…</string>
-    <string name="adb_allow_prompt">Kwenye swali la TV, weka tiki kwenye Ruhusu kila wakati, kisha uchague OK</string>
+    <string name="adb_allow_prompt">Kisha, TV itauliza iwapo iruhusu Vibe Launcher: weka tiki kwenye Ruhusu kila wakati, kisha uchague OK.</string>
     <string name="adb_turn_on">Katika Chaguo za wasanidi programu, washa utatuzi wa USB (kwenye baadhi ya TV huitwa utatuzi wa ADB au utatuzi kupitia mtandao), kisha urudi hapa.</string>
     <string name="adb_network_closed">Utatuzi umewashwa, lakini TV hii bado hairuhusu programu kuufikia. Katika Chaguo za wasanidi programu, tafuta utatuzi kupitia mtandao au ADB kupitia mtandao kisha uuwashe. Ikiwa ina utatuzi usiotumia waya pekee, Vibe Launcher bado haiwezi kuutumia.</string>
     <string name="adb_failed">TV haikuruhusu hilo</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Programu ambazo TV inahitaji</string>
     <string name="app_protected">TV yako inahitaji hii ili ifanye kazi ipasavyo, kwa hivyo Vibe Launcher haitaizima. Hii huweka TV yako salama.</string>
     <string name="adb_dev_options">Washa Chaguo za wasanidi programu kwanza: katika Kuhusu, bonyeza OK kwenye Muundo mara saba, kisha urudi hapa.</string>
+    <string name="wireless_debugging">Utatuzi usiotumia waya</string>
+    <string name="wireless_debugging_short">Kwa TV zenye Android 11 na matoleo mapya zaidi ambazo hufunga utatuzi kupitia mtandao. Oanisha Vibe Launcher mara moja: changanua msimbo ukitumia simu yako, kisha uandike hapo msimbo unaoonyeshwa kwenye dirisha la kuoanisha la TV.</string>
+    <string name="paired">Imeoanishwa</string>
+    <string name="not_paired">Haijaoanishwa</string>
+    <string name="pair_scan">Changanua ukitumia simu yako, kisha ufungue Chaguo za wasanidi programu hapa chini: washa utatuzi usiotumia waya, uufungue, chagua Oanisha kifaa ukitumia msimbo wa kuoanisha, kisha uandike kwenye simu yako msimbo unaoonyesha.</string>
+    <string name="adb_wireless_on">Washa utatuzi usiotumia waya katika Chaguo za wasanidi programu, kisha urudi hapa.</string>
+    <string name="adb_wireless_wifi">TV hii hairuhusu programu kufikia utatuzi wake kupitia mtandao, na utatuzi wake usiotumia waya hufanya kazi kupitia Wi-Fi pekee. Unganisha TV kwenye Wi-Fi ili uoanishe Vibe Launcher, au utafute utatuzi kupitia mtandao katika Chaguo za wasanidi programu.</string>
+    <string name="paired_toast">Imeoanishwa kupitia utatuzi usiotumia waya</string>
+    <string name="adb_not_connected">Haijaunganishwa</string>
+    <string name="adb_connected_port">Imeunganishwa (mlango 5555)</string>
+    <string name="adb_connected_wireless">Imeunganishwa (utatuzi usiotumia waya)</string>
+    <string name="adb_ready_note">Vibe Launcher inaweza kufikia ADB ya TV: endelea na Usafishaji wa programu na sehemu nyingine ya Programu. Hakuna kinachohitaji kubadilishwa hapa.</string>
+    <string name="adb_not_needed">Vibe Launcher tayari ina idhini ya kufikia ADB, kwa hivyo hili halihitajiki. Ungependa kuendelea hata hivyo?</string>
+    <string name="wireless_not_running">Imewashwa, haifanyi kazi</string>
+    <string name="wireless_not_running_short">Utatuzi usiotumia waya umewashwa lakini haufanyi kazi (baadhi ya TV huusimamisha utatuzi wa USB unapozimwa). Uzime kisha uuwashe tena katika Chaguo za wasanidi programu.</string>
+    <string name="adb_connect_short">Bonyeza OK hapa ili uunganishe. Ikiwa bado haiwezekani, Vibe Launcher huonyesha kitu cha kwanza ambacho bado kinahitaji kuwashwa, kuanzia kilicho rahisi zaidi. Mara ya kwanza, TV itauliza iwapo iruhusu Vibe Launcher: weka tiki kwenye Ruhusu kila wakati.</string>
+    <string name="dev_options">Chaguo za wasanidi programu</string>
+    <string name="dev_options_short">Swichi za Android za utatuzi, zilizofichwa hadi zifunguliwe: katika Kuhusu, bonyeza OK kwenye Muundo mara saba.</string>
+    <string name="usb_adb_debugging">Utatuzi wa USB/ADB</string>
+    <string name="usb_adb_debugging_short">Swichi ya utatuzi ya TV, katika Chaguo za wasanidi programu (utatuzi wa USB, au utatuzi wa ADB kwenye baadhi ya TV). Kwenye TV nyingi pia hufungua mlango 5555, ambao Vibe Launcher huunganisha kupitia.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 na matoleo mapya zaidi: utatuzi kupitia Wi-Fi, ukitumia msimbo wa kuoanisha. Vibe Launcher huutumia wakati mlango 5555 umefungwa, baada ya kuoanishwa.</string>
+    <string name="pair_with_code">Oanisha ukitumia msimbo</string>
+    <string name="open_dev_options">Fungua Chaguo za wasanidi programu</string>
     <string name="apps_turn_off_again">Zima tena</string>
     <string name="apps_turn_off_again_short">Programu ambazo Vibe Launcher ilizima awali lakini sasa zimewashwa hapa: kutoka kwa nakala iliyorejeshwa kwenye TV hii, au zimewashwa tena na sasisho.</string>
     <string name="apps_turn_off_now">Zima sasa</string>

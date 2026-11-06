@@ -95,6 +95,7 @@
     <string name="youtube_info">Dengan SmartTube dilog masuk, jubin YouTube menunjukkan video daripada suapan YouTube anda sendiri. Tiada kunci diperlukan.\n\nTanpanya, kunci menunjukkan video paling popular di negara anda. Kunci percuma: console.cloud.google.com → projek baharu → dayakan YouTube Data API v3 → Bukti kelayakan → Cipta kunci API.\n\nTanpa kedua-duanya, ia menunjukkan treler filem popular.</string>
     <string name="plex_info">Latar daripada pelayan Plex anda sendiri: Teruskan menonton dan baru ditambah.\n\nCara mendapatkannya: app.plex.tv → buka mana-mana tajuk → ⋯ → Dapatkan Maklumat → Lihat XML, dan salin bahagian selepas X-Plex-Token= dalam alamat. Rahsiakan seperti kata laluan.</string>
     <string name="saved_from_phone">Disimpan dari telefon anda</string>
+    <string name="screen_missing">TV ini tiada skrin tetapan itu. Cari skrin itu dalam Tetapan TV itu sendiri.</string>
     <string name="not_available">Tidak tersedia pada TV ini</string>
     <string name="cant_open">Tidak dapat membuka %1$s</string>
     <string name="smarttube_install">Pasang SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s lagi</string>
     <string name="home_key_name">Butang Laman Utama Vibe Launcher</string>
     <string name="home_key_description">Menjadikan butang Laman Utama alat kawalan jauh membuka Vibe Launcher dan bukannya skrin utama TV itu sendiri, dan menekannya lama membuka Tetapan TV. Ia tidak membaca apa-apa pada skrin dan melepaskan semua butang lain.</string>
-    <string name="home_key_turn_on">Hidupkan “%1$s” di sini supaya butang Laman Utama membuka Vibe Launcher.</string>
     <string name="permissions_title">Dua kebenaran</string>
     <string name="permissions_why">Seterusnya Vibe Launcher akan meminta dua kebenaran.\n\nSenarai TV: untuk memaparkan gambar daripada kad yang diterbitkan apl anda untuk skrin utama.\n\nLokasi: Android hanya menunjukkan nama rangkaian Wi-Fi kepada apl yang mempunyai kebenaran ini. Vibe Launcher menggunakannya untuk nama itu sahaja dan tidak pernah mencari lokasi TV.\n\nKedua-duanya tidak keluar dari TV.</string>
     <string name="continue_button">Teruskan</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Untuk TV yang mengekalkan skrin utamanya sendiri: butang Laman Utama pada alat kawalan membuka Vibe Launcher, dan menahannya membuka Tetapan TV.</string>
     <string name="home_key_agree">Setuju</string>
     <string name="home_key_steps">Seterusnya: dalam senarai yang dibuka, pilih “%1$s”, hidupkannya, kemudian tekan Laman Utama.</string>
+    <string name="home_key_steps_settings">Seterusnya: TV ini tiada jalan terus ke tetapan Kebolehaksesannya, jadi Tetapan Android dibuka sebaliknya. Di sana, pergi ke Pilihan Peranti &gt; Kebolehaksesan, pilih “%1$s”, hidupkannya, kemudian tekan Laman Utama.</string>
     <string name="store_update">Kemas kini Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sandaran dan pemulihan</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Apl</string>
     <string name="apps_short">Lumpuhkan apl yang tidak anda gunakan: apl kekal dipasang tetapi tidak boleh berjalan, memenuhi skrin utama atau dikemas kini sehingga anda mendayakannya semula. Bahagian yang diperlukan TV untuk berfungsi tidak disenaraikan.</string>
-    <string name="adb_connection">Penyahpepijatan rangkaian</string>
-    <string name="adb_connection_short">Vibe Launcher melumpuhkan apl melalui penyahpepijatan TV, sama seperti komputer. Hidupkan penyahpepijatan USB (penyahpepijatan ADB atau penyahpepijatan rangkaian pada sesetengah TV) dalam Pilihan pembangun, kemudian tekan OK di sini dan benarkan Vibe Launcher pada TV.</string>
-    <string name="adb_ready">Disambungkan</string>
-    <string name="adb_not_allowed">Belum dibenarkan</string>
+    <string name="adb_connection">Sambungan ADB</string>
+    <string name="adb_connection_short">Vibe Launcher mematikan apl melalui ADB TV itu sendiri, seperti yang dilakukan oleh komputer. Buka ini untuk melihat perkara yang dihidupkan dan untuk menyambung.</string>
     <string name="adb_checking">Menyemak…</string>
-    <string name="adb_allow_prompt">Pada soalan TV, tandakan Sentiasa benarkan, kemudian pilih OK</string>
+    <string name="adb_allow_prompt">Seterusnya, TV akan bertanya sama ada hendak membenarkan Vibe Launcher: tandakan Sentiasa benarkan, kemudian pilih OK.</string>
     <string name="adb_turn_on">Dalam Pilihan pembangun, hidupkan penyahpepijatan USB (dipanggil penyahpepijatan ADB atau penyahpepijatan rangkaian pada sesetengah TV), kemudian kembali ke sini.</string>
     <string name="adb_network_closed">Penyahpepijatan sudah dihidupkan, tetapi TV ini belum membenarkan apl mencapainya. Dalam Pilihan pembangun, cari penyahpepijatan rangkaian atau ADB melalui rangkaian dan hidupkannya. Jika hanya ada penyahpepijatan wayarles, Vibe Launcher belum dapat menggunakannya.</string>
     <string name="adb_failed">TV tidak membenarkannya</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Apl yang diperlukan TV</string>
     <string name="app_protected">TV anda memerlukan ini untuk berfungsi dengan betul, jadi Vibe Launcher tidak akan melumpuhkannya. Ini memastikan TV anda selamat.</string>
     <string name="adb_dev_options">Hidupkan Pilihan pembangun dahulu: dalam Perihal, tekan OK pada Binaan sebanyak tujuh kali, kemudian kembali ke sini.</string>
+    <string name="wireless_debugging">Penyahpepijatan wayarles</string>
+    <string name="wireless_debugging_short">Untuk TV dengan Android 11 dan ke atas yang menutup penyahpepijatan rangkaian. Gandingkan Vibe Launcher sekali: imbas kod dengan telefon anda, kemudian taip di sana kod yang ditunjukkan oleh tetingkap gandingan TV.</string>
+    <string name="paired">Digandingkan</string>
+    <string name="not_paired">Tidak digandingkan</string>
+    <string name="pair_scan">Imbas dengan telefon anda, kemudian buka Pilihan pembangun di bawah: hidupkan penyahpepijatan wayarles, bukanya, pilih Gandingkan peranti dengan kod gandingan dan taip kod yang ditunjukkannya pada telefon anda.</string>
+    <string name="adb_wireless_on">Hidupkan penyahpepijatan wayarles dalam Pilihan pembangun, kemudian kembali ke sini.</string>
+    <string name="adb_wireless_wifi">TV ini tidak membenarkan apl mencapai penyahpepijatannya melalui rangkaian, dan penyahpepijatan wayarlesnya hanya berfungsi pada Wi-Fi. Sambungkan TV ke Wi-Fi untuk menggandingkan Vibe Launcher, atau cari penyahpepijatan rangkaian dalam Pilihan pembangun.</string>
+    <string name="paired_toast">Digandingkan dengan penyahpepijatan wayarles</string>
+    <string name="adb_not_connected">Tidak disambungkan</string>
+    <string name="adb_connected_port">Disambungkan (port 5555)</string>
+    <string name="adb_connected_wireless">Disambungkan (penyahpepijatan wayarles)</string>
+    <string name="adb_ready_note">Vibe Launcher boleh mencapai ADB TV: teruskan dengan Pembersihan apl dan bahagian Apl yang lain. Tiada apa-apa di sini yang perlu diubah.</string>
+    <string name="adb_not_needed">Vibe Launcher sudah mempunyai akses ADB, jadi ini tidak diperlukan. Teruskan juga?</string>
+    <string name="wireless_not_running">Hidup, tidak berjalan</string>
+    <string name="wireless_not_running_short">Penyahpepijatan wayarles dihidupkan tetapi tidak berjalan (sesetengah TV menghentikannya apabila penyahpepijatan USB dimatikan). Matikan dan hidupkan semula dalam Pilihan pembangun.</string>
+    <string name="adb_connect_short">Tekan OK di sini untuk menyambung. Jika belum boleh, Vibe Launcher menunjukkan perkara pertama yang masih perlu dihidupkan, bermula dengan yang paling mudah. Kali pertama, TV akan bertanya sama ada hendak membenarkan Vibe Launcher: tandakan Sentiasa benarkan.</string>
+    <string name="dev_options">Pilihan pembangun</string>
+    <string name="dev_options_short">Suis Android untuk penyahpepijatan, tersembunyi sehingga dibuka kunci: dalam Perihal, tekan OK pada Binaan sebanyak tujuh kali.</string>
+    <string name="usb_adb_debugging">Penyahpepijatan USB/ADB</string>
+    <string name="usb_adb_debugging_short">Suis penyahpepijatan TV, dalam Pilihan pembangun (penyahpepijatan USB, atau penyahpepijatan ADB pada sesetengah TV). Pada kebanyakan TV, suis ini turut membuka port 5555, yang digunakan oleh Vibe Launcher untuk menyambung.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 dan ke atas: penyahpepijatan melalui Wi-Fi, dengan kod gandingan. Vibe Launcher menggunakannya apabila port 5555 ditutup, setelah digandingkan.</string>
+    <string name="pair_with_code">Gandingkan dengan kod</string>
+    <string name="open_dev_options">Buka Pilihan pembangun</string>
     <string name="apps_turn_off_again">Lumpuhkan semula</string>
     <string name="apps_turn_off_again_short">Apl yang pernah dilumpuhkan oleh Vibe Launcher tetapi kini didayakan di sini: daripada sandaran yang dipulihkan pada TV ini, atau didayakan semula oleh kemas kini.</string>
     <string name="apps_turn_off_now">Lumpuhkan sekarang</string>

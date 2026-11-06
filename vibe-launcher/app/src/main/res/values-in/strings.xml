@@ -95,6 +95,7 @@
     <string name="youtube_info">Dengan SmartTube yang sudah masuk, ubin YouTube menampilkan video dari feed YouTube Anda sendiri. Tanpa kunci.\n\nTanpa itu, kunci menampilkan video terpopuler di negara Anda. Kunci gratis: console.cloud.google.com → proyek baru → aktifkan YouTube Data API v3 → Kredensial → Buat kunci API.\n\nTanpa keduanya, ditampilkan trailer film populer.</string>
     <string name="plex_info">Latar dari server Plex Anda sendiri: Lanjutkan menonton dan yang baru ditambahkan.\n\nCara mendapatkannya: app.plex.tv → buka judul apa saja → ⋯ → Dapatkan Info → Lihat XML, lalu salin bagian setelah X-Plex-Token= di alamatnya. Rahasiakan seperti kata sandi.</string>
     <string name="saved_from_phone">Tersimpan dari ponsel Anda</string>
+    <string name="screen_missing">TV ini tidak memiliki layar setelan tersebut. Cari di Setelan TV itu sendiri.</string>
     <string name="not_available">Tidak tersedia di TV ini</string>
     <string name="cant_open">Tidak dapat membuka %1$s</string>
     <string name="smarttube_install">Instal SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">Sisa %1$s</string>
     <string name="home_key_name">Tombol Beranda Vibe Launcher</string>
     <string name="home_key_description">Membuat tombol Beranda remote membuka Vibe Launcher, bukan layar beranda bawaan TV, dan menahannya membuka Setelan TV. Tidak membaca apa pun di layar dan meneruskan semua tombol lainnya.</string>
-    <string name="home_key_turn_on">Aktifkan “%1$s” di sini agar tombol Beranda membuka Vibe Launcher.</string>
     <string name="permissions_title">Dua izin</string>
     <string name="permissions_why">Selanjutnya Vibe Launcher akan meminta dua izin.\n\nDaftar acara TV: untuk menampilkan gambar dari kartu yang dipublikasikan aplikasi Anda untuk layar beranda.\n\nLokasi: Android hanya menampilkan nama jaringan Wi-Fi kepada aplikasi yang memiliki izin ini. Vibe Launcher hanya memakainya untuk nama itu dan tidak pernah mencari tahu lokasi TV.\n\nKeduanya tidak keluar dari TV.</string>
     <string name="continue_button">Lanjutkan</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Untuk TV yang tetap memakai layar berandanya sendiri: tombol Beranda di remote membuka Vibe Launcher, dan menahannya membuka Setelan TV.</string>
     <string name="home_key_agree">Setuju</string>
     <string name="home_key_steps">Berikutnya: di daftar yang terbuka, pilih “%1$s”, aktifkan, lalu tekan Beranda.</string>
+    <string name="home_key_steps_settings">Berikutnya: TV ini tidak punya jalan langsung ke setelan Aksesibilitas, jadi Setelan Android yang terbuka. Di sana, buka Preferensi Perangkat &gt; Aksesibilitas, pilih “%1$s”, aktifkan, lalu tekan Beranda.</string>
     <string name="store_update">Perbarui Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Cadangkan dan pulihkan</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Aplikasi</string>
     <string name="apps_short">Nonaktifkan aplikasi yang tidak Anda gunakan: aplikasi tetap terinstal, tetapi tidak bisa berjalan, memenuhi layar beranda, atau diupdate sampai Anda mengaktifkannya lagi. Bagian yang dibutuhkan TV agar berfungsi tidak dicantumkan.</string>
-    <string name="adb_connection">Proses debug jaringan</string>
-    <string name="adb_connection_short">Vibe Launcher menonaktifkan aplikasi melalui proses debug TV, seperti yang dilakukan komputer. Aktifkan proses debug USB (di beberapa TV proses debug ADB atau proses debug jaringan) di Opsi developer, lalu tekan OK di sini dan izinkan Vibe Launcher di TV.</string>
-    <string name="adb_ready">Terhubung</string>
-    <string name="adb_not_allowed">Belum diizinkan</string>
+    <string name="adb_connection">Koneksi ADB</string>
+    <string name="adb_connection_short">Vibe Launcher menonaktifkan aplikasi melalui ADB milik TV itu sendiri, seperti yang dilakukan komputer. Buka ini untuk melihat apa yang aktif dan untuk menghubungkan.</string>
     <string name="adb_checking">Memeriksa…</string>
-    <string name="adb_allow_prompt">Pada pertanyaan di TV, centang Selalu izinkan, lalu pilih OK</string>
+    <string name="adb_allow_prompt">Berikutnya, TV akan menanyakan apakah Vibe Launcher diizinkan: centang Selalu izinkan, lalu pilih OK.</string>
     <string name="adb_turn_on">Di Opsi developer, aktifkan proses debug USB (di beberapa TV disebut proses debug ADB atau proses debug jaringan), lalu kembali ke sini.</string>
     <string name="adb_network_closed">Proses debug sudah aktif, tetapi TV ini belum mengizinkan aplikasi mengaksesnya. Di Opsi developer, cari proses debug jaringan atau ADB melalui jaringan, lalu aktifkan. Jika hanya ada proses debug nirkabel, Vibe Launcher belum dapat menggunakannya.</string>
     <string name="adb_failed">TV tidak mengizinkannya</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Aplikasi yang dibutuhkan TV</string>
     <string name="app_protected">TV Anda membutuhkan ini agar berfungsi dengan baik, jadi Vibe Launcher tidak akan menonaktifkannya. Ini menjaga TV Anda tetap aman.</string>
     <string name="adb_dev_options">Aktifkan Opsi developer terlebih dahulu: di Tentang, tekan OK pada Build sebanyak tujuh kali, lalu kembali ke sini.</string>
+    <string name="wireless_debugging">Proses debug nirkabel</string>
+    <string name="wireless_debugging_short">Untuk TV dengan Android 11 ke atas yang menutup proses debug jaringan. Sambungkan Vibe Launcher sekali saja: pindai kode dengan ponsel Anda, lalu ketik di sana kode yang ditampilkan jendela penyambungan TV.</string>
+    <string name="paired">Tersambung</string>
+    <string name="not_paired">Belum tersambung</string>
+    <string name="pair_scan">Pindai dengan ponsel Anda, lalu buka Opsi developer di bawah: aktifkan proses debug nirkabel, buka, pilih Sambungkan perangkat dengan kode penyambungan, lalu ketik kode yang ditampilkannya di ponsel Anda.</string>
+    <string name="adb_wireless_on">Aktifkan proses debug nirkabel di Opsi developer, lalu kembali ke sini.</string>
+    <string name="adb_wireless_wifi">TV ini tidak mengizinkan aplikasi menjangkau proses debug-nya melalui jaringan, dan proses debug nirkabelnya hanya berfungsi di Wi-Fi. Hubungkan TV ke Wi-Fi untuk menyambungkan Vibe Launcher, atau cari proses debug jaringan di Opsi developer.</string>
+    <string name="paired_toast">Tersambung dengan proses debug nirkabel</string>
+    <string name="adb_not_connected">Tidak terhubung</string>
+    <string name="adb_connected_port">Terhubung (port 5555)</string>
+    <string name="adb_connected_wireless">Terhubung (proses debug nirkabel)</string>
+    <string name="adb_ready_note">Vibe Launcher dapat menjangkau ADB TV: lanjutkan dengan Pembersihan aplikasi dan bagian Aplikasi lainnya. Tidak ada yang perlu diubah di sini.</string>
+    <string name="adb_not_needed">Vibe Launcher sudah memiliki akses ADB, jadi ini tidak diperlukan. Tetap lanjutkan?</string>
+    <string name="wireless_not_running">Aktif, tidak berjalan</string>
+    <string name="wireless_not_running_short">Proses debug nirkabel sudah diaktifkan, tetapi tidak berjalan (beberapa TV menghentikannya saat proses debug USB dinonaktifkan). Nonaktifkan lalu aktifkan lagi di Opsi developer.</string>
+    <string name="adb_connect_short">Tekan OK di sini untuk menghubungkan. Jika belum bisa, Vibe Launcher menampilkan hal pertama yang masih perlu diaktifkan, mulai dari yang paling mudah. Pertama kali, TV akan menanyakan apakah Vibe Launcher diizinkan: centang Selalu izinkan.</string>
+    <string name="dev_options">Opsi developer</string>
+    <string name="dev_options_short">Tombol Android untuk proses debug, tersembunyi hingga dibuka: di Tentang, tekan OK pada Build sebanyak tujuh kali.</string>
+    <string name="usb_adb_debugging">Proses debug USB/ADB</string>
+    <string name="usb_adb_debugging_short">Tombol proses debug TV, di Opsi developer (proses debug USB, atau proses debug ADB di beberapa TV). Di sebagian besar TV, tombol ini juga membuka port 5555, yang digunakan Vibe Launcher untuk terhubung.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 ke atas: proses debug melalui Wi-Fi, dengan kode penyambungan. Vibe Launcher menggunakannya saat port 5555 tertutup, setelah tersambung.</string>
+    <string name="pair_with_code">Sambungkan dengan kode</string>
+    <string name="open_dev_options">Buka Opsi developer</string>
     <string name="apps_turn_off_again">Nonaktifkan lagi</string>
     <string name="apps_turn_off_again_short">Aplikasi yang sebelumnya dinonaktifkan Vibe Launcher tetapi kini aktif di sini: dari cadangan yang dipulihkan di TV ini, atau diaktifkan lagi oleh update.</string>
     <string name="apps_turn_off_now">Nonaktifkan sekarang</string>

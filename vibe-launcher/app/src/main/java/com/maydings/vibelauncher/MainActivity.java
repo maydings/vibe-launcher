@@ -1682,7 +1682,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             Intent app = pkg == null ? null : getPackageManager().getLeanbackLaunchIntentForPackage(pkg);
             if (app == null && pkg != null) app = getPackageManager().getLaunchIntentForPackage(pkg);
             if (app != null) open(app);
-            else Toast.makeText(this, R.string.not_available, Toast.LENGTH_SHORT).show();
+            else showError(this, R.string.not_available);
         }
         // The pill stays full while the title opens; it empties on the way back (onStart, showRows).
     }
@@ -2124,7 +2124,30 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      * it, or turned down (onActivityResult), the Home button service.
      */
     private void offerHome() {
-        // Asked only where it can work: where the stock launcher outranks any choice, straight to the service.
+        // The adb build with ADB allowed already: Settings > Apps > Default launcher, which switches Home through
+        // it (the TV's own launcher off, Vibe Launcher set as Home), on any TV where that's offered.
+        if (!BuildConfig.STORE && !TvControl.homeUnsupported()) {
+            Context app = getApplicationContext();
+            new Thread(() -> {
+                Adb.use(app);
+                boolean in = Adb.check(false).status == Adb.OK;
+                runOnUiThread(() -> {
+                    if (isFinishing()) return;
+                    if (in) {
+                        startActivity(new Intent(this, SettingsActivity.class)
+                                .putExtra(SettingsActivity.ON_DEFAULT_LAUNCHER, true));
+                    } else {
+                        offerHomeWithoutAdb();
+                    }
+                });
+            }, "OfferHome").start();
+            return;
+        }
+        offerHomeWithoutAdb();
+    }
+
+    /** Android's own Home choice where it can work; where the stock launcher outranks any choice, the service. */
+    private void offerHomeWithoutAdb() {
         Intent request = DefaultHome.request(this);
         if (DefaultHome.choiceWins(this) && request != null) makeHome(request);
         else HomeButtonLink.offer(this);
@@ -2139,6 +2162,36 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     /** A note with OK (named okLabel) and Cancel, in the update dialog's glass. Back counts as Cancel. */
+    /**
+     * Something that went wrong, in a window that stays until OK: a message at the bottom of the screen went before
+     * it could be read, or acted on. Progress and hints stay at the bottom.
+     */
+    static void showError(Activity activity, CharSequence text) {
+        if (activity == null || activity.isFinishing()) return;
+        View panel = activity.getLayoutInflater().inflate(R.layout.dialog_update,
+                activity.findViewById(android.R.id.content), false);
+        ((TextView) panel.findViewById(R.id.updateTitle)).setText(R.string.app_name);
+        ((TextView) panel.findViewById(R.id.notes)).setText(text);
+        TextView okButton = panel.findViewById(R.id.install);
+        okButton.setText(android.R.string.ok);
+        panel.findViewById(R.id.cancelUpdate).setVisibility(View.GONE);
+        Dialog dialog = new Dialog(activity, android.R.style.Theme_Material_Dialog_NoActionBar);
+        dialog.setContentView(panel);
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            window.setLayout((int) (560 * activity.getResources().getDisplayMetrics().density),
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+        okButton.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
+        okButton.requestFocus();
+    }
+
+    static void showError(Activity activity, int text) {
+        if (activity != null) showError(activity, activity.getString(text));
+    }
+
     static void showNotice(Activity activity, int title, CharSequence text, int okLabel, Runnable ok,
             Runnable cancel) {
         View panel = activity.getLayoutInflater().inflate(R.layout.dialog_update,
@@ -2350,7 +2403,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             Adb.Result r = TvControl.shellQuietly(app, "am kill-all");
             handler.postDelayed(() -> {   // a moment for the memory to come back
                 if (r.status != Adb.OK) {
-                    Toast.makeText(this, R.string.adb_failed, Toast.LENGTH_SHORT).show();
+                    showError(this, R.string.adb_failed);
                     return;
                 }
                 android.app.ActivityManager.MemoryInfo after = new android.app.ActivityManager.MemoryInfo();
@@ -2563,11 +2616,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     private void open(Intent i) {
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        try {
-            startActivity(i);
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, R.string.not_available, Toast.LENGTH_SHORT).show();
-        }
+        Screens.open(this, i);   // a window where the TV has no such screen
     }
 
     /** Hides the Inputs pill on devices with nothing to switch to (e.g. a Shield: no HDMI-in, no tuner). */
@@ -2694,7 +2743,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             addInputRow(rows, popup, R.drawable.ic_livetv, getString(R.string.live_tv), -1, () -> open(liveTv));
         }
         if (rows.getChildCount() == 0) {
-            Toast.makeText(this, R.string.no_inputs, Toast.LENGTH_SHORT).show();
+            showError(this, R.string.no_inputs);
             return;
         }
 
@@ -3322,12 +3371,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 Toast.makeText(this, R.string.picture_saved, Toast.LENGTH_SHORT).show();
                 if (shown[0] != null) shown[0].dismiss();
             } else {
-                Toast.makeText(this, R.string.picture_failed, Toast.LENGTH_LONG).show();
+                showError(this, R.string.picture_failed);
             }
         }, settings, label);
         String url = link.start();
         if (url == null) {   // offline: no home network for the phone to reach the TV on
-            Toast.makeText(this, R.string.not_available, Toast.LENGTH_SHORT).show();
+            showError(this, R.string.not_available);
             return;
         }
         View panel = getLayoutInflater().inflate(R.layout.dialog_update, findViewById(android.R.id.content), false);

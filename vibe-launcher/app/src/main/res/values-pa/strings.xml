@@ -95,6 +95,7 @@
     <string name="youtube_info">SmartTube ਵਿੱਚ ਸਾਈਨ ਇਨ ਹੋਣ \'ਤੇ YouTube ਟਾਈਲ ਤੁਹਾਡੀ ਆਪਣੀ YouTube ਫੀਡ ਦੇ ਵੀਡੀਓ ਦਿਖਾਉਂਦੀ ਹੈ। ਕਿਸੇ ਕੁੰਜੀ ਦੀ ਲੋੜ ਨਹੀਂ।\n\nਇਸ ਤੋਂ ਬਿਨਾਂ, ਇੱਕ ਕੁੰਜੀ ਤੁਹਾਡੇ ਦੇਸ਼ ਦੇ ਸਭ ਤੋਂ ਮਸ਼ਹੂਰ ਵੀਡੀਓ ਦਿਖਾਉਂਦੀ ਹੈ। ਮੁਫ਼ਤ ਕੁੰਜੀ: console.cloud.google.com → ਨਵਾਂ ਪ੍ਰੋਜੈਕਟ → YouTube Data API v3 ਚਾਲੂ ਕਰੋ → ਕ੍ਰੈਡੈਂਸ਼ੀਅਲ → API ਕੁੰਜੀ ਬਣਾਓ।\n\nਦੋਵੇਂ ਨਾ ਹੋਣ ਤਾਂ ਮਸ਼ਹੂਰ ਫ਼ਿਲਮਾਂ ਦੇ ਟ੍ਰੇਲਰ ਦਿਖਾਉਂਦੀ ਹੈ।</string>
     <string name="plex_info">ਤੁਹਾਡੇ ਆਪਣੇ Plex ਸਰਵਰ ਤੋਂ ਪਿਛੋਕੜ: ਦੇਖਣਾ ਜਾਰੀ ਰੱਖੋ ਅਤੇ ਹਾਲ ਹੀ ਵਿੱਚ ਸ਼ਾਮਲ।\n\nਲੱਭਣ ਲਈ: app.plex.tv → ਕੋਈ ਵੀ ਸਿਰਲੇਖ ਖੋਲ੍ਹੋ → ⋯ → ਜਾਣਕਾਰੀ ਲਓ → XML ਦੇਖੋ, ਅਤੇ ਪਤੇ ਵਿੱਚ X-Plex-Token= ਤੋਂ ਬਾਅਦ ਵਾਲਾ ਹਿੱਸਾ ਕਾਪੀ ਕਰੋ। ਇਸਨੂੰ ਪਾਸਵਰਡ ਵਾਂਗ ਗੁਪਤ ਰੱਖੋ।</string>
     <string name="saved_from_phone">ਤੁਹਾਡੇ ਫ਼ੋਨ ਤੋਂ ਸੰਭਾਲਿਆ ਗਿਆ</string>
+    <string name="screen_missing">ਇਸ ਟੀਵੀ ਵਿੱਚ ਉਹ ਸੈਟਿੰਗਾਂ ਸਕ੍ਰੀਨ ਨਹੀਂ ਹੈ। ਇਸਨੂੰ ਟੀਵੀ ਦੀਆਂ ਆਪਣੀਆਂ ਸੈਟਿੰਗਾਂ ਵਿੱਚ ਲੱਭੋ।</string>
     <string name="not_available">ਇਸ ਟੀਵੀ ’ਤੇ ਉਪਲਬਧ ਨਹੀਂ</string>
     <string name="cant_open">%1$s ਨਹੀਂ ਖੁੱਲ੍ਹ ਸਕਿਆ</string>
     <string name="smarttube_install">SmartTube ਇੰਸਟਾਲ ਕਰੋ</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s ਬਾਕੀ</string>
     <string name="home_key_name">Vibe Launcher ਹੋਮ ਬਟਨ</string>
     <string name="home_key_description">ਰਿਮੋਟ ਦਾ ਹੋਮ ਬਟਨ ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ ਦੀ ਬਜਾਏ Vibe Launcher ਖੋਲ੍ਹਦਾ ਹੈ, ਅਤੇ ਦਬਾਈ ਰੱਖਣ ਉੱਤੇ ਟੀਵੀ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਖੁੱਲ੍ਹਦੀਆਂ ਹਨ। ਇਹ ਸਕ੍ਰੀਨ ਉੱਤੇ ਕੁਝ ਨਹੀਂ ਪੜ੍ਹਦਾ ਅਤੇ ਬਾਕੀ ਸਾਰੇ ਬਟਨ ਉਵੇਂ ਹੀ ਅੱਗੇ ਜਾਣ ਦਿੰਦਾ ਹੈ।</string>
-    <string name="home_key_turn_on">ਹੋਮ ਬਟਨ ਨਾਲ Vibe Launcher ਖੋਲ੍ਹਣ ਲਈ ਇੱਥੇ “%1$s” ਚਾਲੂ ਕਰੋ।</string>
     <string name="permissions_title">ਦੋ ਇਜਾਜ਼ਤਾਂ</string>
     <string name="permissions_why">ਅੱਗੇ Vibe Launcher ਦੋ ਇਜਾਜ਼ਤਾਂ ਮੰਗੇਗਾ।\n\nਟੀਵੀ ਸੂਚੀਆਂ: ਤੁਹਾਡੀਆਂ ਐਪਾਂ ਹੋਮ ਸਕ੍ਰੀਨ ਲਈ ਜੋ ਕਾਰਡ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰਦੀਆਂ ਹਨ, ਉਨ੍ਹਾਂ ਦੀਆਂ ਤਸਵੀਰਾਂ ਦਿਖਾਉਣ ਲਈ।\n\nਟਿਕਾਣਾ: Android ਵਾਈ-ਫ਼ਾਈ ਨੈੱਟਵਰਕ ਦਾ ਨਾਮ ਸਿਰਫ਼ ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਨੂੰ ਦਿਖਾਉਂਦਾ ਹੈ। Vibe Launcher ਇਸਨੂੰ ਸਿਰਫ਼ ਉਸ ਨਾਮ ਲਈ ਵਰਤਦਾ ਹੈ ਅਤੇ ਕਦੇ ਨਹੀਂ ਦੇਖਦਾ ਕਿ ਟੀਵੀ ਕਿੱਥੇ ਹੈ।\n\nਕੋਈ ਵੀ ਟੀਵੀ ਤੋਂ ਬਾਹਰ ਨਹੀਂ ਜਾਂਦਾ।</string>
     <string name="continue_button">ਜਾਰੀ ਰੱਖੋ</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">ਜੋ ਟੀਵੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ ਰੱਖਦੇ ਹਨ ਉਨ੍ਹਾਂ ਲਈ: ਰਿਮੋਟ ਦਾ ਹੋਮ ਬਟਨ Vibe Launcher ਖੋਲ੍ਹਦਾ ਹੈ, ਅਤੇ ਇਸਨੂੰ ਦਬਾ ਕੇ ਰੱਖਣ ਨਾਲ ਟੀਵੀ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਖੁੱਲ੍ਹਦੀਆਂ ਹਨ।</string>
     <string name="home_key_agree">ਸਹਿਮਤ ਹਾਂ</string>
     <string name="home_key_steps">ਅੱਗੇ: ਖੁੱਲ੍ਹਣ ਵਾਲੀ ਸੂਚੀ ਵਿੱਚ “%1$s” ਚੁਣੋ, ਇਸਨੂੰ ਚਾਲੂ ਕਰੋ, ਫਿਰ ਹੋਮ ਦਬਾਓ।</string>
+    <string name="home_key_steps_settings">ਅੱਗੇ: ਇਸ ਟੀਵੀ ਵਿੱਚ ਇਸਦੀਆਂ ਪਹੁੰਚਯੋਗਤਾ ਸੈਟਿੰਗਾਂ ਤੱਕ ਸਿੱਧਾ ਜਾਣ ਦਾ ਕੋਈ ਤਰੀਕਾ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਸਦੀ ਥਾਂ Android ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਖੁੱਲ੍ਹਦੀਆਂ ਹਨ। ਉੱਥੇ ਡੀਵਾਈਸ ਤਰਜੀਹਾਂ &gt; ਪਹੁੰਚਯੋਗਤਾ ਉੱਤੇ ਜਾਓ, “%1$s” ਚੁਣੋ, ਇਸਨੂੰ ਚਾਲੂ ਕਰੋ, ਫਿਰ ਹੋਮ ਦਬਾਓ।</string>
     <string name="store_update">Vibe Launcher ਅੱਪਡੇਟ ਕਰੋ</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ਬੈਕਅੱਪ ਅਤੇ ਰੀਸਟੋਰ</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">ਐਪਾਂ</string>
     <string name="apps_short">ਜਿਹੜੀਆਂ ਐਪਾਂ ਤੁਸੀਂ ਨਹੀਂ ਵਰਤਦੇ, ਉਨ੍ਹਾਂ ਨੂੰ ਬੰਦ ਕਰੋ: ਉਹ ਸਥਾਪਤ ਰਹਿੰਦੀਆਂ ਹਨ, ਪਰ ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਉਨ੍ਹਾਂ ਨੂੰ ਮੁੜ ਚਾਲੂ ਨਹੀਂ ਕਰਦੇ, ਉਹ ਚੱਲ ਨਹੀਂ ਸਕਦੀਆਂ, ਹੋਮ ਸਕ੍ਰੀਨ ਨਹੀਂ ਭਰ ਸਕਦੀਆਂ ਜਾਂ ਅੱਪਡੇਟ ਨਹੀਂ ਹੋ ਸਕਦੀਆਂ। ਟੀਵੀ ਨੂੰ ਚੱਲਣ ਲਈ ਲੋੜੀਂਦੇ ਹਿੱਸੇ ਇੱਥੇ ਨਹੀਂ ਦਿਖਾਏ ਜਾਂਦੇ।</string>
-    <string name="adb_connection">ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ</string>
-    <string name="adb_connection_short">Vibe Launcher ਕੰਪਿਊਟਰ ਵਾਂਗ ਹੀ ਟੀਵੀ ਦੀ ਡੀਬੱਗਿੰਗ ਰਾਹੀਂ ਐਪਾਂ ਬੰਦ ਕਰਦਾ ਹੈ। ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ USB ਡੀਬੱਗਿੰਗ (ਕੁਝ ਟੀਵੀ ਉੱਤੇ ADB ਡੀਬੱਗਿੰਗ ਜਾਂ ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ) ਚਾਲੂ ਕਰੋ, ਫਿਰ ਇੱਥੇ OK ਦਬਾਓ ਅਤੇ ਟੀਵੀ ਉੱਤੇ Vibe Launcher ਨੂੰ ਇਜਾਜ਼ਤ ਦਿਓ।</string>
-    <string name="adb_ready">ਕਨੈਕਟ ਹੈ</string>
-    <string name="adb_not_allowed">ਹਾਲੇ ਇਜਾਜ਼ਤ ਨਹੀਂ</string>
+    <string name="adb_connection">ADB ਕਨੈਕਸ਼ਨ</string>
+    <string name="adb_connection_short">Vibe Launcher ਕੰਪਿਊਟਰ ਵਾਂਗ ਟੀਵੀ ਦੇ ਆਪਣੇ ADB ਰਾਹੀਂ ਐਪਾਂ ਬੰਦ ਕਰਦਾ ਹੈ। ਕੀ ਚਾਲੂ ਹੈ ਇਹ ਦੇਖਣ ਅਤੇ ਕਨੈਕਟ ਕਰਨ ਲਈ ਇਸਨੂੰ ਖੋਲ੍ਹੋ।</string>
     <string name="adb_checking">ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ…</string>
-    <string name="adb_allow_prompt">ਟੀਵੀ ਦੇ ਸਵਾਲ ਵਿੱਚ ਹਮੇਸ਼ਾਂ ਇਜਾਜ਼ਤ ਦਿਓ ਉੱਤੇ ਨਿਸ਼ਾਨ ਲਗਾਓ, ਫਿਰ OK ਚੁਣੋ</string>
+    <string name="adb_allow_prompt">ਫਿਰ, ਟੀਵੀ ਪੁੱਛਦਾ ਹੈ ਕਿ ਕੀ Vibe Launcher ਨੂੰ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ: ਹਮੇਸ਼ਾਂ ਇਜਾਜ਼ਤ ਦਿਓ ਉੱਤੇ ਨਿਸ਼ਾਨ ਲਗਾਓ, ਫਿਰ OK ਚੁਣੋ।</string>
     <string name="adb_turn_on">ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ USB ਡੀਬੱਗਿੰਗ ਚਾਲੂ ਕਰੋ (ਕੁਝ ਟੀਵੀ ਉੱਤੇ ਇਸਨੂੰ ADB ਡੀਬੱਗਿੰਗ ਜਾਂ ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ ਕਿਹਾ ਜਾਂਦਾ ਹੈ), ਫਿਰ ਇੱਥੇ ਵਾਪਸ ਆਓ।</string>
     <string name="adb_network_closed">ਡੀਬੱਗਿੰਗ ਚਾਲੂ ਹੈ, ਪਰ ਇਹ ਟੀਵੀ ਹਾਲੇ ਐਪਾਂ ਨੂੰ ਉਸ ਤੱਕ ਪਹੁੰਚਣ ਨਹੀਂ ਦਿੰਦਾ। ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ ਜਾਂ ਨੈੱਟਵਰਕ ਰਾਹੀਂ ADB ਲੱਭੋ ਅਤੇ ਉਸਨੂੰ ਚਾਲੂ ਕਰੋ। ਜੇ ਇਸ ਵਿੱਚ ਸਿਰਫ਼ ਵਾਇਰਲੈੱਸ ਡੀਬੱਗਿੰਗ ਹੈ, ਤਾਂ Vibe Launcher ਹਾਲੇ ਉਸਨੂੰ ਵਰਤ ਨਹੀਂ ਸਕਦਾ।</string>
     <string name="adb_failed">ਟੀਵੀ ਨੇ ਇਸਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਦਿੱਤੀ</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">ਐਪਾਂ ਜਿਨ੍ਹਾਂ ਦੀ ਟੀਵੀ ਨੂੰ ਲੋੜ ਹੈ</string>
     <string name="app_protected">ਤੁਹਾਡੇ ਟੀਵੀ ਨੂੰ ਠੀਕ ਤਰ੍ਹਾਂ ਚੱਲਣ ਲਈ ਇਸਦੀ ਲੋੜ ਹੈ, ਇਸ ਲਈ Vibe Launcher ਇਸਨੂੰ ਬੰਦ ਨਹੀਂ ਕਰੇਗਾ। ਇਸ ਨਾਲ ਤੁਹਾਡਾ ਟੀਵੀ ਸੁਰੱਖਿਅਤ ਰਹਿੰਦਾ ਹੈ।</string>
     <string name="adb_dev_options">ਪਹਿਲਾਂ ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਚਾਲੂ ਕਰੋ: ਇਸ ਬਾਰੇ ਵਿੱਚ ਬਿਲਡ ਉੱਤੇ ਸੱਤ ਵਾਰ OK ਦਬਾਓ, ਫਿਰ ਇੱਥੇ ਵਾਪਸ ਆਓ।</string>
+    <string name="wireless_debugging">ਵਾਇਰਲੈੱਸ ਡੀਬੱਗਿੰਗ</string>
+    <string name="wireless_debugging_short">ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ ਬੰਦ ਰੱਖਣ ਵਾਲੇ Android 11 ਅਤੇ ਇਸ ਤੋਂ ਬਾਅਦ ਵਾਲੇ ਟੀਵੀ ਲਈ। Vibe Launcher ਨੂੰ ਇੱਕ ਵਾਰ ਜੋੜਾਬੱਧ ਕਰੋ: ਆਪਣੇ ਫ਼ੋਨ ਨਾਲ ਕੋਡ ਸਕੈਨ ਕਰੋ, ਫਿਰ ਟੀਵੀ ਦੀ ਜੋੜਾਬੱਧ ਵਿੰਡੋ ਵਿੱਚ ਦਿਖਾਇਆ ਕੋਡ ਉੱਥੇ ਟਾਈਪ ਕਰੋ।</string>
+    <string name="paired">ਜੋੜਾਬੱਧ ਹੈ</string>
+    <string name="not_paired">ਜੋੜਾਬੱਧ ਨਹੀਂ ਹੈ</string>
+    <string name="pair_scan">ਆਪਣੇ ਫ਼ੋਨ ਨਾਲ ਸਕੈਨ ਕਰੋ, ਫਿਰ ਹੇਠਾਂ ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਖੋਲ੍ਹੋ: ਵਾਇਰਲੈੱਸ ਡੀਬੱਗਿੰਗ ਚਾਲੂ ਕਰੋ, ਇਸਨੂੰ ਖੋਲ੍ਹੋ, ਜੋੜਾਬੱਧ ਕਰਨ ਵਾਲੇ ਕੋਡ ਨਾਲ ਡੀਵਾਈਸ ਨੂੰ ਜੋੜਾਬੱਧ ਕਰੋ ਚੁਣੋ, ਅਤੇ ਇਹ ਜੋ ਕੋਡ ਦਿਖਾਉਂਦਾ ਹੈ ਉਹ ਆਪਣੇ ਫ਼ੋਨ ਉੱਤੇ ਟਾਈਪ ਕਰੋ।</string>
+    <string name="adb_wireless_on">ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ ਵਾਇਰਲੈੱਸ ਡੀਬੱਗਿੰਗ ਚਾਲੂ ਕਰੋ, ਫਿਰ ਇੱਥੇ ਵਾਪਸ ਆਓ।</string>
+    <string name="adb_wireless_wifi">ਇਹ ਟੀਵੀ ਐਪਾਂ ਨੂੰ ਨੈੱਟਵਰਕ ਰਾਹੀਂ ਆਪਣੀ ਡੀਬੱਗਿੰਗ ਤੱਕ ਪਹੁੰਚਣ ਨਹੀਂ ਦਿੰਦਾ, ਅਤੇ ਇਸਦੀ ਵਾਇਰਲੈੱਸ ਡੀਬੱਗਿੰਗ ਸਿਰਫ਼ Wi-Fi ਉੱਤੇ ਕੰਮ ਕਰਦੀ ਹੈ। Vibe Launcher ਨੂੰ ਜੋੜਾਬੱਧ ਕਰਨ ਲਈ ਟੀਵੀ ਨੂੰ Wi-Fi ਨਾਲ ਕਨੈਕਟ ਕਰੋ, ਜਾਂ ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ ਨੈੱਟਵਰਕ ਡੀਬੱਗਿੰਗ ਲੱਭੋ।</string>
+    <string name="paired_toast">ਵਾਇਰਲੈੱਸ ਡੀਬੱਗਿੰਗ ਰਾਹੀਂ ਜੋੜਾਬੱਧ ਕੀਤਾ</string>
+    <string name="adb_not_connected">ਕਨੈਕਟ ਨਹੀਂ ਹੈ</string>
+    <string name="adb_connected_port">ਕਨੈਕਟ ਹੈ (ਪੋਰਟ 5555)</string>
+    <string name="adb_connected_wireless">ਕਨੈਕਟ ਹੈ (ਵਾਇਰਲੈੱਸ ਡੀਬੱਗਿੰਗ)</string>
+    <string name="adb_ready_note">Vibe Launcher ਟੀਵੀ ਦੇ ADB ਤੱਕ ਪਹੁੰਚ ਸਕਦਾ ਹੈ: ਐਪਾਂ ਦੀ ਸਫ਼ਾਈ ਅਤੇ ਐਪਾਂ ਦੇ ਬਾਕੀ ਹਿੱਸੇ ਨਾਲ ਅੱਗੇ ਵਧੋ। ਇੱਥੇ ਕੁਝ ਵੀ ਬਦਲਣ ਦੀ ਲੋੜ ਨਹੀਂ।</string>
+    <string name="adb_not_needed">Vibe Launcher ਕੋਲ ਪਹਿਲਾਂ ਹੀ ADB ਪਹੁੰਚ ਹੈ, ਇਸ ਲਈ ਇਸਦੀ ਲੋੜ ਨਹੀਂ। ਫਿਰ ਵੀ ਜਾਰੀ ਰੱਖਣਾ ਹੈ?</string>
+    <string name="wireless_not_running">ਚਾਲੂ, ਚੱਲ ਨਹੀਂ ਰਿਹਾ</string>
+    <string name="wireless_not_running_short">ਵਾਇਰਲੈੱਸ ਡੀਬੱਗਿੰਗ ਚਾਲੂ ਹੈ ਪਰ ਚੱਲ ਨਹੀਂ ਰਹੀ (USB ਡੀਬੱਗਿੰਗ ਬੰਦ ਹੋਣ ਉੱਤੇ ਕੁਝ ਟੀਵੀ ਇਸਨੂੰ ਰੋਕ ਦਿੰਦੇ ਹਨ)। ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ ਇਸਨੂੰ ਬੰਦ ਕਰਕੇ ਮੁੜ ਚਾਲੂ ਕਰੋ।</string>
+    <string name="adb_connect_short">ਕਨੈਕਟ ਕਰਨ ਲਈ ਇੱਥੇ OK ਦਬਾਓ। ਜੇ ਹਾਲੇ ਨਹੀਂ ਹੋ ਸਕਦਾ, ਤਾਂ Vibe Launcher ਉਹ ਪਹਿਲੀ ਚੀਜ਼ ਦਿਖਾਉਂਦਾ ਹੈ ਜੋ ਹਾਲੇ ਚਾਲੂ ਕਰਨੀ ਹੈ, ਸਭ ਤੋਂ ਆਸਾਨ ਪਹਿਲਾਂ। ਪਹਿਲੀ ਵਾਰ, ਟੀਵੀ ਪੁੱਛਦਾ ਹੈ ਕਿ ਕੀ Vibe Launcher ਨੂੰ ਇਜਾਜ਼ਤ ਦੇਣੀ ਹੈ: ਹਮੇਸ਼ਾਂ ਇਜਾਜ਼ਤ ਦਿਓ ਉੱਤੇ ਨਿਸ਼ਾਨ ਲਗਾਓ।</string>
+    <string name="dev_options">ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ</string>
+    <string name="dev_options_short">ਡੀਬੱਗਿੰਗ ਲਈ Android ਦੇ ਸਵਿੱਚ, ਅਣਲਾਕ ਹੋਣ ਤੱਕ ਲੁਕੇ ਹੋਏ: ਇਸ ਬਾਰੇ ਵਿੱਚ ਬਿਲਡ ਉੱਤੇ ਸੱਤ ਵਾਰ OK ਦਬਾਓ।</string>
+    <string name="usb_adb_debugging">USB/ADB ਡੀਬੱਗਿੰਗ</string>
+    <string name="usb_adb_debugging_short">ਟੀਵੀ ਦਾ ਡੀਬੱਗਿੰਗ ਸਵਿੱਚ, ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਵਿੱਚ (USB ਡੀਬੱਗਿੰਗ, ਜਾਂ ਕੁਝ ਟੀਵੀ ਉੱਤੇ ADB ਡੀਬੱਗਿੰਗ)। ਜ਼ਿਆਦਾਤਰ ਟੀਵੀ ਉੱਤੇ ਇਹ ਪੋਰਟ 5555 ਵੀ ਖੋਲ੍ਹਦਾ ਹੈ, ਜਿਸ ਰਾਹੀਂ Vibe Launcher ਕਨੈਕਟ ਕਰਦਾ ਹੈ।</string>
+    <string name="wireless_debugging_onoff_short">Android 11 ਅਤੇ ਉਸ ਤੋਂ ਬਾਅਦ: ਜੋੜਾਬੱਧ ਕਰਨ ਵਾਲੇ ਕੋਡ ਨਾਲ Wi-Fi ਰਾਹੀਂ ਡੀਬੱਗਿੰਗ। ਜੋੜਾਬੱਧ ਹੋਣ ਤੋਂ ਬਾਅਦ, ਪੋਰਟ 5555 ਬੰਦ ਹੋਣ ਉੱਤੇ Vibe Launcher ਇਸਨੂੰ ਵਰਤਦਾ ਹੈ।</string>
+    <string name="pair_with_code">ਕੋਡ ਨਾਲ ਜੋੜਾਬੱਧ ਕਰੋ</string>
+    <string name="open_dev_options">ਵਿਕਾਸਕਾਰ ਚੋਣਾਂ ਖੋਲ੍ਹੋ</string>
     <string name="apps_turn_off_again">ਮੁੜ ਬੰਦ ਕਰੋ</string>
     <string name="apps_turn_off_again_short">ਉਹ ਐਪਾਂ ਜੋ Vibe Launcher ਨੇ ਪਹਿਲਾਂ ਬੰਦ ਕੀਤੀਆਂ ਸਨ, ਪਰ ਹੁਣ ਇੱਥੇ ਚਾਲੂ ਹਨ: ਇਸ ਟੀਵੀ ਉੱਤੇ ਰੀਸਟੋਰ ਕੀਤੇ ਬੈਕਅੱਪ ਤੋਂ, ਜਾਂ ਕਿਸੇ ਅੱਪਡੇਟ ਨੇ ਮੁੜ ਚਾਲੂ ਕਰ ਦਿੱਤੀਆਂ।</string>
     <string name="apps_turn_off_now">ਹੁਣੇ ਬੰਦ ਕਰੋ</string>

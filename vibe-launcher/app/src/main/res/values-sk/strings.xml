@@ -95,6 +95,7 @@
     <string name="youtube_info">Keď ste prihlásení v SmartTube, dlaždica YouTube ukazuje videá z vášho vlastného kanála YouTube. Kľúč nie je potrebný.\n\nBez neho kľúč ukazuje najpopulárnejšie videá vo vašej krajine. Bezplatný kľúč: console.cloud.google.com → nový projekt → zapnite YouTube Data API v3 → Poverenia → Vytvoriť kľúč API.\n\nBez oboch ukazuje upútavky na populárne filmy.</string>
     <string name="plex_info">Pozadia z vášho vlastného servera Plex: Pokračovať v sledovaní a nedávno pridané.\n\nKde ho nájsť: app.plex.tv → otvorte ľubovoľný titul → ⋯ → Získať informácie → Zobraziť XML a skopírujte, čo je v adrese za X-Plex-Token=. Uchovajte ho v tajnosti ako heslo.</string>
     <string name="saved_from_phone">Uložené z telefónu</string>
+    <string name="screen_missing">Tento televízor nemá takú obrazovku nastavení. Vyhľadajte ju vo vlastných Nastaveniach televízora.</string>
     <string name="not_available">Na tomto televízore nie je k dispozícii</string>
     <string name="cant_open">%1$s sa nedá otvoriť</string>
     <string name="smarttube_install">Nainštalovať SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">Zostáva %1$s</string>
     <string name="home_key_name">Tlačidlo Domov pre Vibe Launcher</string>
     <string name="home_key_description">Tlačidlo Domov na ovládači otvorí Vibe Launcher namiesto vlastnej domovskej obrazovky televízora a jeho podržanie otvorí nastavenia televízora. Nič z obrazovky nečíta a všetky ostatné tlačidlá púšťa ďalej.</string>
-    <string name="home_key_turn_on">Zapnite tu „%1$s“, aby tlačidlo Domov otváralo Vibe Launcher.</string>
     <string name="permissions_title">Dve povolenia</string>
     <string name="permissions_why">Vibe Launcher teraz požiada o dve povolenia.\n\nTV program: aby mohol zobrazovať obrázky z kariet, ktoré vaše aplikácie zverejňujú pre domovskú obrazovku.\n\nPoloha: Android ukazuje názov siete Wi-Fi len aplikáciám s týmto povolením. Vibe Launcher ho používa len na tento názov a nikdy nezisťuje, kde je televízor.\n\nNič z toho neopustí televízor.</string>
     <string name="continue_button">Pokračovať</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Pre televízory, ktoré si ponechávajú vlastnú domovskú obrazovku: tlačidlo Domov na ovládači otvorí Vibe Launcher a jeho podržanie otvorí nastavenia televízora.</string>
     <string name="home_key_agree">Súhlasím</string>
     <string name="home_key_steps">Ďalej: v zozname, ktorý sa otvorí, vyberte „%1$s“, zapnite ho a stlačte Domov.</string>
+    <string name="home_key_steps_settings">Ďalej: tento televízor nemá priamu cestu k nastaveniam dostupnosti, preto sa namiesto toho otvoria Nastavenia Androidu. Tam prejdite do Predvoľby zariadenia &gt; Dostupnosť, vyberte „%1$s“, zapnite ho a stlačte Domov.</string>
     <string name="store_update">Aktualizovať Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Záloha a obnovenie</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Aplikácie</string>
     <string name="apps_short">Vypnite aplikácie, ktoré nepoužívate: zostanú nainštalované, ale nebudú sa môcť spúšťať, zapĺňať domovskú obrazovku ani aktualizovať, kým ich znova nezapnete. Časti, ktoré televízor potrebuje na fungovanie, tu nie sú uvedené.</string>
-    <string name="adb_connection">Ladenie cez sieť</string>
-    <string name="adb_connection_short">Vibe Launcher vypína aplikácie pomocou ladenia v televízore, rovnako ako by to urobil počítač. Zapnite ladenie cez USB (na niektorých televízoroch ladenie ADB alebo ladenie cez sieť) v sekcii Pre vývojárov, potom tu stlačte OK a v televízore povoľte Vibe Launcher.</string>
-    <string name="adb_ready">Pripojené</string>
-    <string name="adb_not_allowed">Zatiaľ nepovolené</string>
+    <string name="adb_connection">Pripojenie ADB</string>
+    <string name="adb_connection_short">Vibe Launcher vypína aplikácie cez vlastné ADB televízora, ako by to urobil počítač. Otvorte toto, aby ste videli, čo je zapnuté, a pripojili sa.</string>
     <string name="adb_checking">Kontroluje sa…</string>
-    <string name="adb_allow_prompt">V otázke na televízore začiarknite Vždy povoliť a potom vyberte OK</string>
+    <string name="adb_allow_prompt">Potom sa televízor spýta, či povoliť Vibe Launcher: začiarknite Vždy povoliť a potom vyberte OK.</string>
     <string name="adb_turn_on">V sekcii Pre vývojárov zapnite ladenie cez USB (na niektorých televízoroch sa volá ladenie ADB alebo ladenie cez sieť) a potom sa sem vráťte.</string>
     <string name="adb_network_closed">Ladenie je zapnuté, ale tento televízor k nemu zatiaľ nepustí aplikácie. V sekcii Pre vývojárov vyhľadajte ladenie cez sieť alebo ADB cez sieť a zapnite ho. Ak je k dispozícii iba bezdrôtové ladenie, Vibe Launcher ho zatiaľ nemôže použiť.</string>
     <string name="adb_failed">Televízor to nepovolil</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Aplikácie, ktoré televízor potrebuje</string>
     <string name="app_protected">Televízor to potrebuje na správne fungovanie, preto to Vibe Launcher nevypne. Váš televízor tak zostane v bezpečí.</string>
     <string name="adb_dev_options">Najprv zapnite sekciu Pre vývojárov: v časti Informácie stlačte sedemkrát OK na položke Zostava a potom sa sem vráťte.</string>
+    <string name="wireless_debugging">Bezdrôtové ladenie</string>
+    <string name="wireless_debugging_short">Pre televízory s Androidom 11 a novším, ktoré majú ladenie cez sieť zatvorené. Spárujte Vibe Launcher raz: naskenujte kód telefónom a potom tam zadajte kód, ktorý ukazuje okno párovania na televízore.</string>
+    <string name="paired">Spárované</string>
+    <string name="not_paired">Nespárované</string>
+    <string name="pair_scan">Naskenujte telefónom a potom nižšie otvorte sekciu Pre vývojárov: zapnite bezdrôtové ladenie, otvorte ho, vyberte Spárovať zariadenie pomocou párovacieho kódu a zadajte v telefóne kód, ktorý zobrazí.</string>
+    <string name="adb_wireless_on">V sekcii Pre vývojárov zapnite bezdrôtové ladenie a potom sa sem vráťte.</string>
+    <string name="adb_wireless_wifi">Tento televízor nepúšťa aplikácie k ladeniu cez sieť a jeho bezdrôtové ladenie funguje iba cez Wi-Fi. Pripojte televízor k Wi-Fi, aby ste spárovali Vibe Launcher, alebo v sekcii Pre vývojárov vyhľadajte ladenie cez sieť.</string>
+    <string name="paired_toast">Spárované cez bezdrôtové ladenie</string>
+    <string name="adb_not_connected">Nepripojené</string>
+    <string name="adb_connected_port">Pripojené (port 5555)</string>
+    <string name="adb_connected_wireless">Pripojené (bezdrôtové ladenie)</string>
+    <string name="adb_ready_note">Vibe Launcher má prístup k ADB televízora: pokračujte položkou Vyčistenie aplikácií a zvyškom sekcie Aplikácie. Tu netreba nič meniť.</string>
+    <string name="adb_not_needed">Vibe Launcher už má prístup k ADB, takže to nie je potrebné. Pokračovať aj tak?</string>
+    <string name="wireless_not_running">Zapnuté, nebeží</string>
+    <string name="wireless_not_running_short">Bezdrôtové ladenie je zapnuté, ale nebeží (niektoré televízory ho zastavia, keď sa vypne ladenie cez USB). Vypnite ho a znova zapnite v sekcii Pre vývojárov.</string>
+    <string name="adb_connect_short">Stlačením OK tu sa pripojíte. Ak to zatiaľ nejde, Vibe Launcher ukáže prvú vec, ktorú treba ešte zapnúť, od najjednoduchšej. Prvýkrát sa televízor spýta, či povoliť Vibe Launcher: začiarknite Vždy povoliť.</string>
+    <string name="dev_options">Pre vývojárov</string>
+    <string name="dev_options_short">Prepínače Androidu na ladenie, skryté do odomknutia: v časti Informácie stlačte sedemkrát OK na položke Zostava.</string>
+    <string name="usb_adb_debugging">Ladenie USB/ADB</string>
+    <string name="usb_adb_debugging_short">Prepínač ladenia televízora v sekcii Pre vývojárov (ladenie cez USB, na niektorých televízoroch ladenie ADB). Na väčšine televízorov otvorí aj port 5555, cez ktorý sa Vibe Launcher pripája.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 a novší: ladenie cez Wi-Fi s párovacím kódom. Vibe Launcher ho po spárovaní používa, keď je port 5555 zatvorený.</string>
+    <string name="pair_with_code">Spárovať pomocou kódu</string>
+    <string name="open_dev_options">Otvoriť sekciu Pre vývojárov</string>
     <string name="apps_turn_off_again">Znova vypnúť</string>
     <string name="apps_turn_off_again_short">Aplikácie, ktoré Vibe Launcher predtým vypol, no teraz sú tu zapnuté: zo zálohy obnovenej v tomto televízore alebo ich znova zapla aktualizácia.</string>
     <string name="apps_turn_off_now">Vypnúť teraz</string>

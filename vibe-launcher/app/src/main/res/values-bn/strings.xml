@@ -95,6 +95,7 @@
     <string name="youtube_info">SmartTube-এ সাইন ইন থাকলে YouTube টাইলে আপনার নিজের YouTube ফিডের ভিডিও দেখায়। কোনো কী লাগে না।\n\nএটি না থাকলে, একটি কী আপনার দেশের সবচেয়ে জনপ্রিয় ভিডিও দেখায়। বিনামূল্যের কী: console.cloud.google.com → নতুন প্রজেক্ট → YouTube Data API v3 চালু করুন → ক্রেডেনশিয়াল → API কী তৈরি করুন।\n\nদুটির কোনোটি না থাকলে জনপ্রিয় সিনেমার ট্রেলার দেখায়।</string>
     <string name="plex_info">আপনার নিজের Plex সার্ভার থেকে ব্যাকড্রপ: দেখা চালিয়ে যান ও সম্প্রতি যোগ করা।\n\nপেতে: app.plex.tv → যেকোনো টাইটেল খুলুন → ⋯ → তথ্য দেখুন → XML দেখুন, এবং ঠিকানায় X-Plex-Token=-এর পরের অংশ কপি করুন। পাসওয়ার্ডের মতো গোপন রাখুন।</string>
     <string name="saved_from_phone">আপনার ফোন থেকে সংরক্ষিত</string>
+    <string name="screen_missing">এই টিভিতে সেই সেটিংস স্ক্রিন নেই। টিভির নিজস্ব সেটিংসে এটি খুঁজুন।</string>
     <string name="not_available">এই টিভিতে উপলব্ধ নয়</string>
     <string name="cant_open">%1$s খোলা যাচ্ছে না</string>
     <string name="smarttube_install">SmartTube ইনস্টল করুন</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s বাকি</string>
     <string name="home_key_name">Vibe Launcher হোম বোতাম</string>
     <string name="home_key_description">রিমোটের হোম বোতাম টিভির নিজের হোম স্ক্রিনের বদলে Vibe Launcher খোলে, আর চেপে ধরলে টিভির সেটিংস খোলে। এটি স্ক্রিনের কিছুই পড়ে না এবং বাকি সব বোতাম যেমন আছে তেমন পাঠিয়ে দেয়।</string>
-    <string name="home_key_turn_on">হোম বোতামে Vibe Launcher খুলতে এখানে “%1$s” চালু করুন।</string>
     <string name="permissions_title">দুটি অনুমতি</string>
     <string name="permissions_why">এরপর Vibe Launcher দুটি অনুমতি চাইবে।\n\nটিভি তালিকা: আপনার অ্যাপগুলো হোম স্ক্রিনের জন্য যে কার্ড প্রকাশ করে, সেগুলোর ছবি দেখাতে।\n\nলোকেশন: Android শুধু এই অনুমতি থাকা অ্যাপকেই Wi-Fi নেটওয়ার্কের নাম দেখায়। Vibe Launcher এটি শুধু সেই নামের জন্য ব্যবহার করে, টিভি কোথায় আছে তা কখনো খোঁজে না।\n\nকোনোটিই টিভির বাইরে যায় না।</string>
     <string name="continue_button">চালিয়ে যান</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">যে টিভি নিজের হোম স্ক্রিন রেখে দেয় তার জন্য: রিমোটের হোম বোতাম Vibe Launcher খোলে, আর চেপে ধরে রাখলে টিভির সেটিংস খোলে।</string>
     <string name="home_key_agree">সম্মত</string>
     <string name="home_key_steps">এরপর: যে তালিকা খুলবে তাতে “%1$s” বেছে নিন, চালু করুন, তারপর হোম চাপুন।</string>
+    <string name="home_key_steps_settings">এরপর: এই টিভিতে অ্যাক্সেসিবিলিটি সেটিংসে সরাসরি যাওয়ার উপায় নেই, তাই এর বদলে Android-এর সেটিংস খুলবে। সেখানে ডিভাইসের পছন্দগুলি &gt; অ্যাক্সেসিবিলিটি-তে যান, “%1$s” বেছে নিন, চালু করুন, তারপর হোম চাপুন।</string>
     <string name="store_update">Vibe Launcher আপডেট করুন</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ব্যাকআপ ও রিস্টোর</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">অ্যাপ</string>
     <string name="apps_short">যেসব অ্যাপ আপনি ব্যবহার করেন না সেগুলো বন্ধ করুন: সেগুলো ইনস্টল থাকে, কিন্তু আবার চালু না করা পর্যন্ত চলতে, হোম স্ক্রিন ভরাতে বা আপডেট হতে পারে না। টিভি চলার জন্য যে অংশগুলো দরকার সেগুলো তালিকায় নেই।</string>
-    <string name="adb_connection">নেটওয়ার্ক ডিবাগিং</string>
-    <string name="adb_connection_short">Vibe Launcher কম্পিউটারের মতোই টিভির ডিবাগিংয়ের মাধ্যমে অ্যাপ বন্ধ করে। ডেভেলপার বিকল্পে USB ডিবাগিং (কিছু টিভিতে ADB ডিবাগিং বা নেটওয়ার্ক ডিবাগিং) চালু করুন, তারপর এখানে OK টিপুন এবং টিভিতে Vibe Launcher-কে অনুমতি দিন।</string>
-    <string name="adb_ready">কানেক্ট হয়েছে</string>
-    <string name="adb_not_allowed">এখনও অনুমতি দেওয়া হয়নি</string>
+    <string name="adb_connection">ADB কানেকশন</string>
+    <string name="adb_connection_short">Vibe Launcher টিভির নিজস্ব ADB-এর মাধ্যমে অ্যাপ বন্ধ করে, যেমন একটি কম্পিউটার করত। কী চালু আছে দেখতে এবং কানেক্ট করতে এটি খুলুন।</string>
     <string name="adb_checking">যাচাই করা হচ্ছে…</string>
-    <string name="adb_allow_prompt">টিভির প্রশ্নে সবসময় অনুমতি দিন-এ টিক দিন, তারপর OK বেছে নিন</string>
+    <string name="adb_allow_prompt">এরপর, টিভি জিজ্ঞাসা করবে Vibe Launcher-কে অনুমতি দেবে কিনা: সবসময় অনুমতি দিন-এ টিক দিন, তারপর OK বেছে নিন।</string>
     <string name="adb_turn_on">ডেভেলপার বিকল্পে USB ডিবাগিং চালু করুন (কিছু টিভিতে একে ADB ডিবাগিং বা নেটওয়ার্ক ডিবাগিং বলা হয়), তারপর এখানে ফিরে আসুন।</string>
     <string name="adb_network_closed">ডিবাগিং চালু আছে, কিন্তু এই টিভি এখনও অ্যাপকে এতে পৌঁছাতে দেয় না। ডেভেলপার বিকল্পে নেটওয়ার্ক ডিবাগিং বা নেটওয়ার্কের মাধ্যমে ADB খুঁজুন এবং সেটি চালু করুন। যদি শুধু ওয়্যারলেস ডিবাগিং থাকে, তাহলে Vibe Launcher এখনও সেটি ব্যবহার করতে পারে না।</string>
     <string name="adb_failed">টিভি এটির অনুমতি দেয়নি</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">টিভির দরকারি অ্যাপ</string>
     <string name="app_protected">আপনার টিভি ঠিকভাবে চলার জন্য এটি দরকার, তাই Vibe Launcher এটি বন্ধ করবে না। এতে আপনার টিভি সুরক্ষিত থাকে।</string>
     <string name="adb_dev_options">প্রথমে ডেভেলপার বিকল্প চালু করুন: সম্পর্কে-তে গিয়ে বিল্ড-এ সাতবার OK টিপুন, তারপর এখানে ফিরে আসুন।</string>
+    <string name="wireless_debugging">ওয়্যারলেস ডিবাগিং</string>
+    <string name="wireless_debugging_short">Android 11 ও তার পরের ভার্সনের যে টিভিগুলি নেটওয়ার্ক ডিবাগিং বন্ধ রাখে, সেগুলির জন্য। Vibe Launcher একবার পেয়ার করুন: আপনার ফোন দিয়ে কোড স্ক্যান করুন, তারপর টিভির পেয়ারিং উইন্ডোতে দেখানো কোড সেখানে টাইপ করুন।</string>
+    <string name="paired">পেয়ার করা হয়েছে</string>
+    <string name="not_paired">পেয়ার করা হয়নি</string>
+    <string name="pair_scan">আপনার ফোন দিয়ে স্ক্যান করুন, তারপর নিচে ডেভেলপার বিকল্প খুলুন: ওয়্যারলেস ডিবাগিং চালু করুন, সেটি খুলুন, পেয়ারিং কোড ব্যবহার করে ডিভাইস পেয়ার করুন বেছে নিন, এবং এটি যে কোড দেখায় তা আপনার ফোনে টাইপ করুন।</string>
+    <string name="adb_wireless_on">ডেভেলপার বিকল্পে ওয়্যারলেস ডিবাগিং চালু করুন, তারপর এখানে ফিরে আসুন।</string>
+    <string name="adb_wireless_wifi">এই টিভি অ্যাপকে নেটওয়ার্কের মাধ্যমে এর ডিবাগিংয়ে পৌঁছাতে দেয় না, এবং এর ওয়্যারলেস ডিবাগিং শুধু Wi-Fi-তে কাজ করে। Vibe Launcher পেয়ার করতে টিভিকে Wi-Fi-তে কানেক্ট করুন, অথবা ডেভেলপার বিকল্পে নেটওয়ার্ক ডিবাগিং খুঁজুন।</string>
+    <string name="paired_toast">ওয়্যারলেস ডিবাগিংয়ের মাধ্যমে পেয়ার করা হয়েছে</string>
+    <string name="adb_not_connected">কানেক্ট করা নেই</string>
+    <string name="adb_connected_port">কানেক্ট করা হয়েছে (পোর্ট 5555)</string>
+    <string name="adb_connected_wireless">কানেক্ট করা হয়েছে (ওয়্যারলেস ডিবাগিং)</string>
+    <string name="adb_ready_note">Vibe Launcher টিভির ADB-তে পৌঁছাতে পারে: অ্যাপ পরিষ্কার এবং অ্যাপ-এর বাকি অংশ চালিয়ে যান। এখানে কিছু বদলানোর দরকার নেই।</string>
+    <string name="adb_not_needed">Vibe Launcher-এর ইতিমধ্যে ADB অ্যাক্সেস আছে, তাই এটির দরকার নেই। তবুও চালিয়ে যাবেন?</string>
+    <string name="wireless_not_running">চালু, কিন্তু চলছে না</string>
+    <string name="wireless_not_running_short">ওয়্যারলেস ডিবাগিং চালু আছে কিন্তু চলছে না (USB ডিবাগিং বন্ধ হলে কিছু টিভি এটি থামিয়ে দেয়)। ডেভেলপার বিকল্পে এটি বন্ধ করে আবার চালু করুন।</string>
+    <string name="adb_connect_short">কানেক্ট করতে এখানে OK টিপুন। যদি এখনও না পারে, Vibe Launcher প্রথমে যা চালু করা বাকি তা দেখায়, সবচেয়ে সহজটি আগে। প্রথমবার টিভি জিজ্ঞাসা করবে Vibe Launcher-কে অনুমতি দেবে কিনা: সবসময় অনুমতি দিন-এ টিক দিন।</string>
+    <string name="dev_options">ডেভেলপার বিকল্প</string>
+    <string name="dev_options_short">ডিবাগিংয়ের জন্য Android-এর সুইচ, আনলক না করা পর্যন্ত লুকানো: সম্পর্কে-তে গিয়ে বিল্ড-এ সাতবার OK টিপুন।</string>
+    <string name="usb_adb_debugging">USB/ADB ডিবাগিং</string>
+    <string name="usb_adb_debugging_short">টিভির ডিবাগিং সুইচ, ডেভেলপার বিকল্পে (USB ডিবাগিং, বা কিছু টিভিতে ADB ডিবাগিং)। বেশিরভাগ টিভিতে এটি পোর্ট 5555-ও খোলে, যার মাধ্যমে Vibe Launcher কানেক্ট করে।</string>
+    <string name="wireless_debugging_onoff_short">Android 11 ও তার পরের ভার্সন: পেয়ারিং কোড দিয়ে Wi-Fi-এর মাধ্যমে ডিবাগিং। পেয়ার করা হলে, পোর্ট 5555 বন্ধ থাকলে Vibe Launcher এটি ব্যবহার করে।</string>
+    <string name="pair_with_code">কোড দিয়ে পেয়ার করুন</string>
+    <string name="open_dev_options">ডেভেলপার বিকল্প খুলুন</string>
     <string name="apps_turn_off_again">আবার বন্ধ করুন</string>
     <string name="apps_turn_off_again_short">Vibe Launcher আগে যেসব অ্যাপ বন্ধ করেছিল কিন্তু এখন এখানে চালু আছে: এই টিভিতে রিস্টোর করা ব্যাকআপ থেকে, বা কোনো আপডেট সেগুলো আবার চালু করেছে।</string>
     <string name="apps_turn_off_now">এখনই বন্ধ করুন</string>

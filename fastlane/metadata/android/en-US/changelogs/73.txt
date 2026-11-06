@@ -1,0 +1,5 @@
+* Settings > Apps > ADB connection: a green or red status at the top, then Developer options, USB/ADB debugging, Wireless debugging and Pair with code, checked live. Either way in is enough.
+* Wireless debugging (Android 11 and up): pair once with the TV's code, typed on your phone, for TVs that keep port 5555 shut.
+* Errors now show in a window that stays until OK, and the TV's "allow" question is explained before it appears.
+* Make Vibe Launcher your Home uses ADB where it's allowed; on TVs without a direct Accessibility screen it says where to find it.
+* Long lists in Settings scroll a whole row at a time and keep the opened row in view.

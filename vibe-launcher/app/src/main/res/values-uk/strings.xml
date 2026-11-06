@@ -95,6 +95,7 @@
     <string name="youtube_info">Якщо ви ввійшли в SmartTube, плитка YouTube показує відео з вашої власної стрічки YouTube. Ключ не потрібен.\n\nБез нього ключ показує найпопулярніші відео у вашій країні. Безкоштовний ключ: console.cloud.google.com → новий проєкт → увімкніть YouTube Data API v3 → Облікові дані → Створити ключ API.\n\nЯкщо немає ні того, ні іншого, показуються трейлери популярних фільмів.</string>
     <string name="plex_info">Фони з вашого власного сервера Plex: «Продовжити перегляд» і нещодавно додане.\n\nЯк знайти: app.plex.tv → відкрийте будь-яку назву → ⋯ → Інформація → Переглянути XML і скопіюйте те, що йде після X-Plex-Token= в адресі. Тримайте його в таємниці, як пароль.</string>
     <string name="saved_from_phone">Збережено з телефона</string>
+    <string name="screen_missing">На цьому телевізорі немає такого екрана налаштувань. Знайдіть його у власних налаштуваннях телевізора.</string>
     <string name="not_available">Недоступно на цьому телевізорі</string>
     <string name="cant_open">Не вдається відкрити %1$s</string>
     <string name="smarttube_install">Встановити SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">Залишилося: %1$s</string>
     <string name="home_key_name">Кнопка «Головний екран» для Vibe Launcher</string>
     <string name="home_key_description">Кнопка «Головний екран» на пульті відкриває Vibe Launcher замість власного головного екрана телевізора, а довге натискання – налаштування телевізора. Нічого не зчитує з екрана й пропускає всі інші кнопки.</string>
-    <string name="home_key_turn_on">Увімкніть тут «%1$s», щоб кнопка «Головний екран» відкривала Vibe Launcher.</string>
     <string name="permissions_title">Два дозволи</string>
     <string name="permissions_why">Зараз Vibe Launcher попросить два дозволи.\n\nТелепрограма: щоб показувати зображення з карток, які ваші додатки публікують для головного екрана.\n\nМісцезнаходження: Android показує назву мережі Wi-Fi лише додаткам із цим дозволом. Vibe Launcher використовує його лише для назви й ніколи не визначає, де стоїть телевізор.\n\nНіщо з цього не залишає телевізор.</string>
     <string name="continue_button">Продовжити</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Для телевізорів, які зберігають власний головний екран: кнопка «Головний екран» на пульті відкриває Vibe Launcher, а утримання відкриває налаштування телевізора.</string>
     <string name="home_key_agree">Погоджуюся</string>
     <string name="home_key_steps">Далі: у списку, що відкриється, виберіть «%1$s», увімкніть і натисніть «Головний екран».</string>
+    <string name="home_key_steps_settings">Далі: на цьому телевізорі не можна одразу відкрити налаштування спеціальних можливостей, тому замість них відкриються налаштування Android. Там перейдіть у «Налаштування пристрою» &gt; «Спеціальні можливості», виберіть «%1$s», увімкніть і натисніть «Головний екран».</string>
     <string name="store_update">Оновити Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Резервна копія та відновлення</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Застосунки</string>
     <string name="apps_short">Вимкніть застосунки, якими не користуєтеся: вони залишаться встановленими, але не зможуть запускатися, заповнювати головний екран чи оновлюватися, доки ви не ввімкнете їх знову. Компоненти, потрібні телевізору для роботи, тут не показано.</string>
-    <string name="adb_connection">Мережеве налагодження</string>
-    <string name="adb_connection_short">Vibe Launcher вимикає застосунки через налагодження телевізора, як це зробив би комп’ютер. Увімкніть налагодження USB (на деяких телевізорах — налагодження ADB або мережеве налагодження) у розділі «Параметри розробника», потім натисніть тут OK і дозвольте Vibe Launcher на телевізорі.</string>
-    <string name="adb_ready">Підключено</string>
-    <string name="adb_not_allowed">Ще не дозволено</string>
+    <string name="adb_connection">Підключення через ADB</string>
+    <string name="adb_connection_short">Vibe Launcher вимикає застосунки через власний ADB телевізора, як це зробив би комп’ютер. Відкрийте цей пункт, щоб побачити, що ввімкнено, і підключитися.</string>
     <string name="adb_checking">Перевірка…</string>
-    <string name="adb_allow_prompt">У запиті на телевізорі позначте «Завжди дозволяти», потім виберіть OK</string>
+    <string name="adb_allow_prompt">Потім телевізор запитає, чи дозволити Vibe Launcher: позначте «Завжди дозволяти», потім виберіть OK.</string>
     <string name="adb_turn_on">У розділі «Параметри розробника» увімкніть налагодження USB (на деяких телевізорах воно називається налагодженням ADB або мережевим налагодженням) і поверніться сюди.</string>
     <string name="adb_network_closed">Налагодження ввімкнено, але цей телевізор поки не дає застосункам до нього під’єднатися. У розділі «Параметри розробника» знайдіть пункт «Мережеве налагодження» або «ADB через мережу» і ввімкніть його. Якщо є лише «Бездротове налагодження», Vibe Launcher поки не може ним скористатися.</string>
     <string name="adb_failed">Телевізор цього не дозволив</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Застосунки, потрібні телевізору</string>
     <string name="app_protected">Це потрібно телевізору для правильної роботи, тому Vibe Launcher не вимикатиме це. Так ваш телевізор залишається в безпеці.</string>
     <string name="adb_dev_options">Спочатку ввімкніть «Параметри розробника»: у розділі «Про пристрій» сім разів натисніть OK на пункті «Збірка», потім поверніться сюди.</string>
+    <string name="wireless_debugging">Бездротове налагодження</string>
+    <string name="wireless_debugging_short">Для телевізорів з Android 11 і новіших, у яких мережеве налагодження закрите. Підключіть Vibe Launcher один раз: відскануйте код телефоном, а потім введіть на ньому код, який показує вікно підключення на телевізорі.</string>
+    <string name="paired">Підключено</string>
+    <string name="not_paired">Не підключено</string>
+    <string name="pair_scan">Відскануйте код телефоном, потім відкрийте нижче «Параметри розробника»: увімкніть «Бездротове налагодження», відкрийте його, виберіть «Підключити пристрій за допомогою коду підключення» і введіть на телефоні показаний код.</string>
+    <string name="adb_wireless_on">Увімкніть «Бездротове налагодження» в розділі «Параметри розробника» і поверніться сюди.</string>
+    <string name="adb_wireless_wifi">Цей телевізор не дає застосункам під’єднуватися до налагодження через мережу, а його «Бездротове налагодження» працює лише через Wi-Fi. Підключіть телевізор до Wi-Fi, щоб підключити Vibe Launcher, або знайдіть у розділі «Параметри розробника» пункт «Мережеве налагодження».</string>
+    <string name="paired_toast">Підключено через «Бездротове налагодження»</string>
+    <string name="adb_not_connected">Не підключено</string>
+    <string name="adb_connected_port">Підключено (порт 5555)</string>
+    <string name="adb_connected_wireless">Підключено («Бездротове налагодження»)</string>
+    <string name="adb_ready_note">Vibe Launcher має доступ до ADB телевізора: переходьте до «Очищення застосунків» та решти розділу «Застосунки». Тут нічого змінювати не потрібно.</string>
+    <string name="adb_not_needed">Vibe Launcher уже має доступ до ADB, тож це не потрібно. Усе одно продовжити?</string>
+    <string name="wireless_not_running">Увімкнено, не працює</string>
+    <string name="wireless_not_running_short">«Бездротове налагодження» ввімкнено, але воно не працює (деякі телевізори зупиняють його, коли вимикається налагодження USB). Вимкніть і знову ввімкніть його в розділі «Параметри розробника».</string>
+    <string name="adb_connect_short">Натисніть тут OK, щоб підключитися. Якщо це поки неможливо, Vibe Launcher покаже перше, що ще треба ввімкнути, починаючи з найпростішого. Першого разу телевізор запитає, чи дозволити Vibe Launcher: позначте «Завжди дозволяти».</string>
+    <string name="dev_options">Параметри розробника</string>
+    <string name="dev_options_short">Перемикачі Android для налагодження, приховані до розблокування: у розділі «Про пристрій» сім разів натисніть OK на пункті «Збірка».</string>
+    <string name="usb_adb_debugging">Налагодження USB/ADB</string>
+    <string name="usb_adb_debugging_short">Перемикач налагодження телевізора в розділі «Параметри розробника» (налагодження USB або на деяких телевізорах налагодження ADB). На більшості телевізорів він також відкриває порт 5555, через який підключається Vibe Launcher.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 і новіші: налагодження через Wi-Fi з кодом підключення. Vibe Launcher використовує його, коли порт 5555 закритий, після підключення.</string>
+    <string name="pair_with_code">Підключити за кодом</string>
+    <string name="open_dev_options">Відкрити «Параметри розробника»</string>
     <string name="apps_turn_off_again">Вимкнути знову</string>
     <string name="apps_turn_off_again_short">Застосунки, які Vibe Launcher уже вимикав, але зараз вони тут увімкнені: із резервної копії, відновленої на цьому телевізорі, або їх знову ввімкнуло оновлення.</string>
     <string name="apps_turn_off_now">Вимкнути зараз</string>

@@ -95,6 +95,7 @@
     <string name="youtube_info">Con SmartTube con la sesión iniciada, el mosaico de YouTube muestra vídeos de tu propio feed de YouTube. No hace falta clave.\n\nSin él, una clave muestra los vídeos más populares de tu país. Clave gratuita: console.cloud.google.com → proyecto nuevo → habilita YouTube Data API v3 → Credenciales → Crear clave de API.\n\nSin ninguno de los dos, muestra tráilers de películas populares.</string>
     <string name="plex_info">Fondos de tu propio servidor Plex: Seguir viendo y lo añadido recientemente.\n\nPara obtenerlo: app.plex.tv → abre cualquier título → ⋯ → Obtener información → Ver XML, y copia lo que sigue a X-Plex-Token= en la dirección. Mantenlo en privado, como una contraseña.</string>
     <string name="saved_from_phone">Guardado desde el móvil</string>
+    <string name="screen_missing">Este televisor no tiene esa pantalla de ajustes. Búscala en los Ajustes del propio televisor.</string>
     <string name="not_available">No disponible en este televisor</string>
     <string name="cant_open">No se puede abrir %1$s</string>
     <string name="smarttube_install">Instalar SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">Quedan %1$s</string>
     <string name="home_key_name">Botón de inicio de Vibe Launcher</string>
     <string name="home_key_description">Hace que el botón de inicio del mando abra Vibe Launcher en lugar de la pantalla de inicio del televisor, y que mantenerlo pulsado abra los ajustes del televisor. No lee nada de la pantalla y deja pasar todos los demás botones.</string>
-    <string name="home_key_turn_on">Activa aquí «%1$s» para que el botón de inicio abra Vibe Launcher.</string>
     <string name="permissions_title">Dos permisos</string>
     <string name="permissions_why">A continuación, Vibe Launcher pedirá dos permisos.\n\nGuía de TV: para mostrar imágenes de las tarjetas que tus aplicaciones publican para la pantalla de inicio.\n\nUbicación: Android solo muestra el nombre de la red Wi-Fi a las aplicaciones con este permiso. Vibe Launcher lo usa solo para ese nombre y nunca averigua dónde está el televisor.\n\nNinguno de los dos sale del televisor.</string>
     <string name="continue_button">Continuar</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Para televisores que conservan su propia pantalla de inicio: el botón de inicio del mando abre Vibe Launcher y, si lo mantienes pulsado, abre los ajustes del televisor.</string>
     <string name="home_key_agree">Aceptar</string>
     <string name="home_key_steps">A continuación: en la lista que se abre, elige «%1$s», actívalo y pulsa Inicio.</string>
+    <string name="home_key_steps_settings">A continuación: este televisor no tiene un acceso directo a sus ajustes de accesibilidad, así que se abren los Ajustes de Android. Allí, ve a Preferencias del dispositivo &gt; Accesibilidad, elige «%1$s», actívalo y pulsa Inicio.</string>
     <string name="store_update">Actualizar Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Copia de seguridad y restauración</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Apps</string>
     <string name="apps_short">Desactiva las apps que no uses: siguen instaladas, pero no pueden ejecutarse, llenar la pantalla de inicio ni actualizarse hasta que las vuelvas a activar. No se muestran las partes que el televisor necesita para funcionar.</string>
-    <string name="adb_connection">Depuración por red</string>
-    <string name="adb_connection_short">Vibe Launcher desactiva apps mediante la depuración del televisor, como lo haría un ordenador. Activa la depuración por USB (depuración ADB o depuración por red en algunos televisores) en Opciones para desarrolladores, pulsa OK aquí y permite Vibe Launcher en el televisor.</string>
-    <string name="adb_ready">Conectado</string>
-    <string name="adb_not_allowed">Aún no permitido</string>
+    <string name="adb_connection">Conexión ADB</string>
+    <string name="adb_connection_short">Vibe Launcher desactiva apps a través del propio ADB del televisor, como lo haría un ordenador. Ábrelo para ver qué está activado y para conectarte.</string>
     <string name="adb_checking">Comprobando…</string>
-    <string name="adb_allow_prompt">En la pregunta del televisor, marca Permitir siempre y elige OK</string>
+    <string name="adb_allow_prompt">A continuación, el televisor pregunta si quieres permitir Vibe Launcher: marca Permitir siempre y elige OK.</string>
     <string name="adb_turn_on">En Opciones para desarrolladores, activa la depuración por USB (llamada depuración ADB o depuración por red en algunos televisores) y vuelve aquí.</string>
     <string name="adb_network_closed">La depuración está activada, pero este televisor aún no deja que las apps accedan a ella. En Opciones para desarrolladores, busca la opción depuración por red o ADB por red y actívala. Si solo tiene depuración inalámbrica, Vibe Launcher aún no puede usarla.</string>
     <string name="adb_failed">El televisor no lo ha permitido</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Apps que necesita el televisor</string>
     <string name="app_protected">Tu televisor necesita esto para funcionar correctamente, así que Vibe Launcher no lo desactivará. Así tu televisor está protegido.</string>
     <string name="adb_dev_options">Primero activa Opciones para desarrolladores: en Información, pulsa OK siete veces sobre Compilación y vuelve aquí.</string>
+    <string name="wireless_debugging">Depuración inalámbrica</string>
+    <string name="wireless_debugging_short">Para televisores con Android 11 o posterior que mantienen cerrada la depuración por red. Vincula Vibe Launcher una sola vez: escanea el código con tu teléfono y escribe allí el código que muestra la ventana de vinculación del televisor.</string>
+    <string name="paired">Vinculado</string>
+    <string name="not_paired">Sin vincular</string>
+    <string name="pair_scan">Escanea con tu teléfono y abre Opciones para desarrolladores abajo: activa la depuración inalámbrica, ábrela, elige Vincular dispositivo con código de vinculación y escribe en tu teléfono el código que muestra.</string>
+    <string name="adb_wireless_on">Activa la depuración inalámbrica en Opciones para desarrolladores y vuelve aquí.</string>
+    <string name="adb_wireless_wifi">Este televisor no deja que las apps accedan a su depuración por red, y su depuración inalámbrica solo funciona con Wi-Fi. Conecta el televisor a una red Wi-Fi para vincular Vibe Launcher o busca la depuración por red en Opciones para desarrolladores.</string>
+    <string name="paired_toast">Vinculado con la depuración inalámbrica</string>
+    <string name="adb_not_connected">No conectado</string>
+    <string name="adb_connected_port">Conectado (puerto 5555)</string>
+    <string name="adb_connected_wireless">Conectado (depuración inalámbrica)</string>
+    <string name="adb_ready_note">Vibe Launcher puede acceder al ADB del televisor: continúa con Limpieza de apps y el resto de Apps. Aquí no hay que cambiar nada.</string>
+    <string name="adb_not_needed">Vibe Launcher ya tiene acceso ADB, así que esto no es necesario. ¿Continuar de todos modos?</string>
+    <string name="wireless_not_running">Activada, sin ejecutarse</string>
+    <string name="wireless_not_running_short">La depuración inalámbrica está activada, pero no funciona (algunos televisores la detienen cuando se desactiva la depuración por USB). Desactívala y vuelve a activarla en Opciones para desarrolladores.</string>
+    <string name="adb_connect_short">Pulsa OK aquí para conectar. Si aún no puede, Vibe Launcher muestra lo primero que falta por activar, empezando por lo más fácil. La primera vez, el televisor pregunta si quieres permitir Vibe Launcher: marca Permitir siempre.</string>
+    <string name="dev_options">Opciones para desarrolladores</string>
+    <string name="dev_options_short">Los interruptores de depuración de Android, ocultos hasta que se desbloquean: en Información, pulsa OK siete veces sobre Compilación.</string>
+    <string name="usb_adb_debugging">Depuración USB/ADB</string>
+    <string name="usb_adb_debugging_short">El interruptor de depuración del televisor, en Opciones para desarrolladores (depuración por USB o, en algunos televisores, depuración ADB). En la mayoría de los televisores también abre el puerto 5555, a través del cual se conecta Vibe Launcher.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 y versiones posteriores: depuración por Wi-Fi con un código de vinculación. Vibe Launcher la usa cuando el puerto 5555 está cerrado, una vez vinculado.</string>
+    <string name="pair_with_code">Vincular con código</string>
+    <string name="open_dev_options">Abrir Opciones para desarrolladores</string>
     <string name="apps_turn_off_again">Volver a desactivar</string>
     <string name="apps_turn_off_again_short">Apps que Vibe Launcher ya había desactivado y que ahora están activadas aquí: por una copia de seguridad restaurada en este televisor o porque una actualización las volvió a activar.</string>
     <string name="apps_turn_off_now">Desactivar ahora</string>

@@ -95,6 +95,7 @@
     <string name="youtube_info">SmartTube වෙත පුරනය වී ඇති විට, YouTube ටයිලය ඔබේම YouTube සංග්‍රහයේ වීඩියෝ පෙන්වයි. යතුරක් අවශ්‍ය නැත.\n\nඑය නොමැතිව, යතුරක් ඔබේ රටේ වඩාත්ම ජනප්‍රිය වීඩියෝ පෙන්වයි. නොමිලේ යතුර: console.cloud.google.com → නව ව්‍යාපෘතිය → YouTube Data API v3 සක්‍රිය කරන්න → අක්තපත්‍ර → API යතුරක් සාදන්න.\n\nදෙකම නොමැති විට, ජනප්‍රිය චිත්‍රපටවල ට්‍රේලර් පෙන්වයි.</string>
     <string name="plex_info">ඔබේ ම Plex සේවාදායකයෙන් පසුබිම්: නැරඹීම දිගටම කරගෙන යන්න සහ මෑතදී එක් කළ.\n\nලබා ගැනීමට: app.plex.tv → ඕනෑම මාතෘකාවක් විවෘත කරන්න → ⋯ → තොරතුරු ලබා ගන්න → XML බලන්න, ලිපිනයේ X-Plex-Token= පසු කොටස පිටපත් කරන්න. මුරපදයක් මෙන් රහසිගතව තබන්න.</string>
     <string name="saved_from_phone">ඔබේ දුරකථනයෙන් සුරැකිණි</string>
+    <string name="screen_missing">මෙම රූපවාහිනියේ එම සැකසීම් තිරය නැත. රූපවාහිනියේම සැකසීම් තුළ එය සොයන්න.</string>
     <string name="not_available">මෙම රූපවාහිනියේ නොමැත</string>
     <string name="cant_open">%1$s විවෘත කළ නොහැක</string>
     <string name="smarttube_install">SmartTube ස්ථාපනය කරන්න</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s ඉතිරියි</string>
     <string name="home_key_name">Vibe Launcher මුල් බොත්තම</string>
     <string name="home_key_description">දුරස්ථ පාලකයේ මුල් බොත්තම රූපවාහිනියේම මුල් තිරය වෙනුවට Vibe Launcher විවෘත කරන අතර, එය තදකර තබාගත් විට රූපවාහිනියේ සැකසීම් විවෘත වේ. එය තිරයේ කිසිවක් කියවන්නේ නැති අතර අනෙක් සියලු බොත්තම් එලෙසම ඉදිරියට යවයි.</string>
-    <string name="home_key_turn_on">මුල් බොත්තම Vibe Launcher විවෘත කිරීමට මෙහි “%1$s” සක්‍රිය කරන්න.</string>
     <string name="permissions_title">අවසර දෙකක්</string>
     <string name="permissions_why">ඊළඟට Vibe Launcher අවසර දෙකක් ඉල්ලයි.\n\nරූපවාහිනී ලැයිස්තු: ඔබේ යෙදුම් මුල් තිරය සඳහා ප්‍රකාශ කරන කාඩ්පත්වල පින්තූර පෙන්වීමට.\n\nස්ථානය: Android, Wi-Fi ජාලයේ නම පෙන්වන්නේ මෙම අවසරය ඇති යෙදුම්වලට පමණි. Vibe Launcher එය භාවිත කරන්නේ එම නමට පමණක් වන අතර රූපවාහිනිය කොහේද කියා කිසිදා සොයන්නේ නැත.\n\nකිසිවක් රූපවාහිනියෙන් පිටතට යන්නේ නැත.</string>
     <string name="continue_button">ඉදිරියට</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">තමන්ගේම මුල් තිරය තබාගන්නා රූපවාහිනී සඳහා: දුරස්ථ පාලකයේ මුල් බොත්තම Vibe Launcher විවෘත කරයි, එය තද කර අල්ලාගෙන සිටීමෙන් රූපවාහිනියේ සැකසීම් විවෘත වේ.</string>
     <string name="home_key_agree">එකඟයි</string>
     <string name="home_key_steps">ඊළඟට: විවෘත වන ලැයිස්තුවේ “%1$s” තෝරා සක්‍රිය කර, ඉන්පසු මුල් බොත්තම ඔබන්න.</string>
+    <string name="home_key_steps_settings">ඊළඟට: මෙම රූපවාහිනියට එහි ප්‍රවේශ්‍යතා සැකසීම් වෙත සෘජු මගක් නැති නිසා, ඒ වෙනුවට Android හි සැකසීම් විවෘත වේ. එහිදී උපාංග මනාප &gt; ප්‍රවේශ්‍යතාව වෙත ගොස්, “%1$s” තෝරා සක්‍රිය කර, ඉන්පසු මුල් බොත්තම ඔබන්න.</string>
     <string name="store_update">Vibe Launcher යාවත්කාලීන කරන්න</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">උපස්ථය සහ ප්‍රතිසාධනය</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">යෙදුම්</string>
     <string name="apps_short">ඔබ භාවිත නොකරන යෙදුම් ක්‍රියාවිරහිත කරන්න: ඒවා ස්ථාපිතව පවතී, නමුත් ඔබ නැවත සක්‍රිය කරන තුරු ඒවාට ධාවනය වීමට, මුල් තිරය පිරවීමට හෝ යාවත්කාලීන වීමට නොහැක. රූපවාහිනිය ක්‍රියා කිරීමට අවශ්‍ය කොටස් ලැයිස්තුගත කර නැත.</string>
-    <string name="adb_connection">ජාල නිදොස්කරණය</string>
-    <string name="adb_connection_short">Vibe Launcher පරිගණකයක් මෙන්ම රූපවාහිනියේ නිදොස්කරණය හරහා යෙදුම් ක්‍රියාවිරහිත කරයි. සංවර්ධක විකල්ප තුළ USB නිදොස්කරණය (සමහර රූපවාහිනීවල ADB නිදොස්කරණය හෝ ජාල නිදොස්කරණය) සක්‍රිය කර, ඉන්පසු මෙහි OK ඔබා රූපවාහිනියේ Vibe Launcher හට ඉඩ දෙන්න.</string>
-    <string name="adb_ready">සම්බන්ධයි</string>
-    <string name="adb_not_allowed">තවම ඉඩ දී නැත</string>
+    <string name="adb_connection">ADB සම්බන්ධතාවය</string>
+    <string name="adb_connection_short">Vibe Launcher පරිගණකයක් කරන ආකාරයටම රූපවාහිනියේම ADB හරහා යෙදුම් අක්‍රිය කරයි. සක්‍රිය දේ බැලීමට සහ සම්බන්ධ වීමට මෙය විවෘත කරන්න.</string>
     <string name="adb_checking">පරීක්ෂා කරමින්…</string>
-    <string name="adb_allow_prompt">රූපවාහිනියේ ප්‍රශ්නයේ සැමවිට ඉඩ දෙන්න සලකුණු කර, ඉන්පසු OK තෝරන්න</string>
+    <string name="adb_allow_prompt">ඊළඟට, Vibe Launcher හට ඉඩ දිය යුතුද කියා රූපවාහිනිය අසයි: සැමවිට ඉඩ දෙන්න සලකුණු කර, ඉන්පසු OK තෝරන්න.</string>
     <string name="adb_turn_on">සංවර්ධක විකල්ප තුළ USB නිදොස්කරණය සක්‍රිය කර (සමහර රූපවාහිනීවල එය ADB නිදොස්කරණය හෝ ජාල නිදොස්කරණය ලෙස හැඳින්වේ), ඉන්පසු මෙතැනට ආපසු එන්න.</string>
     <string name="adb_network_closed">නිදොස්කරණය සක්‍රියයි, නමුත් මෙම රූපවාහිනිය තවමත් යෙදුම්වලට එයට ළඟා වීමට ඉඩ නොදේ. සංවර්ධක විකල්ප තුළ ජාල නිදොස්කරණය හෝ ජාලය හරහා ADB සොයා එය සක්‍රිය කරන්න. එහි රැහැන් රහිත නිදොස්කරණය පමණක් ඇත්නම්, Vibe Launcher හට තවමත් එය භාවිත කළ නොහැක.</string>
     <string name="adb_failed">රූපවාහිනිය එයට ඉඩ දුන්නේ නැත</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">රූපවාහිනියට අවශ්‍ය යෙදුම්</string>
     <string name="app_protected">ඔබේ රූපවාහිනිය නිසි ලෙස ක්‍රියා කිරීමට මෙය අවශ්‍ය නිසා, Vibe Launcher එය ක්‍රියාවිරහිත නොකරයි. මෙය ඔබේ රූපවාහිනිය ආරක්ෂිතව තබයි.</string>
     <string name="adb_dev_options">පළමුව සංවර්ධක විකල්ප සක්‍රිය කරන්න: පිළිබඳ තුළ නිමැවුම මත OK සත් වරක් ඔබා, ඉන්පසු මෙතැනට ආපසු එන්න.</string>
+    <string name="wireless_debugging">රැහැන් රහිත නිදොස්කරණය</string>
+    <string name="wireless_debugging_short">ජාල නිදොස්කරණය වසා තබන Android 11 සහ ඊට ඉහළ රූපවාහිනී සඳහා. Vibe Launcher එක් වරක් යුගල කරන්න: ඔබේ දුරකථනයෙන් කේතය ස්කෑන් කර, ඉන්පසු රූපවාහිනියේ යුගල කිරීමේ කවුළුව පෙන්වන කේතය එහි ටයිප් කරන්න.</string>
+    <string name="paired">යුගල කළා</string>
+    <string name="not_paired">යුගල කර නැත</string>
+    <string name="pair_scan">ඔබේ දුරකථනයෙන් ස්කෑන් කර, ඉන්පසු පහතින් සංවර්ධක විකල්ප විවෘත කරන්න: රැහැන් රහිත නිදොස්කරණය සක්‍රිය කර, එය විවෘත කර, යුගල කිරීමේ කේතය සමඟ උපාංගය යුගල කරන්න තෝරා, එය පෙන්වන කේතය ඔබේ දුරකථනයේ ටයිප් කරන්න.</string>
+    <string name="adb_wireless_on">සංවර්ධක විකල්ප තුළ රැහැන් රහිත නිදොස්කරණය සක්‍රිය කර, ඉන්පසු මෙතැනට ආපසු එන්න.</string>
+    <string name="adb_wireless_wifi">මෙම රූපවාහිනිය ජාලය හරහා එහි නිදොස්කරණයට ළඟා වීමට යෙදුම්වලට ඉඩ නොදෙන අතර, එහි රැහැන් රහිත නිදොස්කරණය ක්‍රියා කරන්නේ Wi-Fi මත පමණි. Vibe Launcher යුගල කිරීමට රූපවාහිනිය Wi-Fi වෙත සම්බන්ධ කරන්න, නැතහොත් සංවර්ධක විකල්ප තුළ ජාල නිදොස්කරණය සොයන්න.</string>
+    <string name="paired_toast">රැහැන් රහිත නිදොස්කරණය හරහා යුගල කළා</string>
+    <string name="adb_not_connected">සම්බන්ධ වී නැත</string>
+    <string name="adb_connected_port">සම්බන්ධයි (තොට 5555)</string>
+    <string name="adb_connected_wireless">සම්බන්ධයි (රැහැන් රහිත නිදොස්කරණය)</string>
+    <string name="adb_ready_note">Vibe Launcher හට රූපවාහිනියේ ADB වෙත ළඟා විය හැක: යෙදුම් පිරිසිදු කිරීම සහ යෙදුම් හි ඉතිරි කොටස සමඟ ඉදිරියට යන්න. මෙහි කිසිවක් වෙනස් කිරීමට අවශ්‍ය නැත.</string>
+    <string name="adb_not_needed">Vibe Launcher හට දැනටමත් ADB ප්‍රවේශය ඇත, එබැවින් මෙය අවශ්‍ය නැත. කෙසේ වෙතත් ඉදිරියට යනවාද?</string>
+    <string name="wireless_not_running">සක්‍රියයි, ධාවනය නොවේ</string>
+    <string name="wireless_not_running_short">රැහැන් රහිත නිදොස්කරණය සක්‍රියයි නමුත් ධාවනය නොවේ (USB නිදොස්කරණය අක්‍රිය වූ විට සමහර රූපවාහිනී එය නවත්වයි). සංවර්ධක විකල්ප තුළ එය අක්‍රිය කර නැවත සක්‍රිය කරන්න.</string>
+    <string name="adb_connect_short">සම්බන්ධ වීමට මෙහි OK ඔබන්න. තවමත් නොහැකි නම්, Vibe Launcher තවමත් සක්‍රිය කළ යුතු පළමු දේ පෙන්වයි, පහසුම දේ පළමුව. පළමු වතාවේ, Vibe Launcher හට ඉඩ දිය යුතුද කියා රූපවාහිනිය අසයි: සැමවිට ඉඩ දෙන්න සලකුණු කරන්න.</string>
+    <string name="dev_options">සංවර්ධක විකල්ප</string>
+    <string name="dev_options_short">නිදොස්කරණය සඳහා Android හි ස්විච, අගුළු හරින තුරු සඟවා ඇත: පිළිබඳ තුළ නිමැවුම මත OK සත් වරක් ඔබන්න.</string>
+    <string name="usb_adb_debugging">USB/ADB නිදොස්කරණය</string>
+    <string name="usb_adb_debugging_short">සංවර්ධක විකල්ප තුළ ඇති රූපවාහිනියේ නිදොස්කරණ ස්විචය (USB නිදොස්කරණය, හෝ සමහර රූපවාහිනීවල ADB නිදොස්කරණය). බොහෝ රූපවාහිනීවල එය Vibe Launcher සම්බන්ධ වන තොට 5555 ද විවෘත කරයි.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 සහ ඉහළ: යුගල කිරීමේ කේතයක් සමඟ Wi-Fi හරහා නිදොස්කරණය. යුගල කළ පසු, තොට 5555 වසා ඇති විට Vibe Launcher එය භාවිත කරයි.</string>
+    <string name="pair_with_code">කේතය සමඟ යුගල කරන්න</string>
+    <string name="open_dev_options">සංවර්ධක විකල්ප විවෘත කරන්න</string>
     <string name="apps_turn_off_again">නැවත ක්‍රියාවිරහිත කරන්න</string>
     <string name="apps_turn_off_again_short">Vibe Launcher කලින් ක්‍රියාවිරහිත කළ නමුත් දැන් මෙහි සක්‍රිය වී ඇති යෙදුම්: මෙම රූපවාහිනියේ ප්‍රතිසාධනය කළ උපස්ථයකින්, හෝ යාවත්කාලීනයකින් නැවත සක්‍රිය වූ ඒවා.</string>
     <string name="apps_turn_off_now">දැන් ක්‍රියාවිරහිත කරන්න</string>

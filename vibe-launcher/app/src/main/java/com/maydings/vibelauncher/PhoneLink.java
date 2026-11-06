@@ -54,6 +54,15 @@ final class PhoneLink {
         void restored();
     }
 
+    /**
+     * Pairing Wireless debugging (Settings > Apps > Wireless debugging): the code the TV's pairing window shows,
+     * typed here because leaving that window on the TV cancels the code.
+     */
+    interface Pairing {
+        /** Pairs with this code (and port, when the phone gave one); what to tell the phone. On the page's thread. */
+        String pair(String code, String port);
+    }
+
     private static final int PORT = 8765;
     private static final int MAX_BODY = 8 * 1024;
     /** A tile's picture: the phone sends it already cropped and shrunk to 640 x 360, as a JPEG data URL. */
@@ -64,6 +73,8 @@ final class PhoneLink {
     private final Listener listener;
     /** Set by Settings: the backup page is there while it is. */
     Backups backups;
+    /** Set by Settings on Android 11 and up: the pairing page is there while it is. */
+    Pairing pairing;
     private final VibeSettings settings;
     /** The app whose tile picture the page is for (tile menu > Edit > Change picture); null for the keys page. */
     private final String pictureFor;
@@ -107,6 +118,10 @@ final class PhoneLink {
         return url;
     }
 
+    boolean running() {
+        return server != null && !server.isClosed();
+    }
+
     void stop() {
         try {
             if (server != null) server.close();
@@ -133,6 +148,30 @@ final class PhoneLink {
         Backups b = backups;
         if (b != null && request.length >= 2 && request[1].startsWith("/" + code + "/backup")) {
             handleBackup(s, in, head, request[0], request[1].substring(code.length() + 1), b);
+            return;
+        }
+        Pairing p = pairing;
+        if (p != null && request.length >= 2 && request[1].equals("/" + code + "/pair")) {
+            if (request[0].equals("POST")) {
+                Map<String, String> fields = parseForm(readBody(in, contentLength(head, MAX_BODY)));
+                String digits = fields.get("code"), port = fields.get("port");
+                if (digits == null || !digits.matches("\\d{6}")) {
+                    respondText(s, "400 Bad Request", "Type the 6-digit code the TV shows.");
+                } else if (port != null && !port.matches("(.*:)?\\d{1,5}")) {
+                    respondText(s, "400 Bad Request", "The port is the number after the colon, such as 37123.");
+                } else {
+                    String answer;
+                    try {
+                        answer = p.pair(digits, port);
+                    } catch (RuntimeException | Error e) {   // the phone hears what went wrong, not a dropped connection
+                        android.util.Log.w("VibeAdb", "pairing failed", e);
+                        answer = "Pairing failed on the TV (" + e.getClass().getSimpleName() + "). Try again.";
+                    }
+                    respondText(s, "200 OK", answer);
+                }
+            } else {
+                respond(s, "200 OK", pairForm());
+            }
             return;
         }
         if (request.length < 2 || !request[1].equals("/" + code)) {
@@ -201,6 +240,11 @@ final class PhoneLink {
                 + body.length + "\r\nCache-Control: no-store\r\nConnection: close\r\n\r\n").getBytes(StandardCharsets.UTF_8));
         out.write(body);
         out.flush();
+    }
+
+    /** The address of the pairing page, once started. */
+    String pairUrl() {
+        return url != null ? url + "/pair" : null;
     }
 
     /** The address of the backup page, once started. */
@@ -370,6 +414,34 @@ final class PhoneLink {
                 + ".catch(function(){m.textContent='Not sent: try again.';b.disabled=false;});};"
                 + "r.onerror=function(){m.textContent='The file couldn\\'t be read.';b.disabled=false;};"
                 + "r.readAsText(f.files[0]);};"
+                + "</script>";
+    }
+
+    /**
+     * The pairing code, sent as soon as it's typed: the TV's pairing window stays open meanwhile, and its code is
+     * only good while it is. The port is only there for when the TV can't find its own pairing window.
+     */
+    private String pairForm() {
+        return "<!doctype html><title>Vibe Launcher</title>" + STYLE
+                + "<style>#code{font-size:32px;letter-spacing:10px;text-align:center}details{margin-top:24px;color:#aaa}"
+                + "summary{cursor:pointer}</style>"
+                + "<h1>Pair Vibe Launcher</h1>"
+                + "<p>On the TV, in Developer options, turn on Wireless debugging, open it and choose Pair device "
+                + "with pairing code. Type the 6-digit code it shows here.</p>"
+                + "<form id=f><label for=code>Pairing code</label>"
+                + "<input id=code name=code inputmode=numeric pattern='[0-9]{6}' maxlength=6 autocomplete=one-time-code "
+                + "required>"
+                + "<details><summary>Didn't pair?</summary><p>Type the port as well: the number after the colon "
+                + "under the code on the TV, such as 37123.</p><input id=port name=port inputmode=numeric "
+                + "maxlength=21></details>"
+                + "<button id=send>Pair</button></form><p id=m></p>"
+                + "<script>"
+                + "var f=document.getElementById('f'),b=document.getElementById('send'),m=document.getElementById('m');"
+                + "f.onsubmit=function(e){e.preventDefault();b.disabled=true;m.textContent='Pairing… this takes a few "
+                + "seconds.';fetch(location.pathname,{method:'POST',headers:{'Content-Type':"
+                + "'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})"
+                + ".then(function(r){return r.text();}).then(function(t){m.textContent=t;b.disabled=false;})"
+                + ".catch(function(){m.textContent='Not sent: try again.';b.disabled=false;});};"
                 + "</script>";
     }
 

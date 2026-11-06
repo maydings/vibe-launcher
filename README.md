@@ -134,8 +134,9 @@ open it on a phone), where to report a problem, the license and the credits.
   dock's first app; Poster view shows the app's picture alone, as Up from the dock does (from a lower
   row, the first Back goes to the dock); Screensaver starts the screensaver at once.
 - **Home button**: Off or On, at any time (shown unless Vibe Launcher is already your TV's Home). On
-  explains the Home button service first, then opens Settings → Accessibility to turn it on; Off turns
-  it off straight away.
+  explains the Home button service first, then opens Settings → Accessibility to turn it on (on TVs
+  without a direct way there, such as Sony's Android 9, it says the path, Device Preferences →
+  Accessibility, and opens Settings); Off turns it off straight away.
 - **Restart…** (with the Home button service on): opens the TV's own power menu, which asks before it
   restarts. An app can't restart the TV itself; only the service can ask the TV, so without it this
   doesn't show.
@@ -196,15 +197,29 @@ checksum) or opens it to sign in.
 TV itself. A turned-off app stays installed, but can't run, fill the home screen or update until you turn
 it back on.
 
-- **Network debugging**: whether Vibe Launcher may use the TV's network debugging. The first time, OK
-  walks you through it: with Developer options still hidden, a window explains how to unlock them and
-  opens About; with debugging off, it says to turn on USB debugging (called ADB debugging or Network
-  debugging on some TVs) and opens Developer options; then the TV asks whether to allow Vibe Launcher
-  (tick Always allow). Vibe Launcher connects to the TV itself (`127.0.0.1:5555`), with a key that never
-  leaves it. Most TVs open that port with USB debugging alone (the onn 4K stick does, even after a
-  restart), or have a Network debugging switch of their own (NVIDIA Shield). TVs that offer only Android
-  11's Wireless debugging, with a pairing code (Chromecast with Google TV, Google TV Streamer), aren't
-  supported yet: there a window says so.
+- **ADB connection**: how Vibe Launcher reaches the TV's own ADB, which everything below needs. The page
+  opens on the status, large: 🟢 *Connected (port 5555)* or *Connected (Wireless debugging)*, and then
+  there's nothing to do here and Debloat can go ahead; or 🔴 *Not connected*, and OK on it connects or
+  goes to the first thing still missing, easiest first. Under it, always shown and checked every few
+  seconds, so what you switch in Android's Settings shows at once:
+  - **Developer options**: On or Off. Still hidden, a window explains how to unlock them (Build seven
+    times in About) and opens About.
+  - **USB/ADB debugging**: the switch in Developer options. Most TVs open port 5555 with it (the onn 4K
+    stick does, even after a restart), or have a switch of their own (NVIDIA Shield). Vibe Launcher connects
+    to the TV itself (`127.0.0.1:5555`) with a key that never leaves it; the first time, a window says the
+    TV will ask whether to allow it (tick Always allow).
+  - **Wireless debugging** and **Pair with code** (Android 11 and up): for TVs that keep port 5555 shut
+    (Chromecast with Google TV, Google TV Streamer). Pair once: scan the QR code with your phone, choose
+    **Open Developer options**, turn on Wireless debugging and choose *Pair device with pairing code*, then
+    type the 6-digit code on your phone, so the TV's pairing window stays open (leaving it would cancel
+    the code). Vibe Launcher finds the window on the network, pairs as `adb pair` does (TLS 1.3, then
+    SPAKE2 with the code) and from then on connects with no question on the TV. Wi-Fi only, as Android
+    allows it. Switched on but not running (some TVs stop it with USB debugging), the row says so: turn it
+    off and on again.
+
+  Either way in is enough, and the one in use has a green dot; choosing the other while connected says it
+  isn't needed, and goes on if you ask. Once connected, Vibe Launcher has `WRITE_SECURE_SETTINGS` and turns
+  debugging (and Wireless debugging) back on by itself when it next needs it.
 - **Debloat**:
   - **Clean-up lists**: the tested lists of the [Clean Your TV](https://github.com/Gathin23/cleanyourtv)
     community (MIT), read from GitHub as they are now, so new TVs and fixes come without an update. Your
@@ -228,9 +243,9 @@ it back on.
   (and turns the Home button service off, which would otherwise cover it). Not offered on Chromecast with
   Google TV and the Google TV Streamer, where another Home stops casting.
 - **Turn debugging off when done**: Off (the default) or On. The first time Vibe Launcher connects, the
-  TV's ADB gives it the `WRITE_SECURE_SETTINGS` permission, which it uses only to turn debugging on and
-  off and for the animation speed. With this On, leaving Settings turns debugging off again, closing the
-  TV's debugging port, and Vibe Launcher turns it back on by itself the next time it needs it. Leave it
+  TV's ADB gives it the `WRITE_SECURE_SETTINGS` permission, which it uses only to turn debugging (and
+  Wireless debugging) on and off and for the animation speed. With this On, leaving Settings turns debugging
+  off again, closing the TV's debugging port, and Vibe Launcher turns it back on by itself the next time it needs it. Leave it
   Off if you also use ADB from a computer: while debugging is off, the computer can't reach the TV.
 
 ## Updates
@@ -265,8 +280,9 @@ Download **[vibe-launcher.apk](https://github.com/maydings/vibe-launcher/release
 and install it. No account needed.
 
 **Home button service.** Many TVs keep sending the Home button to their own launcher, which can only be
-turned off with a computer ([adb](vibe-launcher/README.md)). Without that, Vibe Launcher offers its Home
-button service instead (turned on in Settings → Accessibility; it walks you through it): Home then opens
+turned off through ADB: from a computer ([adb](vibe-launcher/README.md)), or from Vibe Launcher itself once
+Settings → Apps → ADB connection is connected, where **Make Vibe Launcher your Home** (top bar) goes to
+Apps → Default launcher. Without that, Vibe Launcher offers its Home button service instead (turned on in Settings → Accessibility; it walks you through it): Home then opens
 Vibe Launcher, and holding Home opens the TV's Settings. With it on, Settings → General also offers
 **Restart…**. It's optional, it reads nothing on screen, and where Vibe Launcher is already Home it isn't
 offered.
@@ -346,5 +362,7 @@ machine-made translations (`vibe-launcher/app/src/main/res/values-*/strings.xml`
 
 MIT, see [`LICENSE`](LICENSE). Started as a fork of
 [Gathin23/cleanyourtv](https://github.com/Gathin23/cleanyourtv). The Outfit typeface is under the SIL
-Open Font License (`vibe-launcher/FONT-LICENSE-OFL.txt`). Backdrops use the TMDB API but are not
-endorsed or certified by TMDB.
+Open Font License (`vibe-launcher/FONT-LICENSE-OFL.txt`). Wireless debugging's SPAKE2 (`Spake2.java`)
+is a Java port of BoringSSL's `spake25519.cc` (Copyright 2016 The BoringSSL Authors, Apache License 2.0:
+`vibe-launcher/LICENSE-APACHE-2.0.txt`).
+Backdrops use the TMDB API but are not endorsed or certified by TMDB.

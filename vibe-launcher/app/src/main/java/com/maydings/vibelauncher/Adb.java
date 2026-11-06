@@ -1,5 +1,7 @@
 package com.maydings.vibelauncher;
 
+import android.content.Context;
+import android.os.Build;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.util.Base64;
@@ -24,6 +26,9 @@ import java.security.Signature;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.RSAKeyGenParameterSpec;
 
+import javax.net.ssl.SSLException;
+import javax.net.ssl.SSLSocket;
+
 /**
  * The TV's own ADB, as a computer would use it, from the TV itself: Vibe Launcher connects to 127.0.0.1:5555
  * (open while network debugging, or Sony's "ADB debugging", is on) and runs shell commands, such as turning an
@@ -34,8 +39,10 @@ import java.security.spec.RSAKeyGenParameterSpec;
  * Keystore and never leaves it; the TV keeps the public half in its list of allowed keys. A connection per
  * call: after the first, signing the token is a few milliseconds, and nothing stays open between calls.
  * <p>
- * Plain network debugging only (port 5555). Android 11's Wireless debugging, with its pairing code and TLS on a
- * random port, isn't spoken here.
+ * Port 5555 first; when that's closed on Android 11 and up, Wireless debugging, once paired (AdbPairing): its port
+ * (found by AdbMdns, remembered while it answers), where adbd asks for TLS (STLS) right after CNXN and lets in a
+ * certificate whose key it was given by pairing (AdbTlsKey), with no question on the TV. After that the same
+ * messages run inside TLS.
  * <p>
  * The adb build only (Settings > Apps isn't in the store build): Play wouldn't take an app that drives ADB.
  */
@@ -43,6 +50,8 @@ final class Adb {
 
     /** What a call came to. */
     static final int OK = 0, OFF = 1, NOT_ALLOWED = 2, NO_KEY = 3, FAILED = 4;
+    /** Wireless debugging turned our certificate down: not paired, or forgotten since (Revoke on the TV). */
+    static final int NOT_PAIRED = 5;
 
     static final class Result {
         final int status;
@@ -60,7 +69,8 @@ final class Adb {
     private static final int ANSWER_MS = 8000, ASK_MS = 90000;
 
     private static final int CNXN = 0x4e584e43, AUTH = 0x48545541, OPEN = 0x4e45504f, OKAY = 0x59414b4f,
-            CLSE = 0x45534c43, WRTE = 0x45545257;
+            CLSE = 0x45534c43, WRTE = 0x45545257, STLS = 0x534c5453;
+    private static final int STLS_VERSION = 0x01000000;
     private static final int AUTH_TOKEN = 1, AUTH_SIGNATURE = 2, AUTH_RSAPUBLICKEY = 3;
     private static final int VERSION = 0x01000000;
     private static final int MAX_DATA = 256 * 1024;
@@ -72,7 +82,52 @@ final class Adb {
     private static final byte[] SHA1_DIGEST_INFO = {0x30, 0x21, 0x30, 0x09, 0x06, 0x05, 0x2b, 0x0e, 0x03, 0x02,
             0x1a, 0x05, 0x00, 0x04, 0x14};
 
+    /** For Wireless debugging (its settings, key and port): set by whoever uses Adb first. */
+    private static volatile Context app;
+    /** Wireless debugging's port as last found; 0 not yet. */
+    private static volatile int wirelessPort;
+    /** Whether the last connection that got in was through Wireless debugging. */
+    private static volatile boolean viaWireless;
+    /** Wireless debugging's switch on, but the TV announced no port the last time it was looked for. */
+    private static volatile boolean wirelessSilent;
+
     private Adb() {
+    }
+
+    static void use(Context context) {
+        app = context.getApplicationContext();
+    }
+
+    /** Whether the last call that got in went through Wireless debugging (what to turn off when done). */
+    static boolean usedWireless() {
+        return viaWireless;
+    }
+
+    /**
+     * Wireless debugging switched on but not running: no port announced when last looked for (the onn stops it with
+     * USB debugging and keeps showing On); turning it off and on again starts it.
+     */
+    static boolean wirelessNotRunning(Context context) {
+        return wirelessSilent && wirelessOn(context);
+    }
+
+    /** Android 11 and up: whether Wireless debugging is on (adb_wifi_enabled, a Global setting). */
+    static boolean wirelessOn(Context context) {
+        return wirelessSetting(context) == 1;
+    }
+
+    /**
+     * adb_wifi_enabled: 1 on, 0 off, -1 not known (before Android 11, or a TV that won't let apps read it: Android 12
+     * lets apps read only the hidden settings marked readable).
+     */
+    static int wirelessSetting(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return -1;
+        try {
+            return android.provider.Settings.Global.getInt(context.getContentResolver(), "adb_wifi_enabled", -1);
+        } catch (SecurityException e) {
+            android.util.Log.i("VibeAdb", "adb_wifi_enabled not readable", e);
+            return -1;
+        }
     }
 
     /**
@@ -97,11 +152,24 @@ final class Adb {
         }
     }
 
+    /**
+     * Through Wireless debugging only, port 5555 or not: whether the TV still takes our pairing (it forgets it on
+     * Forget, Revoke, or a reset), so Settings shows Paired only while it's true. OFF when there's nothing to try.
+     * Off the main thread.
+     */
+    static Result checkWireless() {
+        try (Link link = Link.openWireless()) {
+            return new Result(link == null ? OFF : link.status, "");
+        } catch (IOException e) {
+            return new Result(FAILED, "");
+        }
+    }
+
     /** One connection to the TV's adbd. */
     private static final class Link implements AutoCloseable {
-        private final Socket socket;
-        private final DataInputStream in;
-        private final OutputStream out;
+        private Socket socket;
+        private DataInputStream in;
+        private OutputStream out;
         int status;
         private int maxData = 4096;
 
@@ -118,6 +186,8 @@ final class Adb {
                 s.connect(new InetSocketAddress(HOST, PORT), 2000);
             } catch (ConnectException | SocketTimeoutException e) {
                 s.close();
+                Link wireless = openWireless();
+                if (wireless != null) return wireless;
                 Link off = new Link(null);
                 off.status = OFF;   // nothing listening: debugging is off
                 return off;
@@ -126,7 +196,99 @@ final class Adb {
             s.setSoTimeout(ANSWER_MS);
             Link link = new Link(s);
             link.status = link.connect(ask);
+            if (link.status == OK) viaWireless = false;
             return link;
+        }
+
+        /**
+         * Through Wireless debugging, when it's on and Vibe Launcher was paired: at the port last found, else at
+         * the one the TV announces now. Null when there's none to try.
+         */
+        private static Link openWireless() throws IOException {
+            Context c = app;
+            if (c != null) android.util.Log.i("VibeAdb", "wireless: setting=" + wirelessSetting(c) + " paired="
+                    + AdbTlsKey.paired(c) + " port=" + wirelessPort);
+            if (c == null || Build.VERSION.SDK_INT < Build.VERSION_CODES.R || wirelessSetting(c) == 0
+                    || !AdbTlsKey.paired(c)) return null;
+            int port = wirelessPort;
+            if (port > 0) {
+                Link link = openTls(c, port);
+                if (link != null && link.status != FAILED) return link;
+                if (link != null) link.close();   // something else has that port now: the TV's new one
+            }
+            port = AdbMdns.find(c, AdbMdns.CONNECT, 4000);
+            android.util.Log.i("VibeAdb", "wireless: mDNS port=" + port);
+            wirelessSilent = port <= 0 && wirelessOn(c);
+            if (port <= 0) return null;
+            wirelessPort = port;
+            return openTls(c, port);
+        }
+
+        /** CNXN, the TV's STLS, ours back, then TLS 1.3 and its CNXN inside it. Null when nothing listens there. */
+        private static Link openTls(Context c, int port) throws IOException {
+            Socket s = new Socket();
+            try {
+                s.connect(new InetSocketAddress(HOST, port), 2000);
+            } catch (IOException e) {
+                s.close();
+                return null;
+            }
+            s.setTcpNoDelay(true);
+            s.setSoTimeout(ANSWER_MS);
+            Link link = new Link(s);
+            try {
+                link.send(CNXN, VERSION, MAX_DATA, "host::\0".getBytes(StandardCharsets.UTF_8));
+                Message m = link.read();
+                if (m.command != STLS) {
+                    link.status = FAILED;   // not adbd's Wireless debugging port after all
+                    return link;
+                }
+                link.send(STLS, STLS_VERSION, 0, new byte[0]);
+                AdbTlsKey key;
+                try {
+                    key = AdbTlsKey.get(c);
+                } catch (GeneralSecurityException | RuntimeException e) {
+                    link.status = NO_KEY;
+                    return link;
+                }
+                SSLSocket tls = (SSLSocket) key.tls().getSocketFactory().createSocket(s, HOST, port, true);
+                tls.setEnabledProtocols(new String[]{"TLSv1.3"});
+                tls.setSoTimeout(ANSWER_MS);
+                link.upgrade(tls);
+                try {
+                    tls.startHandshake();
+                    while (true) {
+                        Message cnxn = link.read();
+                        if (cnxn.command == CNXN) {
+                            link.maxData = Math.max(1024, Math.min(cnxn.arg1, MAX_DATA));
+                            link.status = OK;
+                            viaWireless = true;
+                            return link;
+                        }
+                    }
+                } catch (SSLException | java.io.EOFException e) {
+                    android.util.Log.i("VibeAdb", "wireless: TLS turned down", e);
+                    // Our certificate turned down (TLS 1.3 says so after the handshake): the TV doesn't know this
+                    // key, or forgot it (Revoke). Paired anew from Settings > Apps.
+                    AdbTlsKey.setPaired(c, false);
+                    link.status = NOT_PAIRED;
+                    return link;
+                }
+            } catch (GeneralSecurityException e) {
+                link.status = FAILED;
+                return link;
+            } catch (IOException e) {
+                android.util.Log.i("VibeAdb", "wireless: failed", e);
+                link.close();
+                throw e;
+            }
+        }
+
+        /** The rest of the connection inside TLS. */
+        private void upgrade(SSLSocket tls) throws IOException {
+            socket = tls;
+            in = new DataInputStream(tls.getInputStream());
+            out = tls.getOutputStream();
         }
 
         /** The handshake: OK once the TV sends CNXN. */

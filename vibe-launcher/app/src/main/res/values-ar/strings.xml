@@ -95,6 +95,7 @@
     <string name="youtube_info">عند تسجيل الدخول إلى SmartTube، تعرض لوحة YouTube فيديوهات من خلاصتك الخاصة على YouTube. لا حاجة إلى مفتاح.\n\nبدونه، يعرض المفتاح أكثر الفيديوهات شعبية في بلدك. مفتاح مجاني: console.cloud.google.com ← مشروع جديد ← فعّل YouTube Data API v3 ← بيانات الاعتماد ← إنشاء مفتاح API.\n\nبدون أي منهما، تُعرض إعلانات أفلام شائعة.</string>
     <string name="plex_info">خلفيات من خادم Plex الخاص بك: متابعة المشاهدة والمضاف حديثًا.\n\nللعثور عليه: app.plex.tv ← افتح أي عنوان ← ⋯ ← الحصول على المعلومات ← عرض XML، وانسخ ما يلي X-Plex-Token= في العنوان. احفظه سرًّا مثل كلمة المرور.</string>
     <string name="saved_from_phone">تم الحفظ من هاتفك</string>
+    <string name="screen_missing">لا يحتوي هذا التلفزيون على شاشة الإعدادات هذه. ابحث عنها في إعدادات التلفزيون نفسه.</string>
     <string name="not_available">غير متاح على هذا التلفزيون</string>
     <string name="cant_open">يتعذّر فتح %1$s</string>
     <string name="smarttube_install">تثبيت SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">متبقٍ: %1$s</string>
     <string name="home_key_name">زر الشاشة الرئيسية لـ Vibe Launcher</string>
     <string name="home_key_description">يجعل زر الشاشة الرئيسية في جهاز التحكم يفتح Vibe Launcher بدل الشاشة الرئيسية للتلفزيون، ويفتح الضغط المطوّل عليه إعدادات التلفزيون. لا يقرأ شيئًا على الشاشة ويمرّر كل زر آخر كما هو.</string>
-    <string name="home_key_turn_on">شغّل “%1$s” هنا ليفتح زر الشاشة الرئيسية Vibe Launcher.</string>
     <string name="permissions_title">إذنان</string>
     <string name="permissions_why">سيطلب Vibe Launcher إذنين بعد ذلك.\n\nقوائم التلفزيون: لعرض صور من البطاقات التي تنشرها تطبيقاتك للشاشة الرئيسية.\n\nالموقع: لا يُظهر Android اسم شبكة Wi-Fi إلا للتطبيقات التي تملك هذا الإذن. يستخدمه Vibe Launcher لهذا الاسم فقط ولا يبحث أبدًا عن مكان التلفزيون.\n\nلا يغادر أيٌّ منهما التلفزيون.</string>
     <string name="continue_button">متابعة</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">لأجهزة التلفزيون التي تُبقي شاشتها الرئيسية الخاصة: يفتح زر الشاشة الرئيسية في جهاز التحكم Vibe Launcher، والضغط عليه مطولًا يفتح إعدادات التلفزيون.</string>
     <string name="home_key_agree">موافق</string>
     <string name="home_key_steps">التالي: في القائمة التي تفتح، اختر “%1$s” وشغّله، ثم اضغط على زر الشاشة الرئيسية.</string>
+    <string name="home_key_steps_settings">التالي: لا يوفّر هذا التلفزيون طريقة مباشرة إلى إعدادات سهولة الاستخدام، لذا تُفتح إعدادات Android بدلاً من ذلك. هناك، انتقل إلى الإعدادات المفضّلة للجهاز &gt; سهولة الاستخدام، واختر “%1$s” وشغّله، ثم اضغط على زر الشاشة الرئيسية.</string>
     <string name="store_update">تحديث Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">النسخ الاحتياطي والاستعادة</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">التطبيقات</string>
     <string name="apps_short">أوقف التطبيقات التي لا تستخدمها: تبقى مثبّتة، لكن لا يمكنها العمل أو ملء الشاشة الرئيسية أو التحديث إلى أن تعيد تفعيلها. لا تظهر الأجزاء التي يحتاجها التلفزيون ليعمل.</string>
-    <string name="adb_connection">تصحيح الأخطاء عبر الشبكة</string>
-    <string name="adb_connection_short">يوقف Vibe Launcher التطبيقات عبر تصحيح الأخطاء في التلفزيون، كما يفعل الكمبيوتر. شغّل تصحيح أخطاء USB (تصحيح أخطاء ADB أو تصحيح الأخطاء عبر الشبكة في بعض أجهزة التلفزيون) من خيارات المطوّرين، ثم اضغط على OK هنا واسمح لـ Vibe Launcher على التلفزيون.</string>
-    <string name="adb_ready">متصل</string>
-    <string name="adb_not_allowed">غير مسموح بعد</string>
+    <string name="adb_connection">اتصال ADB</string>
+    <string name="adb_connection_short">يوقف Vibe Launcher التطبيقات عبر ADB الخاص بالتلفزيون نفسه، كما يفعل الكمبيوتر. افتح هذا لترى ما هو مفعّل وللاتصال.</string>
     <string name="adb_checking">جارٍ التحقق…</string>
-    <string name="adb_allow_prompt">في سؤال التلفزيون، ضع علامة على السماح دائمًا، ثم اختر OK</string>
+    <string name="adb_allow_prompt">بعد ذلك، يسأل التلفزيون هل يسمح لـ Vibe Launcher: ضع علامة على السماح دائمًا، ثم اختر OK.</string>
     <string name="adb_turn_on">من خيارات المطوّرين، شغّل تصحيح أخطاء USB (يُسمّى في بعض أجهزة التلفزيون تصحيح أخطاء ADB أو تصحيح الأخطاء عبر الشبكة)، ثم ارجع إلى هنا.</string>
     <string name="adb_network_closed">تصحيح الأخطاء مفعّل، لكن هذا التلفزيون لا يسمح للتطبيقات بالوصول إليه بعد. في خيارات المطوّرين، ابحث عن تصحيح الأخطاء عبر الشبكة أو ADB عبر الشبكة وشغّله. إذا كان يحتوي على تصحيح الأخطاء اللاسلكي فقط، فلا يمكن لـ Vibe Launcher استخدامه بعد.</string>
     <string name="adb_failed">لم يسمح التلفزيون بذلك</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">تطبيقات يحتاجها التلفزيون</string>
     <string name="app_protected">يحتاج تلفزيونك إلى هذا ليعمل بشكل صحيح، لذلك لن يوقفه Vibe Launcher. هذا يحافظ على سلامة تلفزيونك.</string>
     <string name="adb_dev_options">شغّل خيارات المطوّرين أولاً: في حول، اضغط على OK فوق الإصدار سبع مرات، ثم ارجع إلى هنا.</string>
+    <string name="wireless_debugging">تصحيح الأخطاء اللاسلكي</string>
+    <string name="wireless_debugging_short">لأجهزة التلفزيون التي تعمل بنظام Android 11 والإصدارات الأحدث والتي تُبقي تصحيح الأخطاء عبر الشبكة مغلقًا. اقرن Vibe Launcher مرة واحدة: امسح الرمز ضوئيًا بهاتفك، ثم اكتب فيه الرمز الذي تعرضه نافذة الإقران على التلفزيون.</string>
+    <string name="paired">تم الإقران</string>
+    <string name="not_paired">غير مقترن</string>
+    <string name="pair_scan">امسح الرمز ضوئيًا بهاتفك، ثم افتح خيارات المطوّرين أدناه: شغّل تصحيح الأخطاء اللاسلكي، وافتحه، واختر إقران الجهاز باستخدام رمز إقران، ثم اكتب على هاتفك الرمز الذي يظهر.</string>
+    <string name="adb_wireless_on">شغّل تصحيح الأخطاء اللاسلكي من خيارات المطوّرين، ثم ارجع إلى هنا.</string>
+    <string name="adb_wireless_wifi">لا يسمح هذا التلفزيون للتطبيقات بالوصول إلى تصحيح الأخطاء عبر الشبكة، ولا يعمل تصحيح الأخطاء اللاسلكي فيه إلا عبر Wi-Fi. وصّل التلفزيون بشبكة Wi-Fi لإقران Vibe Launcher، أو ابحث عن تصحيح الأخطاء عبر الشبكة في خيارات المطوّرين.</string>
+    <string name="paired_toast">تم الإقران عبر تصحيح الأخطاء اللاسلكي</string>
+    <string name="adb_not_connected">غير متصل</string>
+    <string name="adb_connected_port">متصل (المنفذ 5555)</string>
+    <string name="adb_connected_wireless">متصل (تصحيح الأخطاء اللاسلكي)</string>
+    <string name="adb_ready_note">يمكن لـ Vibe Launcher الوصول إلى ADB في التلفزيون: تابع مع تنظيف التطبيقات وبقية التطبيقات. لا شيء هنا يحتاج إلى تغيير.</string>
+    <string name="adb_not_needed">لدى Vibe Launcher وصول إلى ADB بالفعل، لذا لا حاجة إلى هذا. هل تريد المتابعة على أي حال؟</string>
+    <string name="wireless_not_running">مفعّل، لكنه لا يعمل</string>
+    <string name="wireless_not_running_short">تصحيح الأخطاء اللاسلكي مفعّل لكنه لا يعمل (بعض أجهزة التلفزيون توقفه عند إيقاف تصحيح أخطاء USB). أوقفه ثم شغّله مجددًا من خيارات المطوّرين.</string>
+    <string name="adb_connect_short">اضغط على OK هنا للاتصال. إذا تعذّر ذلك بعد، يعرض Vibe Launcher أول ما يلزم تشغيله، بدءًا بالأسهل. في المرة الأولى، يسأل التلفزيون هل يسمح لـ Vibe Launcher: ضع علامة على السماح دائمًا.</string>
+    <string name="dev_options">خيارات المطوّرين</string>
+    <string name="dev_options_short">مفاتيح Android الخاصة بتصحيح الأخطاء، مخفية حتى يتم فتحها: في حول، اضغط على OK فوق الإصدار سبع مرات.</string>
+    <string name="usb_adb_debugging">تصحيح أخطاء USB/ADB</string>
+    <string name="usb_adb_debugging_short">مفتاح تصحيح الأخطاء في التلفزيون، ضمن خيارات المطوّرين (تصحيح أخطاء USB، أو تصحيح أخطاء ADB في بعض أجهزة التلفزيون). في معظم أجهزة التلفزيون يفتح أيضًا المنفذ 5555 الذي يتصل عبره Vibe Launcher.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 والإصدارات الأحدث: تصحيح الأخطاء عبر Wi-Fi باستخدام رمز إقران. يستخدمه Vibe Launcher عندما يكون المنفذ 5555 مغلقًا، بعد الإقران.</string>
+    <string name="pair_with_code">الإقران باستخدام رمز</string>
+    <string name="open_dev_options">فتح خيارات المطوّرين</string>
     <string name="apps_turn_off_again">إيقاف مجددًا</string>
     <string name="apps_turn_off_again_short">تطبيقات أوقفها Vibe Launcher من قبل وأصبحت مفعّلة هنا الآن: من نسخة احتياطية تمت استعادتها على هذا التلفزيون، أو أعاد تحديث تفعيلها.</string>
     <string name="apps_turn_off_now">إيقاف الآن</string>

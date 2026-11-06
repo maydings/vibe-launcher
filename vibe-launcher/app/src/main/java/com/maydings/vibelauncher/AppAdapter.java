@@ -582,13 +582,17 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
     /** The TV's App info page for pkg, or null where the firmware has none. */
     static Intent appInfo(Context context, String pkg) {
         Intent info = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + pkg));
-        return context.getPackageManager().resolveActivity(info, PackageManager.MATCH_DEFAULT_ONLY) != null ? info : null;
+        return Screens.real(context, info) ? info : null;
     }
 
     void openAppInfo(int position) {
         if (!isApp(position)) return;
         Intent i = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + items.get(position).pkg));
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (ctx instanceof android.app.Activity) {   // a window where the TV has no App info page
+            Screens.open((android.app.Activity) ctx, i);
+            return;
+        }
         try {
             ctx.startActivity(i);
         } catch (ActivityNotFoundException ignored) {
@@ -722,7 +726,9 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         try {
             ctx.startActivity(i);
         } catch (Exception ex) {
-            Toast.makeText(ctx, ctx.getString(R.string.cant_open, e.label), Toast.LENGTH_SHORT).show();
+            String text = ctx.getString(R.string.cant_open, e.label);
+            if (ctx instanceof android.app.Activity) MainActivity.showError((android.app.Activity) ctx, text);
+            else Toast.makeText(ctx, text, Toast.LENGTH_LONG).show();
         }
     }
 

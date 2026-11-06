@@ -95,6 +95,7 @@
     <string name="youtube_info">Khi đã đăng nhập SmartTube, ô YouTube hiển thị video từ nguồn cấp YouTube của chính bạn. Không cần khóa.\n\nKhông có nó, một khóa sẽ hiển thị các video phổ biến nhất ở quốc gia của bạn. Khóa miễn phí: console.cloud.google.com → dự án mới → bật YouTube Data API v3 → Thông tin xác thực → Tạo khóa API.\n\nKhông có cả hai, ô hiển thị trailer của các phim nổi tiếng.</string>
     <string name="plex_info">Ảnh nền từ máy chủ Plex của bạn: Tiếp tục xem và mới thêm gần đây.\n\nCách lấy: app.plex.tv → mở một tựa bất kỳ → ⋯ → Xem thông tin → Xem XML, rồi sao chép phần sau X-Plex-Token= trong địa chỉ. Hãy giữ bí mật như mật khẩu.</string>
     <string name="saved_from_phone">Đã lưu từ điện thoại</string>
+    <string name="screen_missing">TV này không có màn hình cài đặt đó. Hãy tìm trong phần Cài đặt của chính TV.</string>
     <string name="not_available">Không có trên TV này</string>
     <string name="cant_open">Không mở được %1$s</string>
     <string name="smarttube_install">Cài đặt SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">Còn %1$s</string>
     <string name="home_key_name">Nút Màn hình chính của Vibe Launcher</string>
     <string name="home_key_description">Khiến nút Màn hình chính trên điều khiển mở Vibe Launcher thay vì màn hình chính của TV, và nhấn giữ để mở Cài đặt của TV. Không đọc nội dung nào trên màn hình và để mọi nút khác đi qua như bình thường.</string>
-    <string name="home_key_turn_on">Bật “%1$s” tại đây để nút Màn hình chính mở Vibe Launcher.</string>
     <string name="permissions_title">Hai quyền</string>
     <string name="permissions_why">Tiếp theo, Vibe Launcher sẽ xin hai quyền.\n\nLịch phát sóng TV: để hiện hình ảnh từ các thẻ mà ứng dụng của bạn đăng lên màn hình chính.\n\nVị trí: Android chỉ cho ứng dụng có quyền này thấy tên mạng Wi-Fi. Vibe Launcher chỉ dùng quyền này cho cái tên đó và không bao giờ tìm xem TV ở đâu.\n\nKhông gì trong số đó rời khỏi TV.</string>
     <string name="continue_button">Tiếp tục</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Dành cho TV vẫn giữ màn hình chính riêng: nút Màn hình chính trên điều khiển mở Vibe Launcher, còn nhấn giữ sẽ mở phần Cài đặt của TV.</string>
     <string name="home_key_agree">Đồng ý</string>
     <string name="home_key_steps">Tiếp theo: trong danh sách mở ra, chọn “%1$s”, bật lên rồi nhấn nút Màn hình chính.</string>
+    <string name="home_key_steps_settings">Tiếp theo: TV này không có cách mở thẳng phần cài đặt Hỗ trợ tiếp cận, nên phần Cài đặt của Android sẽ mở ra thay thế. Tại đó, hãy vào Lựa chọn ưu tiên cho thiết bị &gt; Hỗ trợ tiếp cận, chọn “%1$s”, bật lên rồi nhấn nút Màn hình chính.</string>
     <string name="store_update">Cập nhật Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sao lưu và khôi phục</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Ứng dụng</string>
     <string name="apps_short">Tắt các ứng dụng bạn không dùng: chúng vẫn được cài đặt nhưng không thể chạy, chiếm màn hình chính hay cập nhật cho đến khi bạn bật lại. Các thành phần mà TV cần để hoạt động không được liệt kê.</string>
-    <string name="adb_connection">Gỡ lỗi qua mạng</string>
-    <string name="adb_connection_short">Vibe Launcher tắt ứng dụng thông qua tính năng gỡ lỗi của TV, giống như máy tính. Hãy bật gỡ lỗi qua USB (trên một số TV là gỡ lỗi ADB hoặc gỡ lỗi qua mạng) trong Tùy chọn cho nhà phát triển, sau đó nhấn OK tại đây và cho phép Vibe Launcher trên TV.</string>
-    <string name="adb_ready">Đã kết nối</string>
-    <string name="adb_not_allowed">Chưa được cho phép</string>
+    <string name="adb_connection">Kết nối ADB</string>
+    <string name="adb_connection_short">Vibe Launcher tắt ứng dụng thông qua ADB của chính TV, giống như máy tính sẽ làm. Mở mục này để xem những gì đang bật và để kết nối.</string>
     <string name="adb_checking">Đang kiểm tra…</string>
-    <string name="adb_allow_prompt">Trong câu hỏi trên TV, đánh dấu Luôn cho phép rồi chọn OK</string>
+    <string name="adb_allow_prompt">Tiếp theo, TV sẽ hỏi có cho phép Vibe Launcher không: đánh dấu Luôn cho phép rồi chọn OK.</string>
     <string name="adb_turn_on">Trong Tùy chọn cho nhà phát triển, bật gỡ lỗi qua USB (trên một số TV gọi là gỡ lỗi ADB hoặc gỡ lỗi qua mạng), rồi quay lại đây.</string>
     <string name="adb_network_closed">Tính năng gỡ lỗi đang bật, nhưng TV này chưa cho phép ứng dụng truy cập. Trong Tùy chọn cho nhà phát triển, hãy tìm gỡ lỗi qua mạng hoặc ADB qua mạng rồi bật lên. Nếu chỉ có gỡ lỗi không dây, Vibe Launcher chưa thể dùng tính năng đó.</string>
     <string name="adb_failed">TV không cho phép thao tác đó</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Ứng dụng TV cần</string>
     <string name="app_protected">TV của bạn cần mục này để hoạt động bình thường, vì vậy Vibe Launcher sẽ không tắt mục này. Điều này giúp TV của bạn luôn an toàn.</string>
     <string name="adb_dev_options">Hãy bật Tùy chọn cho nhà phát triển trước: trong Giới thiệu, nhấn OK vào Bản dựng bảy lần, rồi quay lại đây.</string>
+    <string name="wireless_debugging">Gỡ lỗi không dây</string>
+    <string name="wireless_debugging_short">Dành cho TV chạy Android 11 trở lên vẫn đóng gỡ lỗi qua mạng. Ghép nối Vibe Launcher một lần: quét mã bằng điện thoại, rồi nhập vào đó mã mà cửa sổ ghép nối của TV hiển thị.</string>
+    <string name="paired">Đã ghép nối</string>
+    <string name="not_paired">Chưa ghép nối</string>
+    <string name="pair_scan">Quét bằng điện thoại, rồi mở Tùy chọn cho nhà phát triển ở bên dưới: bật gỡ lỗi không dây, mở mục đó, chọn Ghép nối thiết bị bằng mã ghép nối và nhập mã hiển thị vào điện thoại.</string>
+    <string name="adb_wireless_on">Bật gỡ lỗi không dây trong Tùy chọn cho nhà phát triển, rồi quay lại đây.</string>
+    <string name="adb_wireless_wifi">TV này không cho phép ứng dụng truy cập tính năng gỡ lỗi qua mạng, và gỡ lỗi không dây của TV chỉ hoạt động qua Wi-Fi. Hãy kết nối TV với Wi-Fi để ghép nối Vibe Launcher, hoặc tìm gỡ lỗi qua mạng trong Tùy chọn cho nhà phát triển.</string>
+    <string name="paired_toast">Đã ghép nối bằng gỡ lỗi không dây</string>
+    <string name="adb_not_connected">Chưa kết nối</string>
+    <string name="adb_connected_port">Đã kết nối (cổng 5555)</string>
+    <string name="adb_connected_wireless">Đã kết nối (gỡ lỗi không dây)</string>
+    <string name="adb_ready_note">Vibe Launcher có thể truy cập ADB của TV: hãy tiếp tục với Dọn dẹp ứng dụng và phần còn lại của Ứng dụng. Không cần thay đổi gì ở đây.</string>
+    <string name="adb_not_needed">Vibe Launcher đã có quyền truy cập ADB, nên không cần bước này. Vẫn tiếp tục?</string>
+    <string name="wireless_not_running">Đang bật, không chạy</string>
+    <string name="wireless_not_running_short">Gỡ lỗi không dây đang bật nhưng không chạy (một số TV dừng tính năng này khi tắt gỡ lỗi qua USB). Hãy tắt rồi bật lại trong Tùy chọn cho nhà phát triển.</string>
+    <string name="adb_connect_short">Nhấn OK tại đây để kết nối. Nếu chưa được, Vibe Launcher sẽ hiển thị việc đầu tiên còn cần bật, bắt đầu từ việc dễ nhất. Lần đầu tiên, TV sẽ hỏi có cho phép Vibe Launcher không: đánh dấu Luôn cho phép.</string>
+    <string name="dev_options">Tùy chọn cho nhà phát triển</string>
+    <string name="dev_options_short">Các công tắc gỡ lỗi của Android, bị ẩn cho đến khi mở khóa: trong Giới thiệu, nhấn OK vào Bản dựng bảy lần.</string>
+    <string name="usb_adb_debugging">Gỡ lỗi USB/ADB</string>
+    <string name="usb_adb_debugging_short">Công tắc gỡ lỗi của TV, trong Tùy chọn cho nhà phát triển (gỡ lỗi qua USB, hoặc gỡ lỗi ADB trên một số TV). Trên hầu hết TV, công tắc này cũng mở cổng 5555, là cổng Vibe Launcher dùng để kết nối.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 trở lên: gỡ lỗi qua Wi-Fi, bằng mã ghép nối. Vibe Launcher dùng tính năng này khi cổng 5555 bị đóng, sau khi đã ghép nối.</string>
+    <string name="pair_with_code">Ghép nối bằng mã</string>
+    <string name="open_dev_options">Mở Tùy chọn cho nhà phát triển</string>
     <string name="apps_turn_off_again">Tắt lại</string>
     <string name="apps_turn_off_again_short">Các ứng dụng mà Vibe Launcher đã tắt trước đó nhưng giờ đang bật ở đây: do bản sao lưu được khôi phục trên TV này, hoặc được một bản cập nhật bật lại.</string>
     <string name="apps_turn_off_now">Tắt ngay</string>

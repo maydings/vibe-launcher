@@ -95,6 +95,7 @@
     <string name="youtube_info">SmartTube ನಲ್ಲಿ ಸೈನ್ ಇನ್ ಆಗಿದ್ದರೆ, YouTube ಟೈಲ್ ನಿಮ್ಮದೇ YouTube ಫೀಡ್‌ನ ವೀಡಿಯೊಗಳನ್ನು ತೋರಿಸುತ್ತದೆ. ಕೀ ಬೇಕಿಲ್ಲ.\n\nಅದು ಇಲ್ಲದಿದ್ದರೆ, ಕೀ ನಿಮ್ಮ ದೇಶದ ಅತ್ಯಂತ ಜನಪ್ರಿಯ ವೀಡಿಯೊಗಳನ್ನು ತೋರಿಸುತ್ತದೆ. ಉಚಿತ ಕೀ: console.cloud.google.com → ಹೊಸ ಪ್ರಾಜೆಕ್ಟ್ → YouTube Data API v3 ಆನ್ ಮಾಡಿ → ರುಜುವಾತುಗಳು → API ಕೀ ರಚಿಸಿ.\n\nಎರಡೂ ಇಲ್ಲದಿದ್ದರೆ, ಜನಪ್ರಿಯ ಚಲನಚಿತ್ರಗಳ ಟ್ರೇಲರ್‌ಗಳನ್ನು ತೋರಿಸುತ್ತದೆ.</string>
     <string name="plex_info">ನಿಮ್ಮದೇ Plex ಸರ್ವರ್‌ನಿಂದ ಹಿನ್ನೆಲೆಗಳು: ವೀಕ್ಷಣೆ ಮುಂದುವರಿಸಿ ಮತ್ತು ಇತ್ತೀಚೆಗೆ ಸೇರಿಸಿದವು.\n\nಪಡೆಯಲು: app.plex.tv → ಯಾವುದೇ ಶೀರ್ಷಿಕೆ ತೆರೆಯಿರಿ → ⋯ → ಮಾಹಿತಿ ಪಡೆಯಿರಿ → XML ವೀಕ್ಷಿಸಿ, ವಿಳಾಸದಲ್ಲಿ X-Plex-Token= ನಂತರದ ಭಾಗ ನಕಲಿಸಿ. ಪಾಸ್‌ವರ್ಡ್‌ನಂತೆ ಗೌಪ್ಯವಾಗಿಡಿ.</string>
     <string name="saved_from_phone">ನಿಮ್ಮ ಫೋನ್‌ನಿಂದ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="screen_missing">ಈ ಟಿವಿಯಲ್ಲಿ ಆ ಸೆಟ್ಟಿಂಗ್‌ಗಳ ಸ್ಕ್ರೀನ್ ಇಲ್ಲ. ಟಿವಿಯ ಸ್ವಂತ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ಅದನ್ನು ಹುಡುಕಿ.</string>
     <string name="not_available">ಈ ಟಿವಿಯಲ್ಲಿ ಲಭ್ಯವಿಲ್ಲ</string>
     <string name="cant_open">%1$s ತೆರೆಯಲಾಗುತ್ತಿಲ್ಲ</string>
     <string name="smarttube_install">SmartTube ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s ಉಳಿದಿದೆ</string>
     <string name="home_key_name">Vibe Launcher ಹೋಮ್ ಬಟನ್</string>
     <string name="home_key_description">ರಿಮೋಟ್‌ನ ಹೋಮ್ ಬಟನ್ ಟಿವಿಯ ಸ್ವಂತ ಹೋಮ್ ಸ್ಕ್ರೀನ್ ಬದಲು Vibe Launcher ತೆರೆಯುತ್ತದೆ, ಒತ್ತಿ ಹಿಡಿದರೆ ಟಿವಿಯ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ತೆರೆಯುತ್ತವೆ. ಸ್ಕ್ರೀನ್‌ನಲ್ಲಿ ಏನನ್ನೂ ಓದುವುದಿಲ್ಲ, ಉಳಿದ ಎಲ್ಲ ಬಟನ್‌ಗಳನ್ನು ಹಾಗೆಯೇ ಕಳುಹಿಸುತ್ತದೆ.</string>
-    <string name="home_key_turn_on">ಹೋಮ್ ಬಟನ್ Vibe Launcher ತೆರೆಯಲು ಇಲ್ಲಿ “%1$s” ಆನ್ ಮಾಡಿ.</string>
     <string name="permissions_title">ಎರಡು ಅನುಮತಿಗಳು</string>
     <string name="permissions_why">ಮುಂದೆ Vibe Launcher ಎರಡು ಅನುಮತಿಗಳನ್ನು ಕೇಳುತ್ತದೆ.\n\nಟಿವಿ ಪಟ್ಟಿಗಳು: ನಿಮ್ಮ ಆ್ಯಪ್‌ಗಳು ಹೋಮ್ ಸ್ಕ್ರೀನ್‌ಗಾಗಿ ಪ್ರಕಟಿಸುವ ಕಾರ್ಡ್‌ಗಳ ಚಿತ್ರಗಳನ್ನು ತೋರಿಸಲು.\n\nಸ್ಥಳ: Android ವೈ-ಫೈ ನೆಟ್‌ವರ್ಕ್‌ನ ಹೆಸರನ್ನು ಈ ಅನುಮತಿ ಇರುವ ಆ್ಯಪ್‌ಗಳಿಗೆ ಮಾತ್ರ ತೋರಿಸುತ್ತದೆ. Vibe Launcher ಅದನ್ನು ಆ ಹೆಸರಿಗಾಗಿ ಮಾತ್ರ ಬಳಸುತ್ತದೆ, ಟಿವಿ ಎಲ್ಲಿದೆ ಎಂದು ಎಂದಿಗೂ ಹುಡುಕುವುದಿಲ್ಲ.\n\nಯಾವುದೂ ಟಿವಿಯಿಂದ ಹೊರಹೋಗುವುದಿಲ್ಲ.</string>
     <string name="continue_button">ಮುಂದುವರಿಸಿ</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">ತಮ್ಮದೇ ಹೋಮ್ ಸ್ಕ್ರೀನ್ ಇಟ್ಟುಕೊಳ್ಳುವ ಟಿವಿಗಳಿಗೆ: ರಿಮೋಟ್‌ನ ಹೋಮ್ ಬಟನ್ Vibe Launcher ತೆರೆಯುತ್ತದೆ, ಮತ್ತು ಅದನ್ನು ಒತ್ತಿ ಹಿಡಿದರೆ ಟಿವಿಯ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ತೆರೆಯುತ್ತವೆ.</string>
     <string name="home_key_agree">ಒಪ್ಪುತ್ತೇನೆ</string>
     <string name="home_key_steps">ಮುಂದೆ: ತೆರೆಯುವ ಪಟ್ಟಿಯಲ್ಲಿ “%1$s” ಆಯ್ಕೆಮಾಡಿ, ಆನ್ ಮಾಡಿ, ನಂತರ ಹೋಮ್ ಒತ್ತಿ.</string>
+    <string name="home_key_steps_settings">ಮುಂದೆ: ಈ ಟಿವಿಯಲ್ಲಿ ಅದರ ಪ್ರವೇಶಿಸುವಿಕೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಗೆ ನೇರ ದಾರಿ ಇಲ್ಲ, ಆದ್ದರಿಂದ ಬದಲಿಗೆ Android ನ ಸೆಟ್ಟಿಂಗ್‌ಗಳು ತೆರೆಯುತ್ತವೆ. ಅಲ್ಲಿ ಸಾಧನದ ಆದ್ಯತೆಗಳು &gt; ಪ್ರವೇಶಿಸುವಿಕೆ ಗೆ ಹೋಗಿ, “%1$s” ಆಯ್ಕೆಮಾಡಿ, ಆನ್ ಮಾಡಿ, ನಂತರ ಹೋಮ್ ಒತ್ತಿ.</string>
     <string name="store_update">Vibe Launcher ಅಪ್‌ಡೇಟ್ ಮಾಡಿ</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ಬ್ಯಾಕಪ್ ಮತ್ತು ಮರುಸ್ಥಾಪನೆ</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">ಆ್ಯಪ್‌ಗಳು</string>
     <string name="apps_short">ನೀವು ಬಳಸದ ಆ್ಯಪ್‌ಗಳನ್ನು ಆಫ್ ಮಾಡಿ: ಅವು ಇನ್‌ಸ್ಟಾಲ್ ಆಗಿಯೇ ಇರುತ್ತವೆ, ಆದರೆ ನೀವು ಮತ್ತೆ ಆನ್ ಮಾಡುವವರೆಗೆ ರನ್ ಆಗಲು, ಹೋಮ್ ಸ್ಕ್ರೀನ್ ತುಂಬಲು ಅಥವಾ ಅಪ್‌ಡೇಟ್ ಆಗಲು ಸಾಧ್ಯವಿಲ್ಲ. ಟಿವಿ ಕೆಲಸ ಮಾಡಲು ಬೇಕಾದ ಭಾಗಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಲಾಗಿಲ್ಲ.</string>
-    <string name="adb_connection">ನೆಟ್‌ವರ್ಕ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆ</string>
-    <string name="adb_connection_short">Vibe Launcher ಕಂಪ್ಯೂಟರ್‌ನಂತೆಯೇ ಟಿವಿಯ ಡೀಬಗ್ ಮಾಡುವಿಕೆಯ ಮೂಲಕ ಆ್ಯಪ್‌ಗಳನ್ನು ಆಫ್ ಮಾಡುತ್ತದೆ. ಡೆವಲಪರ್ ಆಯ್ಕೆಗಳಲ್ಲಿ USB ಡೀಬಗ್ ಮಾಡುವಿಕೆಯನ್ನು (ಕೆಲವು ಟಿವಿಗಳಲ್ಲಿ ADB ಡೀಬಗ್ ಮಾಡುವಿಕೆ ಅಥವಾ ನೆಟ್‌ವರ್ಕ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆ) ಆನ್ ಮಾಡಿ, ನಂತರ ಇಲ್ಲಿ OK ಒತ್ತಿ ಮತ್ತು ಟಿವಿಯಲ್ಲಿ Vibe Launcher ಅನ್ನು ಅನುಮತಿಸಿ.</string>
-    <string name="adb_ready">ಕನೆಕ್ಟ್ ಆಗಿದೆ</string>
-    <string name="adb_not_allowed">ಇನ್ನೂ ಅನುಮತಿಸಿಲ್ಲ</string>
+    <string name="adb_connection">ADB ಸಂಪರ್ಕ</string>
+    <string name="adb_connection_short">Vibe Launcher ಕಂಪ್ಯೂಟರ್‌ನಂತೆಯೇ ಟಿವಿಯ ಸ್ವಂತ ADB ಮೂಲಕ ಆ್ಯಪ್‌ಗಳನ್ನು ಆಫ್ ಮಾಡುತ್ತದೆ. ಏನು ಆನ್ ಆಗಿದೆ ಎಂದು ನೋಡಲು ಮತ್ತು ಕನೆಕ್ಟ್ ಮಾಡಲು ಇದನ್ನು ತೆರೆಯಿರಿ.</string>
     <string name="adb_checking">ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ…</string>
-    <string name="adb_allow_prompt">ಟಿವಿಯ ಪ್ರಶ್ನೆಯಲ್ಲಿ ಯಾವಾಗಲೂ ಅನುಮತಿಸಿ ಅನ್ನು ಟಿಕ್ ಮಾಡಿ, ನಂತರ OK ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="adb_allow_prompt">ನಂತರ, Vibe Launcher ಅನ್ನು ಅನುಮತಿಸಬೇಕೇ ಎಂದು ಟಿವಿ ಕೇಳುತ್ತದೆ: ಯಾವಾಗಲೂ ಅನುಮತಿಸಿ ಅನ್ನು ಟಿಕ್ ಮಾಡಿ, ನಂತರ OK ಆಯ್ಕೆಮಾಡಿ.</string>
     <string name="adb_turn_on">ಡೆವಲಪರ್ ಆಯ್ಕೆಗಳಲ್ಲಿ USB ಡೀಬಗ್ ಮಾಡುವಿಕೆಯನ್ನು (ಕೆಲವು ಟಿವಿಗಳಲ್ಲಿ ಇದನ್ನು ADB ಡೀಬಗ್ ಮಾಡುವಿಕೆ ಅಥವಾ ನೆಟ್‌ವರ್ಕ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆ ಎನ್ನಲಾಗುತ್ತದೆ) ಆನ್ ಮಾಡಿ, ನಂತರ ಇಲ್ಲಿಗೆ ಹಿಂತಿರುಗಿ.</string>
     <string name="adb_network_closed">ಡೀಬಗ್ ಮಾಡುವಿಕೆ ಆನ್ ಆಗಿದೆ, ಆದರೆ ಈ ಟಿವಿ ಇನ್ನೂ ಆ್ಯಪ್‌ಗಳಿಗೆ ಅದನ್ನು ತಲುಪಲು ಬಿಡುವುದಿಲ್ಲ. ಡೆವಲಪರ್ ಆಯ್ಕೆಗಳಲ್ಲಿ ನೆಟ್‌ವರ್ಕ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆ ಅಥವಾ ನೆಟ್‌ವರ್ಕ್ ಮೂಲಕ ADB ಅನ್ನು ಹುಡುಕಿ ಮತ್ತು ಅದನ್ನು ಆನ್ ಮಾಡಿ. ಅದರಲ್ಲಿ ವೈರ್‌ಲೆಸ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆ ಮಾತ್ರ ಇದ್ದರೆ, Vibe Launcher ಗೆ ಇನ್ನೂ ಅದನ್ನು ಬಳಸಲು ಸಾಧ್ಯವಿಲ್ಲ.</string>
     <string name="adb_failed">ಟಿವಿ ಅದನ್ನು ಅನುಮತಿಸಲಿಲ್ಲ</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">ಟಿವಿಗೆ ಬೇಕಾದ ಆ್ಯಪ್‌ಗಳು</string>
     <string name="app_protected">ನಿಮ್ಮ ಟಿವಿ ಸರಿಯಾಗಿ ಕೆಲಸ ಮಾಡಲು ಇದು ಬೇಕು, ಆದ್ದರಿಂದ Vibe Launcher ಇದನ್ನು ಆಫ್ ಮಾಡುವುದಿಲ್ಲ. ಇದು ನಿಮ್ಮ ಟಿವಿಯನ್ನು ಸುರಕ್ಷಿತವಾಗಿರಿಸುತ್ತದೆ.</string>
     <string name="adb_dev_options">ಮೊದಲು ಡೆವಲಪರ್ ಆಯ್ಕೆಗಳನ್ನು ಆನ್ ಮಾಡಿ: ಕುರಿತು ವಿಭಾಗದಲ್ಲಿ ಬಿಲ್ಡ್ ಮೇಲೆ ಏಳು ಬಾರಿ OK ಒತ್ತಿ, ನಂತರ ಇಲ್ಲಿಗೆ ಹಿಂತಿರುಗಿ.</string>
+    <string name="wireless_debugging">ವೈರ್‌ಲೆಸ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆ</string>
+    <string name="wireless_debugging_short">ನೆಟ್‌ವರ್ಕ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆಯನ್ನು ಮುಚ್ಚಿಡುವ Android 11 ಮತ್ತು ನಂತರದ ಟಿವಿಗಳಿಗಾಗಿ. Vibe Launcher ಅನ್ನು ಒಮ್ಮೆ ಜೋಡಿಸಿ: ನಿಮ್ಮ ಫೋನ್‌ನಿಂದ ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ, ನಂತರ ಟಿವಿಯ ಜೋಡಣೆ ವಿಂಡೋ ತೋರಿಸುವ ಕೋಡ್ ಅನ್ನು ಅಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ.</string>
+    <string name="paired">ಜೋಡಿಸಲಾಗಿದೆ</string>
+    <string name="not_paired">ಜೋಡಿಸಲಾಗಿಲ್ಲ</string>
+    <string name="pair_scan">ನಿಮ್ಮ ಫೋನ್‌ನಿಂದ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ, ನಂತರ ಕೆಳಗಿನ ಡೆವಲಪರ್ ಆಯ್ಕೆಗಳನ್ನು ತೆರೆಯಿರಿ: ವೈರ್‌ಲೆಸ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆಯನ್ನು ಆನ್ ಮಾಡಿ, ಅದನ್ನು ತೆರೆಯಿರಿ, ಜೋಡಿಸುವ ಕೋಡ್ ಬಳಸಿ ಸಾಧನವನ್ನು ಜೋಡಿಸಿ ಆಯ್ಕೆಮಾಡಿ, ಮತ್ತು ಅದು ತೋರಿಸುವ ಕೋಡ್ ಅನ್ನು ನಿಮ್ಮ ಫೋನ್‌ನಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ.</string>
+    <string name="adb_wireless_on">ಡೆವಲಪರ್ ಆಯ್ಕೆಗಳಲ್ಲಿ ವೈರ್‌ಲೆಸ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆಯನ್ನು ಆನ್ ಮಾಡಿ, ನಂತರ ಇಲ್ಲಿಗೆ ಹಿಂತಿರುಗಿ.</string>
+    <string name="adb_wireless_wifi">ಈ ಟಿವಿ ನೆಟ್‌ವರ್ಕ್ ಮೂಲಕ ತನ್ನ ಡೀಬಗ್ ಮಾಡುವಿಕೆಯನ್ನು ತಲುಪಲು ಆ್ಯಪ್‌ಗಳಿಗೆ ಬಿಡುವುದಿಲ್ಲ, ಮತ್ತು ಅದರ ವೈರ್‌ಲೆಸ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆ Wi-Fi ನಲ್ಲಿ ಮಾತ್ರ ಕೆಲಸ ಮಾಡುತ್ತದೆ. Vibe Launcher ಅನ್ನು ಜೋಡಿಸಲು ಟಿವಿಯನ್ನು Wi-Fi ಗೆ ಕನೆಕ್ಟ್ ಮಾಡಿ, ಅಥವಾ ಡೆವಲಪರ್ ಆಯ್ಕೆಗಳಲ್ಲಿ ನೆಟ್‌ವರ್ಕ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆಯನ್ನು ಹುಡುಕಿ.</string>
+    <string name="paired_toast">ವೈರ್‌ಲೆಸ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆಯ ಮೂಲಕ ಜೋಡಿಸಲಾಗಿದೆ</string>
+    <string name="adb_not_connected">ಕನೆಕ್ಟ್ ಆಗಿಲ್ಲ</string>
+    <string name="adb_connected_port">ಕನೆಕ್ಟ್ ಆಗಿದೆ (ಪೋರ್ಟ್ 5555)</string>
+    <string name="adb_connected_wireless">ಕನೆಕ್ಟ್ ಆಗಿದೆ (ವೈರ್‌ಲೆಸ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆ)</string>
+    <string name="adb_ready_note">Vibe Launcher ಟಿವಿಯ ADB ಅನ್ನು ತಲುಪಬಹುದು: ಆ್ಯಪ್ ಸ್ವಚ್ಛತೆ ಮತ್ತು ಆ್ಯಪ್‌ಗಳ ಉಳಿದ ಭಾಗದೊಂದಿಗೆ ಮುಂದುವರಿಯಿರಿ. ಇಲ್ಲಿ ಏನನ್ನೂ ಬದಲಾಯಿಸುವ ಅಗತ್ಯವಿಲ್ಲ.</string>
+    <string name="adb_not_needed">Vibe Launcher ಗೆ ಈಗಾಗಲೇ ADB ಪ್ರವೇಶವಿದೆ, ಆದ್ದರಿಂದ ಇದರ ಅಗತ್ಯವಿಲ್ಲ. ಆದರೂ ಮುಂದುವರಿಸಬೇಕೇ?</string>
+    <string name="wireless_not_running">ಆನ್ ಆಗಿದೆ, ರನ್ ಆಗುತ್ತಿಲ್ಲ</string>
+    <string name="wireless_not_running_short">ವೈರ್‌ಲೆಸ್ ಡೀಬಗ್ ಮಾಡುವಿಕೆ ಆನ್ ಆಗಿದೆ ಆದರೆ ರನ್ ಆಗುತ್ತಿಲ್ಲ (USB ಡೀಬಗ್ ಮಾಡುವಿಕೆ ಆಫ್ ಆದಾಗ ಕೆಲವು ಟಿವಿಗಳು ಅದನ್ನು ನಿಲ್ಲಿಸುತ್ತವೆ). ಡೆವಲಪರ್ ಆಯ್ಕೆಗಳಲ್ಲಿ ಅದನ್ನು ಆಫ್ ಮಾಡಿ ಮತ್ತೆ ಆನ್ ಮಾಡಿ.</string>
+    <string name="adb_connect_short">ಕನೆಕ್ಟ್ ಮಾಡಲು ಇಲ್ಲಿ OK ಒತ್ತಿ. ಇನ್ನೂ ಸಾಧ್ಯವಾಗದಿದ್ದರೆ, ಇನ್ನೂ ಆನ್ ಮಾಡಬೇಕಾದ ಮೊದಲ ವಿಷಯವನ್ನು Vibe Launcher ತೋರಿಸುತ್ತದೆ, ಸುಲಭವಾದುದು ಮೊದಲು. ಮೊದಲ ಬಾರಿ, Vibe Launcher ಅನ್ನು ಅನುಮತಿಸಬೇಕೇ ಎಂದು ಟಿವಿ ಕೇಳುತ್ತದೆ: ಯಾವಾಗಲೂ ಅನುಮತಿಸಿ ಅನ್ನು ಟಿಕ್ ಮಾಡಿ.</string>
+    <string name="dev_options">ಡೆವಲಪರ್ ಆಯ್ಕೆಗಳು</string>
+    <string name="dev_options_short">ಡೀಬಗ್ ಮಾಡುವಿಕೆಗಾಗಿ Android ನ ಸ್ವಿಚ್‌ಗಳು, ಅನ್‌ಲಾಕ್ ಮಾಡುವವರೆಗೆ ಮರೆಯಾಗಿರುತ್ತವೆ: ಕುರಿತು ವಿಭಾಗದಲ್ಲಿ ಬಿಲ್ಡ್ ಮೇಲೆ ಏಳು ಬಾರಿ OK ಒತ್ತಿ.</string>
+    <string name="usb_adb_debugging">USB/ADB ಡೀಬಗ್ ಮಾಡುವಿಕೆ</string>
+    <string name="usb_adb_debugging_short">ಡೆವಲಪರ್ ಆಯ್ಕೆಗಳಲ್ಲಿರುವ ಟಿವಿಯ ಡೀಬಗ್ ಮಾಡುವಿಕೆ ಸ್ವಿಚ್ (USB ಡೀಬಗ್ ಮಾಡುವಿಕೆ, ಅಥವಾ ಕೆಲವು ಟಿವಿಗಳಲ್ಲಿ ADB ಡೀಬಗ್ ಮಾಡುವಿಕೆ). ಹೆಚ್ಚಿನ ಟಿವಿಗಳಲ್ಲಿ ಇದು ಪೋರ್ಟ್ 5555 ಅನ್ನು ಕೂಡ ತೆರೆಯುತ್ತದೆ, ಅದರ ಮೂಲಕ Vibe Launcher ಕನೆಕ್ಟ್ ಆಗುತ್ತದೆ.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 ಮತ್ತು ನಂತರದ ಆವೃತ್ತಿಗಳು: ಜೋಡಿಸುವ ಕೋಡ್‌ನೊಂದಿಗೆ Wi-Fi ಮೂಲಕ ಡೀಬಗ್ ಮಾಡುವಿಕೆ. ಜೋಡಿಸಿದ ನಂತರ, ಪೋರ್ಟ್ 5555 ಮುಚ್ಚಿದ್ದಾಗ Vibe Launcher ಇದನ್ನು ಬಳಸುತ್ತದೆ.</string>
+    <string name="pair_with_code">ಕೋಡ್ ಮೂಲಕ ಜೋಡಿಸಿ</string>
+    <string name="open_dev_options">ಡೆವಲಪರ್ ಆಯ್ಕೆಗಳನ್ನು ತೆರೆಯಿರಿ</string>
     <string name="apps_turn_off_again">ಮತ್ತೆ ಆಫ್ ಮಾಡಿ</string>
     <string name="apps_turn_off_again_short">Vibe Launcher ಹಿಂದೆ ಆಫ್ ಮಾಡಿದ್ದ, ಆದರೆ ಈಗ ಇಲ್ಲಿ ಆನ್ ಆಗಿರುವ ಆ್ಯಪ್‌ಗಳು: ಈ ಟಿವಿಯಲ್ಲಿ ಮರುಸ್ಥಾಪಿಸಿದ ಬ್ಯಾಕಪ್‌ನಿಂದ, ಅಥವಾ ಅಪ್‌ಡೇಟ್‌ನಿಂದ ಮತ್ತೆ ಆನ್ ಆಗಿವೆ.</string>
     <string name="apps_turn_off_now">ಈಗ ಆಫ್ ಮಾಡಿ</string>

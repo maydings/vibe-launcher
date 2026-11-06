@@ -95,6 +95,7 @@
     <string name="youtube_info">ወደ SmartTube ሲገቡ የYouTube ሰሌዳው ከራስዎ የYouTube ምግብ ቪዲዮዎችን ያሳያል። ቁልፍ አያስፈልግም።\n\nያለ እሱ፣ ቁልፍ በአገርዎ በጣም ታዋቂ የሆኑ ቪዲዮዎችን ያሳያል። ነፃ ቁልፍ፦ console.cloud.google.com → አዲስ ፕሮጀክት → YouTube Data API v3ን ያብሩ → ምስክርነቶች → የAPI ቁልፍ ፍጠር።\n\nሁለቱም ከሌሉ፣ የታዋቂ ፊልሞችን ማስታወቂያዎች ያሳያል።</string>
     <string name="plex_info">ከራስዎ የPlex አገልጋይ የመጡ ዳራዎች፦ መመልከት ይቀጥሉ እና በቅርቡ የታከሉ።\n\nለማግኘት፦ app.plex.tv → ማንኛውንም ርዕስ ይክፈቱ → ⋯ → መረጃ አግኝ → XML አሳይ፣ በአድራሻው ውስጥ ከX-Plex-Token= በኋላ ያለውን ይቅዱ። እንደ የይለፍ ቃል በሚስጥር ይያዙት።</string>
     <string name="saved_from_phone">ከስልክዎ ተቀምጧል</string>
+    <string name="screen_missing">ይህ ቲቪ ያ የቅንብሮች ማያ ገጽ የለውም። በቲቪው የራሱ ቅንብሮች ውስጥ ይፈልጉት።</string>
     <string name="not_available">በዚህ ቲቪ ላይ አይገኝም</string>
     <string name="cant_open">%1$sን መክፈት አልተቻለም</string>
     <string name="smarttube_install">SmartTube ጫን</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s ቀርቷል</string>
     <string name="home_key_name">Vibe Launcher የመነሻ አዝራር</string>
     <string name="home_key_description">የሩቅ መቆጣጠሪያው የመነሻ አዝራር ከቴሌቪዥኑ የራሱ መነሻ ማያ ገጽ ይልቅ Vibe Launcherን እንዲከፍት፣ ተጭኖ ሲያዝ ደግሞ የቴሌቪዥኑን ቅንብሮች እንዲከፍት ያደርጋል። በማያ ገጹ ላይ ምንም አያነብም፣ ሌሎቹን ቁልፎች ሁሉ ያሳልፋል።</string>
-    <string name="home_key_turn_on">የመነሻ አዝራሩ Vibe Launcherን እንዲከፍት “%1$s”ን እዚህ ያብሩ።</string>
     <string name="permissions_title">ሁለት ፈቃዶች</string>
     <string name="permissions_why">Vibe Launcher በመቀጠል ሁለት ፈቃዶችን ይጠይቃል።\n\nየቲቪ ዝርዝሮች፦ መተግበሪያዎችዎ ለመነሻ ማያ ገጹ ከሚያወጧቸው ካርዶች ምስሎችን ለማሳየት።\n\nአካባቢ፦ Android የWi-Fi አውታረ መረቡን ስም የሚያሳየው ይህ ፈቃድ ላላቸው መተግበሪያዎች ብቻ ነው። Vibe Launcher ለዚያ ስም ብቻ ይጠቀምበታል፤ ቴሌቪዥኑ የት እንዳለ በጭራሽ አይፈልግም።\n\nሁለቱም ከቴሌቪዥኑ አይወጡም።</string>
     <string name="continue_button">ቀጥል</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">የራሳቸውን መነሻ ማያ ገጽ ለሚይዙ ቲቪዎች፦ የሪሞቱ የመነሻ አዝራር Vibe Launcherን ይከፍታል፣ ተጭኖ መያዙ ደግሞ የቲቪውን ቅንብሮች ይከፍታል።</string>
     <string name="home_key_agree">እስማማለሁ</string>
     <string name="home_key_steps">ቀጥሎ፦ በሚከፈተው ዝርዝር ውስጥ “%1$s”ን ይምረጡ፣ ያብሩት፣ ከዚያ መነሻን ይጫኑ።</string>
+    <string name="home_key_steps_settings">ቀጥሎ፦ ይህ ቲቪ ወደ ተደራሽነት ቅንብሮቹ ቀጥተኛ መንገድ የለውም፣ ስለዚህ በምትኩ የAndroid ቅንብሮች ይከፈታሉ። እዚያ ወደ የመሣሪያ ምርጫዎች &gt; ተደራሽነት ይሂዱ፣ “%1$s”ን ይምረጡ፣ ያብሩት፣ ከዚያ መነሻን ይጫኑ።</string>
     <string name="store_update">Vibe Launcherን አዘምን</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ምትኬ እና መመለስ</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">መተግበሪያዎች</string>
     <string name="apps_short">የማይጠቀሙባቸውን መተግበሪያዎች ያጥፉ፦ እንደተጫኑ ይቆያሉ፣ ግን መልሰው እስኪያበሯቸው ድረስ መሥራት፣ የመነሻ ማያ ገጹን መሙላት ወይም መዘመን አይችሉም። ቲቪው እንዲሠራ የሚያስፈልጉት ክፍሎች አልተዘረዘሩም።</string>
-    <string name="adb_connection">የአውታረ መረብ ስህተት ማረሚያ</string>
-    <string name="adb_connection_short">Vibe Launcher ልክ እንደ ኮምፒውተር በቲቪው ስህተት ማረሚያ በኩል መተግበሪያዎችን ያጠፋል። በገንቢ አማራጮች ውስጥ የUSB ስህተት ማረሚያን (በአንዳንድ ቲቪዎች ላይ የADB ስህተት ማረሚያ ወይም የአውታረ መረብ ስህተት ማረሚያ) ያብሩ፣ ከዚያ እዚህ OKን ይጫኑ እና በቲቪው ላይ Vibe Launcherን ይፍቀዱ።</string>
-    <string name="adb_ready">ተገናኝቷል</string>
-    <string name="adb_not_allowed">እስካሁን አልተፈቀደም</string>
+    <string name="adb_connection">የADB ግንኙነት</string>
+    <string name="adb_connection_short">Vibe Launcher ልክ እንደ ኮምፒውተር በቲቪው የራሱ ADB በኩል መተግበሪያዎችን ያጠፋል። ምን እንደበራ ለማየት እና ለመገናኘት ይህን ይክፈቱ።</string>
     <string name="adb_checking">በመፈተሽ ላይ…</string>
-    <string name="adb_allow_prompt">በቲቪው ጥያቄ ላይ ሁልጊዜ ፍቀድን ምልክት ያድርጉ፣ ከዚያ OKን ይምረጡ</string>
+    <string name="adb_allow_prompt">ቀጥሎ ቲቪው Vibe Launcherን መፍቀድ እንዳለበት ይጠይቃል፦ ሁልጊዜ ፍቀድን ምልክት ያድርጉ፣ ከዚያ OKን ይምረጡ።</string>
     <string name="adb_turn_on">በገንቢ አማራጮች ውስጥ የUSB ስህተት ማረሚያን ያብሩ (በአንዳንድ ቲቪዎች ላይ የADB ስህተት ማረሚያ ወይም የአውታረ መረብ ስህተት ማረሚያ ይባላል)፣ ከዚያ ወደዚህ ይመለሱ።</string>
     <string name="adb_network_closed">ስህተት ማረሚያ በርቷል፣ ግን ይህ ቲቪ መተግበሪያዎች እንዲደርሱበት ገና አይፈቅድም። በገንቢ አማራጮች ውስጥ የአውታረ መረብ ስህተት ማረሚያን ወይም ADB በአውታረ መረብ ላይን ይፈልጉ እና ያብሩት። ገመድ አልባ ስህተት ማረሚያ ብቻ ካለው፣ Vibe Launcher ገና ሊጠቀምበት አይችልም።</string>
     <string name="adb_failed">ቲቪው ያንን አልፈቀደም</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">ቲቪው የሚፈልጋቸው መተግበሪያዎች</string>
     <string name="app_protected">ቲቪዎ በትክክል እንዲሠራ ይህ ያስፈልገዋል፣ ስለዚህ Vibe Launcher አያጠፋውም። ይህ ቲቪዎን ደህንነቱ የተጠበቀ ያደርገዋል።</string>
     <string name="adb_dev_options">መጀመሪያ የገንቢ አማራጮችን ያብሩ፦ በስለ ውስጥ ግንባታ ላይ OKን ሰባት ጊዜ ይጫኑ፣ ከዚያ ወደዚህ ይመለሱ።</string>
+    <string name="wireless_debugging">ገመድ አልባ ስህተት ማረሚያ</string>
+    <string name="wireless_debugging_short">የአውታረ መረብ ስህተት ማረሚያን ዝግ ለሚያደርጉ Android 11 እና ከዚያ በላይ ለሆኑ ቲቪዎች። Vibe Launcherን አንድ ጊዜ ያጣምሩ፦ ኮዱን በስልክዎ ይቃኙ፣ ከዚያ የቲቪው የማጣመሪያ መስኮት የሚያሳየውን ኮድ እዚያ ይተይቡ።</string>
+    <string name="paired">ተጣምሯል</string>
+    <string name="not_paired">አልተጣመረም</string>
+    <string name="pair_scan">በስልክዎ ይቃኙ፣ ከዚያ ከታች የገንቢ አማራጮችን ይክፈቱ፦ ገመድ አልባ ስህተት ማረሚያን ያብሩ፣ ይክፈቱት፣ መሣሪያን በማጣመሪያ ኮድ ያጣምሩ የሚለውን ይምረጡ፣ እና የሚያሳየውን ኮድ በስልክዎ ላይ ይተይቡ።</string>
+    <string name="adb_wireless_on">በገንቢ አማራጮች ውስጥ ገመድ አልባ ስህተት ማረሚያን ያብሩ፣ ከዚያ ወደዚህ ይመለሱ።</string>
+    <string name="adb_wireless_wifi">ይህ ቲቪ መተግበሪያዎች በአውታረ መረብ በኩል ወደ ስህተት ማረሚያው እንዲደርሱ አይፈቅድም፣ እና ገመድ አልባ ስህተት ማረሚያው የሚሰራው በWi-Fi ላይ ብቻ ነው። Vibe Launcherን ለማጣመር ቲቪውን ከWi-Fi ጋር ያገናኙ፣ ወይም በገንቢ አማራጮች ውስጥ የአውታረ መረብ ስህተት ማረሚያን ይፈልጉ።</string>
+    <string name="paired_toast">በገመድ አልባ ስህተት ማረሚያ ተጣምሯል</string>
+    <string name="adb_not_connected">አልተገናኘም</string>
+    <string name="adb_connected_port">ተገናኝቷል (ወደብ 5555)</string>
+    <string name="adb_connected_wireless">ተገናኝቷል (ገመድ አልባ ስህተት ማረሚያ)</string>
+    <string name="adb_ready_note">Vibe Launcher የቲቪውን ADB መድረስ ይችላል፦ በመተግበሪያዎችን ማጽዳት እና በቀሪው የመተግበሪያዎች ክፍል ይቀጥሉ። እዚህ ምንም መቀየር አያስፈልግም።</string>
+    <string name="adb_not_needed">Vibe Launcher አስቀድሞ የADB መዳረሻ አለው፣ ስለዚህ ይህ አያስፈልግም። ለማንኛውም ይቀጥሉ?</string>
+    <string name="wireless_not_running">በርቷል፣ እየሰራ አይደለም</string>
+    <string name="wireless_not_running_short">ገመድ አልባ ስህተት ማረሚያ በርቷል ግን እየሰራ አይደለም (አንዳንድ ቲቪዎች የUSB ስህተት ማረሚያ ሲጠፋ ያቆሙታል)። በገንቢ አማራጮች ውስጥ ያጥፉትና እንደገና ያብሩት።</string>
+    <string name="adb_connect_short">ለመገናኘት እዚህ OKን ይጫኑ። ገና ካልቻለ፣ Vibe Launcher አሁንም መብራት ያለበትን የመጀመሪያውን ነገር ያሳያል፣ ቀላሉ መጀመሪያ። ለመጀመሪያ ጊዜ ቲቪው Vibe Launcherን መፍቀድ እንዳለበት ይጠይቃል፦ ሁልጊዜ ፍቀድን ምልክት ያድርጉ።</string>
+    <string name="dev_options">የገንቢ አማራጮች</string>
+    <string name="dev_options_short">የAndroid የስህተት ማረሚያ ማብሪያዎች፣ እስኪከፈቱ ድረስ የተደበቁ፦ በስለ ውስጥ ግንባታ ላይ OKን ሰባት ጊዜ ይጫኑ።</string>
+    <string name="usb_adb_debugging">USB/ADB ስህተት ማረሚያ</string>
+    <string name="usb_adb_debugging_short">የቲቪው የስህተት ማረሚያ ማብሪያ፣ በገንቢ አማራጮች ውስጥ (የUSB ስህተት ማረሚያ፣ ወይም በአንዳንድ ቲቪዎች የADB ስህተት ማረሚያ)። በአብዛኛዎቹ ቲቪዎች ላይ Vibe Launcher የሚገናኝበትን ወደብ 5555ንም ይከፍታል።</string>
+    <string name="wireless_debugging_onoff_short">Android 11 እና ከዚያ በላይ፦ በWi-Fi ላይ ስህተት ማረሚያ፣ በማጣመሪያ ኮድ። Vibe Launcher አንዴ ከተጣመረ ወደብ 5555 ሲዘጋ ይጠቀምበታል።</string>
+    <string name="pair_with_code">በኮድ ያጣምሩ</string>
+    <string name="open_dev_options">የገንቢ አማራጮችን ይክፈቱ</string>
     <string name="apps_turn_off_again">እንደገና ያጥፉ</string>
     <string name="apps_turn_off_again_short">Vibe Launcher ከዚህ ቀደም ያጠፋቸው ግን አሁን እዚህ የበሩ መተግበሪያዎች፦ በዚህ ቲቪ ላይ ከተመለሰ ምትኬ፣ ወይም በዝማኔ መልሰው የበሩ።</string>
     <string name="apps_turn_off_now">አሁን ያጥፉ</string>

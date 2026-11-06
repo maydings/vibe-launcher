@@ -95,6 +95,7 @@
     <string name="youtube_info">Med SmartTube inloggat visar YouTube-rutan videor från ditt eget YouTube-flöde. Ingen nyckel behövs.\n\nUtan det visar en nyckel de populäraste videorna i ditt land. Gratis nyckel: console.cloud.google.com → nytt projekt → aktivera YouTube Data API v3 → Inloggningsuppgifter → Skapa API-nyckel.\n\nUtan båda visar den trailers för populära filmer.</string>
     <string name="plex_info">Bakgrunder från din egen Plex-server: Fortsätt titta och nyligen tillagt.\n\nSå hittar du den: app.plex.tv → öppna valfri titel → ⋯ → Hämta info → Visa XML, och kopiera det som följer efter X-Plex-Token= i adressen. Håll den hemlig, som ett lösenord.</string>
     <string name="saved_from_phone">Sparat från mobilen</string>
+    <string name="screen_missing">Den här tv:n har inte den inställningsskärmen. Leta efter den i tv:ns egna Inställningar.</string>
     <string name="not_available">Inte tillgängligt på den här tv:n</string>
     <string name="cant_open">Kan inte öppna %1$s</string>
     <string name="smarttube_install">Installera SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s kvar</string>
     <string name="home_key_name">Vibe Launcher-hemknapp</string>
     <string name="home_key_description">Får fjärrkontrollens hemknapp att öppna Vibe Launcher i stället för tv:ns egen startskärm, och ett långt tryck att öppna tv:ns inställningar. Den läser inget på skärmen och släpper igenom alla andra knappar.</string>
-    <string name="home_key_turn_on">Slå på ”%1$s” här så öppnar hemknappen Vibe Launcher.</string>
     <string name="permissions_title">Två behörigheter</string>
     <string name="permissions_why">Vibe Launcher ber nu om två behörigheter.\n\nTv-tablå: för att visa bilder från korten som dina appar publicerar för startskärmen.\n\nPlats: Android visar bara Wi-Fi-nätverkets namn för appar med den här behörigheten. Vibe Launcher använder den bara för namnet och tar aldrig reda på var tv:n står.\n\nIngen av dem lämnar tv:n.</string>
     <string name="continue_button">Fortsätt</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">För tv-apparater som behåller sin egen startskärm: fjärrkontrollens hemknapp öppnar Vibe Launcher, och håller du in den öppnas tv:ns inställningar.</string>
     <string name="home_key_agree">Godkänn</string>
     <string name="home_key_steps">Nästa steg: välj ”%1$s” i listan som öppnas, slå på den och tryck sedan på hem.</string>
+    <string name="home_key_steps_settings">Nästa steg: den här tv:n har ingen direkt väg till sina tillgänglighetsinställningar, så Androids Inställningar öppnas i stället. Gå där till Enhetsinställningar &gt; Tillgänglighet, välj ”%1$s”, slå på den och tryck sedan på hem.</string>
     <string name="store_update">Uppdatera Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Säkerhetskopiering och återställning</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Appar</string>
     <string name="apps_short">Stäng av appar du inte använder: de förblir installerade men kan inte köras, fylla startskärmen eller uppdateras förrän du slår på dem igen. Delar som tv:n behöver för att fungera visas inte.</string>
-    <string name="adb_connection">Nätverksfelsökning</string>
-    <string name="adb_connection_short">Vibe Launcher stänger av appar via tv:ns felsökning, precis som en dator skulle göra. Slå på USB-felsökning (ADB-felsökning eller nätverksfelsökning på vissa tv-apparater) i Utvecklaralternativ, tryck sedan på OK här och tillåt Vibe Launcher på tv:n.</string>
-    <string name="adb_ready">Ansluten</string>
-    <string name="adb_not_allowed">Inte tillåtet än</string>
+    <string name="adb_connection">ADB-anslutning</string>
+    <string name="adb_connection_short">Vibe Launcher stänger av appar via tv:ns egen ADB, precis som en dator skulle göra. Öppna det här för att se vad som är på och för att ansluta.</string>
     <string name="adb_checking">Kontrollerar…</string>
-    <string name="adb_allow_prompt">Markera Tillåt alltid i frågan på tv:n och välj sedan OK</string>
+    <string name="adb_allow_prompt">Sedan frågar tv:n om Vibe Launcher ska tillåtas: markera Tillåt alltid och välj sedan OK.</string>
     <string name="adb_turn_on">Slå på USB-felsökning i Utvecklaralternativ (kallas ADB-felsökning eller nätverksfelsökning på vissa tv-apparater) och kom sedan tillbaka hit.</string>
     <string name="adb_network_closed">Felsökning är på, men den här tv:n låter inte appar nå den än. Leta efter nätverksfelsökning eller ADB via nätverk i Utvecklaralternativ och slå på det. Om det bara finns trådlös felsökning kan Vibe Launcher inte använda det än.</string>
     <string name="adb_failed">Tv:n tillät inte det</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Appar som tv:n behöver</string>
     <string name="app_protected">Tv:n behöver detta för att fungera som den ska, så Vibe Launcher stänger inte av det. Det håller din tv säker.</string>
     <string name="adb_dev_options">Slå först på Utvecklaralternativ: under Om trycker du på OK på Version sju gånger och kommer sedan tillbaka hit.</string>
+    <string name="wireless_debugging">Trådlös felsökning</string>
+    <string name="wireless_debugging_short">För tv-apparater med Android 11 och senare som håller nätverksfelsökning stängd. Parkoppla Vibe Launcher en gång: skanna koden med telefonen och skriv sedan in koden som tv:ns kopplingsfönster visar där.</string>
+    <string name="paired">Parkopplad</string>
+    <string name="not_paired">Inte parkopplad</string>
+    <string name="pair_scan">Skanna med telefonen och öppna sedan Utvecklaralternativ nedan: slå på trådlös felsökning, öppna det, välj Parkoppla enheten med en kopplingskod och skriv in koden som den visar på telefonen.</string>
+    <string name="adb_wireless_on">Slå på trådlös felsökning i Utvecklaralternativ och kom sedan tillbaka hit.</string>
+    <string name="adb_wireless_wifi">Den här tv:n låter inte appar nå dess felsökning via nätverket, och dess trådlösa felsökning fungerar bara via Wi-Fi. Anslut tv:n till Wi-Fi för att parkoppla Vibe Launcher, eller leta efter nätverksfelsökning i Utvecklaralternativ.</string>
+    <string name="paired_toast">Parkopplad med trådlös felsökning</string>
+    <string name="adb_not_connected">Inte ansluten</string>
+    <string name="adb_connected_port">Ansluten (port 5555)</string>
+    <string name="adb_connected_wireless">Ansluten (trådlös felsökning)</string>
+    <string name="adb_ready_note">Vibe Launcher når tv:ns ADB: fortsätt med Rensa appar och resten av Appar. Inget här behöver ändras.</string>
+    <string name="adb_not_needed">Vibe Launcher har redan ADB-åtkomst, så det här behövs inte. Vill du fortsätta ändå?</string>
+    <string name="wireless_not_running">På, körs inte</string>
+    <string name="wireless_not_running_short">Trådlös felsökning är påslagen men körs inte (vissa tv-apparater stoppar den när USB-felsökning stängs av). Stäng av och slå på den igen i Utvecklaralternativ.</string>
+    <string name="adb_connect_short">Tryck på OK här för att ansluta. Om det inte går än visar Vibe Launcher det första som fortfarande behöver slås på, det enklaste först. Första gången frågar tv:n om Vibe Launcher ska tillåtas: markera Tillåt alltid.</string>
+    <string name="dev_options">Utvecklaralternativ</string>
+    <string name="dev_options_short">Androids reglage för felsökning, dolda tills de låses upp: under Om trycker du på OK på Version sju gånger.</string>
+    <string name="usb_adb_debugging">USB-/ADB-felsökning</string>
+    <string name="usb_adb_debugging_short">Tv:ns felsökningsreglage i Utvecklaralternativ (USB-felsökning, eller ADB-felsökning på vissa tv-apparater). På de flesta tv-apparater öppnar det även port 5555, som Vibe Launcher ansluter via.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 och senare: felsökning via Wi-Fi med en kopplingskod. När tv:n är parkopplad använder Vibe Launcher den om port 5555 är stängd.</string>
+    <string name="pair_with_code">Parkoppla med kod</string>
+    <string name="open_dev_options">Öppna Utvecklaralternativ</string>
     <string name="apps_turn_off_again">Stäng av igen</string>
     <string name="apps_turn_off_again_short">Appar som Vibe Launcher har stängt av tidigare men som är på här nu: från en säkerhetskopia som återställts på den här tv:n, eller påslagna igen av en uppdatering.</string>
     <string name="apps_turn_off_now">Stäng av nu</string>

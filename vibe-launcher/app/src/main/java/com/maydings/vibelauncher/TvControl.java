@@ -17,10 +17,10 @@ import java.util.Locale;
  * through WRITE_SECURE_SETTINGS, which ADB hands to Vibe Launcher once, the first time it connects.
  * <p>
  * WRITE_SECURE_SETTINGS lets an app change Android's Secure and Global settings, which no app can be given any
- * other way. Vibe Launcher only ever changes three things with it, each when asked: debugging on and off
- * (adb_enabled: off when Settings closes if "Turn debugging off when done" is on, and back on by itself when it
- * next needs ADB), and the animation speeds (Appearance). Nothing else, in particular not the accessibility
- * services or the keyboard.
+ * other way. Vibe Launcher only ever changes these with it, each when asked: debugging on and off (adb_enabled,
+ * and on Android 11 and up adb_wifi_enabled, Wireless debugging, once paired: off when Settings closes if "Turn
+ * debugging off when done" is on, and back on by itself when it next needs ADB), and the animation speeds
+ * (Appearance). Nothing else, in particular not the accessibility services or the keyboard.
  * <p>
  * Home: the TV's own launchers turned off and Vibe Launcher set as Home in one shell command, which turns them
  * back on if any step fails; then SettingsScreen checks Android really sends Home here. Back to the TV's own home
@@ -60,25 +60,80 @@ final class TvControl {
     }
 
     /**
+     * Wireless debugging on or off (Android 11 and up; adb_wifi_enabled); false without the permission. Turned on
+     * on a Wi-Fi network the TV hasn't been told to trust, the TV asks whether to allow it there.
+     */
+    static boolean setWirelessDebugging(Context context, boolean on) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R || !canWrite(context)) return false;
+        try {
+            return Settings.Global.putInt(context.getContentResolver(), "adb_wifi_enabled", on ? 1 : 0);
+        } catch (SecurityException e) {
+            return false;
+        }
+    }
+
+    /** Whether Vibe Launcher reaches this TV through Wireless debugging: Android 11 and up, paired. */
+    static boolean pairedForWireless(Context context) {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && AdbTlsKey.paired(context);
+    }
+
+    /** Whether the TV is on Wi-Fi now (Wireless debugging works on nothing else). */
+    static boolean onWifi(Context context) {
+        android.net.ConnectivityManager cm = (android.net.ConnectivityManager)
+                context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm == null) return false;
+        android.net.NetworkCapabilities caps = cm.getNetworkCapabilities(cm.getActiveNetwork());
+        return caps != null && caps.hasTransport(android.net.NetworkCapabilities.TRANSPORT_WIFI);
+    }
+
+    /** Waits for adbd to answer, once debugging has been turned on, up to ms; whether it did. Worker thread. */
+    static boolean waitForAdb(long ms) {
+        long end = System.currentTimeMillis() + ms;
+        while (System.currentTimeMillis() < end) {
+            if (Adb.check(false).status != Adb.OFF) return true;
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Port 5555 closed, paired for Wireless debugging and it's off: turned on (with the permission, on Wi-Fi) and
+     * waited for. Whether it was turned on here. Worker thread.
+     */
+    static boolean bringUpWireless(Context context) {
+        if (!pairedForWireless(context) || Adb.wirelessOn(context) || !onWifi(context)) return false;
+        if (!setWirelessDebugging(context, true)) return false;
+        waitForAdb(15000);
+        return true;
+    }
+
+    /**
      * One shell command from outside Settings > Apps (the top bar's Free memory), never asking the TV: Vibe Launcher
      * has to have been allowed there before. Debugging off, it's turned on for it (with the permission) and, with
      * Turn debugging off when done, off again after. Worker thread.
      */
     static Adb.Result shellQuietly(Context context, String command) {
+        Adb.use(context);
         boolean turnedOn = false;
         if (Settings.Global.getInt(context.getContentResolver(), Settings.Global.ADB_ENABLED, 0) != 1) {
             if (!setDebugging(context, true)) return new Adb.Result(Adb.OFF, "");
             turnedOn = true;
-            for (int i = 0; i < 20 && Adb.check(false).status == Adb.OFF; i++) {   // its port, up to ten seconds
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    break;
-                }
-            }
+            waitForAdb(10000);   // its port
         }
         Adb.Result r = Adb.shell(command, false);
-        if (turnedOn && new VibeSettings(context).adbOffWhenDone()) setDebugging(context, false);
+        boolean wirelessOn = false;
+        if (r.status == Adb.OFF && bringUpWireless(context)) {
+            wirelessOn = true;
+            r = Adb.shell(command, false);
+        }
+        if (new VibeSettings(context).adbOffWhenDone()) {
+            if (turnedOn) setDebugging(context, false);
+            if (wirelessOn) setWirelessDebugging(context, false);
+        }
         return r;
     }
 

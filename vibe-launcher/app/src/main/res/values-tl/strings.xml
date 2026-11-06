@@ -95,6 +95,7 @@
     <string name="youtube_info">Kapag naka-sign in ang SmartTube, ipinapakita ng YouTube tile ang mga video mula sa sarili mong YouTube feed. Walang key na kailangan.\n\nKung wala ito, ipinapakita ng isang key ang pinakasikat na video sa iyong bansa. Libreng key: console.cloud.google.com → bagong project → i-enable ang YouTube Data API v3 → Mga Kredensyal → Gumawa ng API key.\n\nKung wala ang dalawa, ipinapakita nito ang mga trailer ng mga sikat na pelikula.</string>
     <string name="plex_info">Mga backdrop mula sa sarili mong Plex server: Ituloy ang panonood at mga bagong dagdag.\n\nPara makuha: app.plex.tv → buksan ang kahit anong pamagat → ⋯ → Kunin ang Impormasyon → Tingnan ang XML, at kopyahin ang kasunod ng X-Plex-Token= sa address. Ilihim ito, gaya ng password.</string>
     <string name="saved_from_phone">Na-save mula sa iyong phone</string>
+    <string name="screen_missing">Walang ganoong screen ng setting ang TV na ito. Hanapin ito sa sariling Mga setting ng TV.</string>
     <string name="not_available">Hindi available sa TV na ito</string>
     <string name="cant_open">Hindi mabuksan ang %1$s</string>
     <string name="smarttube_install">I-install ang SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s pa ang natitira</string>
     <string name="home_key_name">Home button ng Vibe Launcher</string>
     <string name="home_key_description">Ginagawa nitong buksan ng Home button ng remote ang Vibe Launcher sa halip na ang sariling home screen ng TV, at ang Mga Setting ng TV kapag pinindot nang matagal. Wala itong binabasa sa screen at pinapadaan ang lahat ng iba pang button.</string>
-    <string name="home_key_turn_on">I-on dito ang “%1$s” para buksan ng Home button ang Vibe Launcher.</string>
     <string name="permissions_title">Dalawang pahintulot</string>
     <string name="permissions_why">Susunod, hihingi ang Vibe Launcher ng dalawang pahintulot.\n\nTV listings: para maipakita ang mga larawan mula sa mga card na inilalathala ng iyong mga app para sa home screen.\n\nLokasyon: ipinapakita lang ng Android ang pangalan ng Wi-Fi network sa mga app na may ganitong pahintulot. Ginagamit ito ng Vibe Launcher para sa pangalang iyon lang at hindi kailanman hinahanap kung nasaan ang TV.\n\nWalang lumalabas sa TV.</string>
     <string name="continue_button">Magpatuloy</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Para sa mga TV na nananatili ang sariling home screen: binubuksan ng Home button ng remote ang Vibe Launcher, at kapag pinindot nang matagal, binubuksan ang Settings ng TV.</string>
     <string name="home_key_agree">Sumasang-ayon</string>
     <string name="home_key_steps">Susunod: sa listahang magbubukas, piliin ang “%1$s”, i-on ito, saka pindutin ang Home.</string>
+    <string name="home_key_steps_settings">Susunod: walang direktang daan ang TV na ito papunta sa mga setting ng Accessibility nito, kaya ang Mga setting ng Android ang magbubukas sa halip. Doon, pumunta sa Mga Kagustuhan sa Device &gt; Accessibility, piliin ang “%1$s”, i-on ito, saka pindutin ang Home.</string>
     <string name="store_update">I-update ang Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Backup at restore</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Mga app</string>
     <string name="apps_short">I-off ang mga app na hindi mo ginagamit: mananatiling naka-install ang mga ito, pero hindi makakatakbo, makakapuno sa home screen, o makakapag-update hanggang i-on mo ulit. Hindi nakalista ang mga bahaging kailangan ng TV para gumana.</string>
-    <string name="adb_connection">Network debugging</string>
-    <string name="adb_connection_short">Ino-off ng Vibe Launcher ang mga app sa pamamagitan ng debugging ng TV, gaya ng gagawin ng isang computer. I-on ang USB debugging (ADB debugging o network debugging sa ilang TV) sa Mga opsyon ng developer, pagkatapos ay pindutin ang OK dito at payagan ang Vibe Launcher sa TV.</string>
-    <string name="adb_ready">Nakakonekta</string>
-    <string name="adb_not_allowed">Hindi pa pinapayagan</string>
+    <string name="adb_connection">Koneksyon ng ADB</string>
+    <string name="adb_connection_short">Ino-off ng Vibe Launcher ang mga app sa pamamagitan ng sariling ADB ng TV, gaya ng gagawin ng isang computer. Buksan ito para makita kung ano ang naka-on at para kumonekta.</string>
     <string name="adb_checking">Sinusuri…</string>
-    <string name="adb_allow_prompt">Sa tanong ng TV, lagyan ng check ang Palaging payagan, pagkatapos ay piliin ang OK</string>
+    <string name="adb_allow_prompt">Susunod, magtatanong ang TV kung papayagan ang Vibe Launcher: lagyan ng check ang Palaging payagan, pagkatapos ay piliin ang OK.</string>
     <string name="adb_turn_on">Sa Mga opsyon ng developer, i-on ang USB debugging (tinatawag na ADB debugging o network debugging sa ilang TV), pagkatapos ay bumalik dito.</string>
     <string name="adb_network_closed">Naka-on ang debugging, pero hindi pa pinapayagan ng TV na ito na maabot ito ng mga app. Sa Mga opsyon ng developer, hanapin ang network debugging o ADB over network at i-on ito. Kung wireless debugging lang ang mayroon, hindi pa ito magagamit ng Vibe Launcher.</string>
     <string name="adb_failed">Hindi ito pinayagan ng TV</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Mga app na kailangan ng TV</string>
     <string name="app_protected">Kailangan ito ng TV mo para gumana nang maayos, kaya hindi ito io-off ng Vibe Launcher. Pinapanatili nitong ligtas ang TV mo.</string>
     <string name="adb_dev_options">I-on muna ang Mga opsyon ng developer: sa Tungkol sa, pindutin nang pitong beses ang OK sa Build, pagkatapos ay bumalik dito.</string>
+    <string name="wireless_debugging">Wireless debugging</string>
+    <string name="wireless_debugging_short">Para sa mga TV na may Android 11 pataas na nakasara ang network debugging. Ipares ang Vibe Launcher nang isang beses: i-scan ang code gamit ang iyong telepono, pagkatapos ay i-type doon ang code na ipinapakita ng pairing window ng TV.</string>
+    <string name="paired">Nakapares</string>
+    <string name="not_paired">Hindi nakapares</string>
+    <string name="pair_scan">Mag-scan gamit ang iyong telepono, pagkatapos ay buksan ang Mga opsyon ng developer sa ibaba: i-on ang wireless debugging, buksan ito, piliin ang Ipares ang device gamit ang code ng pagpapares, at i-type sa iyong telepono ang code na ipinapakita nito.</string>
+    <string name="adb_wireless_on">I-on ang wireless debugging sa Mga opsyon ng developer, pagkatapos ay bumalik dito.</string>
+    <string name="adb_wireless_wifi">Hindi pinapayagan ng TV na ito na maabot ng mga app ang debugging nito sa network, at gumagana lang ang wireless debugging nito sa Wi-Fi. Ikonekta ang TV sa Wi-Fi para ipares ang Vibe Launcher, o hanapin ang network debugging sa Mga opsyon ng developer.</string>
+    <string name="paired_toast">Nakapares gamit ang wireless debugging</string>
+    <string name="adb_not_connected">Hindi nakakonekta</string>
+    <string name="adb_connected_port">Nakakonekta (port 5555)</string>
+    <string name="adb_connected_wireless">Nakakonekta (wireless debugging)</string>
+    <string name="adb_ready_note">Naaabot ng Vibe Launcher ang ADB ng TV: magpatuloy sa Paglilinis ng mga app at sa iba pang bahagi ng Mga app. Walang kailangang baguhin dito.</string>
+    <string name="adb_not_needed">May ADB access na ang Vibe Launcher, kaya hindi ito kailangan. Magpatuloy pa rin?</string>
+    <string name="wireless_not_running">Naka-on, hindi tumatakbo</string>
+    <string name="wireless_not_running_short">Naka-on ang wireless debugging pero hindi ito tumatakbo (pinapahinto ito ng ilang TV kapag na-off ang USB debugging). I-off ito at i-on ulit sa Mga opsyon ng developer.</string>
+    <string name="adb_connect_short">Pindutin ang OK dito para kumonekta. Kung hindi pa puwede, ipapakita ng Vibe Launcher ang unang bagay na kailangan pang i-on, simula sa pinakamadali. Sa unang pagkakataon, magtatanong ang TV kung papayagan ang Vibe Launcher: lagyan ng check ang Palaging payagan.</string>
+    <string name="dev_options">Mga opsyon ng developer</string>
+    <string name="dev_options_short">Mga switch ng Android para sa debugging, nakatago hanggang ma-unlock: sa Tungkol sa, pindutin nang pitong beses ang OK sa Build.</string>
+    <string name="usb_adb_debugging">USB/ADB debugging</string>
+    <string name="usb_adb_debugging_short">Ang switch ng debugging ng TV, sa Mga opsyon ng developer (USB debugging, o ADB debugging sa ilang TV). Sa karamihan ng TV, binubuksan din nito ang port 5555, na dinadaanan ng Vibe Launcher para kumonekta.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 at mas bago: debugging sa Wi-Fi, gamit ang code ng pagpapares. Ginagamit ito ng Vibe Launcher kapag sarado ang port 5555, kapag nakapares na.</string>
+    <string name="pair_with_code">Ipares gamit ang code</string>
+    <string name="open_dev_options">Buksan ang Mga opsyon ng developer</string>
     <string name="apps_turn_off_again">I-off ulit</string>
     <string name="apps_turn_off_again_short">Mga app na in-off na ng Vibe Launcher dati pero naka-on na rito ngayon: mula sa backup na na-restore sa TV na ito, o in-on ulit ng isang update.</string>
     <string name="apps_turn_off_now">I-off ngayon</string>

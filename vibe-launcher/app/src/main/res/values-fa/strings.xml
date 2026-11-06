@@ -95,6 +95,7 @@
     <string name="youtube_info">وقتی در SmartTube وارد شده باشید، کاشی YouTube ویدیوهای فید YouTube خودتان را نشان می‌دهد. نیازی به کلید نیست.\n\nبدون آن، یک کلید محبوب‌ترین ویدیوهای کشورتان را نشان می‌دهد. کلید رایگان: console.cloud.google.com ← پروژه جدید ← فعال کردن YouTube Data API v3 ← اعتبارنامه‌ها ← ایجاد کلید API.\n\nبدون هیچ‌کدام، تریلر فیلم‌های محبوب نشان داده می‌شود.</string>
     <string name="plex_info">پس‌زمینه‌ها از سرور Plex خودتان: ادامه تماشا و اخیراً اضافه‌شده‌ها.\n\nبرای یافتن آن: app.plex.tv ← یک عنوان را باز کنید ← ⋯ ← دریافت اطلاعات ← مشاهده XML، و بخش بعد از X-Plex-Token= را در نشانی کپی کنید. آن را مثل رمز عبور محرمانه نگه دارید.</string>
     <string name="saved_from_phone">از گوشی شما ذخیره شد</string>
+    <string name="screen_missing">این تلویزیون آن صفحه تنظیمات را ندارد. آن را در تنظیمات خود تلویزیون پیدا کنید.</string>
     <string name="not_available">در این تلویزیون در دسترس نیست</string>
     <string name="cant_open">%1$s باز نمی‌شود</string>
     <string name="smarttube_install">نصب SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s باقی‌مانده</string>
     <string name="home_key_name">دکمه صفحه اصلی Vibe Launcher</string>
     <string name="home_key_description">دکمه صفحه اصلی کنترل را به‌جای صفحه اصلی خود تلویزیون به باز کردن Vibe Launcher وامی‌دارد و نگه داشتن آن تنظیمات تلویزیون را باز می‌کند. چیزی از صفحه نمی‌خواند و بقیه دکمه‌ها را دست‌نخورده رد می‌کند.</string>
-    <string name="home_key_turn_on">«%1$s» را اینجا روشن کنید تا دکمه صفحه اصلی Vibe Launcher را باز کند.</string>
     <string name="permissions_title">دو مجوز</string>
     <string name="permissions_why">Vibe Launcher در ادامه دو مجوز درخواست می‌کند.\n\nفهرست برنامه‌های تلویزیون: برای نمایش تصاویر کارت‌هایی که برنامه‌هایتان برای صفحه اصلی منتشر می‌کنند.\n\nمکان: Android نام شبکه Wi-Fi را فقط به برنامه‌هایی نشان می‌دهد که این مجوز را دارند. Vibe Launcher فقط برای همین نام از آن استفاده می‌کند و هرگز دنبال مکان تلویزیون نمی‌رود.\n\nهیچ‌کدام از تلویزیون خارج نمی‌شود.</string>
     <string name="continue_button">ادامه</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">برای تلویزیون‌هایی که صفحه اصلی خودشان را نگه می‌دارند: دکمه صفحه اصلی کنترل، Vibe Launcher را باز می‌کند و نگه داشتن آن تنظیمات تلویزیون را باز می‌کند.</string>
     <string name="home_key_agree">موافقم</string>
     <string name="home_key_steps">بعد: در فهرستی که باز می‌شود «%1$s» را انتخاب و روشن کنید، سپس دکمه صفحه اصلی را بزنید.</string>
+    <string name="home_key_steps_settings">بعد: این تلویزیون راه مستقیمی به تنظیمات دسترس‌پذیری خود ندارد، بنابراین به‌جای آن تنظیمات Android باز می‌شود. در آنجا به اولویت‌های دستگاه &gt; دسترس‌پذیری بروید، «%1$s» را انتخاب و روشن کنید، سپس دکمه صفحه اصلی را بزنید.</string>
     <string name="store_update">به‌روزرسانی Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">پشتیبان‌گیری و بازیابی</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">برنامه‌ها</string>
     <string name="apps_short">برنامه‌هایی را که استفاده نمی‌کنید خاموش کنید: نصب‌شده می‌مانند، اما تا وقتی دوباره روشنشان نکنید نمی‌توانند اجرا شوند، صفحه اصلی را پر کنند یا به‌روز شوند. بخش‌هایی که تلویزیون برای کار کردن لازم دارد فهرست نمی‌شوند.</string>
-    <string name="adb_connection">اشکال‌زدایی شبکه</string>
-    <string name="adb_connection_short">Vibe Launcher برنامه‌ها را از طریق اشکال‌زدایی تلویزیون خاموش می‌کند، همان‌طور که یک رایانه این کار را می‌کند. اشکال‌زدایی USB (در برخی تلویزیون‌ها اشکال‌زدایی ADB یا اشکال‌زدایی شبکه) را در گزینه‌های برنامه‌نویسی روشن کنید، سپس اینجا OK را فشار دهید و در تلویزیون به Vibe Launcher اجازه دهید.</string>
-    <string name="adb_ready">متصل</string>
-    <string name="adb_not_allowed">هنوز اجازه داده نشده</string>
+    <string name="adb_connection">اتصال ADB</string>
+    <string name="adb_connection_short">Vibe Launcher برنامه‌ها را از طریق ADB خود تلویزیون خاموش می‌کند، همان‌طور که یک رایانه این کار را می‌کند. این را باز کنید تا ببینید چه چیزی روشن است و متصل شوید.</string>
     <string name="adb_checking">درحال بررسی…</string>
-    <string name="adb_allow_prompt">در پرسش تلویزیون، همیشه اجازه داده شود را علامت بزنید و سپس OK را انتخاب کنید</string>
+    <string name="adb_allow_prompt">سپس تلویزیون می‌پرسد که آیا به Vibe Launcher اجازه داده شود: همیشه اجازه داده شود را علامت بزنید و سپس OK را انتخاب کنید.</string>
     <string name="adb_turn_on">در گزینه‌های برنامه‌نویسی، اشکال‌زدایی USB را روشن کنید (در برخی تلویزیون‌ها اشکال‌زدایی ADB یا اشکال‌زدایی شبکه نام دارد) و سپس به اینجا برگردید.</string>
     <string name="adb_network_closed">اشکال‌زدایی روشن است، اما این تلویزیون هنوز اجازه نمی‌دهد برنامه‌ها به آن دسترسی داشته باشند. در گزینه‌های برنامه‌نویسی، اشکال‌زدایی شبکه یا ADB از طریق شبکه را پیدا و روشن کنید. اگر فقط اشکال‌زدایی بی‌سیم دارد، Vibe Launcher هنوز نمی‌تواند از آن استفاده کند.</string>
     <string name="adb_failed">تلویزیون اجازه نداد</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">برنامه‌هایی که تلویزیون لازم دارد</string>
     <string name="app_protected">تلویزیون شما برای درست کار کردن به این نیاز دارد، پس Vibe Launcher آن را خاموش نمی‌کند. این کار تلویزیون شما را ایمن نگه می‌دارد.</string>
     <string name="adb_dev_options">ابتدا گزینه‌های برنامه‌نویسی را روشن کنید: در درباره، هفت بار روی ساخت OK را فشار دهید و سپس به اینجا برگردید.</string>
+    <string name="wireless_debugging">اشکال‌زدایی بی‌سیم</string>
+    <string name="wireless_debugging_short">برای تلویزیون‌های دارای Android 11 و بالاتر که اشکال‌زدایی شبکه را بسته نگه می‌دارند. Vibe Launcher را یک بار مرتبط کنید: کد را با تلفنتان اسکن کنید و سپس کدی را که پنجره مرتبط‌سازی تلویزیون نشان می‌دهد در آنجا وارد کنید.</string>
+    <string name="paired">مرتبط شد</string>
+    <string name="not_paired">مرتبط نشده</string>
+    <string name="pair_scan">با تلفنتان اسکن کنید، سپس گزینه‌های برنامه‌نویسی را در پایین باز کنید: اشکال‌زدایی بی‌سیم را روشن کنید، آن را باز کنید، «مرتبط کردن دستگاه با کد مرتبط‌سازی» را انتخاب کنید و کدی را که نشان می‌دهد در تلفنتان وارد کنید.</string>
+    <string name="adb_wireless_on">اشکال‌زدایی بی‌سیم را در گزینه‌های برنامه‌نویسی روشن کنید و سپس به اینجا برگردید.</string>
+    <string name="adb_wireless_wifi">این تلویزیون اجازه نمی‌دهد برنامه‌ها از طریق شبکه به اشکال‌زدایی آن دسترسی داشته باشند و اشکال‌زدایی بی‌سیم آن فقط با Wi-Fi کار می‌کند. برای مرتبط کردن Vibe Launcher، تلویزیون را به Wi-Fi وصل کنید یا در گزینه‌های برنامه‌نویسی به دنبال اشکال‌زدایی شبکه بگردید.</string>
+    <string name="paired_toast">با اشکال‌زدایی بی‌سیم مرتبط شد</string>
+    <string name="adb_not_connected">متصل نیست</string>
+    <string name="adb_connected_port">متصل (درگاه 5555)</string>
+    <string name="adb_connected_wireless">متصل (اشکال‌زدایی بی‌سیم)</string>
+    <string name="adb_ready_note">Vibe Launcher می‌تواند به ADB تلویزیون دسترسی پیدا کند: با پاک‌سازی برنامه‌ها و بقیه بخش برنامه‌ها ادامه دهید. اینجا چیزی نیاز به تغییر ندارد.</string>
+    <string name="adb_not_needed">Vibe Launcher از قبل به ADB دسترسی دارد، پس این کار لازم نیست. با این حال ادامه می‌دهید؟</string>
+    <string name="wireless_not_running">روشن، اجرا نمی‌شود</string>
+    <string name="wireless_not_running_short">اشکال‌زدایی بی‌سیم روشن است اما اجرا نمی‌شود (برخی تلویزیون‌ها وقتی اشکال‌زدایی USB خاموش می‌شود آن را متوقف می‌کنند). آن را در گزینه‌های برنامه‌نویسی خاموش و دوباره روشن کنید.</string>
+    <string name="adb_connect_short">برای اتصال، اینجا OK را فشار دهید. اگر هنوز نتواند، Vibe Launcher اولین چیزی را که هنوز باید روشن شود نشان می‌دهد، از ساده‌ترین شروع می‌کند. بار اول، تلویزیون می‌پرسد که آیا به Vibe Launcher اجازه داده شود: همیشه اجازه داده شود را علامت بزنید.</string>
+    <string name="dev_options">گزینه‌های برنامه‌نویسی</string>
+    <string name="dev_options_short">کلیدهای Android برای اشکال‌زدایی، پنهان تا زمان باز شدن قفل: در درباره، هفت بار روی ساخت OK را فشار دهید.</string>
+    <string name="usb_adb_debugging">اشکال‌زدایی USB/ADB</string>
+    <string name="usb_adb_debugging_short">کلید اشکال‌زدایی تلویزیون، در گزینه‌های برنامه‌نویسی (اشکال‌زدایی USB یا در برخی تلویزیون‌ها اشکال‌زدایی ADB). در بیشتر تلویزیون‌ها درگاه 5555 را هم باز می‌کند که Vibe Launcher از طریق آن متصل می‌شود.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 و بالاتر: اشکال‌زدایی از طریق Wi-Fi با کد مرتبط‌سازی. Vibe Launcher پس از مرتبط شدن، وقتی درگاه 5555 بسته باشد از آن استفاده می‌کند.</string>
+    <string name="pair_with_code">مرتبط کردن با کد</string>
+    <string name="open_dev_options">باز کردن گزینه‌های برنامه‌نویسی</string>
     <string name="apps_turn_off_again">دوباره خاموش کن</string>
     <string name="apps_turn_off_again_short">برنامه‌هایی که Vibe Launcher قبلاً خاموش کرده بود و اکنون اینجا روشن هستند: از پشتیبانی که در این تلویزیون بازیابی شده، یا با یک به‌روزرسانی دوباره روشن شده‌اند.</string>
     <string name="apps_turn_off_now">اکنون خاموش کن</string>

@@ -95,6 +95,7 @@
     <string name="youtube_info">Kad ste prijavljeni u SmartTube, pločica YouTubea prikazuje videozapise iz vašeg vlastitog YouTube feeda. Ključ nije potreban.\n\nBez njega ključ prikazuje najpopularnije videozapise u vašoj zemlji. Besplatni ključ: console.cloud.google.com → novi projekt → omogućite YouTube Data API v3 → Vjerodajnice → Izradi API ključ.\n\nBez oboje prikazuje najave popularnih filmova.</string>
     <string name="plex_info">Pozadine s vašeg vlastitog Plex poslužitelja: Nastavi gledati i nedavno dodano.\n\nKako ga pronaći: app.plex.tv → otvorite bilo koji naslov → ⋯ → Dohvati informacije → Prikaži XML i kopirajte ono što slijedi nakon X-Plex-Token= u adresi. Čuvajte ga u tajnosti, kao lozinku.</string>
     <string name="saved_from_phone">Spremljeno s telefona</string>
+    <string name="screen_missing">Ovaj televizor nema taj zaslon postavki. Potražite ga u Postavkama samog televizora.</string>
     <string name="not_available">Nije dostupno na ovom televizoru</string>
     <string name="cant_open">Nije moguće otvoriti %1$s</string>
     <string name="smarttube_install">Instaliraj SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">Još %1$s</string>
     <string name="home_key_name">Tipka Početno za Vibe Launcher</string>
     <string name="home_key_description">Tipka Početno na daljinskom otvara Vibe Launcher umjesto vlastitog početnog zaslona televizora, a dulji pritisak otvara postavke televizora. Ne čita ništa sa zaslona i propušta sve ostale tipke.</string>
-    <string name="home_key_turn_on">Ovdje uključite „%1$s” da tipka Početno otvara Vibe Launcher.</string>
     <string name="permissions_title">Dva dopuštenja</string>
     <string name="permissions_why">Vibe Launcher će sada zatražiti dva dopuštenja.\n\nTV program: za prikaz slika s kartica koje vaše aplikacije objavljuju za početni zaslon.\n\nLokacija: Android prikazuje naziv Wi-Fi mreže samo aplikacijama s tim dopuštenjem. Vibe Launcher ga koristi samo za taj naziv i nikad ne provjerava gdje je televizor.\n\nNi jedno ne napušta televizor.</string>
     <string name="continue_button">Nastavi</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Za televizore koji zadržavaju vlastiti početni zaslon: tipka Početno na daljinskom upravljaču otvara Vibe Launcher, a držanje te tipke otvara postavke televizora.</string>
     <string name="home_key_agree">Slažem se</string>
     <string name="home_key_steps">Zatim: na popisu koji se otvori odaberite „%1$s”, uključite ga i pritisnite Početno.</string>
+    <string name="home_key_steps_settings">Zatim: ovaj televizor nema izravan put do postavki pristupačnosti, pa se umjesto toga otvaraju Postavke Androida. Ondje idite na Postavke uređaja &gt; Pristupačnost, odaberite „%1$s”, uključite ga i pritisnite Početno.</string>
     <string name="store_update">Ažuriraj Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sigurnosna kopija i vraćanje</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Aplikacije</string>
     <string name="apps_short">Isključite aplikacije koje ne koristite: ostaju instalirane, ali se ne mogu pokretati, popunjavati početni zaslon ni ažurirati dok ih ponovno ne uključite. Dijelovi koji su televizoru potrebni za rad nisu navedeni.</string>
-    <string name="adb_connection">Otklanjanje pogrešaka putem mreže</string>
-    <string name="adb_connection_short">Vibe Launcher isključuje aplikacije putem otklanjanja pogrešaka na televizoru, kao što bi to učinilo računalo. Uključite otklanjanje pogrešaka putem USB-a (na nekim televizorima putem ADB-a ili mrežno otklanjanje pogrešaka) u Opcijama za razvojne programere, zatim ovdje pritisnite OK i dopustite Vibe Launcher na televizoru.</string>
-    <string name="adb_ready">Povezano</string>
-    <string name="adb_not_allowed">Još nije dopušteno</string>
+    <string name="adb_connection">ADB veza</string>
+    <string name="adb_connection_short">Vibe Launcher isključuje aplikacije putem televizorova vlastitog ADB-a, kao što bi to učinilo računalo. Otvorite ovo da biste vidjeli što je uključeno i da biste se povezali.</string>
     <string name="adb_checking">Provjera…</string>
-    <string name="adb_allow_prompt">U pitanju na televizoru označite Uvijek dopusti, a zatim odaberite OK</string>
+    <string name="adb_allow_prompt">Zatim televizor pita treba li dopustiti Vibe Launcher: označite Uvijek dopusti, a zatim odaberite OK.</string>
     <string name="adb_turn_on">U Opcijama za razvojne programere uključite otklanjanje pogrešaka putem USB-a (na nekim televizorima zove se otklanjanje pogrešaka putem ADB-a ili mrežno otklanjanje pogrešaka), a zatim se vratite ovamo.</string>
     <string name="adb_network_closed">Otklanjanje pogrešaka je uključeno, ali ovaj televizor još ne dopušta aplikacijama da mu pristupe. U Opcijama za razvojne programere potražite mrežno otklanjanje pogrešaka ili ADB putem mreže i uključite ga. Ako postoji samo bežično otklanjanje pogrešaka, Vibe Launcher ga još ne može koristiti.</string>
     <string name="adb_failed">Televizor to nije dopustio</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Aplikacije koje su potrebne televizoru</string>
     <string name="app_protected">Televizoru je ovo potrebno za ispravan rad, pa ga Vibe Launcher neće isključiti. Tako vaš televizor ostaje siguran.</string>
     <string name="adb_dev_options">Najprije uključite Opcije za razvojne programere: u odjeljku O uređaju sedam puta pritisnite OK na stavci Međuverzija, a zatim se vratite ovamo.</string>
+    <string name="wireless_debugging">Bežično otklanjanje pogrešaka</string>
+    <string name="wireless_debugging_short">Za televizore s Androidom 11 i novijim koji drže mrežno otklanjanje pogrešaka zatvorenim. Uparite Vibe Launcher jednom: skenirajte kod telefonom, a zatim ondje upišite kod koji prikazuje prozor za uparivanje na televizoru.</string>
+    <string name="paired">Upareno</string>
+    <string name="not_paired">Nije upareno</string>
+    <string name="pair_scan">Skenirajte telefonom, a zatim u nastavku otvorite Opcije za razvojne programere: uključite bežično otklanjanje pogrešaka, otvorite ga, odaberite Uparite uređaj pomoću koda za uparivanje i na telefonu upišite kod koji prikazuje.</string>
+    <string name="adb_wireless_on">U Opcijama za razvojne programere uključite bežično otklanjanje pogrešaka, a zatim se vratite ovamo.</string>
+    <string name="adb_wireless_wifi">Ovaj televizor ne dopušta aplikacijama pristup otklanjanju pogrešaka putem mreže, a njegovo bežično otklanjanje pogrešaka radi samo putem Wi-Fi mreže. Povežite televizor s Wi-Fi mrežom da biste uparili Vibe Launcher ili u Opcijama za razvojne programere potražite mrežno otklanjanje pogrešaka.</string>
+    <string name="paired_toast">Upareno putem bežičnog otklanjanja pogrešaka</string>
+    <string name="adb_not_connected">Nije povezano</string>
+    <string name="adb_connected_port">Povezano (priključak 5555)</string>
+    <string name="adb_connected_wireless">Povezano (bežično otklanjanje pogrešaka)</string>
+    <string name="adb_ready_note">Vibe Launcher može pristupiti ADB-u televizora: nastavite s Čišćenjem aplikacija i ostatkom Aplikacija. Ovdje ništa ne treba mijenjati.</string>
+    <string name="adb_not_needed">Vibe Launcher već ima pristup ADB-u, pa ovo nije potrebno. Želite li ipak nastaviti?</string>
+    <string name="wireless_not_running">Uključeno, ne radi</string>
+    <string name="wireless_not_running_short">Bežično otklanjanje pogrešaka je uključeno, ali ne radi (neki ga televizori zaustave kad se isključi otklanjanje pogrešaka putem USB-a). Isključite ga i ponovno uključite u Opcijama za razvojne programere.</string>
+    <string name="adb_connect_short">Pritisnite OK ovdje da biste se povezali. Ako to još nije moguće, Vibe Launcher prikazuje prvu stvar koju još treba uključiti, od najlakše. Prvi put televizor pita treba li dopustiti Vibe Launcher: označite Uvijek dopusti.</string>
+    <string name="dev_options">Opcije za razvojne programere</string>
+    <string name="dev_options_short">Androidovi prekidači za otklanjanje pogrešaka, skriveni dok se ne otključaju: u odjeljku O uređaju sedam puta pritisnite OK na stavci Međuverzija.</string>
+    <string name="usb_adb_debugging">Otklanjanje pogrešaka USB/ADB</string>
+    <string name="usb_adb_debugging_short">Prekidač za otklanjanje pogrešaka televizora u Opcijama za razvojne programere (otklanjanje pogrešaka putem USB-a ili, na nekim televizorima, putem ADB-a). Na većini televizora otvara i priključak 5555 putem kojeg se Vibe Launcher povezuje.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 i noviji: otklanjanje pogrešaka putem Wi-Fi mreže s kodom za uparivanje. Vibe Launcher ga koristi kad je priključak 5555 zatvoren, nakon uparivanja.</string>
+    <string name="pair_with_code">Upari pomoću koda</string>
+    <string name="open_dev_options">Otvori Opcije za razvojne programere</string>
     <string name="apps_turn_off_again">Ponovno isključi</string>
     <string name="apps_turn_off_again_short">Aplikacije koje je Vibe Launcher prije isključio, a sada su ovdje uključene: iz sigurnosne kopije vraćene na ovom televizoru ili ih je ponovno uključilo ažuriranje.</string>
     <string name="apps_turn_off_now">Isključi sada</string>

@@ -95,6 +95,7 @@
     <string name="youtube_info">SmartTube에 로그인되어 있으면 YouTube 타일에 내 YouTube 피드의 동영상이 표시됩니다. 키가 필요 없습니다.\n\nSmartTube가 없으면 키로 내 국가의 인기 동영상을 표시합니다. 무료 키: console.cloud.google.com → 새 프로젝트 → YouTube Data API v3 사용 → 사용자 인증 정보 → API 키 만들기.\n\n둘 다 없으면 인기 영화의 예고편을 표시합니다.</string>
     <string name="plex_info">내 Plex 서버의 배경: 이어서 보기와 최근 추가 항목.\n\n찾는 방법: app.plex.tv → 아무 작품이나 열기 → ⋯ → 정보 가져오기 → XML 보기, 주소에서 X-Plex-Token= 뒤 부분을 복사하세요. 비밀번호처럼 비공개로 보관하세요.</string>
     <string name="saved_from_phone">휴대폰에서 저장됨</string>
+    <string name="screen_missing">이 TV에는 해당 설정 화면이 없습니다. TV 자체 설정에서 찾아보세요.</string>
     <string name="not_available">이 TV에서 사용할 수 없음</string>
     <string name="cant_open">%1$s을(를) 열 수 없습니다</string>
     <string name="smarttube_install">SmartTube 설치</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s 남음</string>
     <string name="home_key_name">Vibe Launcher 홈 버튼</string>
     <string name="home_key_description">리모컨의 홈 버튼을 누르면 TV 자체 홈 화면 대신 Vibe Launcher가 열리고, 길게 누르면 TV 설정이 열립니다. 화면의 내용은 읽지 않으며 다른 버튼은 모두 그대로 전달합니다.</string>
-    <string name="home_key_turn_on">홈 버튼으로 Vibe Launcher가 열리도록 여기에서 ‘%1$s’을(를) 사용 설정하세요.</string>
     <string name="permissions_title">두 가지 권한</string>
     <string name="permissions_why">이제 Vibe Launcher가 두 가지 권한을 요청합니다.\n\nTV 편성표: 앱이 홈 화면용으로 게시하는 카드의 이미지를 표시하기 위해 필요합니다.\n\n위치: Android는 이 권한이 있는 앱에만 Wi-Fi 네트워크 이름을 보여 줍니다. Vibe Launcher는 그 이름에만 사용하며 TV의 위치는 절대 확인하지 않습니다.\n\n어느 것도 TV 밖으로 나가지 않습니다.</string>
     <string name="continue_button">계속</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">자체 홈 화면을 유지하는 TV용: 리모컨의 홈 버튼을 누르면 Vibe Launcher가 열리고, 길게 누르면 TV 설정이 열립니다.</string>
     <string name="home_key_agree">동의</string>
     <string name="home_key_steps">다음: 열리는 목록에서 ‘%1$s’을(를) 선택해 사용 설정한 다음 홈 버튼을 누르세요.</string>
+    <string name="home_key_steps_settings">다음: 이 TV에는 접근성 설정으로 바로 가는 방법이 없어 대신 Android 설정이 열립니다. 여기서 ‘기기 환경설정’ &gt; ‘접근성’으로 이동해 ‘%1$s’을(를) 선택해 사용 설정한 다음 홈 버튼을 누르세요.</string>
     <string name="store_update">Vibe Launcher 업데이트</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">백업 및 복원</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">앱</string>
     <string name="apps_short">사용하지 않는 앱을 사용 중지하세요. 앱은 설치된 상태로 남지만, 다시 사용 설정할 때까지 실행, 홈 화면 표시, 업데이트가 되지 않습니다. TV 작동에 필요한 부분은 목록에 없습니다.</string>
-    <string name="adb_connection">네트워크 디버깅</string>
-    <string name="adb_connection_short">Vibe Launcher는 컴퓨터처럼 TV의 디버깅을 통해 앱을 사용 중지합니다. 개발자 옵션에서 USB 디버깅(일부 TV에서는 ADB 디버깅 또는 네트워크 디버깅)을 사용 설정한 다음 여기에서 OK를 누르고 TV에서 Vibe Launcher를 허용하세요.</string>
-    <string name="adb_ready">연결됨</string>
-    <string name="adb_not_allowed">아직 허용되지 않음</string>
+    <string name="adb_connection">ADB 연결</string>
+    <string name="adb_connection_short">Vibe Launcher는 컴퓨터처럼 TV 자체의 ADB를 통해 앱을 사용 중지합니다. 무엇이 사용 설정되어 있는지 확인하고 연결하려면 여기를 여세요.</string>
     <string name="adb_checking">확인 중…</string>
-    <string name="adb_allow_prompt">TV의 질문에서 ‘항상 허용’에 체크한 다음 OK를 선택하세요</string>
+    <string name="adb_allow_prompt">다음으로 TV에서 Vibe Launcher를 허용할지 묻습니다. ‘항상 허용’에 체크한 다음 OK를 선택하세요.</string>
     <string name="adb_turn_on">개발자 옵션에서 USB 디버깅(일부 TV에서는 ADB 디버깅 또는 네트워크 디버깅)을 사용 설정한 다음 여기로 돌아오세요.</string>
     <string name="adb_network_closed">디버깅이 사용 설정되어 있지만 이 TV에서는 아직 앱이 연결할 수 없습니다. 개발자 옵션에서 네트워크 디버깅 또는 네트워크를 통한 ADB를 찾아 사용 설정하세요. 무선 디버깅만 있다면 Vibe Launcher는 아직 이를 사용할 수 없습니다.</string>
     <string name="adb_failed">TV에서 허용하지 않았습니다</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">TV에 필요한 앱</string>
     <string name="app_protected">TV가 제대로 작동하려면 이 항목이 필요하므로 Vibe Launcher에서 사용 중지하지 않습니다. 이렇게 하면 TV를 안전하게 유지할 수 있습니다.</string>
     <string name="adb_dev_options">먼저 개발자 옵션을 사용 설정하세요. ‘정보’에서 ‘빌드’에 OK를 일곱 번 누른 다음 여기로 돌아오세요.</string>
+    <string name="wireless_debugging">무선 디버깅</string>
+    <string name="wireless_debugging_short">Android 11 이상에서 네트워크 디버깅을 막아 둔 TV용입니다. Vibe Launcher를 한 번만 페어링하세요. 휴대전화로 코드를 스캔한 다음 TV의 페어링 창에 표시된 코드를 휴대전화에 입력하세요.</string>
+    <string name="paired">페어링됨</string>
+    <string name="not_paired">페어링되지 않음</string>
+    <string name="pair_scan">휴대전화로 스캔한 다음 아래의 개발자 옵션을 여세요. 무선 디버깅을 사용 설정하고 연 다음 ‘페어링 코드로 기기 페어링’을 선택하고 표시되는 코드를 휴대전화에 입력하세요.</string>
+    <string name="adb_wireless_on">개발자 옵션에서 무선 디버깅을 사용 설정한 다음 여기로 돌아오세요.</string>
+    <string name="adb_wireless_wifi">이 TV에서는 앱이 네트워크를 통해 디버깅에 연결할 수 없으며, 무선 디버깅은 Wi-Fi에서만 작동합니다. TV를 Wi-Fi에 연결하여 Vibe Launcher를 페어링하거나 개발자 옵션에서 네트워크 디버깅을 찾아보세요.</string>
+    <string name="paired_toast">무선 디버깅으로 페어링됨</string>
+    <string name="adb_not_connected">연결되지 않음</string>
+    <string name="adb_connected_port">연결됨(포트 5555)</string>
+    <string name="adb_connected_wireless">연결됨(무선 디버깅)</string>
+    <string name="adb_ready_note">Vibe Launcher가 TV의 ADB에 연결할 수 있습니다. ‘앱 정리’와 ‘앱’의 나머지 기능을 그대로 사용하세요. 여기서는 변경할 것이 없습니다.</string>
+    <string name="adb_not_needed">Vibe Launcher에 이미 ADB 액세스 권한이 있으므로 필요하지 않습니다. 그래도 계속하시겠습니까?</string>
+    <string name="wireless_not_running">사용 설정됨, 실행 중 아님</string>
+    <string name="wireless_not_running_short">무선 디버깅이 사용 설정되어 있지만 실행 중이 아닙니다(일부 TV는 USB 디버깅이 사용 중지되면 이를 중지합니다). 개발자 옵션에서 사용 중지했다가 다시 사용 설정하세요.</string>
+    <string name="adb_connect_short">연결하려면 여기서 OK를 누르세요. 아직 연결할 수 없으면 Vibe Launcher가 아직 사용 설정해야 하는 첫 번째 항목을 가장 쉬운 것부터 보여 줍니다. 처음에는 TV에서 Vibe Launcher를 허용할지 묻습니다. ‘항상 허용’에 체크하세요.</string>
+    <string name="dev_options">개발자 옵션</string>
+    <string name="dev_options_short">디버깅을 위한 Android 스위치로, 잠금 해제 전까지 숨겨져 있습니다. ‘정보’에서 ‘빌드’에 OK를 일곱 번 누르세요.</string>
+    <string name="usb_adb_debugging">USB/ADB 디버깅</string>
+    <string name="usb_adb_debugging_short">개발자 옵션에 있는 TV의 디버깅 스위치입니다(USB 디버깅, 일부 TV에서는 ADB 디버깅). 대부분의 TV에서는 Vibe Launcher가 연결하는 포트 5555도 열립니다.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 이상: 페어링 코드를 사용하는 Wi-Fi를 통한 디버깅입니다. 페어링 후 포트 5555가 닫혀 있으면 Vibe Launcher가 이를 사용합니다.</string>
+    <string name="pair_with_code">코드로 페어링</string>
+    <string name="open_dev_options">개발자 옵션 열기</string>
     <string name="apps_turn_off_again">다시 사용 중지</string>
     <string name="apps_turn_off_again_short">Vibe Launcher가 전에 사용 중지했지만 지금 여기에서 사용 설정된 앱입니다. 이 TV에서 복원한 백업 때문이거나 업데이트로 다시 사용 설정되었습니다.</string>
     <string name="apps_turn_off_now">지금 사용 중지</string>

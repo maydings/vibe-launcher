@@ -95,6 +95,7 @@
     <string name="youtube_info">Ha be vagy jelentkezve a SmartTube-ba, a YouTube csempe a saját YouTube-hírfolyamod videóit mutatja. Nem kell kulcs.\n\nNélküle egy kulcs az országod legnépszerűbb videóit mutatja. Ingyenes kulcs: console.cloud.google.com → új projekt → YouTube Data API v3 engedélyezése → Hitelesítő adatok → API-kulcs létrehozása.\n\nHa egyik sincs, népszerű filmek előzeteseit mutatja.</string>
     <string name="plex_info">Háttérképek a saját Plex-szerveredről: Folytatás és nemrég hozzáadottak.\n\nÍgy találod meg: app.plex.tv → nyiss meg bármilyen címet → ⋯ → Információ → XML megtekintése, és másold ki, ami a címben az X-Plex-Token= után áll. Tartsd titokban, mint egy jelszót.</string>
     <string name="saved_from_phone">Mentve a telefonról</string>
+    <string name="screen_missing">Ezen a tévén nincs ilyen beállítási képernyő. Keresse a tévé saját Beállításaiban.</string>
     <string name="not_available">Ezen a tévén nem érhető el</string>
     <string name="cant_open">Nem nyitható meg: %1$s</string>
     <string name="smarttube_install">SmartTube telepítése</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">Még %1$s</string>
     <string name="home_key_name">Vibe Launcher Kezdőképernyő gomb</string>
     <string name="home_key_description">A távirányító Kezdőképernyő gombja a tévé saját kezdőképernyője helyett a Vibe Launchert nyitja meg, nyomva tartva pedig a tévé beállításait. Semmit nem olvas a képernyőről, és minden más gombot továbbenged.</string>
-    <string name="home_key_turn_on">Kapcsolja be itt: „%1$s”, hogy a Kezdőképernyő gomb a Vibe Launchert nyissa meg.</string>
     <string name="permissions_title">Két engedély</string>
     <string name="permissions_why">A Vibe Launcher most két engedélyt kér.\n\nTV-műsor: hogy képeket mutathasson az alkalmazásai által a kezdőképernyőre közzétett kártyákból.\n\nHely: az Android csak az ilyen engedéllyel rendelkező alkalmazásoknak mutatja meg a Wi-Fi-hálózat nevét. A Vibe Launcher csak erre a névre használja, és sosem nézi meg, hol van a tévé.\n\nEgyik sem hagyja el a tévét.</string>
     <string name="continue_button">Tovább</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Olyan tévékhez, amelyek megtartják a saját kezdőképernyőjüket: a távirányító Kezdőképernyő gombja megnyitja a Vibe Launchert, nyomva tartva pedig a tévé beállításait.</string>
     <string name="home_key_agree">Elfogadom</string>
     <string name="home_key_steps">Ezután: a megnyíló listában válassza ki ezt: „%1$s”, kapcsolja be, majd nyomja meg a Kezdőképernyő gombot.</string>
+    <string name="home_key_steps_settings">Ezután: ez a tévé nem tud közvetlenül a kisegítő lehetőségek beállításaihoz vezetni, ezért helyette az Android Beállításai nyílnak meg. Ott lépjen az Eszközbeállítások &gt; Kisegítő lehetőségek menübe, válassza ki ezt: „%1$s”, kapcsolja be, majd nyomja meg a Kezdőképernyő gombot.</string>
     <string name="store_update">A Vibe Launcher frissítése</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Biztonsági mentés és visszaállítás</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Alkalmazások</string>
     <string name="apps_short">Kapcsolja ki azokat az alkalmazásokat, amelyeket nem használ: telepítve maradnak, de nem futhatnak, nem tölthetik meg a kezdőképernyőt és nem frissülhetnek, amíg vissza nem kapcsolja őket. A tévé működéséhez szükséges részek nem szerepelnek a listában.</string>
-    <string name="adb_connection">Hálózati hibakeresés</string>
-    <string name="adb_connection_short">A Vibe Launcher a tévé hibakeresésén keresztül kapcsolja ki az alkalmazásokat, ahogy egy számítógép tenné. Kapcsolja be az USB-hibakeresést (egyes tévéken ADB-hibakeresés vagy hálózati hibakeresés) a Fejlesztői beállításokban, majd nyomja meg itt az OK gombot, és engedélyezze a Vibe Launchert a tévén.</string>
-    <string name="adb_ready">Csatlakoztatva</string>
-    <string name="adb_not_allowed">Még nincs engedélyezve</string>
+    <string name="adb_connection">ADB-kapcsolat</string>
+    <string name="adb_connection_short">A Vibe Launcher a tévé saját ADB-jén keresztül kapcsolja ki az alkalmazásokat, ahogy egy számítógép tenné. Nyissa meg, hogy lássa, mi van bekapcsolva, és hogy csatlakozzon.</string>
     <string name="adb_checking">Ellenőrzés…</string>
-    <string name="adb_allow_prompt">A tévé kérdésénél jelölje be a Mindig engedélyezze lehetőséget, majd válassza az OK gombot</string>
+    <string name="adb_allow_prompt">Ezután a tévé megkérdezi, engedélyezze-e a Vibe Launchert: jelölje be a Mindig engedélyezze lehetőséget, majd válassza az OK gombot.</string>
     <string name="adb_turn_on">Kapcsolja be az USB-hibakeresést a Fejlesztői beállításokban (egyes tévéken ADB-hibakeresés vagy hálózati hibakeresés a neve), majd térjen vissza ide.</string>
     <string name="adb_network_closed">A hibakeresés be van kapcsolva, de ez a tévé még nem engedi, hogy az alkalmazások hozzáférjenek. A Fejlesztői beállításokban keresse meg a hálózati hibakeresés vagy az ADB hálózaton keresztül lehetőséget, és kapcsolja be. Ha csak vezeték nélküli hibakeresés van, azt a Vibe Launcher még nem tudja használni.</string>
     <string name="adb_failed">A tévé ezt nem engedélyezte</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">A tévé számára szükséges alkalmazások</string>
     <string name="app_protected">A tévének erre szüksége van a megfelelő működéshez, ezért a Vibe Launcher nem kapcsolja ki. Így a tévé biztonságban marad.</string>
     <string name="adb_dev_options">Először kapcsolja be a Fejlesztői beállításokat: a Névjegy részben nyomja meg hétszer az OK gombot a Build elemen, majd térjen vissza ide.</string>
+    <string name="wireless_debugging">Vezeték nélküli hibakeresés</string>
+    <string name="wireless_debugging_short">Android 11-es és újabb tévékhez, amelyek zárva tartják a hálózati hibakeresést. Párosítsa a Vibe Launchert egyszer: olvassa be a kódot a telefonjával, majd írja be ott a tévé párosítási ablakában látható kódot.</string>
+    <string name="paired">Párosítva</string>
+    <string name="not_paired">Nincs párosítva</string>
+    <string name="pair_scan">Olvassa be a telefonjával, majd nyissa meg lent a Fejlesztői beállításokat: kapcsolja be a vezeték nélküli hibakeresést, nyissa meg, válassza az Eszköz párosítása párosítókóddal lehetőséget, és írja be a telefonján a megjelenő kódot.</string>
+    <string name="adb_wireless_on">Kapcsolja be a vezeték nélküli hibakeresést a Fejlesztői beállításokban, majd térjen vissza ide.</string>
+    <string name="adb_wireless_wifi">Ez a tévé nem engedi, hogy az alkalmazások a hálózaton keresztül elérjék a hibakeresést, a vezeték nélküli hibakeresése pedig csak Wi-Fi-n működik. Csatlakoztassa a tévét Wi-Fi-hálózathoz a Vibe Launcher párosításához, vagy keresse meg a hálózati hibakeresést a Fejlesztői beállításokban.</string>
+    <string name="paired_toast">Párosítva vezeték nélküli hibakereséssel</string>
+    <string name="adb_not_connected">Nincs csatlakoztatva</string>
+    <string name="adb_connected_port">Csatlakoztatva (5555-ös port)</string>
+    <string name="adb_connected_wireless">Csatlakoztatva (vezeték nélküli hibakeresés)</string>
+    <string name="adb_ready_note">A Vibe Launcher eléri a tévé ADB-jét: folytassa az Alkalmazások tisztítása funkcióval és az Alkalmazások többi részével. Itt semmit sem kell módosítani.</string>
+    <string name="adb_not_needed">A Vibe Launcher már hozzáfér az ADB-hez, így erre nincs szükség. Mégis folytatja?</string>
+    <string name="wireless_not_running">Be, nem fut</string>
+    <string name="wireless_not_running_short">A vezeték nélküli hibakeresés be van kapcsolva, de nem fut (egyes tévék leállítják, amikor az USB-hibakeresés kikapcsol). Kapcsolja ki, majd újra be a Fejlesztői beállításokban.</string>
+    <string name="adb_connect_short">Nyomja meg itt az OK gombot a csatlakozáshoz. Ha még nem sikerül, a Vibe Launcher megmutatja az első dolgot, amit még be kell kapcsolni, a legegyszerűbbel kezdve. Első alkalommal a tévé megkérdezi, engedélyezze-e a Vibe Launchert: jelölje be a Mindig engedélyezze lehetőséget.</string>
+    <string name="dev_options">Fejlesztői beállítások</string>
+    <string name="dev_options_short">Az Android hibakeresési kapcsolói, feloldásig rejtve: a Névjegy részben nyomja meg hétszer az OK gombot a Build elemen.</string>
+    <string name="usb_adb_debugging">USB-/ADB-hibakeresés</string>
+    <string name="usb_adb_debugging_short">A tévé hibakeresési kapcsolója a Fejlesztői beállításokban (USB-hibakeresés, egyes tévéken ADB-hibakeresés). A legtöbb tévén az 5555-ös portot is megnyitja, amelyen keresztül a Vibe Launcher csatlakozik.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 és újabb: hibakeresés Wi-Fi-n keresztül, párosítókóddal. A Vibe Launcher párosítás után akkor használja, amikor az 5555-ös port zárva van.</string>
+    <string name="pair_with_code">Párosítás kóddal</string>
+    <string name="open_dev_options">Fejlesztői beállítások megnyitása</string>
     <string name="apps_turn_off_again">Újbóli kikapcsolás</string>
     <string name="apps_turn_off_again_short">Alkalmazások, amelyeket a Vibe Launcher korábban kikapcsolt, de most itt be vannak kapcsolva: ezen a tévén visszaállított biztonsági mentésből, vagy egy frissítés visszakapcsolta őket.</string>
     <string name="apps_turn_off_now">Kikapcsolás most</string>

@@ -95,6 +95,7 @@
     <string name="youtube_info">SmartTube\'da oturum açıksa YouTube kutusu kendi YouTube akışınızdaki videoları gösterir. Anahtar gerekmez.\n\nO yoksa, bir anahtar ülkenizdeki en popüler videoları gösterir. Ücretsiz anahtar: console.cloud.google.com → yeni proje → YouTube Data API v3\'ü etkinleştirin → Kimlik bilgileri → API anahtarı oluştur.\n\nİkisi de yoksa popüler filmlerin fragmanlarını gösterir.</string>
     <string name="plex_info">Kendi Plex sunucunuzdan arka planlar: İzlemeye devam et ve son eklenenler.\n\nBulmak için: app.plex.tv → herhangi bir içeriği açın → ⋯ → Bilgi al → XML\'i görüntüle, ve adresteki X-Plex-Token= sonrasını kopyalayın. Şifre gibi gizli tutun.</string>
     <string name="saved_from_phone">Telefonunuzdan kaydedildi</string>
+    <string name="screen_missing">Bu TV\'de o ayar ekranı yok. TV\'nin kendi Ayarlar bölümünde arayın.</string>
     <string name="not_available">Bu TV\'de kullanılamıyor</string>
     <string name="cant_open">%1$s açılamıyor</string>
     <string name="smarttube_install">SmartTube\'u yükle</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s kaldı</string>
     <string name="home_key_name">Vibe Launcher Ana ekran düğmesi</string>
     <string name="home_key_description">Kumandanın Ana ekran düğmesinin TV\'nin kendi ana ekranı yerine Vibe Launcher\'ı açmasını, basılı tutulduğunda da TV\'nin ayarlarını açmasını sağlar. Ekrandaki hiçbir şeyi okumaz ve diğer tüm tuşları olduğu gibi iletir.</string>
-    <string name="home_key_turn_on">Ana ekran düğmesinin Vibe Launcher\'ı açması için burada “%1$s” seçeneğini açın.</string>
     <string name="permissions_title">İki izin</string>
     <string name="permissions_why">Vibe Launcher şimdi iki izin isteyecek.\n\nTV yayın akışı: uygulamalarınızın ana ekran için yayınladığı kartlardaki resimleri göstermek için.\n\nKonum: Android, Wi-Fi ağının adını yalnızca bu izne sahip uygulamalara gösterir. Vibe Launcher bunu yalnızca bu ad için kullanır, TV\'nin nerede olduğuna asla bakmaz.\n\nHiçbiri TV\'den dışarı çıkmaz.</string>
     <string name="continue_button">Devam</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Kendi ana ekranını koruyan TV\'ler için: kumandanın Ana ekran düğmesi Vibe Launcher\'ı açar, basılı tutmak ise TV\'nin ayarlarını açar.</string>
     <string name="home_key_agree">Kabul ediyorum</string>
     <string name="home_key_steps">Sonra: açılan listede “%1$s” seçeneğini seçip açın, ardından Ana ekran düğmesine basın.</string>
+    <string name="home_key_steps_settings">Sonra: bu TV\'de Erişilebilirlik ayarlarına doğrudan bir yol yok, bu yüzden onun yerine Android Ayarları açılır. Orada Cihaz Tercihleri &gt; Erişilebilirlik bölümüne gidin, “%1$s” seçeneğini seçip açın, ardından Ana ekran düğmesine basın.</string>
     <string name="store_update">Vibe Launcher\'ı güncelle</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Yedekleme ve geri yükleme</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Uygulamalar</string>
     <string name="apps_short">Kullanmadığınız uygulamaları kapatın: yüklü kalırlar, ancak siz tekrar açana kadar çalışamaz, ana ekranı dolduramaz veya güncellenemezler. TV\'nin çalışması için gereken parçalar listelenmez.</string>
-    <string name="adb_connection">Ağ hata ayıklaması</string>
-    <string name="adb_connection_short">Vibe Launcher, uygulamaları bir bilgisayarın yapacağı gibi TV\'nin hata ayıklaması üzerinden kapatır. Geliştirici seçeneklerinde USB hata ayıklamayı (bazı TV\'lerde ADB hata ayıklama veya ağ hata ayıklama) açın, ardından burada OK\'e basın ve TV\'de Vibe Launcher\'a izin verin.</string>
-    <string name="adb_ready">Bağlandı</string>
-    <string name="adb_not_allowed">Henüz izin verilmedi</string>
+    <string name="adb_connection">ADB bağlantısı</string>
+    <string name="adb_connection_short">Vibe Launcher, bir bilgisayarın yapacağı gibi uygulamaları TV\'nin kendi ADB\'si üzerinden kapatır. Neyin açık olduğunu görmek ve bağlanmak için bunu açın.</string>
     <string name="adb_checking">Kontrol ediliyor…</string>
-    <string name="adb_allow_prompt">TV\'nin sorusunda Her zaman izin ver seçeneğini işaretleyin, ardından OK\'i seçin</string>
+    <string name="adb_allow_prompt">Ardından TV, Vibe Launcher\'a izin verilip verilmeyeceğini sorar: Her zaman izin ver seçeneğini işaretleyin, ardından OK\'i seçin.</string>
     <string name="adb_turn_on">Geliştirici seçeneklerinde USB hata ayıklamayı açın (bazı TV\'lerde adı ADB hata ayıklama veya ağ hata ayıklama), ardından buraya dönün.</string>
     <string name="adb_network_closed">Hata ayıklama açık, ancak bu TV uygulamaların ona erişmesine henüz izin vermiyor. Geliştirici seçeneklerinde ağ hata ayıklama veya ağ üzerinden ADB seçeneğini bulun ve açın. Yalnızca kablosuz hata ayıklama varsa Vibe Launcher bunu henüz kullanamaz.</string>
     <string name="adb_failed">TV buna izin vermedi</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">TV\'nin ihtiyaç duyduğu uygulamalar</string>
     <string name="app_protected">TV\'nizin düzgün çalışması için bu gereklidir, bu yüzden Vibe Launcher bunu kapatmaz. Bu, TV\'nizi güvende tutar.</string>
     <string name="adb_dev_options">Önce Geliştirici seçeneklerini açın: Hakkında bölümünde Derleme üzerinde yedi kez OK\'e basın, ardından buraya dönün.</string>
+    <string name="wireless_debugging">Kablosuz hata ayıklama</string>
+    <string name="wireless_debugging_short">Ağ hata ayıklamasını kapalı tutan Android 11 ve üzeri TV\'ler için. Vibe Launcher\'ı bir kez eşleyin: Kodu telefonunuzla tarayın, ardından TV\'nin eşleme penceresinde gösterilen kodu oraya yazın.</string>
+    <string name="paired">Eşlendi</string>
+    <string name="not_paired">Eşlenmedi</string>
+    <string name="pair_scan">Telefonunuzla tarayın, ardından aşağıdaki Geliştirici seçeneklerini açın: Kablosuz hata ayıklamayı açın ve içine girin, Cihazı eşleme koduyla eşle seçeneğini seçin ve gösterdiği kodu telefonunuza yazın.</string>
+    <string name="adb_wireless_on">Geliştirici seçeneklerinde kablosuz hata ayıklamayı açın, ardından buraya dönün.</string>
+    <string name="adb_wireless_wifi">Bu TV, uygulamaların ağ üzerinden hata ayıklamasına erişmesine izin vermiyor ve kablosuz hata ayıklaması yalnızca Wi-Fi ile çalışıyor. Vibe Launcher\'ı eşlemek için TV\'yi bir Wi-Fi ağına bağlayın veya Geliştirici seçeneklerinde ağ hata ayıklama seçeneğini arayın.</string>
+    <string name="paired_toast">Kablosuz hata ayıklama ile eşlendi</string>
+    <string name="adb_not_connected">Bağlı değil</string>
+    <string name="adb_connected_port">Bağlı (port 5555)</string>
+    <string name="adb_connected_wireless">Bağlı (Kablosuz hata ayıklama)</string>
+    <string name="adb_ready_note">Vibe Launcher, TV\'nin ADB\'sine erişebiliyor: Uygulama temizliği ve Uygulamalar bölümünün geri kalanıyla devam edin. Burada değiştirilmesi gereken bir şey yok.</string>
+    <string name="adb_not_needed">Vibe Launcher\'ın zaten ADB erişimi var, bu yüzden buna gerek yok. Yine de devam edilsin mi?</string>
+    <string name="wireless_not_running">Açık, çalışmıyor</string>
+    <string name="wireless_not_running_short">Kablosuz hata ayıklama açık ama çalışmıyor (bazı TV\'ler USB hata ayıklama kapandığında bunu durdurur). Geliştirici seçeneklerinde kapatıp yeniden açın.</string>
+    <string name="adb_connect_short">Bağlanmak için burada OK\'e basın. Henüz bağlanamıyorsa Vibe Launcher, açılması gereken ilk şeyi en kolayından başlayarak gösterir. İlk seferde TV, Vibe Launcher\'a izin verilip verilmeyeceğini sorar: Her zaman izin ver seçeneğini işaretleyin.</string>
+    <string name="dev_options">Geliştirici seçenekleri</string>
+    <string name="dev_options_short">Android\'in hata ayıklama anahtarları, kilidi açılana kadar gizlidir: Hakkında bölümünde Derleme üzerinde yedi kez OK\'e basın.</string>
+    <string name="usb_adb_debugging">USB/ADB hata ayıklama</string>
+    <string name="usb_adb_debugging_short">TV\'nin Geliştirici seçeneklerindeki hata ayıklama anahtarı (USB hata ayıklama veya bazı TV\'lerde ADB hata ayıklama). Çoğu TV\'de, Vibe Launcher\'ın bağlandığı 5555 numaralı portu da açar.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 ve üzeri: eşleme koduyla Wi-Fi üzerinden hata ayıklama. Vibe Launcher, eşlendikten sonra 5555 numaralı port kapalıyken bunu kullanır.</string>
+    <string name="pair_with_code">Kodla eşle</string>
+    <string name="open_dev_options">Geliştirici seçeneklerini aç</string>
     <string name="apps_turn_off_again">Yeniden kapat</string>
     <string name="apps_turn_off_again_short">Vibe Launcher\'ın daha önce kapattığı ancak şu anda burada açık olan uygulamalar: bu TV\'de geri yüklenen bir yedekten ya da bir güncellemeyle yeniden açılmış olabilirler.</string>
     <string name="apps_turn_off_now">Şimdi kapat</string>

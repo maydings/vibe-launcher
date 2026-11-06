@@ -95,6 +95,7 @@
     <string name="youtube_info">Avec SmartTube connecté, la vignette YouTube montre des vidéos de votre propre fil YouTube. Aucune clé nécessaire.\n\nSans lui, une clé affiche les vidéos les plus populaires de votre pays. Clé gratuite : console.cloud.google.com → nouveau projet → activez YouTube Data API v3 → Identifiants → Créer une clé API.\n\nSans l\'un ni l\'autre, elle montre des bandes-annonces de films populaires.</string>
     <string name="plex_info">Des arrière-plans de votre propre serveur Plex : Reprendre la lecture et les ajouts récents.\n\nPour le trouver : app.plex.tv → ouvrez un titre → ⋯ → Obtenir les infos → Voir le XML, puis copiez ce qui suit X-Plex-Token= dans l\'adresse. Gardez-le secret, comme un mot de passe.</string>
     <string name="saved_from_phone">Enregistré depuis votre téléphone</string>
+    <string name="screen_missing">Ce téléviseur n\'a pas cet écran de réglages. Cherchez-le dans les Réglages du téléviseur.</string>
     <string name="not_available">Non disponible sur ce téléviseur</string>
     <string name="cant_open">Impossible d\'ouvrir %1$s</string>
     <string name="smarttube_install">Installer SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">Encore %1$s</string>
     <string name="home_key_name">Bouton Accueil de Vibe Launcher</string>
     <string name="home_key_description">Fait ouvrir Vibe Launcher au bouton Accueil de la télécommande au lieu de l\'écran d\'accueil du téléviseur, et ses paramètres quand on le maintient enfoncé. Il ne lit rien à l\'écran et laisse passer toutes les autres touches.</string>
-    <string name="home_key_turn_on">Activez « %1$s » ici pour que le bouton Accueil ouvre Vibe Launcher.</string>
     <string name="permissions_title">Deux autorisations</string>
     <string name="permissions_why">Vibe Launcher va maintenant demander deux autorisations.\n\nProgrammes TV : pour afficher des images des cartes que vos applications publient pour l\'écran d\'accueil.\n\nPosition : Android ne montre le nom du réseau Wi-Fi qu\'aux applications qui ont cette autorisation. Vibe Launcher ne s\'en sert que pour ce nom et ne cherche jamais où se trouve le téléviseur.\n\nRien de cela ne quitte le téléviseur.</string>
     <string name="continue_button">Continuer</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Pour les téléviseurs qui gardent leur propre écran d\'accueil : le bouton Accueil de la télécommande ouvre Vibe Launcher, et un appui long ouvre les paramètres du téléviseur.</string>
     <string name="home_key_agree">Accepter</string>
     <string name="home_key_steps">Ensuite : dans la liste qui s\'ouvre, choisissez « %1$s », activez-le, puis appuyez sur Accueil.</string>
+    <string name="home_key_steps_settings">Ensuite : ce téléviseur n\'offre pas d\'accès direct à ses paramètres d\'accessibilité, donc les Réglages d\'Android s\'ouvrent à la place. Là, allez dans Préférences de l\'appareil &gt; Accessibilité, choisissez  %1$s , activez-le, puis appuyez sur Accueil.</string>
     <string name="store_update">Mettre à jour Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sauvegarde et restauration</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Applis</string>
     <string name="apps_short">Désactivez les applis que vous n\'utilisez pas : elles restent installées, mais ne peuvent plus s\'exécuter, remplir l\'écran d\'accueil ni se mettre à jour tant que vous ne les réactivez pas. Les éléments dont le téléviseur a besoin pour fonctionner ne sont pas listés.</string>
-    <string name="adb_connection">Débogage réseau</string>
-    <string name="adb_connection_short">Vibe Launcher désactive les applis via le débogage du téléviseur, comme le ferait un ordinateur. Activez le débogage USB (débogage ADB ou débogage réseau sur certains téléviseurs) dans les Options pour les développeurs, puis appuyez sur OK ici et autorisez Vibe Launcher sur le téléviseur.</string>
-    <string name="adb_ready">Connecté</string>
-    <string name="adb_not_allowed">Pas encore autorisé</string>
+    <string name="adb_connection">Connexion ADB</string>
+    <string name="adb_connection_short">Vibe Launcher désactive les applis via l\'ADB du téléviseur, comme le ferait un ordinateur. Ouvrez ceci pour voir ce qui est activé et pour vous connecter.</string>
     <string name="adb_checking">Vérification…</string>
-    <string name="adb_allow_prompt">Dans la question affichée sur le téléviseur, cochez Toujours autoriser, puis choisissez OK</string>
+    <string name="adb_allow_prompt">Ensuite, le téléviseur demande s\'il faut autoriser Vibe Launcher : cochez Toujours autoriser, puis choisissez OK.</string>
     <string name="adb_turn_on">Dans les Options pour les développeurs, activez le débogage USB (appelé débogage ADB ou débogage réseau sur certains téléviseurs), puis revenez ici.</string>
     <string name="adb_network_closed">Le débogage est activé, mais ce téléviseur ne laisse pas encore les applis y accéder. Dans les Options pour les développeurs, cherchez l\'option débogage réseau ou ADB via le réseau et activez-la. S\'il n\'y a que le débogage sans fil, Vibe Launcher ne peut pas encore l\'utiliser.</string>
     <string name="adb_failed">Le téléviseur ne l\'a pas autorisé</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Applis dont le téléviseur a besoin</string>
     <string name="app_protected">Votre téléviseur en a besoin pour fonctionner correctement, Vibe Launcher ne le désactivera donc pas. Cela protège votre téléviseur.</string>
     <string name="adb_dev_options">Activez d\'abord les Options pour les développeurs : dans À propos, appuyez sept fois sur OK sur Build, puis revenez ici.</string>
+    <string name="wireless_debugging">Débogage sans fil</string>
+    <string name="wireless_debugging_short">Pour les téléviseurs sous Android 11 ou version ultérieure qui gardent le débogage réseau fermé. Associez Vibe Launcher une seule fois : scannez le code avec votre téléphone, puis saisissez-y le code affiché dans la fenêtre d\'association du téléviseur.</string>
+    <string name="paired">Associé</string>
+    <string name="not_paired">Non associé</string>
+    <string name="pair_scan">Scannez avec votre téléphone, puis ouvrez les Options pour les développeurs ci-dessous : activez le débogage sans fil, ouvrez-le, choisissez Associer l\'appareil avec un code d\'association, puis saisissez sur votre téléphone le code qu\'il affiche.</string>
+    <string name="adb_wireless_on">Activez le débogage sans fil dans les Options pour les développeurs, puis revenez ici.</string>
+    <string name="adb_wireless_wifi">Ce téléviseur ne laisse pas les applis accéder à son débogage via le réseau, et son débogage sans fil ne fonctionne qu\'en Wi-Fi. Connectez le téléviseur au Wi-Fi pour associer Vibe Launcher, ou cherchez le débogage réseau dans les Options pour les développeurs.</string>
+    <string name="paired_toast">Associé via le débogage sans fil</string>
+    <string name="adb_not_connected">Non connecté</string>
+    <string name="adb_connected_port">Connecté (port 5555)</string>
+    <string name="adb_connected_wireless">Connecté (débogage sans fil)</string>
+    <string name="adb_ready_note">Vibe Launcher peut accéder à l\'ADB du téléviseur : continuez avec Nettoyage des applis et le reste d\'Applis. Rien n\'est à changer ici.</string>
+    <string name="adb_not_needed">Vibe Launcher a déjà accès à l\'ADB, ce n\'est donc pas nécessaire. Continuer quand même ?</string>
+    <string name="wireless_not_running">Activé, inactif</string>
+    <string name="wireless_not_running_short">Le débogage sans fil est activé mais ne fonctionne pas (certains téléviseurs l\'arrêtent quand le débogage USB est désactivé). Désactivez-le puis réactivez-le dans les Options pour les développeurs.</string>
+    <string name="adb_connect_short">Appuyez sur OK ici pour vous connecter. Si ce n\'est pas encore possible, Vibe Launcher indique la première chose à activer, en commençant par la plus simple. La première fois, le téléviseur demande s\'il faut autoriser Vibe Launcher : cochez Toujours autoriser.</string>
+    <string name="dev_options">Options pour les développeurs</string>
+    <string name="dev_options_short">Les interrupteurs de débogage d\'Android, masqués tant qu\'ils ne sont pas déverrouillés : dans À propos, appuyez sept fois sur OK sur Build.</string>
+    <string name="usb_adb_debugging">Débogage USB/ADB</string>
+    <string name="usb_adb_debugging_short">L\'interrupteur de débogage du téléviseur, dans les Options pour les développeurs (débogage USB, ou débogage ADB sur certains téléviseurs). Sur la plupart des téléviseurs, il ouvre aussi le port 5555, par lequel Vibe Launcher se connecte.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 et versions ultérieures : débogage via le Wi-Fi, avec un code d\'association. Vibe Launcher l\'utilise quand le port 5555 est fermé, une fois associé.</string>
+    <string name="pair_with_code">Associer avec un code</string>
+    <string name="open_dev_options">Ouvrir les Options pour les développeurs</string>
     <string name="apps_turn_off_again">Désactiver à nouveau</string>
     <string name="apps_turn_off_again_short">Applis que Vibe Launcher avait déjà désactivées et qui sont maintenant activées ici : via une sauvegarde restaurée sur ce téléviseur, ou réactivées par une mise à jour.</string>
     <string name="apps_turn_off_now">Désactiver maintenant</string>

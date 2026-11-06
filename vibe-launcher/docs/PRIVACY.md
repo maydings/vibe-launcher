@@ -32,11 +32,14 @@ saved in the Download folder, which stays until you delete it.
 | Storage (`WRITE_EXTERNAL_STORAGE`, Android 10 and older only) | to save a settings backup in the Download folder and read it back, asked the first time you do |
 | **GitHub build only:** install packages (`REQUEST_INSTALL_PACKAGES`), close background apps (`KILL_BACKGROUND_PROCESSES`) | to install its own updates and SmartTube when you ask; Android asks you to confirm each install. The second closes the TV's Settings in the background so its install switch shows Vibe Launcher's name |
 | **GitHub build only:** see all apps (`QUERY_ALL_PACKAGES`) | so Settings > Apps can list every app on the TV, system parts too, to turn them off and on. The list stays on the TV |
-| **GitHub build only:** change secure settings (`WRITE_SECURE_SETTINGS`) | not given by installing: the TV's own ADB grants it the first time Settings > Apps connects. Used only to turn debugging on and off (when Vibe Launcher needs it, and when Settings closes if you choose that) and to set the animation speed you pick in Appearance; never for anything else, such as accessibility services or the keyboard |
+| **GitHub build only:** change secure settings (`WRITE_SECURE_SETTINGS`) | not given by installing: the TV's own ADB grants it the first time Settings > Apps connects. Used only to turn debugging and Wireless debugging on and off (when Vibe Launcher needs it, and when Settings closes if you choose that) and to set the animation speed you pick in Appearance; never for anything else, such as accessibility services or the keyboard |
 
 **Settings > Apps (GitHub build only)** turns apps off through the TV's own network debugging, which you
 turn on and allow yourself. Vibe Launcher connects only to the TV itself (`127.0.0.1`), never to another
-device, with a key it keeps in the TV's Android Keystore. It runs only the commands for what you choose
+device, with a key it keeps in the TV's Android Keystore. For Wireless debugging (Android 11 and up) it uses
+a second key, stored only on the TV, encrypted with a key in the Android Keystore. Pairing it, the 6-digit code
+you type on your phone goes over your home network to Vibe Launcher's own page on the TV (the link with a
+random code in it, as for the API keys), and from there only to the TV's own pairing window. It runs only the commands for what you choose
 there: turning an app off or on, making Vibe Launcher Home (or the TV's own home screen again), closing
 background apps, and once, granting itself the permission above. Which apps it turned off is kept with
 its settings (and in a backup).

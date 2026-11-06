@@ -95,6 +95,7 @@
     <string name="youtube_info">Когато сте влезли в SmartTube, плочката на YouTube показва видеоклипове от собствения ви канал в YouTube. Не е нужен ключ.\n\nБез него ключ показва най-популярните видеоклипове във вашата държава. Безплатен ключ: console.cloud.google.com → нов проект → активирайте YouTube Data API v3 → Идентификационни данни → Създаване на API ключ.\n\nБез нито едно от двете показва трейлъри на популярни филми.</string>
     <string name="plex_info">Фонове от собствения ви Plex сървър: Продължаване на гледането и наскоро добавени.\n\nКак да го намерите: app.plex.tv → отворете кое да е заглавие → ⋯ → Информация → Преглед на XML и копирайте това след X-Plex-Token= в адреса. Пазете го в тайна като парола.</string>
     <string name="saved_from_phone">Запазено от телефона</string>
+    <string name="screen_missing">Този телевизор няма такъв екран с настройки. Потърсете го в собствените настройки на телевизора.</string>
     <string name="not_available">Не е налично на този телевизор</string>
     <string name="cant_open">%1$s не може да се отвори</string>
     <string name="smarttube_install">Инсталиране на SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">Остават %1$s</string>
     <string name="home_key_name">Бутон „Начало“ за Vibe Launcher</string>
     <string name="home_key_description">Бутонът „Начало“ на дистанционното отваря Vibe Launcher вместо собствения начален екран на телевизора, а задържането му – настройките на телевизора. Не чете нищо от екрана и пропуска всички останали бутони.</string>
-    <string name="home_key_turn_on">Включете „%1$s“ тук, за да отваря бутонът „Начало“ Vibe Launcher.</string>
     <string name="permissions_title">Две разрешения</string>
     <string name="permissions_why">След малко Vibe Launcher ще поиска две разрешения.\n\nТВ програма: за да показва снимки от картите, които приложенията ви публикуват за началния екран.\n\nМестоположение: Android показва името на Wi-Fi мрежата само на приложения с това разрешение. Vibe Launcher го използва само за това име и никога не проверява къде е телевизорът.\n\nНито едното не напуска телевизора.</string>
     <string name="continue_button">Напред</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">За телевизори, които запазват собствения си начален екран: бутонът „Начало“ на дистанционното отваря Vibe Launcher, а задържането му отваря настройките на телевизора.</string>
     <string name="home_key_agree">Съгласен съм</string>
     <string name="home_key_steps">След това: в списъка, който се отваря, изберете „%1$s“, включете го и натиснете „Начало“.</string>
+    <string name="home_key_steps_settings">След това: този телевизор няма директен път до настройките си за достъпност, затова вместо тях се отварят настройките на Android. Там отидете в „Предпочитания за устройството“ &gt; „Достъпност“, изберете „%1$s“, включете го и натиснете „Начало“.</string>
     <string name="store_update">Актуализиране на Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Резервно копие и възстановяване</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Приложения</string>
     <string name="apps_short">Изключете приложенията, които не използвате: те остават инсталирани, но не могат да се изпълняват, да пълнят началния екран или да се актуализират, докато не ги включите отново. Частите, нужни на телевизора, за да работи, не са показани.</string>
-    <string name="adb_connection">Отстраняване на грешки през мрежата</string>
-    <string name="adb_connection_short">Vibe Launcher изключва приложения чрез отстраняването на грешки на телевизора, както би го направил компютър. Включете отстраняването на грешки през USB (на някои телевизори през ADB или през мрежата) в „Опции за програмисти“, след това натиснете OK тук и разрешете Vibe Launcher на телевизора.</string>
-    <string name="adb_ready">Свързано</string>
-    <string name="adb_not_allowed">Още не е разрешено</string>
+    <string name="adb_connection">ADB връзка</string>
+    <string name="adb_connection_short">Vibe Launcher изключва приложения чрез собствения ADB на телевизора, както би го направил компютър. Отворете това, за да видите какво е включено и за да се свържете.</string>
     <string name="adb_checking">Проверява се…</string>
-    <string name="adb_allow_prompt">Във въпроса на телевизора отметнете „Винаги да се разрешава“, след това изберете OK</string>
+    <string name="adb_allow_prompt">След това телевизорът ще попита дали да разреши Vibe Launcher: отметнете „Винаги да се разрешава“, след това изберете OK.</string>
     <string name="adb_turn_on">В „Опции за програмисти“ включете отстраняването на грешки през USB (на някои телевизори се казва отстраняване на грешки през ADB или през мрежата) и се върнете тук.</string>
     <string name="adb_network_closed">Отстраняването на грешки е включено, но този телевизор още не позволява на приложенията да се свържат с него. В „Опции за програмисти“ потърсете отстраняване на грешки през мрежата или ADB през мрежата и го включете. Ако има само безжично отстраняване на грешки, Vibe Launcher още не може да го използва.</string>
     <string name="adb_failed">Телевизорът не го разреши</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Приложения, нужни на телевизора</string>
     <string name="app_protected">Телевизорът ви се нуждае от това, за да работи правилно, затова Vibe Launcher няма да го изключи. Така телевизорът ви остава защитен.</string>
     <string name="adb_dev_options">Първо включете „Опции за програмисти“: в „Информация“ натиснете OK върху „Компилация“ седем пъти, след това се върнете тук.</string>
+    <string name="wireless_debugging">Безжично отстраняване на грешки</string>
+    <string name="wireless_debugging_short">За телевизори с Android 11 и по-нови версии, които държат отстраняването на грешки през мрежата затворено. Сдвоете Vibe Launcher веднъж: сканирайте кода с телефона си, след което въведете там кода, показан в прозореца за сдвояване на телевизора.</string>
+    <string name="paired">Сдвоено</string>
+    <string name="not_paired">Не е сдвоено</string>
+    <string name="pair_scan">Сканирайте с телефона си, след което отворете „Опции за програмисти“ по-долу: включете безжичното отстраняване на грешки, отворете го, изберете „Сдвояване на устройството чрез код за сдвояване“ и въведете на телефона си показания код.</string>
+    <string name="adb_wireless_on">В „Опции за програмисти“ включете безжичното отстраняване на грешки и се върнете тук.</string>
+    <string name="adb_wireless_wifi">Този телевизор не позволява на приложенията да достигат до отстраняването на грешки през мрежата, а безжичното му отстраняване на грешки работи само през Wi-Fi. Свържете телевизора с Wi-Fi, за да сдвоите Vibe Launcher, или потърсете отстраняване на грешки през мрежата в „Опции за програмисти“.</string>
+    <string name="paired_toast">Сдвоено чрез безжично отстраняване на грешки</string>
+    <string name="adb_not_connected">Няма връзка</string>
+    <string name="adb_connected_port">Свързано (порт 5555)</string>
+    <string name="adb_connected_wireless">Свързано (безжично отстраняване на грешки)</string>
+    <string name="adb_ready_note">Vibe Launcher има достъп до ADB на телевизора: продължете с „Почистване на приложения“ и останалото в „Приложения“. Тук нищо не трябва да се променя.</string>
+    <string name="adb_not_needed">Vibe Launcher вече има достъп до ADB, така че това не е нужно. Да продължи ли все пак?</string>
+    <string name="wireless_not_running">Включено, но не работи</string>
+    <string name="wireless_not_running_short">Безжичното отстраняване на грешки е включено, но не работи (някои телевизори го спират, когато отстраняването на грешки през USB се изключи). Изключете го и го включете отново в „Опции за програмисти“.</string>
+    <string name="adb_connect_short">Натиснете OK тук, за да се свържете. Ако още не може, Vibe Launcher показва първото нещо, което трябва да се включи, като започва от най-лесното. Първия път телевизорът ще попита дали да разреши Vibe Launcher: отметнете „Винаги да се разрешава“.</string>
+    <string name="dev_options">Опции за програмисти</string>
+    <string name="dev_options_short">Превключвателите на Android за отстраняване на грешки, скрити до отключване: в „Информация“ натиснете OK върху „Компилация“ седем пъти.</string>
+    <string name="usb_adb_debugging">Отстраняване на грешки през USB/ADB</string>
+    <string name="usb_adb_debugging_short">Превключвателят за отстраняване на грешки на телевизора, в „Опции за програмисти“ (отстраняване на грешки през USB или на някои телевизори през ADB). На повечето телевизори той отваря и порт 5555, през който се свързва Vibe Launcher.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 и по-нови: отстраняване на грешки през Wi-Fi с код за сдвояване. Vibe Launcher го използва, когато порт 5555 е затворен, след като е сдвоен.</string>
+    <string name="pair_with_code">Сдвояване с код</string>
+    <string name="open_dev_options">Отваряне на „Опции за програмисти“</string>
     <string name="apps_turn_off_again">Изключване отново</string>
     <string name="apps_turn_off_again_short">Приложения, които Vibe Launcher е изключил преди, но сега са включени тук: от резервно копие, възстановено на този телевизор, или включени отново от актуализация.</string>
     <string name="apps_turn_off_now">Изключване сега</string>

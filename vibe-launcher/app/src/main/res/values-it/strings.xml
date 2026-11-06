@@ -95,6 +95,7 @@
     <string name="youtube_info">Con SmartTube connesso, il riquadro di YouTube mostra i video del tuo feed YouTube. Nessuna chiave necessaria.\n\nSenza, una chiave mostra i video più popolari nel tuo paese. Chiave gratuita: console.cloud.google.com → nuovo progetto → attiva YouTube Data API v3 → Credenziali → Crea chiave API.\n\nSenza nessuno dei due, mostra i trailer di film popolari.</string>
     <string name="plex_info">Sfondi dal tuo server Plex: Continua a guardare e aggiunti di recente.\n\nPer trovarlo: app.plex.tv → apri un titolo qualsiasi → ⋯ → Ottieni info → Visualizza XML, e copia ciò che segue X-Plex-Token= nell\'indirizzo. Tienilo riservato, come una password.</string>
     <string name="saved_from_phone">Salvato dal telefono</string>
+    <string name="screen_missing">Questo televisore non ha quella schermata delle impostazioni. Cercala nelle Impostazioni del televisore.</string>
     <string name="not_available">Non disponibile su questo televisore</string>
     <string name="cant_open">Impossibile aprire %1$s</string>
     <string name="smarttube_install">Installa SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">Ancora %1$s</string>
     <string name="home_key_name">Tasto Home di Vibe Launcher</string>
     <string name="home_key_description">Fa aprire Vibe Launcher al tasto Home del telecomando al posto della schermata Home del televisore, e le impostazioni del televisore tenendolo premuto. Non legge nulla sullo schermo e lascia passare tutti gli altri tasti.</string>
-    <string name="home_key_turn_on">Attiva qui «%1$s» perché il tasto Home apra Vibe Launcher.</string>
     <string name="permissions_title">Due autorizzazioni</string>
     <string name="permissions_why">Ora Vibe Launcher chiederà due autorizzazioni.\n\nGuida TV: per mostrare immagini dalle schede che le tue app pubblicano per la schermata Home.\n\nPosizione: Android mostra il nome della rete Wi-Fi solo alle app con questa autorizzazione. Vibe Launcher la usa solo per quel nome e non cerca mai dove si trova il televisore.\n\nNessuna delle due esce dal televisore.</string>
     <string name="continue_button">Continua</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Per i televisori che mantengono la propria schermata Home: il tasto Home del telecomando apre Vibe Launcher e tenendolo premuto si aprono le impostazioni del televisore.</string>
     <string name="home_key_agree">Accetto</string>
     <string name="home_key_steps">Poi: nell\'elenco che si apre, scegli «%1$s», attivalo e premi Home.</string>
+    <string name="home_key_steps_settings">Poi: questo televisore non ha un accesso diretto alle impostazioni di accessibilità, quindi si aprono le Impostazioni di Android. Lì, vai a Preferenze dispositivo &gt; Accessibilità, scegli «%1$s», attivalo e premi Home.</string>
     <string name="store_update">Aggiorna Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Backup e ripristino</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">App</string>
     <string name="apps_short">Disattiva le app che non usi: restano installate, ma non possono avviarsi, riempire la schermata Home o aggiornarsi finché non le riattivi. Le parti che servono al televisore per funzionare non sono elencate.</string>
-    <string name="adb_connection">Debug di rete</string>
-    <string name="adb_connection_short">Vibe Launcher disattiva le app tramite il debug del televisore, come farebbe un computer. Attiva il debug USB (debug ADB o debug di rete su alcuni televisori) in Opzioni sviluppatore, poi premi OK qui e consenti Vibe Launcher sul televisore.</string>
-    <string name="adb_ready">Connesso</string>
-    <string name="adb_not_allowed">Non ancora consentito</string>
+    <string name="adb_connection">Connessione ADB</string>
+    <string name="adb_connection_short">Vibe Launcher disattiva le app tramite l\'ADB del televisore stesso, come farebbe un computer. Aprilo per vedere cosa è attivo e per connetterti.</string>
     <string name="adb_checking">Verifica in corso…</string>
-    <string name="adb_allow_prompt">Nella domanda sul televisore, seleziona Consenti sempre, poi scegli OK</string>
+    <string name="adb_allow_prompt">Poi il televisore chiede se consentire Vibe Launcher: seleziona Consenti sempre, poi scegli OK.</string>
     <string name="adb_turn_on">In Opzioni sviluppatore, attiva il debug USB (su alcuni televisori si chiama debug ADB o debug di rete), poi torna qui.</string>
     <string name="adb_network_closed">Il debug è attivo, ma questo televisore non permette ancora alle app di raggiungerlo. In Opzioni sviluppatore, cerca l\'opzione debug di rete o ADB in rete e attivala. Se c\'è solo il debug wireless, Vibe Launcher non può ancora usarlo.</string>
     <string name="adb_failed">Il televisore non l\'ha consentito</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">App che servono al televisore</string>
     <string name="app_protected">Il televisore ne ha bisogno per funzionare correttamente, quindi Vibe Launcher non lo disattiverà. Così il televisore resta al sicuro.</string>
     <string name="adb_dev_options">Prima attiva Opzioni sviluppatore: in Informazioni, premi OK su Build sette volte, poi torna qui.</string>
+    <string name="wireless_debugging">Debug wireless</string>
+    <string name="wireless_debugging_short">Per televisori con Android 11 e versioni successive che tengono chiuso il debug di rete. Accoppia Vibe Launcher una sola volta: scansiona il codice con il telefono, poi digita lì il codice mostrato nella finestra di accoppiamento del televisore.</string>
+    <string name="paired">Accoppiato</string>
+    <string name="not_paired">Non accoppiato</string>
+    <string name="pair_scan">Scansiona con il telefono, poi apri Opzioni sviluppatore qui sotto: attiva il debug wireless, aprilo, scegli Accoppia dispositivo con codice di accoppiamento e digita sul telefono il codice che mostra.</string>
+    <string name="adb_wireless_on">Attiva il debug wireless in Opzioni sviluppatore, poi torna qui.</string>
+    <string name="adb_wireless_wifi">Questo televisore non permette alle app di raggiungere il suo debug tramite la rete, e il suo debug wireless funziona solo con il Wi-Fi. Collega il televisore al Wi-Fi per accoppiare Vibe Launcher, oppure cerca il debug di rete in Opzioni sviluppatore.</string>
+    <string name="paired_toast">Accoppiato con il debug wireless</string>
+    <string name="adb_not_connected">Non connesso</string>
+    <string name="adb_connected_port">Connesso (porta 5555)</string>
+    <string name="adb_connected_wireless">Connesso (debug wireless)</string>
+    <string name="adb_ready_note">Vibe Launcher può raggiungere l\'ADB del televisore: vai avanti con Pulizia app e il resto di App. Qui non c\'è nulla da cambiare.</string>
+    <string name="adb_not_needed">Vibe Launcher ha già accesso ADB, quindi non serve. Continuare comunque?</string>
+    <string name="wireless_not_running">Attivo, non in esecuzione</string>
+    <string name="wireless_not_running_short">Il debug wireless è attivo ma non è in esecuzione (alcuni televisori lo fermano quando il debug USB si disattiva). Disattivalo e riattivalo in Opzioni sviluppatore.</string>
+    <string name="adb_connect_short">Premi OK qui per connetterti. Se non è ancora possibile, Vibe Launcher mostra la prima cosa ancora da attivare, partendo dalla più semplice. La prima volta, il televisore chiede se consentire Vibe Launcher: seleziona Consenti sempre.</string>
+    <string name="dev_options">Opzioni sviluppatore</string>
+    <string name="dev_options_short">Gli interruttori di Android per il debug, nascosti finché non vengono sbloccati: in Informazioni, premi OK su Build sette volte.</string>
+    <string name="usb_adb_debugging">Debug USB/ADB</string>
+    <string name="usb_adb_debugging_short">L\'interruttore di debug del televisore, in Opzioni sviluppatore (debug USB, o debug ADB su alcuni televisori). Sulla maggior parte dei televisori apre anche la porta 5555, attraverso cui Vibe Launcher si connette.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 e versioni successive: debug tramite Wi-Fi, con un codice di accoppiamento. Vibe Launcher lo usa quando la porta 5555 è chiusa, una volta accoppiato.</string>
+    <string name="pair_with_code">Accoppia con codice</string>
+    <string name="open_dev_options">Apri Opzioni sviluppatore</string>
     <string name="apps_turn_off_again">Disattiva di nuovo</string>
     <string name="apps_turn_off_again_short">App che Vibe Launcher aveva già disattivato e che ora qui sono attive: da un backup ripristinato su questo televisore o riattivate da un aggiornamento.</string>
     <string name="apps_turn_off_now">Disattiva ora</string>

@@ -95,6 +95,7 @@
     <string name="youtube_info">SmartTube にログインしていると、YouTube タイルにはあなた自身の YouTube フィードの動画が表示されます。キーは不要です。\n\nSmartTube がない場合は、キーを使うとお住まいの国で人気の動画が表示されます。 無料キー：console.cloud.google.com → 新しいプロジェクト → YouTube Data API v3 を有効化 → 認証情報 → API キーを作成。\n\nどちらもない場合は、人気映画の予告編が表示されます。</string>
     <string name="plex_info">ご自分の Plex サーバーからの背景：視聴を続ける、最近追加。\n\n取得方法：app.plex.tv → 任意のタイトルを開く → ⋯ → 情報を取得 → XML を表示 → アドレスの X-Plex-Token= の後ろをコピー。パスワードのように秘密にしてください。</string>
     <string name="saved_from_phone">スマホから保存しました</string>
+    <string name="screen_missing">このテレビにはその設定画面がありません。テレビ本体の設定で探してください。</string>
     <string name="not_available">このテレビでは使えません</string>
     <string name="cant_open">%1$s を開けません</string>
     <string name="smarttube_install">SmartTube をインストール</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">残り %1$s</string>
     <string name="home_key_name">Vibe Launcher ホームボタン</string>
     <string name="home_key_description">リモコンのホームボタンで、テレビ独自のホーム画面ではなく Vibe Launcher を開き、長押しでテレビの設定を開きます。画面の内容は読み取らず、ほかのボタンはそのまま通します。</string>
-    <string name="home_key_turn_on">ホームボタンで Vibe Launcher を開くには、ここで「%1$s」をオンにしてください。</string>
     <string name="permissions_title">2 つの権限</string>
     <string name="permissions_why">このあと Vibe Launcher が 2 つの権限をリクエストします。\n\nテレビ番組表：アプリがホーム画面向けに公開しているカードの画像を表示するためです。\n\n位置情報：Android は Wi-Fi ネットワーク名をこの権限を持つアプリにしか表示しません。Vibe Launcher はその名前のためだけに使い、テレビの場所を調べることはありません。\n\nどちらもテレビの外には出ません。</string>
     <string name="continue_button">続行</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">独自のホーム画面を使い続けるテレビ向け：リモコンのホームボタンで Vibe Launcher が開き、長押しでテレビの設定が開きます。</string>
     <string name="home_key_agree">同意する</string>
     <string name="home_key_steps">次に、表示されるリストで「%1$s」を選んでオンにし、ホームボタンを押してください。</string>
+    <string name="home_key_steps_settings">次に、このテレビにはユーザー補助の設定に直接移動する方法がないため、代わりに Android の設定が開きます。そこで「デバイス設定」&gt;「ユーザー補助」に移動し、「%1$s」を選んでオンにし、ホームボタンを押してください。</string>
     <string name="store_update">Vibe Launcher を更新</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">バックアップと復元</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">アプリ</string>
     <string name="apps_short">使わないアプリをオフにできます。インストールされたままですが、オンに戻すまで起動、ホーム画面への表示、更新はできません。テレビの動作に必要な部分は表示されません。</string>
-    <string name="adb_connection">ネットワーク デバッグ</string>
-    <string name="adb_connection_short">Vibe Launcher は、パソコンと同じようにテレビのデバッグを使ってアプリをオフにします。開発者向けオプションで USB デバッグ（一部のテレビでは ADB デバッグまたはネットワーク デバッグ）をオンにしてから、ここで OK を押し、テレビで Vibe Launcher を許可してください。</string>
-    <string name="adb_ready">接続済み</string>
-    <string name="adb_not_allowed">まだ許可されていません</string>
+    <string name="adb_connection">ADB 接続</string>
+    <string name="adb_connection_short">Vibe Launcher は、パソコンと同じようにテレビ本体の ADB を使ってアプリをオフにします。ここを開くと、オンになっている項目を確認して接続できます。</string>
     <string name="adb_checking">確認中…</string>
-    <string name="adb_allow_prompt">テレビの確認画面で「常に許可」にチェックを入れ、OK を選んでください</string>
+    <string name="adb_allow_prompt">次に、テレビに Vibe Launcher を許可するかどうかの確認が表示されます。「常に許可」にチェックを入れ、OK を選んでください。</string>
     <string name="adb_turn_on">開発者向けオプションで USB デバッグ（一部のテレビでは ADB デバッグまたはネットワーク デバッグ）をオンにしてから、ここに戻ってください。</string>
     <string name="adb_network_closed">デバッグはオンですが、このテレビではまだアプリから接続できません。開発者向けオプションでネットワーク デバッグまたはネットワーク経由の ADB を探してオンにしてください。ワイヤレス デバッグしかない場合、Vibe Launcher はまだそれを使用できません。</string>
     <string name="adb_failed">テレビで許可されませんでした</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">テレビに必要なアプリ</string>
     <string name="app_protected">これはテレビが正しく動作するために必要なため、Vibe Launcher はオフにしません。これによりテレビを安全に保ちます。</string>
     <string name="adb_dev_options">先に開発者向けオプションをオンにしてください。「デバイス情報」で「ビルド」を選んで OK を 7 回押してから、ここに戻ってください。</string>
+    <string name="wireless_debugging">ワイヤレス デバッグ</string>
+    <string name="wireless_debugging_short">Android 11 以降でネットワーク デバッグが閉じられているテレビ向けです。Vibe Launcher を一度だけペア設定してください。スマートフォンでコードをスキャンし、テレビのペア設定画面に表示されたコードをスマートフォンに入力します。</string>
+    <string name="paired">ペア設定済み</string>
+    <string name="not_paired">未ペア設定</string>
+    <string name="pair_scan">スマートフォンでスキャンしてから、下の開発者向けオプションを開いてください。ワイヤレス デバッグをオンにして開き、「ペア設定コードによるデバイスのペア設定」を選んで、表示されたコードをスマートフォンに入力します。</string>
+    <string name="adb_wireless_on">開発者向けオプションでワイヤレス デバッグをオンにしてから、ここに戻ってください。</string>
+    <string name="adb_wireless_wifi">このテレビではネットワーク経由でアプリからデバッグに接続できず、ワイヤレス デバッグは Wi-Fi でのみ動作します。テレビを Wi-Fi に接続して Vibe Launcher をペア設定するか、開発者向けオプションでネットワーク デバッグを探してください。</string>
+    <string name="paired_toast">ワイヤレス デバッグでペア設定しました</string>
+    <string name="adb_not_connected">未接続</string>
+    <string name="adb_connected_port">接続済み（ポート 5555）</string>
+    <string name="adb_connected_wireless">接続済み（ワイヤレス デバッグ）</string>
+    <string name="adb_ready_note">Vibe Launcher はテレビの ADB に接続できます。「アプリのクリーンアップ」や「アプリ」のその他の機能をそのままお使いください。ここで変更する必要はありません。</string>
+    <string name="adb_not_needed">Vibe Launcher はすでに ADB にアクセスできるため、この操作は不要です。それでも続行しますか？</string>
+    <string name="wireless_not_running">オン（実行されていません）</string>
+    <string name="wireless_not_running_short">ワイヤレス デバッグはオンになっていますが、実行されていません（一部のテレビでは USB デバッグがオフになると停止します）。開発者向けオプションで一度オフにしてから、もう一度オンにしてください。</string>
+    <string name="adb_connect_short">ここで OK を押すと接続します。まだ接続できない場合は、まだオンにする必要がある最初の項目を、簡単なものから順に Vibe Launcher が表示します。初回は、テレビに Vibe Launcher を許可するかどうかの確認が表示されます。「常に許可」にチェックを入れてください。</string>
+    <string name="dev_options">開発者向けオプション</string>
+    <string name="dev_options_short">Android のデバッグ用スイッチで、ロックを解除するまで表示されません。「デバイス情報」で「ビルド」を選んで OK を 7 回押してください。</string>
+    <string name="usb_adb_debugging">USB/ADB デバッグ</string>
+    <string name="usb_adb_debugging_short">開発者向けオプションにあるテレビのデバッグ用スイッチです（USB デバッグ、一部のテレビでは ADB デバッグ）。ほとんどのテレビでは、Vibe Launcher が接続に使うポート 5555 も開きます。</string>
+    <string name="wireless_debugging_onoff_short">Android 11 以降：ペア設定コードを使った Wi-Fi 経由のデバッグです。ペア設定後、ポート 5555 が閉じているときに Vibe Launcher が使用します。</string>
+    <string name="pair_with_code">コードでペア設定</string>
+    <string name="open_dev_options">開発者向けオプションを開く</string>
     <string name="apps_turn_off_again">もう一度オフにする</string>
     <string name="apps_turn_off_again_short">以前 Vibe Launcher がオフにしたのに、今ここでオンになっているアプリです。このテレビで復元したバックアップによるものか、アップデートでオンに戻ったものです。</string>
     <string name="apps_turn_off_now">今すぐオフにする</string>

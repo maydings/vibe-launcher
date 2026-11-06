@@ -148,9 +148,49 @@ final class SettingsScreen {
                         heightSpec = View.MeasureSpec.makeMeasureSpec(maxListH, View.MeasureSpec.AT_MOST);
                     }
                     super.onMeasure(widthSpec, heightSpec);
+                    // A list taller than the window: the window made a whole number of rows, so no row shows in part
+                    // and scrolling to the next row moves exactly one row (rows here are all the same height).
+                    if (getChildCount() == 0) return;
+                    ViewGroup content = (ViewGroup) getChildAt(0);
+                    int inner = getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
+                    if (content.getMeasuredHeight() <= inner) return;
+                    View row = null;
+                    for (int i = 0; i < content.getChildCount() && row == null; i++) {
+                        if (content.getChildAt(i).getVisibility() != View.GONE) row = content.getChildAt(i);
+                    }
+                    if (row == null) return;
+                    ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) row.getLayoutParams();
+                    int gap = lp.topMargin + lp.bottomMargin, pitch = row.getMeasuredHeight() + gap;
+                    int whole = (inner + gap) / pitch;
+                    if (whole < 1) return;
+                    setMeasuredDimension(getMeasuredWidth(), whole * pitch - gap + getPaddingTop() + getPaddingBottom());
+                }
+
+                // Scrolled to a focused row with the list's margin above and below counted (Android's own leaves it
+                // out): each step moves exactly one row, and the first row comes back to its place in one press.
+                @Override
+                protected int computeScrollDeltaToGetChildRectOnScreen(android.graphics.Rect rect) {
+                    if (getChildCount() == 0) return 0;
+                    int top = getScrollY() + getPaddingTop(), bottom = getScrollY() + getHeight() - getPaddingBottom();
+                    int delta = 0;
+                    if (rect.top < top) delta = rect.top - top;
+                    else if (rect.bottom > bottom) delta = rect.bottom - bottom;
+                    int max = Math.max(0, getChildAt(0).getHeight() + getPaddingTop() + getPaddingBottom() - getHeight());
+                    return Math.max(0, Math.min(max, getScrollY() + delta)) - getScrollY();
+                }
+
+                // Only what's in the window is drawn: the column around the list doesn't clip (the focused row grows
+                // past its edges), so rows scrolled out of sight would be drawn over the text under the list.
+                @Override
+                protected void dispatchDraw(android.graphics.Canvas canvas) {
+                    canvas.save();
+                    canvas.clipRect(getScrollX(), getScrollY(), getScrollX() + getWidth(), getScrollY() + getHeight());
+                    super.dispatchDraw(canvas);
+                    canvas.restore();
                 }
             };
             scroll.setVerticalScrollBarEnabled(false);
+            scroll.setVerticalFadingEdgeEnabled(false);   // a fading edge would scroll a part-row further in
             // A ScrollView takes focus itself when Up or Down finds no row: on the left list it would hold
             // focus out of sight, so only the rows can have it.
             scroll.setFocusable(false);
@@ -275,6 +315,17 @@ final class SettingsScreen {
     private int editingKey;
 
     private PhoneLink link;
+    /**
+     * Until when the phone page outlives Settings (System clock millis): five minutes from the pairing page opening,
+     * or until a code sent from the phone has been answered. Android may close Settings while its own Settings is in
+     * front (Home pressed there resets Vibe Launcher's task), which would leave the phone's code nowhere to go.
+     * 0 normally.
+     */
+    private long keepLinkUntil;
+    private final Runnable stopKeptLink = () -> {
+        if (host == null && link != null) link.stop();
+        keepLinkUntil = 0;
+    };
     private String phoneUrl;
     private BroadcastReceiver packages;
     private Row smartTubeRow;
@@ -286,6 +337,7 @@ final class SettingsScreen {
         this.language = language;
         density = ctx.getResources().getDisplayMetrics().density;
         settings = new VibeSettings(ctx);
+        Adb.use(app);
         highlight = Highlight.color(ctx);
         int w = screenW = ctx.getResources().getDisplayMetrics().widthPixels;
         screenH = ctx.getResources().getDisplayMetrics().heightPixels;
@@ -305,7 +357,7 @@ final class SettingsScreen {
         root.link(R.string.tab_appearance, null, this::appearance);
         root.link(R.string.tab_keys, null, this::apiKeys);
         // Turning apps off goes through the TV's ADB, which Play wouldn't take: the adb build only.
-        if (!BuildConfig.STORE) root.link(R.string.tab_apps, null, this::apps);
+        if (!BuildConfig.STORE) appsRootRow = root.link(R.string.tab_apps, null, this::apps);
         place(root, 0);
         languagePage = new Page(ctx.getString(R.string.language));   // its rows: addLanguages
         place(languagePage, screenW - rightX);   // off the screen until Language is picked
@@ -342,6 +394,29 @@ final class SettingsScreen {
         return root.first();
     }
 
+    /** Settings > Apps, and Apps > Default launcher: where the top bar's Make Vibe Launcher your Home opens. */
+    private Row appsRootRow, defaultLauncherRow;
+
+    /**
+     * Opens on Apps > Default launcher, already in place (the top bar's Make Vibe Launcher your Home, with ADB
+     * allowed): choosing Vibe Launcher there switches Home through it.
+     */
+    void showDefaultLauncher() {
+        if (appsRootRow == null) {
+            first().requestFocus();
+            return;
+        }
+        Page apps = apps();
+        open(apps, appsRootRow);
+        Page launcher = defaultLauncher();
+        open(launcher, defaultLauncherRow);
+        // Where the slides end: they then run from there to there, so nothing moves.
+        logo.setTranslationX(offLeft(logo));
+        root.view.setTranslationX(offLeft(root.view));
+        apps.view.setTranslationX(leftX - rightX);
+        launcher.view.setTranslationX(0f);
+    }
+
     /** Opens on General, already in place (Settings back in a new language): Language has the focus. */
     void showGeneral() {
         Page page = general();
@@ -356,11 +431,20 @@ final class SettingsScreen {
     void detach(Activity activity) {
         if (host != activity) return;
         if (editing != null) endEdit();
-        link.stop();
+        if (System.currentTimeMillis() < keepLinkUntil) {
+            handler.removeCallbacks(stopKeptLink);
+            handler.postDelayed(stopKeptLink, keepLinkUntil - System.currentTimeMillis());
+        } else {
+            link.stop();
+        }
         // Turn debugging off when done: the port closes with Settings, once nothing more is queued for it.
         if (usedAdb && settings.adbOffWhenDone() && TvControl.canWrite(ctx)) {
             Context app = ctx.getApplicationContext();
-            adb().execute(() -> TvControl.setDebugging(app, false));
+            boolean wireless = Adb.usedWireless();
+            adb().execute(() -> {
+                TvControl.setDebugging(app, false);
+                if (wireless) TvControl.setWirelessDebugging(app, false);
+            });
             adbStatus = Adb.OFF;
         }
         usedAdb = false;
@@ -601,7 +685,7 @@ final class SettingsScreen {
             Row row = page.add(animName(scale), () -> animName(TvControl.animationScale(ctx)).equals(animName(scale))
                     ? "✓" : "", () -> {
                 if (!TvControl.setAnimationScale(ctx, scale)) {
-                    Toast.makeText(host, R.string.anim_short, Toast.LENGTH_LONG).show();
+MainActivity.showError(host, R.string.anim_short);
                 }
                 page.refresh();
             });
@@ -784,8 +868,8 @@ final class SettingsScreen {
                 return;
             }
             if (BuildConfig.STORE) return;
-            boolean started = SmartTube.install(host, res -> Toast.makeText(host,
-                    res == R.string.update_failed ? R.string.smarttube_failed : res, Toast.LENGTH_LONG).show());
+            boolean started = SmartTube.install(host, res -> MainActivity.showError(host,
+                    res == R.string.update_failed ? R.string.smarttube_failed : res));
             if (started) Toast.makeText(host, R.string.smarttube_downloading, Toast.LENGTH_LONG).show();
         });
         smartTubeRow.about = R.string.smarttube_short;
@@ -817,7 +901,8 @@ final class SettingsScreen {
                 boolean ok = Backup.saveToTv(app);
                 handler.post(() -> {
                     if (host == null) return;
-                    Toast.makeText(host, ok ? R.string.backup_saved : R.string.backup_failed, Toast.LENGTH_SHORT).show();
+                    if (ok) Toast.makeText(host, R.string.backup_saved, Toast.LENGTH_SHORT).show();
+                    else MainActivity.showError(host, R.string.backup_failed);
                     page.refresh();   // the copy's new date
                 });
             }, "Backup").start();
@@ -853,7 +938,7 @@ final class SettingsScreen {
                 boolean ok = restore(Backup.loadFromTv(app));
                 handler.post(() -> {
                     if (ok) restored();
-                    else if (host != null) Toast.makeText(host, R.string.restore_failed, Toast.LENGTH_LONG).show();
+                    else if (host != null) MainActivity.showError(host, R.string.restore_failed);
                 });
             }, "Restore").start();
         });
@@ -903,7 +988,7 @@ final class SettingsScreen {
         afterStorage = null;
         if (host == null) return;
         if (granted && then != null) then.run();
-        else if (!granted) Toast.makeText(host, R.string.storage_denied, Toast.LENGTH_LONG).show();
+        else if (!granted) MainActivity.showError(host, R.string.storage_denied);
         for (Page page : pages) page.refresh();   // the TV's copy can be looked at now
     }
 
@@ -1012,6 +1097,11 @@ final class SettingsScreen {
 
     /** ADB was used while Settings was open: what Turn debugging off when done turns off as it closes. */
     private boolean usedAdb;
+    /** A look at the connection running now (pollAdb), so they don't pile up. */
+    private boolean adbLooking;
+    private boolean adbPolling;
+    /** Apps, and Apps > ADB connection: the pages the connection is looked at for. */
+    private Page appsPage, adbPage;
 
     /** ADB calls one at a time, in order, off the main thread (Adb). */
     private java.util.concurrent.ExecutorService adbThread;
@@ -1028,14 +1118,10 @@ final class SettingsScreen {
      */
     private Page apps() {
         Page page = new Page(ctx.getString(R.string.tab_apps));
+        appsPage = page;
         page.footnote = R.string.apps_short;
-        Row connection = page.add(R.string.adb_connection, this::adbStatusText, null);
+        Row connection = page.link(R.string.adb_connection, this::adbStatusText, this::adbConnection);
         connection.about = R.string.adb_connection_short;
-        connection.action = () -> {
-            if (adbStatus == Adb.OK) return;
-            runAdb(page, null, r -> {
-            });
-        };
         // Whether it's allowed already, without making the TV ask.
         adbStatus = -1;
         adb().execute(() -> {
@@ -1044,10 +1130,17 @@ final class SettingsScreen {
                 adbStatus = r.status;
                 page.refresh();
             });
+            // Paired as far as Vibe Launcher knows, and Wireless debugging on: does the TV still take the key?
+            // (Turned down, AdbTlsKey forgets it and the row says Not paired.)
+            if (Adb.wirelessOn(ctx) && AdbTlsKey.paired(ctx) && r.status != Adb.NOT_PAIRED) {
+                Adb.checkWireless();
+                handler.post(page::refresh);
+            }
         });
+        pollAdb();
         Row debloat = page.link(R.string.debloat, null, this::debloat);
         debloat.about = R.string.apps_short;
-        Row launcher = page.link(R.string.default_launcher, () -> ctx.getString(DefaultHome.isHome(ctx)
+        Row launcher = defaultLauncherRow = page.link(R.string.default_launcher, () -> ctx.getString(DefaultHome.isHome(ctx)
                 ? R.string.app_name : R.string.home_stock), this::defaultLauncher);
         launcher.about = TvControl.homeUnsupported() ? R.string.home_unsupported : R.string.home_make_short;
         // Last: a choice most people never touch (and one that locks a computer's ADB out while it's on).
@@ -1055,6 +1148,153 @@ final class SettingsScreen {
         offWhenDone.about = R.string.debug_off_when_done_short;
         return page;
     }
+
+    /**
+     * Apps > ADB connection: the status on its own at the top, large, with a dot (green while Vibe Launcher reaches
+     * the TV's own ADB, red while it doesn't) and a line under it: connected, there's nothing to do here and Debloat
+     * can go ahead. OK on it connects, or goes to the first thing still missing. Under it, everything that goes into
+     * it, always shown: Developer options, then the two ways in, either of them enough: USB/ADB debugging (port 5555)
+     * and, on Android 11 and up, Wireless debugging with its pairing. The way in use has its own green dot; OK on the
+     * other while connected says it isn't needed, and goes on if asked. Looked at again every few seconds while open.
+     */
+    private Page adbConnection() {
+        Page page = new Page(ctx.getString(R.string.adb_connection));
+        adbPage = page;
+        page.footnote = R.string.adb_connection_short;
+        Row status = page.add("", null, () -> {
+            if (adbStatus != Adb.OK) runAdb(page, null, r -> {
+            });
+        });
+        status.label.setTextSize(24);
+        status.view.setMinimumHeight((int) (76 * density));
+        status.about = R.string.adb_connect_short;
+        statusRow = status;
+        statusNote = new TextView(ctx);
+        statusNote.setTextColor(0xCCFFFFFF);
+        statusNote.setTextSize(15);
+        statusNote.setLineSpacing(0, 1.15f);
+        statusNote.setTypeface(UiFont.get(ctx, R.string.font_regular));
+        int side = (int) (16 * density);
+        statusNote.setPadding(side, (int) (8 * density), side, (int) (22 * density));
+        page.list.addView(statusNote);
+        Row dev = page.add(R.string.dev_options, () -> onOff(devOptionsOn()), this::openDevOrAbout);
+        dev.about = R.string.dev_options_short;
+        Row usb = page.add(R.string.usb_adb_debugging, () -> inUse(!Adb.usedWireless(),
+                onOff(adbSetting(android.provider.Settings.Global.ADB_ENABLED) == 1)),
+                () -> unlessConnectedOtherWay(true, this::openDevOrAbout));
+        usb.about = R.string.usb_adb_debugging_short;
+        wirelessRow = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            Row wireless = page.add(R.string.wireless_debugging, () -> inUse(Adb.usedWireless(),
+                    Adb.wirelessNotRunning(ctx) ? ctx.getString(R.string.wireless_not_running)
+                            : onOff(Adb.wirelessOn(ctx))),
+                    () -> unlessConnectedOtherWay(false, this::openDevOrAbout));
+            wireless.about = R.string.wireless_debugging_onoff_short;
+            wirelessRow = wireless;
+            if (link.pairUrl() != null) {
+                Row pair = page.add(R.string.pair_with_code, () -> ctx.getString(AdbTlsKey.paired(ctx)
+                        ? R.string.paired : R.string.not_paired), null);
+                pair.action = () -> unlessConnectedOtherWay(false, () -> open(pairWireless(), pair));
+                pair.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+                pair.about = R.string.wireless_debugging_short;
+            }
+        }
+        refreshAdbPages();
+        pollAdb();
+        return page;
+    }
+
+    /** ADB connection's status at the top, and the line under it. */
+    private Row statusRow;
+    private TextView statusNote;
+
+    /** Apps > ADB connection > Wireless debugging: its text under the list says how to start it when it's stuck. */
+    private Row wirelessRow;
+
+    private boolean devOptionsOn() {
+        return adbSetting(android.provider.Settings.Global.DEVELOPMENT_SETTINGS_ENABLED) == 1;
+    }
+
+    /** The way Vibe Launcher is connected now has a green dot before its value. */
+    private CharSequence inUse(boolean thisWay, CharSequence value) {
+        return adbStatus == Adb.OK && thisWay ? dot(0xFF34C759, value) : value;
+    }
+
+    private static CharSequence dot(int color, CharSequence text) {
+        android.text.SpannableStringBuilder b = new android.text.SpannableStringBuilder("\u25CF  ");
+        b.setSpan(new android.text.style.ForegroundColorSpan(color), 0, 1, 0);
+        return b.append(text);
+    }
+
+    /**
+     * Connected already, the other way (port 5555 for the wireless rows, Wireless debugging for USB/ADB debugging):
+     * a window saying this isn't needed, and Continue goes on anyway. Not connected, or this way: straight on.
+     */
+    private void unlessConnectedOtherWay(boolean portWay, Runnable then) {
+        boolean otherWay = adbStatus == Adb.OK && (portWay == Adb.usedWireless());
+        if (otherWay) explainThenDo(R.string.adb_connection, R.string.adb_not_needed, then);
+        else then.run();
+    }
+
+    private CharSequence onOff(boolean on) {
+        return ctx.getString(on ? R.string.on : R.string.off);
+    }
+
+    /** Developer options, or (still locked) the window saying how to unlock them, then About. */
+    private void openDevOrAbout() {
+        if (adbSetting(android.provider.Settings.Global.DEVELOPMENT_SETTINGS_ENABLED) == 1) openDeveloperOptionsNow();
+        else explainThenOpen(R.string.adb_dev_options, this::openAbout);
+    }
+
+    /**
+     * Every three seconds while Apps or ADB connection is open: the connection looked at again (off
+     * the main thread, one look at a time), and the rows brought up to date, so whatever was just turned on shows.
+     */
+    private void pollAdb() {
+        if (adbPolling) return;
+        adbPolling = true;
+        handler.post(adbPoll);
+    }
+
+    /** The rows brought up to date, ADB connection's status with them. */
+    private void refreshAdbPages() {
+        for (Page page : pages) page.refresh();
+        if (statusRow != null) {
+            statusRow.label.setText(adbStatusText());
+            statusNote.setText(adbStatus == Adb.OK ? R.string.adb_ready_note : R.string.adb_connect_short);
+        }
+        if (wirelessRow != null) {
+            wirelessRow.about = Adb.wirelessNotRunning(ctx) ? R.string.wireless_not_running_short
+                    : R.string.wireless_debugging_onoff_short;
+            if (wirelessRow.view.hasFocus() && adbPage != null) showAbout(adbPage, wirelessRow);
+        }
+    }
+
+    private final Runnable adbPoll = new Runnable() {
+        @Override
+        public void run() {
+            Page top = pages.isEmpty() ? null : pages.get(pages.size() - 1);
+            boolean showing = host != null && top != null && (top == adbPage || top == appsPage);
+            if (!showing) {
+                adbPolling = false;
+                return;
+            }
+            if (!adbBusy && !adbLooking) {
+                adbLooking = true;
+                adb().execute(() -> {
+                    Adb.Result r = Adb.check(false);
+                    handler.post(() -> {
+                        adbLooking = false;
+                        if (!adbBusy) adbStatus = r.status;
+                        refreshAdbPages();
+                    });
+                });
+            } else {
+                refreshAdbPages();
+            }
+            handler.postDelayed(this, 3000);
+        }
+    };
 
     /**
      * Debloat: Clean Your TV's lists first, then the options: Turn all back on, Turn off again (only while there's
@@ -1095,7 +1335,7 @@ final class SettingsScreen {
         Row vibe = page.add(ctx.getString(R.string.app_name), () -> DefaultHome.isHome(ctx) ? "✓" : "", () -> {
             if (DefaultHome.isHome(ctx) && TvControl.stockOn(ctx).isEmpty()) return;   // already
             if (unsupported) {
-                Toast.makeText(host, R.string.home_unsupported, Toast.LENGTH_LONG).show();
+                MainActivity.showError(host, R.string.home_unsupported);
                 return;
             }
             explainThenDo(R.string.home_make, R.string.home_make_warning, () -> makeHome(page));
@@ -1123,7 +1363,8 @@ final class SettingsScreen {
                 adb().execute(() -> Adb.shell(TvControl.restoreHomeCommand(ctx, stock), false));
             }
             if (!failed) for (String pkg : stock) TvApps.remember(ctx, pkg, false);
-            Toast.makeText(host, failed ? R.string.home_failed : R.string.home_done, Toast.LENGTH_LONG).show();
+            if (failed) MainActivity.showError(host, R.string.home_failed);
+            else Toast.makeText(host, R.string.home_done, Toast.LENGTH_LONG).show();
             page.refresh();   // the tick moves (runAdb refreshes once before the restore above lands)
             showTurnOffAgain();
         });
@@ -1180,7 +1421,7 @@ final class SettingsScreen {
                 row.label.setAlpha(0.45f);
                 row.value.setAlpha(0.45f);
                 row.aboutText = a.pkg + "\n" + ctx.getString(R.string.app_protected);
-                row.action = () -> Toast.makeText(host, R.string.app_protected, Toast.LENGTH_LONG).show();
+                row.action = () -> MainActivity.showError(host, R.string.app_protected);
                 continue;
             }
             row.aboutText = a.pkg;
@@ -1188,7 +1429,7 @@ final class SettingsScreen {
                 boolean wanted = !a.on;
                 a.on = TvApps.isOn(ctx.getPackageManager(), a.pkg);
                 if (a.on == wanted) TvApps.remember(ctx, a.pkg, a.on);
-                else Toast.makeText(host, R.string.adb_failed, Toast.LENGTH_SHORT).show();
+                else MainActivity.showError(host, R.string.adb_failed);
             });
             shownApps.add(a);
         }
@@ -1311,7 +1552,7 @@ final class SettingsScreen {
                 about.append('\n').append(ctx.getString(R.string.app_protected));
                 row.label.setAlpha(0.45f);
                 row.value.setAlpha(0.45f);
-                row.action = () -> Toast.makeText(host, R.string.app_protected, Toast.LENGTH_LONG).show();
+                row.action = () -> MainActivity.showError(host, R.string.app_protected);
             } else {
                 row.action = () -> {
                     if (!a.on) return;   // off already
@@ -1350,7 +1591,8 @@ final class SettingsScreen {
                     a.on = TvApps.isOn(pm, a.pkg);
                     all &= !a.on;
                 }
-                Toast.makeText(host, all ? R.string.apps_all_off : R.string.adb_failed, Toast.LENGTH_SHORT).show();
+                if (all) Toast.makeText(host, R.string.apps_all_off, Toast.LENGTH_SHORT).show();
+                else MainActivity.showError(host, R.string.adb_failed);
                 page.refresh();
                 showTurnOffAgain();   // gone from Apps once there's nothing left
                 if (all) back();
@@ -1375,7 +1617,8 @@ final class SettingsScreen {
             for (String pkg : settings.appsOff()) if (!TvApps.isOn(pm, pkg)) still.add(pkg);
             settings.setAppsOff(still);
             for (TvApps.App a : shownApps) a.on = TvApps.isOn(pm, a.pkg);
-            Toast.makeText(host, still.isEmpty() ? R.string.apps_all_on : R.string.adb_failed, Toast.LENGTH_SHORT).show();
+            if (still.isEmpty()) Toast.makeText(host, R.string.apps_all_on, Toast.LENGTH_SHORT).show();
+            else MainActivity.showError(host, R.string.adb_failed);
             page.refresh();
             showTurnOffAgain();   // what was on is forgotten now: nothing left to turn off again
         };
@@ -1407,17 +1650,21 @@ final class SettingsScreen {
             page.refresh();
             return;
         }
-        if (debugging == 0) {
+        android.util.Log.i("VibeAdb", "runAdb: devOptions=" + devOptions + " adb_enabled=" + debugging
+                + " wireless=" + Adb.wirelessSetting(ctx) + " paired=" + AdbTlsKey.paired(ctx));
+        if (debugging == 0 && !Adb.wirelessOn(ctx)) {
             adbStatus = Adb.OFF;
             openDeveloperOptions();
             page.refresh();
             return;
         }
-        adbBusy = true;
-        if (adbStatus != Adb.OK && adbStatus != Adb.OFF) {
-            Toast.makeText(host, R.string.adb_allow_prompt, Toast.LENGTH_LONG).show();
-        }
         boolean wait = waitForPort;
+        // Not let in yet: the TV is about to ask whether to allow Vibe Launcher. Said in a window first (a message
+        // at the bottom went before it could be read), and Continue connects, which brings up the TV's question.
+        boolean asks = adbStatus != Adb.OK && adbStatus != Adb.OFF && adbStatus != Adb.NOT_PAIRED;
+        Runnable go = () -> {
+        if (adbBusy || host == null) return;
+        adbBusy = true;
         Context app = ctx.getApplicationContext();
         adb().execute(() -> {
             if (wait) {   // adbd takes a moment to open its port once debugging is on: up to ten seconds
@@ -1429,7 +1676,12 @@ final class SettingsScreen {
                     }
                 }
             }
-            Adb.Result r = command != null ? Adb.shell(command, true) : Adb.check(true);
+            Adb.Result first = command != null ? Adb.shell(command, true) : Adb.check(true);
+            // Port 5555 shut, paired for Wireless debugging and that's off: on again (with the permission), and again.
+            if (first.status == Adb.OFF && TvControl.bringUpWireless(app)) {
+                first = command != null ? Adb.shell(command, true) : Adb.check(true);
+            }
+            Adb.Result r = first;
             // In, and not given WRITE_SECURE_SETTINGS yet: given now, once (what it's used for: TvControl).
             if (r.status == Adb.OK && !TvControl.canWrite(app)) Adb.shell(TvControl.grantCommand(app), false);
             handler.post(() -> {
@@ -1439,15 +1691,118 @@ final class SettingsScreen {
                 if (host == null) return;
                 if (r.status == Adb.OK) {
                     then.accept(r);
+                } else if (r.status == Adb.OFF && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    offerWireless();
                 } else if (r.status == Adb.OFF) {
-                    // Debugging on, but nothing on port 5555: this TV keeps it to USB (or offers only Wireless
-                    // debugging, with its pairing code); a switch of its own may open it to the network.
+                    // Debugging on, but nothing on port 5555: this TV keeps it to USB; a switch of its own may open
+                    // it to the network.
                     explainThenOpen(R.string.adb_network_closed, this::openDeveloperOptionsNow);
+                } else if (r.status == Adb.NOT_PAIRED) {
+                    offerWireless();   // Wireless debugging turned our key down: forgotten (Revoke), pair again
                 } else {
-                    Toast.makeText(host, r.status == Adb.NO_KEY ? R.string.adb_no_key : R.string.adb_failed,
-                            Toast.LENGTH_LONG).show();
+                    MainActivity.showError(host, r.status == Adb.NO_KEY ? R.string.adb_no_key : R.string.adb_failed);
                 }
                 page.refresh();
+            });
+        });
+        };
+        if (asks) explainThenDo(R.string.adb_connection, R.string.adb_allow_prompt, go);
+        else go.run();
+    }
+
+    /**
+     * Android 11 and up, debugging on but port 5555 shut: Wireless debugging. Not on Wi-Fi, it can't be; paired,
+     * it's off (and Vibe Launcher wasn't given the permission to turn it on): Developer options; not paired: the
+     * pairing page, after a window saying what's to come.
+     */
+    private void offerWireless() {
+        if (!TvControl.onWifi(ctx)) {
+            explainThenOpen(R.string.adb_wireless_wifi, this::openDeveloperOptionsNow);
+        } else if (AdbTlsKey.paired(ctx)) {
+            explainThenOpen(R.string.adb_wireless_on, this::openDeveloperOptionsNow);
+        } else if (link.pairUrl() != null && !pages.isEmpty()) {
+            Page here = pages.get(pages.size() - 1);
+            Row from = here.rows.isEmpty() ? null : here.rows.get(0);
+            for (Row row : here.rows) if (row.view.hasFocus()) from = row;
+            if (from != null) open(pairWireless(), from);
+        } else {
+            explainThenOpen(R.string.adb_network_closed, this::openDeveloperOptionsNow);
+        }
+    }
+
+    /**
+     * Apps > Wireless debugging: a QR code for the phone's pairing page (PhoneLink), and OK for Developer options,
+     * where the TV's pairing window shows the code to type there.
+     */
+    private Page pairWireless() {
+        keepLinkUntil = System.currentTimeMillis() + 5 * 60 * 1000;
+        Page page = phone(R.string.pair_with_code, link.pairUrl(), R.string.pair_scan);
+        page.add(R.string.open_dev_options, null, this::openDevOrAbout);
+        return page;
+    }
+
+    /**
+     * The code from the phone (PhoneLink's thread): the TV's pairing window found on the network (or the port typed),
+     * paired, then connected through Wireless debugging, given WRITE_SECURE_SETTINGS (to turn Wireless debugging on
+     * by itself from now on), and Settings told. What to tell the phone, in English like the rest of its pages.
+     */
+    private String pairFromPhone(String code, String typedPort) {
+        try {
+            return pairWith(code, typedPort);
+        } finally {
+            handler.post(() -> {   // answered, whatever the answer: the page has done its job unless Settings is open
+                keepLinkUntil = 0;
+                handler.removeCallbacks(stopKeptLink);
+                if (host == null) link.stop();
+            });
+        }
+    }
+
+    private String pairWith(String code, String typedPort) {
+        Context app = ctx.getApplicationContext();
+        android.util.Log.i("VibeAdb", "pair: code from phone, typed port=" + typedPort + " wifi=" + TvControl.onWifi(app));
+        if (!TvControl.onWifi(app)) return "The TV isn't on Wi-Fi. Wireless debugging only works on Wi-Fi.";
+        int port = -1;
+        if (typedPort != null) {
+            port = Integer.parseInt(typedPort.substring(typedPort.lastIndexOf(':') + 1));
+        } else {
+            port = AdbMdns.find(app, AdbMdns.PAIRING, 8000);
+        }
+        if (port <= 0 || port > 65535) {
+            return "Vibe Launcher couldn't find the pairing window on the TV. Keep it open (Pair device with pairing "
+                    + "code), then try again, or type the port as well.";
+        }
+        int result = AdbPairing.pair(app, "127.0.0.1", port, code);
+        android.util.Log.i("VibeAdb", "pair: port=" + port + " result=" + result);
+        switch (result) {
+            case AdbPairing.OK:
+                handler.post(this::afterPairing);
+                return "Paired. On the TV, press Back until Vibe Launcher's settings show again.";
+            case AdbPairing.WRONG_CODE:
+                return "The TV turned the code down. Check it, or choose Pair device with pairing code again for a "
+                        + "new one.";
+            case AdbPairing.UNREACHABLE:
+                return "The TV's pairing window has closed. Choose Pair device with pairing code again, then send the "
+                        + "new code.";
+            case AdbPairing.NO_KEY:
+                return "This TV can't keep the key Vibe Launcher needs.";
+            default:
+                return "Pairing didn't work. Choose Pair device with pairing code again and send the new code.";
+        }
+    }
+
+    /** Paired: connected through Wireless debugging now, as OK on Network debugging would, without the windows. */
+    private void afterPairing() {
+        if (host != null) Toast.makeText(host, R.string.paired_toast, Toast.LENGTH_LONG).show();
+        for (Page page : pages) page.refresh();
+        Context app = ctx.getApplicationContext();
+        adb().execute(() -> {
+            Adb.Result r = Adb.check(false);
+            if (r.status == Adb.OK && !TvControl.canWrite(app)) Adb.shell(TvControl.grantCommand(app), false);
+            handler.post(() -> {
+                adbStatus = r.status;
+                if (r.status == Adb.OK) usedAdb = true;
+                for (Page page : pages) page.refresh();
             });
         });
     }
@@ -1463,11 +1818,7 @@ final class SettingsScreen {
     }
 
     private void openDeveloperOptionsNow() {
-        try {
-            host.startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
-        } catch (RuntimeException e) {
-            // not there on this TV: the window said where to look
-        }
+        Screens.open(host, new Intent(android.provider.Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS));
     }
 
     /**
@@ -1520,18 +1871,16 @@ final class SettingsScreen {
         }
         Intent open = pick != null ? about.setClassName(pick.packageName, pick.name)
                 : new Intent(android.provider.Settings.ACTION_SETTINGS);
-        try {
-            host.startActivity(open);
-        } catch (RuntimeException e) {
-            // the window said where to look
-        }
+        Screens.open(host, open);
     }
 
     private CharSequence adbStatusText() {
         if (adbStatus == -1) return ctx.getString(R.string.adb_checking);
-        if (adbStatus == Adb.OK) return ctx.getString(R.string.adb_ready);
-        if (adbStatus == Adb.OFF) return ctx.getString(R.string.off);
-        return ctx.getString(R.string.adb_not_allowed);
+        if (adbStatus == Adb.OK) {
+            return dot(0xFF34C759, ctx.getString(Adb.usedWireless() ? R.string.adb_connected_wireless
+                    : R.string.adb_connected_port));
+        }
+        return dot(0xFFFF453A, ctx.getString(R.string.adb_not_connected));
     }
 
     // ---- sliding between pages ---------------------------------------------------------------------
@@ -1559,7 +1908,6 @@ final class SettingsScreen {
         next.view.animate().cancel();
         next.focusable(true);
         current.opened = from;
-        current.focusable(false);
         from.view.setActivated(true);
         place(next, screenW - rightX);
         // Started once the new page is laid out, so the whole slide is seen.
@@ -1580,6 +1928,10 @@ final class SettingsScreen {
         View focus = next.opened != null ? next.opened.view : next.first();
         next.opened = null;
         focus.requestFocus();
+        // Only now, with focus on the new page: made unfocusable while one of its rows had focus, the old list
+        // handed focus down row by row, scrolling it away from the row opened (and slowly, on a long list).
+        current.focusable(false);
+        showAbout(current, from);   // under it, what the row opened is about
     }
 
     /** Back a page, everything sliding the other way: Settings closes from the first. */
@@ -1593,6 +1945,7 @@ final class SettingsScreen {
             return;
         }
         Page gone = pages.remove(pages.size() - 1);
+        pollAdb();   // back on Apps or ADB connection (from pairing, say): looked at again; stops itself elsewhere
         gone.view.animate().cancel();
         gone.view.animate().translationX(screenW - rightX).setDuration(SLIDE_MS)
                 .setInterpolator(new DecelerateInterpolator(1.6f)).withLayer().withEndAction(() -> {
@@ -1676,6 +2029,11 @@ final class SettingsScreen {
     }
 
     private void startPhoneLink() {
+        if (link != null && link.running() && System.currentTimeMillis() < keepLinkUntil) {
+            handler.removeCallbacks(stopKeptLink);   // still up for a pairing: the same page, the phone's link works
+            return;
+        }
+        if (link != null) link.stop();
         link = new PhoneLink(received -> {
             if (host == null) return;
             String[] names = {"tmdbKey", "youtubeKey", "plexToken"};
@@ -1708,6 +2066,7 @@ final class SettingsScreen {
                 SettingsScreen.this.restored();
             }
         };
+        if (!BuildConfig.STORE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) link.pairing = this::pairFromPhone;
         phoneUrl = link.start();
     }
 
@@ -1850,7 +2209,7 @@ final class SettingsScreen {
         install.setOnClickListener(v -> {
             dialog.dismiss();
             Toast.makeText(activity, R.string.update_downloading, Toast.LENGTH_SHORT).show();
-            Updater.install(activity, release, problem -> Toast.makeText(activity, problem, Toast.LENGTH_LONG).show());
+            Updater.install(activity, release, problem -> MainActivity.showError(activity, problem));
         });
         dialog.show();
         install.requestFocus();

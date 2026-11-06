@@ -95,6 +95,7 @@
     <string name="youtube_info">Med SmartTube logget ind viser YouTube-feltet videoer fra dit eget YouTube-feed. Ingen nøgle nødvendig.\n\nUden det viser en nøgle de mest populære videoer i dit land. Gratis nøgle: console.cloud.google.com → nyt projekt → aktivér YouTube Data API v3 → Loginoplysninger → Opret API-nøgle.\n\nUden begge viser det trailere til populære film.</string>
     <string name="plex_info">Baggrunde fra din egen Plex-server: Fortsæt med at se og senest tilføjet.\n\nSådan finder du den: app.plex.tv → åbn en titel → ⋯ → Hent info → Vis XML, og kopiér det, der står efter X-Plex-Token= i adressen. Hold den hemmelig som en adgangskode.</string>
     <string name="saved_from_phone">Gemt fra din telefon</string>
+    <string name="screen_missing">Dette tv har ikke den indstillingsskærm. Kig efter den i tv\'ets egne Indstillinger.</string>
     <string name="not_available">Ikke tilgængelig på dette tv</string>
     <string name="cant_open">Kan ikke åbne %1$s</string>
     <string name="smarttube_install">Installer SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s tilbage</string>
     <string name="home_key_name">Vibe Launcher-hjemknap</string>
     <string name="home_key_description">Får fjernbetjeningens hjemknap til at åbne Vibe Launcher i stedet for tv\'ets egen startskærm, og et langt tryk til at åbne tv\'ets indstillinger. Den læser intet på skærmen og sender alle andre knapper videre.</string>
-    <string name="home_key_turn_on">Slå “%1$s” til her, så hjemknappen åbner Vibe Launcher.</string>
     <string name="permissions_title">To tilladelser</string>
     <string name="permissions_why">Vibe Launcher beder nu om to tilladelser.\n\nTv-oversigter: for at vise billeder fra de kort, dine apps lægger på startskærmen.\n\nPlacering: Android viser kun Wi-Fi-netværkets navn for apps med denne tilladelse. Vibe Launcher bruger den kun til navnet og slår aldrig op, hvor tv\'et er.\n\nIngen af delene forlader tv\'et.</string>
     <string name="continue_button">Fortsæt</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Til tv\'er, der beholder deres egen startskærm: fjernbetjeningens hjemknap åbner Vibe Launcher, og holder du den inde, åbnes tv\'ets indstillinger.</string>
     <string name="home_key_agree">Accepter</string>
     <string name="home_key_steps">Næste trin: Vælg “%1$s” på listen, der åbnes, slå den til, og tryk så på hjem.</string>
+    <string name="home_key_steps_settings">Næste trin: Dette tv har ingen direkte vej til sine indstillinger for hjælpefunktioner, så Androids Indstillinger åbnes i stedet. Gå der til Enhedspræferencer &gt; Hjælpefunktioner, vælg “%1$s”, slå den til, og tryk så på hjem.</string>
     <string name="store_update">Opdater Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sikkerhedskopi og gendannelse</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Apps</string>
     <string name="apps_short">Slå apps fra, som du ikke bruger: De forbliver installeret, men kan ikke køre, fylde startskærmen eller opdateres, før du slår dem til igen. Dele, som tv\'et har brug for for at fungere, vises ikke.</string>
-    <string name="adb_connection">Netværksfejlretning</string>
-    <string name="adb_connection_short">Vibe Launcher slår apps fra via tv\'ets fejlretning, som en computer ville gøre. Slå USB-fejlretning (ADB-fejlretning eller netværksfejlretning på nogle tv\'er) til i Indstillinger for udviklere, tryk derefter på OK her, og tillad Vibe Launcher på tv\'et.</string>
-    <string name="adb_ready">Forbundet</string>
-    <string name="adb_not_allowed">Ikke tilladt endnu</string>
+    <string name="adb_connection">ADB-forbindelse</string>
+    <string name="adb_connection_short">Vibe Launcher slår apps fra via tv\'ets eget ADB, som en computer ville gøre. Åbn dette for at se, hvad der er slået til, og for at forbinde.</string>
     <string name="adb_checking">Tjekker…</string>
-    <string name="adb_allow_prompt">Sæt flueben ved Tillad altid i tv\'ets spørgsmål, og vælg derefter OK</string>
+    <string name="adb_allow_prompt">Derefter spørger tv\'et, om Vibe Launcher skal tillades: Sæt flueben ved Tillad altid, og vælg derefter OK.</string>
     <string name="adb_turn_on">Slå USB-fejlretning til i Indstillinger for udviklere (hedder ADB-fejlretning eller netværksfejlretning på nogle tv\'er), og vend så tilbage hertil.</string>
     <string name="adb_network_closed">Fejlretning er slået til, men dette tv lader endnu ikke apps nå den. Kig efter netværksfejlretning eller ADB via netværk i Indstillinger for udviklere, og slå det til. Hvis der kun er trådløs fejlretning, kan Vibe Launcher ikke bruge det endnu.</string>
     <string name="adb_failed">Tv\'et tillod det ikke</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Apps, som tv\'et har brug for</string>
     <string name="app_protected">Dit tv har brug for dette for at fungere korrekt, så Vibe Launcher slår det ikke fra. Det holder dit tv sikkert.</string>
     <string name="adb_dev_options">Slå først Indstillinger for udviklere til: Tryk syv gange på OK ved Build under Om, og vend så tilbage hertil.</string>
+    <string name="wireless_debugging">Trådløs fejlretning</string>
+    <string name="wireless_debugging_short">Til tv\'er med Android 11 og nyere, der holder netværksfejlretning lukket. Par Vibe Launcher én gang: Scan koden med din telefon, og indtast derefter den kode, som tv\'ets parringsvindue viser, på telefonen.</string>
+    <string name="paired">Parret</string>
+    <string name="not_paired">Ikke parret</string>
+    <string name="pair_scan">Scan med din telefon, og åbn derefter Indstillinger for udviklere nedenfor: Slå trådløs fejlretning til, åbn den, vælg Par enhed med parringskode, og indtast den kode, den viser, på din telefon.</string>
+    <string name="adb_wireless_on">Slå trådløs fejlretning til i Indstillinger for udviklere, og vend så tilbage hertil.</string>
+    <string name="adb_wireless_wifi">Dette tv lader ikke apps nå dets fejlretning via netværket, og dets trådløse fejlretning virker kun på Wi-Fi. Forbind tv\'et til Wi-Fi for at parre Vibe Launcher, eller kig efter netværksfejlretning i Indstillinger for udviklere.</string>
+    <string name="paired_toast">Parret med trådløs fejlretning</string>
+    <string name="adb_not_connected">Ikke forbundet</string>
+    <string name="adb_connected_port">Forbundet (port 5555)</string>
+    <string name="adb_connected_wireless">Forbundet (trådløs fejlretning)</string>
+    <string name="adb_ready_note">Vibe Launcher kan nå tv\'ets ADB: Fortsæt med Oprydning i apps og resten af Apps. Intet her skal ændres.</string>
+    <string name="adb_not_needed">Vibe Launcher har allerede ADB-adgang, så dette er ikke nødvendigt. Vil du fortsætte alligevel?</string>
+    <string name="wireless_not_running">Til, kører ikke</string>
+    <string name="wireless_not_running_short">Trådløs fejlretning er slået til, men kører ikke (nogle tv\'er stopper den, når USB-fejlretning slås fra). Slå den fra og til igen i Indstillinger for udviklere.</string>
+    <string name="adb_connect_short">Tryk på OK her for at forbinde. Hvis det ikke kan lade sig gøre endnu, viser Vibe Launcher det første, der stadig skal slås til, det nemmeste først. Første gang spørger tv\'et, om Vibe Launcher skal tillades: Sæt flueben ved Tillad altid.</string>
+    <string name="dev_options">Indstillinger for udviklere</string>
+    <string name="dev_options_short">Androids kontakter til fejlretning, skjult indtil de låses op: Tryk syv gange på OK ved Build under Om.</string>
+    <string name="usb_adb_debugging">USB-/ADB-fejlretning</string>
+    <string name="usb_adb_debugging_short">Tv\'ets kontakt til fejlretning i Indstillinger for udviklere (USB-fejlretning eller ADB-fejlretning på nogle tv\'er). På de fleste tv\'er åbner den også port 5555, som Vibe Launcher forbinder via.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 og nyere: fejlretning via Wi-Fi med en parringskode. Vibe Launcher bruger den, når port 5555 er lukket, når den er parret.</string>
+    <string name="pair_with_code">Par med kode</string>
+    <string name="open_dev_options">Åbn Indstillinger for udviklere</string>
     <string name="apps_turn_off_again">Slå fra igen</string>
     <string name="apps_turn_off_again_short">Apps, som Vibe Launcher har slået fra før, men som er slået til her nu: fra en sikkerhedskopi, der er gendannet på dette tv, eller slået til igen af en opdatering.</string>
     <string name="apps_turn_off_now">Slå fra nu</string>

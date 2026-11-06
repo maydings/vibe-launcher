@@ -95,6 +95,7 @@
     <string name="youtube_info">Kun SmartTubeen on kirjauduttu, YouTube-ruutu näyttää videoita omasta YouTube-syötteestäsi. Avainta ei tarvita.\n\nIlman sitä avain näyttää maasi suosituimmat videot. Ilmainen avain: console.cloud.google.com → uusi projekti → ota YouTube Data API v3 käyttöön → Kirjautumistiedot → Luo API-avain.\n\nIlman kumpaakaan se näyttää suosittujen elokuvien trailereita.</string>
     <string name="plex_info">Taustakuvat omalta Plex-palvelimeltasi: Jatka katselua ja äskettäin lisätyt.\n\nNäin löydät sen: app.plex.tv → avaa mikä tahansa nimike → ⋯ → Hae tiedot → Näytä XML, ja kopioi osoitteesta X-Plex-Token=-kohdan jälkeinen osa. Pidä se salassa kuin salasana.</string>
     <string name="saved_from_phone">Tallennettu puhelimesta</string>
+    <string name="screen_missing">Tässä televisiossa ei ole tätä asetusnäyttöä. Etsi sitä television omista Asetuksista.</string>
     <string name="not_available">Ei käytettävissä tässä televisiossa</string>
     <string name="cant_open">%1$s ei aukea</string>
     <string name="smarttube_install">Asenna SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s jäljellä</string>
     <string name="home_key_name">Vibe Launcherin aloitusnäyttöpainike</string>
     <string name="home_key_description">Saa kaukosäätimen aloitusnäyttöpainikkeen avaamaan Vibe Launcherin television oman aloitusnäytön sijaan ja pitkän painalluksen television asetukset. Se ei lue mitään näytöltä ja päästää kaikki muut painikkeet läpi.</string>
-    <string name="home_key_turn_on">Ota tästä käyttöön ”%1$s”, niin aloitusnäyttöpainike avaa Vibe Launcherin.</string>
     <string name="permissions_title">Kaksi lupaa</string>
     <string name="permissions_why">Vibe Launcher pyytää seuraavaksi kahta lupaa.\n\nTV-ohjelmatiedot: jotta se voi näyttää kuvia korteista, joita sovelluksesi julkaisevat aloitusnäytölle.\n\nSijainti: Android näyttää Wi-Fi-verkon nimen vain sovelluksille, joilla on tämä lupa. Vibe Launcher käyttää sitä vain nimeen eikä koskaan selvitä, missä televisio on.\n\nKumpikaan ei lähde televisiosta.</string>
     <string name="continue_button">Jatka</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Televisioille, jotka pitävät oman aloitusnäyttönsä: kaukosäätimen aloitusnäyttöpainike avaa Vibe Launcherin, ja sen painaminen pitkään avaa television asetukset.</string>
     <string name="home_key_agree">Hyväksy</string>
     <string name="home_key_steps">Seuraavaksi: valitse avautuvasta luettelosta ”%1$s”, ota se käyttöön ja paina aloitusnäyttöpainiketta.</string>
+    <string name="home_key_steps_settings">Seuraavaksi: tässä televisiossa ei ole suoraa reittiä esteettömyysasetuksiin, joten Androidin Asetukset avautuvat sen sijaan. Siirry siellä kohtaan Laiteasetukset &gt; Esteettömyys, valitse ”%1$s”, ota se käyttöön ja paina aloitusnäyttöpainiketta.</string>
     <string name="store_update">Päivitä Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Varmuuskopiointi ja palautus</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Sovellukset</string>
     <string name="apps_short">Poista käytöstä sovellukset, joita et käytä: ne pysyvät asennettuina, mutta eivät voi käynnistyä, täyttää aloitusnäyttöä tai päivittyä, ennen kuin otat ne taas käyttöön. Television toiminnalle tarpeellisia osia ei näytetä.</string>
-    <string name="adb_connection">Verkon vianetsintä</string>
-    <string name="adb_connection_short">Vibe Launcher poistaa sovelluksia käytöstä television vianetsinnän kautta, kuten tietokone tekisi. Ota USB-vianetsintä (joissakin televisioissa ADB-vianetsintä tai verkon vianetsintä) käyttöön Kehittäjäasetuksissa, paina sitten tässä OK ja salli Vibe Launcher televisiossa.</string>
-    <string name="adb_ready">Yhdistetty</string>
-    <string name="adb_not_allowed">Ei vielä sallittu</string>
+    <string name="adb_connection">ADB-yhteys</string>
+    <string name="adb_connection_short">Vibe Launcher poistaa sovelluksia käytöstä television oman ADB:n kautta, kuten tietokone tekisi. Avaa tämä nähdäksesi, mitä on käytössä, ja muodostaaksesi yhteyden.</string>
     <string name="adb_checking">Tarkistetaan…</string>
-    <string name="adb_allow_prompt">Valitse television kysymyksessä Salli aina ja valitse sitten OK</string>
+    <string name="adb_allow_prompt">Seuraavaksi televisio kysyy, sallitaanko Vibe Launcher: valitse Salli aina ja valitse sitten OK.</string>
     <string name="adb_turn_on">Ota Kehittäjäasetuksissa käyttöön USB-vianetsintä (joissakin televisioissa nimeltään ADB-vianetsintä tai verkon vianetsintä) ja palaa sitten tänne.</string>
     <string name="adb_network_closed">Vianetsintä on käytössä, mutta tämä televisio ei vielä päästä sovelluksia siihen. Etsi Kehittäjäasetuksista verkon vianetsintä tai ADB verkon kautta ja ota se käyttöön. Jos vaihtoehtona on vain langaton virheenkorjaus, Vibe Launcher ei voi vielä käyttää sitä.</string>
     <string name="adb_failed">Televisio ei sallinut sitä</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Sovellukset, joita televisio tarvitsee</string>
     <string name="app_protected">Televisiosi tarvitsee tätä toimiakseen oikein, joten Vibe Launcher ei poista sitä käytöstä. Näin televisiosi pysyy turvassa.</string>
     <string name="adb_dev_options">Ota ensin Kehittäjäasetukset käyttöön: paina Tietoja-kohdassa seitsemän kertaa OK kohdassa Koontiversio ja palaa sitten tänne.</string>
+    <string name="wireless_debugging">Langaton virheenkorjaus</string>
+    <string name="wireless_debugging_short">Televisioille, joissa on Android 11 tai uudempi ja joissa verkon vianetsintä on suljettu. Muodosta Vibe Launcherille laitepari kerran: skannaa koodi puhelimella ja kirjoita sinne koodi, jonka television laiteparin muodostusikkuna näyttää.</string>
+    <string name="paired">Laitepari muodostettu</string>
+    <string name="not_paired">Ei laiteparia</string>
+    <string name="pair_scan">Skannaa puhelimella ja avaa sitten alta Kehittäjäasetukset: ota langaton virheenkorjaus käyttöön, avaa se, valitse Muodosta laitepari laiteparikoodilla ja kirjoita sen näyttämä koodi puhelimeesi.</string>
+    <string name="adb_wireless_on">Ota langaton virheenkorjaus käyttöön Kehittäjäasetuksissa ja palaa sitten tänne.</string>
+    <string name="adb_wireless_wifi">Tämä televisio ei päästä sovelluksia vianetsintäänsä verkon kautta, ja sen langaton virheenkorjaus toimii vain Wi-Fi-yhteydellä. Yhdistä televisio Wi-Fi-verkkoon muodostaaksesi laiteparin Vibe Launcherin kanssa, tai etsi Kehittäjäasetuksista verkon vianetsintä.</string>
+    <string name="paired_toast">Laitepari muodostettu langattomalla virheenkorjauksella</string>
+    <string name="adb_not_connected">Ei yhdistetty</string>
+    <string name="adb_connected_port">Yhdistetty (portti 5555)</string>
+    <string name="adb_connected_wireless">Yhdistetty (langaton virheenkorjaus)</string>
+    <string name="adb_ready_note">Vibe Launcher saa yhteyden television ADB:hen: jatka Sovellusten siivouksella ja muulla Sovellukset-osiolla. Täällä ei tarvitse muuttaa mitään.</string>
+    <string name="adb_not_needed">Vibe Launcherilla on jo ADB-yhteys, joten tätä ei tarvita. Jatketaanko silti?</string>
+    <string name="wireless_not_running">Päällä, ei käynnissä</string>
+    <string name="wireless_not_running_short">Langaton virheenkorjaus on otettu käyttöön, mutta se ei ole käynnissä (jotkin televisiot pysäyttävät sen, kun USB-vianetsintä poistetaan käytöstä). Poista se käytöstä ja ota uudelleen käyttöön Kehittäjäasetuksissa.</string>
+    <string name="adb_connect_short">Muodosta yhteys painamalla tässä OK. Jos se ei vielä onnistu, Vibe Launcher näyttää ensimmäisen asian, joka pitää vielä ottaa käyttöön, helpoimmasta alkaen. Ensimmäisellä kerralla televisio kysyy, sallitaanko Vibe Launcher: valitse Salli aina.</string>
+    <string name="dev_options">Kehittäjäasetukset</string>
+    <string name="dev_options_short">Androidin vianetsintäkytkimet, piilossa kunnes ne avataan: paina Tietoja-kohdassa seitsemän kertaa OK kohdassa Koontiversio.</string>
+    <string name="usb_adb_debugging">USB-/ADB-vianetsintä</string>
+    <string name="usb_adb_debugging_short">Television vianetsintäkytkin Kehittäjäasetuksissa (USB-vianetsintä tai joissakin televisioissa ADB-vianetsintä). Useimmissa televisioissa se avaa myös portin 5555, jonka kautta Vibe Launcher muodostaa yhteyden.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 ja uudemmat: vianetsintä Wi-Fin kautta laiteparikoodilla. Kun laitepari on muodostettu, Vibe Launcher käyttää sitä, jos portti 5555 on suljettu.</string>
+    <string name="pair_with_code">Muodosta laitepari koodilla</string>
+    <string name="open_dev_options">Avaa Kehittäjäasetukset</string>
     <string name="apps_turn_off_again">Poista taas käytöstä</string>
     <string name="apps_turn_off_again_short">Sovellukset, jotka Vibe Launcher poisti aiemmin käytöstä mutta jotka ovat nyt täällä käytössä: tähän televisioon palautetusta varmuuskopiosta tai päivityksen takaisin käyttöön ottamina.</string>
     <string name="apps_turn_off_now">Poista käytöstä nyt</string>

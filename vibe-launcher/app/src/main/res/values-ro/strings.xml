@@ -95,6 +95,7 @@
     <string name="youtube_info">Cu SmartTube conectat, plăcuța YouTube arată videoclipuri din propriul tău feed YouTube. Nu e nevoie de cheie.\n\nFără el, o cheie arată cele mai populare videoclipuri din țara ta. Cheie gratuită: console.cloud.google.com → proiect nou → activează YouTube Data API v3 → Date de conectare → Creează cheie API.\n\nFără niciunul, arată trailere ale unor filme populare.</string>
     <string name="plex_info">Fundaluri de pe propriul tău server Plex: Continuă vizionarea și adăugate recent.\n\nCum îl găsești: app.plex.tv → deschide orice titlu → ⋯ → Obține informații → Vezi XML, apoi copiază ce urmează după X-Plex-Token= în adresă. Păstrează-l secret, ca pe o parolă.</string>
     <string name="saved_from_phone">Salvat de pe telefon</string>
+    <string name="screen_missing">Acest televizor nu are acel ecran de setări. Căutați-l în Setările televizorului.</string>
     <string name="not_available">Indisponibil pe acest televizor</string>
     <string name="cant_open">Nu se poate deschide %1$s</string>
     <string name="smarttube_install">Instalează SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">Mai sunt %1$s</string>
     <string name="home_key_name">Butonul Acasă pentru Vibe Launcher</string>
     <string name="home_key_description">Face ca butonul Acasă al telecomenzii să deschidă Vibe Launcher în locul ecranului de pornire al televizorului, iar ținut apăsat să deschidă setările televizorului. Nu citește nimic de pe ecran și lasă să treacă toate celelalte butoane.</string>
-    <string name="home_key_turn_on">Activați aici „%1$s” pentru ca butonul Acasă să deschidă Vibe Launcher.</string>
     <string name="permissions_title">Două permisiuni</string>
     <string name="permissions_why">În continuare, Vibe Launcher va cere două permisiuni.\n\nGhid TV: pentru a afișa imagini din cardurile pe care aplicațiile le publică pentru ecranul de pornire.\n\nLocație: Android arată numele rețelei Wi-Fi doar aplicațiilor cu această permisiune. Vibe Launcher o folosește doar pentru acest nume și nu verifică niciodată unde se află televizorul.\n\nNiciuna nu părăsește televizorul.</string>
     <string name="continue_button">Continuați</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">Pentru televizoarele care își păstrează propriul ecran de pornire: butonul Acasă al telecomenzii deschide Vibe Launcher, iar ținut apăsat deschide setările televizorului.</string>
     <string name="home_key_agree">Sunt de acord</string>
     <string name="home_key_steps">Apoi: în lista care se deschide, alegeți „%1$s”, activați-l și apăsați Acasă.</string>
+    <string name="home_key_steps_settings">Apoi: acest televizor nu are o cale directă către setările de accesibilitate, așa că se deschid în schimb Setările Android. Acolo, accesați Preferințe pentru dispozitiv &gt; Accesibilitate, alegeți „%1$s”, activați-l și apăsați Acasă.</string>
     <string name="store_update">Actualizați Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Backup și restabilire</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">Aplicații</string>
     <string name="apps_short">Dezactivați aplicațiile pe care nu le folosiți: rămân instalate, dar nu pot rula, nu pot umple ecranul de pornire și nu se pot actualiza până când nu le reactivați. Componentele de care televizorul are nevoie ca să funcționeze nu sunt afișate.</string>
-    <string name="adb_connection">Depanare prin rețea</string>
-    <string name="adb_connection_short">Vibe Launcher dezactivează aplicații prin depanarea televizorului, așa cum ar face un computer. Activați depanarea prin USB (depanare ADB sau depanare prin rețea pe unele televizoare) din Opțiuni pentru dezvoltatori, apoi apăsați OK aici și permiteți Vibe Launcher pe televizor.</string>
-    <string name="adb_ready">Conectat</string>
-    <string name="adb_not_allowed">Încă nepermis</string>
+    <string name="adb_connection">Conexiune ADB</string>
+    <string name="adb_connection_short">Vibe Launcher dezactivează aplicații prin ADB-ul propriu al televizorului, așa cum ar face un computer. Deschideți aici ca să vedeți ce este activat și să vă conectați.</string>
     <string name="adb_checking">Se verifică…</string>
-    <string name="adb_allow_prompt">La întrebarea de pe televizor, bifați Permiteți întotdeauna, apoi alegeți OK</string>
+    <string name="adb_allow_prompt">Apoi, televizorul întreabă dacă să permită Vibe Launcher: bifați Permiteți întotdeauna, apoi alegeți OK.</string>
     <string name="adb_turn_on">În Opțiuni pentru dezvoltatori, activați depanarea prin USB (numită depanare ADB sau depanare prin rețea pe unele televizoare), apoi reveniți aici.</string>
     <string name="adb_network_closed">Depanarea este activată, dar acest televizor nu permite încă aplicațiilor să ajungă la ea. În Opțiuni pentru dezvoltatori, căutați opțiunea depanare prin rețea sau ADB prin rețea și activați-o. Dacă are doar depanare wireless, Vibe Launcher nu o poate folosi încă.</string>
     <string name="adb_failed">Televizorul nu a permis acest lucru</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">Aplicații de care televizorul are nevoie</string>
     <string name="app_protected">Televizorul are nevoie de aceasta ca să funcționeze corect, așa că Vibe Launcher nu o va dezactiva. Astfel, televizorul rămâne în siguranță.</string>
     <string name="adb_dev_options">Mai întâi activați Opțiuni pentru dezvoltatori: în Despre, apăsați OK pe Versiune de șapte ori, apoi reveniți aici.</string>
+    <string name="wireless_debugging">Depanare wireless</string>
+    <string name="wireless_debugging_short">Pentru televizoarele cu Android 11 sau o versiune ulterioară care țin închisă depanarea prin rețea. Asociați Vibe Launcher o singură dată: scanați codul cu telefonul, apoi introduceți acolo codul afișat în fereastra de asociere a televizorului.</string>
+    <string name="paired">Asociat</string>
+    <string name="not_paired">Neasociat</string>
+    <string name="pair_scan">Scanați cu telefonul, apoi deschideți Opțiuni pentru dezvoltatori mai jos: activați depanarea wireless, deschideți-o, alegeți Asociați dispozitivul folosind codul de asociere și introduceți pe telefon codul pe care îl afișează.</string>
+    <string name="adb_wireless_on">Activați depanarea wireless în Opțiuni pentru dezvoltatori, apoi reveniți aici.</string>
+    <string name="adb_wireless_wifi">Acest televizor nu permite aplicațiilor să ajungă la depanarea sa prin rețea, iar depanarea wireless funcționează doar prin Wi-Fi. Conectați televizorul la Wi-Fi pentru a asocia Vibe Launcher sau căutați depanarea prin rețea în Opțiuni pentru dezvoltatori.</string>
+    <string name="paired_toast">Asociat prin depanarea wireless</string>
+    <string name="adb_not_connected">Neconectat</string>
+    <string name="adb_connected_port">Conectat (portul 5555)</string>
+    <string name="adb_connected_wireless">Conectat (depanare wireless)</string>
+    <string name="adb_ready_note">Vibe Launcher poate ajunge la ADB-ul televizorului: continuați cu Curățarea aplicațiilor și restul secțiunii Aplicații. Aici nu trebuie schimbat nimic.</string>
+    <string name="adb_not_needed">Vibe Launcher are deja acces ADB, deci nu este necesar. Continuați oricum?</string>
+    <string name="wireless_not_running">Activată, nu rulează</string>
+    <string name="wireless_not_running_short">Depanarea wireless este activată, dar nu rulează (unele televizoare o opresc când depanarea prin USB se dezactivează). Dezactivați-o și activați-o din nou în Opțiuni pentru dezvoltatori.</string>
+    <string name="adb_connect_short">Apăsați OK aici pentru a vă conecta. Dacă încă nu se poate, Vibe Launcher arată primul lucru care mai trebuie activat, începând cu cel mai ușor. Prima dată, televizorul întreabă dacă să permită Vibe Launcher: bifați Permiteți întotdeauna.</string>
+    <string name="dev_options">Opțiuni pentru dezvoltatori</string>
+    <string name="dev_options_short">Comutatoarele Android pentru depanare, ascunse până la deblocare: în Despre, apăsați OK pe Versiune de șapte ori.</string>
+    <string name="usb_adb_debugging">Depanare USB/ADB</string>
+    <string name="usb_adb_debugging_short">Comutatorul de depanare al televizorului, în Opțiuni pentru dezvoltatori (depanare prin USB sau, pe unele televizoare, depanare ADB). Pe majoritatea televizoarelor deschide și portul 5555, prin care se conectează Vibe Launcher.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 și versiunile ulterioare: depanare prin Wi-Fi, cu un cod de asociere. Vibe Launcher o folosește când portul 5555 este închis, după asociere.</string>
+    <string name="pair_with_code">Asociați cu cod</string>
+    <string name="open_dev_options">Deschideți Opțiuni pentru dezvoltatori</string>
     <string name="apps_turn_off_again">Dezactivați din nou</string>
     <string name="apps_turn_off_again_short">Aplicații pe care Vibe Launcher le-a dezactivat înainte, dar care acum sunt activate aici: dintr-un backup restabilit pe acest televizor sau reactivate de o actualizare.</string>
     <string name="apps_turn_off_now">Dezactivați acum</string>

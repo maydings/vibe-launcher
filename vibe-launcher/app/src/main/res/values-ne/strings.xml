@@ -95,6 +95,7 @@
     <string name="youtube_info">SmartTube मा साइन इन भएमा YouTube टाइलले तपाईंको आफ्नै YouTube फिडका भिडियो देखाउँछ। कुञ्जी चाहिँदैन।\n\nयो नभएमा, कुञ्जीले तपाईंको देशका सबैभन्दा लोकप्रिय भिडियो देखाउँछ। निःशुल्क कुञ्जी: console.cloud.google.com → नयाँ प्रोजेक्ट → YouTube Data API v3 सक्षम गर्नुहोस् → क्रेडेन्सियलहरू → API कुञ्जी बनाउनुहोस्।\n\nदुवै नभएमा लोकप्रिय फिल्मका ट्रेलर देखाउँछ।</string>
     <string name="plex_info">तपाईंकै Plex सर्भरबाट पृष्ठभूमि: हेर्न जारी राख्नुहोस् र भर्खर थपिएका।\n\nपाउन: app.plex.tv → कुनै पनि शीर्षक खोल्नुहोस् → ⋯ → जानकारी लिनुहोस् → XML हेर्नुहोस्, अनि ठेगानामा X-Plex-Token= पछिको भाग कपी गर्नुहोस्। पासवर्डजस्तै गोप्य राख्नुहोस्।</string>
     <string name="saved_from_phone">तपाईंको फोनबाट सुरक्षित गरियो</string>
+    <string name="screen_missing">यो टिभीमा त्यो सेटिङ स्क्रिन छैन। टिभीकै सेटिङहरूमा त्यो खोज्नुहोस्।</string>
     <string name="not_available">यो टिभीमा उपलब्ध छैन</string>
     <string name="cant_open">%1$s खोल्न सकिएन</string>
     <string name="smarttube_install">SmartTube इन्स्टल गर्नुहोस्</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s बाँकी</string>
     <string name="home_key_name">Vibe Launcher होम बटन</string>
     <string name="home_key_description">रिमोटको होम बटनले टिभीको आफ्नै होम स्क्रिनको सट्टा Vibe Launcher खोल्छ, र थिचिराख्दा टिभीका सेटिङ खुल्छन्। यसले स्क्रिनमा केही पढ्दैन र अरू सबै बटन जस्ताको तस्तै अगाडि जान दिन्छ।</string>
-    <string name="home_key_turn_on">होम बटनले Vibe Launcher खोलोस् भन्नका लागि यहाँ “%1$s” सक्रिय गर्नुहोस्।</string>
     <string name="permissions_title">दुई अनुमति</string>
     <string name="permissions_why">अब Vibe Launcher ले दुई अनुमति माग्नेछ।\n\nटिभी सूची: तपाईंका एपहरूले होम स्क्रिनका लागि प्रकाशित गर्ने कार्डका तस्बिर देखाउन।\n\nस्थान: Android ले वाइफाइ नेटवर्कको नाम यो अनुमति भएका एपहरूलाई मात्र देखाउँछ। Vibe Launcher ले यसलाई त्यही नामका लागि मात्र प्रयोग गर्छ र टिभी कहाँ छ भनेर कहिल्यै खोज्दैन।\n\nकुनै पनि टिभीबाहिर जाँदैन।</string>
     <string name="continue_button">जारी राख्नुहोस्</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">आफ्नै होम स्क्रिन राख्ने टिभीहरूका लागि: रिमोटको होम बटनले Vibe Launcher खोल्छ, र थिचिराख्दा टिभीका सेटिङहरू खुल्छन्।</string>
     <string name="home_key_agree">सहमत छु</string>
     <string name="home_key_steps">त्यसपछि: खुल्ने सूचीमा “%1$s” छान्नुहोस्, सक्रिय गर्नुहोस्, अनि होम थिच्नुहोस्।</string>
+    <string name="home_key_steps_settings">त्यसपछि: यो टिभीमा यसको पहुँचयोग्यता सेटिङसम्म सिधै जाने बाटो छैन, त्यसैले यसको सट्टा Android का सेटिङहरू खुल्छन्। त्यहाँ डिभाइसका प्राथमिकताहरू &gt; पहुँचयोग्यता मा जानुहोस्, “%1$s” छान्नुहोस्, सक्रिय गर्नुहोस्, अनि होम थिच्नुहोस्।</string>
     <string name="store_update">Vibe Launcher अद्यावधिक गर्नुहोस्</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ब्याकअप र पुनर्स्थापना</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">एपहरू</string>
     <string name="apps_short">तपाईंले प्रयोग नगर्ने एपहरू बन्द गर्नुहोस्: तिनीहरू इन्स्टल नै रहन्छन्, तर तपाईंले फेरि सक्रिय नगरेसम्म चल्न, होम स्क्रिन भर्न वा अपडेट हुन सक्दैनन्। टिभीलाई चल्न चाहिने भागहरू सूचीमा देखाइँदैनन्।</string>
-    <string name="adb_connection">नेटवर्क डिबगिङ</string>
-    <string name="adb_connection_short">Vibe Launcher ले कम्प्युटरले जस्तै टिभीको डिबगिङमार्फत एपहरू बन्द गर्छ। विकासकर्ताका विकल्पहरूमा USB डिबगिङ (केही टिभीमा ADB डिबगिङ वा नेटवर्क डिबगिङ) सक्रिय गर्नुहोस्, त्यसपछि यहाँ OK थिच्नुहोस् र टिभीमा Vibe Launcher लाई अनुमति दिनुहोस्।</string>
-    <string name="adb_ready">जडान भयो</string>
-    <string name="adb_not_allowed">अझै अनुमति छैन</string>
+    <string name="adb_connection">ADB कनेक्सन</string>
+    <string name="adb_connection_short">Vibe Launcher ले कम्प्युटरले जस्तै टिभीकै ADB मार्फत एपहरू निष्क्रिय पार्छ। के सक्रिय छ हेर्न र कनेक्ट गर्न यो खोल्नुहोस्।</string>
     <string name="adb_checking">जाँच गर्दै…</string>
-    <string name="adb_allow_prompt">टिभीको प्रश्नमा सधैँ अनुमति दिनुहोस् मा चिन्ह लगाउनुहोस्, त्यसपछि OK छान्नुहोस्</string>
+    <string name="adb_allow_prompt">त्यसपछि, टिभीले Vibe Launcher लाई अनुमति दिने कि नदिने भनेर सोध्छ: सधैँ अनुमति दिनुहोस् मा चिन्ह लगाउनुहोस्, त्यसपछि OK छान्नुहोस्।</string>
     <string name="adb_turn_on">विकासकर्ताका विकल्पहरूमा USB डिबगिङ सक्रिय गर्नुहोस् (केही टिभीमा यसलाई ADB डिबगिङ वा नेटवर्क डिबगिङ भनिन्छ), त्यसपछि यहाँ फर्कनुहोस्।</string>
     <string name="adb_network_closed">डिबगिङ सक्रिय छ, तर यो टिभीले अझै एपहरूलाई त्यहाँसम्म पुग्न दिँदैन। विकासकर्ताका विकल्पहरूमा नेटवर्क डिबगिङ वा नेटवर्कमार्फत ADB खोज्नुहोस् र त्यसलाई सक्रिय गर्नुहोस्। यदि यसमा वायरलेस डिबगिङ मात्र छ भने, Vibe Launcher ले अझै त्यो प्रयोग गर्न सक्दैन।</string>
     <string name="adb_failed">टिभीले यसको अनुमति दिएन</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">टिभीलाई चाहिने एपहरू</string>
     <string name="app_protected">तपाईंको टिभीलाई राम्ररी चल्न यो चाहिन्छ, त्यसैले Vibe Launcher ले यसलाई बन्द गर्दैन। यसले तपाईंको टिभीलाई सुरक्षित राख्छ।</string>
     <string name="adb_dev_options">पहिले विकासकर्ताका विकल्पहरू सक्रिय गर्नुहोस्: बारेमा मा गई बिल्ड मा सात पटक OK थिच्नुहोस्, त्यसपछि यहाँ फर्कनुहोस्।</string>
+    <string name="wireless_debugging">वायरलेस डिबगिङ</string>
+    <string name="wireless_debugging_short">नेटवर्क डिबगिङ बन्द राख्ने Android 11 र त्यसपछिका टिभीहरूका लागि। Vibe Launcher एक पटक जोडा बनाउनुहोस्: आफ्नो फोनले कोड स्क्यान गर्नुहोस्, त्यसपछि टिभीको जोडा बनाउने विन्डोले देखाएको कोड त्यहाँ टाइप गर्नुहोस्।</string>
+    <string name="paired">जोडा बनाइयो</string>
+    <string name="not_paired">जोडा बनाइएको छैन</string>
+    <string name="pair_scan">आफ्नो फोनले स्क्यान गर्नुहोस्, त्यसपछि तल विकासकर्ताका विकल्पहरू खोल्नुहोस्: वायरलेस डिबगिङ सक्रिय गर्नुहोस्, त्यसलाई खोल्नुहोस्, जोडा बनाउने कोड प्रयोग गरी डिभाइस जोडा बनाउनुहोस् रोज्नुहोस्, र त्यसले देखाउने कोड आफ्नो फोनमा टाइप गर्नुहोस्।</string>
+    <string name="adb_wireless_on">विकासकर्ताका विकल्पहरूमा वायरलेस डिबगिङ सक्रिय गर्नुहोस्, त्यसपछि यहाँ फर्कनुहोस्।</string>
+    <string name="adb_wireless_wifi">यो टिभीले एपहरूलाई नेटवर्कमार्फत यसको डिबगिङसम्म पुग्न दिँदैन, र यसको वायरलेस डिबगिङ Wi-Fi मा मात्र काम गर्छ। Vibe Launcher जोडा बनाउन टिभीलाई Wi-Fi मा जोड्नुहोस्, वा विकासकर्ताका विकल्पहरूमा नेटवर्क डिबगिङ खोज्नुहोस्।</string>
+    <string name="paired_toast">वायरलेस डिबगिङमार्फत जोडा बनाइयो</string>
+    <string name="adb_not_connected">कनेक्ट गरिएको छैन</string>
+    <string name="adb_connected_port">कनेक्ट गरियो (पोर्ट 5555)</string>
+    <string name="adb_connected_wireless">कनेक्ट गरियो (वायरलेस डिबगिङ)</string>
+    <string name="adb_ready_note">Vibe Launcher टिभीको ADB सम्म पुग्न सक्छ: एपहरूको सफाइ र एपहरू का बाँकी भागसँग अगाडि बढ्नुहोस्। यहाँ केही परिवर्तन गर्नुपर्दैन।</string>
+    <string name="adb_not_needed">Vibe Launcher सँग पहिले नै ADB पहुँच छ, त्यसैले यो आवश्यक छैन। जे भए पनि जारी राख्ने?</string>
+    <string name="wireless_not_running">सक्रिय, चलिरहेको छैन</string>
+    <string name="wireless_not_running_short">वायरलेस डिबगिङ सक्रिय छ तर चलिरहेको छैन (USB डिबगिङ निष्क्रिय हुँदा केही टिभीले यसलाई रोक्छन्)। विकासकर्ताका विकल्पहरूमा यसलाई निष्क्रिय पारेर फेरि सक्रिय गर्नुहोस्।</string>
+    <string name="adb_connect_short">कनेक्ट गर्न यहाँ OK थिच्नुहोस्। अझै सकिँदैन भने, Vibe Launcher ले अझै सक्रिय गर्नुपर्ने पहिलो कुरा देखाउँछ, सबैभन्दा सजिलो पहिले। पहिलो पटक, टिभीले Vibe Launcher लाई अनुमति दिने कि नदिने भनेर सोध्छ: सधैँ अनुमति दिनुहोस् मा चिन्ह लगाउनुहोस्।</string>
+    <string name="dev_options">विकासकर्ताका विकल्पहरू</string>
+    <string name="dev_options_short">डिबगिङका लागि Android का स्विचहरू, अनलक नगरेसम्म लुकेका: बारेमा मा गई बिल्ड मा सात पटक OK थिच्नुहोस्।</string>
+    <string name="usb_adb_debugging">USB/ADB डिबगिङ</string>
+    <string name="usb_adb_debugging_short">टिभीको डिबगिङ स्विच, विकासकर्ताका विकल्पहरूमा (USB डिबगिङ, वा केही टिभीमा ADB डिबगिङ)। धेरैजसो टिभीमा यसले पोर्ट 5555 पनि खोल्छ, जसमार्फत Vibe Launcher कनेक्ट हुन्छ।</string>
+    <string name="wireless_debugging_onoff_short">Android 11 र त्यसपछिका: जोडा बनाउने कोडसहित Wi-Fi मार्फत डिबगिङ। जोडा बनाएपछि, पोर्ट 5555 बन्द हुँदा Vibe Launcher ले यो प्रयोग गर्छ।</string>
+    <string name="pair_with_code">कोडमार्फत जोडा बनाउनुहोस्</string>
+    <string name="open_dev_options">विकासकर्ताका विकल्पहरू खोल्नुहोस्</string>
     <string name="apps_turn_off_again">फेरि बन्द गर्नुहोस्</string>
     <string name="apps_turn_off_again_short">Vibe Launcher ले पहिले बन्द गरेका तर अहिले यहाँ सक्रिय रहेका एपहरू: यो टिभीमा पुनर्स्थापित गरिएको ब्याकअपबाट, वा कुनै अपडेटले फेरि सक्रिय गरेका।</string>
     <string name="apps_turn_off_now">अहिले बन्द गर्नुहोस्</string>

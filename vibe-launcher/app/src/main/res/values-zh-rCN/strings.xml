@@ -95,6 +95,7 @@
     <string name="youtube_info">登录 SmartTube 后，YouTube 图块显示来自你自己 YouTube 订阅的视频，无需密钥。\n\n没有它时，可用密钥显示你所在国家最热门的视频。 免费密钥：console.cloud.google.com → 新建项目 → 启用 YouTube Data API v3 → 凭据 → 创建 API 密钥。\n\n两者都没有时，显示热门电影的预告片。</string>
     <string name="plex_info">来自你自己 Plex 服务器的背景图：继续观看和最近添加。\n\n获取方法：app.plex.tv → 打开任意影片 → ⋯ → 获取信息 → 查看 XML，复制地址中 X-Plex-Token= 后面的内容。请像密码一样保密。</string>
     <string name="saved_from_phone">已从手机保存</string>
+    <string name="screen_missing">这台电视没有该设置界面。请在电视自带的设置中查找。</string>
     <string name="not_available">此电视不支持</string>
     <string name="cant_open">无法打开 %1$s</string>
     <string name="smarttube_install">安装 SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">剩余 %1$s</string>
     <string name="home_key_name">Vibe Launcher 主页键</string>
     <string name="home_key_description">让遥控器的主页键打开 Vibe Launcher，而不是电视自带的主屏幕；长按则打开电视的设置。它不读取屏幕上的任何内容，其他按键都照常放行。</string>
-    <string name="home_key_turn_on">在此开启“%1$s”，按主页键即可打开 Vibe Launcher。</string>
     <string name="permissions_title">两项权限</string>
     <string name="permissions_why">接下来 Vibe Launcher 会请求两项权限。\n\n电视节目单：用于显示各应用为主屏幕发布的卡片中的图片。\n\n位置信息：Android 只向拥有此权限的应用显示 Wi-Fi 网络名称。Vibe Launcher 只把它用于这个名称，从不查看电视的位置。\n\n两者都不会离开电视。</string>
     <string name="continue_button">继续</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">适用于保留自带主屏幕的电视：按遥控器的主页键会打开 Vibe Launcher，长按则打开电视的设置。</string>
     <string name="home_key_agree">同意</string>
     <string name="home_key_steps">下一步：在打开的列表中选择“%1$s”并开启，然后按主页键。</string>
+    <string name="home_key_steps_settings">下一步：这台电视无法直接进入无障碍设置，因此会改为打开 Android 设置。请在其中前往“设备偏好设置”&gt;“无障碍”，选择“%1$s”并开启，然后按主页键。</string>
     <string name="store_update">更新 Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">备份和恢复</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">应用</string>
     <string name="apps_short">停用不用的应用：应用仍保持安装，但在重新启用前无法运行、出现在主屏幕上或更新。电视正常运行所需的部分不会列出。</string>
-    <string name="adb_connection">网络调试</string>
-    <string name="adb_connection_short">Vibe Launcher 会像电脑一样，通过电视的调试功能来停用应用。请在开发者选项中开启 USB 调试（部分电视上为 ADB 调试或网络调试），然后在此按 OK，并在电视上允许 Vibe Launcher。</string>
-    <string name="adb_ready">已连接</string>
-    <string name="adb_not_allowed">尚未允许</string>
+    <string name="adb_connection">ADB 连接</string>
+    <string name="adb_connection_short">Vibe Launcher 像电脑一样，通过电视自身的 ADB 停用应用。打开此项可查看已开启的项目并进行连接。</string>
     <string name="adb_checking">正在检查…</string>
-    <string name="adb_allow_prompt">在电视的提示中勾选“一律允许”，然后选择 OK</string>
+    <string name="adb_allow_prompt">接下来，电视会询问是否允许 Vibe Launcher：勾选“一律允许”，然后选择 OK。</string>
     <string name="adb_turn_on">请在开发者选项中开启 USB 调试（部分电视上称为 ADB 调试或网络调试），然后回到这里。</string>
     <string name="adb_network_closed">调试已开启，但这台电视暂时还不允许应用连接。请在开发者选项中找到网络调试或网络 ADB 并将其开启。如果只有无线调试，Vibe Launcher 暂时还无法使用。</string>
     <string name="adb_failed">电视未允许此操作</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">电视需要的应用</string>
     <string name="app_protected">电视需要它才能正常运行，所以 Vibe Launcher 不会停用它。这样可以保护你的电视。</string>
     <string name="adb_dev_options">请先开启开发者选项：在“关于”中，对“版本号”按七次 OK，然后回到这里。</string>
+    <string name="wireless_debugging">无线调试</string>
+    <string name="wireless_debugging_short">适用于 Android 11 及更高版本、关闭了网络调试的电视。只需配对一次 Vibe Launcher：用手机扫描二维码，然后在手机上输入电视配对窗口显示的配对码。</string>
+    <string name="paired">已配对</string>
+    <string name="not_paired">未配对</string>
+    <string name="pair_scan">请用手机扫描，然后打开下方的开发者选项：开启无线调试，进入其中，选择“使用配对码配对设备”，然后在手机上输入其显示的配对码。</string>
+    <string name="adb_wireless_on">请在开发者选项中开启无线调试，然后回到这里。</string>
+    <string name="adb_wireless_wifi">这台电视不允许应用通过网络连接调试，而且它的无线调试只能在 Wi-Fi 下使用。请将电视连接到 Wi-Fi 以配对 Vibe Launcher，或在开发者选项中查找网络调试。</string>
+    <string name="paired_toast">已通过无线调试配对</string>
+    <string name="adb_not_connected">未连接</string>
+    <string name="adb_connected_port">已连接（端口 5555）</string>
+    <string name="adb_connected_wireless">已连接（无线调试）</string>
+    <string name="adb_ready_note">Vibe Launcher 可以连接电视的 ADB：请继续使用“清理应用”及“应用”中的其他功能。此处无需更改任何内容。</string>
+    <string name="adb_not_needed">Vibe Launcher 已有 ADB 访问权限，因此无需执行此操作。仍要继续吗？</string>
+    <string name="wireless_not_running">已开启，未运行</string>
+    <string name="wireless_not_running_short">无线调试已开启但未运行（部分电视会在 USB 调试关闭时将其停止）。请在开发者选项中将其关闭后重新开启。</string>
+    <string name="adb_connect_short">在此按 OK 进行连接。如果暂时无法连接，Vibe Launcher 会显示仍需开启的第一项，从最简单的开始。首次连接时，电视会询问是否允许 Vibe Launcher：勾选“一律允许”。</string>
+    <string name="dev_options">开发者选项</string>
+    <string name="dev_options_short">Android 的调试开关，解锁前处于隐藏状态：在“关于”中，对“版本号”按七次 OK。</string>
+    <string name="usb_adb_debugging">USB/ADB 调试</string>
+    <string name="usb_adb_debugging_short">电视的调试开关，位于开发者选项中（USB 调试，部分电视上为 ADB 调试）。在大多数电视上，它还会打开端口 5555，Vibe Launcher 通过该端口连接。</string>
+    <string name="wireless_debugging_onoff_short">Android 11 及更高版本：使用配对码通过 Wi-Fi 进行调试。配对后，当端口 5555 关闭时，Vibe Launcher 会使用此方式。</string>
+    <string name="pair_with_code">使用配对码配对</string>
+    <string name="open_dev_options">打开开发者选项</string>
     <string name="apps_turn_off_again">重新停用</string>
     <string name="apps_turn_off_again_short">Vibe Launcher 之前停用过、但现在在这里已启用的应用：来自在这台电视上恢复的备份，或被更新重新启用。</string>
     <string name="apps_turn_off_now">立即停用</string>

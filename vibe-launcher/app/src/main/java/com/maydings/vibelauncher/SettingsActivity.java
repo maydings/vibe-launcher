@@ -14,6 +14,8 @@ public final class SettingsActivity extends Activity {
 
     /** Back after a language change: opens on General, where the language was picked. */
     static final String ON_GENERAL = "onGeneral";
+    /** Open on Apps > Default launcher (the top bar's Make Vibe Launcher your Home, with ADB allowed). */
+    static final String ON_DEFAULT_LAUNCHER = "onDefaultLauncher";
 
     private SettingsScreen screen;
 
@@ -28,6 +30,7 @@ public final class SettingsActivity extends Activity {
         screen = SettingsScreen.get(this);
         setContentView(screen.attach(this));
         if (getIntent().getBooleanExtra(ON_GENERAL, false)) screen.showGeneral();
+        else if (getIntent().getBooleanExtra(ON_DEFAULT_LAUNCHER, false)) screen.showDefaultLauncher();
         else screen.first().requestFocus();
     }
 

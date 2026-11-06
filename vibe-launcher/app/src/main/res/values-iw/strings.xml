@@ -95,6 +95,7 @@
     <string name="youtube_info">כשאתם מחוברים ל-SmartTube, אריח YouTube מציג סרטונים מהפיד שלכם ב-YouTube. אין צורך במפתח.\n\nבלעדיו, מפתח מציג את הסרטונים הפופולריים ביותר במדינה שלכם. מפתח חינמי: console.cloud.google.com ← פרויקט חדש ← הפעלת YouTube Data API v3 ← פרטי כניסה ← יצירת מפתח API.\n\nבלי אף אחד מהם, מוצגים טריילרים של סרטים פופולריים.</string>
     <string name="plex_info">תמונות רקע משרת ה-Plex שלכם: המשך צפייה ונוספו לאחרונה.\n\nאיך למצוא: app.plex.tv ← פתחו כותר כלשהו ← ⋯ ← קבלת מידע ← הצגת XML, והעתיקו את מה שבא אחרי X-Plex-Token= בכתובת. שמרו עליו בסוד, כמו סיסמה.</string>
     <string name="saved_from_phone">נשמר מהטלפון</string>
+    <string name="screen_missing">בטלוויזיה הזו אין את מסך ההגדרות הזה. חפשו אותו בהגדרות של הטלוויזיה עצמה.</string>
     <string name="not_available">לא זמין בטלוויזיה הזו</string>
     <string name="cant_open">לא ניתן לפתוח את %1$s</string>
     <string name="smarttube_install">התקנת SmartTube</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">נותרו %1$s</string>
     <string name="home_key_name">כפתור הבית של Vibe Launcher</string>
     <string name="home_key_description">גורם לכפתור הבית בשלט לפתוח את Vibe Launcher במקום מסך הבית של הטלוויזיה, ולחיצה ארוכה עליו פותחת את הגדרות הטלוויזיה. הוא לא קורא דבר מהמסך ומעביר הלאה את כל שאר המקשים.</string>
-    <string name="home_key_turn_on">הפעילו כאן את “%1$s” כדי שכפתור הבית יפתח את Vibe Launcher.</string>
     <string name="permissions_title">שתי הרשאות</string>
     <string name="permissions_why">בשלב הבא Vibe Launcher יבקש שתי הרשאות.\n\nלוח שידורים: כדי להציג תמונות מהכרטיסים שהאפליקציות שלכם מפרסמות למסך הבית.\n\nמיקום: Android מציג את שם רשת ה-Wi-Fi רק לאפליקציות עם ההרשאה הזו. Vibe Launcher משתמש בה רק לשם הזה ואף פעם לא בודק איפה הטלוויזיה נמצאת.\n\nאף אחת מהן לא יוצאת מהטלוויזיה.</string>
     <string name="continue_button">המשך</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">לטלוויזיות ששומרות על מסך הבית שלהן: כפתור הבית בשלט פותח את Vibe Launcher, ולחיצה ארוכה עליו פותחת את הגדרות הטלוויזיה.</string>
     <string name="home_key_agree">אני מסכים/ה</string>
     <string name="home_key_steps">השלב הבא: ברשימה שנפתחת בחרו “%1$s”, הפעילו אותו ולחצו על כפתור הבית.</string>
+    <string name="home_key_steps_settings">השלב הבא: בטלוויזיה הזו אין דרך ישירה להגדרות הנגישות שלה, ולכן נפתחות במקום זאת ההגדרות של Android. שם, עברו אל העדפות המכשיר &gt; נגישות, בחרו “%1$s”, הפעילו אותו ולחצו על כפתור הבית.</string>
     <string name="store_update">עדכון Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">גיבוי ושחזור</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">אפליקציות</string>
     <string name="apps_short">כבו אפליקציות שאתם לא משתמשים בהן: הן נשארות מותקנות, אבל לא יכולות לפעול, למלא את מסך הבית או להתעדכן עד שתפעילו אותן שוב. רכיבים שהטלוויזיה צריכה כדי לעבוד לא מופיעים ברשימה.</string>
-    <string name="adb_connection">ניפוי באגים ברשת</string>
-    <string name="adb_connection_short">Vibe Launcher מכבה אפליקציות דרך ניפוי הבאגים של הטלוויזיה, כמו שמחשב היה עושה. הפעילו ניפוי באגים ב-USB (בחלק מהטלוויזיות ניפוי באגים ב-ADB או ניפוי באגים ברשת) באפשרויות למפתחים, ואז לחצו כאן על OK ואשרו את Vibe Launcher בטלוויזיה.</string>
-    <string name="adb_ready">מחובר</string>
-    <string name="adb_not_allowed">עדיין לא אושר</string>
+    <string name="adb_connection">חיבור ADB</string>
+    <string name="adb_connection_short">Vibe Launcher משבית אפליקציות דרך ה-ADB של הטלוויזיה עצמה, כמו שמחשב היה עושה. פתחו את זה כדי לראות מה מופעל וכדי להתחבר.</string>
     <string name="adb_checking">בבדיקה…</string>
-    <string name="adb_allow_prompt">בשאלה בטלוויזיה, סמנו את האפשרות לאפשר תמיד, ואז בחרו OK</string>
+    <string name="adb_allow_prompt">לאחר מכן הטלוויזיה תשאל אם לאפשר את Vibe Launcher: סמנו את האפשרות לאפשר תמיד, ואז בחרו OK.</string>
     <string name="adb_turn_on">באפשרויות למפתחים, הפעילו ניפוי באגים ב-USB (בחלק מהטלוויזיות הוא נקרא ניפוי באגים ב-ADB או ניפוי באגים ברשת), ואז חזרו לכאן.</string>
     <string name="adb_network_closed">ניפוי הבאגים מופעל, אבל הטלוויזיה הזו עדיין לא מאפשרת לאפליקציות לגשת אליו. באפשרויות למפתחים, חפשו ניפוי באגים ברשת או ADB דרך הרשת והפעילו אותו. אם יש רק ניפוי באגים אלחוטי, Vibe Launcher עדיין לא יכול להשתמש בו.</string>
     <string name="adb_failed">הטלוויזיה לא אישרה את זה</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">אפליקציות שהטלוויזיה צריכה</string>
     <string name="app_protected">הטלוויזיה צריכה את זה כדי לעבוד כמו שצריך, ולכן Vibe Launcher לא יכבה את זה. כך הטלוויזיה שלכם נשארת בטוחה.</string>
     <string name="adb_dev_options">קודם הפעילו את האפשרויות למפתחים: במידע כללי, לחצו OK על גרסת Build שבע פעמים, ואז חזרו לכאן.</string>
+    <string name="wireless_debugging">ניפוי באגים אלחוטי</string>
+    <string name="wireless_debugging_short">לטלוויזיות עם Android 11 ומעלה ששומרות את ניפוי הבאגים ברשת סגור. צריך להתאים את Vibe Launcher פעם אחת: סרקו את הקוד בטלפון, ואז הקלידו שם את הקוד שמוצג בחלון ההתאמה של הטלוויזיה.</string>
+    <string name="paired">מותאם</string>
+    <string name="not_paired">לא מותאם</string>
+    <string name="pair_scan">סרקו בטלפון, ואז פתחו את האפשרויות למפתחים למטה: הפעילו ניפוי באגים אלחוטי, פתחו אותו, בחרו באפשרות התאמת מכשיר באמצעות קוד התאמה, והקלידו בטלפון את הקוד שהוא מציג.</string>
+    <string name="adb_wireless_on">הפעילו ניפוי באגים אלחוטי באפשרויות למפתחים, ואז חזרו לכאן.</string>
+    <string name="adb_wireless_wifi">הטלוויזיה הזו לא מאפשרת לאפליקציות לגשת לניפוי הבאגים שלה דרך הרשת, וניפוי הבאגים האלחוטי שלה פועל רק ב-Wi-Fi. חברו את הטלוויזיה ל-Wi-Fi כדי להתאים את Vibe Launcher, או חפשו ניפוי באגים ברשת באפשרויות למפתחים.</string>
+    <string name="paired_toast">הותאם באמצעות ניפוי באגים אלחוטי</string>
+    <string name="adb_not_connected">לא מחובר</string>
+    <string name="adb_connected_port">מחובר (יציאה 5555)</string>
+    <string name="adb_connected_wireless">מחובר (ניפוי באגים אלחוטי)</string>
+    <string name="adb_ready_note">ל-Vibe Launcher יש גישה ל-ADB של הטלוויזיה: אפשר להמשיך לניקוי אפליקציות ולשאר האפשרויות באפליקציות. אין צורך לשנות כאן שום דבר.</string>
+    <string name="adb_not_needed">ל-Vibe Launcher כבר יש גישת ADB, כך שאין בזה צורך. להמשיך בכל זאת?</string>
+    <string name="wireless_not_running">מופעל, לא פועל</string>
+    <string name="wireless_not_running_short">ניפוי באגים אלחוטי מופעל אבל לא פועל (חלק מהטלוויזיות עוצרות אותו כשניפוי באגים ב-USB נכבה). כבו אותו והפעילו אותו שוב באפשרויות למפתחים.</string>
+    <string name="adb_connect_short">לחצו כאן על OK כדי להתחבר. אם עדיין אי אפשר, Vibe Launcher מציג את הדבר הראשון שעדיין צריך להפעיל, מהקל ביותר. בפעם הראשונה הטלוויזיה תשאל אם לאפשר את Vibe Launcher: סמנו את האפשרות לאפשר תמיד.</string>
+    <string name="dev_options">אפשרויות למפתחים</string>
+    <string name="dev_options_short">המתגים של Android לניפוי באגים, מוסתרים עד שפותחים אותם: במידע כללי, לחצו OK על גרסת Build שבע פעמים.</string>
+    <string name="usb_adb_debugging">ניפוי באגים ב-USB/ADB</string>
+    <string name="usb_adb_debugging_short">מתג ניפוי הבאגים של הטלוויזיה, באפשרויות למפתחים (ניפוי באגים ב-USB, או ניפוי באגים ב-ADB בחלק מהטלוויזיות). ברוב הטלוויזיות הוא גם פותח את יציאה 5555, שדרכה Vibe Launcher מתחבר.</string>
+    <string name="wireless_debugging_onoff_short">Android 11 ואילך: ניפוי באגים דרך Wi-Fi, עם קוד התאמה. Vibe Launcher משתמש בו כשיציאה 5555 סגורה, אחרי ההתאמה.</string>
+    <string name="pair_with_code">התאמה באמצעות קוד</string>
+    <string name="open_dev_options">פתיחת האפשרויות למפתחים</string>
     <string name="apps_turn_off_again">לכבות שוב</string>
     <string name="apps_turn_off_again_short">אפליקציות ש-Vibe Launcher כיבה קודם ועכשיו הן פועלות כאן: מגיבוי ששוחזר בטלוויזיה הזו, או שעדכון הפעיל אותן מחדש.</string>
     <string name="apps_turn_off_now">לכבות עכשיו</string>

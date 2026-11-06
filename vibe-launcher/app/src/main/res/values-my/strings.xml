@@ -95,6 +95,7 @@
     <string name="youtube_info">SmartTube သို့ ဝင်ထားလျှင် YouTube အကွက်သည် သင့်ကိုယ်ပိုင် YouTube ဖိဒ်မှ ဗီဒီယိုများကို ပြသည်။ ကီး မလိုပါ။\n\n၎င်းမရှိလျှင် ကီးတစ်ခုက သင့်နိုင်ငံရှိ လူကြိုက်အများဆုံး ဗီဒီယိုများကို ပြသည်။ အခမဲ့ကီး- console.cloud.google.com → ပရောဂျက်အသစ် → YouTube Data API v3 ဖွင့်ပါ → အထောက်အထားများ → API ကီး ဖန်တီးရန်။\n\nနှစ်ခုစလုံး မရှိလျှင် လူကြိုက်များသော ရုပ်ရှင်များ၏ ကြော်ငြာများကို ပြသည်။</string>
     <string name="plex_info">သင့်ကိုယ်ပိုင် Plex ဆာဗာမှ နောက်ခံပုံများ- ဆက်ကြည့်ရန်နှင့် မကြာသေးမီက ထည့်ထားသည်များ။\n\nရယူရန်- app.plex.tv → မည်သည့်ခေါင်းစဉ်မဆို ဖွင့်ပါ → ⋯ → အချက်အလက် ရယူရန် → XML ကြည့်ရန်၊ လိပ်စာထဲရှိ X-Plex-Token= နောက်ကအပိုင်းကို ကူးပါ။ စကားဝှက်ကဲ့သို့ လျှို့ဝှက်ထားပါ။</string>
     <string name="saved_from_phone">သင့်ဖုန်းမှ သိမ်းပြီး</string>
+    <string name="screen_missing">ဤ TV တွင် ထိုဆက်တင်များ မျက်နှာပြင် မရှိပါ။ TV ၏ ကိုယ်ပိုင် ဆက်တင်များတွင် ရှာပါ။</string>
     <string name="not_available">ဤ TV တွင် မရနိုင်ပါ</string>
     <string name="cant_open">%1$s ကို ဖွင့်၍ မရပါ</string>
     <string name="smarttube_install">SmartTube ထည့်သွင်းရန်</string>
@@ -126,7 +127,6 @@
     <string name="time_remaining">%1$s ကျန်သည်</string>
     <string name="home_key_name">Vibe Launcher ပင်မခလုတ်</string>
     <string name="home_key_description">အဝေးထိန်း၏ ပင်မခလုတ်က TV ၏ ကိုယ်ပိုင်ပင်မစခရင်အစား Vibe Launcher ကို ဖွင့်ပြီး ဖိထားလျှင် TV ၏ ဆက်တင်များကို ဖွင့်သည်။ စခရင်ပေါ်ရှိ မည်သည့်အရာကိုမျှ မဖတ်ဘဲ အခြားခလုတ်အားလုံးကို ဆက်လက်ပေးပို့သည်။</string>
-    <string name="home_key_turn_on">ပင်မခလုတ်က Vibe Launcher ကို ဖွင့်စေရန် ဤနေရာတွင် “%1$s” ကို ဖွင့်ပါ။</string>
     <string name="permissions_title">ခွင့်ပြုချက် နှစ်ခု</string>
     <string name="permissions_why">နောက်တစ်ဆင့်တွင် Vibe Launcher က ခွင့်ပြုချက် နှစ်ခု တောင်းပါမည်။\n\nTV အစီအစဉ်စာရင်း- သင့်အက်ပ်များက ပင်မစခရင်အတွက် ထုတ်ပြန်သည့် ကတ်များမှ ပုံများကို ပြရန်။\n\nတည်နေရာ- Android သည် Wi-Fi ကွန်ရက်အမည်ကို ဤခွင့်ပြုချက်ရှိသော အက်ပ်များကိုသာ ပြသည်။ Vibe Launcher က ထိုအမည်အတွက်သာ အသုံးပြုပြီး TV ဘယ်မှာရှိသည်ကို ဘယ်တော့မှ မရှာပါ။\n\nမည်သည့်အရာမျှ TV မှ အပြင်သို့ မထွက်ပါ။</string>
     <string name="continue_button">ဆက်လုပ်ရန်</string>
@@ -137,6 +137,7 @@
     <string name="home_button_short">ကိုယ်ပိုင် ပင်မစခရင်ကို ဆက်ထားသော TV များအတွက်- အဝေးထိန်း၏ ပင်မခလုတ်က Vibe Launcher ကို ဖွင့်ပြီး ဖိထားလျှင် TV ၏ ဆက်တင်များကို ဖွင့်သည်။</string>
     <string name="home_key_agree">သဘောတူသည်</string>
     <string name="home_key_steps">နောက်တစ်ဆင့်- ပွင့်လာသောစာရင်းတွင် “%1$s” ကို ရွေးပြီး ဖွင့်ကာ ပင်မကို နှိပ်ပါ။</string>
+    <string name="home_key_steps_settings">နောက်တစ်ဆင့်- ဤ TV တွင် ၎င်း၏ အများသုံးစွဲနိုင်မှု ဆက်တင်များသို့ တိုက်ရိုက်သွားရန် နည်းလမ်းမရှိသဖြင့် Android ၏ ဆက်တင်များကို အစားထိုး ဖွင့်ပါမည်။ ထိုနေရာတွင် စက်ပစ္စည်း ရွေးချယ်မှုများ &gt; အများသုံးစွဲနိုင်မှု သို့ သွားပြီး “%1$s” ကို ရွေးကာ ဖွင့်ပြီး ပင်မကို နှိပ်ပါ။</string>
     <string name="store_update">Vibe Launcher ကို အပ်ဒိတ်လုပ်ရန်</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">အရန်သိမ်းခြင်းနှင့် ပြန်ယူခြင်း</string>
@@ -157,12 +158,10 @@
     <!-- Settings > Apps: turning apps off and on through the TV's own network debugging (Adb, TvApps, SettingsScreen). -->
     <string name="tab_apps">အက်ပ်များ</string>
     <string name="apps_short">မသုံးသော အက်ပ်များကို ပိတ်ပါ- ၎င်းတို့ ထည့်သွင်းထားလျက် ရှိနေမည်ဖြစ်သော်လည်း ပြန်ဖွင့်သည်အထိ အလုပ်မလုပ်နိုင်၊ ပင်မစခရင်ကို မဖြည့်နိုင်၊ အပ်ဒိတ်မလုပ်နိုင်ပါ။ TV အလုပ်လုပ်ရန် လိုအပ်သော အစိတ်အပိုင်းများကို စာရင်းတွင် မပြပါ။</string>
-    <string name="adb_connection">ကွန်ရက် အမှားရှာပြင်ခြင်း</string>
-    <string name="adb_connection_short">Vibe Launcher သည် ကွန်ပျူတာကဲ့သို့ပင် TV ၏ အမှားရှာပြင်ခြင်းမှတစ်ဆင့် အက်ပ်များကို ပိတ်သည်။ ဆော့ဖ်ဝဲရေးသူ ရွေးစရာများတွင် USB အမှားရှာပြင်ခြင်း (အချို့ TV များတွင် ADB အမှားရှာပြင်ခြင်း သို့မဟုတ် ကွန်ရက် အမှားရှာပြင်ခြင်း) ကို ဖွင့်ပြီး ဤနေရာတွင် OK ကို နှိပ်ကာ TV တွင် Vibe Launcher ကို ခွင့်ပြုပါ။</string>
-    <string name="adb_ready">ချိတ်ဆက်ထားသည်</string>
-    <string name="adb_not_allowed">ခွင့်မပြုရသေးပါ</string>
+    <string name="adb_connection">ADB ချိတ်ဆက်မှု</string>
+    <string name="adb_connection_short">Vibe Launcher သည် ကွန်ပျူတာတစ်လုံးကဲ့သို့ TV ၏ ကိုယ်ပိုင် ADB မှတစ်ဆင့် အက်ပ်များကို ပိတ်ပါသည်။ ဖွင့်ထားသည်များကို ကြည့်ရန်နှင့် ချိတ်ဆက်ရန် ဤအရာကို ဖွင့်ပါ။</string>
     <string name="adb_checking">စစ်ဆေးနေသည်…</string>
-    <string name="adb_allow_prompt">TV ၏ မေးခွန်းတွင် အမြဲခွင့်ပြုရန် ကို အမှန်ခြစ်ပြီး OK ကို ရွေးပါ</string>
+    <string name="adb_allow_prompt">နောက်တစ်ဆင့်တွင် TV က Vibe Launcher ကို ခွင့်ပြုမလား မေးပါမည်- အမြဲခွင့်ပြုရန် ကို အမှန်ခြစ်ပြီး OK ကို ရွေးပါ။</string>
     <string name="adb_turn_on">ဆော့ဖ်ဝဲရေးသူ ရွေးစရာများတွင် USB အမှားရှာပြင်ခြင်း (အချို့ TV များတွင် ADB အမှားရှာပြင်ခြင်း သို့မဟုတ် ကွန်ရက် အမှားရှာပြင်ခြင်းဟု ခေါ်သည်) ကို ဖွင့်ပြီး ဤနေရာသို့ ပြန်လာပါ။</string>
     <string name="adb_network_closed">အမှားရှာပြင်ခြင်း ဖွင့်ထားသော်လည်း ဤ TV သည် အက်ပ်များ ၎င်းထံ ရောက်ခွင့် မပေးသေးပါ။ ဆော့ဖ်ဝဲရေးသူ ရွေးစရာများတွင် ကွန်ရက် အမှားရှာပြင်ခြင်း သို့မဟုတ် ကွန်ရက်မှတစ်ဆင့် ADB ကို ရှာပြီး ဖွင့်ပါ။ ကြိုးမဲ့ အမှားရှာပြင်ခြင်းသာ ရှိပါက Vibe Launcher သည် ၎င်းကို မသုံးနိုင်သေးပါ။</string>
     <string name="adb_failed">TV က ခွင့်မပြုခဲ့ပါ</string>
@@ -174,6 +173,29 @@
     <string name="apps_tv_needs">TV လိုအပ်သော အက်ပ်များ</string>
     <string name="app_protected">သင့် TV ကောင်းစွာ အလုပ်လုပ်ရန် ၎င်းကို လိုအပ်သောကြောင့် Vibe Launcher က ၎င်းကို ပိတ်မည်မဟုတ်ပါ။ ၎င်းက သင့် TV ကို ဘေးကင်းစေပါသည်။</string>
     <string name="adb_dev_options">ဆော့ဖ်ဝဲရေးသူ ရွေးစရာများကို ဦးစွာ ဖွင့်ပါ- အကြောင်း ထဲတွင် တည်ဆောက်မှု ပေါ်၌ OK ကို ခုနစ်ကြိမ် နှိပ်ပြီး ဤနေရာသို့ ပြန်လာပါ။</string>
+    <string name="wireless_debugging">ကြိုးမဲ့ အမှားရှာပြင်ခြင်း</string>
+    <string name="wireless_debugging_short">ကွန်ရက် အမှားရှာပြင်ခြင်းကို ပိတ်ထားသော Android 11 နှင့်အထက် TV များအတွက်။ Vibe Launcher ကို တစ်ကြိမ် တွဲချိတ်ပါ- ဖုန်းဖြင့် ကုဒ်ကို စကင်ဖတ်ပြီး TV ၏ တွဲချိတ်ရန် ဝင်းဒိုးတွင် ပြသော ကုဒ်ကို ထိုနေရာတွင် ရိုက်ထည့်ပါ။</string>
+    <string name="paired">တွဲချိတ်ထားသည်</string>
+    <string name="not_paired">တွဲချိတ်မထားပါ</string>
+    <string name="pair_scan">ဖုန်းဖြင့် စကင်ဖတ်ပြီး အောက်ရှိ ဆော့ဖ်ဝဲရေးသူ ရွေးစရာများကို ဖွင့်ပါ- ကြိုးမဲ့ အမှားရှာပြင်ခြင်းကို ဖွင့်ပြီး ၎င်းကို ဝင်ကြည့်ကာ တွဲချိတ်ကုဒ်ဖြင့် စက်ကို တွဲချိတ်ရန် ကို ရွေးပြီး ၎င်းပြသော ကုဒ်ကို ဖုန်းတွင် ရိုက်ထည့်ပါ။</string>
+    <string name="adb_wireless_on">ဆော့ဖ်ဝဲရေးသူ ရွေးစရာများတွင် ကြိုးမဲ့ အမှားရှာပြင်ခြင်းကို ဖွင့်ပြီး ဤနေရာသို့ ပြန်လာပါ။</string>
+    <string name="adb_wireless_wifi">ဤ TV သည် အက်ပ်များကို ကွန်ရက်မှတစ်ဆင့် ၎င်း၏ အမှားရှာပြင်ခြင်းသို့ ရောက်ခွင့် မပေးဘဲ ၎င်း၏ ကြိုးမဲ့ အမှားရှာပြင်ခြင်းသည် Wi-Fi တွင်သာ အလုပ်လုပ်ပါသည်။ Vibe Launcher ကို တွဲချိတ်ရန် TV ကို Wi-Fi နှင့် ချိတ်ဆက်ပါ သို့မဟုတ် ဆော့ဖ်ဝဲရေးသူ ရွေးစရာများတွင် ကွန်ရက် အမှားရှာပြင်ခြင်းကို ရှာပါ။</string>
+    <string name="paired_toast">ကြိုးမဲ့ အမှားရှာပြင်ခြင်းဖြင့် တွဲချိတ်ပြီးပါပြီ</string>
+    <string name="adb_not_connected">ချိတ်ဆက်မထားပါ</string>
+    <string name="adb_connected_port">ချိတ်ဆက်ထားသည် (ပို့တ် 5555)</string>
+    <string name="adb_connected_wireless">ချိတ်ဆက်ထားသည် (ကြိုးမဲ့ အမှားရှာပြင်ခြင်း)</string>
+    <string name="adb_ready_note">Vibe Launcher သည် TV ၏ ADB သို့ ရောက်နိုင်ပါသည်- အက်ပ်များ ရှင်းလင်းရန် နှင့် အက်ပ်များ ၏ ကျန်အပိုင်းများကို ဆက်လုပ်ပါ။ ဤနေရာတွင် ဘာမျှ ပြောင်းရန် မလိုပါ။</string>
+    <string name="adb_not_needed">Vibe Launcher တွင် ADB သုံးခွင့် ရှိပြီးဖြစ်၍ ဤအရာ မလိုအပ်ပါ။ မည်သို့ပင်ဖြစ်စေ ဆက်လုပ်မလား။</string>
+    <string name="wireless_not_running">ဖွင့်ထားသည်၊ အလုပ်မလုပ်ပါ</string>
+    <string name="wireless_not_running_short">ကြိုးမဲ့ အမှားရှာပြင်ခြင်းကို ဖွင့်ထားသော်လည်း အလုပ်မလုပ်ပါ (USB အမှားရှာပြင်ခြင်း ပိတ်သွားသည့်အခါ အချို့ TV များက ၎င်းကို ရပ်လိုက်သည်)။ ဆော့ဖ်ဝဲရေးသူ ရွေးစရာများတွင် ၎င်းကို ပိတ်ပြီး ပြန်ဖွင့်ပါ။</string>
+    <string name="adb_connect_short">ချိတ်ဆက်ရန် ဤနေရာတွင် OK ကို နှိပ်ပါ။ မချိတ်ဆက်နိုင်သေးပါက Vibe Launcher သည် ဖွင့်ရန် ကျန်သေးသော ပထမဆုံးအရာကို အလွယ်ဆုံးမှစ၍ ပြပါမည်။ ပထမဆုံးအကြိမ်တွင် TV က Vibe Launcher ကို ခွင့်ပြုမလား မေးပါမည်- အမြဲခွင့်ပြုရန် ကို အမှန်ခြစ်ပါ။</string>
+    <string name="dev_options">ဆော့ဖ်ဝဲရေးသူ ရွေးစရာများ</string>
+    <string name="dev_options_short">အမှားရှာပြင်ခြင်းအတွက် Android ၏ ခလုတ်များ၊ လော့ခ်မဖွင့်မချင်း ဝှက်ထားသည်- အကြောင်း ထဲတွင် တည်ဆောက်မှု ပေါ်၌ OK ကို ခုနစ်ကြိမ် နှိပ်ပါ။</string>
+    <string name="usb_adb_debugging">USB/ADB အမှားရှာပြင်ခြင်း</string>
+    <string name="usb_adb_debugging_short">ဆော့ဖ်ဝဲရေးသူ ရွေးစရာများရှိ TV ၏ အမှားရှာပြင်ခြင်း ခလုတ် (USB အမှားရှာပြင်ခြင်း သို့မဟုတ် အချို့ TV များတွင် ADB အမှားရှာပြင်ခြင်း)။ TV အများစုတွင် ၎င်းသည် Vibe Launcher ချိတ်ဆက်သည့် ပို့တ် 5555 ကိုလည်း ဖွင့်ပေးပါသည်။</string>
+    <string name="wireless_debugging_onoff_short">Android 11 နှင့်အထက်- တွဲချိတ်ကုဒ်ဖြင့် Wi-Fi မှတစ်ဆင့် အမှားရှာပြင်ခြင်း။ တွဲချိတ်ပြီးနောက် ပို့တ် 5555 ပိတ်ထားသည့်အခါ Vibe Launcher က ၎င်းကို သုံးပါသည်။</string>
+    <string name="pair_with_code">ကုဒ်ဖြင့် တွဲချိတ်ရန်</string>
+    <string name="open_dev_options">ဆော့ဖ်ဝဲရေးသူ ရွေးစရာများ ဖွင့်ရန်</string>
     <string name="apps_turn_off_again">ပြန်ပိတ်ရန်</string>
     <string name="apps_turn_off_again_short">Vibe Launcher ယခင်က ပိတ်ခဲ့သော်လည်း ယခု ဤနေရာတွင် ဖွင့်ထားသော အက်ပ်များ- ဤ TV တွင် ပြန်ယူထားသော အရန်မှ ဖြစ်စေ၊ အပ်ဒိတ်တစ်ခုက ပြန်ဖွင့်လိုက်၍ ဖြစ်စေ။</string>
     <string name="apps_turn_off_now">ယခု ပိတ်ရန်</string>
