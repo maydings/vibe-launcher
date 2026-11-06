@@ -66,7 +66,7 @@ final class Adb {
     private static final String HOST = "127.0.0.1";
     private static final int PORT = 5555;
     /** How long the TV has to answer, and how long someone has to answer the TV's question. */
-    private static final int ANSWER_MS = 8000, ASK_MS = 90000;
+    private static final int ANSWER_MS = 8000, ASK_MS = 15000;
 
     private static final int CNXN = 0x4e584e43, AUTH = 0x48545541, OPEN = 0x4e45504f, OKAY = 0x59414b4f,
             CLSE = 0x45534c43, WRTE = 0x45545257, STLS = 0x534c5453;
@@ -93,6 +93,7 @@ final class Adb {
 
     private Adb() {
     }
+
 
     static void use(Context context) {
         app = context.getApplicationContext();
@@ -135,7 +136,12 @@ final class Adb {
      * and waits for it). Off the main thread.
      */
     static Result check(boolean ask) {
-        try (Link link = Link.open(ask)) {
+        return check(ask, 0);
+    }
+
+    /** As check, giving up on the TV's question at deadline (System.currentTimeMillis()); 0 for ASK_MS. */
+    static Result check(boolean ask, long deadline) {
+        try (Link link = Link.open(ask, deadline)) {
             return new Result(link.status, "");
         } catch (IOException e) {
             return new Result(FAILED, "");
@@ -144,7 +150,7 @@ final class Adb {
 
     /** Runs one shell command and returns what it printed; ask as for check. Off the main thread. */
     static Result shell(String command, boolean ask) {
-        try (Link link = Link.open(ask)) {
+        try (Link link = Link.open(ask, 0)) {
             if (link.status != OK) return new Result(link.status, "");
             return new Result(OK, link.shell(command));
         } catch (IOException e) {
@@ -180,7 +186,7 @@ final class Adb {
             out = socket != null ? socket.getOutputStream() : null;
         }
 
-        static Link open(boolean ask) throws IOException {
+        static Link open(boolean ask, long deadline) throws IOException {
             Socket s = new Socket();
             try {
                 s.connect(new InetSocketAddress(HOST, PORT), 2000);
@@ -195,7 +201,7 @@ final class Adb {
             s.setTcpNoDelay(true);
             s.setSoTimeout(ANSWER_MS);
             Link link = new Link(s);
-            link.status = link.connect(ask);
+            link.status = link.connect(ask, deadline);
             if (link.status == OK) viaWireless = false;
             return link;
         }
@@ -292,7 +298,7 @@ final class Adb {
         }
 
         /** The handshake: OK once the TV sends CNXN. */
-        private int connect(boolean ask) throws IOException {
+        private int connect(boolean ask, long deadline) throws IOException {
             send(CNXN, VERSION, MAX_DATA, "host::\0".getBytes(StandardCharsets.UTF_8));
             boolean signed = false, offered = false;
             try {
@@ -321,7 +327,9 @@ final class Adb {
                         }
                         send(AUTH, AUTH_RSAPUBLICKEY, 0, key);
                         offered = true;
-                        socket.setSoTimeout(ASK_MS);   // someone has to answer it
+                        // Someone has to answer it: until the deadline, else ASK_MS; unanswered, Not connected.
+                        int wait = deadline > 0 ? (int) Math.max(1000, deadline - System.currentTimeMillis()) : ASK_MS;
+                        socket.setSoTimeout(wait);
                     } else {
                         return NOT_ALLOWED;
                     }

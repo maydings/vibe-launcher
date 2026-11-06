@@ -1150,7 +1150,7 @@ MainActivity.showError(host, R.string.anim_short);
     }
 
     /**
-     * Apps > ADB connection: the status on its own at the top, large, with a dot (green while Vibe Launcher reaches
+     * Apps > ADB connection: the status on its own at the top, the note under it setting it apart, with a dot (green while Vibe Launcher reaches
      * the TV's own ADB, red while it doesn't) and a line under it: connected, there's nothing to do here and Debloat
      * can go ahead. OK on it connects, or goes to the first thing still missing. Under it, everything that goes into
      * it, always shown: Developer options, then the two ways in, either of them enough: USB/ADB debugging (port 5555)
@@ -1165,8 +1165,6 @@ MainActivity.showError(host, R.string.anim_short);
             if (adbStatus != Adb.OK) runAdb(page, null, r -> {
             });
         });
-        status.label.setTextSize(24);
-        status.view.setMinimumHeight((int) (76 * density));
         status.about = R.string.adb_connect_short;
         statusRow = status;
         statusNote = new TextView(ctx);
@@ -1665,10 +1663,18 @@ MainActivity.showError(host, R.string.anim_short);
         Runnable go = () -> {
         if (adbBusy || host == null) return;
         adbBusy = true;
+        if (command == null) {   // a connect (the status row): Connecting…, shown at once
+            adbConnecting = true;
+            refreshAdbPages();
+        }
         Context app = ctx.getApplicationContext();
+        // A connect gives up 15 seconds after OK: not answered on the TV by then, it's Not connected again (red),
+        // never left on Connecting.
+        long deadline = System.currentTimeMillis() + 15000;
         adb().execute(() -> {
             if (wait) {   // adbd takes a moment to open its port once debugging is on: up to ten seconds
-                for (int i = 0; i < 20 && Adb.check(false).status == Adb.OFF; i++) {
+                for (int i = 0; i < 20 && System.currentTimeMillis() < deadline - 5000
+                        && Adb.check(false).status == Adb.OFF; i++) {
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
@@ -1676,16 +1682,17 @@ MainActivity.showError(host, R.string.anim_short);
                     }
                 }
             }
-            Adb.Result first = command != null ? Adb.shell(command, true) : Adb.check(true);
+            Adb.Result first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
             // Port 5555 shut, paired for Wireless debugging and that's off: on again (with the permission), and again.
             if (first.status == Adb.OFF && TvControl.bringUpWireless(app)) {
-                first = command != null ? Adb.shell(command, true) : Adb.check(true);
+                first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
             }
             Adb.Result r = first;
             // In, and not given WRITE_SECURE_SETTINGS yet: given now, once (what it's used for: TvControl).
             if (r.status == Adb.OK && !TvControl.canWrite(app)) Adb.shell(TvControl.grantCommand(app), false);
             handler.post(() -> {
                 adbBusy = false;
+                adbConnecting = false;
                 adbStatus = r.status;
                 if (r.status == Adb.OK) usedAdb = true;
                 if (host == null) return;
@@ -1709,6 +1716,9 @@ MainActivity.showError(host, R.string.anim_short);
         if (asks) explainThenDo(R.string.adb_connection, R.string.adb_allow_prompt, go);
         else go.run();
     }
+
+    /** A connect from the status row running: Connecting…, yellow, until there's an answer (15 seconds at most). */
+    private boolean adbConnecting;
 
     /**
      * Android 11 and up, debugging on but port 5555 shut: Wireless debugging. Not on Wi-Fi, it can't be; paired,
@@ -1875,6 +1885,9 @@ MainActivity.showError(host, R.string.anim_short);
     }
 
     private CharSequence adbStatusText() {
+        if (adbConnecting) {   // OK pressed on it: yellow until there's an answer
+            return dot(0xFFFFD60A, ctx.getString(R.string.adb_connecting));
+        }
         if (adbStatus == -1) return ctx.getString(R.string.adb_checking);
         if (adbStatus == Adb.OK) {
             return dot(0xFF34C759, ctx.getString(Adb.usedWireless() ? R.string.adb_connected_wireless

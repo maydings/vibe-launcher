@@ -1,0 +1,2 @@
+* Settings > Apps > ADB connection: the status is a regular row again, and the help texts are shorter.
+* Pressing OK on the status shows a yellow "Connecting…" until there's an answer, and gives up after 15 seconds instead of waiting.
