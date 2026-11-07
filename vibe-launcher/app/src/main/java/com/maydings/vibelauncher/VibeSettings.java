@@ -244,9 +244,12 @@ final class VibeSettings {
         prefs.edit().putStringSet(APPS_OFF, new java.util.HashSet<>(pkgs)).apply();
     }
 
-    /** Debugging turned off when Settings closes, once Settings > Apps has used it (off by default; TvControl). */
+    /**
+     * Debugging turned off when Settings closes, once Settings > Advanced has used it (TvControl). On by default, so
+     * the TV's ADB is only open while it's being used; off for people who also reach the TV from a computer.
+     */
     boolean adbOffWhenDone() {
-        return prefs.getBoolean(ADB_OFF_WHEN_DONE, false);
+        return prefs.getBoolean(ADB_OFF_WHEN_DONE, true);
     }
 
     void setAdbOffWhenDone(boolean off) {

@@ -1,0 +1,1 @@
+* Debugging is turned back off when you leave Settings, by default, so the TV's ADB is only on while it's being used. Settings → Advanced → Turn debugging off when done switches it off if you also use ADB from a computer.
