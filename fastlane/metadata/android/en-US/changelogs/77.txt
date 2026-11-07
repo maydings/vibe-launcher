@@ -1,0 +1,2 @@
+* Settings → Appearance → Highlight color shows the whole color wheel when it opens.
+* Pressing Home with the full-screen picture up brings your apps back, instead of the app's name showing over the picture.
