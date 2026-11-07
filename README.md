@@ -1,7 +1,10 @@
 # Vibe Launcher
 
 A home screen for Android TV and Google TV, and a way to clean the junk off your TV. Version 4 does both
-from the TV itself. You don't need a computer, a cable or a script, just a TV that's online.
+from the TV itself. You don't need a computer, a cable or a script, just a TV that's online (and a phone\*).
+
+\* Only if your TV has nothing but Wireless debugging (some Google TV devices): it needs a one-time pairing
+with a code typed on a phone.
 
 No ads, no accounts, no tracking. Free and open source.
 
@@ -67,10 +70,9 @@ Leave Home alone for a minute and it turns into a slideshow of all of it.
 Most TVs come with apps you never asked for that run in the background, fill the home screen and slow
 everything down. Vibe Launcher can turn them off, from the TV, the same way a computer with ADB would.
 
-Turn on USB debugging in your TV's Developer options, and Vibe Launcher connects to the TV's own ADB. Newer
-Google TV devices (Chromecast with Google TV, Google TV Streamer) keep that shut and use Wireless debugging
-instead. Pairing it takes your phone: scan the QR code, and type the 6-digit code the TV shows on the phone,
-so the TV's pairing screen stays open. You only do this once. Then:
+Open **Settings → Advanced** and it tells you what to switch on, one step at a time, until it's connected to
+the TV's own ADB. On TVs that only have Wireless debugging, that includes the one-time pairing with your
+phone. It turns debugging back off when you leave Settings. Then:
 
 - **Clean-up lists**: tested lists from the [Clean Your TV](https://github.com/Gathin23/cleanyourtv)
   community, with your TV's brand and model at the top. Pick one, untick anything you want to keep, and
@@ -92,6 +94,11 @@ API keys, and the Advanced tab for the cleanup. Anything long to type, like an A
 comes from your phone: scan the QR code on screen and do it there.
 
 | ![Settings](vibe-launcher/docs/settings-main.jpg) | ![Film & show sources, in the order they're tried](vibe-launcher/docs/settings-sources.jpg) |
+|---|---|
+
+Pick the highlight color for whatever's focused on a color wheel, with a preview on a white tile.
+
+| ![Highlight color: a color wheel and a preview of the focus on a white tile](vibe-launcher/docs/color-wheel.jpg) | ![Advanced: ADB connection, Debloat, Default launcher](vibe-launcher/docs/settings-advanced.jpg) |
 |---|---|
 
 Also in there:
