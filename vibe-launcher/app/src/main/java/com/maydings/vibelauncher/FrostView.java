@@ -78,6 +78,18 @@ public class FrostView extends View {
         backdrop = view;
     }
 
+    /**
+     * The minimal top bar: no strip of its own over the pictures (no tint for a backdrop, no line), only the
+     * frost while tiles are scrolled up under it, its line fading in with it.
+     */
+    private boolean onlyOverTiles;
+
+    void setOnlyOverTiles(boolean only) {
+        if (onlyOverTiles == only) return;
+        onlyOverTiles = only;
+        invalidate();
+    }
+
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -286,7 +298,7 @@ public class FrostView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         float line = getResources().getDisplayMetrics().density;
-        float tint = Math.max(amount, under);
+        float tint = onlyOverTiles ? amount : Math.max(amount, under);
         if (tint > 0f) {
             dst.set(0, 0, getWidth(), getHeight());
             // Full strength: the frost is transparent where nothing is underneath, and it stands in for
@@ -297,7 +309,7 @@ public class FrostView extends View {
         }
         // The bar's bottom line, always and at full strength: fading with the tint, it went and came back as
         // the grid scrolled under the bar or away.
-        fillPaint.setColor(HAIRLINE);
+        fillPaint.setColor(onlyOverTiles ? scaleAlpha(HAIRLINE, amount) : HAIRLINE);
         canvas.drawRect(0, getHeight() - line, getWidth(), getHeight(), fillPaint);
     }
 

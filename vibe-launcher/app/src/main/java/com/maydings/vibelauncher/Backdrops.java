@@ -126,9 +126,12 @@ final class Backdrops {
     private static final Uri WATCH_NEXT = Uri.parse("content://android.media.tv/watch_next_program");
     private static final String[] COLUMNS = {"package_name", "intent_uri", "title", "poster_art_uri", "thumbnail_uri"};
     private static final int FIRST_IMAGE = 3;   // COLUMNS from here on are image URIs
+    /** Preview cards with the app's own id for the card last (Nuvio's carries the title's IMDb id). */
+    private static final String[] PREVIEW_COLUMNS = {"package_name", "intent_uri", "title", "poster_art_uri",
+            "thumbnail_uri", "internal_provider_id"};
     /** Watch Next rows also say whether you're watching it, and when you last did. */
     private static final String[] WATCH_NEXT_COLUMNS = {"package_name", "intent_uri", "title", "poster_art_uri",
-            "thumbnail_uri", "watch_next_type", "last_engagement_time_utc_millis", "browsable"};
+            "thumbnail_uri", "watch_next_type", "last_engagement_time_utc_millis", "browsable", "internal_provider_id"};
     /** Watch Next types for something started: part-way through (CONTINUE), or the next episode (NEXT). */
     private static final int CONTINUE = 0, NEXT = 1;
     private static final String YOUTUBE = "com.google.android.youtube.tv";
@@ -151,6 +154,8 @@ final class Backdrops {
     private static final int POOL_TRIES = 60;     // lookups and downloads for a whole pool (5 a still)
     private static final int GUIDE_IMAGES = POOL_SIZE * WALL;  // most fetched to fill the pool with walls
     static final long POOL_MS = 6L * 60 * 60 * 1000;
+    /** HDHomeRun's pictures are what's on now, with its channel and time left on Play: kept that fresh. */
+    private static final long ON_NOW_MS = 30L * 60 * 1000;
     /**
      * How stills are stored: lossless, since a second lossy save (JPEG) showed in the darkened gradients.
      * Part of the pool's fingerprint, so changing it rebuilds every pool.
@@ -251,6 +256,7 @@ final class Backdrops {
         hdHomeRun = new HdHomeRun(context);
         worker.prestartCoreThread();   // waiting on the queue, so jobs can go straight to its front
         builder.execute(this::prune);
+        builder.execute(() -> hdHomeRun.restore(resolver));   // the pill's channel for pictures read back from disk
     }
 
     /**
@@ -416,8 +422,14 @@ final class Backdrops {
 
     /** The time left on what this link opens, as of the last openCarousel; 0 when not known. */
     long remainingMs(String link) {
+        if (HdHomeRun.isChannel(link)) return hdHomeRun.remainingMs(link);
         Watching w = link == null ? null : watching.get(link);
         return w == null ? 0 : w.remainingMs();
+    }
+
+    /** "2.2 WCBSDT2" when the link is one of the HDHomeRun tuner's channels, else null. */
+    String channelLabel(String link) {
+        return HdHomeRun.isChannel(link) ? hdHomeRun.channelLabel(link) : null;
     }
 
     /**
@@ -591,7 +603,7 @@ final class Backdrops {
     private synchronized long dueAt(String pkg) {
         Pool p = pool(pkg);
         long at = p == null || !p.fingerprint.equals(fingerprint()) ? 0
-                : p.built + (p.entries.isEmpty() ? EMPTY_RETRY_MS : POOL_MS);
+                : p.built + (p.entries.isEmpty() ? EMPTY_RETRY_MS : pkg.equals(HDHOMERUN) ? ON_NOW_MS : POOL_MS);
         Long tried = attempted.get(pkg);
         return tried != null ? Math.max(at, tried + RETRY_MS) : at;
     }
@@ -949,6 +961,8 @@ final class Backdrops {
          */
         boolean ownArt;
         String logo;
+        /** The title's IMDb id, when the app put it on the card (Nuvio: "wn_tt0903747_s1e2"), else null. */
+        String imdb;
 
         Card(String title, boolean badged) {
             this.title = title;
@@ -968,7 +982,9 @@ final class Backdrops {
         final String pkg;
         final int max, maxTries;
         final List<Card> cards;
-        final TitleArt titleArt;
+        /** The artwork sources switched on, in the person's order (VibeSettings.artOrder). */
+        final List<String> sources = new ArrayList<>();
+        final boolean byTitle;
         final List<Choice> sharp = new ArrayList<>(), walls = new ArrayList<>();
         final List<File> wall = new ArrayList<>();
         File plain;   // first unbadged low-res card, the fallback when there aren't enough for a wall
@@ -982,8 +998,9 @@ final class Backdrops {
             this.max = max;
             this.maxTries = maxTries;
             cards = cards(pkg);
-            // Films and shows by title: TMDB with a key, Stremio without. Not for video sites' video names.
-            titleArt = isVideoSite(pkg) ? null : tmdb.enabled() ? tmdb : stremio;
+            for (String s : settings.artOrder()) if (settings.artOn(s)) sources.add(s);
+            // Films and shows by title, not video sites' video names.
+            byTitle = !isVideoSite(pkg);
         }
 
         /** The next card. False when done. */
@@ -1005,19 +1022,59 @@ final class Backdrops {
             return false;
         }
 
+        /**
+         * The card's backdrop from the first source, in the person's order, that has one. A card whose art comes
+         * with its own name and logo (Plex) keeps its own art, whatever the order.
+         */
         private void card(Card card) {
-            if (titleArt != null && card.title != null && !card.ownArt) {
-                tries++;
-                TitleArt.Art art = titleArt.lookup(card.title);
-                if (art != null && used.add(art.backdrop) && !unsuitable.contains(art.backdrop)) {
-                    File file = fetch(art.backdrop, true);
-                    if (file != null) {
-                        File logo = art.logo != null && !unsuitable.contains(art.logo) ? fetch(art.logo, false) : null;
-                        sharp.add(new Choice(Collections.singletonList(file), logo, card.title, card.link));
-                        return;
-                    }
-                }
+            if (card.ownArt) {
+                ownArt(card);
+                return;
             }
+            boolean named = byTitle && card.title != null;
+            for (String source : sources) {
+                TitleArt.Art art = null;
+                switch (source) {
+                    case VibeSettings.ART_TMDB:
+                        if (named && tmdb.enabled()) {
+                            tries++;
+                            art = tmdb.lookup(card.title);
+                        }
+                        break;
+                    case VibeSettings.ART_ID:
+                        art = Stremio.byImdb(card.imdb);
+                        break;
+                    case VibeSettings.ART_STREMIO:
+                        if (named) {
+                            tries++;
+                            art = stremio.lookup(card.title);
+                        }
+                        break;
+                    case VibeSettings.ART_OWN:
+                        if (ownArt(card)) return;
+                        continue;
+                    default:
+                        continue;
+                }
+                if (art != null && titleArt(card, art)) return;
+            }
+        }
+
+        /** A clean backdrop (and logo) for the card's title; false when it couldn't be had. */
+        private boolean titleArt(Card card, TitleArt.Art art) {
+            if (!used.add(art.backdrop) || unsuitable.contains(art.backdrop)) return false;
+            File file = fetch(art.backdrop, true);
+            if (file == null) return false;
+            File logo = art.logo != null && !unsuitable.contains(art.logo) ? fetch(art.logo, false) : null;
+            sharp.add(new Choice(Collections.singletonList(file), logo, card.title, card.link));
+            return true;
+        }
+
+        /**
+         * The card's own picture, one per card: true when it's sharp (a backdrop of its own). A low-res one only
+         * goes toward a wall of four, the fallback when nothing sharp turns up; the next source is still tried.
+         */
+        private boolean ownArt(Card card) {
             for (String url : card.images) {
                 if (unsuitable.contains(url) || !used.add(url)) continue;
                 if (tries++ >= maxTries) break;
@@ -1029,6 +1086,7 @@ final class Backdrops {
                     if (!card.badged) {
                         sharp.add(new Choice(Collections.singletonList(file), logo, card.ownArt ? card.title : null,
                                 card.link));
+                        return true;
                     }
                 } else {
                     if (plain == null && !card.badged) {
@@ -1039,6 +1097,7 @@ final class Backdrops {
                 }
                 break;   // one image per card
             }
+            return false;
         }
 
         private void addToWall(File file) {
@@ -1080,10 +1139,15 @@ final class Backdrops {
         if (pkg.equals(HDHOMERUN)) {
             // What's on the user's tuner now: each title looked up for a sharp backdrop, else the guide's image.
             List<Card> cards = new ArrayList<>();
+            // Play tunes the picture's channel in the TV's own player: only once the TV has the HDHomeRun
+            // channels in its channel list (else no link, and Play opens the HDHomeRun app as before).
+            Map<String, String> links = hdHomeRun.channelLinks(resolver);
             for (HdHomeRun.Show show : hdHomeRun.onNow()) {
                 Card card = new Card(show.title, false);
                 card.images.add(show.image);
                 card.minWidth = GUIDE_WIDTH;
+                String link = links.get(show.number);
+                card.link = link != null ? link : show.number.isEmpty() ? null : HdHomeRun.CHANNEL_MARK + show.number;
                 cards.add(card);
             }
             Collections.shuffle(cards, random);
@@ -1119,11 +1183,12 @@ final class Backdrops {
         for (Uri table : new Uri[]{WATCH_NEXT, PREVIEW}) {
             boolean watchNext = table == WATCH_NEXT;
             // Filtering by package in the query isn't allowed without system permissions; read all.
-            try (Cursor c = resolver.query(table, watchNext ? WATCH_NEXT_COLUMNS : COLUMNS, null, null, null)) {
+            try (Cursor c = resolver.query(table, watchNext ? WATCH_NEXT_COLUMNS : PREVIEW_COLUMNS, null, null, null)) {
                 while (c != null && c.moveToNext()) {
                     if (!sources.contains(c.getString(0))) continue;
                     Card card = new Card(c.getString(2), badged(c.getString(1)));
                     card.link = c.getString(1);
+                    card.imdb = imdbId(c.getString(watchNext ? 8 : 5), card.link);
                     for (int i = FIRST_IMAGE; i < COLUMNS.length; i++) {   // the image columns, in both tables
                         String url = c.getString(i);
                         if (url == null || url.isEmpty() || !seen.add(url)) continue;
@@ -1180,6 +1245,18 @@ final class Backdrops {
     }
 
     /** Video sites: their card titles are video names, not films or shows to look up on TMDB. */
+    private static final java.util.regex.Pattern IMDB = java.util.regex.Pattern.compile("(?<![A-Za-z0-9])tt\\d{5,10}(?!\\d)");
+
+    /** The title's IMDb id in the card's own id (Nuvio's "wn_tt0903747_s1e2"), else in its link; null for none. */
+    static String imdbId(String providerId, String link) {
+        for (String s : new String[]{providerId, link}) {
+            if (s == null) continue;
+            java.util.regex.Matcher m = IMDB.matcher(s);
+            if (m.find()) return m.group();
+        }
+        return null;
+    }
+
     private static boolean isVideoSite(String pkg) {
         if (pkg.startsWith(YOUTUBE)) return true;   // also YouTube Kids (com.google.android.youtube.tvkids)
         for (String s : SMARTTUBE) if (s.equals(pkg)) return true;
@@ -1300,7 +1377,7 @@ final class Backdrops {
      * middle of the picture nearly untouched. Baked into the image once, here on the worker thread,
      * instead of a full-screen layer the GPU would paint on every frame.
      */
-    private static void darken(Bitmap bitmap) {
+    static void darken(Bitmap bitmap) {
         Canvas canvas = new Canvas(bitmap);
         Paint scrim = new Paint();
         scrim.setShader(new LinearGradient(0, 0, 0, bitmap.getHeight(),

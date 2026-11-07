@@ -29,6 +29,15 @@ final class Stremio implements TitleArt {
         cache = context.getSharedPreferences("stremio_cache", Context.MODE_PRIVATE);
     }
 
+    /**
+     * Art for a title known by its IMDb id (an app put it on its card: Nuvio does): metahub's backdrop and logo,
+     * no search, no key. A title metahub has no backdrop for answers 404 when fetched, and the next source is tried.
+     */
+    static Art byImdb(String id) {
+        return id == null || !id.matches("tt\\d{5,10}") ? null
+                : new Art(IMAGES + "background/large/" + id + "/img", IMAGES + "logo/large/" + id + "/img");
+    }
+
     @Override
     public Art lookup(String title) {
         String key = TitleArt.normalize(title);

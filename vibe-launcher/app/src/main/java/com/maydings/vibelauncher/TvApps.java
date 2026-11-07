@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  * TV's own off to make Vibe Launcher Home is a step of its own). Apps the system keeps running at all times
  * (persistent) too. Kept on the safe side: more is left out than strictly has to be.
  * <p>
- * What's turned off here is remembered (VibeSettings.appsOff, so a backup keeps it too): Turn all back on
+ * What's turned off here is remembered (VibeSettings.appsOff; this TV's own, never in a backup): Turn all back on
  * undoes exactly that, whatever else was turned off by other means.
  */
 final class TvApps {
@@ -154,8 +154,7 @@ final class TvApps {
     }
 
     /**
-     * The apps turned off here before that are on now and may be turned off: from a backup restored on this
-     * TV (the record comes with the settings; the apps don't change), or turned back on by an update. Not the
+     * The apps turned off here before that are on now and may be turned off: turned back on by an update. Not the
      * ones missing here (they may come later) or that this TV needs. By name.
      */
     static List<App> toTurnOffAgain(Context context) {

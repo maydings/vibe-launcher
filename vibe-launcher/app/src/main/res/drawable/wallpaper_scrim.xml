@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Over a video wallpaper (WallpaperVideo): the darkening Backdrops bakes into pictures (Backdrops.darken), so the
+     clock and the dock read the same over a video as over a still. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="270"
+        android:startColor="#B3000000"
+        android:centerColor="#40000000"
+        android:centerY="0.38"
+        android:endColor="#F2000000" />
+</shape>

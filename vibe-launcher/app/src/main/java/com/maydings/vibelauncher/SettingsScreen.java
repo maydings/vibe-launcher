@@ -310,7 +310,7 @@ final class SettingsScreen {
     /** The SettingsActivity it's on, while it is: what opens other screens, dialogs and the keyboard. */
     private Activity host;
     private String language;
-    private final String[] keys = new String[3];   // TMDB, YouTube, Plex, as saved
+    private final String[] keys = new String[4];   // TMDB, YouTube, Plex, Pexels, as saved
     private Row editing;
     private int editingKey;
 
@@ -355,6 +355,8 @@ final class SettingsScreen {
         root = new Page(ctx.getString(R.string.settings));
         generalRow = root.link(R.string.tab_general, null, this::general);
         root.link(R.string.tab_appearance, null, this::appearance);
+        root.link(R.string.tab_backdrops, null, this::backdrops);
+        root.link(R.string.tab_weather, null, this::weather);
         root.link(R.string.tab_keys, null, this::apiKeys);
         // Turning apps off goes through the TV's ADB, which Play wouldn't take: the adb build only.
         if (!BuildConfig.STORE) appsRootRow = root.link(R.string.tab_apps, null, this::apps);
@@ -373,6 +375,7 @@ final class SettingsScreen {
         keys[0] = settings.tmdbKey();
         keys[1] = settings.youtubeKey();
         keys[2] = settings.plexToken();
+        keys[3] = settings.pexelsKey();
         pages.clear();
         pages.add(root);
         root.view.animate().cancel();
@@ -494,15 +497,11 @@ final class SettingsScreen {
         Page page = new Page(ctx.getString(R.string.tab_general));
         page.link(R.string.language, () -> language.isEmpty()
                 ? ctx.getString(R.string.language_system) : Lang.name(language), this::languages);
-        page.add(R.string.reload_backdrops, null, () -> {
-            MainActivity home = home();
-            if (home != null) home.reloadBackdrops();
-            Toast.makeText(host, R.string.backdrops_reloading, Toast.LENGTH_SHORT).show();
-        });
-        page.link(R.string.picture_format, () -> ctx.getString(settings.jpegStills() ? R.string.picture_jpeg
-                : R.string.picture_png), this::pictureFormat);
         page.toggle(R.string.power_on_home, settings::powerOnHome, settings::setPowerOnHome);
         page.link(R.string.back_button, () -> backName(settings.backAction()), this::backAction);
+        Row channelKeys = page.toggle(R.string.ignore_channel_keys, settings::ignoreChannelKeys,
+                settings::setIgnoreChannelKeys);
+        channelKeys.about = R.string.ignore_channel_keys_short;
         // The Home button service, on or off at any time (Home offers it once, on its first start): while
         // Vibe Launcher isn't the TV's Home, or while it's on. On explains it first and opens Accessibility;
         // Off turns it off here.
@@ -649,6 +648,9 @@ final class SettingsScreen {
 
     private Page appearance() {
         Page page = new Page(ctx.getString(R.string.tab_appearance));
+        Row bar = page.link(R.string.top_bar, () -> ctx.getString(settings.topBarMinimal()
+                ? R.string.top_bar_minimal : R.string.top_bar_full), this::topBar);
+        bar.about = R.string.top_bar_short;
         page.link(R.string.tiles_per_row, () -> String.valueOf(MainActivity.COLUMNS), this::tiles);
         page.link(R.string.dock_apps, () -> String.valueOf(MainActivity.DOCK), this::dockApps);
         page.toggle(R.string.hide_inactive_inputs, settings::hideInactiveInputs, settings::setHideInactiveInputs);
@@ -772,6 +774,488 @@ MainActivity.showError(host, R.string.anim_short);
         return page;
     }
 
+    // ---- weather -----------------------------------------------------------------------------------
+
+    private static final int[] WEATHER_STYLES = {R.string.weather_style_sky, R.string.weather_style_high_low,
+            R.string.weather_style_temp};
+
+    /**
+     * Weather: the line under the date on Home (Weather) on or off, what it shows, in which degrees, and for where.
+     * Home looks it up again when it comes back (onResume), so a change here shows as Settings closes.
+     */
+    private Page weather() {
+        Page page = new Page(ctx.getString(R.string.tab_weather));
+        page.footnote = R.string.weather_credit;   // Open-Meteo's terms ask for it
+        Row on = page.toggle(R.string.weather_show, settings::weatherOn, settings::setWeatherOn);
+        on.about = R.string.weather_show_short;
+        Row style = page.link(R.string.weather_line, () -> ctx.getString(WEATHER_STYLES[
+                Math.max(0, Math.min(WEATHER_STYLES.length - 1, settings.weatherStyle()))]), this::weatherStyle);
+        style.about = R.string.weather_line_short;
+        page.link(R.string.weather_units, () -> unitsName(settings.weatherUnits()), this::weatherUnits);
+        Row where = page.link(R.string.weather_location, this::placeName, this::weatherLocation);
+        where.about = R.string.weather_location_short;
+        return page;
+    }
+
+    private Page weatherStyle() {
+        Page page = new Page(ctx.getString(R.string.weather_line));
+        for (int i = 0; i < WEATHER_STYLES.length; i++) {
+            int value = i;
+            // Picked, it's ticked and the list stays: Back or Left goes back.
+            Row row = page.add(WEATHER_STYLES[i], () -> value == settings.weatherStyle() ? "✓" : "", () -> {
+                settings.setWeatherStyle(value);
+                page.refresh();
+            });
+            if (i == settings.weatherStyle()) page.opened = row;
+        }
+        return page;
+    }
+
+    private String unitsName(int units) {
+        if (units == VibeSettings.UNITS_C) return "°C";
+        if (units == VibeSettings.UNITS_F) return "°F";
+        return ctx.getString(R.string.weather_units_auto, Weather.fahrenheitHere() ? "°F" : "°C");
+    }
+
+    private Page weatherUnits() {
+        Page page = new Page(ctx.getString(R.string.weather_units));
+        for (int units : new int[]{VibeSettings.UNITS_AUTO, VibeSettings.UNITS_C, VibeSettings.UNITS_F}) {
+            Row row = page.add(unitsName(units), () -> units == settings.weatherUnits() ? "✓" : "", () -> {
+                settings.setWeatherUnits(units);
+                page.refresh();
+            });
+            if (units == settings.weatherUnits()) page.opened = row;
+        }
+        return page;
+    }
+
+    /** The place the weather is for: the city picked, or Automatic (with the city it found, once known). */
+    private CharSequence placeName() {
+        Weather.Place picked = settings.weatherPlace();
+        if (picked != null) return picked.name;
+        String auto = Weather.autoPlaceName(ctx);
+        return auto != null ? ctx.getString(R.string.weather_auto) + " (" + auto + ")" : ctx.getString(R.string.weather_auto);
+    }
+
+    /** Matches for the city typed on Weather > Location, under the search row; picked, one is the weather's. */
+    private final List<Row> cityRows = new ArrayList<>();
+
+    /**
+     * Weather > Location: Automatic (the TV's city, from its internet address), the city picked if there is one,
+     * and a search: type a city, Done, and its matches come under it to pick from.
+     */
+    private Page weatherLocation() {
+        Page page = new Page(ctx.getString(R.string.weather_location));
+        page.footnote = R.string.weather_location_short;
+        cityRows.clear();
+        Row auto = page.add(R.string.weather_auto, () -> settings.weatherPlace() == null ? "✓" : "", () -> {
+            settings.setWeatherPlace(null);
+            page.refresh();
+        });
+        String found = Weather.autoPlaceName(ctx);
+        if (found != null) auto.aboutText = found;
+        page.opened = auto;
+        Weather.Place picked = settings.weatherPlace();
+        if (picked != null) {
+            Row city = page.add(picked.name, () -> picked.name.equals(placeNameIfPicked()) ? "✓" : "", () -> {
+                settings.setWeatherPlace(picked);
+                page.refresh();
+            });
+            page.opened = city;
+        }
+        Row search = page.add(R.string.weather_search, null, null);
+        search.field = (EditText) ((android.view.ViewStub) search.view.findViewById(R.id.fieldStub)).inflate();
+        search.field.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_CAP_WORDS);
+        search.action = () -> {
+            search.view.setActivated(true);
+            search.field.setVisibility(View.VISIBLE);
+            search.field.setText("");
+            search.field.requestFocus();
+            InputMethodManager imm = (InputMethodManager) host.getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) search.field.post(() -> imm.showSoftInput(search.field, InputMethodManager.SHOW_IMPLICIT));
+        };
+        search.field.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_NULL
+                    || actionId == EditorInfo.IME_ACTION_SEARCH) {
+                String name = search.field.getText().toString().trim();
+                endCitySearch(search);
+                if (!name.isEmpty()) findCity(page, search, name);
+            }
+            return true;
+        });
+        search.field.setOnFocusChangeListener((v, focused) -> {
+            if (!focused && search.field.getVisibility() == View.VISIBLE) endCitySearch(search);
+        });
+        return page;
+    }
+
+    private String placeNameIfPicked() {
+        Weather.Place p = settings.weatherPlace();
+        return p != null ? p.name : null;
+    }
+
+    private void endCitySearch(Row search) {
+        InputMethodManager imm = host != null ? (InputMethodManager) host.getSystemService(Context.INPUT_METHOD_SERVICE) : null;
+        if (imm != null) imm.hideSoftInputFromWindow(search.field.getWindowToken(), 0);
+        search.field.setVisibility(View.GONE);
+        search.view.setActivated(false);
+        search.view.requestFocus();
+    }
+
+    /** The cities by this name, under the search row (the last search's matches go first); none, a line says so. */
+    private void findCity(Page page, Row search, String name) {
+        Toast.makeText(host, R.string.weather_searching, Toast.LENGTH_SHORT).show();
+        new Thread(() -> {
+            List<Weather.Place> found;
+            try {
+                found = Weather.search(name);
+            } catch (java.io.IOException e) {
+                found = null;
+            }
+            List<Weather.Place> places = found;
+            handler.post(() -> {
+                if (host == null) return;
+                for (Row old : cityRows) {
+                    page.list.removeView(old.view);
+                    page.rows.remove(old);
+                    page.stops.remove(old.view);
+                }
+                cityRows.clear();
+                if (places == null) {
+                    MainActivity.showError(host, R.string.weather_search_failed);
+                    return;
+                }
+                if (places.isEmpty()) {
+                    Row none = page.add(ctx.getString(R.string.weather_no_match, name), null, null);
+                    cityRows.add(none);
+                    return;
+                }
+                for (Weather.Place place : places) {
+                    Row row = page.add(place.name, () -> place.name.equals(placeNameIfPicked()) ? "✓" : "", () -> {
+                        settings.setWeatherPlace(place);
+                        page.refresh();
+                    });
+                    cityRows.add(row);
+                }
+                cityRows.get(0).view.requestFocus();
+            });
+        }, "city-search").start();
+    }
+
+    // ---- backdrops ---------------------------------------------------------------------------------
+
+    /** Backdrops: where films' and shows' pictures come from (and in what order), their file format, and Reload. */
+    private Page backdrops() {
+        Page page = new Page(ctx.getString(R.string.tab_backdrops));
+        Row sources = page.link(R.string.art_sources, this::artSummary, this::artSources);
+        sources.about = R.string.art_sources_short;
+        Row custom = page.link(R.string.wp_custom, () -> ctx.getString(WALLPAPER_MODES[settings.wallpaperMode()]),
+                this::wallpapersPage);
+        custom.about = R.string.wp_custom_short;
+        page.link(R.string.picture_format, () -> ctx.getString(settings.jpegStills() ? R.string.picture_jpeg
+                : R.string.picture_png), this::pictureFormat);
+        page.add(R.string.reload_backdrops, null, () -> {
+            MainActivity home = home();
+            if (home != null) home.reloadBackdrops();
+            Toast.makeText(host, R.string.backdrops_reloading, Toast.LENGTH_SHORT).show();
+        });
+        return page;
+    }
+
+    // ---- top bar ---------------------------------------------------------------------------------------
+
+    /**
+     * Appearance > Top bar: the full bar, or the minimal one (small round icons, the time and the weather straight
+     * over the background, always showing), and what's in it: the clock, the date (the full bar only) and the
+     * weather (the Weather tab's own switch). Home applies them as it comes back (MainActivity.applyTopBarStyle).
+     */
+    private Page topBar() {
+        Page page = new Page(ctx.getString(R.string.top_bar));
+        Row style = page.link(R.string.top_bar_style, () -> ctx.getString(settings.topBarMinimal()
+                ? R.string.top_bar_minimal : R.string.top_bar_full), this::topBarStyle);
+        style.about = R.string.top_bar_minimal_short;
+        page.toggle(R.string.show_clock, settings::showClock, settings::setShowClock);
+        Row date = page.toggle(R.string.show_date, settings::showDate, settings::setShowDate);
+        date.about = R.string.show_date_short;
+        Row weather = page.toggle(R.string.tab_weather, settings::weatherOn, settings::setWeatherOn);
+        weather.about = R.string.weather_show_short;
+        return page;
+    }
+
+    private Page topBarStyle() {
+        Page page = new Page(ctx.getString(R.string.top_bar_style));
+        for (boolean minimal : new boolean[]{false, true}) {
+            // Picked, it's ticked and the list stays: Back or Left goes back.
+            Row row = page.add(minimal ? R.string.top_bar_minimal : R.string.top_bar_full,
+                    () -> minimal == settings.topBarMinimal() ? "✓" : "", () -> {
+                        settings.setTopBarMinimal(minimal);
+                        page.refresh();
+                    });
+            if (minimal == settings.topBarMinimal()) page.opened = row;
+        }
+        return page;
+    }
+
+    // ---- custom wallpapers ---------------------------------------------------------------------------
+
+    private static final int[] WALLPAPER_MODES = {R.string.off, R.string.wp_use_no_picture, R.string.wp_use_always};
+
+    /** Backdrops > Custom wallpapers while it's open: its list is brought up to date as wallpapers come in. */
+    private Page wallpaperPage;
+
+    /**
+     * Backdrops > Custom wallpapers: when they show (Off, where an app has no picture, or always instead of the
+     * backdrops), adding them (from the phone's page, or picked from Wallhaven's or Pexels' grid), and the ones
+     * there, newest first: OK on one asks to delete it.
+     */
+    private Page wallpapersPage() {
+        Page page = new Page(ctx.getString(R.string.wp_custom));
+        wallpaperPage = page;
+        page.footnote = R.string.wp_custom_short;
+        Row use = page.link(R.string.wp_use, () -> ctx.getString(WALLPAPER_MODES[settings.wallpaperMode()]),
+                this::wallpaperModes);
+        use.about = R.string.wp_use_short;
+        if (phoneUrl != null && link != null && link.wallpaperUrl() != null) {
+            Row phone = page.link(R.string.wp_add_phone, null,
+                    () -> phone(R.string.wp_add_phone, link.wallpaperUrl(), R.string.wp_scan));
+            phone.about = R.string.wp_add_phone_short;
+        }
+        Row wallhaven = page.add(R.string.wp_browse_wallhaven, null,
+                () -> host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.WALLHAVEN)));
+        wallhaven.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+        wallhaven.about = R.string.wp_credit_wallhaven;
+        Row pexels = page.add(R.string.wp_browse_pexels, null, () -> {
+            if (settings.pexelsKey().isEmpty()) MainActivity.showError(host, R.string.wp_pexels_no_key);
+            else host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.PEXELS));
+        });
+        pexels.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+        pexels.about = R.string.pexels_short;
+        Row mine = page.add(R.string.wp_mine, () -> String.valueOf(Wallpapers.get(ctx).list().size()),
+                () -> host.startActivity(WallpaperBrowserActivity.intent(host, WallpaperBrowserActivity.MINE)));
+        mine.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+        mine.about = R.string.wp_mine_short;
+        return page;
+    }
+
+    private Page wallpaperModes() {
+        Page page = new Page(ctx.getString(R.string.wp_use));
+        for (int mode = 0; mode < WALLPAPER_MODES.length; mode++) {
+            int value = mode;
+            // Picked, it's ticked and the list stays: Back or Left goes back.
+            Row row = page.add(WALLPAPER_MODES[mode], () -> value == settings.wallpaperMode() ? "✓" : "", () -> {
+                settings.setWallpaperMode(value);
+                page.refresh();
+            });
+            if (mode == settings.wallpaperMode()) page.opened = row;
+        }
+        return page;
+    }
+
+    /** Back on Settings (from a wallpaper grid), or one arrived from the phone: how many there are now. */
+    void showWallpapers() {
+        if (wallpaperPage != null && pages.contains(wallpaperPage)) wallpaperPage.refresh();
+    }
+
+    /** The sources switched on and usable, in order: "TMDB, Nuvio, …". */
+    private CharSequence artSummary() {
+        List<String> on = new ArrayList<>();
+        for (String s : settings.artOrder()) if (settings.artOn(s) && !artUnusable(s)) on.add(artName(s));
+        return on.isEmpty() ? ctx.getString(R.string.off) : android.text.TextUtils.join(", ", on);
+    }
+
+    private String artName(String source) {
+        switch (source) {
+            case VibeSettings.ART_TMDB:
+                return "TMDB";
+            case VibeSettings.ART_STREMIO:
+                return "Stremio";
+            case VibeSettings.ART_ID:
+                return "Nuvio";
+            default:
+                return ctx.getString(R.string.art_own);
+        }
+    }
+
+    /** TMDB with no key: nothing to try, so it's last, greyed out, and can't be moved or switched. */
+    private boolean artUnusable(String source) {
+        return source.equals(VibeSettings.ART_TMDB) && settings.tmdbKey().isEmpty();
+    }
+
+    /** The sources as listed: the person's order, with one that can't be used now (TMDB, no key) last. */
+    private List<String> artShown() {
+        List<String> shown = new ArrayList<>(), last = new ArrayList<>();
+        for (String s : settings.artOrder()) (artUnusable(s) ? last : shown).add(s);
+        shown.addAll(last);
+        return shown;
+    }
+
+    private int artAbout(String source) {
+        switch (source) {
+            case VibeSettings.ART_TMDB:
+                return R.string.art_tmdb_short;
+            case VibeSettings.ART_STREMIO:
+                return R.string.art_stremio_short;
+            case VibeSettings.ART_ID:
+                return R.string.art_id_short;
+            default:
+                return R.string.art_own_short;
+        }
+    }
+
+    /** The source being moved on Film & show sources (OK picked it up), or null. */
+    private String movingArt;
+    /** The order when it was picked up: dropped elsewhere, the backdrops are made again. */
+    private List<String> orderWhenPicked;
+
+    /**
+     * Backdrops > Film & show sources: TMDB, the title id from the app, Stremio and the app's own picture, tried
+     * in this order for each film or show card, the first with a picture used. OK picks a source up, Up and Down
+     * carry it, OK again disables it (Back or Left put it down still enabled), OK again enables it; Right turns it on or off too. A change makes the backdrops again.
+     */
+    private Page artSources() {
+        Page page = new Page(ctx.getString(R.string.art_sources));
+        // What the list means, above it (outside the scrolling list, whose rows are all one height).
+        TextView note = new TextView(ctx);
+        note.setText(R.string.art_order_note);
+        note.setTextColor(0xCCFFFFFF);
+        note.setTextSize(15);
+        note.setLineSpacing(0, 1.15f);
+        note.setTypeface(UiFont.get(ctx, R.string.font_regular));
+        int side = (int) (columnW * 0.02f) + 2 + (int) (22 * density);   // in line with the rows' names
+        note.setPadding(side, 0, side, (int) (10 * density));
+        page.view.addView(note, 0);
+        movingArt = null;
+        for (String source : artShown()) artRow(page, source);
+        numberArt(page);
+        return page;
+    }
+
+    private void artRow(Page page, String source) {
+        boolean unusable = artUnusable(source);
+        Row row = page.add(artName(source), () -> {
+            if (unusable) return "";
+            if (source.equals(movingArt)) return "\u2195";   // up-down arrow: Up and Down move it
+            return ctx.getString(settings.artOn(source) ? R.string.art_enabled : R.string.art_disabled);
+        }, null);
+        row.view.setTag(source);
+        if (unusable) {   // greyed out; focusable still, so its line under the list says it needs a key
+            row.label.setAlpha(0.4f);
+            row.view.setOnKeyListener((v, keyCode, event) -> {
+                if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && event.getAction() == KeyEvent.ACTION_DOWN
+                        && pages.size() > 1) {
+                    back();
+                    return true;
+                }
+                return keyCode == KeyEvent.KEYCODE_DPAD_RIGHT;   // no On/Off
+            });
+            row.aboutText = ctx.getString(artAbout(source));
+            return;
+        }
+        row.aboutText = ctx.getString(artAbout(source)) + "\n\n" + ctx.getString(R.string.art_sources_help);
+        // OK goes round: Enabled, then moving (Up and Down carry it), then Disabled, then Enabled again.
+        row.action = () -> {
+            if (source.equals(movingArt)) {
+                dropArt();
+                settings.setArtOn(source, false);
+                artChanged();
+            } else if (!settings.artOn(source)) {
+                settings.setArtOn(source, true);
+                artChanged();
+            } else {
+                movingArt = source;
+                orderWhenPicked = settings.artOrder();
+            }
+            page.refresh();
+        };
+        row.view.setOnKeyListener((v, keyCode, event) -> {
+            boolean down = event.getAction() == KeyEvent.ACTION_DOWN;
+            if (source.equals(movingArt)) {
+                switch (keyCode) {
+                    case KeyEvent.KEYCODE_DPAD_UP:
+                    case KeyEvent.KEYCODE_DPAD_DOWN:
+                        if (down) moveArt(page, row, keyCode == KeyEvent.KEYCODE_DPAD_UP ? -1 : 1);
+                        return true;
+                    case KeyEvent.KEYCODE_BACK:   // both its down and up: Settings doesn't go back as well
+                    case KeyEvent.KEYCODE_DPAD_LEFT:
+                    case KeyEvent.KEYCODE_DPAD_RIGHT:
+                        if (down) {
+                            dropArt();
+                            page.refresh();
+                        }
+                        return true;
+                    default:
+                        return false;   // OK: the click drops it
+                }
+            }
+            if (!down) return false;
+            if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+                settings.setArtOn(source, !settings.artOn(source));
+                row.refresh();
+                artChanged();
+                return true;
+            }
+            if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && pages.size() > 1) {
+                back();
+                return true;
+            }
+            return false;
+        });
+    }
+
+    /** The source being moved one place up (-1) or down; focus stays on it, its neighbour goes round it. */
+    private void moveArt(Page page, Row row, int dir) {
+        int at = page.rows.indexOf(row), to = at + dir;
+        if (at < 0 || to < 0 || to >= page.rows.size()) return;
+        if (artUnusable((String) page.rows.get(to).view.getTag())) return;   // stays last, below the rest
+        Row other = page.rows.get(to);
+        page.list.removeView(other.view);   // not the focused one: it keeps focus
+        int here = page.list.indexOfChild(row.view);
+        page.list.addView(other.view, dir < 0 ? here + 1 : here);
+        java.util.Collections.swap(page.rows, at, to);
+        int sa = page.stops.indexOf(row.view), so = page.stops.indexOf(other.view);
+        if (sa >= 0 && so >= 0) java.util.Collections.swap(page.stops, sa, so);
+        // Saved in the listed order, except that one unusable now keeps its own place, for when it can be used.
+        List<String> before = settings.artOrder(), order = new ArrayList<>();
+        String unusable = null;
+        for (Row r : page.rows) {
+            String s = (String) r.view.getTag();
+            if (artUnusable(s)) unusable = s;
+            else order.add(s);
+        }
+        if (unusable != null) order.add(Math.min(before.indexOf(unusable), order.size()), unusable);
+        settings.setArtOrder(order);
+        numberArt(page);
+        row.view.playSoundEffect(dir < 0 ? android.view.SoundEffectConstants.NAVIGATION_UP
+                : android.view.SoundEffectConstants.NAVIGATION_DOWN);
+    }
+
+    private void dropArt() {
+        movingArt = null;
+        if (orderWhenPicked != null && !orderWhenPicked.equals(settings.artOrder())) artChanged();
+        orderWhenPicked = null;
+    }
+
+    /** Each source's place before its name: 1 is tried first. */
+    private void numberArt(Page page) {
+        int n = 0;
+        for (Row r : page.rows) {
+            String s = (String) r.view.getTag();
+            r.label.setText(artUnusable(s) ? artName(s) : (++n) + "   " + artName(s));
+        }
+    }
+
+    /** A change in the sources: the backdrops are made again, once, shortly after the last change. */
+    private void artChanged() {
+        handler.removeCallbacks(artReload);
+        handler.postDelayed(artReload, 1500);
+    }
+
+    private final Runnable artReload = () -> {
+        MainActivity home = home();
+        if (home != null) home.reloadBackdrops();
+        if (host != null) Toast.makeText(host, R.string.backdrops_reloading, Toast.LENGTH_SHORT).show();
+    };
+
     /**
      * PNG or JPEG for the backdrops. A change reloads them all, as Reload backdrops does, so the new format
      * shows at once instead of over the next six hours.
@@ -875,6 +1359,7 @@ MainActivity.showError(host, R.string.anim_short);
         smartTubeRow.about = R.string.smarttube_short;
         showSmartTube();
         key(page, R.string.plex_token, 2, R.string.plex_short);
+        key(page, R.string.pexels_key, 3, R.string.pexels_short);
         if (phoneUrl != null) page.link(R.string.phone_paste, null,
                 () -> phone(R.string.phone_paste, phoneUrl, R.string.scan_to_paste));
         return page;
@@ -1841,6 +2326,11 @@ MainActivity.showError(host, R.string.anim_short);
 
     /** The same window with a title of its own: Continue runs then. */
     private void explainThenDo(int title, int message, Runnable open) {
+        explainThenDo(title, message, R.string.continue_button, open);
+    }
+
+    /** As explainThenDo, its button saying what it does (Delete). */
+    private void explainThenDo(int title, int message, int button, Runnable open) {
         if (host == null) return;
         Activity activity = host;
         View panel = LayoutInflater.from(ctx).inflate(R.layout.dialog_update,
@@ -1848,7 +2338,7 @@ MainActivity.showError(host, R.string.anim_short);
         ((TextView) panel.findViewById(R.id.updateTitle)).setText(title);
         ((TextView) panel.findViewById(R.id.notes)).setText(message);
         TextView go = panel.findViewById(R.id.install), cancel = panel.findViewById(R.id.cancelUpdate);
-        go.setText(R.string.continue_button);
+        go.setText(button);
         Dialog dialog = new Dialog(activity, android.R.style.Theme_Material_Dialog_NoActionBar);
         dialog.setContentView(panel);
         Window window = dialog.getWindow();
@@ -2031,7 +2521,7 @@ MainActivity.showError(host, R.string.anim_short);
         if (row == null) return;
         editing = null;
         keys[editingKey] = value(row.field, keys[editingKey]);
-        settings.save(keys[0], keys[1], keys[2]);
+        settings.save(keys[0], keys[1], keys[2], keys[3]);
         InputMethodManager imm = host != null ? (InputMethodManager) host.getSystemService(Context.INPUT_METHOD_SERVICE) : null;
         if (imm != null) imm.hideSoftInputFromWindow(row.field.getWindowToken(), 0);
         row.field.setVisibility(View.GONE);
@@ -2049,12 +2539,12 @@ MainActivity.showError(host, R.string.anim_short);
         if (link != null) link.stop();
         link = new PhoneLink(received -> {
             if (host == null) return;
-            String[] names = {"tmdbKey", "youtubeKey", "plexToken"};
+            String[] names = {"tmdbKey", "youtubeKey", "plexToken", "pexelsKey"};
             for (int i = 0; i < names.length; i++) {
                 String k = received.get(names[i]);
                 if (k != null) keys[i] = k.trim();
             }
-            settings.save(keys[0], keys[1], keys[2]);
+            settings.save(keys[0], keys[1], keys[2], keys[3]);
             for (Page page : pages) page.refresh();
             Toast.makeText(host, R.string.saved_from_phone, Toast.LENGTH_SHORT).show();
         }, settings);
@@ -2080,6 +2570,25 @@ MainActivity.showError(host, R.string.anim_short);
             }
         };
         if (!BuildConfig.STORE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) link.pairing = this::pairFromPhone;
+        Wallpapers walls = Wallpapers.get(app);
+        link.wallpapers = new PhoneLink.WallpaperUploads() {
+            @Override
+            public java.io.File incoming() {
+                return walls.incoming();
+            }
+
+            @Override
+            public boolean roomFor(long bytes) {
+                return walls.roomFor(bytes);
+            }
+
+            @Override
+            public boolean received(java.io.File file, boolean video) {
+                boolean added = walls.add(file, video, Wallpapers.PHONE, "", screenW, screenH) != null;
+                if (added) handler.post(SettingsScreen.this::showWallpapers);
+                return added;
+            }
+        };
         phoneUrl = link.start();
     }
 

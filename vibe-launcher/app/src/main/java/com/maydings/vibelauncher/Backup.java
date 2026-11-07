@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
  * preferences (the order, hidden apps, folders, each tile's name, icon or picture), with the tile pictures
  * themselves (files/tiles) inside as base64. Caches (backdrops, TMDB, Plex's server) are left out: they
  * come back by themselves. So are what the TV itself decides (the channels sent to it, the questions Home
- * has asked once), which belong to that TV.
+ * has asked once) and the apps turned off on it (TV_ONLY), which belong to that TV.
  * <p>
  * Kept on the TV (Settings > General > Backup and restore) as Download/vibe-launcher-backup.json, or taken to
  * and from a phone (PhoneLink). Android TV has no file picker (the system's is a stub that only says it isn't
@@ -57,6 +57,12 @@ final class Backup {
     private static final int FORMAT = 1;
     /** The preferences kept: the launcher's settings, and the tiles' order, folders and changes. */
     private static final String[] PREFS = {"vibe_settings", "tiles"};
+    /**
+     * Settings that belong to this TV and stay out of a backup: the apps turned off here (VibeSettings.appsOff),
+     * which differ from one TV model to the next. Restoring keeps this TV's own, and leaves out any an older
+     * backup carries.
+     */
+    private static final Set<String> TV_ONLY = new HashSet<>(java.util.Collections.singletonList("appsOff"));
     private static final String PICTURES = "tiles";   // under files/, as TileCustom keeps them
     /** A picture's file name: an app's package and .png, nothing that could reach outside the folder. */
     private static final Pattern PICTURE_NAME = Pattern.compile("[A-Za-z0-9_][A-Za-z0-9._]{0,200}\\.png");
@@ -95,6 +101,7 @@ final class Backup {
                 else if (v instanceof Boolean) typed.put("b").put(v);
                 else if (v instanceof Set) typed.put("S").put(new JSONArray((Set<?>) v));
                 else continue;
+                if (TV_ONLY.contains(e.getKey())) continue;
                 values.put(e.getKey(), typed);
             }
             prefs.put(name, values);
@@ -162,10 +169,22 @@ final class Backup {
     static boolean apply(Context context, Contents c) {
         boolean ok = true;
         for (Map.Entry<String, JSONObject> p : c.prefs.entrySet()) {
-            SharedPreferences.Editor edit = context.getSharedPreferences(p.getKey(), Context.MODE_PRIVATE).edit().clear();
+            SharedPreferences here = context.getSharedPreferences(p.getKey(), Context.MODE_PRIVATE);
+            Map<String, ?> before = here.getAll();
+            SharedPreferences.Editor edit = here.edit().clear();
+            // This TV's own (TV_ONLY) stay as they were.
+            for (String key : TV_ONLY) {
+                Object v = before.get(key);
+                if (v instanceof Set) {
+                    Set<String> set = new HashSet<>();
+                    for (Object o : (Set<?>) v) set.add(String.valueOf(o));
+                    edit.putStringSet(key, set);
+                }
+            }
             JSONObject values = p.getValue();
             for (Iterator<String> keys = values.keys(); keys.hasNext(); ) {
                 String key = keys.next();
+                if (TV_ONLY.contains(key)) continue;   // an older backup's: not this TV's
                 JSONArray typed = values.optJSONArray(key);
                 Object v = typed.opt(1);
                 switch (typed.optString(0)) {

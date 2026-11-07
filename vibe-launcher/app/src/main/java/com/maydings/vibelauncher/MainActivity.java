@@ -172,7 +172,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private ValueAnimator holdFill;
     private boolean holdOpened;   // this press already opened the title: its release changes nothing
     private String backdropLink;   // what opens the picture on screen's title; null for none
-    /** A picture (not the glow) is behind the dock: without one there's no picture to show alone. */
+    /** A picture (not the glow) is behind the dock: without one, the picture alone is the glow, with no Play pill. */
     private boolean stillShown;
     private FrameLayout root;
     private GlassView glass;
@@ -361,6 +361,31 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         backdropTitleBox = findViewById(R.id.backdropTitleBox);
         backdropLogo = findViewById(R.id.backdropLogo);
         backdropTitle = findViewById(R.id.backdropTitle);
+        wallpapers = Wallpapers.get(this);
+        wallpaperScrim = findViewById(R.id.wallpaperScrim);
+        wallpaperVideo = new WallpaperVideo(findViewById(R.id.wallpaperVideo), new WallpaperVideo.Listener() {
+            @Override
+            public void onShowing() {
+                if (!videoOnScreen) return;   // a picture took over while it loaded: it stops after that fade
+                // Its first frame is up: the still over it goes, and the video shows through.
+                backdropImage.animate().cancel();
+                backdropImage.animate().alpha(0f).setDuration(450).withEndAction(() -> {
+                    if (!wallpaperVideo.isShowing()) return;
+                    backdropImage.setImageDrawable(null);
+                    backdropPrevious.setImageDrawable(null);
+                    backdropPrevious.setVisibility(View.GONE);
+                }).start();
+                backdropTitleBox.animate().alpha(0f).setDuration(200).start();
+            }
+
+            @Override
+            public void onFailed() {
+                wallpaperScrim.setVisibility(View.INVISIBLE);
+                if (!videoOnScreen) return;   // something else is showing already
+                wallpaperShown = false;
+                fadeBackdrop(null, null, null, backdropColor);   // the glow, as without a wallpaper
+            }
+        });
         backdrops = Backdrops.get(this);
         backdrops.attach(firstStill, watchingChanged);
         if (!askPermissionsOnce()) askHomeOnce();
@@ -389,6 +414,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 ambientGlow.setGradientRadius((r - l) * 0.62f));
         btnWifi = findViewById(R.id.btnWifi);
         TextView clock = findViewById(R.id.clock), date = findViewById(R.id.date);
+        weatherView = findViewById(R.id.weather);
+        dateBox = findViewById(R.id.dateBox);
         localDate((TextClock) date, "EEEE d MMMM yyyy");
         showClockOnceTimeIsSet(findViewById(R.id.clockRow));
         applyClockHours();
@@ -563,11 +590,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (event.getAction() != KeyEvent.ACTION_DOWN) return false;
             if (keyCode == KeyEvent.KEYCODE_DPAD_UP) return true;
             if (keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
-                if (!stillShown) {   // no picture to show alone (none, or not loaded yet): the dock tile
-                    cancelPictureSoon();
-                    focusDockFromAbove(adapter.dockTileFor(lastFocused));
-                    return true;
-                }
                 if (settings.autoHideBar()) {   // the bar goes either way: the picture alone at once, no wait
                     cancelPictureSoon();
                     showPictureFromBar();
@@ -651,6 +673,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         removePickerBackdrop();   // back from the default-Home picker
         inSettings = false;
         applyHighlight();   // chosen in Settings meanwhile
+        refreshWeather();   // its settings may have changed meanwhile too
+        applyWallpaperChange();   // and the custom wallpapers
+        applyTopBarStyle();   // and the top bar's look
+        // A video wallpaper paused with Home (onPause) plays again: Home pressed on Home pauses and resumes it
+        // without the window ever losing focus, so onWindowFocusChanged wouldn't.
+        if (heroShown && hasWindowFocus()) wallpaperVideo.resume();
         lastKeyAt = SystemClock.uptimeMillis();
         armIdle();
         showUpdateReady();
@@ -696,6 +724,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 // Back from an app with the same apps: the tiles stay as they were (no entrance replayed), and
                 // the focused app gets this visit's picture.
                 backdrops.reshuffle();
+                wallpapers.reshuffle();
                 backdropPkg = null;
                 // Loaded here: the tile usually kept its focus, so no focus change would load it.
                 if (heroShown && adapter.inDock(lastFocused)) {
@@ -724,6 +753,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         backdrop.setAlpha(0f);
         stillShown = false;
         backdrops.reshuffle();
+        wallpapers.reshuffle();
         grid.scheduleLayoutAnimation();
         grid.requestLayout();   // reload() only touches changed tiles, so ask for the pass that plays the entrance
 
@@ -738,6 +768,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     @Override
     protected void onPause() {
         super.onPause();
+        wallpaperVideo.pause();
+        handler.removeCallbacks(weatherTick);
         handler.removeCallbacks(refreshPools);
         cancelPictureSoon();
         handler.removeCallbacks(startSlideshow);
@@ -775,6 +807,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         // The pools go on filling for the next Home; only this one's handlers go.
         backdrops.detach(firstStill, watchingChanged);
         handler.removeCallbacksAndMessages(null);
+        // This Home's own threads: a new Home makes its own (else two more idle threads per restart).
+        if (wallpaperThread != null) wallpaperThread.shutdownNow();
+        if (weatherThread != null) weatherThread.shutdownNow();
         ConnectivityManager cm = getSystemService(ConnectivityManager.class);
         if (cm != null) {
             try {
@@ -819,6 +854,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         updateCarets();
+        // A video wallpaper plays only while Home is what's in front: not under a menu, a dialog or Settings.
+        if (hasFocus && heroShown) wallpaperVideo.resume();
+        else wallpaperVideo.pause();
     }
 
     @Override
@@ -844,7 +882,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                     focusTile(adapter.dockTileFor(lastFocused));
                     break;
                 }
-                if (!stillShown) break;   // no picture (none, or not loaded yet)
                 // As from the top bar: the dock tile goes with the picture, focused once the rows are away.
                 if (fromBar) focusAfterSlide = adapter.dockTileFor(lastFocused);
                 showPictureOnly(SoundEffectConstants.NAVIGATION_UP);
@@ -967,7 +1004,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         // one of its apps' pictures behind, another each visit.
         String pkg = adapter.isFolder(position) ? folderApp(position) : adapter.packageAt(position);
         float nameBottom = adapter.isFolder(position) ? showShelf(position) - 18 * density : dockPanelTop - 26 * density;
-        if (!adapter.isFolder(position)) hideShelf();
+        if (!adapter.isFolder(position)) hideShelf(false);
         float y = nameBottom - heroName.getHeight();
         boolean changed = !label.contentEquals(heroName.getText());
         // No big name over a dock that doesn't fill its row (Settings > Appearance > Apps in dock).
@@ -998,18 +1035,22 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      * drawn above the stills and would otherwise flash over a picture while the next one loads.
      */
     private void showBackdrop(String pkg, int color) {
+        boolean always = settings.wallpaperMode() == VibeSettings.WALLPAPER_ALWAYS;
         if (pkg == null) {   // e.g. the All apps tile in the dock
             backdropPkg = null;
+            backdropColor = color;
+            if (always && showWallpaper(color)) return;
             fadeBackdrop(null, null, null, color);
             return;
         }
         if (pkg.equals(backdropPkg)) return;
         backdropPkg = pkg;
         backdropColor = color;
+        if (always && showWallpaper(color)) return;   // custom wallpapers instead of every backdrop
         backdrops.load(pkg, (loaded, bitmap, logo, title, link) -> {
             if (!heroShown || !loaded.equals(backdropPkg)) return;   // moved on while it loaded
             backdropLink = bitmap != null ? link : null;
-            fadeBackdrop(bitmap, logo, title, color);
+            showPicture(bitmap, logo, title, color);
             if (pictureOnly) updateCarets();   // its first pictures may have come in meanwhile
         });
     }
@@ -1020,8 +1061,19 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     private void fadeBackdrop(Bitmap bitmap, Bitmap logo, String title, int color) {
         stillShown = bitmap != null;
+        // A custom wallpaper's picture comes through here too (showWallpaperItem); anything else ends one.
+        wallpaperShown = wallpaperPicture;
+        wallpaperPicture = false;
+        wallpaperOnScreen = null;   // set again by showWallpaperItem when this is its picture
+        boolean overVideo = wallpaperVideo.isShowing();
+        videoOnScreen = false;   // this picture (or glow) is what shows now, even over a video still loading
+        int video = videoGeneration;   // the video this picture (or glow) takes over from
+        // Every picture shown or taken away comes through here: with the picture alone up, its Play pill follows
+        // at once (a reload, a picture arriving late), so the pill and the picture never disagree.
+        if (pictureOnly) handler.post(this::updateCarets);
         if (bitmap == null) {
-            backdrop.animate().alpha(0f).setDuration(300).withLayer().start();
+            backdrop.animate().alpha(0f).setDuration(300).withLayer()
+                    .withEndAction(() -> { if (overVideo) stopWallpaperVideo(video); }).start();
             if (ambient.getAlpha() > 0f && color != ambientColor) {
                 // Glow to glow: dip, change colour, come back.
                 ambient.animate().alpha(0.35f).setDuration(200).withEndAction(() -> {
@@ -1051,6 +1103,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             backdropImage.animate().alpha(1f).setDuration(450).withEndAction(() -> {
                 backdropPrevious.setImageDrawable(null);   // let the old picture go
                 backdropPrevious.setVisibility(View.GONE);
+                if (overVideo) stopWallpaperVideo(video);   // a video was loading under the old picture
             }).start();
             backdropTitleBox.animate().alpha(0f).setDuration(150).withEndAction(() -> {
                 showBackdropTitle(logo, title);
@@ -1062,12 +1115,136 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             return;
         }
         backdropImage.animate().cancel();
-        backdropImage.setAlpha(1f);
         backdropImage.setImageBitmap(bitmap);
         backdropTitleBox.animate().cancel();
         backdropTitleBox.setAlpha(1f);
         showBackdropTitle(logo, title);
+        if (overVideo) {   // over a video wallpaper: the picture fades in over it, then the video stops
+            backdropImage.setAlpha(0f);
+            backdrop.animate().alpha(1f).setDuration(200).start();
+            backdropImage.animate().alpha(1f).setDuration(450).withEndAction(() -> stopWallpaperVideo(video)).start();
+            return;
+        }
+        backdropImage.setAlpha(1f);
         backdrop.animate().alpha(1f).setDuration(450).withLayer().start();
+    }
+
+    // ---- custom wallpapers -------------------------------------------------------------------------------
+
+    private Wallpapers wallpapers;
+    private WallpaperVideo wallpaperVideo;
+    private View wallpaperScrim;
+    /** A custom wallpaper is what's behind the dock: no Play pill, no other pictures to go through. */
+    private boolean wallpaperShown;
+    /** The next fadeBackdrop is a wallpaper's picture. */
+    private boolean wallpaperPicture;
+    private java.util.concurrent.ExecutorService wallpaperThread;
+    /** Counts video wallpapers started: a stop meant for one that's been started again since doesn't run. */
+    private int videoGeneration;
+    /** The video wallpaper is what should show (not a picture that came in over it while it loaded). */
+    private boolean videoOnScreen;
+    /** The wallpaper picture in backdropImage now, by id: moving along the dock in Always keeps it, no reload. */
+    private String wallpaperOnScreen;
+
+    /**
+     * An app's picture as it loaded, or, when it has none and Settings > Backdrops > Custom wallpapers says
+     * so, a wallpaper in place of its glow.
+     */
+    private void showPicture(Bitmap bitmap, Bitmap logo, String title, int color) {
+        if (bitmap == null && settings.wallpaperMode() == VibeSettings.WALLPAPER_NO_PICTURE && showWallpaper(color)) {
+            return;
+        }
+        fadeBackdrop(bitmap, logo, title, color);
+    }
+
+    /** This visit's custom wallpaper behind the dock; false when there are none. */
+    private boolean showWallpaper(int color) {
+        Wallpapers.Item item = wallpapers.current();
+        if (item == null) return false;
+        showWallpaperItem(item, color);
+        return true;
+    }
+
+    /** A wallpaper: a picture through fadeBackdrop (already darkened), or a video playing under the stills. */
+    private void showWallpaperItem(Wallpapers.Item item, int color) {
+        backdropLink = null;
+        java.io.File file = wallpapers.file(item);
+        if (item.video) {
+            wallpaperShown = true;
+            stillShown = false;
+            if (pictureOnly) handler.post(this::updateCarets);
+            ambient.animate().alpha(0f).setDuration(300).start();
+            videoGeneration++;
+            videoOnScreen = true;
+            wallpaperOnScreen = null;
+            wallpaperScrim.setVisibility(View.VISIBLE);
+            backdrop.animate().cancel();
+            backdrop.animate().alpha(1f).setDuration(450).start();
+            wallpaperVideo.play(file);
+            if (!hasWindowFocus()) wallpaperVideo.pause();
+            return;
+        }
+        if (item.id.equals(wallpaperOnScreen) && backdropImage.getDrawable() != null && !wallpaperVideo.isShowing()) {
+            // Already the picture up (Always, along the dock): kept, faded back in if Home had faded it out.
+            wallpaperShown = true;
+            stillShown = true;
+            if (pictureOnly) handler.post(this::updateCarets);
+            ambient.animate().alpha(0f).setDuration(300).start();
+            backdrop.animate().cancel();
+            backdrop.animate().alpha(1f).setDuration(450).withLayer().start();
+            return;
+        }
+        if (wallpaperThread == null) wallpaperThread = java.util.concurrent.Executors.newSingleThreadExecutor();
+        String pkg = backdropPkg;
+        wallpaperThread.execute(() -> {
+            Bitmap bitmap = android.graphics.BitmapFactory.decodeFile(file.getPath());
+            handler.post(() -> {
+                if (!heroShown && !slideshow) return;
+                if (!slideshow && pkg != null && !pkg.equals(backdropPkg)) return;   // moved on meanwhile
+                if (bitmap == null) {
+                    fadeBackdrop(null, null, null, color);
+                    return;
+                }
+                wallpaperPicture = true;
+                fadeBackdrop(bitmap, null, null, color);
+                wallpaperOnScreen = item.id;
+            });
+        });
+    }
+
+    /** The wallpaper setup last shown: Settings > Backdrops > Custom wallpapers' Show, and which there are. */
+    private String wallpaperState = "";
+
+    /**
+     * Back from Settings, which leaves Home as it was: if the wallpapers' setup changed there (Show, or one
+     * added or deleted), the focused app's background is shown again by it at once, the wallpaper or the app's
+     * own picture, without anything being reloaded (the backdrops stay as they are, under it).
+     */
+    private void applyWallpaperChange() {
+        // Which ones, not how many: one deleted and another added leaves the count as it was.
+        StringBuilder ids = new StringBuilder(String.valueOf(settings.wallpaperMode()));
+        for (Wallpapers.Item item : wallpapers.list()) ids.append('|').append(item.id);
+        String state = ids.toString();
+        if (state.equals(wallpaperState)) return;
+        boolean first = wallpaperState.isEmpty();
+        wallpaperState = state;
+        if (first || !heroShown || lastFocused < 0 || !adapter.inDock(lastFocused)) return;
+        wallpapers.reshuffle();
+        backdropPkg = null;
+        String pkg = adapter.isFolder(lastFocused) ? folderApp(lastFocused) : adapter.packageAt(lastFocused);
+        showBackdrop(pkg, adapter.ambientColorAt(lastFocused));
+    }
+
+    /** Always on, with wallpapers to show: the apps' pictures don't come up anywhere. */
+    private boolean wallpapersAlways() {
+        return settings.wallpaperMode() == VibeSettings.WALLPAPER_ALWAYS && !wallpapers.isEmpty();
+    }
+
+    /** The video goes, once the picture or glow taking over from it has faded in; not if one was started since. */
+    private void stopWallpaperVideo(int generation) {
+        if (generation != videoGeneration) return;
+        wallpaperVideo.stop();
+        wallpaperScrim.setVisibility(View.INVISIBLE);
     }
 
     /** The film or show's logo, else its name, at the right, level with the app name; nothing otherwise. */
@@ -1087,10 +1264,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     private void hideHero() {
-        hideShelf();
+        hideShelf(true);   // off the dock: gone before the rows move, not fading over them
         if (!heroShown) return;
         heroShown = false;
         stillShown = false;
+        wallpaperVideo.pause();   // off the dock: kept, and on again when focus comes back
         heroName.animate().alpha(0f).setDuration(160).start();
         ambient.animate().alpha(0f).setDuration(300).start();
         backdrop.animate().alpha(0f).setDuration(300).withLayer().start();
@@ -1115,11 +1293,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 return true;                               // a folder: up into its apps above it
             }
             if (adapter.inDock(position)) {                // dock row: the picture alone, then the top bar
-                if (!stillShown) {                         // no picture (none, or not loaded yet): the top bar
-                    cancelPictureSoon();
-                    focusTopBar();
-                    return true;
-                }
                 if (settings.autoHideBar()) {              // no top bar to scroll on to: the picture at once
                     showPictureOnly(SoundEffectConstants.NAVIGATION_UP);
                     return true;
@@ -1155,7 +1328,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void showPictureOnly(int sound) {
         if (pictureOnly || rows.getHeight() == 0) return;
         pictureOnly = true;
-        if (shelfBox != null) shelfBox.animate().alpha(0f).setDuration(CARET_FADE_MS).start();   // goes with the rows
+        if (hasWindowFocus()) wallpaperVideo.resume();   // the picture alone: a video wallpaper plays
+        if (shelf != null) shelf.animate().alpha(0f).setDuration(CARET_FADE_MS).start();   // goes with the rows
         rowsAway = false;   // the picture alone keeps them away now
         if (sound >= 0) grid.playSoundEffect(sound);
         if (!slideshow) openCarousel(true);
@@ -1172,7 +1346,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void showRows(boolean animate, boolean toTopBar) {
         if (!pictureOnly) return;
         pictureOnly = false;
-        if (shelfBox != null && shelfFolder != null) shelfBox.animate().alpha(1f).setDuration(260).start();
+        // The folder's dial comes back last, with the app's name once the rows are in place (showName); with
+        // auto-hide, Up brings only the top bar and the rows (and the dial) wait for focus to come back down.
         cancelHold();
         // Down (or Back): onto the dock tile, or the one left before it was focused (focusAfterSlide), unless
         // going up again; a folder's mini row first, as Up came through it on the way to the picture.
@@ -1193,6 +1368,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             topBar.setTranslationY(barWanted() ? 0f : -topBar.getHeight());
             if (heroShown) heroName.setAlpha(1f);
             if (glassShown) glass.setAlpha(1f);
+            if (shelf != null && shelfFolder != null) {
+                shelf.animate().cancel();
+                shelf.setAlpha(1f);
+            }
             updateCarets();
             return;
         }
@@ -1254,7 +1433,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      * jump false keeps the picture showing (the slideshow stopped on it).
      */
     private void openCarousel(boolean jump) {
-        if (backdropPkg == null) return;
+        if (backdropPkg == null || wallpapersAlways()) return;   // Always: the wallpaper stays, no app pictures
         playInfo.setVisibility(View.GONE);
         backdrops.openCarousel(backdropPkg, jump, false, (pkg, bitmap, logo, title, link) -> {
             if (!pictureOnly || !pkg.equals(backdropPkg)) return;
@@ -1279,6 +1458,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     /** Back from the picture alone, once the rows are in place: the app's name and the tile's glass. */
     private void showName() {
         if (pictureOnly) return;   // gone back to the picture meanwhile
+        if (shelf != null && shelfFolder != null) shelf.animate().alpha(1f).setDuration(260).start();
         if (heroShown) heroName.animate().alpha(1f).setDuration(250).start();
         if (glassShown && onDock()) glass.animate().alpha(1f).setDuration(250).start();
     }
@@ -1314,6 +1494,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (code == KeyEvent.KEYCODE_VOLUME_UP || code == KeyEvent.KEYCODE_VOLUME_DOWN
                 || code == KeyEvent.KEYCODE_VOLUME_MUTE) {
             return super.dispatchKeyEvent(event);   // volume as usual: it doesn't stop the slideshow, or count as use
+        }
+        // Channel Up and Down, when Settings says so: nothing at all on Home, not the TV's own TV app.
+        if ((code == KeyEvent.KEYCODE_CHANNEL_UP || code == KeyEvent.KEYCODE_CHANNEL_DOWN)
+                && settings != null && settings.ignoreChannelKeys()) {
+            return true;
         }
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             lastKeyAt = SystemClock.uptimeMillis();
@@ -1444,7 +1629,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         // None while the menus move, in the slideshow, or under a menu or dialog (Home hasn't the focus).
         boolean shown = !caretsHeld && !slideshow && hasWindowFocus();
         boolean on = shown && settings.carets();   // the Play pill isn't an arrow: it stays when they're off
-        boolean more = on && pictureOnly && backdropPkg != null && backdrops.stillCount(backdropPkg) > 1;
+        boolean more = on && pictureOnly && !wallpaperShown && !wallpapersAlways() && backdropPkg != null && backdrops.stillCount(backdropPkg) > 1;
         boolean dock = on && !pictureOnly && onDock();
         showCaret(caretDock, dock);
         showCaret(caretMore, dock && adapter.getItemCount() > adapter.dockCount());
@@ -1454,7 +1639,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         showCaret(caretDown, on && pictureOnly);
         showCaret(caretLeft, more);
         showCaret(caretRight, more);
-        showPlay(shown && pictureOnly);
+        showPlay(shown && pictureOnly && stillShown && !wallpaperShown);   // nothing to play on the glow or a wallpaper
     }
 
     private static void showCaret(View caret, boolean show) {
@@ -1521,8 +1706,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     /** Under the Play pill: "45 minutes remaining" when you're part-way through the picture's title. */
     private void updatePlayInfo() {
         long left = backdrops.remainingMs(backdropLink);
+        String channel = backdrops.channelLabel(backdropLink);   // HDHomeRun: "2.2 WCBSDT2"
         if (left <= 0) {
-            playInfo.setVisibility(View.GONE);
+            playInfo.setText(channel);
+            playInfo.setVisibility(channel != null ? View.VISIBLE : View.GONE);
             return;
         }
         long minutes = Math.max(1, (left + 59_999) / 60_000);   // rounded up: never "0 minutes"
@@ -1532,7 +1719,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         Measure hours = new Measure(minutes / 60, MeasureUnit.HOUR), rest = new Measure(minutes % 60, MeasureUnit.MINUTE);
         String time = minutes < 60 ? format.format(rest)
                 : minutes % 60 == 0 ? format.format(hours) : format.formatMeasures(hours, rest);
-        playInfo.setText(getString(R.string.time_remaining, time));
+        String remaining = getString(R.string.time_remaining, time);
+        playInfo.setText(channel != null ? channel + "  ·  " + remaining : remaining);
         playInfo.setVisibility(View.VISIBLE);
     }
 
@@ -1541,6 +1729,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      * while it has focus or the grid below the dock does; not on the dock or with the picture alone.
      */
     private boolean barWanted() {
+        if (settings.topBarMinimal()) return !pictureOnly && !slideshow;   // small enough to stay up
         if (!settings.autoHideBar()) return true;
         if (pictureOnly || slideshow) return false;
         return onTopBar() || onLowerRows();
@@ -1663,7 +1852,17 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      */
     private void openTitle(String link, String pkg) {
         try {
-            if (link == null) throw new ActivityNotFoundException();   // no title to open: the app
+            // No title to open, or an HDHomeRun channel the TV hasn't in its channel list: the app.
+            if (link == null || link.startsWith(HdHomeRun.CHANNEL_MARK)) throw new ActivityNotFoundException();
+            if (link.startsWith(HdHomeRun.CHANNEL_LINK)) {
+                // A TV channel (HDHomeRun's, in the TV's channel list): tuned in the TV's own player, whichever
+                // app that is, not handed to the HDHomeRun app (it doesn't open channel links).
+                Intent tune = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse(link));
+                if (tune.resolveActivity(getPackageManager()) == null) throw new ActivityNotFoundException();
+                tune.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(tune);
+                return;
+            }
             Intent i = Intent.parseUri(link, Intent.URI_INTENT_SCHEME);
             if (pkg != null) {
                 ComponentName target = i.getComponent();
@@ -1771,6 +1970,14 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     private void nextSlide() {
         if (!slideshow) return;
+        if (settings.wallpaperMode() == VibeSettings.WALLPAPER_ALWAYS && !wallpapers.isEmpty()) {
+            // Always: the wallpapers are the pictures, so they're the slideshow's too.
+            Wallpapers.Item item = wallpapers.next();
+            if (item != null) showWallpaperItem(item, backdropColor);
+            slideEntry = null;
+            handler.postDelayed(nextSlide, SLIDE_MS);
+            return;
+        }
         backdrops.randomSlide(dockApps(), slideEntry, (pkg, entry, bitmap, logo) -> {
             if (!slideshow) return;
             slidePkg = pkg;
@@ -1843,10 +2050,14 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         playInfo.setVisibility(View.GONE);
         grid.playSoundEffect(direction > 0
                 ? SoundEffectConstants.NAVIGATION_RIGHT : SoundEffectConstants.NAVIGATION_LEFT);
+        if (settings.wallpaperMode() == VibeSettings.WALLPAPER_ALWAYS && showWallpaper(backdropColor)) {
+            updateCarets();   // the wallpaper stays: no app pictures in Always
+            return;
+        }
         backdrops.openCarousel(pkg, true, true, (loaded, bitmap, logo, title, link) -> {
             if (!pictureOnly || !loaded.equals(backdropPkg)) return;
             backdropLink = link;
-            fadeBackdrop(bitmap, logo, title, backdropColor);
+            showPicture(bitmap, logo, title, backdropColor);
             updatePlayInfo();
             updateCarets();
         });
@@ -1854,7 +2065,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     /** The focused app's next or previous picture, cross-faded in. */
     private void stepPicture(int direction) {
-        if (backdropPkg == null) return;
+        if (backdropPkg == null || wallpaperShown || wallpapersAlways()) return;   // a wallpaper has no other pictures here
         backdrops.step(backdropPkg, direction, (loaded, bitmap, logo, title, link) -> {
             if (!pictureOnly || !loaded.equals(backdropPkg)) return;   // back to the rows meanwhile
             cancelHold();
@@ -2284,6 +2495,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             }
         } catch (Exception ignored) {
         }
+        // Minimal: the icon alone, its name spoken instead of shown.
+        btnWifi.setContentDescription(text);
+        if (settings.topBarMinimal()) text = "";
         // Only what changed: setting the same text or icon again lays the top bar out again.
         if (!TextUtils.equals(btnWifi.getText(), text)) btnWifi.setText(text);
         if (icon != wifiIcon) {
@@ -2912,35 +3126,182 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         }
     }
 
+    // ---- the weather under the date ---------------------------------------------------------------------
+
+    private TextView weatherView;
+    private View dateBox;
+    private java.util.concurrent.ExecutorService weatherThread;
+    private final Runnable weatherTick = this::refreshWeather;
+
+    /**
+     * The weather line (Weather), when it's on in Settings: looked up off the main thread (reused for 20 minutes,
+     * so this is cheap), and again every 20 minutes while Home is in front. Off, or not known, it isn't shown.
+     */
+    void refreshWeather() {
+        handler.removeCallbacks(weatherTick);
+        if (weatherView == null) return;
+        if (!settings.weatherOn()) {
+            showWeather(null);
+            return;
+        }
+        if (weatherThread == null) weatherThread = java.util.concurrent.Executors.newSingleThreadExecutor();
+        Context app = getApplicationContext();
+        VibeSettings s = settings;
+        boolean fahrenheit = s.weatherFahrenheit();
+        weatherThread.execute(() -> {
+            Weather.Place place = Weather.place(app, s);
+            Weather.Now now = place == null ? null : Weather.now(app, place, fahrenheit);
+            handler.post(() -> showWeather(settings.weatherOn() ? now : null));
+        });
+        handler.postDelayed(weatherTick, 20L * 60 * 1000);
+    }
+
+    /** Shows it under the date (the date moves up a line), or hides it (the date back where it always is). */
+    private void showWeather(Weather.Now now) {
+        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) dateBox.getLayoutParams();
+        if (now == null) {
+            weatherView.setVisibility(View.GONE);
+            lp.bottomMargin = Math.round(17.5f * density);
+            dateBox.setLayoutParams(lp);
+            return;
+        }
+        int style = settings.topBarMinimal() ? VibeSettings.WEATHER_TEMP : settings.weatherStyle();   // minimal: a number
+        StringBuilder line = new StringBuilder(Weather.degrees(now.temp));
+        if (style != VibeSettings.WEATHER_TEMP) line.append("   ").append(getString(Weather.text(now.code)));
+        if (style == VibeSettings.WEATHER_HIGH_LOW) {
+            line.append("   ·   ").append(getString(R.string.weather_high_low, Weather.degrees(now.high),
+                    Weather.degrees(now.low)));
+        }
+        weatherView.setText(line);
+        android.graphics.drawable.Drawable icon = getDrawable(Weather.icon(now.code, now.day));
+        if (icon != null) {
+            icon = icon.mutate();
+            int s = Math.round(17 * density);
+            icon.setBounds(0, 0, s, s);
+            icon.setTint(weatherView.getCurrentTextColor());
+        }
+        weatherView.setCompoundDrawablesRelative(icon, null, null, null);
+        weatherView.setVisibility(View.VISIBLE);
+        lp.bottomMargin = Math.round((settings.topBarMinimal() ? 5 : 11) * density);
+        dateBox.setLayoutParams(lp);
+    }
+
+    // ---- the top bar's look ------------------------------------------------------------------------------
+
+    /** The top bar's look as last applied (style, clock, date): changed in Settings, applied as Home comes back. */
+    private String topBarApplied = "";
+
+    /**
+     * The full top bar (a frosted strip: the big clock, the date, the weather, the pills with their names), or the
+     * minimal one (Appearance > Top bar): no strip, a small clock and the weather's icon and number at the top left,
+     * and the three buttons as small round icons at the top right, over the background, always up. The same views
+     * either way, so the buttons open the same menus; their names stay as what's spoken for them.
+     */
+    void applyTopBarStyle() {
+        boolean minimal = settings.topBarMinimal();
+        String state = minimal + "|" + settings.showClock() + "|" + settings.showDate();
+        if (state.equals(topBarApplied)) return;
+        topBarApplied = state;
+        // Minimal: frosted only where the apps scroll up under it, not a strip over the pictures.
+        ((FrostView) findViewById(R.id.frost)).setOnlyOverTiles(minimal);
+        View inner = (View) findViewById(R.id.leftBlock).getParent();
+        ViewGroup.MarginLayoutParams ip = (ViewGroup.MarginLayoutParams) inner.getLayoutParams();
+        ip.topMargin = dp(minimal ? 18 : 26);
+        ip.bottomMargin = dp(10);
+        inner.setLayoutParams(ip);
+        // Nothing cut at the bar's edge: the round buttons' focused glow reaches past them.
+        ((ViewGroup) topBar).setClipChildren(false);
+        ((ViewGroup) inner).setClipChildren(false);
+        ((ViewGroup) inner).setClipToPadding(false);
+        // Minimal: the left side (time, weather) as tall as the round buttons, centred on them; the buttons from the
+        // top. Full: the pills sit level with the bottom of the big clock, as they always have.
+        LinearLayout left = findViewById(R.id.leftBlock);
+        // Never shorter than the buttons beside it: with the clock, date and weather all off it's empty, and the
+        // full bar's pills (aligned to its bottom) were cut off by the bar.
+        left.setMinimumHeight(minimal ? dp(36) : dp(42 + 6));
+        left.setGravity(minimal ? Gravity.CENTER_VERTICAL : Gravity.TOP);
+        TextClock clock = findViewById(R.id.clock), ampm = findViewById(R.id.ampm);
+        clock.setTextSize(minimal ? 26 : 52);
+        ampm.setTextSize(minimal ? 11 : 15);
+        ViewGroup.MarginLayoutParams ap = (ViewGroup.MarginLayoutParams) ampm.getLayoutParams();
+        ap.bottomMargin = Math.round((minimal ? 6 : 16.5f) * density);
+        ampm.setLayoutParams(ap);
+        findViewById(R.id.timeBox).setVisibility(settings.showClock() ? View.VISIBLE : View.GONE);
+        findViewById(R.id.date).setVisibility(!minimal && settings.showDate() ? View.VISIBLE : View.GONE);
+        ViewGroup.MarginLayoutParams boxLp = (ViewGroup.MarginLayoutParams) dateBox.getLayoutParams();
+        boxLp.setMarginStart(settings.showClock() ? dp(minimal ? 14 : 20) : 0);
+        dateBox.setLayoutParams(boxLp);
+        weatherView.setTextSize(minimal ? 16 : 14);
+        weatherView.setLetterSpacing(minimal ? 0.02f : 0.14f);
+        int[][] pills = {{R.id.btnInputs, R.string.inputs}, {R.id.btnWifi, R.string.wifi}, {R.id.btnSettings, R.string.settings}};
+        for (int[] p : pills) {
+            TextView pill = findViewById(p[0]);
+            ViewGroup.LayoutParams lp = pill.getLayoutParams();
+            lp.height = dp(minimal ? 36 : 42);
+            lp.width = minimal ? dp(36) : ViewGroup.LayoutParams.WRAP_CONTENT;
+            pill.setLayoutParams(lp);
+            if (minimal) pill.setPadding(dp(7), 0, dp(7), 0);
+            else pill.setPaddingRelative(dp(16), 0, dp(20), 0);
+            pill.setCompoundDrawablePadding(minimal ? 0 : dp(9));
+            if (p[0] != R.id.btnWifi) {
+                pill.setContentDescription(getString(p[1]));
+                pill.setText(minimal ? "" : getString(p[1]));
+            }
+        }
+        View dot = findViewById(R.id.updateDot);   // in the gear's hollow centre, wherever the gear now is
+        ViewGroup.MarginLayoutParams dl = (ViewGroup.MarginLayoutParams) dot.getLayoutParams();
+        dl.topMargin = Math.round((minimal ? 15.5f : 18.5f) * density);
+        dl.setMarginStart(Math.round((minimal ? 15.5f : 34.5f) * density));
+        dot.setLayoutParams(dl);
+        View buttons = findViewById(R.id.topButtons);
+        android.widget.RelativeLayout.LayoutParams bl = (android.widget.RelativeLayout.LayoutParams) buttons.getLayoutParams();
+        if (minimal) {
+            bl.removeRule(android.widget.RelativeLayout.ALIGN_BOTTOM);
+            bl.addRule(android.widget.RelativeLayout.ALIGN_PARENT_TOP);
+        } else {
+            bl.removeRule(android.widget.RelativeLayout.ALIGN_PARENT_TOP);
+            bl.addRule(android.widget.RelativeLayout.ALIGN_BOTTOM, R.id.leftBlock);
+        }
+        bl.bottomMargin = dp(minimal ? 0 : 6);
+        buttons.setLayoutParams(bl);
+        timeBoxMeasuredFor = null;   // the clock's size changed: measured again
+        sizeTimeBox();
+        updateWifiLabel();
+        refreshWeather();
+        topBar.requestLayout();
+        topBar.post(this::updateTopBar);
+    }
+
+    private int dp(float v) {
+        return Math.round(v * density);
+    }
+
     // ---- a folder in the dock: its apps above it, as on tvOS's Top Shelf -------------------------------
 
-    /** The row of a dock folder's apps over the dock, while the folder (or one of the row's apps) has focus. */
-    private LinearLayout shelf;
     /**
-     * What the row sits in, and what's moved, faded and hidden: a folder with more apps than fit across the
-     * screen slides along to the focused one instead of running off both sides.
+     * A dock folder's apps over the dock, as a dial (ShelfDial): the selected app in the middle under a fixed outline,
+     * Left and Right turning the row. Shown while the folder (or the dial) has focus.
      */
-    private ShelfStrip shelfBox;
+    private ShelfDial shelf;
     /** The folder the shelf shows, its dock position, and what's in it (to make the row again when it changes). */
     private String shelfFolder, shelfContents;
     private int shelfFolderPos = -1;
-    /** Each dock folder's app whose picture is shown, and in the shelf the one focused. */
+    /** Each dock folder's app whose picture is shown, and in the shelf the one in the middle. */
     private final java.util.Map<String, String> folderPicks = new java.util.HashMap<>();
 
     /**
-     * The app of the folder at position whose picture shows: the next one on each new visit to the folder (so
-     * its pictures take turns), the same while focus stays on the folder or its shelf.
+     * The app selected in the folder at position (in the middle of its dial), whose picture shows: the one
+     * left there last time, every visit; the first until the dial has been turned. The selection decides the
+     * picture, never the other way round.
      */
     private String folderApp(int position) {
         List<AppAdapter.Entry> apps = adapter.membersAt(position);
         String id = adapter.folderIdAt(position);
         if (apps.isEmpty() || id == null) return null;
         String picked = folderPicks.get(id);
-        int at = -1;
-        for (int i = 0; i < apps.size(); i++) if (apps.get(i).pkg.equals(picked)) at = i;
-        if (!id.equals(shelfFolder) || at < 0) at = (at + 1) % apps.size();   // a new visit: the next app
-        folderPicks.put(id, apps.get(at).pkg);
-        return apps.get(at).pkg;
+        for (AppAdapter.Entry e : apps) if (e.pkg.equals(picked)) return picked;
+        folderPicks.put(id, apps.get(0).pkg);   // none yet, or it left the folder: the first
+        return apps.get(0).pkg;
     }
 
     /** The slideshow stopped on this folder app's picture: the folder shows it. */
@@ -2951,6 +3312,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         shelfFolder = id;   // not a new visit: keep it
     }
 
+    /** The shelf's tiles at 0.62 of a dock tile's width. */
+    private int shelfTileWidth() {
+        return Math.round(AppAdapter.tileWidthPx(grid.getWidth() - grid.getPaddingLeft()
+                - grid.getPaddingRight(), COLUMNS, density) * 0.62f);
+    }
+
     /** Shows the shelf for the folder at this dock position (made again if its apps changed); returns its top. */
     private float showShelf(int position) {
         List<AppAdapter.Entry> apps = adapter.membersAt(position);
@@ -2958,49 +3325,74 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         StringBuilder contents = new StringBuilder(id);
         for (AppAdapter.Entry e : apps) contents.append('|').append(e.pkg);
         if (shelf == null) {
-            shelf = new LinearLayout(this);
-            shelf.setOrientation(LinearLayout.HORIZONTAL);
-            shelf.setClipChildren(false);
-            shelf.setClipToPadding(false);
-            // Room around the tiles for the focused one's zoom and outline, which spilled past a row of
-            // exactly one tile's height and were cut off.
-            int room = Math.round(14 * density);
-            shelf.setPadding(room, room, room, room);
-            // As wide as the row while it fits (centred, as before), else the screen's width, the row sliding
-            // to the focused app (ShelfStrip). Half a tile kept clear past it: part of the next app shows at
-            // the edge, as there's more that way.
-            int tileW = Math.round(AppAdapter.tileWidthPx(grid.getWidth() - grid.getPaddingLeft()
-                    - grid.getPaddingRight(), COLUMNS, density) * 0.62f);
-            shelfBox = new ShelfStrip(this, shelf, Math.round(tileW * 0.5f));
-            shelfBox.setAlpha(0f);
-            root.addView(shelfBox, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+            shelf = new ShelfDial(this, shelfHost, shelfTileWidth(), density);
+            shelf.setAlpha(0f);
+            // Arriving on the folder from a row below, the rows scroll the dock back up: the dial waits for
+            // them to stop, then fades in, rather than fading in over icons on the move.
+            grid.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(@NonNull RecyclerView rv, int state) {
+                    if (state != RecyclerView.SCROLL_STATE_IDLE || !shelfWaitsForScroll) return;
+                    shelfWaitsForScroll = false;
+                    if (shelf != null && shelfFolder != null && !pictureOnly && rows.getTranslationY() == 0f) {
+                        shelf.animate().alpha(1f).setDuration(260).start();
+                    }
+                }
+            });
+            shelf.selector.setOnClickListener(v -> {
+                AppAdapter.Entry app = shelf.centreApp();
+                if (app != null) adapter.launchApp(app);
+            });
+            root.addView(shelf, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER_HORIZONTAL));
         }
         if (!contents.toString().equals(shelfContents)) {
             shelfContents = contents.toString();
-            shelf.removeAllViews();
-            shelfBox.reset();   // another folder's row: from its start
-            int tileW = Math.round(AppAdapter.tileWidthPx(grid.getWidth() - grid.getPaddingLeft()
-                    - grid.getPaddingRight(), COLUMNS, density) * 0.62f);
-            for (int i = 0; i < apps.size(); i++) shelf.addView(shelfTile(apps.get(i), i, apps.size(), tileW));
+            shelf.setApps(new ArrayList<>(apps), folderPicks.get(id));   // the app whose picture shows, in the middle
+        } else {
+            shelf.setCentre(folderPicks.get(id));
         }
         shelfFolder = id;
         shelfFolderPos = position;
-        int tileH = AppAdapter.tileHeightPx(Math.round(AppAdapter.tileWidthPx(grid.getWidth() - grid.getPaddingLeft()
-                - grid.getPaddingRight(), COLUMNS, density) * 0.62f));
+        int tileH = AppAdapter.tileHeightPx(shelfTileWidth());
         float top = dockPanelTop - 30 * density - tileH;
-        shelfBox.setY(top - shelf.getPaddingTop());   // the tiles' top where it was; the padding above it
-        shelfBox.setVisibility(View.VISIBLE);
-        if (!pictureOnly) shelfBox.animate().alpha(1f).setDuration(260).start();
+        shelf.setY(top - shelf.tileTop());   // the tiles' top where it was
+        shelf.setVisibility(View.VISIBLE);
+        if (!pictureOnly && rows.getTranslationY() != 0f) {
+            // The rows are down (or coming back up): the dial comes with the app's name once they're in (showName).
+            shelfWaitsForScroll = false;
+            shelf.animate().cancel();
+            shelf.setAlpha(0f);
+        } else if (!pictureOnly) {
+            if (grid.getScrollState() != RecyclerView.SCROLL_STATE_IDLE) {   // rows still moving: shown once they stop
+                shelfWaitsForScroll = true;
+                shelf.animate().cancel();
+                shelf.setAlpha(0f);
+            } else {
+                shelfWaitsForScroll = false;
+                shelf.animate().alpha(1f).setDuration(260).start();
+            }
+        }
         return top;
     }
 
-    private void hideShelf() {
+    /** Waiting for the rows to stop scrolling before it fades in (showShelf). */
+    private boolean shelfWaitsForScroll;
+
+    /** Hides the folder's dial: at once (now: focus left the dock, the rows are about to move), else fading. */
+    private void hideShelf(boolean now) {
         if (shelf == null || shelfFolder == null) return;
         if (shelf.hasFocus()) return;   // focus went up into it, not away
         shelfFolder = null;
-        shelfBox.animate().alpha(0f).setDuration(160).withEndAction(() -> {
-            if (shelfFolder == null) shelfBox.setVisibility(View.INVISIBLE);
+        shelfWaitsForScroll = false;
+        shelf.animate().cancel();
+        if (now) {
+            shelf.setAlpha(0f);
+            shelf.setVisibility(View.INVISIBLE);
+            return;
+        }
+        shelf.animate().alpha(0f).setDuration(160).withEndAction(() -> {
+            if (shelfFolder == null) shelf.setVisibility(View.INVISIBLE);
         }).start();
     }
 
@@ -3017,108 +3409,66 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         focusTile(position);
     }
 
-    /** Up from a dock folder: focus on its app whose picture is showing. False when it has no shelf. */
+    /** Up from a dock folder: the dial, its app whose picture is showing in the middle. False when it has no shelf. */
     private boolean focusShelf() {
-        if (shelf == null || shelfFolder == null || shelf.getChildCount() == 0) return false;
-        String picked = folderPicks.get(shelfFolder);
-        List<AppAdapter.Entry> apps = adapter.membersAt(shelfFolderPos);
-        int at = 0;
-        for (int i = 0; i < apps.size(); i++) if (apps.get(i).pkg.equals(picked)) at = i;
-        return shelf.getChildAt(Math.min(at, shelf.getChildCount() - 1)).requestFocus();
+        if (shelf == null || shelfFolder == null || shelf.size() == 0) return false;
+        shelf.setCentre(folderPicks.get(shelfFolder));
+        return shelf.selector.requestFocus();
     }
 
-    /** One of the shelf's apps: its banner (or icon), smaller than a dock tile, zoomed and outlined when focused. */
-    private View shelfTile(AppAdapter.Entry app, int index, int count, int w) {
-        int h = AppAdapter.tileHeightPx(w);
-        // The outline goes round the tile, in a frame a stroke wider, not over it: a view clipped to its rounded
-        // outline gets a stepped edge (the clip isn't smoothed), which cut into the stroke's smooth outer edge.
-        // Here the stroke's outer edge is its own, and its inner edge covers the tile's clipped one.
-        int stroke = Math.round(3 * density);
-        FrameLayout frame = new FrameLayout(this);
-        frame.setPadding(stroke, stroke, stroke, stroke);
-        frame.setClipChildren(false);
-        frame.setFocusable(true);
-        frame.setClickable(true);
-        // Not Android's own grey focus box (8.0+, on views with no focused look of their own): the zoom and
-        // the outline below are the focused look.
-        frame.setDefaultFocusHighlightEnabled(false);
-        FrameLayout card = new FrameLayout(this);
-        card.setBackgroundResource(R.drawable.tile_bg);
-        frame.addView(card, new FrameLayout.LayoutParams(w, h));
-        float radius = AppAdapter.cornerRadius(w, density);
-        card.setOutlineProvider(new android.view.ViewOutlineProvider() {
-            @Override
-            public void getOutline(View view, android.graphics.Outline outline) {
-                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), radius);
+    /** The dial's side of Home: each tile's picture, the app in the middle, and the keys it leaves to Home. */
+    private final ShelfDial.Host shelfHost = new ShelfDial.Host() {
+        @Override
+        public void fill(FrameLayout card, AppAdapter.Entry app) {
+            // Its banner (or icon), as a dock tile, smaller.
+            ImageView image = new ImageView(MainActivity.this);
+            android.graphics.drawable.Drawable d = app.banner != null ? app.banner : app.icon;
+            if (d != null && d.getConstantState() != null) d = d.getConstantState().newDrawable().mutate();
+            image.setImageDrawable(d);
+            if (app.banner != null) {
+                image.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                card.addView(image, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT));
+            } else {
+                int s = Math.round(AppAdapter.tileHeightPx(shelfTileWidth()) * 0.5f);
+                card.addView(image, new FrameLayout.LayoutParams(s, s, Gravity.CENTER));
             }
-        });
-        card.setClipToOutline(true);
-        ImageView image = new ImageView(this);
-        android.graphics.drawable.Drawable d = app.banner != null ? app.banner : app.icon;
-        if (d != null && d.getConstantState() != null) d = d.getConstantState().newDrawable().mutate();
-        image.setImageDrawable(d);
-        if (app.banner != null) {
-            image.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            card.addView(image, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT));
-        } else {
-            int s = Math.round(h * 0.5f);
-            card.addView(image, new FrameLayout.LayoutParams(s, s, Gravity.CENTER));
         }
-        // The stroke is drawn on the frame's bounds inset by half its width, and that inset rectangle gets the
-        // radius: the tile's radius plus half the stroke puts its inner edge exactly on the tile's corner.
-        GradientDrawable ring = new GradientDrawable();
-        ring.setCornerRadius(radius + stroke / 2f);
-        ring.setColor(0);
-        frame.setOnFocusChangeListener((v, focused) -> {
-            // The highlight color as it is now: the row can be older than a change in Settings, or than Home
-            // reading the setting at all (made on the first focus, before onResume).
-            if (focused) ring.setStroke(stroke, highlight);
-            frame.setForeground(focused ? ring : null);
-            float s = focused ? 1.12f : 1f;
-            frame.animate().scaleX(s).scaleY(s).setDuration(focused ? 220 : 160).start();
-            if (!focused) return;
-            if (shelfBox != null) shelfBox.follow(frame);   // into view, if the row is wider than the screen
+
+        @Override
+        public void centred(AppAdapter.Entry app) {
             if (shelfFolder != null) folderPicks.put(shelfFolder, app.pkg);
-            heroName.setText(app.label);   // the app's name while it's focused in the shelf
+            heroName.setText(app.label);   // the app's name while it's in the middle
+            shelf.selector.setContentDescription(app.label);
             showBackdrop(app.pkg, adapter.ambientColorAt(shelfFolderPos));
-        });
-        frame.setOnClickListener(v -> adapter.launchApp(app));
-        frame.setOnKeyListener((v, keyCode, event) -> {
-            if (event.getAction() != KeyEvent.ACTION_DOWN) return false;
+        }
+
+        @Override
+        public boolean key(int keyCode) {
             switch (keyCode) {
-                case KeyEvent.KEYCODE_DPAD_LEFT:     // along the row, never out of it (Android's own search
-                case KeyEvent.KEYCODE_DPAD_RIGHT: {  // went right up to the top bar's Settings)
-                    int next = index + (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT ? 1 : -1);
-                    if (next >= 0 && next < count && shelf != null && next < shelf.getChildCount()) {
-                        shelf.getChildAt(next).requestFocus();
-                        grid.playSoundEffect(keyCode == KeyEvent.KEYCODE_DPAD_RIGHT
-                                ? SoundEffectConstants.NAVIGATION_RIGHT : SoundEffectConstants.NAVIGATION_LEFT);
-                    }
+                case KeyEvent.KEYCODE_DPAD_CENTER:
+                case KeyEvent.KEYCODE_ENTER: {
+                    AppAdapter.Entry app = shelf.centreApp();
+                    if (app != null) adapter.launchApp(app);
                     return true;
                 }
                 case KeyEvent.KEYCODE_DPAD_DOWN:     // back to the folder
                     focusTile(shelfFolderPos);
                     return true;
-                case KeyEvent.KEYCODE_DPAD_UP:       // this app's picture alone, as Up from a dock app
-                    if (stillShown) {
-                        focusAfterSlide = shelfFolderPos;
-                        showPictureOnly(SoundEffectConstants.NAVIGATION_UP);
-                    } else {
-                        focusTopBar();
-                    }
+                case KeyEvent.KEYCODE_DPAD_UP:       // this app's picture alone (its glow, with none), as Up from a dock app
+                    focusAfterSlide = shelfFolderPos;
+                    showPictureOnly(SoundEffectConstants.NAVIGATION_UP);
                     return true;
                 default:
                     return false;
             }
-        });
-        // The frame's stroke-wide border comes out of the gap, so the tiles stay where they were.
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(w + 2 * stroke, h + 2 * stroke);
-        int gap = Math.round(10 * density) - stroke;
-        lp.setMargins(gap, -stroke, gap, -stroke);
-        frame.setLayoutParams(lp);
-        return frame;
-    }
+        }
+
+        @Override
+        public int highlight() {
+            return highlight;
+        }
+    };
 
     // ---- folders --------------------------------------------------------------------------------------
 
@@ -3517,7 +3867,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private View addPassthroughRow(LinearLayout rows, PopupWindow popup, boolean hdmi, String label, String id,
                                    TvInputManager tim) {
         int state = hdmi ? tim.getInputState(id) : -1;   // -1: neither, so no state is shown
-        return addInputRow(rows, popup, hdmi ? R.drawable.ic_input : R.drawable.ic_av, label, state,
+        return addInputRow(rows, popup, hdmi ? R.drawable.ic_hdmi : R.drawable.ic_av, label, state,
                 () -> openInput(id));
     }
 

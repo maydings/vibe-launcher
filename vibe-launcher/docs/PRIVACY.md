@@ -12,7 +12,7 @@ that.
 | What | Why | Where |
 |---|---|---|
 | Settings (tiles per row, hidden apps, language, …) | to remember your choices | the app's private storage |
-| Keys you enter: TMDB, YouTube, Plex token | to fetch artwork and titles from those services | the app's private storage; never shown in full again (the phone page shows the last four characters) |
+| Keys you enter: TMDB, YouTube, Plex token, Pexels | to fetch artwork and titles from those services | the app's private storage; never shown in full again (the phone page shows the last four characters) |
 | Tiles you've changed: names, pictures you chose, folders | to show your tiles as you set them up | the app's private storage |
 | A backup, only when you make one: the settings and keys above, and your tiles | to restore your setup, or move it to another TV | the TV's Download folder (`vibe-launcher-backup.json`), or your phone when you download it there |
 | Downloaded pictures (backdrops, logos) | to show a picture at once instead of waiting | the app's cache |
@@ -66,20 +66,25 @@ of it.
 
 ## What goes over the network
 
-All of it is to show pictures and titles; none of it is linked to you. Requests go straight from the TV to
+All of it is to show pictures, titles and the weather; none of it is linked to you. Requests go straight from the TV to
 each service, over HTTPS except on your home network, and carry what any web request does (the TV's
 internet address). The services' own privacy policies apply to what they receive.
 
 | Service | Sent | When |
 |---|---|---|
 | The artwork servers of your apps | a request for the picture the app's card names | for each card's picture |
-| Stremio Cinemeta (`v3-cinemeta.strem.io`, `images.metahub.space`) | the title of a card's film or show, to find its artwork and trailer | when there's no TMDB key |
+| Stremio Cinemeta (`v3-cinemeta.strem.io`, `images.metahub.space`) | the title of a card's film or show, or the IMDb id an app put on its card (Nuvio), to find its artwork and trailer | when Stremio or Nuvio is enabled in Settings > Backdrops > Film & show sources (both are by default) |
 | Streaming Catalogs, a community add-on for Stremio (`…baby-beamup.club`) | which service's popular list (Netflix, Disney+, Prime Video, Apple TV+, Max) | when that app publishes no cards, at most daily |
 | TMDB (`api.themoviedb.org`, `image.tmdb.org`) | your TMDB key and a card's title | once you enter a TMDB key |
 | YouTube (`googleapis.com`, `i.ytimg.com`) | your YouTube key, for the list of popular videos and their pictures | once you enter a YouTube key |
+| Open-Meteo (`api.open-meteo.com`) | the weather location, as a latitude and longitude rounded to the city, and °C or °F | while the weather is on (Settings > Weather; on by default), at most every 20 minutes |
+| Open-Meteo geocoding (`geocoding-api.open-meteo.com`) | the city name you type, and the TV's language | when you search for a city in Settings > Weather > Location |
+| ipapi.co, or ipwho.is when it doesn't answer | nothing beyond the request itself: the service works out the city from the TV's internet address | while the weather is on with Location set to Automatic, at most daily |
+| Wallhaven (`wallhaven.cc`, `w.wallhaven.cc`, `th.wallhaven.cc`) | what you search for, and requests for the pictures you see and pick | when you browse Wallhaven pictures in Settings > Backdrops > Custom wallpapers |
+| Pexels (`api.pexels.com`, `videos.pexels.com`, `images.pexels.com`) | your Pexels key, what you search for, and requests for the videos you see and pick | when you browse Pexels videos there (needs your key) |
 | Plex (`plex.tv`, and your own Plex server) | your Plex token, to find your server and list On Deck and recently added | once you enter a Plex token |
 | HDHomeRun (your tuner, `api.hdhomerun.com`, `img.hdhomerun.com`) | your tuner's own guide code, for the guide's pictures | when an HDHomeRun tuner is on your network |
-| Your phone, on your home network | the keys page, a tile's picture page, or the backup page (a backup to download, holding your keys), while Settings or the tile's Edit menu is open | when you scan the QR code on the TV; it has a random address that changes each time |
+| Your phone, on your home network | the keys page, a tile's picture page, the wallpaper page (a picture or video you send to the TV), or the backup page (a backup to download, holding your keys), while Settings or the tile's Edit menu is open | when you scan the QR code on the TV; it has a random address that changes each time |
 | **GitHub build only:** GitHub (`api.github.com`, `github.com`) | a request for this project's latest release, and SmartTube's | daily, when the TV wakes, from the gear menu, and when you ask to install SmartTube |
 | **GitHub build only:** GitHub (`api.github.com`, `raw.githubusercontent.com`) | requests for Clean Your TV's lists of what to turn off on each TV; nothing about your TV is sent (the list for it is picked on the TV) | when you open Settings > Apps > Clean-up lists, and a list |
 
@@ -89,6 +94,9 @@ The app store build doesn't contact GitHub: Google Play updates it. When Home co
 
 - **Data collected:** none sent to the developer. Card titles are sent to Cinemeta or TMDB only to look up
   their artwork, without anything that identifies you or the TV, and aren't kept by Vibe Launcher.
+- **Location:** approximate only, and only for the weather: the city found from the TV's internet address
+  (or the one you pick) is kept on the TV and sent to Open-Meteo as coordinates. Turn the weather off, or
+  pick a city, and the internet address isn't looked up.
 - **Data shared:** none for advertising or analytics. Keys you enter are sent only to the service they
   belong to.
 - **Encrypted in transit:** yes (HTTPS), except devices on your home network.

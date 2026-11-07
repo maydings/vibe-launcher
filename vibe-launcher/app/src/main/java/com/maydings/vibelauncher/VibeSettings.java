@@ -11,6 +11,11 @@ final class VibeSettings {
     private static final String TMDB_KEY = "tmdbKey";
     private static final String YOUTUBE_KEY = "youtubeKey";
     private static final String PLEX_TOKEN = "plexToken";
+    private static final String PEXELS_KEY = "pexelsKey";
+    private static final String TOP_BAR_MINIMAL = "topBarMinimal", SHOW_CLOCK = "showClock", SHOW_DATE = "showDate";
+    private static final String WALLPAPER_MODE = "wallpaperMode";
+    /** Custom wallpapers (Backdrops > Custom wallpapers): not shown, shown where an app has no picture, or always. */
+    static final int WALLPAPER_OFF = 0, WALLPAPER_NO_PICTURE = 1, WALLPAPER_ALWAYS = 2;
     private static final String COLUMNS = "columns";
     private static final String LANGUAGE = "language";
     private static final String HIDE_INACTIVE_INPUTS = "hideInactiveInputs";
@@ -25,6 +30,23 @@ final class VibeSettings {
     private static final String JPEG_STILLS = "jpegStills";
     private static final String APPS_OFF = "appsOff";
     private static final String ADB_OFF_WHEN_DONE = "adbOffWhenDone";
+    private static final String IGNORE_CHANNEL_KEYS = "ignoreChannelKeys";
+    private static final String ART_ORDER = "artOrder";
+    private static final String WEATHER_ON = "weatherOn", WEATHER_STYLE = "weatherStyle", WEATHER_UNITS = "weatherUnits";
+    private static final String WEATHER_CITY = "weatherCity", WEATHER_LAT = "weatherLat", WEATHER_LON = "weatherLon";
+    /** What the weather line shows: temperature and sky, plus today's high and low, or the temperature only. */
+    static final int WEATHER_SKY = 0, WEATHER_HIGH_LOW = 1, WEATHER_TEMP = 2;
+    /** Degrees: by the TV's region, Celsius, Fahrenheit. */
+    static final int UNITS_AUTO = 0, UNITS_C = 1, UNITS_F = 2;
+    private static final String ART_OFF = "artOff";
+
+    /**
+     * Where a film or show card's backdrop and logo come from, tried in the person's order (Backdrops): TMDB by
+     * title (with a key), the title's IMDb id on the card (Nuvio's) straight to metahub, Stremio's free data by
+     * title, and the card's own picture.
+     */
+    static final String ART_TMDB = "tmdb", ART_ID = "id", ART_STREMIO = "stremio", ART_OWN = "own";
+    static final java.util.List<String> ART_DEFAULT = java.util.Arrays.asList(ART_TMDB, ART_ID, ART_STREMIO, ART_OWN);
 
     private final SharedPreferences prefs;
 
@@ -45,6 +67,48 @@ final class VibeSettings {
     /** Plex account token (X-Plex-Token), or "" when not set. */
     String plexToken() {
         return prefs.getString(PLEX_TOKEN, "");
+    }
+
+    /** The top bar as small icons, the time and the weather over the background, with no bar (off by default). */
+    boolean topBarMinimal() {
+        return prefs.getBoolean(TOP_BAR_MINIMAL, false);
+    }
+
+    void setTopBarMinimal(boolean on) {
+        prefs.edit().putBoolean(TOP_BAR_MINIMAL, on).apply();
+    }
+
+    /** The time in the top bar (on by default). */
+    boolean showClock() {
+        return prefs.getBoolean(SHOW_CLOCK, true);
+    }
+
+    void setShowClock(boolean on) {
+        prefs.edit().putBoolean(SHOW_CLOCK, on).apply();
+    }
+
+    /** The date in the full top bar (on by default; the minimal one never has it). */
+    boolean showDate() {
+        return prefs.getBoolean(SHOW_DATE, true);
+    }
+
+    void setShowDate(boolean on) {
+        prefs.edit().putBoolean(SHOW_DATE, on).apply();
+    }
+
+    /** Pexels API key (videos to pick as wallpapers), or "" when not set. */
+    String pexelsKey() {
+        return prefs.getString(PEXELS_KEY, "");
+    }
+
+    /** When custom wallpapers show: WALLPAPER_OFF (the default), WALLPAPER_NO_PICTURE or WALLPAPER_ALWAYS. */
+    int wallpaperMode() {
+        int m = prefs.getInt(WALLPAPER_MODE, WALLPAPER_OFF);
+        return m >= WALLPAPER_OFF && m <= WALLPAPER_ALWAYS ? m : WALLPAPER_OFF;
+    }
+
+    void setWallpaperMode(int mode) {
+        prefs.edit().putInt(WALLPAPER_MODE, mode).apply();
     }
 
     /** Tiles per row on Home (4, 5 or 6), or the given default when not chosen. */
@@ -189,8 +253,89 @@ final class VibeSettings {
         prefs.edit().putBoolean(ADB_OFF_WHEN_DONE, off).apply();
     }
 
-    void save(String tmdbKey, String youtubeKey, String plexToken) {
+    /** Channel Up and Down do nothing on Home, instead of opening the TV's own TV app (off by default). */
+    boolean ignoreChannelKeys() {
+        return prefs.getBoolean(IGNORE_CHANNEL_KEYS, false);
+    }
+
+    void setIgnoreChannelKeys(boolean on) {
+        prefs.edit().putBoolean(IGNORE_CHANNEL_KEYS, on).apply();
+    }
+
+    /** The weather under the date on Home (on by default). */
+    boolean weatherOn() {
+        return prefs.getBoolean(WEATHER_ON, true);
+    }
+
+    void setWeatherOn(boolean on) {
+        prefs.edit().putBoolean(WEATHER_ON, on).apply();
+    }
+
+    int weatherStyle() {
+        return prefs.getInt(WEATHER_STYLE, WEATHER_SKY);
+    }
+
+    void setWeatherStyle(int style) {
+        prefs.edit().putInt(WEATHER_STYLE, style).apply();
+    }
+
+    int weatherUnits() {
+        return prefs.getInt(WEATHER_UNITS, UNITS_AUTO);
+    }
+
+    void setWeatherUnits(int units) {
+        prefs.edit().putInt(WEATHER_UNITS, units).apply();
+    }
+
+    /** Fahrenheit, as picked or (Automatic) where the TV is set to a country that uses it. */
+    boolean weatherFahrenheit() {
+        int u = weatherUnits();
+        return u == UNITS_F || (u == UNITS_AUTO && Weather.fahrenheitHere());
+    }
+
+    /** The city picked for the weather, or null for Automatic (the TV's own, from its internet address). */
+    Weather.Place weatherPlace() {
+        String name = prefs.getString(WEATHER_CITY, "");
+        if (name.isEmpty()) return null;
+        return new Weather.Place(name, prefs.getFloat(WEATHER_LAT, 0), prefs.getFloat(WEATHER_LON, 0));
+    }
+
+    /** A city for the weather, or null for Automatic. */
+    void setWeatherPlace(Weather.Place place) {
+        SharedPreferences.Editor e = prefs.edit();
+        if (place == null) e.remove(WEATHER_CITY).remove(WEATHER_LAT).remove(WEATHER_LON);
+        else e.putString(WEATHER_CITY, place.name).putFloat(WEATHER_LAT, (float) place.lat)
+                .putFloat(WEATHER_LON, (float) place.lon);
+        e.apply();
+    }
+
+    /** The artwork sources in the person's order, all of them (on or off); any unknown left out, any new added. */
+    java.util.List<String> artOrder() {
+        java.util.List<String> out = new java.util.ArrayList<>();
+        for (String s : prefs.getString(ART_ORDER, "").split(",")) {
+            if (ART_DEFAULT.contains(s) && !out.contains(s)) out.add(s);
+        }
+        for (String s : ART_DEFAULT) if (!out.contains(s)) out.add(s);
+        return out;
+    }
+
+    void setArtOrder(java.util.List<String> order) {
+        prefs.edit().putString(ART_ORDER, android.text.TextUtils.join(",", order)).apply();
+    }
+
+    boolean artOn(String source) {
+        return !prefs.getStringSet(ART_OFF, java.util.Collections.emptySet()).contains(source);
+    }
+
+    void setArtOn(String source, boolean on) {
+        java.util.Set<String> off = new java.util.HashSet<>(prefs.getStringSet(ART_OFF, java.util.Collections.emptySet()));
+        if (on) off.remove(source);
+        else off.add(source);
+        prefs.edit().putStringSet(ART_OFF, off).apply();
+    }
+
+    void save(String tmdbKey, String youtubeKey, String plexToken, String pexelsKey) {
         prefs.edit().putString(TMDB_KEY, tmdbKey.trim()).putString(YOUTUBE_KEY, youtubeKey.trim())
-                .putString(PLEX_TOKEN, plexToken.trim()).apply();
+                .putString(PLEX_TOKEN, plexToken.trim()).putString(PEXELS_KEY, pexelsKey.trim()).apply();
     }
 }

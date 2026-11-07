@@ -13,6 +13,20 @@
         android:layout_height="match_parent"
         android:alpha="0">
 
+        <!-- A video wallpaper (Wallpapers, WallpaperVideo), under the stills, and its darkening. -->
+        <TextureView
+            android:id="@+id/wallpaperVideo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" />
+
+        <View
+            android:id="@+id/wallpaperScrim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/wallpaper_scrim"
+            android:visibility="invisible" />
+
         <!-- The previous still, under the new one while they cross-fade. -->
         <ImageView
             android:id="@+id/backdropPrevious"
@@ -195,23 +209,48 @@
 
                     <!-- A long date (other languages) wraps onto a second line, growing upwards, instead of
                          running into the pills: the clock block ends where they begin. -->
-                    <TextClock
-                        android:id="@+id/date"
+                    <!-- The date, and the weather under it (Weather; gone when off or not known: the date is then
+                         where it always was, its bottom margin set back in MainActivity.showWeather). -->
+                    <LinearLayout
+                        android:id="@+id/dateBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginStart="20dp"
                         android:layout_gravity="bottom"
                         android:layout_marginBottom="17.5dp"
-                        android:maxLines="2"
-                        android:ellipsize="end"
-                        android:format12Hour="EEEE  d MMMM yyyy"
-                        android:format24Hour="EEEE  d MMMM yyyy"
-                        android:textColor="#A6FFFFFF"
-                        android:textSize="14sp"
-                        android:fontFamily="@string/font_regular"
-                        android:letterSpacing="0.14"
-                        android:textAllCaps="true" />
+                        android:orientation="vertical">
+
+                        <TextClock
+                            android:id="@+id/date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="2"
+                            android:ellipsize="end"
+                            android:format12Hour="EEEE  d MMMM yyyy"
+                            android:format24Hour="EEEE  d MMMM yyyy"
+                            android:textColor="#A6FFFFFF"
+                            android:textSize="14sp"
+                            android:fontFamily="@string/font_regular"
+                            android:letterSpacing="0.14"
+                            android:textAllCaps="true" />
+
+                        <TextView
+                            android:id="@+id/weather"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:visibility="gone"
+                            android:gravity="center_vertical"
+                            android:drawablePadding="8dp"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:textColor="#A6FFFFFF"
+                            android:textSize="14sp"
+                            android:fontFamily="@string/font_regular"
+                            android:letterSpacing="0.14"
+                            android:textAllCaps="true" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 

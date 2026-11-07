@@ -103,6 +103,14 @@
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden|uiMode"
             android:theme="@style/Theme.Settings"
             android:windowSoftInputMode="stateAlwaysHidden|adjustNothing" />
+        <!-- Custom wallpapers from Wallhaven or Pexels, picked on the TV (WallpaperBrowserActivity). -->
+        <activity
+            android:name=".WallpaperBrowserActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden|uiMode"
+            android:theme="@style/Theme.Settings"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustNothing" />
         <activity
             android:name=".AppLaunchActivity"
             android:exported="true"
