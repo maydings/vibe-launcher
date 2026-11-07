@@ -65,6 +65,7 @@
     <string name="update_to">%1$s သို့ အပ်ဒိတ်လုပ်ရန်</string>
     <string name="install">ထည့်သွင်းရန်</string>
     <string name="version_up_to_date">%1$s · နောက်ဆုံးထွက်</string>
+    <string name="settings_version">ဗားရှင်း %1$s</string>
     <string name="update_available">အပ်ဒိတ် ရနိုင်သည်- %1$s</string>
     <string name="update_check_failed">%1$s · အပ်ဒိတ် မစစ်နိုင်ပါ</string>
     <string name="update_downloading">အပ်ဒိတ် ဒေါင်းလုဒ်လုပ်နေသည်…</string>

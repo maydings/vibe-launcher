@@ -65,6 +65,7 @@
     <string name="update_to">%1$s sürümüne güncelle</string>
     <string name="install">Yükle</string>
     <string name="version_up_to_date">%1$s · Güncel</string>
+    <string name="settings_version">Sürüm %1$s</string>
     <string name="update_available">Güncelleme var: %1$s</string>
     <string name="update_check_failed">%1$s · Güncellemeler denetlenemedi</string>
     <string name="update_downloading">Güncelleme indiriliyor…</string>

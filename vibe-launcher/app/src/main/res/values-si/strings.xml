@@ -65,6 +65,7 @@
     <string name="update_to">%1$s වෙත යාවත්කාලීන කරන්න</string>
     <string name="install">ස්ථාපනය කරන්න</string>
     <string name="version_up_to_date">%1$s · නවතම</string>
+    <string name="settings_version">අනුවාදය %1$s</string>
     <string name="update_available">යාවත්කාලීනයක් ඇත: %1$s</string>
     <string name="update_check_failed">%1$s · යාවත්කාලීන සෙවිය නොහැකි විය</string>
     <string name="update_downloading">යාවත්කාලීනය බාගනිමින්…</string>

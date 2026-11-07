@@ -65,6 +65,7 @@
     <string name="update_to">%1$s(으)로 업데이트</string>
     <string name="install">설치</string>
     <string name="version_up_to_date">%1$s · 최신 버전</string>
+    <string name="settings_version">버전 %1$s</string>
     <string name="update_available">업데이트 있음: %1$s</string>
     <string name="update_check_failed">%1$s · 업데이트를 확인하지 못했습니다</string>
     <string name="update_downloading">업데이트 다운로드 중…</string>

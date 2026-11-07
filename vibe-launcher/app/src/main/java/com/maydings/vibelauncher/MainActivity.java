@@ -1629,7 +1629,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         // None while the menus move, in the slideshow, or under a menu or dialog (Home hasn't the focus).
         boolean shown = !caretsHeld && !slideshow && hasWindowFocus();
         boolean on = shown && settings.carets();   // the Play pill isn't an arrow: it stays when they're off
-        boolean more = on && pictureOnly && !wallpaperShown && !wallpapersAlways() && backdropPkg != null && backdrops.stillCount(backdropPkg) > 1;
+        boolean more = on && pictureOnly && (wallpaperShown || wallpapersAlways() ? wallpapers.count() > 1
+                : backdropPkg != null && backdrops.stillCount(backdropPkg) > 1);
         boolean dock = on && !pictureOnly && onDock();
         showCaret(caretDock, dock);
         showCaret(caretMore, dock && adapter.getItemCount() > adapter.dockCount());
@@ -2065,7 +2066,17 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     /** The focused app's next or previous picture, cross-faded in. */
     private void stepPicture(int direction) {
-        if (backdropPkg == null || wallpaperShown || wallpapersAlways()) return;   // a wallpaper has no other pictures here
+        if (wallpaperShown || wallpapersAlways()) {
+            // A wallpaper is what shows (Always, or an app with no picture of its own): the next wallpaper.
+            Wallpapers.Item item = wallpapers.step(direction);
+            if (item == null) return;
+            cancelHold();
+            showWallpaperItem(item, backdropColor);
+            grid.playSoundEffect(direction > 0
+                    ? SoundEffectConstants.NAVIGATION_RIGHT : SoundEffectConstants.NAVIGATION_LEFT);
+            return;
+        }
+        if (backdropPkg == null) return;
         backdrops.step(backdropPkg, direction, (loaded, bitmap, logo, title, link) -> {
             if (!pictureOnly || !loaded.equals(backdropPkg)) return;   // back to the rows meanwhile
             cancelHold();

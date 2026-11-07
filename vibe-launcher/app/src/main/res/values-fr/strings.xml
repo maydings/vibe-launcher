@@ -65,6 +65,7 @@
     <string name="update_to">Mettre à jour vers %1$s</string>
     <string name="install">Installer</string>
     <string name="version_up_to_date">%1$s · À jour</string>
+    <string name="settings_version">Version %1$s</string>
     <string name="update_available">Mise à jour disponible : %1$s</string>
     <string name="update_check_failed">%1$s · Impossible de rechercher les mises à jour</string>
     <string name="update_downloading">Téléchargement de la mise à jour…</string>

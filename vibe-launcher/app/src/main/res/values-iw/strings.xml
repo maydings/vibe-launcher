@@ -65,6 +65,7 @@
     <string name="update_to">עדכון לגרסה %1$s</string>
     <string name="install">התקנה</string>
     <string name="version_up_to_date">%1$s · מעודכן</string>
+    <string name="settings_version">גרסה %1$s</string>
     <string name="update_available">יש עדכון: %1$s</string>
     <string name="update_check_failed">%1$s · לא ניתן היה לבדוק עדכונים</string>
     <string name="update_downloading">מוריד את העדכון…</string>

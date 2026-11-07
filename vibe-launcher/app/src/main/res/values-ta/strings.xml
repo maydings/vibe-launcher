@@ -65,6 +65,7 @@
     <string name="update_to">%1$s க்குப் புதுப்பி</string>
     <string name="install">நிறுவு</string>
     <string name="version_up_to_date">%1$s · புதியது</string>
+    <string name="settings_version">பதிப்பு %1$s</string>
     <string name="update_available">புதுப்பிப்பு உள்ளது: %1$s</string>
     <string name="update_check_failed">%1$s · புதுப்பிப்புகளைத் தேட முடியவில்லை</string>
     <string name="update_downloading">புதுப்பிப்பைப் பதிவிறக்குகிறது…</string>

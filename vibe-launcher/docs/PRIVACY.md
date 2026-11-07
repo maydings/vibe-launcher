@@ -31,10 +31,10 @@ saved in the Download folder, which stays until you delete it.
 | Uninstall requests (`REQUEST_DELETE_PACKAGES`) | so the tile menu can open Android's own uninstall screen |
 | Storage (`WRITE_EXTERNAL_STORAGE`, Android 10 and older only) | to save a settings backup in the Download folder and read it back, asked the first time you do |
 | **GitHub build only:** install packages (`REQUEST_INSTALL_PACKAGES`), close background apps (`KILL_BACKGROUND_PROCESSES`) | to install its own updates and SmartTube when you ask; Android asks you to confirm each install. The second closes the TV's Settings in the background so its install switch shows Vibe Launcher's name |
-| **GitHub build only:** see all apps (`QUERY_ALL_PACKAGES`) | so Settings > Apps can list every app on the TV, system parts too, to turn them off and on. The list stays on the TV |
-| **GitHub build only:** change secure settings (`WRITE_SECURE_SETTINGS`) | not given by installing: the TV's own ADB grants it the first time Settings > Apps connects. Used only to turn debugging and Wireless debugging on and off (when Vibe Launcher needs it, and when Settings closes if you choose that) and to set the animation speed you pick in Appearance; never for anything else, such as accessibility services or the keyboard |
+| **GitHub build only:** see all apps (`QUERY_ALL_PACKAGES`) | so Settings > Advanced can list every app on the TV, system parts too, to turn them off and on. The list stays on the TV |
+| **GitHub build only:** change secure settings (`WRITE_SECURE_SETTINGS`) | not given by installing: the TV's own ADB grants it the first time Settings > Advanced connects. Used only to turn debugging and Wireless debugging on and off (when Vibe Launcher needs it, and when Settings closes if you choose that) and to set the animation speed you pick in Appearance; never for anything else, such as accessibility services or the keyboard |
 
-**Settings > Apps (GitHub build only)** turns apps off through the TV's own network debugging, which you
+**Settings > Advanced (GitHub build only)** turns apps off through the TV's own network debugging, which you
 turn on and allow yourself. Vibe Launcher connects only to the TV itself (`127.0.0.1`), never to another
 device, with a key it keeps in the TV's Android Keystore. For Wireless debugging (Android 11 and up) it uses
 a second key, stored only on the TV, encrypted with a key in the Android Keystore. Pairing it, the 6-digit code
@@ -86,7 +86,7 @@ internet address). The services' own privacy policies apply to what they receive
 | HDHomeRun (your tuner, `api.hdhomerun.com`, `img.hdhomerun.com`) | your tuner's own guide code, for the guide's pictures | when an HDHomeRun tuner is on your network |
 | Your phone, on your home network | the keys page, a tile's picture page, the wallpaper page (a picture or video you send to the TV), or the backup page (a backup to download, holding your keys), while Settings or the tile's Edit menu is open | when you scan the QR code on the TV; it has a random address that changes each time |
 | **GitHub build only:** GitHub (`api.github.com`, `github.com`) | a request for this project's latest release, and SmartTube's | daily, when the TV wakes, from the gear menu, and when you ask to install SmartTube |
-| **GitHub build only:** GitHub (`api.github.com`, `raw.githubusercontent.com`) | requests for Clean Your TV's lists of what to turn off on each TV; nothing about your TV is sent (the list for it is picked on the TV) | when you open Settings > Apps > Clean-up lists, and a list |
+| **GitHub build only:** GitHub (`api.github.com`, `raw.githubusercontent.com`) | requests for Clean Your TV's lists of what to turn off on each TV; nothing about your TV is sent (the list for it is picked on the TV) | when you open Settings > Advanced > Clean-up lists, and a list |
 
 The app store build doesn't contact GitHub: Google Play updates it. When Home comes back, it asks the Play Store app on the TV whether Play has a newer version, for the green dot on the gear.
 

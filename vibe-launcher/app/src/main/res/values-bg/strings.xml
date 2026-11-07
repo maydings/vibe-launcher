@@ -65,6 +65,7 @@
     <string name="update_to">Актуализиране до %1$s</string>
     <string name="install">Инсталиране</string>
     <string name="version_up_to_date">%1$s · Актуална</string>
+    <string name="settings_version">Версия %1$s</string>
     <string name="update_available">Има актуализация: %1$s</string>
     <string name="update_check_failed">%1$s · Не можа да се провери за актуализации</string>
     <string name="update_downloading">Изтегля се актуализацията…</string>

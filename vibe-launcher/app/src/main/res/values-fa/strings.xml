@@ -65,6 +65,7 @@
     <string name="update_to">به‌روزرسانی به %1$s</string>
     <string name="install">نصب</string>
     <string name="version_up_to_date">%1$s · به‌روز</string>
+    <string name="settings_version">نسخه %1$s</string>
     <string name="update_available">به‌روزرسانی موجود است: %1$s</string>
     <string name="update_check_failed">%1$s · بررسی به‌روزرسانی ممکن نشد</string>
     <string name="update_downloading">در حال دانلود به‌روزرسانی…</string>

@@ -65,6 +65,7 @@
     <string name="update_to">%1$s にアップデート</string>
     <string name="install">インストール</string>
     <string name="version_up_to_date">%1$s · 最新です</string>
+    <string name="settings_version">バージョン %1$s</string>
     <string name="update_available">アップデートがあります：%1$s</string>
     <string name="update_check_failed">%1$s · アップデートを確認できませんでした</string>
     <string name="update_downloading">アップデートをダウンロード中…</string>

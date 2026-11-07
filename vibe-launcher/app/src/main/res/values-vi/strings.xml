@@ -65,6 +65,7 @@
     <string name="update_to">Cập nhật lên %1$s</string>
     <string name="install">Cài đặt</string>
     <string name="version_up_to_date">%1$s · Mới nhất</string>
+    <string name="settings_version">Phiên bản %1$s</string>
     <string name="update_available">Có bản cập nhật: %1$s</string>
     <string name="update_check_failed">%1$s · Không kiểm tra được bản cập nhật</string>
     <string name="update_downloading">Đang tải bản cập nhật…</string>

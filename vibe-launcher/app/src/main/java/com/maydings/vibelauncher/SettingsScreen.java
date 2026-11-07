@@ -365,6 +365,8 @@ final class SettingsScreen {
         screen = LayoutInflater.from(ctx).inflate(R.layout.settings_screen, new FrameLayout(ctx), false);
         stage = screen.findViewById(R.id.stage);
         logo = screen.findViewById(R.id.logo);
+        ((TextView) screen.findViewById(R.id.logoVersion)).setText(
+                ctx.getString(R.string.settings_version, BuildConfig.VERSION_NAME));
         title = screen.findViewById(R.id.title);
         ((FrameLayout.LayoutParams) logo.getLayoutParams()).leftMargin = leftX + (columnW - logo.getLayoutParams().width) / 2;
 

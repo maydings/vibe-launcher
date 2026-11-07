@@ -65,6 +65,7 @@
     <string name="update_to">Bijwerken naar %1$s</string>
     <string name="install">Installeren</string>
     <string name="version_up_to_date">%1$s · Up-to-date</string>
+    <string name="settings_version">Versie %1$s</string>
     <string name="update_available">Update beschikbaar: %1$s</string>
     <string name="update_check_failed">%1$s · Kon niet op updates controleren</string>
     <string name="update_downloading">Update downloaden…</string>

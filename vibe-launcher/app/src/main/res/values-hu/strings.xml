@@ -65,6 +65,7 @@
     <string name="update_to">Frissítés erre: %1$s</string>
     <string name="install">Telepítés</string>
     <string name="version_up_to_date">%1$s · Naprakész</string>
+    <string name="settings_version">Verzió %1$s</string>
     <string name="update_available">Frissítés érhető el: %1$s</string>
     <string name="update_check_failed">%1$s · Nem sikerült frissítést keresni</string>
     <string name="update_downloading">A frissítés letöltése…</string>

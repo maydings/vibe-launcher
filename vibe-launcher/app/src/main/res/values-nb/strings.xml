@@ -65,6 +65,7 @@
     <string name="update_to">Oppdater til %1$s</string>
     <string name="install">Installer</string>
     <string name="version_up_to_date">%1$s · Oppdatert</string>
+    <string name="settings_version">Versjon %1$s</string>
     <string name="update_available">Oppdatering tilgjengelig: %1$s</string>
     <string name="update_check_failed">%1$s · Kunne ikke se etter oppdateringer</string>
     <string name="update_downloading">Laster ned oppdateringen…</string>

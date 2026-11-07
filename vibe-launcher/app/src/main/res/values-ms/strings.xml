@@ -65,6 +65,7 @@
     <string name="update_to">Kemas kini ke %1$s</string>
     <string name="install">Pasang</string>
     <string name="version_up_to_date">%1$s · Terkini</string>
+    <string name="settings_version">Versi %1$s</string>
     <string name="update_available">Kemas kini tersedia: %1$s</string>
     <string name="update_check_failed">%1$s · Tidak dapat menyemak kemas kini</string>
     <string name="update_downloading">Memuat turun kemas kini…</string>

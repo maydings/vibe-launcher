@@ -65,6 +65,7 @@
     <string name="update_to">Actualizează la %1$s</string>
     <string name="install">Instalează</string>
     <string name="version_up_to_date">%1$s · La zi</string>
+    <string name="settings_version">Versiunea %1$s</string>
     <string name="update_available">Actualizare disponibilă: %1$s</string>
     <string name="update_check_failed">%1$s · Nu s-au putut căuta actualizări</string>
     <string name="update_downloading">Se descarcă actualizarea…</string>

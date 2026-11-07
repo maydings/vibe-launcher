@@ -65,6 +65,7 @@
     <string name="update_to">Ενημέρωση σε %1$s</string>
     <string name="install">Εγκατάσταση</string>
     <string name="version_up_to_date">%1$s · Ενημερωμένο</string>
+    <string name="settings_version">Έκδοση %1$s</string>
     <string name="update_available">Υπάρχει ενημέρωση: %1$s</string>
     <string name="update_check_failed">%1$s · Δεν ήταν δυνατός ο έλεγχος για ενημερώσεις</string>
     <string name="update_downloading">Λήψη της ενημέρωσης…</string>

@@ -65,6 +65,7 @@
     <string name="update_to">Оновити до %1$s</string>
     <string name="install">Установити</string>
     <string name="version_up_to_date">%1$s · Остання версія</string>
+    <string name="settings_version">Версія %1$s</string>
     <string name="update_available">Доступне оновлення: %1$s</string>
     <string name="update_check_failed">%1$s · Не вдалося перевірити оновлення</string>
     <string name="update_downloading">Завантаження оновлення…</string>

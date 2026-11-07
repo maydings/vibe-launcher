@@ -65,6 +65,7 @@
     <string name="update_to">%1$s پر اپ ڈیٹ کریں</string>
     <string name="install">انسٹال کریں</string>
     <string name="version_up_to_date">%1$s · تازہ ترین</string>
+    <string name="settings_version">ورژن %1$s</string>
     <string name="update_available">اپ ڈیٹ دستیاب: %1$s</string>
     <string name="update_check_failed">%1$s · اپ ڈیٹس نہیں دیکھی جا سکیں</string>
     <string name="update_downloading">اپ ڈیٹ ڈاؤن لوڈ ہو رہی ہے…</string>

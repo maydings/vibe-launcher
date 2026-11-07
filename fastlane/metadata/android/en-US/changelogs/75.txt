@@ -1,0 +1,5 @@
+* Custom wallpapers: your own photos and videos, or ones from Wallhaven and Pexels, where an app has no picture or instead of every backdrop.
+* Weather under the date, and a minimal top bar.
+* A dock folder's apps as a dial above it.
+* Choose where film and show pictures come from: Nuvio, Stremio, TMDB or the app's own.
+* Many fixes.

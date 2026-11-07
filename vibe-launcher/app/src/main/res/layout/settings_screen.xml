@@ -7,13 +7,39 @@
     android:layout_height="match_parent">
     <!-- No background of its own: the window's (settings_bg, Theme.Settings) is the screen's, drawn once. -->
 
-    <ImageView
+    <!-- The logo, with the name and the version under it; slides as one (SettingsScreen.logo). -->
+    <LinearLayout
         android:id="@+id/logo"
         android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|start"
-        android:src="@drawable/settings_logo"
-        android:importantForAccessibility="no" />
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/settings_logo"
+            android:importantForAccessibility="no" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/app_name"
+            android:textColor="#FFFFFFFF"
+            android:textSize="26sp"
+            android:fontFamily="@string/font_medium" />
+
+        <TextView
+            android:id="@+id/logoVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="#99FFFFFF"
+            android:textSize="16sp"
+            android:fontFamily="@string/font_regular" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/title"

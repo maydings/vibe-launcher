@@ -198,6 +198,26 @@ final class Wallpapers {
         return pick(all);
     }
 
+    /**
+     * The one before or after this visit's (direction -1 or 1), in the order they were added, going round: Left
+     * and Right on the picture alone. Null when there's no other.
+     */
+    synchronized Item step(int direction) {
+        List<Item> all = list();
+        if (all.size() < 2) return null;
+        int at = 0;
+        for (int i = 0; i < all.size(); i++) if (all.get(i).id.equals(current)) at = i;
+        Item item = all.get(((at + direction) % all.size() + all.size()) % all.size());
+        last = current;
+        current = item.id;
+        return item;
+    }
+
+    /** How many there are. */
+    int count() {
+        return list().size();
+    }
+
     /** Home came back: the next one asked for is picked afresh. */
     synchronized void reshuffle() {
         if (current != null) last = current;

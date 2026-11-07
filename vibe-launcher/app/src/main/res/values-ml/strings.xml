@@ -65,6 +65,7 @@
     <string name="update_to">%1$s-ലേക്ക് അപ്‌ഡേറ്റ് ചെയ്യുക</string>
     <string name="install">ഇൻസ്റ്റാൾ ചെയ്യുക</string>
     <string name="version_up_to_date">%1$s · ഏറ്റവും പുതിയത്</string>
+    <string name="settings_version">പതിപ്പ് %1$s</string>
     <string name="update_available">അപ്‌ഡേറ്റ് ലഭ്യമാണ്: %1$s</string>
     <string name="update_check_failed">%1$s · അപ്‌ഡേറ്റുകൾ പരിശോധിക്കാനായില്ല</string>
     <string name="update_downloading">അപ്‌ഡേറ്റ് ഡൗൺലോഡ് ചെയ്യുന്നു…</string>

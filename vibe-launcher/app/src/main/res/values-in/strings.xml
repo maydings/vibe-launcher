@@ -65,6 +65,7 @@
     <string name="update_to">Perbarui ke %1$s</string>
     <string name="install">Instal</string>
     <string name="version_up_to_date">%1$s · Terbaru</string>
+    <string name="settings_version">Versi %1$s</string>
     <string name="update_available">Pembaruan tersedia: %1$s</string>
     <string name="update_check_failed">%1$s · Tidak bisa memeriksa pembaruan</string>
     <string name="update_downloading">Mengunduh pembaruan…</string>

@@ -65,6 +65,7 @@
     <string name="update_to">%1$s-এ আপডেট করুন</string>
     <string name="install">ইনস্টল করুন</string>
     <string name="version_up_to_date">%1$s · সর্বশেষ</string>
+    <string name="settings_version">সংস্করণ %1$s</string>
     <string name="update_available">আপডেট আছে: %1$s</string>
     <string name="update_check_failed">%1$s · আপডেট খোঁজা যায়নি</string>
     <string name="update_downloading">আপডেট ডাউনলোড হচ্ছে…</string>

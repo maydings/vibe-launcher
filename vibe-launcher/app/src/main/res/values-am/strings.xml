@@ -65,6 +65,7 @@
     <string name="update_to">ወደ %1$s አዘምን</string>
     <string name="install">ጫን</string>
     <string name="version_up_to_date">%1$s · የቅርብ ጊዜ</string>
+    <string name="settings_version">ስሪት %1$s</string>
     <string name="update_available">ዝማኔ አለ፦ %1$s</string>
     <string name="update_check_failed">%1$s · ዝማኔዎችን መፈለግ አልተቻለም</string>
     <string name="update_downloading">ዝማኔውን በማውረድ ላይ…</string>
