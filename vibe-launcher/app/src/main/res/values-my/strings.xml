@@ -198,6 +198,7 @@
     <string name="top_bar_full">အပြည့်</string>
     <string name="top_bar_minimal">အနည်းဆုံး</string>
     <string name="top_bar_minimal_short">အနည်းဆုံး- ဘားမရှိ၊ ညာဘက်အပေါ်တွင် သင်္ကေတငယ်များနှင့် ဘယ်ဘက်အပေါ်တွင် အချိန်နှင့် ရာသီဥတုသာ၊ နောက်ခံပေါ်တွင် အမြဲပြသည်။</string>
+    <string name="top_bar_full_short">အပြည့်- အပေါ်တွင် မှုန်ဝါးသော ဘား၊ နာရီကြီး၊ ရက်စွဲနှင့် ရာသီဥတု၊ အမည်ပါ ခလုတ်များ။</string>
     <string name="show_clock">နာရီ</string>
     <string name="show_date">ရက်စွဲ</string>
     <string name="show_date_short">အပေါ်ဘားအပြည့်တွင်သာ ပြသည်။</string>

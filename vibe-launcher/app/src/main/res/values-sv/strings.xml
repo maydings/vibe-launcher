@@ -198,6 +198,7 @@
     <string name="top_bar_full">Fullt</string>
     <string name="top_bar_minimal">Minimalt</string>
     <string name="top_bar_minimal_short">Minimalt: inget fält, bara små ikoner uppe till höger och tid och väder uppe till vänster, över bakgrunden, alltid synliga.</string>
+    <string name="top_bar_full_short">Full: en frostad list överst med den stora klockan, datumet och vädret, och knappar med namn.</string>
     <string name="show_clock">Klocka</string>
     <string name="show_date">Datum</string>
     <string name="show_date_short">Visas bara i det fulla toppfältet.</string>

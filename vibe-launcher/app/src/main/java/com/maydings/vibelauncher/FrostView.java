@@ -223,6 +223,8 @@ public class FrostView extends View {
      * its line went, and came back as the next row reached it.
      */
     private float coverage() {
+        // The minimal bar: frost only where tiles really are under it, not just because the grid has scrolled.
+        if (onlyOverTiles) return reach();
         if (source instanceof androidx.recyclerview.widget.RecyclerView) {
             int scrolled = ((androidx.recyclerview.widget.RecyclerView) source).computeVerticalScrollOffset();
             if (scrolled >= fadeDistance) return 1f;

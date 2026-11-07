@@ -114,6 +114,22 @@ final class SettingsScreen {
             this.view = view;
             label = view.findViewById(R.id.label);
             value = view.findViewById(R.id.value);
+            // The name and the value share the row: when both don't fit, the name gets what it needs (up to 60%)
+            // and the value gives way, rather than the name being cut short by a long value ("Custom wallp…").
+            view.addOnLayoutChangeListener((v, l, t, r, b, ol, ot, or, ob) -> {
+                if (field != null || value.getVisibility() != View.VISIBLE) return;
+                int room = label.getWidth() + value.getWidth();
+                if (room <= 0) return;
+                float name = label.getPaint().measureText(String.valueOf(label.getText()));
+                int wants = (int) Math.ceil(value.getPaint().measureText(String.valueOf(value.getText())))
+                        + value.getPaddingLeft() + value.getPaddingRight() + 1;
+                int max = name + wants <= room ? wants : Math.max(Math.round(room * 0.4f), room - Math.round(name) - 1);
+                max = Math.min(max, wants);
+                if (value.getMaxWidth() != max) {
+                    int fit = max;
+                    v.post(() -> value.setMaxWidth(fit));
+                }
+            });
         }
 
         void refresh() {
@@ -864,7 +880,7 @@ MainActivity.showError(host, R.string.anim_short);
             page.opened = city;
         }
         Row search = page.add(R.string.weather_search, null, null);
-        search.field = (EditText) ((android.view.ViewStub) search.view.findViewById(R.id.fieldStub)).inflate();
+        search.field = inflateField(search);
         search.field.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_FLAG_CAP_WORDS);
         search.action = () -> {
             search.view.setActivated(true);
@@ -973,13 +989,23 @@ MainActivity.showError(host, R.string.anim_short);
         Page page = new Page(ctx.getString(R.string.top_bar));
         Row style = page.link(R.string.top_bar_style, () -> ctx.getString(settings.topBarMinimal()
                 ? R.string.top_bar_minimal : R.string.top_bar_full), this::topBarStyle);
-        style.about = R.string.top_bar_minimal_short;
+        style.about = styleAbout(settings.topBarMinimal());
+        topBarPage = page;
+        topBarStyleRow = style;
         page.toggle(R.string.show_clock, settings::showClock, settings::setShowClock);
         Row date = page.toggle(R.string.show_date, settings::showDate, settings::setShowDate);
         date.about = R.string.show_date_short;
         Row weather = page.toggle(R.string.tab_weather, settings::weatherOn, settings::setWeatherOn);
         weather.about = R.string.weather_show_short;
         return page;
+    }
+
+    /** Top bar while it's open, and its Style row: its note says what the style picked is. */
+    private Page topBarPage;
+    private Row topBarStyleRow;
+
+    private static int styleAbout(boolean minimal) {
+        return minimal ? R.string.top_bar_minimal_short : R.string.top_bar_full_short;
     }
 
     private Page topBarStyle() {
@@ -990,6 +1016,11 @@ MainActivity.showError(host, R.string.anim_short);
                     () -> minimal == settings.topBarMinimal() ? "✓" : "", () -> {
                         settings.setTopBarMinimal(minimal);
                         page.refresh();
+                        if (topBarStyleRow != null) {   // the list on the left: its value and note now
+                            topBarStyleRow.about = styleAbout(minimal);
+                            topBarStyleRow.refresh();
+                            if (topBarPage != null) showAbout(topBarPage, topBarStyleRow);
+                        }
                     });
             if (minimal == settings.topBarMinimal()) page.opened = row;
         }
@@ -1520,11 +1551,16 @@ MainActivity.showError(host, R.string.anim_short);
         return page;
     }
 
+    /** A row's typing field (keys, the weather's city search); the row then leaves its value alone (Row). */
+    private EditText inflateField(Row row) {
+        return (EditText) ((android.view.ViewStub) row.view.findViewById(R.id.fieldStub)).inflate();
+    }
+
     /** A key row: the saved key's last four characters; OK edits it in place. */
     private void key(Page page, int label, int index, int about) {
         Row row = page.add(label, () -> keys[index].isEmpty() ? ctx.getString(R.string.not_set) : mask(keys[index]), null);
         row.about = about;
-        row.field = (EditText) ((android.view.ViewStub) row.view.findViewById(R.id.fieldStub)).inflate();
+        row.field = inflateField(row);
         row.action = () -> edit(row, index);
         row.field.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_NULL) endEdit();

@@ -198,6 +198,7 @@
     <string name="top_bar_full">పూర్తి</string>
     <string name="top_bar_minimal">కనిష్ఠ</string>
     <string name="top_bar_minimal_short">కనిష్ఠ: బార్ లేదు, పైన కుడివైపు చిన్న ఐకాన్‌లు, పైన ఎడమవైపు సమయం, వాతావరణం మాత్రమే, నేపథ్యంపై, ఎల్లప్పుడూ కనిపిస్తాయి.</string>
+    <string name="top_bar_full_short">పూర్తి: పైన మసకబారిన బార్, అందులో పెద్ద గడియారం, తేదీ, వాతావరణం, పేర్లున్న బటన్‌లు.</string>
     <string name="show_clock">గడియారం</string>
     <string name="show_date">తేదీ</string>
     <string name="show_date_short">పూర్తి పై బార్‌లో మాత్రమే చూపబడుతుంది.</string>

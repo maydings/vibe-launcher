@@ -198,6 +198,7 @@
     <string name="top_bar_full">Pełny</string>
     <string name="top_bar_minimal">Minimalny</string>
     <string name="top_bar_minimal_short">Minimalny: bez paska, tylko małe ikony w prawym górnym rogu oraz godzina i pogoda w lewym górnym, na tle, zawsze widoczne.</string>
+    <string name="top_bar_full_short">Pełny: matowy pasek u góry z dużym zegarem, datą i pogodą oraz przyciskami z nazwami.</string>
     <string name="show_clock">Zegar</string>
     <string name="show_date">Data</string>
     <string name="show_date_short">Widoczna tylko na pełnym górnym pasku.</string>

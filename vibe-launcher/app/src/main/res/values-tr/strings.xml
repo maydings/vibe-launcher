@@ -198,6 +198,7 @@
     <string name="top_bar_full">Tam</string>
     <string name="top_bar_minimal">Sade</string>
     <string name="top_bar_minimal_short">Sade: çubuk yok, yalnızca sağ üstte küçük simgeler ve sol üstte saat ile hava durumu, arka planın üzerinde, her zaman görünür.</string>
+    <string name="top_bar_full_short">Tam: üstte büyük saat, tarih ve hava durumuyla buzlu bir çubuk ve adlarıyla düğmeler.</string>
     <string name="show_clock">Saat</string>
     <string name="show_date">Tarih</string>
     <string name="show_date_short">Yalnızca tam üst çubukta gösterilir.</string>

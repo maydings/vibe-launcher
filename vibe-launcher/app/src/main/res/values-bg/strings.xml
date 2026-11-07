@@ -198,6 +198,7 @@
     <string name="top_bar_full">Пълна</string>
     <string name="top_bar_minimal">Минимална</string>
     <string name="top_bar_minimal_short">Минимална: без лента, само малки икони горе вдясно и часът и времето горе вляво, върху фона, винаги видими.</string>
+    <string name="top_bar_full_short">Пълна: матова лента отгоре с голям часовник, дата и времето, и бутони с имената им.</string>
     <string name="show_clock">Часовник</string>
     <string name="show_date">Дата</string>
     <string name="show_date_short">Показва се само в пълната горна лента.</string>

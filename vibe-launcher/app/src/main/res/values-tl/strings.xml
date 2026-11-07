@@ -198,6 +198,7 @@
     <string name="top_bar_full">Buo</string>
     <string name="top_bar_minimal">Minimal</string>
     <string name="top_bar_minimal_short">Minimal: walang bar, maliliit na icon lang sa kanang itaas at ang oras at panahon sa kaliwang itaas, sa ibabaw ng background, laging nakikita.</string>
+    <string name="top_bar_full_short">Buo: isang malabong bar sa itaas na may malaking orasan, petsa at panahon, at mga button na may pangalan.</string>
     <string name="show_clock">Orasan</string>
     <string name="show_date">Petsa</string>
     <string name="show_date_short">Sa buong itaas na bar lang ipinapakita.</string>

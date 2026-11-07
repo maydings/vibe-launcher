@@ -198,6 +198,7 @@
     <string name="top_bar_full">Complète</string>
     <string name="top_bar_minimal">Minimale</string>
     <string name="top_bar_minimal_short">Minimale : pas de barre, juste de petites icônes en haut à droite et l\'heure et la météo en haut à gauche, sur l\'arrière-plan, toujours visibles.</string>
+    <string name="top_bar_full_short">Complète : une barre givrée en haut avec la grande horloge, la date et la météo, et des boutons avec leur nom.</string>
     <string name="show_clock">Horloge</string>
     <string name="show_date">Date</string>
     <string name="show_date_short">Affichée seulement dans la barre du haut complète.</string>

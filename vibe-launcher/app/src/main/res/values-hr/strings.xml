@@ -198,6 +198,7 @@
     <string name="top_bar_full">Cijela</string>
     <string name="top_bar_minimal">Minimalna</string>
     <string name="top_bar_minimal_short">Minimalna: bez trake, samo male ikone gore desno te vrijeme i prognoza gore lijevo, preko pozadine, uvijek vidljive.</string>
+    <string name="top_bar_full_short">Puna: matirana traka na vrhu s velikim satom, datumom i vremenskom prognozom te gumbima s nazivima.</string>
     <string name="show_clock">Sat</string>
     <string name="show_date">Datum</string>
     <string name="show_date_short">Prikazuje se samo u cijeloj gornjoj traci.</string>

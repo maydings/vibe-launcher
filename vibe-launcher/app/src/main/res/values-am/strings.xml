@@ -198,6 +198,7 @@
     <string name="top_bar_full">ሙሉ</string>
     <string name="top_bar_minimal">አነስተኛ</string>
     <string name="top_bar_minimal_short">አነስተኛ፦ አሞሌ የለም፣ ከላይ በቀኝ ትናንሽ አዶዎች እና ከላይ በግራ ሰዓቱ እና የአየር ሁኔታው ብቻ፣ ከዳራው በላይ፣ ሁልጊዜ የሚታዩ።</string>
+    <string name="top_bar_full_short">ሙሉ፦ ከላይ በኩል ትልቅ ሰዓት፣ ቀን እና የአየር ሁኔታ፣ እንዲሁም ስማቸው የተጻፈባቸው አዝራሮች ያሉበት ደብዛዛ አሞሌ።</string>
     <string name="show_clock">ሰዓት</string>
     <string name="show_date">ቀን</string>
     <string name="show_date_short">በሙሉው የላይኛው አሞሌ ውስጥ ብቻ ይታያል።</string>

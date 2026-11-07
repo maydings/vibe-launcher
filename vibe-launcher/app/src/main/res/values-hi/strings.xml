@@ -198,6 +198,7 @@
     <string name="top_bar_full">पूरा</string>
     <string name="top_bar_minimal">मिनिमल</string>
     <string name="top_bar_minimal_short">मिनिमल: कोई बार नहीं, सिर्फ़ ऊपर दाईं ओर छोटे आइकन और ऊपर बाईं ओर समय और मौसम, बैकग्राउंड पर, हमेशा दिखते हैं.</string>
+    <string name="top_bar_full_short">पूरा: ऊपर एक धुंधली पट्टी, जिसमें बड़ी घड़ी, तारीख़ और मौसम, और नाम वाले बटन।</string>
     <string name="show_clock">घड़ी</string>
     <string name="show_date">तारीख</string>
     <string name="show_date_short">सिर्फ़ पूरे ऊपरी बार में दिखती है.</string>

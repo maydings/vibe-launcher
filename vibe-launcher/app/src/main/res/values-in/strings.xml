@@ -198,6 +198,7 @@
     <string name="top_bar_full">Penuh</string>
     <string name="top_bar_minimal">Minimal</string>
     <string name="top_bar_minimal_short">Minimal: tanpa bilah, hanya ikon kecil di kanan atas serta waktu dan cuaca di kiri atas, di atas latar, selalu tampil.</string>
+    <string name="top_bar_full_short">Penuh: bilah buram di atas dengan jam besar, tanggal dan cuaca, serta tombol dengan namanya.</string>
     <string name="show_clock">Jam</string>
     <string name="show_date">Tanggal</string>
     <string name="show_date_short">Hanya tampil di bilah atas penuh.</string>

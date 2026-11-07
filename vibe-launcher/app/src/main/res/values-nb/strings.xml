@@ -198,6 +198,7 @@
     <string name="top_bar_full">Full</string>
     <string name="top_bar_minimal">Minimal</string>
     <string name="top_bar_minimal_short">Minimal: ingen linje, bare små ikoner øverst til høyre og klokkeslett og vær øverst til venstre, over bakgrunnen, alltid synlige.</string>
+    <string name="top_bar_full_short">Full: en matt linje øverst med den store klokken, datoen og været, og knapper med navn.</string>
     <string name="show_clock">Klokke</string>
     <string name="show_date">Dato</string>
     <string name="show_date_short">Vises bare i den fulle topplinjen.</string>

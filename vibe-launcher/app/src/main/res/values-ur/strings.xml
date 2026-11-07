@@ -198,6 +198,7 @@
     <string name="top_bar_full">مکمل</string>
     <string name="top_bar_minimal">کم سے کم</string>
     <string name="top_bar_minimal_short">کم سے کم: کوئی بار نہیں، صرف اوپر دائیں چھوٹے آئیکن اور اوپر بائیں وقت اور موسم، پس منظر پر، ہمیشہ نظر آتے ہیں۔</string>
+    <string name="top_bar_full_short">مکمل: اوپر ایک دھندلی پٹی، جس میں بڑی گھڑی، تاریخ اور موسم، اور ناموں والے بٹن۔</string>
     <string name="show_clock">گھڑی</string>
     <string name="show_date">تاریخ</string>
     <string name="show_date_short">صرف مکمل اوپری بار میں دکھائی دیتی ہے۔</string>

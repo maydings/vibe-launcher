@@ -198,6 +198,7 @@
     <string name="top_bar_full">முழு</string>
     <string name="top_bar_minimal">குறைந்தபட்சம்</string>
     <string name="top_bar_minimal_short">குறைந்தபட்சம்: பட்டி இல்லை, மேல் வலதில் சிறிய ஐகான்களும் மேல் இடதில் நேரமும் வானிலையும் மட்டும், பின்னணியின் மேல், எப்போதும் தெரியும்.</string>
+    <string name="top_bar_full_short">முழு: மேலே ஒரு மங்கலான பட்டை, அதில் பெரிய கடிகாரம், தேதி, வானிலை, பெயருடன் பொத்தான்கள்.</string>
     <string name="show_clock">கடிகாரம்</string>
     <string name="show_date">தேதி</string>
     <string name="show_date_short">முழு மேல் பட்டியில் மட்டும் காட்டப்படும்.</string>

@@ -198,6 +198,7 @@
     <string name="top_bar_full">Teljes</string>
     <string name="top_bar_minimal">Minimális</string>
     <string name="top_bar_minimal_short">Minimális: nincs sáv, csak kis ikonok jobb felül, és az idő és az időjárás bal felül, a háttér fölött, mindig látható.</string>
+    <string name="top_bar_full_short">Teljes: matt sáv felül a nagy órával, a dátummal és az időjárással, és feliratos gombokkal.</string>
     <string name="show_clock">Óra</string>
     <string name="show_date">Dátum</string>
     <string name="show_date_short">Csak a teljes felső sávban látszik.</string>

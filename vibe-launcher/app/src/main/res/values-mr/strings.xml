@@ -198,6 +198,7 @@
     <string name="top_bar_full">पूर्ण</string>
     <string name="top_bar_minimal">किमान</string>
     <string name="top_bar_minimal_short">किमान: बार नाही, फक्त वर उजवीकडे छोटे आयकन आणि वर डावीकडे वेळ व हवामान, पार्श्वभूमीवर, नेहमी दिसतात.</string>
+    <string name="top_bar_full_short">पूर्ण: वर एक धूसर पट्टी, त्यात मोठे घड्याळ, तारीख आणि हवामान, आणि नावांसह बटणे.</string>
     <string name="show_clock">घड्याळ</string>
     <string name="show_date">तारीख</string>
     <string name="show_date_short">फक्त पूर्ण वरच्या बारमध्ये दिसते.</string>

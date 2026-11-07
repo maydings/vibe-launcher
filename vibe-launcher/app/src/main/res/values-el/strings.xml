@@ -198,6 +198,7 @@
     <string name="top_bar_full">Πλήρης</string>
     <string name="top_bar_minimal">Ελάχιστη</string>
     <string name="top_bar_minimal_short">Ελάχιστη: χωρίς γραμμή, μόνο μικρά εικονίδια πάνω δεξιά και η ώρα και ο καιρός πάνω αριστερά, πάνω στο φόντο, πάντα ορατά.</string>
+    <string name="top_bar_full_short">Πλήρης: μια θολή μπάρα στο πάνω μέρος με το μεγάλο ρολόι, την ημερομηνία και τον καιρό, και κουμπιά με τα ονόματά τους.</string>
     <string name="show_clock">Ρολόι</string>
     <string name="show_date">Ημερομηνία</string>
     <string name="show_date_short">Εμφανίζεται μόνο στην πλήρη επάνω γραμμή.</string>

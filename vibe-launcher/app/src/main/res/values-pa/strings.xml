@@ -198,6 +198,7 @@
     <string name="top_bar_full">ਪੂਰੀ</string>
     <string name="top_bar_minimal">ਘੱਟੋ-ਘੱਟ</string>
     <string name="top_bar_minimal_short">ਘੱਟੋ-ਘੱਟ: ਕੋਈ ਪੱਟੀ ਨਹੀਂ, ਸਿਰਫ਼ ਉੱਪਰ ਸੱਜੇ ਛੋਟੇ ਆਈਕਨ ਅਤੇ ਉੱਪਰ ਖੱਬੇ ਸਮਾਂ ਅਤੇ ਮੌਸਮ, ਪਿਛੋਕੜ ਉੱਤੇ, ਹਮੇਸ਼ਾਂ ਦਿਸਦੇ।</string>
+    <string name="top_bar_full_short">ਪੂਰਾ: ਉੱਪਰ ਇੱਕ ਧੁੰਦਲੀ ਪੱਟੀ, ਜਿਸ ਵਿੱਚ ਵੱਡੀ ਘੜੀ, ਤਾਰੀਖ਼ ਅਤੇ ਮੌਸਮ, ਅਤੇ ਨਾਂ ਵਾਲੇ ਬਟਨ।</string>
     <string name="show_clock">ਘੜੀ</string>
     <string name="show_date">ਤਾਰੀਖ</string>
     <string name="show_date_short">ਸਿਰਫ਼ ਪੂਰੀ ਉੱਪਰਲੀ ਪੱਟੀ ਵਿੱਚ ਦਿਖਾਈ ਜਾਂਦੀ ਹੈ।</string>

@@ -198,6 +198,7 @@
     <string name="top_bar_full">كامل</string>
     <string name="top_bar_minimal">مختصر</string>
     <string name="top_bar_minimal_short">مختصر: بلا شريط، أيقونات صغيرة أعلى اليمين والوقت والطقس أعلى اليسار، فوق الخلفية، ظاهرة دائمًا.</string>
+    <string name="top_bar_full_short">كامل: شريط ضبابي في الأعلى فيه الساعة الكبيرة والتاريخ والطقس، وأزرار بأسمائها.</string>
     <string name="show_clock">الساعة</string>
     <string name="show_date">التاريخ</string>
     <string name="show_date_short">يظهر في الشريط العلوي الكامل فقط.</string>

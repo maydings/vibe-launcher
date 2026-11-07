@@ -198,6 +198,7 @@
     <string name="top_bar_full">સંપૂર્ણ</string>
     <string name="top_bar_minimal">ન્યૂનતમ</string>
     <string name="top_bar_minimal_short">ન્યૂનતમ: કોઈ બાર નહીં, ફક્ત ઉપર જમણે નાનાં આઇકન અને ઉપર ડાબે સમય અને હવામાન, પૃષ્ઠભૂમિ પર, હંમેશાં દેખાય.</string>
+    <string name="top_bar_full_short">પૂર્ણ: ઉપર એક ઝાંખો બાર, જેમાં મોટી ઘડિયાળ, તારીખ અને હવામાન, અને નામવાળા બટન.</string>
     <string name="show_clock">ઘડિયાળ</string>
     <string name="show_date">તારીખ</string>
     <string name="show_date_short">ફક્ત સંપૂર્ણ ઉપરના બારમાં દેખાય છે.</string>

@@ -439,7 +439,10 @@ public final class WallpaperBrowserActivity extends Activity {
                 if (isDestroyed()) return;
                 if (ok) {
                     Toast.makeText(this, R.string.wp_added, Toast.LENGTH_SHORT).show();
-                    adapter.notifyDataSetChanged();   // its tick
+                    // Its tick: that one cell only, as the same view (a payload), so the focus stays on it. Redrawing
+                    // the whole grid left nothing focused and the remote did nothing.
+                    int at = results.indexOf(r);
+                    if (at >= 0) adapter.notifyItemChanged(at, "tick");
                 } else {
                     MainActivity.showError(this, R.string.wp_download_failed);
                 }

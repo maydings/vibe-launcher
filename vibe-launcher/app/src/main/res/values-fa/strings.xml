@@ -198,6 +198,7 @@
     <string name="top_bar_full">کامل</string>
     <string name="top_bar_minimal">حداقلی</string>
     <string name="top_bar_minimal_short">حداقلی: بدون نوار، فقط نمادهای کوچک بالا سمت راست و ساعت و آب‌وهوا بالا سمت چپ، روی پس‌زمینه، همیشه نمایان.</string>
+    <string name="top_bar_full_short">کامل: نواری مات در بالا با ساعت بزرگ، تاریخ و آب‌وهوا، و دکمه‌هایی با نامشان.</string>
     <string name="show_clock">ساعت</string>
     <string name="show_date">تاریخ</string>
     <string name="show_date_short">فقط در نوار بالای کامل نشان داده می‌شود.</string>

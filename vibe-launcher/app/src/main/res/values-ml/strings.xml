@@ -198,6 +198,7 @@
     <string name="top_bar_full">പൂർണ്ണം</string>
     <string name="top_bar_minimal">ലളിതം</string>
     <string name="top_bar_minimal_short">ലളിതം: ബാർ ഇല്ല, മുകളിൽ വലതുവശത്ത് ചെറിയ ഐക്കണുകളും മുകളിൽ ഇടതുവശത്ത് സമയവും കാലാവസ്ഥയും മാത്രം, പശ്ചാത്തലത്തിന് മുകളിൽ, എപ്പോഴും കാണാം.</string>
+    <string name="top_bar_full_short">പൂർണം: മുകളിൽ ഒരു മങ്ങിയ ബാർ, അതിൽ വലിയ ക്ലോക്ക്, തീയതി, കാലാവസ്ഥ, പേരുള്ള ബട്ടണുകൾ.</string>
     <string name="show_clock">ക്ലോക്ക്</string>
     <string name="show_date">തീയതി</string>
     <string name="show_date_short">പൂർണ്ണ മുകളിലെ ബാറിൽ മാത്രം കാണിക്കും.</string>

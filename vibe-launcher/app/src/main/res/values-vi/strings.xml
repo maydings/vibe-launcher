@@ -198,6 +198,7 @@
     <string name="top_bar_full">Đầy đủ</string>
     <string name="top_bar_minimal">Tối giản</string>
     <string name="top_bar_minimal_short">Tối giản: không có thanh, chỉ biểu tượng nhỏ ở góc trên bên phải và giờ, thời tiết ở góc trên bên trái, trên nền, luôn hiện.</string>
+    <string name="top_bar_full_short">Đầy đủ: một thanh mờ ở trên cùng với đồng hồ lớn, ngày và thời tiết, cùng các nút có tên.</string>
     <string name="show_clock">Đồng hồ</string>
     <string name="show_date">Ngày</string>
     <string name="show_date_short">Chỉ hiện trong thanh trên cùng đầy đủ.</string>

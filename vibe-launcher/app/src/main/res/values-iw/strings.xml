@@ -198,6 +198,7 @@
     <string name="top_bar_full">מלא</string>
     <string name="top_bar_minimal">מינימלי</string>
     <string name="top_bar_minimal_short">מינימלי: בלי סרגל, רק סמלים קטנים למעלה מימין והשעה ומזג האוויר למעלה משמאל, מעל הרקע, תמיד מוצגים.</string>
+    <string name="top_bar_full_short">מלא: פס מט בראש המסך עם השעון הגדול, התאריך ומזג האוויר, וכפתורים עם שמותיהם.</string>
     <string name="show_clock">שעון</string>
     <string name="show_date">תאריך</string>
     <string name="show_date_short">מוצג רק בסרגל העליון המלא.</string>

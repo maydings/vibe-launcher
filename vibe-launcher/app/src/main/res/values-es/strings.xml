@@ -198,6 +198,7 @@
     <string name="top_bar_full">Completa</string>
     <string name="top_bar_minimal">Mínima</string>
     <string name="top_bar_minimal_short">Mínima: sin barra, solo iconos pequeños arriba a la derecha y la hora y el tiempo arriba a la izquierda, sobre el fondo, siempre visibles.</string>
+    <string name="top_bar_full_short">Completa: una barra esmerilada arriba con el reloj grande, la fecha y el tiempo, y botones con su nombre.</string>
     <string name="show_clock">Reloj</string>
     <string name="show_date">Fecha</string>
     <string name="show_date_short">Solo se muestra en la barra superior completa.</string>

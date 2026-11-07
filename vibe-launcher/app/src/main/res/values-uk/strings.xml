@@ -198,6 +198,7 @@
     <string name="top_bar_full">Повна</string>
     <string name="top_bar_minimal">Мінімальна</string>
     <string name="top_bar_minimal_short">Мінімальна: без панелі, лише маленькі значки праворуч угорі та час із погодою ліворуч угорі, поверх фону, завжди видимі.</string>
+    <string name="top_bar_full_short">Повна: матова смуга вгорі з великим годинником, датою й погодою та кнопками з назвами.</string>
     <string name="show_clock">Годинник</string>
     <string name="show_date">Дата</string>
     <string name="show_date_short">Показується лише на повній верхній панелі.</string>

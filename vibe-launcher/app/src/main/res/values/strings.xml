@@ -202,6 +202,7 @@
     <string name="top_bar_full">Full</string>
     <string name="top_bar_minimal">Minimal</string>
     <string name="top_bar_minimal_short">Minimal: no bar, just small icons at the top right and the time and weather at the top left, over the background, always showing.</string>
+    <string name="top_bar_full_short">Full: a frosted bar across the top with the large clock, the date and the weather, and buttons with their names.</string>
     <string name="show_clock">Clock</string>
     <string name="show_date">Date</string>
     <string name="show_date_short">Shown in the full top bar only.</string>

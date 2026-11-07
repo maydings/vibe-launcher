@@ -198,6 +198,7 @@
     <string name="top_bar_full">Completa</string>
     <string name="top_bar_minimal">Mínima</string>
     <string name="top_bar_minimal_short">Mínima: sem barra, só ícones pequenos no canto superior direito e a hora e o clima no superior esquerdo, sobre o fundo, sempre visíveis.</string>
+    <string name="top_bar_full_short">Completa: uma barra fosca no topo com o relógio grande, a data e o tempo, e botões com nome.</string>
     <string name="show_clock">Relógio</string>
     <string name="show_date">Data</string>
     <string name="show_date_short">Aparece só na barra superior completa.</string>

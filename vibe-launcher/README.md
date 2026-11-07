@@ -29,24 +29,22 @@ brew install openjdk@17 android-commandlinetools
 sdkmanager "platforms;android-34" "build-tools;34.0.0"
 ```
 
-Build, install on the TV and make it the home screen in one go. It uses adb, or the Python ADB
-client in [`tools/`](tools/) where macOS blocks adb on the local network:
+Build, install on a TV over adb and start it:
 
 ```bash
 ./build-and-install.sh 192.168.1.50
 ```
 
 Or by hand: `./gradlew assembleAdbDebug`, then `adb install -r -g app/build/outputs/apk/adb/debug/app-adb-debug.apk`.
-
-To check a change didn't make it slower: the speed tests in [`tools/bench/`](tools/bench/) (cold start,
-first picture, memory, idle CPU, frame times at the display), with the last numbers to compare against.
+That's the only script here. Making it Home, debloating and the rest are done on the TV, in Vibe
+Launcher's own Settings.
 
 **Two builds** come from the same code (`app/build.gradle`):
 
 | | `adb` (the GitHub releases, `build-and-install.sh`) | `store` (Google Play) |
 |---|---|---|
-| Installed with | `build-and-install.sh` over adb, or the release APK with a file manager | the store, no computer |
-| Stock launcher | turned off over adb (with Google TV's setup wizard), or left on without a computer | stays on |
+| Installed with | the release APK with Downloader or a file manager (`build-and-install.sh` for development) | the store |
+| Stock launcher | turned off from the TV (Settings → Advanced → Default launcher), or left on | stays on |
 | Home button | with the stock launcher off, comes here by itself; left on, as the store build | the user turns on *Vibe Launcher Home button* in Settings → Accessibility; the service keeps Home from the stock launcher: a press opens Vibe Launcher, a hold the TV's Settings; a stock home that comes up anyway (Back out of an app) gets covered |
 | Accessibility service | `HomeKeyService` (both): hears only the stock launchers' screens opening, reads nothing on screen, keeps Home and passes every other key on; stops looking at keys while a game controller is connected (Home then reaches the stock launcher, which gets covered). Off until the user turns it on | same |
 | First start, and gear menu → *Make Home* (both, until Home comes here) | the TV's default-Home dialog only where it can work (no stock launcher outranks it); otherwise, or if that doesn't take, a note on what the Home button service sees and the steps, then Accessibility settings | same |
@@ -58,17 +56,8 @@ first picture, memory, idle CPU, frame times at the display), with the last numb
 | Install permissions | `REQUEST_INSTALL_PACKAGES`, `KILL_BACKGROUND_PROCESSES` | none |
 | Code of its own | `app/src/adb` (manifest, `StoreUpdates` that does nothing) | `app/src/store` (manifest: TV only; `StoreUpdates` asking Play) |
 
-To try the store build on a TV as a store user
-would get it (stock launcher and Home left alone): `FLAVOR=store ./build-and-install.sh 192.168.1.50`. For
+To try the store build: `FLAVOR=store ./build-and-install.sh 192.168.1.50`. For
 a store upload, `./gradlew bundleStoreRelease` makes `app/build/outputs/bundle/storeRelease/app-store-release.aab`.
-
-**An app's rows that stay empty.** Some apps fill a row of cards only once it's switched on in the
-launcher's *Customize channels* screen (SmartTV Client for Twitch's followed channels, for one), and with
-Google's launcher turned off that screen is gone. Android lets only the system switch rows on, so Vibe
-Launcher can't, and neither can adb. Best effort, on Android TV (Google's `tvlauncher`, Android 8 to 11):
-`./channel-rows.sh 192.168.1.50` turns that launcher on for a moment and opens the screen; switch the rows
-on, press Enter, and it turns the launcher off again and makes Vibe Launcher Home again. What's switched on
-stays.
 
 **Release builds** are signed with a key that never enters the repo. Put its location in
 `local.properties` (ignored by git):
@@ -192,5 +181,9 @@ The full list, with what each is sent, is in the [privacy policy](docs/PRIVACY.m
 | `PowerOnHome` | Home at power-on: Home shortly after the screen turns on (from the Home button service while it's bound) |
 | `HomeButtonLink` | What the store build's Home button service lends the app while bound: the TV's power menu for Restart… |
 | `CrashGuard` | Falls back to the stock launcher's App info after repeated crashes |
+| `Wallpapers`, `WallpaperVideo`, `WallpaperBrowserActivity` | Custom wallpapers: the stored photos and videos, video playback on Home, and the Wallhaven/Pexels browser |
+| `Weather` | The weather line under the date (Open-Meteo, located by IP or a searched city) |
+| `ShelfDial` | A dock folder's apps as a dial above it |
+| `Adb`, `AdbPairing`, `AdbMdns`, `Spake2`, `TvApps`, `CleanLists` | Reaching the TV's own ADB from the TV itself, and turning apps off and on (Settings → Advanced) |
 
 Contributions: see [CONTRIBUTING.md](CONTRIBUTING.md).

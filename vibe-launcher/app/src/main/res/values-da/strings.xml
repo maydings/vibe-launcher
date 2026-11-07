@@ -198,6 +198,7 @@
     <string name="top_bar_full">Fuld</string>
     <string name="top_bar_minimal">Minimal</string>
     <string name="top_bar_minimal_short">Minimal: ingen linje, kun små ikoner øverst til højre og klokkeslæt og vejr øverst til venstre, oven på baggrunden, altid synlige.</string>
+    <string name="top_bar_full_short">Fuld: en matteret bjælke øverst med det store ur, datoen og vejret og knapper med navne.</string>
     <string name="show_clock">Ur</string>
     <string name="show_date">Dato</string>
     <string name="show_date_short">Vises kun i den fulde toplinje.</string>

@@ -198,6 +198,7 @@
     <string name="top_bar_full">Полная</string>
     <string name="top_bar_minimal">Минимальная</string>
     <string name="top_bar_minimal_short">Минимальная: без панели, только маленькие значки справа вверху и время с погодой слева вверху, поверх фона, всегда видны.</string>
+    <string name="top_bar_full_short">Полная: матовая полоса сверху с крупными часами, датой и погодой и кнопками с названиями.</string>
     <string name="show_clock">Часы</string>
     <string name="show_date">Дата</string>
     <string name="show_date_short">Показывается только на полной верхней панели.</string>

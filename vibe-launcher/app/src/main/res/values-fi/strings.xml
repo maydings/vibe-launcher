@@ -198,6 +198,7 @@
     <string name="top_bar_full">Koko</string>
     <string name="top_bar_minimal">Pelkistetty</string>
     <string name="top_bar_minimal_short">Pelkistetty: ei palkkia, vain pienet kuvakkeet oikeassa yläkulmassa ja aika ja sää vasemmassa yläkulmassa, taustan päällä, aina näkyvissä.</string>
+    <string name="top_bar_full_short">Täysi: himmeä palkki ylhäällä, jossa iso kello, päivämäärä ja sää sekä nimetyt painikkeet.</string>
     <string name="show_clock">Kello</string>
     <string name="show_date">Päivämäärä</string>
     <string name="show_date_short">Näkyy vain koko yläpalkissa.</string>

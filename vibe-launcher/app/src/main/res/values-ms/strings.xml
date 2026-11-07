@@ -198,6 +198,7 @@
     <string name="top_bar_full">Penuh</string>
     <string name="top_bar_minimal">Minimum</string>
     <string name="top_bar_minimal_short">Minimum: tiada bar, hanya ikon kecil di kanan atas serta masa dan cuaca di kiri atas, di atas latar, sentiasa kelihatan.</string>
+    <string name="top_bar_full_short">Penuh: bar kabur di atas dengan jam besar, tarikh dan cuaca, serta butang bernama.</string>
     <string name="show_clock">Jam</string>
     <string name="show_date">Tarikh</string>
     <string name="show_date_short">Ditunjukkan dalam bar atas penuh sahaja.</string>

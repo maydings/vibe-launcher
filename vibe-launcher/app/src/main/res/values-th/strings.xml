@@ -198,6 +198,7 @@
     <string name="top_bar_full">เต็ม</string>
     <string name="top_bar_minimal">มินิมอล</string>
     <string name="top_bar_minimal_short">มินิมอล: ไม่มีแถบ มีแค่ไอคอนเล็กที่มุมขวาบน และเวลากับสภาพอากาศที่มุมซ้ายบน บนพื้นหลัง แสดงตลอด</string>
+    <string name="top_bar_full_short">เต็ม: แถบฝ้าด้านบน มีนาฬิกาใหญ่ วันที่ สภาพอากาศ และปุ่มพร้อมชื่อ</string>
     <string name="show_clock">นาฬิกา</string>
     <string name="show_date">วันที่</string>
     <string name="show_date_short">แสดงเฉพาะในแถบด้านบนแบบเต็ม</string>

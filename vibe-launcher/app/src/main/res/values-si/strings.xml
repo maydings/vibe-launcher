@@ -198,6 +198,7 @@
     <string name="top_bar_full">සම්පූර්ණ</string>
     <string name="top_bar_minimal">අවම</string>
     <string name="top_bar_minimal_short">අවම: තීරුවක් නැත, ඉහළ දකුණේ කුඩා අයිකන සහ ඉහළ වමේ වේලාව සහ කාලගුණය පමණි, පසුබිම මත, සැමවිට දිස්වේ.</string>
+    <string name="top_bar_full_short">සම්පූර්ණ: ඉහළින් බොඳ තීරුවක්, විශාල ඔරලෝසුව, දිනය සහ කාලගුණය, සහ නම් සහිත බොත්තම් සමඟ.</string>
     <string name="show_clock">ඔරලෝසුව</string>
     <string name="show_date">දිනය</string>
     <string name="show_date_short">සම්පූර්ණ ඉහළ තීරුවේ පමණක් පෙන්වයි.</string>

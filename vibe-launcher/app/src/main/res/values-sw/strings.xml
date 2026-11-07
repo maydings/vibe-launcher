@@ -198,6 +198,7 @@
     <string name="top_bar_full">Kamili</string>
     <string name="top_bar_minimal">Mdogo</string>
     <string name="top_bar_minimal_short">Mdogo: hakuna upau, ni aikoni ndogo juu kulia na saa na hali ya hewa juu kushoto tu, juu ya mandhari, zinaonekana kila wakati.</string>
+    <string name="top_bar_full_short">Kamili: upau usio angavu juu wenye saa kubwa, tarehe na hali ya hewa, na vitufe vyenye majina.</string>
     <string name="show_clock">Saa</string>
     <string name="show_date">Tarehe</string>
     <string name="show_date_short">Huonyeshwa kwenye upau kamili wa juu pekee.</string>

@@ -1,368 +1,133 @@
 # Vibe Launcher
 
-**A clean, snappy home screen for Android TV.** Your favourite apps in a dock, full-screen artwork from
-what they're offering you, and nothing else: **no ads, no data collection**, no sponsored rows, no
-accounts. Free and open source.
+A home screen for Android TV and Google TV, and a way to clean the junk off your TV. Version 4 does both
+from the TV itself. You don't need a computer, a cable or a script, just a TV that's online.
 
-I built Vibe Launcher for my own TVs at home, because I wanted a home screen that just shows my apps
-and gets out of the way. It works well enough for us that I'd like to share it with everyone else.
+No ads, no accounts, no tracking. Free and open source.
 
-![Vibe Launcher: Netflix focused in a four-app dock, with Wake Up Dead Man's backdrop and title logo filling the screen](vibe-launcher/docs/home.jpg)
+![Home with the full top bar: Netflix in the dock, The Lincoln Lawyer behind it](vibe-launcher/docs/home.jpg)
 
-**[Download the latest APK](https://github.com/maydings/vibe-launcher/releases/latest/download/vibe-launcher.apk)**
-· on the TV, Downloader code **5573341** · Android TV and Google TV, Android 8.0 or newer · about 1.8 MB
+## Get it on your TV
 
-## Highlights
+1. On the TV, install **Downloader** (by AFTVnews) from the Play Store.
+2. Open Downloader and type **5573341**. That code always points to the latest release.
+3. Install the APK when it asks. Android wants you to allow Downloader to install apps once; say yes.
+4. Open Vibe Launcher, allow its two permissions, and let it become your home screen when it offers.
 
-- **Backdrops from your apps.** The focused app fills the screen with what it's actually showing you:
-  the film or show on its home screen card, with the title's own logo.
-- **Dock and grid.** One to six favourite apps in a dock; press Down for everything else.
-- **Folders, as on tvOS.** Group apps in folders with a preview of what's inside; a folder in the dock
-  shows its apps in a row above it.
-- **Your own tiles.** Rename any app's tile, use its icon instead of its banner, or give it a picture of
-  your own, chosen and cropped on your phone.
-- **Backup and restore.** Keep everything you've set up in a file on the TV or on your phone, and put
-  it back, or on another TV, in one go.
-- **Turn off apps you don't use, no computer needed.** Settings → Apps switches the TV's preinstalled
-  apps off and back on through its own network debugging; the parts your TV needs are protected.
-- **Inputs at a glance.** HDMI ports with what's connected, devices behind a switch listed by name.
-- **A slideshow when idle.** Leave Home alone for a minute and every app's backdrops play full screen.
-- **50 languages.** Follows your TV, or pick one.
-- **Settings that slide.** Full screen and ready the moment you open it: pages slide in from the side,
-  changes apply as you make them, and each key comes with instructions.
-- **Home at power-on.** For TVs that wake up on their last input: Home comes up instead (optional).
-- **Your Home button, no computer needed.** On TVs that keep their own launcher, an optional service
-  sends the Home button to Vibe Launcher.
-- **Updates itself.** Shows what's new, checks the download, installs with one confirmation.
-- **Snappy and light.** Moving around feels instant, even on older TVs with 1 to 2 GB of RAM. No
-  background services (but the optional Home button service), and it lets go of its
-  pictures while you're in another app.
+That's it. From then on it updates itself.
+
+**You'll also want a phone** (or a tablet, anything with a camera that can scan a QR code) for a few
+things: typing API keys, sending pictures and wallpapers, backing up to the phone, and pairing Wireless
+debugging. The TV shows a QR code and you finish on the phone. Everything else works with just the remote.
+
+(If you'd rather, the APK is here:
+[vibe-launcher.apk](https://github.com/maydings/vibe-launcher/releases/latest/download/vibe-launcher.apk).
+Android 8.0 or newer, about 2 MB.)
 
 ## The home screen
 
-Your favourite apps sit in a dock at the bottom of the screen: four, five or six, to suit the size of
-your TV, or as few as one, as you choose. Only the dock shows, with a faint arrow under it; press Down and
-the rest of your apps slide up in a grid. A single glass highlight springs from tile to tile.
+Your favourite apps sit in a dock at the bottom. Whatever app you're on fills the screen with what it's
+offering you: the film or show from its own home screen card, with the title's logo. Press Down for the
+rest of your apps.
 
-![The app grid below the dock, with the glass highlight on Jellyfin](vibe-launcher/docs/launcher-grid.jpg)
+Press Up and the apps slide away, leaving just the picture and a Play button. Left and Right go through
+everything that app has. Hold OK and it opens that exact film or episode.
 
-### Backdrops
+| ![Just the picture, with the Play button](vibe-launcher/docs/picture.jpg) | ![The app grid under the dock](vibe-launcher/docs/launcher-grid.jpg) |
+|---|---|
 
-As you move along the dock, the screen behind it fills with artwork from the focused app:
+Group apps into folders. A folder in the dock turns into a small dial above it: Left and Right spin it,
+and the background follows whichever app is in the middle.
 
-- **The apps' own home screen cards** (Netflix, Apple TV, Prime Video, Jellyfin and others): the film
-  or show each one is offering, shown as a clean full-size backdrop with the title's logo instead of
-  the app's own art and stickers. Works out of the box, using Stremio's free film data.
-- **TMDB** for the most reliable artwork, with a free API key.
-- **YouTube**: your own feed through [SmartTube](https://github.com/yuliskov/SmartTube), which
-  Settings can install for you; or the most popular videos in your country with a YouTube API key;
-  or, with neither, trailers of the films everyone's watching.
-- **Plex**: Continue Watching and recently added from your own server, with your Plex token.
-- **HDHomeRun**: what's on your tuner right now, from SiliconDust's free guide. No setup.
+| ![A folder's dial above the dock, HBO Max in the middle](vibe-launcher/docs/folder-dial.jpg) | ![The minimal top bar: just the time, the weather and three round buttons](vibe-launcher/docs/home-minimal.jpg) |
+|---|---|
 
-Low-resolution art becomes a 2×2 wall instead of one blurry still, or, when an app has only a small
-picture or two (VLC's frames of what you're watching), that picture on its own. Apps with nothing to
-show get a soft glow in their own colour.
+The top bar has the clock, the date and the weather, plus menus for your inputs, the network and
+settings. Don't want a bar? Switch to the minimal one: a small clock and the weather on the left, three
+round buttons on the right, nothing else over your picture.
 
-**Just the picture**: press Up on the dock and the apps slide away, leaving the backdrop on its own,
-and a **Play** button slides in from the left, just above where the apps were. It opens on what you've started watching
-(the last one first), with the time left under the button, such as "2 hours, 5 minutes remaining";
-Left and Right then go through everything else of that app's; hold Left or Right to move on to the
-next app in the dock, going round from the last to the first. Hold OK (or press and hold Play) and the
-button fills up, then opens the film, show or video in that app, or the app itself when there's no
-single title. Faint arrows at the screen's edges show where the remote goes. What you're watching comes
-from the apps themselves: those that share their "Continue watching" with Android TV (Jellyfin does,
-for example) get it, and Plex gets it from your own server (with a Plex token); the others just the
-Play button. An app with no picture yet goes straight to the top bar instead.
+The Inputs menu lists your HDMI ports and what's plugged into each, by name, even behind a switch.
 
-![Just the picture: Wake Up Dead Man's backdrop on its own, with the Play button where the app's name was and faint arrows at the edges](vibe-launcher/docs/picture.jpg)
+| ![The Inputs menu, a PlayStation 5 and an Apple TV on HDMI 2](vibe-launcher/docs/inputs-menu.jpg) | ![A custom wallpaper behind the dock](vibe-launcher/docs/wallpaper.jpg) |
+|---|---|
 
-### Slideshow
+### Where the pictures come from
 
-Leave Home alone for a minute and the apps and the top bar slide away: the backdrops of every app in
-the dock follow each other at random, ten seconds each, with only the clock over them, where it sits on
-the top bar (Settings → Appearance → Screensaver clock turns it off). Press any button and
-Home comes back, on the app of the picture showing, with its picture behind the dock. It
-doesn't start while a menu or Settings is open, and it keeps the screen on only as long as your TV's
-own screen-off setting would. (This replaces the screensaver of earlier versions; pick another, or
-Turn screen off, in your TV's screen saver settings.)
+Out of the box it reads the cards your apps already publish (Netflix, Prime Video, Apple TV, Jellyfin and
+others) and finds clean artwork for each title. You choose the order it looks: Nuvio, Stremio, TMDB or the
+app's own picture. Plex, YouTube (through SmartTube) and an HDHomeRun tuner each get their own pictures too.
 
-## The top bar
+You can also use your own wallpapers: photos or videos sent from your phone, pictures from Wallhaven, or
+videos from Pexels. Show them only where an app has no picture, or instead of everything.
 
-A frosted bar with the clock and date, and three menus. Left and Right move between them. With
-**Auto-hide** on it stays out of sight on the dock, so the picture fills the screen: it
-slides in when you press Up from the picture alone, or move down into the app grid.
+Leave Home alone for a minute and it turns into a slideshow of all of it.
 
-- **Inputs** lists every HDMI and AV input, with whether something is connected to each HDMI one, plus Live TV. Devices
-  that announce themselves over HDMI-CEC appear by name under their port, so an Apple TV and a
-  PlayStation behind an HDMI switch each get their own row. Names and hidden inputs from the TV's own
-  settings carry over.
-- **Network** shows each connection with its IP address (and the Wi-Fi link speed), and VPNs.
-- **Settings** shows live memory and disk use and opens Vibe Launcher's settings or Android's. Last in
-  it (GitHub build), **Free memory** closes the apps running in the background, through the TV's
-  debugging once Settings → Apps has been allowed, and says how much that gave back.
+## Cleaning up your TV
 
-| ![The Inputs menu: HDMI 2 with a PlayStation 5 and an Apple TV behind it, both connected](vibe-launcher/docs/inputs-menu.jpg) | ![The Settings menu with live RAM use](vibe-launcher/docs/settings-menu.jpg) |
+Most TVs come with apps you never asked for that run in the background, fill the home screen and slow
+everything down. Vibe Launcher can turn them off, from the TV, the same way a computer with ADB would.
+
+Turn on USB debugging in your TV's Developer options, and Vibe Launcher connects to the TV's own ADB. Newer
+Google TV devices (Chromecast with Google TV, Google TV Streamer) keep that shut and use Wireless debugging
+instead. Pairing it takes your phone: scan the QR code, and type the 6-digit code the TV shows on the phone,
+so the TV's pairing screen stays open. You only do this once. Then:
+
+- **Clean-up lists**: tested lists from the [Clean Your TV](https://github.com/Gathin23/cleanyourtv)
+  community, with your TV's brand and model at the top. Pick one, untick anything you want to keep, and
+  turn the rest off.
+- **Apps you can turn off**: every app on the TV, on or off with OK.
+- **Turn all back on**: undoes everything Vibe Launcher turned off, and nothing else.
+- **Default launcher**: makes Vibe Launcher the real Home, or puts your TV's own back.
+
+Parts the TV needs (Android itself, the Play Store, the remote, Wi-Fi, the inputs) are protected and
+can't be turned off from here. A turned-off app is still installed, and one press brings it back.
+
+| ![Clean-up lists, Sony's first](vibe-launcher/docs/debloat-lists.jpg) | ![A list's plan for this TV: what's installed here, and what's already off](vibe-launcher/docs/debloat-plan.jpg) |
 |---|---|
 
 ## Settings
 
-Full screen: the logo on the left and **General**, **Appearance**,
-**API keys** and **Apps** (GitHub build) on the right. Picking one slides its list over the logo and its page in on the right;
-Back or Left slides back. Changes apply as you make them: a new number of tiles per row rebuilds Home
-behind Settings, ready when you leave, and a new language rebuilds both (Settings comes back on General
-after a moment). The focused row's explanation shows under the list. Settings is built when Home
-starts, so opening it is just a fade.
+Everything is in Vibe Launcher's own settings: appearance, the top bar, backdrops and wallpapers, weather,
+API keys, and the Advanced tab for the cleanup. Anything long to type, like an API key or a picture,
+comes from your phone: scan the QR code on screen and do it there.
 
-| ![Vibe Launcher settings: the logo on the left, General, Appearance and API keys on the right](vibe-launcher/docs/settings-main.jpg) | ![General: its list slid over the logo, with Language, Reload backdrops, Home at power-on and the software version on the right](vibe-launcher/docs/settings-general.jpg) |
+| ![Settings](vibe-launcher/docs/settings-main.jpg) | ![Film & show sources, in the order they're tried](vibe-launcher/docs/settings-sources.jpg) |
 |---|---|
 
-**General**: language, reloading the backdrops, the picture format, Home at power-on, the Back button, the Home button, Restart… (with the Home button service), backup and restore, the
-software version with its update check, and **About**: who made it, the project's page (with a QR code to
-open it on a phone), where to report a problem, the license and the credits.
+Also in there:
 
-- **Language**: Match system (the default), or any of 50 languages, each listed in its own name. The
-  clock and date follow it.
-- **Reload backdrops**: empties the saved pictures and downloads them all again, each
-  app's first one first.
-- **Picture format**: PNG (the default), lossless, or JPEG, several times smaller and quicker to
-  open on slower TVs. Changing it reloads the backdrops in the new format.
-- **Home at power-on**: Off (the default) or On. For TVs that wake up on the input or app they were
-  left on (Sony goes back to the last HDMI input): On brings Home up just after the screen turns on. With
-  the Home button service on, a button pressed in that first moment keeps you where the TV woke up.
-- **Back button**: what Back does on Home. Off (the default) does nothing; First app goes to the
-  dock's first app; Poster view shows the app's picture alone, as Up from the dock does (from a lower
-  row, the first Back goes to the dock); Screensaver starts the screensaver at once.
-- **Home button**: Off or On, at any time (shown unless Vibe Launcher is already your TV's Home). On
-  explains the Home button service first, then opens Settings → Accessibility to turn it on (on TVs
-  without a direct way there, such as Sony's Android 9, it says the path, Device Preferences →
-  Accessibility, and opens Settings); Off turns it off straight away.
-- **Restart…** (with the Home button service on): opens the TV's own power menu, which asks before it
-  restarts. An app can't restart the TV itself; only the service can ask the TV, so without it this
-  doesn't show.
-- **Backup and restore**: everything you've set up in one file: the settings (API keys too), the tiles'
-  order, hidden apps, folders, and each tile's name, icon or picture. **Save backup on this TV** keeps it
-  in the TV's Download folder as `vibe-launcher-backup.json`, replacing the last one; **Restore from this
-  TV** shows when it was made and asks first. **Back up or restore with your phone** shows a QR code for a
-  page that downloads a backup to the phone or sends one back, which is also how to move your setup to
-  another TV. A restore replaces everything and rebuilds Home. The file holds your keys, so keep it
-  private. Up to Android 10, the TV asks for storage access the first time; from Android 11, a backup
-  saved on the TV can only be read back by the same installation of Vibe Launcher (after reinstalling,
-  restore from the phone).
-
-**Appearance**: tiles per row, apps in dock, hiding inactive inputs, auto-hide, the screensaver
-clock, the clock's 12- or 24-hour time, the arrows and the highlight color.
-
-- **Tiles per row**: 4, 5 or 6. Tiles shrink to fit, and a full dock holds as many apps. Until you pick,
-  it follows the TV's size: 4 under 51", 5 up to 74", 6 from 74" up. A streaming box can't tell
-  the size of the TV it's plugged into, so it starts at 4.
-- **Apps in dock**: from 1 up to a full row (the default). A shorter dock keeps the tiles' size and
-  sits centred, its band fitted round it, without the app's big name over it; the rows below stay full.
-- **Hide inactive inputs**: the Inputs menu leaves out HDMI inputs with nothing connected. AV inputs
-  always stay: TVs can't tell whether anything is plugged into them.
-- **Auto-hide**: On keeps the top bar out of sight on the dock and with the picture alone;
-  Off (the default) keeps it always on screen, and Up from the dock then waits a moment, so scrolling up quickly
-  passes the picture alone and reaches the bar.
-- **Screensaver clock**: On (the default) shows the time on the slideshow, in the same place as on the
-  top bar but without the bar; Off leaves the pictures alone.
-- **Clock**: Match system (the default) follows the TV's 12/24-hour setting; 12-hour or 24-hour keeps
-  the top bar's and the screensaver's clock that way whatever the TV says.
-- **Arrows**: On (the default) shows the faint arrows that point where the remote goes: above and below
-  the dock (to the picture alone, and to the rest of your apps), under the top bar, and at the screen's
-  edges with the picture alone. Off hides them all.
-- **Highlight color**: the color of what's focused, white by default: the glass, the top bar's buttons,
-  the menus' rows, the Play button's fill and Settings' rows (their text turns dark or white to stay
-  readable). Pick one on a color wheel with
-  the arrows (paler towards the middle, OK when done), with a preview of the glass on a white tile: a colored
-  highlight makes it easier to see which white tile (YouTube, Netflix) is focused. **Reset** puts it back to white.
-- **Animation speed** (GitHub build): the TV's own animations as apps and menus open: Normal, Faster
-  (half) or Off, as Developer options sets them; faster makes an older TV feel quicker. It needs Settings
-  → Apps to have connected once, which gives Vibe Launcher the permission to change it.
-
-| ![Appearance: tiles per row, apps in dock, hide inactive inputs, auto-hide, the screensaver clock, arrows and the highlight color](vibe-launcher/docs/settings-appearance.jpg) | ![The language list, each language in its own name, with General slid to the left](vibe-launcher/docs/language.jpg) |
-|---|---|
-
-**API keys**: optional keys that unlock more backdrops: **TMDB**, **YouTube** and **Plex**. Each has
-a line under the list on what it adds, and **Instructions**, first on the page, says where to get each,
-free. OK on a key edits it in place.
-Typing a 32-character key with a remote is no fun, so **Paste keys from your phone** shows a **QR
-code**: scan it and paste the keys there. Saved keys stay on the TV and show only their last four
-characters. Under YouTube, one row installs SmartTube (its latest release, checked against GitHub's
-checksum) or opens it to sign in.
-
-| ![API keys: Instructions first, then the TMDB, YouTube and Plex keys, SmartTube and Paste keys from your phone](vibe-launcher/docs/settings-keys.jpg) | ![Instructions: what each key adds and where to get it, a section for each](vibe-launcher/docs/settings-instructions.jpg) |
-|---|---|
-
-**Apps** (the GitHub build): turn off the apps you don't use, as a computer with ADB would, but from the
-TV itself. A turned-off app stays installed, but can't run, fill the home screen or update until you turn
-it back on.
-
-- **ADB connection**: how Vibe Launcher reaches the TV's own ADB, which everything below needs. The page
-  opens on the status, large: 🟢 *Connected (port 5555)* or *Connected (Wireless debugging)*, and then
-  there's nothing to do here and Debloat can go ahead; or 🔴 *Not connected*, and OK on it connects or
-  goes to the first thing still missing, easiest first. Under it, always shown and checked every few
-  seconds, so what you switch in Android's Settings shows at once:
-  - **Developer options**: On or Off. Still hidden, a window explains how to unlock them (Build seven
-    times in About) and opens About.
-  - **USB/ADB debugging**: the switch in Developer options. Most TVs open port 5555 with it (the onn 4K
-    stick does, even after a restart), or have a switch of their own (NVIDIA Shield). Vibe Launcher connects
-    to the TV itself (`127.0.0.1:5555`) with a key that never leaves it; the first time, a window says the
-    TV will ask whether to allow it (tick Always allow).
-  - **Wireless debugging** and **Pair with code** (Android 11 and up): for TVs that keep port 5555 shut
-    (Chromecast with Google TV, Google TV Streamer). Pair once: scan the QR code with your phone, choose
-    **Open Developer options**, turn on Wireless debugging and choose *Pair device with pairing code*, then
-    type the 6-digit code on your phone, so the TV's pairing window stays open (leaving it would cancel
-    the code). Vibe Launcher finds the window on the network, pairs as `adb pair` does (TLS 1.3, then
-    SPAKE2 with the code) and from then on connects with no question on the TV. Wi-Fi only, as Android
-    allows it. Switched on but not running (some TVs stop it with USB debugging), the row says so: turn it
-    off and on again.
-
-  Either way in is enough, and the one in use has a green dot; choosing the other while connected says it
-  isn't needed, and goes on if you ask. Once connected, Vibe Launcher has `WRITE_SECURE_SETTINGS` and turns
-  debugging (and Wireless debugging) back on by itself when it next needs it.
-- **Debloat**:
-  - **Clean-up lists**: the tested lists of the [Clean Your TV](https://github.com/Gathin23/cleanyourtv)
-    community (MIT), read from GitHub as they are now, so new TVs and fixes come without an update. Your
-    TV's brand comes first, the lists that name its own model and platform at the top; pick one and its
-    plan shows only what's installed here, each with the list's reason under it. ✓ marks what goes (OK
-    changes it), what the list's maker turned off only by choice (Chromecast, the phone remote) starts
-    unticked, and the parts your TV needs stay. **Turn off N apps** does the rest.
-  - **Turn all back on**: turns on every app Vibe Launcher turned off, and nothing else, whatever a list
-    says later.
-  - **Turn off again** (only when there's something to do): the apps Vibe Launcher turned off before that
-    are on here now, from a backup restored on this TV or turned back on by an update. It lists them first,
-    then **Turn off now** turns them all off in one go.
-  - **Apps you can turn off**: every app on the TV by name, On or Off; OK switches it.
-  - **Apps the TV needs**: the parts it can't do without, grayed: Android itself, Google Play, Settings,
-    the keyboard, the remote and Bluetooth, Wi-Fi, the inputs and the app that plays them, setup, the
-    launchers, and the TV maker's system parts. Vibe Launcher won't turn these off.
-- **Default launcher**: Vibe Launcher or the TV's own home screen, the one in use ticked. Picking Vibe
-  Launcher turns the TV's own home screen off (and Google TV's setup app, which can take Home back) and
-  sets Vibe Launcher as Home, in one go that puts everything back if a step fails, then checks the Home
-  button really comes here: no Home button service needed after it. Picking the TV's own puts it back
-  (and turns the Home button service off, which would otherwise cover it). Not offered on Chromecast with
-  Google TV and the Google TV Streamer, where another Home stops casting.
-- **Turn debugging off when done**: Off (the default) or On. The first time Vibe Launcher connects, the
-  TV's ADB gives it the `WRITE_SECURE_SETTINGS` permission, which it uses only to turn debugging (and
-  Wireless debugging) on and off and for the animation speed. With this On, leaving Settings turns debugging
-  off again, closing the TV's debugging port, and Vibe Launcher turns it back on by itself the next time it needs it. Leave it
-  Off if you also use ADB from a computer: while debugging is off, the computer can't reach the TV.
-
-## Updates
-
-Vibe Launcher checks for new versions when the TV is turned on or wakes from sleep, once a day, and
-whenever you open the Settings menu, or ask it in Settings → General → **Check for updates**. When one
-is out, a green dot appears in the Settings gear and the menu offers **Update to** it. You see what's
-new in every version since yours, then **Install**: the download is checked against the release's
-SHA-256 before Android asks you to confirm, and Home comes back by itself afterwards.
-
-![The update window: release notes for each new version, with Install and Cancel](vibe-launcher/docs/update.jpg)
-
-## Managing apps
-
-Long-press OK (or press the remote's Menu key, if it has one) on any tile to **move** it (into or out of the dock), **hide** it, **uninstall** it or
-open **App info**. Hidden apps come back from the same menu.
-
-**Edit** changes the tile itself: **Change picture** shows a QR code for a page on your phone where you
-choose a picture and drag and pinch it to fit the tile; **Use icon** (or **Use banner**) swaps the app's
-art; **Rename** gives the tile a name of its own; **Reset** puts it back as the app made it.
-
-**Folders**: **New folder** from an app's menu makes one with that app in it, named from its kind (Video,
-Music, Games), and **Move to folder** adds more. A folder tile shows a preview of up to nine of its apps.
-OK opens it over a dimmed Home; its name at the top has **Rename**, **Remove folder** and **Close**, and
-**Move to Home** takes an app back out. A folder in the dock shows its apps in a row above it, as tvOS's
-Top Shelf does: Up goes into the row (it scrolls when there are more than fit), OK opens an app, and
-the backdrop shows the folder's apps' pictures in turn.
-
-## Install
-
-Download **[vibe-launcher.apk](https://github.com/maydings/vibe-launcher/releases/latest/download/vibe-launcher.apk)**
-and install it. No account needed.
-
-**Home button service.** Many TVs keep sending the Home button to their own launcher, which can only be
-turned off through ADB: from a computer ([adb](vibe-launcher/README.md)), or from Vibe Launcher itself once
-Settings → Apps → ADB connection is connected, where **Make Vibe Launcher your Home** (top bar) goes to
-Apps → Default launcher. Without that, Vibe Launcher offers its Home button service instead (turned on in Settings → Accessibility; it walks you through it): Home then opens
-Vibe Launcher, and holding Home opens the TV's Settings. With it on, Settings → General also offers
-**Restart…**. It's optional, it reads nothing on screen, and where Vibe Launcher is already Home it isn't
-offered.
-
-(Up to 2.7.2 there was a separate app store version, vibe-launcher-store.apk, which didn't update itself.
-If you have it, install vibe-launcher.apk over it once: they're signed alike, so your settings stay, and
-it updates itself from then on.)
-
-### On the TV
-
-1. Install **Downloader** (by AFTVnews) from the Play Store.
-2. Open it and type the code **5573341** in its address box (or the download link above, in
-   Downloader or any file manager such as **X-plore**), then open the APK. Android asks once to allow
-   that app to install apps; allow it. The code always gets the latest release.
-3. Open Vibe Launcher from your apps and allow its two permissions: TV listings (for the apps'
-   cards) and location (Android only reveals the Wi-Fi network's name with it).
-4. Make it your home screen when it offers to, or later from the Settings menu → **Make Vibe Launcher
-   your Home**: Android's own choice where the TV has one that works, otherwise the Home button service.
-
-### Keeping it as your home screen
-
-Google's own launcher and Google's setup app are system apps that can keep answering the Home button,
-even with Vibe Launcher set as the default. Without a computer, the Home button service (above) takes
-care of that. With one, you can turn them off instead, once, with
-[adb](https://developer.android.com/tools/adb):
-
-```bash
-adb connect <tv-ip>:5555
-adb install -g vibe-launcher.apk
-adb shell am start -n com.maydings.vibelauncher/.MainActivity
-# Google's launcher (on Google TV: com.google.android.apps.tv.launcherx) and setup app
-adb shell pm disable-user --user 0 com.google.android.tvlauncher
-adb shell pm disable-user --user 0 com.google.android.tungsten.setupwraith
-# Last: Android forgets the chosen Home whenever one is turned on or off
-adb shell cmd package set-home-activity com.maydings.vibelauncher/.MainActivity
-```
-
-Two things to check before turning off the setup app:
-
-- **Wi-Fi**: a network saved during the TV's first-time setup belongs to the setup app and goes with
-  it. If `adb shell dumpsys wifi | grep -o 'cname=[^ ]*'` names setupwraith, forget the network and
-  join it again in Settings first (or use Ethernet).
-- **Casting**: on some Google TVs, casting from a phone needs the setup app. If you cast, leave it on.
-
-To undo either, `adb shell pm enable --user 0 <package>`.
-
-**Removing the TV's ads and bloat** is a separate job, and this project only replaces the home
-screen. For that, see [Gathin23/cleanyourtv](https://github.com/Gathin23/cleanyourtv), with tested
-lists for over a hundred TV models.
-
-## Tested on
-
-| Device | Android | Set up with |
-|---|---|---|
-| Sony Bravia XBR-940E | 9 | adb |
-| Sony Bravia 900F | 9 | adb |
-| NVIDIA Shield TV (2017) | 11 | adb |
-| onn 4K Streaming Device (Walmart, Google TV) | 14 | adb and Home button service |
-
-It should run on any Android TV or Google TV with Android 8.0 or newer.
+- **Backup and restore**: save your setup to your phone and bring it back, or move it to another TV. It
+  holds your tiles, folders, custom pictures, settings and keys. What you turned off stays with each TV.
+- **Updates**: it checks for new versions, shows what changed, and installs with one confirmation.
+- **50 languages**, following your TV or picked by hand.
 
 ## Privacy
 
-**No data collection and no ads, ever.** No accounts, no analytics, no tracking, and nothing is ever
-sent to me. Vibe Launcher goes online only to fetch artwork (looking up the titles on your apps' cards
-with TMDB or Stremio, and asking YouTube, your own Plex server or your HDHomeRun's guide) and to check
-this project's releases for updates (the Google Play version leaves updates to Play). Your API keys
-stay on the TV, and in a backup only if you make one. The details are in the [privacy policy](vibe-launcher/docs/PRIVACY.md).
+Nothing is collected and nothing is sent to me. It goes online only for artwork, the weather, the
+wallpapers you browse, the clean-up lists and its own updates. Your keys stay on the TV. The details are
+in the [privacy policy](vibe-launcher/docs/PRIVACY.md).
 
-## Build it yourself
+## Tested on
 
-The source, a build script and how the backdrops work are in
-[`vibe-launcher/`](vibe-launcher/README.md). Contributions are welcome, including corrections to the
-machine-made translations (`vibe-launcher/app/src/main/res/values-*/strings.xml`).
+| Device | Android |
+|---|---|
+| Sony Bravia XBR-940E | 9 |
+| Sony Bravia 900F | 9 |
+| NVIDIA Shield TV (2017) | 11 |
+| onn 4K Streaming Device (Google TV) | 14 |
+
+It should work on any Android TV or Google TV with Android 8.0 or newer.
+
+## Building it
+
+The source, how to build it and how the backdrops work are in [`vibe-launcher/`](vibe-launcher/README.md).
+The only script in this repo builds the app and installs it on a TV for development. There are no
+debloat scripts: all of that lives in the app. Corrections to the machine-made translations are welcome.
 
 ## Licence
 
-MIT, see [`LICENSE`](LICENSE). Started as a fork of
-[Gathin23/cleanyourtv](https://github.com/Gathin23/cleanyourtv). The Outfit typeface is under the SIL
-Open Font License (`vibe-launcher/FONT-LICENSE-OFL.txt`). Wireless debugging's SPAKE2 (`Spake2.java`)
-is a Java port of BoringSSL's `spake25519.cc` (Copyright 2016 The BoringSSL Authors, Apache License 2.0:
-`vibe-launcher/LICENSE-APACHE-2.0.txt`).
-Backdrops use the TMDB API but are not endorsed or certified by TMDB.
+MIT, see [`LICENSE`](LICENSE). The Outfit typeface is under the SIL Open Font License (`vibe-launcher/FONT-LICENSE-OFL.txt`). The weather
+icons are from [Feather](https://feathericons.com) (MIT). Wireless debugging's SPAKE2 (`Spake2.java`) is a
+Java port of BoringSSL's `spake25519.cc` (Copyright 2016 The BoringSSL Authors, Apache License 2.0:
+`vibe-launcher/LICENSE-APACHE-2.0.txt`). Backdrops use the TMDB API but aren't endorsed or certified by
+TMDB. Weather by [Open-Meteo](https://open-meteo.com).

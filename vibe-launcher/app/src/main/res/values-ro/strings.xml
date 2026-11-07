@@ -198,6 +198,7 @@
     <string name="top_bar_full">Completă</string>
     <string name="top_bar_minimal">Minimală</string>
     <string name="top_bar_minimal_short">Minimală: fără bară, doar pictograme mici sus în dreapta și ora și vremea sus în stânga, peste fundal, mereu vizibile.</string>
+    <string name="top_bar_full_short">Completă: o bară mată sus, cu ceasul mare, data și vremea, și butoane cu nume.</string>
     <string name="show_clock">Ceas</string>
     <string name="show_date">Dată</string>
     <string name="show_date_short">Afișată doar în bara de sus completă.</string>

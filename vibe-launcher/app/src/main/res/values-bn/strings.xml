@@ -198,6 +198,7 @@
     <string name="top_bar_full">পূর্ণ</string>
     <string name="top_bar_minimal">ন্যূনতম</string>
     <string name="top_bar_minimal_short">ন্যূনতম: কোনো বার নেই, শুধু উপরে ডানে ছোট আইকন আর উপরে বাঁয়ে সময় ও আবহাওয়া, পটভূমির উপর, সবসময় দেখা যায়।</string>
+    <string name="top_bar_full_short">পূর্ণ: উপরে একটি ঝাপসা বার, তাতে বড় ঘড়ি, তারিখ ও আবহাওয়া, আর নামসহ বোতাম।</string>
     <string name="show_clock">ঘড়ি</string>
     <string name="show_date">তারিখ</string>
     <string name="show_date_short">শুধু পূর্ণ উপরের বারে দেখানো হয়।</string>

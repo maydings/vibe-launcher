@@ -198,6 +198,7 @@
     <string name="top_bar_full">ಪೂರ್ಣ</string>
     <string name="top_bar_minimal">ಕನಿಷ್ಠ</string>
     <string name="top_bar_minimal_short">ಕನಿಷ್ಠ: ಬಾರ್ ಇಲ್ಲ, ಮೇಲೆ ಬಲಕ್ಕೆ ಸಣ್ಣ ಐಕಾನ್‌ಗಳು ಮತ್ತು ಮೇಲೆ ಎಡಕ್ಕೆ ಸಮಯ ಮತ್ತು ಹವಾಮಾನ ಮಾತ್ರ, ಹಿನ್ನೆಲೆಯ ಮೇಲೆ, ಯಾವಾಗಲೂ ಕಾಣುತ್ತವೆ.</string>
+    <string name="top_bar_full_short">ಪೂರ್ಣ: ಮೇಲ್ಭಾಗದಲ್ಲಿ ಮಂಜಿನ ಬಾರ್, ದೊಡ್ಡ ಗಡಿಯಾರ, ದಿನಾಂಕ ಮತ್ತು ಹವಾಮಾನ, ಹಾಗೂ ಹೆಸರುಳ್ಳ ಬಟನ್‌ಗಳು.</string>
     <string name="show_clock">ಗಡಿಯಾರ</string>
     <string name="show_date">ದಿನಾಂಕ</string>
     <string name="show_date_short">ಪೂರ್ಣ ಮೇಲಿನ ಬಾರ್‌ನಲ್ಲಿ ಮಾತ್ರ ತೋರಿಸಲಾಗುತ್ತದೆ.</string>

@@ -198,6 +198,7 @@
     <string name="top_bar_full">Volledig</string>
     <string name="top_bar_minimal">Minimaal</string>
     <string name="top_bar_minimal_short">Minimaal: geen balk, alleen kleine pictogrammen rechtsboven en de tijd en het weer linksboven, over de achtergrond, altijd zichtbaar.</string>
+    <string name="top_bar_full_short">Volledig: een matte balk bovenaan met de grote klok, de datum en het weer, en knoppen met hun naam.</string>
     <string name="show_clock">Klok</string>
     <string name="show_date">Datum</string>
     <string name="show_date_short">Alleen in de volledige bovenbalk.</string>

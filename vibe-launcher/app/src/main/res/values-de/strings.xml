@@ -198,6 +198,7 @@
     <string name="top_bar_full">Voll</string>
     <string name="top_bar_minimal">Minimal</string>
     <string name="top_bar_minimal_short">Minimal: keine Leiste, nur kleine Symbole oben rechts und Uhrzeit und Wetter oben links, über dem Hintergrund, immer sichtbar.</string>
+    <string name="top_bar_full_short">Voll: eine Milchglasleiste oben mit großer Uhr, Datum und Wetter und Schaltflächen mit Namen.</string>
     <string name="show_clock">Uhr</string>
     <string name="show_date">Datum</string>
     <string name="show_date_short">Nur in der vollen oberen Leiste.</string>

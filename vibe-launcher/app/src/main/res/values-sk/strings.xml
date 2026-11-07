@@ -198,6 +198,7 @@
     <string name="top_bar_full">Celá</string>
     <string name="top_bar_minimal">Minimálna</string>
     <string name="top_bar_minimal_short">Minimálna: bez lišty, len malé ikony vpravo hore a čas s počasím vľavo hore, cez pozadie, vždy viditeľné.</string>
+    <string name="top_bar_full_short">Plná: matný pruh hore s veľkými hodinami, dátumom a počasím a tlačidlami s názvami.</string>
     <string name="show_clock">Hodiny</string>
     <string name="show_date">Dátum</string>
     <string name="show_date_short">Zobrazuje sa len v celej hornej lište.</string>

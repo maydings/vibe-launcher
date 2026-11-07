@@ -198,6 +198,7 @@
     <string name="top_bar_full">전체</string>
     <string name="top_bar_minimal">미니멀</string>
     <string name="top_bar_minimal_short">미니멀: 바 없이 오른쪽 위에 작은 아이콘, 왼쪽 위에 시간과 날씨만 배경 위에 항상 표시합니다.</string>
+    <string name="top_bar_full_short">전체: 위쪽에 반투명 바가 있고 큰 시계, 날짜, 날씨와 이름이 붙은 버튼을 보여 줍니다.</string>
     <string name="show_clock">시계</string>
     <string name="show_date">날짜</string>
     <string name="show_date_short">전체 상단 바에만 표시됩니다.</string>

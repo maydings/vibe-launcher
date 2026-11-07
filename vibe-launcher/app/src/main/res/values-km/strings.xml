@@ -198,6 +198,7 @@
     <string name="top_bar_full">ពេញ</string>
     <string name="top_bar_minimal">តិចតួច</string>
     <string name="top_bar_minimal_short">តិចតួច៖ គ្មានរបារ មានតែរូបតំណាងតូចៗនៅខាងលើស្ដាំ និងម៉ោង និងអាកាសធាតុនៅខាងលើឆ្វេង លើផ្ទៃខាងក្រោយ បង្ហាញជានិច្ច។</string>
+    <string name="top_bar_full_short">ពេញ៖ របារព្រិលនៅខាងលើ មាននាឡិកាធំ កាលបរិច្ឆេទ និងអាកាសធាតុ ព្រមទាំងប៊ូតុងមានឈ្មោះ។</string>
     <string name="show_clock">នាឡិកា</string>
     <string name="show_date">កាលបរិច្ឆេទ</string>
     <string name="show_date_short">បង្ហាញតែក្នុងរបារខាងលើពេញប៉ុណ្ណោះ។</string>

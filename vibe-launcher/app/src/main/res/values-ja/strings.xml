@@ -198,6 +198,7 @@
     <string name="top_bar_full">通常</string>
     <string name="top_bar_minimal">ミニマル</string>
     <string name="top_bar_minimal_short">ミニマル：バーなしで、右上に小さなアイコン、左上に時刻と天気だけを背景に重ねて常に表示します。</string>
+    <string name="top_bar_full_short">フル：上部にすりガラスのバーを置き、大きな時計、日付、天気と、名前付きのボタンを表示します。</string>
     <string name="show_clock">時計</string>
     <string name="show_date">日付</string>
     <string name="show_date_short">通常の上部バーにのみ表示されます。</string>
