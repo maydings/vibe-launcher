@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher ਸੈਟਿੰਗਾਂ</string>
     <string name="android_settings">Android ਸੈਟਿੰਗਾਂ</string>
     <string name="make_home">Vibe Launcher ਨੂੰ ਹੋਮ ਬਣਾਓ</string>
-    <string name="home_not_changeable">ਇਹ ਟੀਵੀ ਐਪਾਂ ਨੂੰ ਹੋਮ ਐਪ ਚੁਣਨ ਨਹੀਂ ਦਿੰਦਾ। ਕੰਪਿਊਟਰ ਤੋਂ ਸੈੱਟ ਕਰੋ: Vibe Launcher ਦਾ README ਦੇਖੋ</string>
     <string name="tmdb_key">TMDB API ਕੁੰਜੀ</string>
     <string name="youtube_key">YouTube API ਕੁੰਜੀ</string>
     <string name="tiles_per_row">ਹਰ ਕਤਾਰ ਵਿੱਚ ਟਾਈਲਾਂ</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s ਨਹੀਂ ਖੁੱਲ੍ਹ ਸਕਿਆ</string>
     <string name="smarttube_install">SmartTube ਇੰਸਟਾਲ ਕਰੋ</string>
     <string name="smarttube_open">ਸਾਈਨ ਇਨ ਲਈ SmartTube ਖੋਲ੍ਹੋ</string>
-    <string name="smarttube_downloading">SmartTube ਡਾਊਨਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…</string>
-    <string name="smarttube_allow_installs">Vibe Launcher ਨੂੰ ਐਪਾਂ ਇੰਸਟਾਲ ਕਰਨ ਦਿਓ, ਫਿਰ ਦੁਬਾਰਾ SmartTube ਇੰਸਟਾਲ ਕਰੋ ਚੁਣੋ</string>
-    <string name="smarttube_failed">SmartTube ਇੰਸਟਾਲ ਨਹੀਂ ਹੋਇਆ</string>
+    <string name="smarttube_get_downloader">SmartTube Downloader (AFTVnews ਦੇ) ਰਾਹੀਂ ਇੰਸਟਾਲ ਹੁੰਦੀ ਹੈ: Play Store ਤੋਂ Downloader ਲਓ, ਇਸਨੂੰ ਖੋਲ੍ਹੋ ਅਤੇ %s ਟਾਈਪ ਕਰੋ।</string>
     <string name="play">ਚਲਾਓ</string>
     <string name="reload_backdrops">ਪਿਛੋਕੜ ਮੁੜ ਲੋਡ ਕਰੋ</string>
     <string name="tab_backdrops">ਪਿਛੋਕੜ</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">ਹੋਮ \'ਤੇ ਚੈਨਲ ਕੁੰਜੀਆਂ ਨੂੰ ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="ignore_channel_keys_short">ਹੋਮ ਦਿਖਣ ਵੇਲੇ ਚੈਨਲ ਉੱਪਰ ਅਤੇ ਹੇਠਾਂ ਕੁਝ ਨਹੀਂ ਕਰਦੇ, ਟੀਵੀ ਦੀ ਆਪਣੀ ਟੀਵੀ ਐਪ ਖੋਲ੍ਹਣ ਦੀ ਬਜਾਏ।</string>
     <string name="restart">ਮੁੜ-ਚਾਲੂ ਕਰੋ…</string>
+    <string name="restart_confirm">ਟੀਵੀ ਹੁਣ ਮੁੜ-ਚਾਲੂ ਹੋਵੇਗਾ। ਵਾਪਸ ਆਉਣ ਵਿੱਚ ਲਗਭਗ ਇੱਕ ਮਿੰਟ ਲੱਗਦਾ ਹੈ।</string>
     <string name="time_remaining">%1$s ਬਾਕੀ</string>
-    <string name="home_key_name">Vibe Launcher ਹੋਮ ਬਟਨ</string>
-    <string name="home_key_description">ਰਿਮੋਟ ਦਾ ਹੋਮ ਬਟਨ ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ ਦੀ ਬਜਾਏ Vibe Launcher ਖੋਲ੍ਹਦਾ ਹੈ, ਅਤੇ ਦਬਾਈ ਰੱਖਣ ਉੱਤੇ ਟੀਵੀ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਖੁੱਲ੍ਹਦੀਆਂ ਹਨ। ਇਹ ਸਕ੍ਰੀਨ ਉੱਤੇ ਕੁਝ ਨਹੀਂ ਪੜ੍ਹਦਾ ਅਤੇ ਬਾਕੀ ਸਾਰੇ ਬਟਨ ਉਵੇਂ ਹੀ ਅੱਗੇ ਜਾਣ ਦਿੰਦਾ ਹੈ।</string>
     <string name="permissions_title">ਦੋ ਇਜਾਜ਼ਤਾਂ</string>
     <string name="permissions_why">ਅੱਗੇ Vibe Launcher ਦੋ ਇਜਾਜ਼ਤਾਂ ਮੰਗੇਗਾ।\n\nਟੀਵੀ ਸੂਚੀਆਂ: ਤੁਹਾਡੀਆਂ ਐਪਾਂ ਹੋਮ ਸਕ੍ਰੀਨ ਲਈ ਜੋ ਕਾਰਡ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰਦੀਆਂ ਹਨ, ਉਨ੍ਹਾਂ ਦੀਆਂ ਤਸਵੀਰਾਂ ਦਿਖਾਉਣ ਲਈ।\n\nਟਿਕਾਣਾ: Android ਵਾਈ-ਫ਼ਾਈ ਨੈੱਟਵਰਕ ਦਾ ਨਾਮ ਸਿਰਫ਼ ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਨੂੰ ਦਿਖਾਉਂਦਾ ਹੈ। Vibe Launcher ਇਸਨੂੰ ਸਿਰਫ਼ ਉਸ ਨਾਮ ਲਈ ਵਰਤਦਾ ਹੈ ਅਤੇ ਕਦੇ ਨਹੀਂ ਦੇਖਦਾ ਕਿ ਟੀਵੀ ਕਿੱਥੇ ਹੈ।\n\nਕੋਈ ਵੀ ਟੀਵੀ ਤੋਂ ਬਾਹਰ ਨਹੀਂ ਜਾਂਦਾ।</string>
     <string name="continue_button">ਜਾਰੀ ਰੱਖੋ</string>
-    <string name="home_key_disclosure_title">ਹੋਮ ਬਟਨ ਵਰਤੋ</string>
-    <string name="home_key_disclosure">ਇਹ ਟੀਵੀ ਐਪਾਂ ਨੂੰ ਹੋਮ ਐਪ ਨਹੀਂ ਬਣਨ ਦਿੰਦਾ, ਇਸ ਲਈ ਹੋਮ ਬਟਨ ਦਾ ਜਵਾਬ ਦੇਣ ਲਈ Vibe Launcher ਨੂੰ ਪਹੁੰਚਯੋਗਤਾ ਸੇਵਾ ਦੀ ਲੋੜ ਹੈ।\n\nਇਹ ਹੋਮ ਬਟਨ ਸੰਭਾਲਦਾ ਹੈ: ਦਬਾਉਣ ਉੱਤੇ Vibe Launcher ਖੁੱਲ੍ਹਦਾ ਹੈ, ਦਬਾਈ ਰੱਖਣ ਉੱਤੇ ਸੈਟਿੰਗਾਂ ਖੁੱਲ੍ਹਦੀਆਂ ਹਨ, ਅਤੇ ਬਾਕੀ ਸਾਰੇ ਬਟਨ ਉਵੇਂ ਹੀ ਅੱਗੇ ਜਾਂਦੇ ਹਨ। ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ ਆਉਣ ਉੱਤੇ ਇਹ ਦੇਖਦਾ ਹੈ ਅਤੇ ਉਸਨੂੰ ਢੱਕ ਦਿੰਦਾ ਹੈ। ਇਹ ਸਕ੍ਰੀਨ ਉੱਤੇ ਕੁਝ ਨਹੀਂ ਪੜ੍ਹਦਾ, ਕੁਝ ਨਹੀਂ ਰੱਖਦਾ ਅਤੇ ਕਿਤੇ ਕੁਝ ਨਹੀਂ ਭੇਜਦਾ।\n\nਇਸਨੂੰ ਕਦੇ ਵੀ ਸੈਟਿੰਗਾਂ &gt; ਪਹੁੰਚਯੋਗਤਾ ਵਿੱਚ ਬੰਦ ਕਰੋ।</string>
-    <string name="home_key_disclosure_more">ਜੇ ਤੁਸੀਂ “%1$s” ਚਾਲੂ ਕਰਦੇ ਹੋ, ਤਾਂ ਸਕ੍ਰੀਨ ਚਾਲੂ ਹੋਣ ਤੇ ਇਹ Vibe Launcher ਵੀ ਖੋਲ੍ਹਦਾ ਹੈ, ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਪਹਿਲਾਂ ਕੋਈ ਬਟਨ ਨਾ ਦਬਾਓ (ਇਹ ਸਿਰਫ਼ ਨੋਟ ਕਰਦਾ ਹੈ ਕਿ ਬਟਨ ਦਬਾਇਆ ਗਿਆ, ਕਿਹੜਾ ਨਹੀਂ)। ਅਤੇ ਸੈਟਿੰਗਾਂ ਵਿੱਚ “%2$s” ਟੀਵੀ ਦਾ ਪਾਵਰ ਮੀਨੂ ਖੋਲ੍ਹਣ ਲਈ ਇਸਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ।</string>
-    <string name="home_button">ਹੋਮ ਬਟਨ</string>
-    <string name="home_button_short">ਜੋ ਟੀਵੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ ਰੱਖਦੇ ਹਨ ਉਨ੍ਹਾਂ ਲਈ: ਰਿਮੋਟ ਦਾ ਹੋਮ ਬਟਨ Vibe Launcher ਖੋਲ੍ਹਦਾ ਹੈ, ਅਤੇ ਇਸਨੂੰ ਦਬਾ ਕੇ ਰੱਖਣ ਨਾਲ ਟੀਵੀ ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਖੁੱਲ੍ਹਦੀਆਂ ਹਨ।</string>
-    <string name="home_key_agree">ਸਹਿਮਤ ਹਾਂ</string>
-    <string name="home_key_steps">ਅੱਗੇ: ਖੁੱਲ੍ਹਣ ਵਾਲੀ ਸੂਚੀ ਵਿੱਚ “%1$s” ਚੁਣੋ, ਇਸਨੂੰ ਚਾਲੂ ਕਰੋ, ਫਿਰ ਹੋਮ ਦਬਾਓ।</string>
-    <string name="home_key_steps_settings">ਅੱਗੇ: ਇਸ ਟੀਵੀ ਵਿੱਚ ਇਸਦੀਆਂ ਪਹੁੰਚਯੋਗਤਾ ਸੈਟਿੰਗਾਂ ਤੱਕ ਸਿੱਧਾ ਜਾਣ ਦਾ ਕੋਈ ਤਰੀਕਾ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਇਸਦੀ ਥਾਂ Android ਦੀਆਂ ਸੈਟਿੰਗਾਂ ਖੁੱਲ੍ਹਦੀਆਂ ਹਨ। ਉੱਥੇ ਡੀਵਾਈਸ ਤਰਜੀਹਾਂ &gt; ਪਹੁੰਚਯੋਗਤਾ ਉੱਤੇ ਜਾਓ, “%1$s” ਚੁਣੋ, ਇਸਨੂੰ ਚਾਲੂ ਕਰੋ, ਫਿਰ ਹੋਮ ਦਬਾਓ।</string>
     <string name="store_update">Vibe Launcher ਅੱਪਡੇਟ ਕਰੋ</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ਬੈਕਅੱਪ ਅਤੇ ਰੀਸਟੋਰ</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">ਕੰਮ ਪੂਰਾ ਹੋਣ \'ਤੇ ਡੀਬੱਗਿੰਗ ਬੰਦ ਕਰੋ</string>
     <string name="debug_off_when_done_short">ਜਦੋਂ ਤੁਸੀਂ ਸੈਟਿੰਗਾਂ ਤੋਂ ਬਾਹਰ ਜਾਂਦੇ ਹੋ, Vibe Launcher ਟੀਵੀ ਦੀ ਡੀਬੱਗਿੰਗ ਫਿਰ ਬੰਦ ਕਰ ਦਿੰਦਾ ਹੈ, ਅਤੇ ਅਗਲੀ ਵਾਰ ਲੋੜ ਪੈਣ \'ਤੇ ਆਪਣੇ ਆਪ ਫਿਰ ਚਾਲੂ ਕਰ ਲੈਂਦਾ ਹੈ। ਬੰਦ ਹੋਣ ਦੌਰਾਨ ਕੋਈ ਕੰਪਿਊਟਰ ADB ਰਾਹੀਂ ਟੀਵੀ ਤੱਕ ਨਹੀਂ ਪਹੁੰਚ ਸਕਦਾ।</string>
     <string name="home_make">Vibe Launcher ਨੂੰ ਹੋਮ ਬਣਾਓ</string>
-    <string name="home_make_short">ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ ਬੰਦ ਕਰਦਾ ਹੈ, ਤਾਂ ਜੋ ਹੋਮ ਬਟਨ Vibe Launcher ਖੋਲ੍ਹੇ, ਹੋਮ ਬਟਨ ਸੇਵਾ ਦੀ ਲੋੜ ਤੋਂ ਬਿਨਾਂ।</string>
+    <string name="home_make_short">ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ ਬੰਦ ਕਰਦੀ ਹੈ, ਤਾਂ ਜੋ ਹੋਮ ਬਟਨ Vibe Launcher ਖੋਲ੍ਹੇ।</string>
     <string name="home_make_warning">ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ ਬੰਦ ਹੋ ਜਾਂਦੀ ਹੈ ਅਤੇ Vibe Launcher ਹੋਮ ਬਣ ਜਾਂਦਾ ਹੈ। ਜੇ ਇਹ ਕੰਮ ਨਾ ਕਰੇ, ਤਾਂ ਸਭ ਕੁਝ ਤੁਰੰਤ ਪਹਿਲਾਂ ਵਾਂਗ ਕਰ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ। “ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ \'ਤੇ ਵਾਪਸ ਜਾਓ” ਇਸਨੂੰ ਵਾਪਸ ਪਹਿਲਾਂ ਵਾਂਗ ਕਰਦਾ ਹੈ।</string>
     <string name="home_restore">ਟੀਵੀ ਦੀ ਆਪਣੀ ਹੋਮ ਸਕ੍ਰੀਨ \'ਤੇ ਵਾਪਸ ਜਾਓ</string>
     <string name="home_done">Vibe Launcher ਹੁਣ ਹੋਮ ਹੈ</string>

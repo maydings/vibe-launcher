@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher அமைப்புகள்</string>
     <string name="android_settings">Android அமைப்புகள்</string>
     <string name="make_home">Vibe Launcher-ஐ முகப்பாக்கு</string>
-    <string name="home_not_changeable">இந்த டிவி ஆப்ஸை முகப்பு ஆப்பைத் தேர்வுசெய்ய விடாது. கணினியில் அமைக்கவும்: Vibe Launcher README-ஐப் பார்க்கவும்</string>
     <string name="tmdb_key">TMDB API சாவி</string>
     <string name="youtube_key">YouTube API சாவி</string>
     <string name="tiles_per_row">வரிசைக்கு டைல்கள்</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s திறக்க முடியவில்லை</string>
     <string name="smarttube_install">SmartTube ஐ நிறுவு</string>
     <string name="smarttube_open">உள்நுழைய SmartTube ஐத் திற</string>
-    <string name="smarttube_downloading">SmartTube பதிவிறக்கப்படுகிறது…</string>
-    <string name="smarttube_allow_installs">Vibe Launcher ஆப்ஸை நிறுவ அனுமதித்து, மீண்டும் SmartTube ஐ நிறுவு என்பதைத் தேர்வுசெய்யவும்</string>
-    <string name="smarttube_failed">SmartTube நிறுவப்படவில்லை</string>
+    <string name="smarttube_get_downloader">SmartTube, Downloader (AFTVnews) மூலம் நிறுவப்படும்: Play Store-இலிருந்து Downloader-ஐப் பெற்று, திறந்து %s என உள்ளிடுங்கள்.</string>
     <string name="play">இயக்கு</string>
     <string name="reload_backdrops">பின்னணிகளை மீண்டும் ஏற்று</string>
     <string name="tab_backdrops">பின்னணிகள்</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">முகப்பில் சேனல் விசைகளைப் புறக்கணி</string>
     <string name="ignore_channel_keys_short">முகப்பு காட்டப்படும்போது சேனல் மேல், கீழ் விசைகள் டிவியின் சொந்த டிவி ஆப்ஸைத் திறக்காமல் எதுவும் செய்யாது.</string>
     <string name="restart">மறுதொடக்கம்…</string>
+    <string name="restart_confirm">டிவி இப்போது மீண்டும் தொடங்கும். திரும்ப வர சுமார் ஒரு நிமிடம் ஆகும்.</string>
     <string name="time_remaining">%1$s மீதம்</string>
-    <string name="home_key_name">Vibe Launcher முகப்புப் பொத்தான்</string>
-    <string name="home_key_description">ரிமோட்டின் முகப்புப் பொத்தான் டிவியின் சொந்த முகப்புத் திரைக்குப் பதிலாக Vibe Launcher-ஐத் திறக்கும், அழுத்திப் பிடித்தால் டிவியின் அமைப்புகள் திறக்கும். திரையில் எதையும் படிக்காது, மற்ற எல்லாப் பொத்தான்களையும் அப்படியே அனுப்பும்.</string>
     <string name="permissions_title">இரண்டு அனுமதிகள்</string>
     <string name="permissions_why">அடுத்து Vibe Launcher இரண்டு அனுமதிகளைக் கேட்கும்.\n\nடிவி பட்டியல்கள்: உங்கள் ஆப்ஸ் முகப்புத் திரைக்காக வெளியிடும் கார்டுகளின் படங்களைக் காட்ட.\n\nஇருப்பிடம்: இந்த அனுமதி உள்ள ஆப்ஸுக்கு மட்டுமே Android வைஃபை நெட்வொர்க்கின் பெயரைக் காட்டும். Vibe Launcher அதை அந்தப் பெயருக்காக மட்டுமே பயன்படுத்தும், டிவி எங்கே உள்ளது என்று ஒருபோதும் பார்க்காது.\n\nஎதுவும் டிவியை விட்டு வெளியே போகாது.</string>
     <string name="continue_button">தொடர்க</string>
-    <string name="home_key_disclosure_title">முகப்புப் பொத்தானைப் பயன்படுத்துக</string>
-    <string name="home_key_disclosure">இந்த டிவி ஆப்ஸை முகப்பு ஆப்ஸாக ஆக விடாது, எனவே முகப்புப் பொத்தானுக்குப் பதிலளிக்க Vibe Launcher-க்கு அணுகல்தன்மைச் சேவை தேவை.\n\nஇது முகப்புப் பொத்தானைக் கையாளும்: அழுத்தினால் Vibe Launcher, அழுத்திப் பிடித்தால் அமைப்புகள் திறக்கும், மற்ற எல்லாப் பொத்தான்களும் அப்படியே செல்லும். டிவியின் சொந்த முகப்புத் திரை வரும்போது அதைப் பார்த்து மூடிவிடும். திரையில் எதையும் படிக்காது, எதையும் வைத்துக்கொள்ளாது, எங்கும் எதையும் அனுப்பாது.\n\nஎப்போது வேண்டுமானாலும் அமைப்புகள் &gt; அணுகல்தன்மை என்பதில் முடக்கலாம்.</string>
-    <string name="home_key_disclosure_more">நீங்கள் “%1$s”-ஐ இயக்கினால், திரை இயங்கும்போது இது Vibe Launcher-ஐயும் திறக்கும், நீங்கள் முதலில் ஒரு பொத்தானை அழுத்தினால் தவிர (ஒரு பொத்தான் அழுத்தப்பட்டது என்பதை மட்டுமே கவனிக்கும், எது என்பதை அல்ல). அமைப்புகளில் உள்ள “%2$s” டிவியின் பவர் மெனுவைத் திறக்க இதைப் பயன்படுத்துகிறது.</string>
-    <string name="home_button">முகப்புப் பொத்தான்</string>
-    <string name="home_button_short">தங்கள் சொந்த முகப்புத் திரையை வைத்திருக்கும் டிவிகளுக்கு: ரிமோட்டின் முகப்புப் பொத்தான் Vibe Launcher-ஐத் திறக்கும், அதை அழுத்திப் பிடித்தால் டிவியின் அமைப்புகள் திறக்கும்.</string>
-    <string name="home_key_agree">ஏற்கிறேன்</string>
-    <string name="home_key_steps">அடுத்து: திறக்கும் பட்டியலில் “%1$s”-ஐத் தேர்ந்தெடுத்து இயக்கி, பிறகு முகப்பை அழுத்தவும்.</string>
-    <string name="home_key_steps_settings">அடுத்து: இந்த டிவியில் அதன் அணுகல்தன்மை அமைப்புகளுக்கு நேரடி வழி இல்லை, எனவே அதற்குப் பதிலாக Android அமைப்புகள் திறக்கும். அங்கே சாதன விருப்பத்தேர்வுகள் &gt; அணுகல்தன்மை என்பதற்குச் சென்று, “%1$s”-ஐத் தேர்ந்தெடுத்து இயக்கி, பிறகு முகப்பை அழுத்தவும்.</string>
     <string name="store_update">Vibe Launcher-ஐப் புதுப்பி</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">காப்புப் பிரதியும் மீட்டமைப்பும்</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">முடிந்ததும் பிழைதிருத்தத்தை முடக்கு</string>
     <string name="debug_off_when_done_short">நீங்கள் அமைப்புகளிலிருந்து வெளியேறும்போது Vibe Launcher டிவியின் பிழைதிருத்தத்தை மீண்டும் முடக்கும், அடுத்த முறை தேவைப்படும்போது தானாகவே மீண்டும் இயக்கும். அது முடக்கப்பட்டிருக்கும்போது ஒரு கம்ப்யூட்டர் ADB மூலம் டிவியை அணுக முடியாது.</string>
     <string name="home_make">Vibe Launcher-ஐ முகப்பாக்கு</string>
-    <string name="home_make_short">டிவியின் சொந்த முகப்புத் திரையை முடக்கும், இதனால் முகப்புப் பொத்தான் Vibe Launcher-ஐத் திறக்கும், முகப்புப் பொத்தான் சேவை தேவையில்லை.</string>
+    <string name="home_make_short">டிவியின் சொந்த முகப்புத் திரையை முடக்குகிறது, எனவே முகப்பு பொத்தான் Vibe Launcher-ஐத் திறக்கும்.</string>
     <string name="home_make_warning">டிவியின் சொந்த முகப்புத் திரை முடக்கப்பட்டு Vibe Launcher முகப்பாகிறது. அது சரியாக அமையவில்லை என்றால், எல்லாம் உடனே பழையபடி மாற்றப்படும். “டிவியின் சொந்த முகப்புத் திரைக்குத் திரும்பு” இதைச் செயல்தவிர்க்கும்.</string>
     <string name="home_restore">டிவியின் சொந்த முகப்புத் திரைக்குத் திரும்பு</string>
     <string name="home_done">Vibe Launcher இப்போது முகப்பு</string>

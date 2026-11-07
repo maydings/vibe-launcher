@@ -43,7 +43,6 @@
     <string name="vibe_settings">Réglages de Vibe Launcher</string>
     <string name="android_settings">Réglages Android</string>
     <string name="make_home">Faire de Vibe Launcher votre écran d\'accueil</string>
-    <string name="home_not_changeable">Ce téléviseur ne laisse pas les applis choisir l\'écran d\'accueil. Réglez-le depuis un ordinateur : voir le README de Vibe Launcher</string>
     <string name="tmdb_key">Clé API TMDB</string>
     <string name="youtube_key">Clé API YouTube</string>
     <string name="tiles_per_row">Vignettes par ligne</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Impossible d\'ouvrir %1$s</string>
     <string name="smarttube_install">Installer SmartTube</string>
     <string name="smarttube_open">Ouvrir SmartTube pour se connecter</string>
-    <string name="smarttube_downloading">Téléchargement de SmartTube…</string>
-    <string name="smarttube_allow_installs">Autorisez Vibe Launcher à installer des applications, puis choisissez à nouveau Installer SmartTube</string>
-    <string name="smarttube_failed">SmartTube ne s\'est pas installé</string>
+    <string name="smarttube_get_downloader">SmartTube s\'installe avec Downloader (d\'AFTVnews) : installez Downloader depuis le Play Store, ouvrez-le et tapez %s.</string>
     <string name="play">Lire</string>
     <string name="reload_backdrops">Recharger les arrière-plans</string>
     <string name="tab_backdrops">Arrière-plans</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Ignorer les touches de chaîne sur l\'accueil</string>
     <string name="ignore_channel_keys_short">Chaîne + et chaîne − ne font rien sur l\'écran d\'accueil, au lieu d\'ouvrir l\'appli TV du téléviseur.</string>
     <string name="restart">Redémarrer…</string>
+    <string name="restart_confirm">Le téléviseur va redémarrer. Il revient au bout d\'une minute environ.</string>
     <string name="time_remaining">Encore %1$s</string>
-    <string name="home_key_name">Bouton Accueil de Vibe Launcher</string>
-    <string name="home_key_description">Fait ouvrir Vibe Launcher au bouton Accueil de la télécommande au lieu de l\'écran d\'accueil du téléviseur, et ses paramètres quand on le maintient enfoncé. Il ne lit rien à l\'écran et laisse passer toutes les autres touches.</string>
     <string name="permissions_title">Deux autorisations</string>
     <string name="permissions_why">Vibe Launcher va maintenant demander deux autorisations.\n\nProgrammes TV : pour afficher des images des cartes que vos applications publient pour l\'écran d\'accueil.\n\nPosition : Android ne montre le nom du réseau Wi-Fi qu\'aux applications qui ont cette autorisation. Vibe Launcher ne s\'en sert que pour ce nom et ne cherche jamais où se trouve le téléviseur.\n\nRien de cela ne quitte le téléviseur.</string>
     <string name="continue_button">Continuer</string>
-    <string name="home_key_disclosure_title">Utiliser le bouton Accueil</string>
-    <string name="home_key_disclosure">Ce téléviseur ne permet pas aux applications de devenir l\'application d\'accueil. Vibe Launcher a donc besoin d\'un service d\'accessibilité pour répondre au bouton Accueil.\n\nIl prend en charge le bouton Accueil : un appui ouvre Vibe Launcher, un appui long ouvre les paramètres, et toutes les autres touches passent telles quelles. Il voit aussi quand l\'écran d\'accueil du téléviseur s\'affiche, et le recouvre. Il ne lit rien à l\'écran, ne garde rien et n\'envoie rien nulle part.\n\nDésactivez-le à tout moment dans Paramètres &gt; Accessibilité.</string>
-    <string name="home_key_disclosure_more">Si vous activez « %1$s », il ouvre aussi Vibe Launcher quand l\'écran s\'allume, sauf si vous appuyez d\'abord sur une touche (il note seulement qu\'une touche a été pressée, pas laquelle). Et « %2$s » dans les paramètres l\'utilise pour ouvrir le menu d\'alimentation du téléviseur.</string>
-    <string name="home_button">Bouton Accueil</string>
-    <string name="home_button_short">Pour les téléviseurs qui gardent leur propre écran d\'accueil : le bouton Accueil de la télécommande ouvre Vibe Launcher, et un appui long ouvre les paramètres du téléviseur.</string>
-    <string name="home_key_agree">Accepter</string>
-    <string name="home_key_steps">Ensuite : dans la liste qui s\'ouvre, choisissez « %1$s », activez-le, puis appuyez sur Accueil.</string>
-    <string name="home_key_steps_settings">Ensuite : ce téléviseur n\'offre pas d\'accès direct à ses paramètres d\'accessibilité, donc les Réglages d\'Android s\'ouvrent à la place. Là, allez dans Préférences de l\'appareil &gt; Accessibilité, choisissez  %1$s , activez-le, puis appuyez sur Accueil.</string>
     <string name="store_update">Mettre à jour Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sauvegarde et restauration</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Désactiver le débogage une fois terminé</string>
     <string name="debug_off_when_done_short">Quand vous quittez les Réglages, Vibe Launcher désactive à nouveau le débogage du téléviseur, et le réactive de lui-même la prochaine fois qu\'il en a besoin. Tant qu\'il est désactivé, un ordinateur ne peut pas accéder au téléviseur via ADB.</string>
     <string name="home_make">Faire de Vibe Launcher l\'écran d\'accueil</string>
-    <string name="home_make_short">Désactive l\'écran d\'accueil propre au téléviseur, pour que le bouton Accueil ouvre Vibe Launcher, sans avoir besoin du service Bouton Accueil.</string>
+    <string name="home_make_short">Désactive l\'écran d\'accueil propre au téléviseur, pour que le bouton Accueil ouvre Vibe Launcher.</string>
     <string name="home_make_warning">L\'écran d\'accueil propre au téléviseur est désactivé et Vibe Launcher devient l\'écran d\'accueil. Si cela ne prend pas, tout est rétabli aussitôt. « Revenir à l\'écran d\'accueil du téléviseur » annule l\'opération.</string>
     <string name="home_restore">Revenir à l\'écran d\'accueil du téléviseur</string>
     <string name="home_done">Vibe Launcher est désormais l\'écran d\'accueil</string>

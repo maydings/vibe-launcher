@@ -43,7 +43,6 @@
     <string name="vibe_settings">ការកំណត់ Vibe Launcher</string>
     <string name="android_settings">ការកំណត់ Android</string>
     <string name="make_home">ធ្វើឲ្យ Vibe Launcher ជាអេក្រង់ដើម</string>
-    <string name="home_not_changeable">ទូរទស្សន៍នេះមិនអនុញ្ញាតឲ្យកម្មវិធីជ្រើសកម្មវិធីអេក្រង់ដើមទេ។ កំណត់ពីកុំព្យូទ័រ៖ មើល README របស់ Vibe Launcher</string>
     <string name="tmdb_key">សោ API របស់ TMDB</string>
     <string name="youtube_key">សោ API របស់ YouTube</string>
     <string name="tiles_per_row">ប្រអប់ក្នុងមួយជួរ</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">មិនអាចបើក %1$s បានទេ</string>
     <string name="smarttube_install">ដំឡើង SmartTube</string>
     <string name="smarttube_open">បើក SmartTube ដើម្បីចូល</string>
-    <string name="smarttube_downloading">កំពុងទាញយក SmartTube…</string>
-    <string name="smarttube_allow_installs">អនុញ្ញាតឱ្យ Vibe Launcher ដំឡើងកម្មវិធី រួចជ្រើសរើស ដំឡើង SmartTube ម្ដងទៀត</string>
-    <string name="smarttube_failed">SmartTube មិនបានដំឡើងទេ</string>
+    <string name="smarttube_get_downloader">SmartTube ដំឡើងតាម Downloader (របស់ AFTVnews)៖ យក Downloader ពី Play Store បើកវា ហើយវាយ %s។</string>
     <string name="play">ចាក់</string>
     <string name="reload_backdrops">ផ្ទុកផ្ទៃខាងក្រោយឡើងវិញ</string>
     <string name="tab_backdrops">ផ្ទៃខាងក្រោយ</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">មិនអើពើគ្រាប់ចុចប៉ុស្តិ៍នៅលើទំព័រដើម</string>
     <string name="ignore_channel_keys_short">ប៉ុស្តិ៍ឡើង និងចុះ មិនធ្វើអ្វីទេ ពេលទំព័រដើមកំពុងបង្ហាញ ជំនួសឱ្យការបើកកម្មវិធីទូរទស្សន៍ផ្ទាល់របស់ទូរទស្សន៍។</string>
     <string name="restart">ចាប់ផ្ដើមឡើងវិញ…</string>
+    <string name="restart_confirm">ទូរទស្សន៍នឹងចាប់ផ្ដើមឡើងវិញឥឡូវនេះ។ ចំណាយពេលប្រហែលមួយនាទីដើម្បីត្រឡប់មកវិញ។</string>
     <string name="time_remaining">នៅសល់ %1$s</string>
-    <string name="home_key_name">ប៊ូតុងដើម Vibe Launcher</string>
-    <string name="home_key_description">ធ្វើឱ្យប៊ូតុងដើមលើតេឡេបញ្ជាបើក Vibe Launcher ជំនួសអេក្រង់ដើមរបស់ទូរទស្សន៍ ហើយការចុចជាប់បើកការកំណត់ទូរទស្សន៍។ វាមិនអានអ្វីនៅលើអេក្រង់ទេ ហើយបញ្ជូនប៊ូតុងផ្សេងៗទាំងអស់បន្ត។</string>
     <string name="permissions_title">ការអនុញ្ញាតពីរ</string>
     <string name="permissions_why">បន្ទាប់មក Vibe Launcher នឹងសុំការអនុញ្ញាតពីរ។\n\nកាលវិភាគទូរទស្សន៍៖ ដើម្បីបង្ហាញរូបភាពពីកាតដែលកម្មវិធីរបស់អ្នកផ្សាយសម្រាប់អេក្រង់ដើម។\n\nទីតាំង៖ Android បង្ហាញឈ្មោះបណ្ដាញ Wi-Fi តែចំពោះកម្មវិធីដែលមានការអនុញ្ញាតនេះប៉ុណ្ណោះ។ Vibe Launcher ប្រើវាសម្រាប់ឈ្មោះនោះតែប៉ុណ្ណោះ ហើយមិនដែលស្វែងរកថាទូរទស្សន៍នៅទីណាទេ។\n\nគ្មានមួយណាចេញពីទូរទស្សន៍ទេ។</string>
     <string name="continue_button">បន្ត</string>
-    <string name="home_key_disclosure_title">ប្រើប៊ូតុងដើម</string>
-    <string name="home_key_disclosure">ទូរទស្សន៍នេះមិនអនុញ្ញាតឱ្យកម្មវិធីក្លាយជាកម្មវិធីដើមទេ ដូច្នេះ Vibe Launcher ត្រូវការសេវាភាពងាយស្រួល ដើម្បីឆ្លើយតបនឹងប៊ូតុងដើម។\n\nវាទទួលយកប៊ូតុងដើម៖ ការចុចបើក Vibe Launcher ការចុចជាប់បើកការកំណត់ ហើយប៊ូតុងផ្សេងទៀតទាំងអស់ឆ្លងកាត់ដូចដើម។ វាក៏ឃើញនៅពេលអេក្រង់ដើមរបស់ទូរទស្សន៍លេចឡើង ហើយគ្របវាពីលើ។ វាមិនអានអ្វីនៅលើអេក្រង់ មិនរក្សាទុកអ្វី ហើយមិនផ្ញើអ្វីទៅកន្លែងណាទេ។\n\nបិទវានៅពេលណាក៏បាន ក្នុងការកំណត់ &gt; ភាពងាយស្រួល។</string>
-    <string name="home_key_disclosure_more">ប្រសិនបើអ្នកបើក “%1$s” វាក៏បើក Vibe Launcher នៅពេលអេក្រង់បើកដែរ លុះត្រាតែអ្នកចុចប៊ូតុងមុន (វាគ្រាន់តែកត់សម្គាល់ថាមានប៊ូតុងត្រូវបានចុច មិនមែនប៊ូតុងណាទេ)។ ហើយ “%2$s” ក្នុងការកំណត់ប្រើវាដើម្បីបើកម៉ឺនុយថាមពលរបស់ទូរទស្សន៍។</string>
-    <string name="home_button">ប៊ូតុងដើម</string>
-    <string name="home_button_short">សម្រាប់ទូរទស្សន៍ដែលរក្សាអេក្រង់ដើមផ្ទាល់ខ្លួន៖ ប៊ូតុងដើមលើតេឡេបញ្ជាបើក Vibe Launcher ហើយការចុចឱ្យជាប់បើកការកំណត់របស់ទូរទស្សន៍។</string>
-    <string name="home_key_agree">យល់ព្រម</string>
-    <string name="home_key_steps">បន្ទាប់៖ ក្នុងបញ្ជីដែលបើកឡើង ជ្រើស “%1$s” បើកវា រួចចុចប៊ូតុងដើម។</string>
-    <string name="home_key_steps_settings">បន្ទាប់៖ ទូរទស្សន៍នេះគ្មានផ្លូវផ្ទាល់ទៅកាន់ការកំណត់ភាពងាយស្រួលរបស់វាទេ ដូច្នេះការកំណត់របស់ Android នឹងបើកជំនួសវិញ។ នៅទីនោះ សូមចូលទៅកាន់ ចំណូលចិត្តឧបករណ៍ &gt; ភាពងាយស្រួល ជ្រើស “%1$s” បើកវា រួចចុចប៊ូតុងដើម។</string>
     <string name="store_update">ធ្វើបច្ចុប្បន្នភាព Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">បម្រុងទុក និងស្ដារ</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">បិទការជួសជុលកំហុសពេលរួចរាល់</string>
     <string name="debug_off_when_done_short">ពេលអ្នកចាកចេញពីការកំណត់ Vibe Launcher បិទការជួសជុលកំហុសរបស់ទូរទស្សន៍វិញ ហើយបើកវាឡើងវិញដោយខ្លួនឯងនៅពេលបន្ទាប់ដែលវាត្រូវការ។ ពេលវាបិទ កុំព្យូទ័រមិនអាចភ្ជាប់ទៅទូរទស្សន៍តាម ADB បានទេ។</string>
     <string name="home_make">ធ្វើឲ្យ Vibe Launcher ជាអេក្រង់ដើម</string>
-    <string name="home_make_short">បិទអេក្រង់ដើមផ្ទាល់ខ្លួនរបស់ទូរទស្សន៍ ដើម្បីឲ្យប៊ូតុងដើមបើក Vibe Launcher ដោយមិនត្រូវការសេវាប៊ូតុងដើម។</string>
+    <string name="home_make_short">បិទអេក្រង់ដើមផ្ទាល់របស់ទូរទស្សន៍ ដូច្នេះប៊ូតុង Home បើក Vibe Launcher។</string>
     <string name="home_make_warning">អេក្រង់ដើមផ្ទាល់ខ្លួនរបស់ទូរទស្សន៍ត្រូវបានបិទ ហើយ Vibe Launcher ក្លាយជាអេក្រង់ដើម។ ប្រសិនបើវាមិនដំណើរការទេ អ្វីៗទាំងអស់ត្រូវបានដាក់មកវិញភ្លាមៗ។ «ត្រឡប់ទៅអេក្រង់ដើមផ្ទាល់ខ្លួនរបស់ទូរទស្សន៍» លុបចោលការផ្លាស់ប្ដូរនេះ។</string>
     <string name="home_restore">ត្រឡប់ទៅអេក្រង់ដើមផ្ទាល់ខ្លួនរបស់ទូរទស្សន៍</string>
     <string name="home_done">Vibe Launcher ជាអេក្រង់ដើមឥឡូវនេះ</string>

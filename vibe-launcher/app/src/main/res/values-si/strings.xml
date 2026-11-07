@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher සැකසීම්</string>
     <string name="android_settings">Android සැකසීම්</string>
     <string name="make_home">Vibe Launcher මුල් තිරය කරන්න</string>
-    <string name="home_not_changeable">මෙම රූපවාහිනිය යෙදුම්වලට මුල් තිර යෙදුම තෝරන්නට ඉඩ නොදේ. පරිගණකයකින් සකසන්න: Vibe Launcher README බලන්න</string>
     <string name="tmdb_key">TMDB API යතුර</string>
     <string name="youtube_key">YouTube API යතුර</string>
     <string name="tiles_per_row">පේළියකට ටයිල්</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s විවෘත කළ නොහැක</string>
     <string name="smarttube_install">SmartTube ස්ථාපනය කරන්න</string>
     <string name="smarttube_open">පුරනය වීමට SmartTube විවෘත කරන්න</string>
-    <string name="smarttube_downloading">SmartTube බාගත වෙමින්…</string>
-    <string name="smarttube_allow_installs">Vibe Launcher හට යෙදුම් ස්ථාපනයට ඉඩ දී, නැවත SmartTube ස්ථාපනය කරන්න තෝරන්න</string>
-    <string name="smarttube_failed">SmartTube ස්ථාපනය නොවීය</string>
+    <string name="smarttube_get_downloader">SmartTube ස්ථාපනය වන්නේ Downloader (AFTVnews) හරහාය: Play Store වෙතින් Downloader ලබාගෙන, විවෘත කර %s ටයිප් කරන්න.</string>
     <string name="play">වාදනය කරන්න</string>
     <string name="reload_backdrops">පසුබිම් නැවත පූරණය කරන්න</string>
     <string name="tab_backdrops">පසුබිම්</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">මුල් තිරයේ නාලිකා යතුරු නොසලකන්න</string>
     <string name="ignore_channel_keys_short">මුල් තිරය පෙන්වන විට නාලිකා ඉහළ සහ පහළ කිසිවක් නොකරයි, රූපවාහිනියේම TV යෙදුම විවෘත කරනවා වෙනුවට.</string>
     <string name="restart">නැවත අරඹන්න…</string>
+    <string name="restart_confirm">රූපවාහිනිය දැන් නැවත ආරම්භ වේ. ආපසු පැමිණීමට මිනිත්තුවක් පමණ ගතවේ.</string>
     <string name="time_remaining">%1$s ඉතිරියි</string>
-    <string name="home_key_name">Vibe Launcher මුල් බොත්තම</string>
-    <string name="home_key_description">දුරස්ථ පාලකයේ මුල් බොත්තම රූපවාහිනියේම මුල් තිරය වෙනුවට Vibe Launcher විවෘත කරන අතර, එය තදකර තබාගත් විට රූපවාහිනියේ සැකසීම් විවෘත වේ. එය තිරයේ කිසිවක් කියවන්නේ නැති අතර අනෙක් සියලු බොත්තම් එලෙසම ඉදිරියට යවයි.</string>
     <string name="permissions_title">අවසර දෙකක්</string>
     <string name="permissions_why">ඊළඟට Vibe Launcher අවසර දෙකක් ඉල්ලයි.\n\nරූපවාහිනී ලැයිස්තු: ඔබේ යෙදුම් මුල් තිරය සඳහා ප්‍රකාශ කරන කාඩ්පත්වල පින්තූර පෙන්වීමට.\n\nස්ථානය: Android, Wi-Fi ජාලයේ නම පෙන්වන්නේ මෙම අවසරය ඇති යෙදුම්වලට පමණි. Vibe Launcher එය භාවිත කරන්නේ එම නමට පමණක් වන අතර රූපවාහිනිය කොහේද කියා කිසිදා සොයන්නේ නැත.\n\nකිසිවක් රූපවාහිනියෙන් පිටතට යන්නේ නැත.</string>
     <string name="continue_button">ඉදිරියට</string>
-    <string name="home_key_disclosure_title">මුල් බොත්තම භාවිත කරන්න</string>
-    <string name="home_key_disclosure">මෙම රූපවාහිනිය යෙදුම්වලට මුල් යෙදුම වීමට ඉඩ නොදෙන නිසා, මුල් බොත්තමට ප්‍රතිචාර දැක්වීමට Vibe Launcher වෙත ප්‍රවේශ්‍යතා සේවාවක් අවශ්‍යයි.\n\nඑය මුල් බොත්තම භාර ගනී: එබූ විට Vibe Launcher, තදකර තබාගත් විට සැකසීම් විවෘත වන අතර අනෙක් සියලු බොත්තම් නොවෙනස්ව යයි. රූපවාහිනියේම මුල් තිරය පැමිණෙන විටද එය දැක එය වසා දමයි. එය තිරයේ කිසිවක් කියවන්නේ නැත, කිසිවක් තබා ගන්නේ නැත, කොහේටවත් කිසිවක් යවන්නේ නැත.\n\nඕනෑම වේලාවක සැකසීම් &gt; ප්‍රවේශ්‍යතාව තුළ එය අක්‍රිය කරන්න.</string>
-    <string name="home_key_disclosure_more">ඔබ “%1$s” ක්‍රියාත්මක කළහොත්, තිරය ක්‍රියාත්මක වන විට එය Vibe Launcher ද විවෘත කරයි, ඔබ මුලින්ම බොත්තමක් එබුවහොත් මිස (එය සටහන් කරන්නේ බොත්තමක් එබූ බව පමණි, කුමක්ද යන්න නොවේ). තවද සැකසීම්හි “%2$s” රූපවාහිනියේ බල මෙනුව විවෘත කිරීමට එය භාවිත කරයි.</string>
-    <string name="home_button">මුල් බොත්තම</string>
-    <string name="home_button_short">තමන්ගේම මුල් තිරය තබාගන්නා රූපවාහිනී සඳහා: දුරස්ථ පාලකයේ මුල් බොත්තම Vibe Launcher විවෘත කරයි, එය තද කර අල්ලාගෙන සිටීමෙන් රූපවාහිනියේ සැකසීම් විවෘත වේ.</string>
-    <string name="home_key_agree">එකඟයි</string>
-    <string name="home_key_steps">ඊළඟට: විවෘත වන ලැයිස්තුවේ “%1$s” තෝරා සක්‍රිය කර, ඉන්පසු මුල් බොත්තම ඔබන්න.</string>
-    <string name="home_key_steps_settings">ඊළඟට: මෙම රූපවාහිනියට එහි ප්‍රවේශ්‍යතා සැකසීම් වෙත සෘජු මගක් නැති නිසා, ඒ වෙනුවට Android හි සැකසීම් විවෘත වේ. එහිදී උපාංග මනාප &gt; ප්‍රවේශ්‍යතාව වෙත ගොස්, “%1$s” තෝරා සක්‍රිය කර, ඉන්පසු මුල් බොත්තම ඔබන්න.</string>
     <string name="store_update">Vibe Launcher යාවත්කාලීන කරන්න</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">උපස්ථය සහ ප්‍රතිසාධනය</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">අවසන් වූ පසු නිදොස්කරණය අක්‍රිය කරන්න</string>
     <string name="debug_off_when_done_short">ඔබ සැකසීම් වලින් ඉවත් වූ විට Vibe Launcher රූපවාහිනියේ නිදොස්කරණය නැවත අක්‍රිය කරයි, ඊළඟ වතාවේ අවශ්‍ය වූ විට එය ඉබේම නැවත සක්‍රිය කරයි. එය අක්‍රියව ඇති විට පරිගණකයකට ADB හරහා රූපවාහිනියට ළඟා විය නොහැක.</string>
     <string name="home_make">Vibe Launcher මුල් තිරය කරන්න</string>
-    <string name="home_make_short">රූපවාහිනියේම මුල් තිරය අක්‍රිය කරයි, එවිට මුල් බොත්තම Vibe Launcher විවෘත කරයි, මුල් බොත්තම් සේවාවක් අවශ්‍ය නොවේ.</string>
+    <string name="home_make_short">රූපවාහිනියේම මුල් තිරය ක්‍රියාවිරහිත කරයි, එවිට මුල් බොත්තම Vibe Launcher විවෘත කරයි.</string>
     <string name="home_make_warning">රූපවාහිනියේම මුල් තිරය අක්‍රිය කර Vibe Launcher මුල් තිරය බවට පත් වේ. එය සාර්ථක නොවුණොත්, සියල්ල වහාම පෙර තත්ත්වයට පත් කෙරේ. “රූපවාහිනියේම මුල් තිරයට ආපසු” එය අහෝසි කරයි.</string>
     <string name="home_restore">රූපවාහිනියේම මුල් තිරයට ආපසු</string>
     <string name="home_done">Vibe Launcher දැන් මුල් තිරයයි</string>

@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher beállításai</string>
     <string name="android_settings">Android beállításai</string>
     <string name="make_home">A Vibe Launcher legyen a kezdőképernyő</string>
-    <string name="home_not_changeable">Ez a tévé nem engedi, hogy az alkalmazások kiválasszák a kezdőképernyőt. Állítsd be számítógépről: lásd a Vibe Launcher README-jét</string>
     <string name="tmdb_key">TMDB API-kulcs</string>
     <string name="youtube_key">YouTube API-kulcs</string>
     <string name="tiles_per_row">Csempék soronként</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Nem nyitható meg: %1$s</string>
     <string name="smarttube_install">SmartTube telepítése</string>
     <string name="smarttube_open">SmartTube megnyitása a bejelentkezéshez</string>
-    <string name="smarttube_downloading">A SmartTube letöltése…</string>
-    <string name="smarttube_allow_installs">Engedélyezd a Vibe Launchernek az alkalmazások telepítését, majd válaszd újra a SmartTube telepítése lehetőséget</string>
-    <string name="smarttube_failed">A SmartTube nem települt</string>
+    <string name="smarttube_get_downloader">A SmartTube a Downloaderrel (AFTVnews) települ: töltse le a Downloadert a Play Áruházból, nyissa meg, és írja be: %s.</string>
     <string name="play">Lejátszás</string>
     <string name="reload_backdrops">Háttérképek újratöltése</string>
     <string name="tab_backdrops">Háttérképek</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Csatornagombok figyelmen kívül hagyása a kezdőképernyőn</string>
     <string name="ignore_channel_keys_short">A csatorna fel és le gomb nem csinál semmit a kezdőképernyőn, ahelyett hogy megnyitná a tévé saját tévéalkalmazását.</string>
     <string name="restart">Újraindítás…</string>
+    <string name="restart_confirm">A tévé most újraindul. Körülbelül egy perc múlva tér vissza.</string>
     <string name="time_remaining">Még %1$s</string>
-    <string name="home_key_name">Vibe Launcher Kezdőképernyő gomb</string>
-    <string name="home_key_description">A távirányító Kezdőképernyő gombja a tévé saját kezdőképernyője helyett a Vibe Launchert nyitja meg, nyomva tartva pedig a tévé beállításait. Semmit nem olvas a képernyőről, és minden más gombot továbbenged.</string>
     <string name="permissions_title">Két engedély</string>
     <string name="permissions_why">A Vibe Launcher most két engedélyt kér.\n\nTV-műsor: hogy képeket mutathasson az alkalmazásai által a kezdőképernyőre közzétett kártyákból.\n\nHely: az Android csak az ilyen engedéllyel rendelkező alkalmazásoknak mutatja meg a Wi-Fi-hálózat nevét. A Vibe Launcher csak erre a névre használja, és sosem nézi meg, hol van a tévé.\n\nEgyik sem hagyja el a tévét.</string>
     <string name="continue_button">Tovább</string>
-    <string name="home_key_disclosure_title">A Kezdőképernyő gomb használata</string>
-    <string name="home_key_disclosure">Ez a tévé nem engedi, hogy egy alkalmazás legyen a kezdőképernyő-alkalmazás, ezért a Vibe Launchernek kisegítő szolgáltatásra van szüksége, hogy válaszolni tudjon a Kezdőképernyő gombra.\n\nÁtveszi a Kezdőképernyő gombot: egy megnyomás a Vibe Launchert nyitja meg, a nyomva tartás a beállításokat, minden más gomb változatlanul továbbmegy. Azt is látja, mikor jelenik meg a tévé saját kezdőképernyője, és eltakarja. Semmit nem olvas a képernyőről, semmit nem tárol, és semmit nem küld sehová.\n\nBármikor kikapcsolhatja: Beállítások &gt; Kisegítő lehetőségek.</string>
-    <string name="home_key_disclosure_more">Ha bekapcsolja a(z) „%1$s” beállítást, a képernyő bekapcsolásakor is megnyitja a Vibe Launchert, hacsak előbb meg nem nyom egy gombot (csak azt jegyzi meg, hogy gombot nyomtak meg, azt nem, hogy melyiket). A beállítások „%2$s” pontja pedig ezzel nyitja meg a tévé bekapcsológomb-menüjét.</string>
-    <string name="home_button">Kezdőképernyő gomb</string>
-    <string name="home_button_short">Olyan tévékhez, amelyek megtartják a saját kezdőképernyőjüket: a távirányító Kezdőképernyő gombja megnyitja a Vibe Launchert, nyomva tartva pedig a tévé beállításait.</string>
-    <string name="home_key_agree">Elfogadom</string>
-    <string name="home_key_steps">Ezután: a megnyíló listában válassza ki ezt: „%1$s”, kapcsolja be, majd nyomja meg a Kezdőképernyő gombot.</string>
-    <string name="home_key_steps_settings">Ezután: ez a tévé nem tud közvetlenül a kisegítő lehetőségek beállításaihoz vezetni, ezért helyette az Android Beállításai nyílnak meg. Ott lépjen az Eszközbeállítások &gt; Kisegítő lehetőségek menübe, válassza ki ezt: „%1$s”, kapcsolja be, majd nyomja meg a Kezdőképernyő gombot.</string>
     <string name="store_update">A Vibe Launcher frissítése</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Biztonsági mentés és visszaállítás</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Hibakeresés kikapcsolása a végén</string>
     <string name="debug_off_when_done_short">Amikor kilép a Beállításokból, a Vibe Launcher újra kikapcsolja a tévé hibakeresését, és legközelebb, amikor szüksége van rá, magától visszakapcsolja. Amíg ki van kapcsolva, számítógép nem érheti el a tévét ADB-n keresztül.</string>
     <string name="home_make">A Vibe Launcher legyen a kezdőképernyő</string>
-    <string name="home_make_short">Kikapcsolja a tévé saját kezdőképernyőjét, így a Kezdőképernyő gomb a Vibe Launchert nyitja meg, a Kezdőképernyő gomb szolgáltatásra nincs szükség.</string>
+    <string name="home_make_short">Kikapcsolja a tévé saját kezdőképernyőjét, így a Kezdőlap gomb a Vibe Launchert nyitja meg.</string>
     <string name="home_make_warning">A tévé saját kezdőképernyője kikapcsol, és a Vibe Launcher lesz a kezdőképernyő. Ha ez nem sikerül, azonnal minden visszaáll. A „Vissza a tévé saját kezdőképernyőjére” visszavonja.</string>
     <string name="home_restore">Vissza a tévé saját kezdőképernyőjére</string>
     <string name="home_done">Most már a Vibe Launcher a kezdőképernyő</string>

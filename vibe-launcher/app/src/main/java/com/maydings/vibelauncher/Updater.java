@@ -222,8 +222,8 @@ final class Updater {
     }
 
     /**
-     * Downloads an APK, checks its SHA-256 and hands it to Android's installer for the given package: this
-     * app's update, or another app (SmartTube). Without the "Install unknown apps" switch for Vibe Launcher,
+     * Downloads an APK, checks its SHA-256 and hands it to Android's installer for the given package (this
+     * app's update). Without the "Install unknown apps" switch for Vibe Launcher,
      * opens that switch instead and says so with allowRes.
      */
     static void installApk(Context context, String url, String sha, String pkg, int allowRes, InstallListener listener) {
@@ -293,7 +293,7 @@ final class Updater {
             if (self) prefs(app).edit().putLong("installing", System.currentTimeMillis()).commit();
             // Mutable: the installer adds the status and its confirmation screen to this intent.
             int flags = PendingIntent.FLAG_UPDATE_CURRENT | (Build.VERSION.SDK_INT >= 31 ? PendingIntent.FLAG_MUTABLE : 0);
-            Intent result = new Intent(app, UpdateReceiver.class).putExtra(UpdateReceiver.EXTRA_OTHER_APP, !self);
+            Intent result = new Intent(app, UpdateReceiver.class);
             PendingIntent status = PendingIntent.getBroadcast(app, id, result, flags);
             session.commit(status.getIntentSender());
         }

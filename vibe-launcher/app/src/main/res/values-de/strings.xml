@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher Einstellungen</string>
     <string name="android_settings">Android-Einstellungen</string>
     <string name="make_home">Vibe Launcher als Startbildschirm</string>
-    <string name="home_not_changeable">Dieser Fernseher lässt Apps nicht die Startbildschirm-App wählen. Stelle es am Computer ein: siehe README von Vibe Launcher</string>
     <string name="tmdb_key">TMDB-API-Schlüssel</string>
     <string name="youtube_key">YouTube-API-Schlüssel</string>
     <string name="tiles_per_row">Kacheln pro Reihe</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s kann nicht geöffnet werden</string>
     <string name="smarttube_install">SmartTube installieren</string>
     <string name="smarttube_open">SmartTube zum Anmelden öffnen</string>
-    <string name="smarttube_downloading">SmartTube wird heruntergeladen…</string>
-    <string name="smarttube_allow_installs">Erlaube Vibe Launcher, Apps zu installieren, und wähle dann erneut SmartTube installieren</string>
-    <string name="smarttube_failed">SmartTube wurde nicht installiert</string>
+    <string name="smarttube_get_downloader">SmartTube wird über Downloader (von AFTVnews) installiert: Downloader aus dem Play Store holen, öffnen und %s eingeben.</string>
     <string name="play">Abspielen</string>
     <string name="reload_backdrops">Hintergründe neu laden</string>
     <string name="tab_backdrops">Hintergründe</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Kanaltasten auf dem Startbildschirm ignorieren</string>
     <string name="ignore_channel_keys_short">Kanal hoch und runter tun nichts, solange der Startbildschirm zu sehen ist, statt die TV-App des Fernsehers zu öffnen.</string>
     <string name="restart">Neu starten…</string>
+    <string name="restart_confirm">Der Fernseher startet jetzt neu. Nach etwa einer Minute ist er wieder da.</string>
     <string name="time_remaining">Noch %1$s</string>
-    <string name="home_key_name">Vibe Launcher Home-Taste</string>
-    <string name="home_key_description">Lässt die Home-Taste der Fernbedienung Vibe Launcher statt des eigenen Startbildschirms des Fernsehers öffnen, und langes Drücken die Einstellungen des Fernsehers. Liest nichts vom Bildschirm und gibt jede andere Taste unverändert weiter.</string>
     <string name="permissions_title">Zwei Berechtigungen</string>
     <string name="permissions_why">Vibe Launcher fragt gleich nach zwei Berechtigungen.\n\nTV-Programm: um Bilder aus den Karten zu zeigen, die deine Apps für den Startbildschirm veröffentlichen.\n\nStandort: Android zeigt den Namen des WLANs nur Apps mit dieser Berechtigung. Vibe Launcher nutzt sie nur für diesen Namen und ermittelt nie, wo der Fernseher steht.\n\nBeides verlässt den Fernseher nicht.</string>
     <string name="continue_button">Weiter</string>
-    <string name="home_key_disclosure_title">Home-Taste verwenden</string>
-    <string name="home_key_disclosure">Dieser Fernseher lässt Apps nicht zur Startbildschirm-App werden. Deshalb braucht Vibe Launcher einen Bedienungshilfen-Dienst, um auf die Home-Taste zu reagieren.\n\nEr übernimmt die Home-Taste: Drücken öffnet Vibe Launcher, langes Drücken die Einstellungen, und jede andere Taste geht unverändert weiter. Er sieht auch, wann der eigene Startbildschirm des Fernsehers erscheint, und überdeckt ihn. Er liest nichts vom Bildschirm, speichert nichts und sendet nichts irgendwohin.\n\nDu kannst ihn jederzeit unter Einstellungen &gt; Bedienungshilfen ausschalten.</string>
-    <string name="home_key_disclosure_more">Wenn du „%1$s“ einschaltest, öffnet er Vibe Launcher auch, wenn sich der Bildschirm einschaltet, es sei denn, du drückst zuerst eine Taste (er merkt sich nur, dass eine Taste gedrückt wurde, nicht welche). Und „%2$s“ in den Einstellungen öffnet damit das Ein/Aus-Menü des Fernsehers.</string>
-    <string name="home_button">Home-Taste</string>
-    <string name="home_button_short">Für Fernseher, die ihren eigenen Startbildschirm behalten: Die Home-Taste der Fernbedienung öffnet Vibe Launcher, gedrückt gehalten die Einstellungen des Fernsehers.</string>
-    <string name="home_key_agree">Zustimmen</string>
-    <string name="home_key_steps">Als Nächstes: Wähle in der Liste, die sich öffnet, „%1$s“, schalte es ein und drücke dann Home.</string>
-    <string name="home_key_steps_settings">Als Nächstes: Dieser Fernseher hat keinen direkten Weg zu seinen Bedienungshilfen, daher öffnen sich stattdessen die Android-Einstellungen. Gehe dort zu Geräteeinstellungen &gt; Bedienungshilfen, wähle „%1$s“, schalte es ein und drücke dann Home.</string>
     <string name="store_update">Vibe Launcher aktualisieren</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sichern und wiederherstellen</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Debugging danach ausschalten</string>
     <string name="debug_off_when_done_short">Wenn du die Einstellungen verlässt, schaltet Vibe Launcher das Debugging des Fernsehers wieder aus und beim nächsten Mal, wenn es gebraucht wird, von selbst wieder ein. Solange es aus ist, kann ein Computer den Fernseher nicht über ADB erreichen.</string>
     <string name="home_make">Vibe Launcher als Startbildschirm festlegen</string>
-    <string name="home_make_short">Schaltet den eigenen Startbildschirm des Fernsehers aus, sodass die Home-Taste Vibe Launcher öffnet, ganz ohne den Dienst für die Home-Taste.</string>
+    <string name="home_make_short">Schaltet den eigenen Startbildschirm des Fernsehers aus, sodass die Home-Taste Vibe Launcher öffnet.</string>
     <string name="home_make_warning">Der eigene Startbildschirm des Fernsehers wird ausgeschaltet und Vibe Launcher wird zum Startbildschirm. Klappt das nicht, wird sofort alles zurückgesetzt. „Zurück zum eigenen Startbildschirm des Fernsehers“ macht es rückgängig.</string>
     <string name="home_restore">Zurück zum eigenen Startbildschirm des Fernsehers</string>
     <string name="home_done">Vibe Launcher ist jetzt der Startbildschirm</string>

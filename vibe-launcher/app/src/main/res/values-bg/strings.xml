@@ -43,7 +43,6 @@
     <string name="vibe_settings">Настройки на Vibe Launcher</string>
     <string name="android_settings">Настройки на Android</string>
     <string name="make_home">Vibe Launcher като начален екран</string>
-    <string name="home_not_changeable">Този телевизор не позволява на приложенията да избират началния екран. Задайте го от компютър: вижте README на Vibe Launcher</string>
     <string name="tmdb_key">API ключ за TMDB</string>
     <string name="youtube_key">API ключ за YouTube</string>
     <string name="tiles_per_row">Плочки на ред</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s не може да се отвори</string>
     <string name="smarttube_install">Инсталиране на SmartTube</string>
     <string name="smarttube_open">Отваряне на SmartTube за вход</string>
-    <string name="smarttube_downloading">SmartTube се изтегля…</string>
-    <string name="smarttube_allow_installs">Разрешете на Vibe Launcher да инсталира приложения, след което отново изберете Инсталиране на SmartTube</string>
-    <string name="smarttube_failed">SmartTube не се инсталира</string>
+    <string name="smarttube_get_downloader">SmartTube се инсталира чрез Downloader (от AFTVnews): вземете Downloader от Play Store, отворете го и въведете %s.</string>
     <string name="play">Пусни</string>
     <string name="reload_backdrops">Презареди фоновете</string>
     <string name="tab_backdrops">Фонове</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Игнориране на бутоните за канали на началния екран</string>
     <string name="ignore_channel_keys_short">Бутоните за следващ и предишен канал не правят нищо, докато е показан началният екран, вместо да отварят приложението за телевизия.</string>
     <string name="restart">Рестартиране…</string>
+    <string name="restart_confirm">Телевизорът ще се рестартира сега. Връща се след около минута.</string>
     <string name="time_remaining">Остават %1$s</string>
-    <string name="home_key_name">Бутон „Начало“ за Vibe Launcher</string>
-    <string name="home_key_description">Бутонът „Начало“ на дистанционното отваря Vibe Launcher вместо собствения начален екран на телевизора, а задържането му – настройките на телевизора. Не чете нищо от екрана и пропуска всички останали бутони.</string>
     <string name="permissions_title">Две разрешения</string>
     <string name="permissions_why">След малко Vibe Launcher ще поиска две разрешения.\n\nТВ програма: за да показва снимки от картите, които приложенията ви публикуват за началния екран.\n\nМестоположение: Android показва името на Wi-Fi мрежата само на приложения с това разрешение. Vibe Launcher го използва само за това име и никога не проверява къде е телевизорът.\n\nНито едното не напуска телевизора.</string>
     <string name="continue_button">Напред</string>
-    <string name="home_key_disclosure_title">Използване на бутона „Начало“</string>
-    <string name="home_key_disclosure">Този телевизор не позволява на приложения да станат приложение за начален екран, затова Vibe Launcher се нуждае от услуга за достъпност, за да отговаря на бутона „Начало“.\n\nПоема бутона „Начало“: натискане отваря Vibe Launcher, задържане отваря настройките, а всички останали бутони минават непроменени. Вижда и кога се появява собственият начален екран на телевизора и го покрива. Не чете нищо от екрана, не пази нищо и не изпраща нищо никъде.\n\nМожете да я изключите по всяко време от Настройки &gt; Достъпност.</string>
-    <string name="home_key_disclosure_more">Ако включите „%1$s“, той също отваря Vibe Launcher, когато екранът се включи, освен ако първо не натиснете бутон (отбелязва само, че е натиснат бутон, не кой). А „%2$s“ в настройките го използва, за да отвори менюто за захранване на телевизора.</string>
-    <string name="home_button">Бутон „Начало“</string>
-    <string name="home_button_short">За телевизори, които запазват собствения си начален екран: бутонът „Начало“ на дистанционното отваря Vibe Launcher, а задържането му отваря настройките на телевизора.</string>
-    <string name="home_key_agree">Съгласен съм</string>
-    <string name="home_key_steps">След това: в списъка, който се отваря, изберете „%1$s“, включете го и натиснете „Начало“.</string>
-    <string name="home_key_steps_settings">След това: този телевизор няма директен път до настройките си за достъпност, затова вместо тях се отварят настройките на Android. Там отидете в „Предпочитания за устройството“ &gt; „Достъпност“, изберете „%1$s“, включете го и натиснете „Начало“.</string>
     <string name="store_update">Актуализиране на Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Резервно копие и възстановяване</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Изключване на отстраняването на грешки след това</string>
     <string name="debug_off_when_done_short">Когато излезете от настройките, Vibe Launcher отново изключва отстраняването на грешки на телевизора и сам го включва следващия път, когато му потрябва. Докато е изключено, компютър не може да се свърже с телевизора през ADB.</string>
     <string name="home_make">Задаване на Vibe Launcher като начален екран</string>
-    <string name="home_make_short">Изключва собствения начален екран на телевизора, така че бутонът „Начало“ отваря Vibe Launcher, без да е нужна услугата за бутона „Начало“.</string>
+    <string name="home_make_short">Изключва собствения начален екран на телевизора, така че бутонът Home отваря Vibe Launcher.</string>
     <string name="home_make_warning">Собственият начален екран на телевизора се изключва и Vibe Launcher става начален екран. Ако това не сработи, всичко се връща веднага. „Обратно към собствения начален екран на телевизора“ отменя промяната.</string>
     <string name="home_restore">Обратно към собствения начален екран на телевизора</string>
     <string name="home_done">Vibe Launcher вече е началният екран</string>

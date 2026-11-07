@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher 설정</string>
     <string name="android_settings">Android 설정</string>
     <string name="make_home">Vibe Launcher를 홈으로 설정</string>
-    <string name="home_not_changeable">이 TV는 앱이 홈 앱을 고르도록 허용하지 않습니다. 컴퓨터에서 설정하세요: Vibe Launcher의 README 참고</string>
     <string name="tmdb_key">TMDB API 키</string>
     <string name="youtube_key">YouTube API 키</string>
     <string name="tiles_per_row">한 줄 타일 수</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s을(를) 열 수 없습니다</string>
     <string name="smarttube_install">SmartTube 설치</string>
     <string name="smarttube_open">SmartTube를 열어 로그인</string>
-    <string name="smarttube_downloading">SmartTube 다운로드 중…</string>
-    <string name="smarttube_allow_installs">Vibe Launcher가 앱을 설치하도록 허용한 다음 SmartTube 설치를 다시 선택하세요</string>
-    <string name="smarttube_failed">SmartTube가 설치되지 않았습니다</string>
+    <string name="smarttube_get_downloader">SmartTube는 Downloader(AFTVnews)로 설치합니다. Play 스토어에서 Downloader를 받아 열고 %s을(를) 입력하세요.</string>
     <string name="play">재생</string>
     <string name="reload_backdrops">배경 다시 불러오기</string>
     <string name="tab_backdrops">배경</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">홈에서 채널 키 무시</string>
     <string name="ignore_channel_keys_short">홈이 표시된 동안 채널 위/아래 키를 눌러도 TV 자체의 TV 앱이 열리지 않고 아무 일도 일어나지 않습니다.</string>
     <string name="restart">다시 시작…</string>
+    <string name="restart_confirm">TV가 지금 다시 시작됩니다. 돌아오기까지 1분 정도 걸립니다.</string>
     <string name="time_remaining">%1$s 남음</string>
-    <string name="home_key_name">Vibe Launcher 홈 버튼</string>
-    <string name="home_key_description">리모컨의 홈 버튼을 누르면 TV 자체 홈 화면 대신 Vibe Launcher가 열리고, 길게 누르면 TV 설정이 열립니다. 화면의 내용은 읽지 않으며 다른 버튼은 모두 그대로 전달합니다.</string>
     <string name="permissions_title">두 가지 권한</string>
     <string name="permissions_why">이제 Vibe Launcher가 두 가지 권한을 요청합니다.\n\nTV 편성표: 앱이 홈 화면용으로 게시하는 카드의 이미지를 표시하기 위해 필요합니다.\n\n위치: Android는 이 권한이 있는 앱에만 Wi-Fi 네트워크 이름을 보여 줍니다. Vibe Launcher는 그 이름에만 사용하며 TV의 위치는 절대 확인하지 않습니다.\n\n어느 것도 TV 밖으로 나가지 않습니다.</string>
     <string name="continue_button">계속</string>
-    <string name="home_key_disclosure_title">홈 버튼 사용</string>
-    <string name="home_key_disclosure">이 TV에서는 앱을 홈 앱으로 설정할 수 없으므로, Vibe Launcher가 홈 버튼에 응답하려면 접근성 서비스가 필요합니다.\n\n홈 버튼을 맡습니다. 누르면 Vibe Launcher가, 길게 누르면 설정이 열리며, 다른 버튼은 모두 그대로 전달됩니다. TV 자체 홈 화면이 나타나는 것도 확인해 그 위를 덮습니다. 화면의 내용은 읽지 않고, 아무것도 저장하지 않으며, 어디에도 아무것도 보내지 않습니다.\n\n설정 &gt; 접근성에서 언제든지 끌 수 있습니다.</string>
-    <string name="home_key_disclosure_more">‘%1$s’을(를) 켜면 화면이 켜질 때도 Vibe Launcher를 엽니다. 단, 먼저 버튼을 누른 경우는 제외합니다(버튼이 눌렸다는 것만 기록하며 어떤 버튼인지는 기록하지 않음). 또한 설정의 ‘%2$s’은(는) 이 서비스로 TV의 전원 메뉴를 엽니다.</string>
-    <string name="home_button">홈 버튼</string>
-    <string name="home_button_short">자체 홈 화면을 유지하는 TV용: 리모컨의 홈 버튼을 누르면 Vibe Launcher가 열리고, 길게 누르면 TV 설정이 열립니다.</string>
-    <string name="home_key_agree">동의</string>
-    <string name="home_key_steps">다음: 열리는 목록에서 ‘%1$s’을(를) 선택해 사용 설정한 다음 홈 버튼을 누르세요.</string>
-    <string name="home_key_steps_settings">다음: 이 TV에는 접근성 설정으로 바로 가는 방법이 없어 대신 Android 설정이 열립니다. 여기서 ‘기기 환경설정’ &gt; ‘접근성’으로 이동해 ‘%1$s’을(를) 선택해 사용 설정한 다음 홈 버튼을 누르세요.</string>
     <string name="store_update">Vibe Launcher 업데이트</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">백업 및 복원</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">완료 후 디버깅 사용 중지</string>
     <string name="debug_off_when_done_short">설정에서 나가면 Vibe Launcher가 TV의 디버깅을 다시 사용 중지하고, 다음에 필요할 때 자동으로 다시 사용 설정합니다. 사용 중지된 동안에는 컴퓨터가 ADB로 TV에 연결할 수 없습니다.</string>
     <string name="home_make">Vibe Launcher를 홈으로 설정</string>
-    <string name="home_make_short">TV 자체 홈 화면을 사용 중지해 홈 버튼을 누르면 Vibe Launcher가 열리도록 합니다. 홈 버튼 서비스가 필요 없습니다.</string>
+    <string name="home_make_short">TV 자체 홈 화면을 꺼서 홈 버튼이 Vibe Launcher를 열도록 합니다.</string>
     <string name="home_make_warning">TV 자체 홈 화면이 사용 중지되고 Vibe Launcher가 홈이 됩니다. 제대로 적용되지 않으면 즉시 모두 원래대로 돌아갑니다. ‘TV 자체 홈 화면으로 돌아가기’를 선택하면 되돌릴 수 있습니다.</string>
     <string name="home_restore">TV 자체 홈 화면으로 돌아가기</string>
     <string name="home_done">이제 Vibe Launcher가 홈입니다</string>

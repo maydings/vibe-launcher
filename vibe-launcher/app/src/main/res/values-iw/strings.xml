@@ -43,7 +43,6 @@
     <string name="vibe_settings">הגדרות Vibe Launcher</string>
     <string name="android_settings">הגדרות Android</string>
     <string name="make_home">הפיכת Vibe Launcher למסך הבית</string>
-    <string name="home_not_changeable">הטלוויזיה הזו לא מאפשרת לאפליקציות לבחור את אפליקציית מסך הבית. הגדירו זאת ממחשב: ראו את ה-README של Vibe Launcher</string>
     <string name="tmdb_key">מפתח API של TMDB</string>
     <string name="youtube_key">מפתח API של YouTube</string>
     <string name="tiles_per_row">אריחים בשורה</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">לא ניתן לפתוח את %1$s</string>
     <string name="smarttube_install">התקנת SmartTube</string>
     <string name="smarttube_open">פתיחת SmartTube להתחברות</string>
-    <string name="smarttube_downloading">מוריד את SmartTube…</string>
-    <string name="smarttube_allow_installs">אפשרו ל-Vibe Launcher להתקין אפליקציות, ואז בחרו שוב התקנת SmartTube</string>
-    <string name="smarttube_failed">SmartTube לא הותקן</string>
+    <string name="smarttube_get_downloader">SmartTube מותקן דרך Downloader (של AFTVnews): התקינו את Downloader מחנות Play, פתחו אותו והקלידו %s.</string>
     <string name="play">הפעל</string>
     <string name="reload_backdrops">טעינה מחדש של תמונות הרקע</string>
     <string name="tab_backdrops">תמונות רקע</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">התעלמות ממקשי הערוצים במסך הבית</string>
     <string name="ignore_channel_keys_short">ערוץ למעלה ולמטה לא עושים דבר כשמסך הבית מוצג, במקום לפתוח את אפליקציית הטלוויזיה של המכשיר.</string>
     <string name="restart">הפעלה מחדש…</string>
+    <string name="restart_confirm">הטלוויזיה תופעל מחדש עכשיו. היא חוזרת בתוך כדקה.</string>
     <string name="time_remaining">נותרו %1$s</string>
-    <string name="home_key_name">כפתור הבית של Vibe Launcher</string>
-    <string name="home_key_description">גורם לכפתור הבית בשלט לפתוח את Vibe Launcher במקום מסך הבית של הטלוויזיה, ולחיצה ארוכה עליו פותחת את הגדרות הטלוויזיה. הוא לא קורא דבר מהמסך ומעביר הלאה את כל שאר המקשים.</string>
     <string name="permissions_title">שתי הרשאות</string>
     <string name="permissions_why">בשלב הבא Vibe Launcher יבקש שתי הרשאות.\n\nלוח שידורים: כדי להציג תמונות מהכרטיסים שהאפליקציות שלכם מפרסמות למסך הבית.\n\nמיקום: Android מציג את שם רשת ה-Wi-Fi רק לאפליקציות עם ההרשאה הזו. Vibe Launcher משתמש בה רק לשם הזה ואף פעם לא בודק איפה הטלוויזיה נמצאת.\n\nאף אחת מהן לא יוצאת מהטלוויזיה.</string>
     <string name="continue_button">המשך</string>
-    <string name="home_key_disclosure_title">שימוש בכפתור הבית</string>
-    <string name="home_key_disclosure">הטלוויזיה הזו לא מאפשרת לאפליקציות להפוך לאפליקציית הבית, ולכן Vibe Launcher צריך שירות נגישות כדי להגיב לכפתור הבית.\n\nהוא לוקח את כפתור הבית: לחיצה פותחת את Vibe Launcher, לחיצה ארוכה פותחת את ההגדרות, וכל שאר המקשים עוברים כמו שהם. הוא גם רואה מתי מסך הבית של הטלוויזיה עצמה עולה, ומכסה אותו. הוא לא קורא דבר מהמסך, לא שומר דבר ולא שולח דבר לשום מקום.\n\nאפשר לכבות אותו בכל רגע בהגדרות &gt; נגישות.</string>
-    <string name="home_key_disclosure_more">אם תפעילו את “%1$s”, השירות גם פותח את Vibe Launcher כשהמסך נדלק, אלא אם תלחצו קודם על מקש (הוא רושם רק שמקש נלחץ, לא איזה). ו־“%2$s” בהגדרות משתמש בו כדי לפתוח את תפריט ההפעלה של הטלוויזיה.</string>
-    <string name="home_button">כפתור הבית</string>
-    <string name="home_button_short">לטלוויזיות ששומרות על מסך הבית שלהן: כפתור הבית בשלט פותח את Vibe Launcher, ולחיצה ארוכה עליו פותחת את הגדרות הטלוויזיה.</string>
-    <string name="home_key_agree">אני מסכים/ה</string>
-    <string name="home_key_steps">השלב הבא: ברשימה שנפתחת בחרו “%1$s”, הפעילו אותו ולחצו על כפתור הבית.</string>
-    <string name="home_key_steps_settings">השלב הבא: בטלוויזיה הזו אין דרך ישירה להגדרות הנגישות שלה, ולכן נפתחות במקום זאת ההגדרות של Android. שם, עברו אל העדפות המכשיר &gt; נגישות, בחרו “%1$s”, הפעילו אותו ולחצו על כפתור הבית.</string>
     <string name="store_update">עדכון Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">גיבוי ושחזור</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">כיבוי ניפוי הבאגים בסיום</string>
     <string name="debug_off_when_done_short">כשיוצאים מההגדרות, Vibe Launcher מכבה שוב את ניפוי הבאגים של הטלוויזיה, ומפעיל אותו מעצמו בפעם הבאה שהוא צריך אותו. כל עוד הוא כבוי, מחשב לא יכול להגיע לטלוויזיה דרך ADB.</string>
     <string name="home_make">הגדרת Vibe Launcher כמסך הבית</string>
-    <string name="home_make_short">מכבה את מסך הבית של הטלוויזיה עצמה, כך שכפתור הבית פותח את Vibe Launcher, בלי צורך בשירות כפתור הבית.</string>
+    <string name="home_make_short">מכבה את מסך הבית של הטלוויזיה עצמה, כך שכפתור הבית פותח את Vibe Launcher.</string>
     <string name="home_make_warning">מסך הבית של הטלוויזיה עצמה נכבה ו-Vibe Launcher הופך למסך הבית. אם זה לא נקלט, הכול מוחזר מיד. ”חזרה למסך הבית של הטלוויזיה” מבטל זאת.</string>
     <string name="home_restore">חזרה למסך הבית של הטלוויזיה</string>
     <string name="home_done">Vibe Launcher הוא עכשיו מסך הבית</string>

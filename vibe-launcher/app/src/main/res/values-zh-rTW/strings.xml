@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher 設定</string>
     <string name="android_settings">Android 設定</string>
     <string name="make_home">將 Vibe Launcher 設為主畫面</string>
-    <string name="home_not_changeable">這台電視不允許應用程式選擇主畫面應用程式。請用電腦設定：見 Vibe Launcher 的 README</string>
     <string name="tmdb_key">TMDB API 金鑰</string>
     <string name="youtube_key">YouTube API 金鑰</string>
     <string name="tiles_per_row">每列圖塊數</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">無法開啟 %1$s</string>
     <string name="smarttube_install">安裝 SmartTube</string>
     <string name="smarttube_open">開啟 SmartTube 登入</string>
-    <string name="smarttube_downloading">正在下載 SmartTube…</string>
-    <string name="smarttube_allow_installs">請允許 Vibe Launcher 安裝應用程式，然後再次選擇安裝 SmartTube</string>
-    <string name="smarttube_failed">SmartTube 未能安裝</string>
+    <string name="smarttube_get_downloader">SmartTube 透過 Downloader（AFTVnews 出品）安裝：從 Play 商店取得 Downloader，開啟後輸入 %s。</string>
     <string name="play">播放</string>
     <string name="reload_backdrops">重新載入背景圖</string>
     <string name="tab_backdrops">背景圖</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">在主畫面上忽略頻道鍵</string>
     <string name="ignore_channel_keys_short">顯示主畫面時，頻道上和頻道下不會有任何動作，而不是開啟電視內建的電視應用程式。</string>
     <string name="restart">重新啟動…</string>
+    <string name="restart_confirm">電視現在會重新啟動，大約一分鐘後回來。</string>
     <string name="time_remaining">剩餘 %1$s</string>
-    <string name="home_key_name">Vibe Launcher 主畫面鍵</string>
-    <string name="home_key_description">讓遙控器的主畫面鍵開啟 Vibe Launcher，而不是電視內建的主畫面；長按則開啟電視的設定。它不讀取畫面上的任何內容，其他按鍵都照常放行。</string>
     <string name="permissions_title">兩項權限</string>
     <string name="permissions_why">接下來 Vibe Launcher 會要求兩項權限。\n\n電視節目表：用來顯示各應用程式為主畫面發布的資訊卡圖片。\n\n位置資訊：Android 只向擁有此權限的應用程式顯示 Wi-Fi 網路名稱。Vibe Launcher 只把它用在這個名稱上，從不查看電視的位置。\n\n兩者都不會離開電視。</string>
     <string name="continue_button">繼續</string>
-    <string name="home_key_disclosure_title">使用主畫面鍵</string>
-    <string name="home_key_disclosure">這台電視不允許應用程式成為主畫面應用程式，因此 Vibe Launcher 需要一項無障礙服務來回應主畫面鍵。\n\n它接管主畫面鍵：按一下開啟 Vibe Launcher，長按開啟設定，其他按鍵都原樣放行。它也能知道電視內建的主畫面何時出現，並把它蓋住。它不讀取畫面上的任何內容，不保存任何東西，也不傳送任何東西到任何地方。\n\n可隨時在「設定」&gt;「無障礙設定」中關閉。</string>
-    <string name="home_key_disclosure_more">如果開啟「%1$s」，螢幕亮起時它也會開啟 Vibe Launcher，除非你先按了某個按鍵（它只記下有按鍵被按過，不記是哪個）。設定中的「%2$s」也透過它開啟電視的電源選單。</string>
-    <string name="home_button">主畫面鍵</string>
-    <string name="home_button_short">適用於保留自帶主畫面的電視：按遙控器的主畫面鍵會開啟 Vibe Launcher，長按則開啟電視的設定。</string>
-    <string name="home_key_agree">同意</string>
-    <string name="home_key_steps">下一步：在開啟的清單中選取「%1$s」並開啟，然後按主畫面鍵。</string>
-    <string name="home_key_steps_settings">下一步：這台電視無法直接進入無障礙設定，因此會改為開啟 Android 設定。請在其中前往「裝置偏好設定」&gt;「無障礙設定」，選取「%1$s」並開啟，然後按主畫面鍵。</string>
     <string name="store_update">更新 Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">備份與還原</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">用完後關閉偵錯</string>
     <string name="debug_off_when_done_short">離開設定時，Vibe Launcher 會再次關閉電視的偵錯功能，下次需要時再自動開啟。關閉期間，電腦無法透過 ADB 連線到電視。</string>
     <string name="home_make">將 Vibe Launcher 設為主畫面</string>
-    <string name="home_make_short">關閉電視自帶的主畫面，讓主畫面鍵開啟 Vibe Launcher，不需要主畫面鍵服務。</string>
+    <string name="home_make_short">關閉電視內建的主畫面，讓主畫面按鈕開啟 Vibe Launcher。</string>
     <string name="home_make_warning">電視自帶的主畫面會被關閉，Vibe Launcher 成為主畫面。如果沒有生效，會立即全部還原。「返回電視自帶的主畫面」可復原此操作。</string>
     <string name="home_restore">返回電視自帶的主畫面</string>
     <string name="home_done">Vibe Launcher 現在是主畫面</string>

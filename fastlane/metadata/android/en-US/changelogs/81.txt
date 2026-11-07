@@ -1,0 +1,3 @@
+* Becoming Home goes through the TV's own ADB only: the first start and the gear menu open Settings → Advanced → Default launcher, which walks you through it. The Home button accessibility service is gone.
+* Settings → General → Restart asks, then restarts the TV through its ADB.
+* SmartTube installs through Downloader: the button opens Downloader on its code (28544).

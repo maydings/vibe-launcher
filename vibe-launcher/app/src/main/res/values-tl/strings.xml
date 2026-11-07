@@ -43,7 +43,6 @@
     <string name="vibe_settings">Mga setting ng Vibe Launcher</string>
     <string name="android_settings">Mga setting ng Android</string>
     <string name="make_home">Gawing Home ang Vibe Launcher</string>
-    <string name="home_not_changeable">Hindi pinapayagan ng TV na ito ang mga app na pumili ng Home app. Itakda ito mula sa computer: tingnan ang README ng Vibe Launcher</string>
     <string name="tmdb_key">TMDB API key</string>
     <string name="youtube_key">YouTube API key</string>
     <string name="tiles_per_row">Tile bawat hanay</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Hindi mabuksan ang %1$s</string>
     <string name="smarttube_install">I-install ang SmartTube</string>
     <string name="smarttube_open">Buksan ang SmartTube para mag-sign in</string>
-    <string name="smarttube_downloading">Dina-download ang SmartTube…</string>
-    <string name="smarttube_allow_installs">Payagan ang Vibe Launcher na mag-install ng mga app, pagkatapos ay piliin muli ang I-install ang SmartTube</string>
-    <string name="smarttube_failed">Hindi na-install ang SmartTube</string>
+    <string name="smarttube_get_downloader">Ini-install ang SmartTube sa pamamagitan ng Downloader (ng AFTVnews): kunin ang Downloader sa Play Store, buksan ito at i-type ang %s.</string>
     <string name="play">I-play</string>
     <string name="reload_backdrops">I-reload ang mga backdrop</string>
     <string name="tab_backdrops">Mga backdrop</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Huwag pansinin ang mga channel key sa Home</string>
     <string name="ignore_channel_keys_short">Walang ginagawa ang Channel Up at Down habang nakikita ang Home, sa halip na buksan ang sariling TV app ng TV.</string>
     <string name="restart">I-restart…</string>
+    <string name="restart_confirm">Magre-restart na ang TV ngayon. Mga isang minuto bago ito bumalik.</string>
     <string name="time_remaining">%1$s pa ang natitira</string>
-    <string name="home_key_name">Home button ng Vibe Launcher</string>
-    <string name="home_key_description">Ginagawa nitong buksan ng Home button ng remote ang Vibe Launcher sa halip na ang sariling home screen ng TV, at ang Mga Setting ng TV kapag pinindot nang matagal. Wala itong binabasa sa screen at pinapadaan ang lahat ng iba pang button.</string>
     <string name="permissions_title">Dalawang pahintulot</string>
     <string name="permissions_why">Susunod, hihingi ang Vibe Launcher ng dalawang pahintulot.\n\nTV listings: para maipakita ang mga larawan mula sa mga card na inilalathala ng iyong mga app para sa home screen.\n\nLokasyon: ipinapakita lang ng Android ang pangalan ng Wi-Fi network sa mga app na may ganitong pahintulot. Ginagamit ito ng Vibe Launcher para sa pangalang iyon lang at hindi kailanman hinahanap kung nasaan ang TV.\n\nWalang lumalabas sa TV.</string>
     <string name="continue_button">Magpatuloy</string>
-    <string name="home_key_disclosure_title">Gamitin ang Home button</string>
-    <string name="home_key_disclosure">Hindi pinapayagan ng TV na ito na maging home app ang mga app, kaya kailangan ng Vibe Launcher ng accessibility service para tumugon sa Home button.\n\nIto ang hahawak sa Home button: binubuksan ng isang pindot ang Vibe Launcher, ng matagal na pindot ang Mga Setting, at dumadaan nang hindi binabago ang lahat ng iba pang button. Nakikita rin nito kapag lumabas ang sariling home screen ng TV, at tinatakpan ito. Wala itong binabasa sa screen, walang iniimbak, at walang ipinapadala kahit saan.\n\nI-off ito anumang oras sa Mga Setting &gt; Accessibility.</string>
-    <string name="home_key_disclosure_more">Kung io-on mo ang “%1$s”, binubuksan din nito ang Vibe Launcher kapag bumukas ang screen, maliban kung pumindot ka muna ng button (tinatandaan lang nito na may pinindot na button, hindi kung alin). At ginagamit ito ng “%2$s” sa Settings para buksan ang power menu ng TV.</string>
-    <string name="home_button">Home button</string>
-    <string name="home_button_short">Para sa mga TV na nananatili ang sariling home screen: binubuksan ng Home button ng remote ang Vibe Launcher, at kapag pinindot nang matagal, binubuksan ang Settings ng TV.</string>
-    <string name="home_key_agree">Sumasang-ayon</string>
-    <string name="home_key_steps">Susunod: sa listahang magbubukas, piliin ang “%1$s”, i-on ito, saka pindutin ang Home.</string>
-    <string name="home_key_steps_settings">Susunod: walang direktang daan ang TV na ito papunta sa mga setting ng Accessibility nito, kaya ang Mga setting ng Android ang magbubukas sa halip. Doon, pumunta sa Mga Kagustuhan sa Device &gt; Accessibility, piliin ang “%1$s”, i-on ito, saka pindutin ang Home.</string>
     <string name="store_update">I-update ang Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Backup at restore</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">I-off ang debugging kapag tapos na</string>
     <string name="debug_off_when_done_short">Kapag umalis ka sa Mga setting, ino-off muli ng Vibe Launcher ang debugging ng TV, at kusa itong ino-on muli sa susunod na kailanganin nito. Hindi maaabot ng isang computer ang TV sa pamamagitan ng ADB habang naka-off ito.</string>
     <string name="home_make">Gawing Home ang Vibe Launcher</string>
-    <string name="home_make_short">Ino-off ang sariling home screen ng TV, para buksan ng Home button ang Vibe Launcher, nang hindi na kailangan ang serbisyo ng Home button.</string>
+    <string name="home_make_short">Pinapatay ang sariling home screen ng TV, para buksan ng Home button ang Vibe Launcher.</string>
     <string name="home_make_warning">Ino-off ang sariling home screen ng TV at nagiging Home ang Vibe Launcher. Kung hindi ito tumalab, ibinabalik agad ang lahat. Ina-undo ito ng “Bumalik sa sariling home screen ng TV”.</string>
     <string name="home_restore">Bumalik sa sariling home screen ng TV</string>
     <string name="home_done">Home na ngayon ang Vibe Launcher</string>

@@ -43,7 +43,6 @@
     <string name="vibe_settings">Ρυθμίσεις Vibe Launcher</string>
     <string name="android_settings">Ρυθμίσεις Android</string>
     <string name="make_home">Ορισμός του Vibe Launcher ως αρχικής οθόνης</string>
-    <string name="home_not_changeable">Αυτή η τηλεόραση δεν αφήνει τις εφαρμογές να επιλέξουν την εφαρμογή αρχικής οθόνης. Ορίστε τη από υπολογιστή: δείτε το README του Vibe Launcher</string>
     <string name="tmdb_key">Κλειδί API του TMDB</string>
     <string name="youtube_key">Κλειδί API του YouTube</string>
     <string name="tiles_per_row">Πλακίδια ανά σειρά</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Δεν είναι δυνατό το άνοιγμα του %1$s</string>
     <string name="smarttube_install">Εγκατάσταση SmartTube</string>
     <string name="smarttube_open">Άνοιγμα SmartTube για σύνδεση</string>
-    <string name="smarttube_downloading">Λήψη του SmartTube…</string>
-    <string name="smarttube_allow_installs">Επιτρέψτε στο Vibe Launcher να εγκαθιστά εφαρμογές και επιλέξτε ξανά Εγκατάσταση SmartTube</string>
-    <string name="smarttube_failed">Το SmartTube δεν εγκαταστάθηκε</string>
+    <string name="smarttube_get_downloader">Το SmartTube εγκαθίσταται μέσω του Downloader (της AFTVnews): κατεβάστε το Downloader από το Play Store, ανοίξτε το και πληκτρολογήστε %s.</string>
     <string name="play">Αναπαραγωγή</string>
     <string name="reload_backdrops">Επαναφόρτωση φόντων</string>
     <string name="tab_backdrops">Φόντα</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Παράβλεψη πλήκτρων καναλιών στην αρχική οθόνη</string>
     <string name="ignore_channel_keys_short">Τα πλήκτρα επόμενου και προηγούμενου καναλιού δεν κάνουν τίποτα στην αρχική οθόνη, αντί να ανοίγουν την εφαρμογή τηλεόρασης της συσκευής.</string>
     <string name="restart">Επανεκκίνηση…</string>
+    <string name="restart_confirm">Η τηλεόραση θα επανεκκινηθεί τώρα. Επιστρέφει σε περίπου ένα λεπτό.</string>
     <string name="time_remaining">Απομένουν %1$s</string>
-    <string name="home_key_name">Κουμπί αρχικής οθόνης Vibe Launcher</string>
-    <string name="home_key_description">Κάνει το κουμπί αρχικής οθόνης του τηλεχειριστηρίου να ανοίγει το Vibe Launcher αντί για την αρχική οθόνη της τηλεόρασης, και το παρατεταμένο πάτημα να ανοίγει τις ρυθμίσεις της. Δεν διαβάζει τίποτα στην οθόνη και αφήνει όλα τα άλλα κουμπιά να περάσουν.</string>
     <string name="permissions_title">Δύο άδειες</string>
     <string name="permissions_why">Το Vibe Launcher θα ζητήσει στη συνέχεια δύο άδειες.\n\nΠρόγραμμα TV: για να δείχνει εικόνες από τις κάρτες που δημοσιεύουν οι εφαρμογές σας για την αρχική οθόνη.\n\nΤοποθεσία: το Android δείχνει το όνομα του δικτύου Wi-Fi μόνο σε εφαρμογές με αυτή την άδεια. Το Vibe Launcher τη χρησιμοποιεί μόνο για αυτό το όνομα και δεν αναζητά ποτέ πού βρίσκεται η τηλεόραση.\n\nΚαμία από τις δύο δεν φεύγει από την τηλεόραση.</string>
     <string name="continue_button">Συνέχεια</string>
-    <string name="home_key_disclosure_title">Χρήση του κουμπιού αρχικής οθόνης</string>
-    <string name="home_key_disclosure">Αυτή η τηλεόραση δεν επιτρέπει σε εφαρμογές να γίνουν εφαρμογή αρχικής οθόνης, οπότε το Vibe Launcher χρειάζεται μια υπηρεσία προσβασιμότητας για να ανταποκρίνεται στο κουμπί αρχικής οθόνης.\n\nΑναλαμβάνει το κουμπί αρχικής οθόνης: το πάτημα ανοίγει το Vibe Launcher, το παρατεταμένο πάτημα τις ρυθμίσεις, και όλα τα άλλα κουμπιά περνούν ανέπαφα. Βλέπει επίσης πότε εμφανίζεται η αρχική οθόνη της ίδιας της τηλεόρασης και την καλύπτει. Δεν διαβάζει τίποτα στην οθόνη, δεν κρατά τίποτα και δεν στέλνει τίποτα πουθενά.\n\nΑπενεργοποιήστε την οποιαδήποτε στιγμή από Ρυθμίσεις &gt; Προσβασιμότητα.</string>
-    <string name="home_key_disclosure_more">Αν ενεργοποιήσετε την επιλογή «%1$s», ανοίγει επίσης το Vibe Launcher όταν ανάβει η οθόνη, εκτός αν πατήσετε πρώτα ένα κουμπί (σημειώνει μόνο ότι πατήθηκε κουμπί, όχι ποιο). Και η «%2$s» στις Ρυθμίσεις τη χρησιμοποιεί για να ανοίξει το μενού λειτουργίας της τηλεόρασης.</string>
-    <string name="home_button">Κουμπί αρχικής οθόνης</string>
-    <string name="home_button_short">Για τηλεοράσεις που κρατούν τη δική τους αρχική οθόνη: το κουμπί αρχικής οθόνης του τηλεχειριστηρίου ανοίγει το Vibe Launcher και το παρατεταμένο πάτημα ανοίγει τις ρυθμίσεις της τηλεόρασης.</string>
-    <string name="home_key_agree">Συμφωνώ</string>
-    <string name="home_key_steps">Στη συνέχεια: στη λίστα που ανοίγει, επιλέξτε «%1$s», ενεργοποιήστε το και πατήστε το κουμπί αρχικής οθόνης.</string>
-    <string name="home_key_steps_settings">Στη συνέχεια: αυτή η τηλεόραση δεν έχει άμεση πρόσβαση στις ρυθμίσεις Προσβασιμότητας, οπότε ανοίγουν οι Ρυθμίσεις του Android. Εκεί, μεταβείτε στις Προτιμήσεις συσκευής &gt; Προσβασιμότητα, επιλέξτε «%1$s», ενεργοποιήστε το και πατήστε το κουμπί αρχικής οθόνης.</string>
     <string name="store_update">Ενημέρωση του Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Αντίγραφο ασφαλείας και επαναφορά</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Απενεργοποίηση εντοπισμού σφαλμάτων μετά</string>
     <string name="debug_off_when_done_short">Όταν βγαίνετε από τις Ρυθμίσεις, το Vibe Launcher απενεργοποιεί ξανά τον εντοπισμό σφαλμάτων της τηλεόρασης και τον ενεργοποιεί μόνο του την επόμενη φορά που τον χρειάζεται. Όσο είναι απενεργοποιημένος, ένας υπολογιστής δεν μπορεί να συνδεθεί στην τηλεόραση μέσω ADB.</string>
     <string name="home_make">Ορισμός του Vibe Launcher ως αρχικής οθόνης</string>
-    <string name="home_make_short">Απενεργοποιεί την αρχική οθόνη της ίδιας της τηλεόρασης, ώστε το κουμπί αρχικής οθόνης να ανοίγει το Vibe Launcher, χωρίς να χρειάζεται η υπηρεσία κουμπιού αρχικής οθόνης.</string>
+    <string name="home_make_short">Απενεργοποιεί την αρχική οθόνη της ίδιας της τηλεόρασης, ώστε το κουμπί Αρχική να ανοίγει το Vibe Launcher.</string>
     <string name="home_make_warning">Η αρχική οθόνη της ίδιας της τηλεόρασης απενεργοποιείται και το Vibe Launcher γίνεται η αρχική οθόνη. Αν αυτό δεν πιάσει, όλα επανέρχονται αμέσως. Η επιλογή «Επιστροφή στην αρχική οθόνη της τηλεόρασης» το αναιρεί.</string>
     <string name="home_restore">Επιστροφή στην αρχική οθόνη της τηλεόρασης</string>
     <string name="home_done">Το Vibe Launcher είναι πλέον η αρχική οθόνη</string>

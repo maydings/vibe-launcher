@@ -23,6 +23,19 @@
         android:maxSdkVersion="29" />
 
     <!-- Android 11+ hides other apps unless declared: the launcher lists everything with a launcher icon. -->
+    <!-- Settings > Apps lists every app on the TV, system parts with no tile too, to turn them off (TvApps):
+         Android 11+ hides those without this. -->
+    <!-- Granted by the TV's own ADB the first time Settings > Apps connects (pm grant), never by installing:
+         debugging on and off, and the animation speeds, and nothing else (TvControl). -->
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:ignore="QueryAllPackagesPermission" />
+
     <queries>
         <intent>
             <action android:name="android.intent.action.MAIN" />
@@ -50,11 +63,13 @@
             <action android:name="android.settings.SETTINGS" />
         </intent>
         <package android:name="com.android.tv.settings" />
-        <!-- Every Home app on the TV: HomeKeyService looks up the stock launcher's home screens. -->
+        <!-- Every Home app on the TV: the stock launchers Default launcher turns off and back on (TvControl). -->
         <intent>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.HOME" />
         </intent>
+        <!-- Downloader, opened on SmartTube's code to install it (SmartTube). -->
+        <package android:name="com.esaba.downloader" />
     </queries>
 
     <application
@@ -124,28 +139,5 @@
                 <data android:scheme="market" android:host="launch" />
             </intent-filter>
         </activity>
-        <!-- The Home button, for a TV whose stock launcher stays on: the user turns this on under
-             Settings > Accessibility. See HomeKeyService. -->
-        <service
-            android:name=".HomeKeyService"
-            android:label="@string/home_key_name"
-            android:directBootAware="true"
-            android:exported="true"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
-            <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService" />
-            </intent-filter>
-            <meta-data
-                android:name="android.accessibilityservice"
-                android:resource="@xml/home_key_service" />
-        </service>
-        <!-- Opened once at boot by HomeKeyService, so the screen behind it says what it is. -->
-        <activity
-            android:name=".ProbeActivity"
-            android:exported="false"
-            android:excludeFromRecents="true"
-            android:noHistory="true"
-            android:taskAffinity=""
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 </manifest>

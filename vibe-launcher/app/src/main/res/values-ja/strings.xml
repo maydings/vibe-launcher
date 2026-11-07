@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher の設定</string>
     <string name="android_settings">Android の設定</string>
     <string name="make_home">Vibe Launcher をホームにする</string>
-    <string name="home_not_changeable">このテレビではアプリがホームアプリを選べません。パソコンから設定してください（Vibe Launcher の README を参照）</string>
     <string name="tmdb_key">TMDB API キー</string>
     <string name="youtube_key">YouTube API キー</string>
     <string name="tiles_per_row">1 列のタイル数</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s を開けません</string>
     <string name="smarttube_install">SmartTube をインストール</string>
     <string name="smarttube_open">SmartTube を開いてログイン</string>
-    <string name="smarttube_downloading">SmartTube をダウンロード中…</string>
-    <string name="smarttube_allow_installs">Vibe Launcher にアプリのインストールを許可してから、もう一度「SmartTube をインストール」を選んでください</string>
-    <string name="smarttube_failed">SmartTube をインストールできませんでした</string>
+    <string name="smarttube_get_downloader">SmartTube は Downloader（AFTVnews）でインストールします。Play ストアから Downloader を入手して開き、%s と入力してください。</string>
     <string name="play">再生</string>
     <string name="reload_backdrops">背景画像を再読み込み</string>
     <string name="tab_backdrops">背景画像</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">ホームでチャンネルキーを無視</string>
     <string name="ignore_channel_keys_short">ホーム表示中はチャンネル上下キーを押しても何もせず、テレビ本体のテレビアプリを開きません。</string>
     <string name="restart">再起動…</string>
+    <string name="restart_confirm">テレビを今すぐ再起動します。戻るまで 1 分ほどかかります。</string>
     <string name="time_remaining">残り %1$s</string>
-    <string name="home_key_name">Vibe Launcher ホームボタン</string>
-    <string name="home_key_description">リモコンのホームボタンで、テレビ独自のホーム画面ではなく Vibe Launcher を開き、長押しでテレビの設定を開きます。画面の内容は読み取らず、ほかのボタンはそのまま通します。</string>
     <string name="permissions_title">2 つの権限</string>
     <string name="permissions_why">このあと Vibe Launcher が 2 つの権限をリクエストします。\n\nテレビ番組表：アプリがホーム画面向けに公開しているカードの画像を表示するためです。\n\n位置情報：Android は Wi-Fi ネットワーク名をこの権限を持つアプリにしか表示しません。Vibe Launcher はその名前のためだけに使い、テレビの場所を調べることはありません。\n\nどちらもテレビの外には出ません。</string>
     <string name="continue_button">続行</string>
-    <string name="home_key_disclosure_title">ホームボタンを使う</string>
-    <string name="home_key_disclosure">このテレビではアプリをホームアプリにできないため、Vibe Launcher がホームボタンに応えるにはユーザー補助サービスが必要です。\n\nホームボタンを引き受けます。押すと Vibe Launcher が、長押しすると設定が開き、ほかのボタンはそのまま通ります。テレビ独自のホーム画面が表示されたときもそれを確認し、上から覆います。画面の内容は読み取らず、何も保存せず、どこにも何も送信しません。\n\n[設定] &gt; [ユーザー補助] でいつでもオフにできます。</string>
-    <string name="home_key_disclosure_more">「%1$s」をオンにすると、画面がオンになったときにも Vibe Launcher を開きます。ただし先にボタンを押した場合は開きません（ボタンが押されたことだけを記録し、どのボタンかは記録しません）。また、設定の「%2$s」はこれを使ってテレビの電源メニューを開きます。</string>
-    <string name="home_button">ホームボタン</string>
-    <string name="home_button_short">独自のホーム画面を使い続けるテレビ向け：リモコンのホームボタンで Vibe Launcher が開き、長押しでテレビの設定が開きます。</string>
-    <string name="home_key_agree">同意する</string>
-    <string name="home_key_steps">次に、表示されるリストで「%1$s」を選んでオンにし、ホームボタンを押してください。</string>
-    <string name="home_key_steps_settings">次に、このテレビにはユーザー補助の設定に直接移動する方法がないため、代わりに Android の設定が開きます。そこで「デバイス設定」&gt;「ユーザー補助」に移動し、「%1$s」を選んでオンにし、ホームボタンを押してください。</string>
     <string name="store_update">Vibe Launcher を更新</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">バックアップと復元</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">終了後にデバッグをオフにする</string>
     <string name="debug_off_when_done_short">設定を閉じると、Vibe Launcher はテレビのデバッグを再びオフにし、次に必要になったときに自動でオンに戻します。オフの間は、パソコンから ADB でテレビに接続できません。</string>
     <string name="home_make">Vibe Launcher をホームにする</string>
-    <string name="home_make_short">テレビ独自のホーム画面をオフにして、ホームボタンで Vibe Launcher が開くようにします。ホームボタンのサービスは不要です。</string>
+    <string name="home_make_short">テレビ本来のホーム画面をオフにし、ホームボタンで Vibe Launcher が開くようにします。</string>
     <string name="home_make_warning">テレビ独自のホーム画面がオフになり、Vibe Launcher がホームになります。うまくいかない場合は、すぐにすべて元に戻ります。「テレビ独自のホーム画面に戻す」で元に戻せます。</string>
     <string name="home_restore">テレビ独自のホーム画面に戻す</string>
     <string name="home_done">Vibe Launcher がホームになりました</string>

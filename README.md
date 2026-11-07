@@ -15,7 +15,8 @@ No ads, no accounts, no tracking. Free and open source.
 1. On the TV, install **Downloader** (by AFTVnews) from the Play Store.
 2. Open Downloader and type **5573341**. That code always points to the latest release.
 3. Install the APK when it asks. Android wants you to allow Downloader to install apps once; say yes.
-4. Open Vibe Launcher, allow its two permissions, and let it become your home screen when it offers.
+4. Open Vibe Launcher and allow its two permissions. It then opens its Default launcher setting: pick Vibe
+   Launcher and it walks you through switching on the TV's ADB, which makes it your home screen.
 
 That's it. From then on it updates itself.
 

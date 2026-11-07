@@ -43,7 +43,6 @@
     <string name="vibe_settings">Impostazioni di Vibe Launcher</string>
     <string name="android_settings">Impostazioni di Android</string>
     <string name="make_home">Usa Vibe Launcher come schermata Home</string>
-    <string name="home_not_changeable">Questo televisore non lascia scegliere alle app l\'app per la Home. Impostala da un computer: vedi il README di Vibe Launcher</string>
     <string name="tmdb_key">Chiave API TMDB</string>
     <string name="youtube_key">Chiave API YouTube</string>
     <string name="tiles_per_row">Riquadri per riga</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Impossibile aprire %1$s</string>
     <string name="smarttube_install">Installa SmartTube</string>
     <string name="smarttube_open">Apri SmartTube per accedere</string>
-    <string name="smarttube_downloading">Download di SmartTube…</string>
-    <string name="smarttube_allow_installs">Consenti a Vibe Launcher di installare app, poi scegli di nuovo Installa SmartTube</string>
-    <string name="smarttube_failed">SmartTube non è stato installato</string>
+    <string name="smarttube_get_downloader">SmartTube si installa con Downloader (di AFTVnews): scarica Downloader dal Play Store, aprilo e digita %s.</string>
     <string name="play">Riproduci</string>
     <string name="reload_backdrops">Ricarica gli sfondi</string>
     <string name="tab_backdrops">Sfondi</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Ignora i tasti canale nella Home</string>
     <string name="ignore_channel_keys_short">Canale su e giù non fanno nulla mentre è visibile la Home, invece di aprire l\'app TV del televisore.</string>
     <string name="restart">Riavvia…</string>
+    <string name="restart_confirm">Il televisore si riavvia ora. Torna in circa un minuto.</string>
     <string name="time_remaining">Ancora %1$s</string>
-    <string name="home_key_name">Tasto Home di Vibe Launcher</string>
-    <string name="home_key_description">Fa aprire Vibe Launcher al tasto Home del telecomando al posto della schermata Home del televisore, e le impostazioni del televisore tenendolo premuto. Non legge nulla sullo schermo e lascia passare tutti gli altri tasti.</string>
     <string name="permissions_title">Due autorizzazioni</string>
     <string name="permissions_why">Ora Vibe Launcher chiederà due autorizzazioni.\n\nGuida TV: per mostrare immagini dalle schede che le tue app pubblicano per la schermata Home.\n\nPosizione: Android mostra il nome della rete Wi-Fi solo alle app con questa autorizzazione. Vibe Launcher la usa solo per quel nome e non cerca mai dove si trova il televisore.\n\nNessuna delle due esce dal televisore.</string>
     <string name="continue_button">Continua</string>
-    <string name="home_key_disclosure_title">Usa il tasto Home</string>
-    <string name="home_key_disclosure">Questo televisore non permette alle app di diventare l\'app Home, quindi Vibe Launcher ha bisogno di un servizio di accessibilità per rispondere al tasto Home.\n\nSi occupa del tasto Home: una pressione apre Vibe Launcher, tenerlo premuto apre le impostazioni e tutti gli altri tasti passano invariati. Vede anche quando compare la schermata Home del televisore e la copre. Non legge nulla sullo schermo, non conserva nulla e non invia nulla da nessuna parte.\n\nPuoi disattivarlo quando vuoi in Impostazioni &gt; Accessibilità.</string>
-    <string name="home_key_disclosure_more">Se attivi «%1$s», apre anche Vibe Launcher quando lo schermo si accende, a meno che tu non prema prima un tasto (registra solo che è stato premuto un tasto, non quale). E «%2$s» nelle Impostazioni lo usa per aprire il menu di accensione del televisore.</string>
-    <string name="home_button">Tasto Home</string>
-    <string name="home_button_short">Per i televisori che mantengono la propria schermata Home: il tasto Home del telecomando apre Vibe Launcher e tenendolo premuto si aprono le impostazioni del televisore.</string>
-    <string name="home_key_agree">Accetto</string>
-    <string name="home_key_steps">Poi: nell\'elenco che si apre, scegli «%1$s», attivalo e premi Home.</string>
-    <string name="home_key_steps_settings">Poi: questo televisore non ha un accesso diretto alle impostazioni di accessibilità, quindi si aprono le Impostazioni di Android. Lì, vai a Preferenze dispositivo &gt; Accessibilità, scegli «%1$s», attivalo e premi Home.</string>
     <string name="store_update">Aggiorna Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Backup e ripristino</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Disattiva il debug alla fine</string>
     <string name="debug_off_when_done_short">Quando esci dalle Impostazioni, Vibe Launcher disattiva di nuovo il debug del televisore e lo riattiva da solo la prossima volta che gli serve. Mentre è disattivato, un computer non può raggiungere il televisore tramite ADB.</string>
     <string name="home_make">Rendi Vibe Launcher la Home</string>
-    <string name="home_make_short">Disattiva la schermata Home propria del televisore, così il tasto Home apre Vibe Launcher, senza bisogno del servizio Tasto Home.</string>
+    <string name="home_make_short">Disattiva la schermata Home del televisore, così il tasto Home apre Vibe Launcher.</string>
     <string name="home_make_warning">La schermata Home propria del televisore viene disattivata e Vibe Launcher diventa la Home. Se non funziona, tutto viene ripristinato subito. «Torna alla schermata Home del televisore» lo annulla.</string>
     <string name="home_restore">Torna alla schermata Home del televisore</string>
     <string name="home_done">Ora Vibe Launcher è la Home</string>

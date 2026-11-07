@@ -43,7 +43,6 @@
     <string name="vibe_settings">Налаштування Vibe Launcher</string>
     <string name="android_settings">Налаштування Android</string>
     <string name="make_home">Зробити Vibe Launcher головним екраном</string>
-    <string name="home_not_changeable">Цей телевізор не дозволяє застосункам вибирати головний екран. Налаштуйте це з комп’ютера: див. README Vibe Launcher</string>
     <string name="tmdb_key">Ключ API TMDB</string>
     <string name="youtube_key">Ключ API YouTube</string>
     <string name="tiles_per_row">Плиток у ряду</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Не вдається відкрити %1$s</string>
     <string name="smarttube_install">Встановити SmartTube</string>
     <string name="smarttube_open">Відкрити SmartTube для входу</string>
-    <string name="smarttube_downloading">Завантаження SmartTube…</string>
-    <string name="smarttube_allow_installs">Дозвольте Vibe Launcher встановлювати додатки, а потім знову виберіть «Встановити SmartTube»</string>
-    <string name="smarttube_failed">SmartTube не встановився</string>
+    <string name="smarttube_get_downloader">SmartTube встановлюється через Downloader (від AFTVnews): установіть Downloader із Play Маркета, відкрийте його та введіть %s.</string>
     <string name="play">Дивитися</string>
     <string name="reload_backdrops">Оновити фони</string>
     <string name="tab_backdrops">Фони</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Ігнорувати кнопки каналів на головному екрані</string>
     <string name="ignore_channel_keys_short">Кнопки «канал вгору» і «канал вниз» нічого не роблять на головному екрані, замість того щоб відкривати вбудований ТВ-застосунок.</string>
     <string name="restart">Перезапустити…</string>
+    <string name="restart_confirm">Телевізор зараз перезапуститься. Приблизно за хвилину він повернеться.</string>
     <string name="time_remaining">Залишилося: %1$s</string>
-    <string name="home_key_name">Кнопка «Головний екран» для Vibe Launcher</string>
-    <string name="home_key_description">Кнопка «Головний екран» на пульті відкриває Vibe Launcher замість власного головного екрана телевізора, а довге натискання – налаштування телевізора. Нічого не зчитує з екрана й пропускає всі інші кнопки.</string>
     <string name="permissions_title">Два дозволи</string>
     <string name="permissions_why">Зараз Vibe Launcher попросить два дозволи.\n\nТелепрограма: щоб показувати зображення з карток, які ваші додатки публікують для головного екрана.\n\nМісцезнаходження: Android показує назву мережі Wi-Fi лише додаткам із цим дозволом. Vibe Launcher використовує його лише для назви й ніколи не визначає, де стоїть телевізор.\n\nНіщо з цього не залишає телевізор.</string>
     <string name="continue_button">Продовжити</string>
-    <string name="home_key_disclosure_title">Використовувати кнопку «Головний екран»</string>
-    <string name="home_key_disclosure">Цей телевізор не дозволяє додаткам ставати додатком головного екрана, тому Vibe Launcher потрібна служба спеціальних можливостей, щоб відповідати на кнопку «Головний екран».\n\nВона бере на себе кнопку «Головний екран»: натискання відкриває Vibe Launcher, довге натискання – налаштування, а всі інші кнопки проходять без змін. Вона також бачить, коли з\'являється власний головний екран телевізора, і закриває його. Вона нічого не зчитує з екрана, нічого не зберігає й нікуди нічого не надсилає.\n\nВимкніть її будь-коли в Налаштуваннях &gt; Спеціальні можливості.</string>
-    <string name="home_key_disclosure_more">Якщо ввімкнути «%1$s», служба також відкриватиме Vibe Launcher після ввімкнення екрана, якщо ви спершу не натиснете кнопку (вона фіксує лише те, що кнопку натиснули, а не яку). А «%2$s» у налаштуваннях використовує її, щоб відкрити меню живлення телевізора.</string>
-    <string name="home_button">Кнопка «Головний екран»</string>
-    <string name="home_button_short">Для телевізорів, які зберігають власний головний екран: кнопка «Головний екран» на пульті відкриває Vibe Launcher, а утримання відкриває налаштування телевізора.</string>
-    <string name="home_key_agree">Погоджуюся</string>
-    <string name="home_key_steps">Далі: у списку, що відкриється, виберіть «%1$s», увімкніть і натисніть «Головний екран».</string>
-    <string name="home_key_steps_settings">Далі: на цьому телевізорі не можна одразу відкрити налаштування спеціальних можливостей, тому замість них відкриються налаштування Android. Там перейдіть у «Налаштування пристрою» &gt; «Спеціальні можливості», виберіть «%1$s», увімкніть і натисніть «Головний екран».</string>
     <string name="store_update">Оновити Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Резервна копія та відновлення</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Вимикати налагодження після роботи</string>
     <string name="debug_off_when_done_short">Коли ви виходите з налаштувань, Vibe Launcher знову вимикає налагодження телевізора і сам вмикає його наступного разу, коли воно знадобиться. Поки його вимкнено, комп’ютер не може під’єднатися до телевізора через ADB.</string>
     <string name="home_make">Зробити Vibe Launcher головним екраном</string>
-    <string name="home_make_short">Вимикає власний головний екран телевізора, щоб кнопка «Головний екран» відкривала Vibe Launcher, без служби кнопки «Головний екран».</string>
+    <string name="home_make_short">Вимикає власний головний екран телевізора, щоб кнопка «Додому» відкривала Vibe Launcher.</string>
     <string name="home_make_warning">Власний головний екран телевізора вимикається, і Vibe Launcher стає головним екраном. Якщо це не спрацює, усе одразу повернеться як було. «Повернутися до власного головного екрана телевізора» скасовує це.</string>
     <string name="home_restore">Повернутися до власного головного екрана телевізора</string>
     <string name="home_done">Vibe Launcher тепер головний екран</string>

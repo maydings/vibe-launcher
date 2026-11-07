@@ -43,7 +43,6 @@
     <string name="vibe_settings">Instellingen van Vibe Launcher</string>
     <string name="android_settings">Android-instellingen</string>
     <string name="make_home">Vibe Launcher als startscherm gebruiken</string>
-    <string name="home_not_changeable">Deze tv laat apps de startscherm-app niet kiezen. Stel het in vanaf een computer: zie de README van Vibe Launcher</string>
     <string name="tmdb_key">TMDB-API-sleutel</string>
     <string name="youtube_key">YouTube-API-sleutel</string>
     <string name="tiles_per_row">Tegels per rij</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Kan %1$s niet openen</string>
     <string name="smarttube_install">SmartTube installeren</string>
     <string name="smarttube_open">SmartTube openen om in te loggen</string>
-    <string name="smarttube_downloading">SmartTube downloaden…</string>
-    <string name="smarttube_allow_installs">Sta Vibe Launcher toe apps te installeren en kies daarna opnieuw SmartTube installeren</string>
-    <string name="smarttube_failed">SmartTube is niet geïnstalleerd</string>
+    <string name="smarttube_get_downloader">SmartTube installeer je met Downloader (van AFTVnews): haal Downloader uit de Play Store, open hem en typ %s.</string>
     <string name="play">Afspelen</string>
     <string name="reload_backdrops">Achtergronden opnieuw laden</string>
     <string name="tab_backdrops">Achtergronden</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Kanaaltoetsen negeren op het startscherm</string>
     <string name="ignore_channel_keys_short">Kanaal omhoog en omlaag doen niets zolang het startscherm te zien is, in plaats van de eigen tv-app van de tv te openen.</string>
     <string name="restart">Opnieuw opstarten…</string>
+    <string name="restart_confirm">De tv start nu opnieuw op. Na ongeveer een minuut is hij terug.</string>
     <string name="time_remaining">Nog %1$s</string>
-    <string name="home_key_name">Vibe Launcher-startknop</string>
-    <string name="home_key_description">Laat de startknop van de afstandsbediening Vibe Launcher openen in plaats van het eigen startscherm van de tv, en ingedrukt houden de instellingen van de tv. Leest niets op het scherm en laat alle andere knoppen door.</string>
     <string name="permissions_title">Twee machtigingen</string>
     <string name="permissions_why">Vibe Launcher vraagt zo om twee machtigingen.\n\nTv-gids: om afbeeldingen te tonen uit de kaarten die je apps voor het startscherm publiceren.\n\nLocatie: Android toont de naam van het wifi-netwerk alleen aan apps met deze machtiging. Vibe Launcher gebruikt hem alleen voor die naam en zoekt nooit op waar de tv staat.\n\nGeen van beide verlaat de tv.</string>
     <string name="continue_button">Doorgaan</string>
-    <string name="home_key_disclosure_title">De startknop gebruiken</string>
-    <string name="home_key_disclosure">Deze tv laat apps geen startscherm-app worden, dus Vibe Launcher heeft een toegankelijkheidsservice nodig om op de startknop te reageren.\n\nHij neemt de startknop over: indrukken opent Vibe Launcher, ingedrukt houden opent de instellingen, en alle andere knoppen gaan onveranderd door. Hij ziet ook wanneer het eigen startscherm van de tv verschijnt, en bedekt het. Hij leest niets op het scherm, bewaart niets en stuurt nergens iets heen.\n\nZet hem op elk moment uit via Instellingen &gt; Toegankelijkheid.</string>
-    <string name="home_key_disclosure_more">Als je ‘%1$s’ inschakelt, opent hij Vibe Launcher ook wanneer het scherm aangaat, tenzij je eerst op een knop drukt (hij onthoudt alleen dát er op een knop is gedrukt, niet welke). En ‘%2$s’ in Instellingen gebruikt hem om het aan/uit-menu van de tv te openen.</string>
-    <string name="home_button">Startknop</string>
-    <string name="home_button_short">Voor tv\'s die hun eigen startscherm houden: de startknop van de afstandsbediening opent Vibe Launcher, en ingedrukt houden opent de instellingen van de tv.</string>
-    <string name="home_key_agree">Akkoord</string>
-    <string name="home_key_steps">Daarna: kies in de lijst die opent ‘%1$s’, zet het aan en druk op de startknop.</string>
-    <string name="home_key_steps_settings">Daarna: deze tv heeft geen directe weg naar de toegankelijkheidsinstellingen, dus worden in plaats daarvan de Android-instellingen geopend. Ga daar naar Apparaatvoorkeuren &gt; Toegankelijkheid, kies ‘%1$s’, zet het aan en druk op de startknop.</string>
     <string name="store_update">Vibe Launcher updaten</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Back-up en herstel</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Foutopsporing daarna uitzetten</string>
     <string name="debug_off_when_done_short">Als je Instellingen verlaat, zet Vibe Launcher de foutopsporing van de tv weer uit, en de volgende keer dat het die nodig heeft vanzelf weer aan. Zolang die uit staat, kan een computer de tv niet via ADB bereiken.</string>
     <string name="home_make">Vibe Launcher het startscherm maken</string>
-    <string name="home_make_short">Zet het eigen startscherm van de tv uit, zodat de startknop Vibe Launcher opent, zonder dat er een startknopservice nodig is.</string>
+    <string name="home_make_short">Zet het eigen startscherm van de tv uit, zodat de Home-knop Vibe Launcher opent.</string>
     <string name="home_make_warning">Het eigen startscherm van de tv wordt uitgezet en Vibe Launcher wordt het startscherm. Lukt dat niet, dan wordt alles meteen teruggezet. ‘Terug naar het eigen startscherm van de tv’ maakt het ongedaan.</string>
     <string name="home_restore">Terug naar het eigen startscherm van de tv</string>
     <string name="home_done">Vibe Launcher is nu het startscherm</string>

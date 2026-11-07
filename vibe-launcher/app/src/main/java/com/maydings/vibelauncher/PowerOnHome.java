@@ -11,8 +11,7 @@ import android.os.Looper;
 /**
  * Settings > General > Home at power-on (off by default): for TVs that wake up on the input or app they
  * were left on (the Sonys go back to the last HDMI input), Home comes up shortly after the screen turns on.
- * The Home button service does it while it's on, and skips it if a key was pressed first;
- * otherwise Home's own process does, which can't see keys in other apps.
+ * Home's own process does it, so it can't see whether a key was pressed in another app first.
  */
 final class PowerOnHome {
 
@@ -35,8 +34,7 @@ final class PowerOnHome {
         app.registerReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context c, Intent i) {
-                // The Home button service does it itself, with its key check.
-                if (HomeButtonLink.bound() || !new VibeSettings(app).powerOnHome()) return;
+                if (!new VibeSettings(app).powerOnHome()) return;
                 handler.postDelayed(() -> open(app), DELAY_MS);
             }
         }, new IntentFilter(Intent.ACTION_SCREEN_ON));

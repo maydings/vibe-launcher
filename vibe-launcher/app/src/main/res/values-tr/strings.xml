@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher ayarları</string>
     <string name="android_settings">Android ayarları</string>
     <string name="make_home">Vibe Launcher\'ı ana ekran yap</string>
-    <string name="home_not_changeable">Bu TV, uygulamaların ana ekran uygulamasını seçmesine izin vermiyor. Bilgisayardan ayarlayın: Vibe Launcher\'ın README dosyasına bakın</string>
     <string name="tmdb_key">TMDB API anahtarı</string>
     <string name="youtube_key">YouTube API anahtarı</string>
     <string name="tiles_per_row">Satır başına kutu</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s açılamıyor</string>
     <string name="smarttube_install">SmartTube\'u yükle</string>
     <string name="smarttube_open">Oturum açmak için SmartTube\'u aç</string>
-    <string name="smarttube_downloading">SmartTube indiriliyor…</string>
-    <string name="smarttube_allow_installs">Vibe Launcher\'ın uygulama yüklemesine izin verin, sonra yeniden SmartTube\'u yükle\'yi seçin</string>
-    <string name="smarttube_failed">SmartTube yüklenmedi</string>
+    <string name="smarttube_get_downloader">SmartTube, Downloader (AFTVnews) ile kurulur: Play Store\'dan Downloader\'ı edinin, açın ve %s yazın.</string>
     <string name="play">Oynat</string>
     <string name="reload_backdrops">Arka planları yeniden yükle</string>
     <string name="tab_backdrops">Arka planlar</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Ana ekranda kanal tuşlarını yok say</string>
     <string name="ignore_channel_keys_short">Ana ekran görünürken Kanal yukarı ve aşağı, TV\'nin kendi TV uygulamasını açmak yerine hiçbir şey yapmaz.</string>
     <string name="restart">Yeniden başlat…</string>
+    <string name="restart_confirm">TV şimdi yeniden başlayacak. Geri gelmesi yaklaşık bir dakika sürer.</string>
     <string name="time_remaining">%1$s kaldı</string>
-    <string name="home_key_name">Vibe Launcher Ana ekran düğmesi</string>
-    <string name="home_key_description">Kumandanın Ana ekran düğmesinin TV\'nin kendi ana ekranı yerine Vibe Launcher\'ı açmasını, basılı tutulduğunda da TV\'nin ayarlarını açmasını sağlar. Ekrandaki hiçbir şeyi okumaz ve diğer tüm tuşları olduğu gibi iletir.</string>
     <string name="permissions_title">İki izin</string>
     <string name="permissions_why">Vibe Launcher şimdi iki izin isteyecek.\n\nTV yayın akışı: uygulamalarınızın ana ekran için yayınladığı kartlardaki resimleri göstermek için.\n\nKonum: Android, Wi-Fi ağının adını yalnızca bu izne sahip uygulamalara gösterir. Vibe Launcher bunu yalnızca bu ad için kullanır, TV\'nin nerede olduğuna asla bakmaz.\n\nHiçbiri TV\'den dışarı çıkmaz.</string>
     <string name="continue_button">Devam</string>
-    <string name="home_key_disclosure_title">Ana ekran düğmesini kullan</string>
-    <string name="home_key_disclosure">Bu TV, uygulamaların ana ekran uygulaması olmasına izin vermiyor; bu yüzden Vibe Launcher\'ın Ana ekran düğmesine yanıt verebilmesi için bir erişilebilirlik hizmeti gerekiyor.\n\nAna ekran düğmesini üstlenir: basınca Vibe Launcher açılır, basılı tutunca Ayarlar açılır, diğer tüm tuşlar olduğu gibi geçer. TV\'nin kendi ana ekranının açıldığını da görür ve üstünü kapatır. Ekrandaki hiçbir şeyi okumaz, hiçbir şey saklamaz ve hiçbir yere bir şey göndermez.\n\nİstediğiniz zaman Ayarlar &gt; Erişilebilirlik bölümünden kapatabilirsiniz.</string>
-    <string name="home_key_disclosure_more">“%1$s” ayarını açarsanız, önce bir tuşa basmadığınız sürece ekran açıldığında Vibe Launcher\'ı da açar (yalnızca bir tuşa basıldığını not eder, hangisi olduğunu değil). Ayarlar\'daki “%2$s” de TV\'nin güç menüsünü açmak için onu kullanır.</string>
-    <string name="home_button">Ana ekran düğmesi</string>
-    <string name="home_button_short">Kendi ana ekranını koruyan TV\'ler için: kumandanın Ana ekran düğmesi Vibe Launcher\'ı açar, basılı tutmak ise TV\'nin ayarlarını açar.</string>
-    <string name="home_key_agree">Kabul ediyorum</string>
-    <string name="home_key_steps">Sonra: açılan listede “%1$s” seçeneğini seçip açın, ardından Ana ekran düğmesine basın.</string>
-    <string name="home_key_steps_settings">Sonra: bu TV\'de Erişilebilirlik ayarlarına doğrudan bir yol yok, bu yüzden onun yerine Android Ayarları açılır. Orada Cihaz Tercihleri &gt; Erişilebilirlik bölümüne gidin, “%1$s” seçeneğini seçip açın, ardından Ana ekran düğmesine basın.</string>
     <string name="store_update">Vibe Launcher\'ı güncelle</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Yedekleme ve geri yükleme</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">İş bitince hata ayıklamayı kapat</string>
     <string name="debug_off_when_done_short">Ayarlar\'dan çıktığınızda Vibe Launcher TV\'nin hata ayıklamasını yeniden kapatır ve bir dahaki sefere ihtiyaç duyduğunda kendisi tekrar açar. Kapalıyken bir bilgisayar TV\'ye ADB üzerinden erişemez.</string>
     <string name="home_make">Vibe Launcher\'ı ana ekran yap</string>
-    <string name="home_make_short">TV\'nin kendi ana ekranını kapatır; böylece Ana ekran düğmesi Vibe Launcher\'ı açar ve Ana ekran düğmesi hizmetine gerek kalmaz.</string>
+    <string name="home_make_short">TV\'nin kendi ana ekranını kapatır; böylece Ana ekran düğmesi Vibe Launcher\'ı açar.</string>
     <string name="home_make_warning">TV\'nin kendi ana ekranı kapatılır ve Vibe Launcher ana ekran olur. Bu tutmazsa her şey hemen eski haline getirilir. “TV\'nin kendi ana ekranına dön” bunu geri alır.</string>
     <string name="home_restore">TV\'nin kendi ana ekranına dön</string>
     <string name="home_done">Vibe Launcher artık ana ekran</string>

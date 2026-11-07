@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcherin asetukset</string>
     <string name="android_settings">Androidin asetukset</string>
     <string name="make_home">Tee Vibe Launcherista aloitusnäyttö</string>
-    <string name="home_not_changeable">Tämä televisio ei anna sovellusten valita aloitusnäytön sovellusta. Aseta se tietokoneelta: katso Vibe Launcherin README</string>
     <string name="tmdb_key">TMDB-API-avain</string>
     <string name="youtube_key">YouTube-API-avain</string>
     <string name="tiles_per_row">Ruutuja rivillä</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s ei aukea</string>
     <string name="smarttube_install">Asenna SmartTube</string>
     <string name="smarttube_open">Avaa SmartTube kirjautuaksesi</string>
-    <string name="smarttube_downloading">Ladataan SmartTubea…</string>
-    <string name="smarttube_allow_installs">Salli Vibe Launcherin asentaa sovelluksia ja valitse sitten uudelleen Asenna SmartTube</string>
-    <string name="smarttube_failed">SmartTube ei asentunut</string>
+    <string name="smarttube_get_downloader">SmartTube asennetaan Downloaderilla (AFTVnews): hae Downloader Play Kaupasta, avaa se ja kirjoita %s.</string>
     <string name="play">Toista</string>
     <string name="reload_backdrops">Lataa taustakuvat uudelleen</string>
     <string name="tab_backdrops">Taustakuvat</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Ohita kanavanäppäimet aloitusnäytössä</string>
     <string name="ignore_channel_keys_short">Kanava ylös ja alas eivät tee mitään aloitusnäytössä, eivätkä avaa television omaa TV-sovellusta.</string>
     <string name="restart">Käynnistä uudelleen…</string>
+    <string name="restart_confirm">Televisio käynnistyy nyt uudelleen. Takaisin se on noin minuutissa.</string>
     <string name="time_remaining">%1$s jäljellä</string>
-    <string name="home_key_name">Vibe Launcherin aloitusnäyttöpainike</string>
-    <string name="home_key_description">Saa kaukosäätimen aloitusnäyttöpainikkeen avaamaan Vibe Launcherin television oman aloitusnäytön sijaan ja pitkän painalluksen television asetukset. Se ei lue mitään näytöltä ja päästää kaikki muut painikkeet läpi.</string>
     <string name="permissions_title">Kaksi lupaa</string>
     <string name="permissions_why">Vibe Launcher pyytää seuraavaksi kahta lupaa.\n\nTV-ohjelmatiedot: jotta se voi näyttää kuvia korteista, joita sovelluksesi julkaisevat aloitusnäytölle.\n\nSijainti: Android näyttää Wi-Fi-verkon nimen vain sovelluksille, joilla on tämä lupa. Vibe Launcher käyttää sitä vain nimeen eikä koskaan selvitä, missä televisio on.\n\nKumpikaan ei lähde televisiosta.</string>
     <string name="continue_button">Jatka</string>
-    <string name="home_key_disclosure_title">Käytä aloitusnäyttöpainiketta</string>
-    <string name="home_key_disclosure">Tämä televisio ei anna sovellusten ryhtyä aloitusnäyttösovellukseksi, joten Vibe Launcher tarvitsee esteettömyyspalvelun vastatakseen aloitusnäyttöpainikkeeseen.\n\nSe ottaa aloitusnäyttöpainikkeen hoitaakseen: painallus avaa Vibe Launcherin, pitkä painallus asetukset, ja kaikki muut painikkeet menevät läpi sellaisinaan. Se näkee myös, kun television oma aloitusnäyttö tulee esiin, ja peittää sen. Se ei lue mitään näytöltä, ei tallenna mitään eikä lähetä mitään minnekään.\n\nVoit poistaa sen käytöstä milloin tahansa: Asetukset &gt; Esteettömyys.</string>
-    <string name="home_key_disclosure_more">Jos otat käyttöön asetuksen ”%1$s”, se avaa Vibe Launcherin myös näytön käynnistyessä, ellet paina ensin jotakin painiketta (se huomaa vain, että painiketta painettiin, ei mitä). Ja ”%2$s” asetuksissa avaa sen avulla television virtavalikon.</string>
-    <string name="home_button">Aloitusnäyttöpainike</string>
-    <string name="home_button_short">Televisioille, jotka pitävät oman aloitusnäyttönsä: kaukosäätimen aloitusnäyttöpainike avaa Vibe Launcherin, ja sen painaminen pitkään avaa television asetukset.</string>
-    <string name="home_key_agree">Hyväksy</string>
-    <string name="home_key_steps">Seuraavaksi: valitse avautuvasta luettelosta ”%1$s”, ota se käyttöön ja paina aloitusnäyttöpainiketta.</string>
-    <string name="home_key_steps_settings">Seuraavaksi: tässä televisiossa ei ole suoraa reittiä esteettömyysasetuksiin, joten Androidin Asetukset avautuvat sen sijaan. Siirry siellä kohtaan Laiteasetukset &gt; Esteettömyys, valitse ”%1$s”, ota se käyttöön ja paina aloitusnäyttöpainiketta.</string>
     <string name="store_update">Päivitä Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Varmuuskopiointi ja palautus</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Poista vianetsintä käytöstä lopuksi</string>
     <string name="debug_off_when_done_short">Kun poistut Asetuksista, Vibe Launcher poistaa television vianetsinnän taas käytöstä ja ottaa sen itse käyttöön, kun tarvitsee sitä seuraavan kerran. Kun se on pois käytöstä, tietokone ei saa yhteyttä televisioon ADB:n kautta.</string>
     <string name="home_make">Tee Vibe Launcherista aloitusnäyttö</string>
-    <string name="home_make_short">Poistaa television oman aloitusnäytön käytöstä, jolloin aloitusnäyttöpainike avaa Vibe Launcherin ilman aloitusnäyttöpainikkeen palvelua.</string>
+    <string name="home_make_short">Poistaa television oman aloitusnäytön käytöstä, jolloin Koti-painike avaa Vibe Launcherin.</string>
     <string name="home_make_warning">Television oma aloitusnäyttö poistetaan käytöstä ja Vibe Launcherista tulee aloitusnäyttö. Jos se ei onnistu, kaikki palautetaan heti. ”Takaisin television omaan aloitusnäyttöön” kumoaa sen.</string>
     <string name="home_restore">Takaisin television omaan aloitusnäyttöön</string>
     <string name="home_done">Vibe Launcher on nyt aloitusnäyttö</string>

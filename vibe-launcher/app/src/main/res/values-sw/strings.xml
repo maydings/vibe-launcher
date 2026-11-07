@@ -43,7 +43,6 @@
     <string name="vibe_settings">Mipangilio ya Vibe Launcher</string>
     <string name="android_settings">Mipangilio ya Android</string>
     <string name="make_home">Fanya Vibe Launcher iwe skrini kuu</string>
-    <string name="home_not_changeable">TV hii hairuhusu programu kuchagua programu ya skrini kuu. Weka kutoka kwenye kompyuta: angalia README ya Vibe Launcher</string>
     <string name="tmdb_key">Ufunguo wa API wa TMDB</string>
     <string name="youtube_key">Ufunguo wa API wa YouTube</string>
     <string name="tiles_per_row">Vigae kwa kila safu</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Haiwezi kufungua %1$s</string>
     <string name="smarttube_install">Sakinisha SmartTube</string>
     <string name="smarttube_open">Fungua SmartTube ili uingie</string>
-    <string name="smarttube_downloading">Inapakua SmartTube…</string>
-    <string name="smarttube_allow_installs">Ruhusu Vibe Launcher isakinishe programu, kisha uchague Sakinisha SmartTube tena</string>
-    <string name="smarttube_failed">SmartTube haikusakinishwa</string>
+    <string name="smarttube_get_downloader">SmartTube husakinishwa kupitia Downloader (ya AFTVnews): pata Downloader kutoka Play Store, ifungue kisha andika %s.</string>
     <string name="play">Cheza</string>
     <string name="reload_backdrops">Pakia upya mandhari</string>
     <string name="tab_backdrops">Mandhari</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Puuza vitufe vya chaneli kwenye Skrini ya kwanza</string>
     <string name="ignore_channel_keys_short">Chaneli Juu na Chini havifanyi chochote Skrini ya kwanza ikionyeshwa, badala ya kufungua programu ya TV ya TV yenyewe.</string>
     <string name="restart">Washa upya…</string>
+    <string name="restart_confirm">TV itazimwa na kuwashwa upya sasa. Inachukua takriban dakika moja kurudi.</string>
     <string name="time_remaining">Zimebaki %1$s</string>
-    <string name="home_key_name">Kitufe cha Mwanzo cha Vibe Launcher</string>
-    <string name="home_key_description">Hufanya kitufe cha Mwanzo cha rimoti kifungue Vibe Launcher badala ya skrini ya mwanzo ya TV yenyewe, na ukikibonyeza kwa muda mipangilio ya TV ifunguke. Haisomi chochote kwenye skrini na huacha vitufe vingine vyote vipite.</string>
     <string name="permissions_title">Ruhusa mbili</string>
     <string name="permissions_why">Kisha Vibe Launcher itaomba ruhusa mbili.\n\nOrodha za TV: ili kuonyesha picha kutoka kwenye kadi ambazo programu zako huchapisha kwa skrini ya mwanzo.\n\nMahali: Android huonyesha jina la mtandao wa Wi-Fi kwa programu zenye ruhusa hii pekee. Vibe Launcher huitumia kwa jina hilo tu na haitafuti kamwe mahali TV ilipo.\n\nHakuna kati ya hizo kinachotoka kwenye TV.</string>
     <string name="continue_button">Endelea</string>
-    <string name="home_key_disclosure_title">Tumia kitufe cha Mwanzo</string>
-    <string name="home_key_disclosure">TV hii hairuhusu programu kuwa programu ya mwanzo, kwa hiyo Vibe Launcher inahitaji huduma ya ufikivu ili kujibu kitufe cha Mwanzo.\n\nHuchukua kitufe cha Mwanzo: kubonyeza hufungua Vibe Launcher, kubonyeza kwa muda hufungua Mipangilio, na vitufe vingine vyote hupita bila kubadilishwa. Pia huona skrini ya mwanzo ya TV yenyewe inapotokea, na kuifunika. Haisomi chochote kwenye skrini, haihifadhi chochote na haitumi chochote popote.\n\nIzime wakati wowote katika Mipangilio &gt; Ufikivu.</string>
-    <string name="home_key_disclosure_more">Ukiwasha “%1$s”, pia hufungua Vibe Launcher skrini inapowaka, isipokuwa ukibonyeza kitufe kwanza (hutambua tu kwamba kitufe kilibonyezwa, si kipi). Na “%2$s” katika Mipangilio huitumia kufungua menyu ya nishati ya TV.</string>
-    <string name="home_button">Kitufe cha Mwanzo</string>
-    <string name="home_button_short">Kwa TV zinazobaki na skrini yao ya mwanzo: kitufe cha Mwanzo cha rimoti hufungua Vibe Launcher, na kukishikilia hufungua Mipangilio ya TV.</string>
-    <string name="home_key_agree">Ninakubali</string>
-    <string name="home_key_steps">Kisha: katika orodha itakayofunguka, chagua “%1$s”, iwashe, kisha ubonyeze Mwanzo.</string>
-    <string name="home_key_steps_settings">Kisha: TV hii haina njia ya moja kwa moja ya kufikia mipangilio yake ya Ufikivu, kwa hivyo Mipangilio ya Android itafunguka badala yake. Hapo, nenda kwenye Mapendeleo ya Kifaa &gt; Ufikivu, chagua “%1$s”, iwashe, kisha ubonyeze Mwanzo.</string>
     <string name="store_update">Sasisha Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Hifadhi nakala na urejeshe</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Zima utatuzi ukimaliza</string>
     <string name="debug_off_when_done_short">Ukitoka kwenye Mipangilio, Vibe Launcher huzima tena utatuzi wa TV, na kuuwasha yenyewe tena wakati ujao itakapouhitaji. Ukiwa umezimwa, kompyuta haiwezi kufikia TV kupitia ADB.</string>
     <string name="home_make">Fanya Vibe Launcher iwe Mwanzo</string>
-    <string name="home_make_short">Huzima skrini ya mwanzo ya TV yenyewe, ili kitufe cha Mwanzo kifungue Vibe Launcher, bila kuhitaji huduma ya Kitufe cha Mwanzo.</string>
+    <string name="home_make_short">Huzima skrini ya mwanzo ya TV yenyewe, ili kitufe cha Mwanzo kifungue Vibe Launcher.</string>
     <string name="home_make_warning">Skrini ya mwanzo ya TV yenyewe inazimwa na Vibe Launcher inakuwa Mwanzo. Isipofanikiwa, kila kitu kinarudishwa mara moja. “Rudi kwenye skrini ya mwanzo ya TV yenyewe” hutendua hili.</string>
     <string name="home_restore">Rudi kwenye skrini ya mwanzo ya TV yenyewe</string>
     <string name="home_done">Vibe Launcher sasa ndiyo Mwanzo</string>

@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher సెట్టింగ్‌లు</string>
     <string name="android_settings">Android సెట్టింగ్‌లు</string>
     <string name="make_home">Vibe Launcher‌ను హోమ్‌గా చేయండి</string>
-    <string name="home_not_changeable">ఈ టీవీ యాప్‌లను హోమ్ యాప్ ఎంచుకోనివ్వదు. కంప్యూటర్ నుండి సెట్ చేయండి: Vibe Launcher README చూడండి</string>
     <string name="tmdb_key">TMDB API కీ</string>
     <string name="youtube_key">YouTube API కీ</string>
     <string name="tiles_per_row">వరుసకు టైల్స్</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s తెరవలేకపోయింది</string>
     <string name="smarttube_install">SmartTube ఇన్‌స్టాల్ చేయండి</string>
     <string name="smarttube_open">సైన్ ఇన్ కోసం SmartTube తెరవండి</string>
-    <string name="smarttube_downloading">SmartTube డౌన్‌లోడ్ అవుతోంది…</string>
-    <string name="smarttube_allow_installs">Vibe Launcher కు యాప్‌లు ఇన్‌స్టాల్ చేయడానికి అనుమతించి, మళ్లీ SmartTube ఇన్‌స్టాల్ చేయండి ఎంచుకోండి</string>
-    <string name="smarttube_failed">SmartTube ఇన్‌స్టాల్ కాలేదు</string>
+    <string name="smarttube_get_downloader">SmartTube, Downloader (AFTVnews) ద్వారా ఇన్‌స్టాల్ అవుతుంది: Play Store నుండి Downloader పొంది, తెరిచి %s టైప్ చేయండి.</string>
     <string name="play">ప్లే చేయి</string>
     <string name="reload_backdrops">బ్యాక్‌డ్రాప్‌లను మళ్లీ లోడ్ చేయి</string>
     <string name="tab_backdrops">బ్యాక్‌డ్రాప్‌లు</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">హోమ్‌లో ఛానెల్ కీలను విస్మరించు</string>
     <string name="ignore_channel_keys_short">హోమ్ కనిపిస్తున్నప్పుడు ఛానెల్ పైకి, కిందికి ఏమీ చేయవు, టీవీ సొంత టీవీ యాప్‌ను తెరవడానికి బదులుగా.</string>
     <string name="restart">రీస్టార్ట్ చేయి…</string>
+    <string name="restart_confirm">టీవీ ఇప్పుడు రీస్టార్ట్ అవుతుంది. తిరిగి రావడానికి సుమారు ఒక నిమిషం పడుతుంది.</string>
     <string name="time_remaining">%1$s మిగిలి ఉంది</string>
-    <string name="home_key_name">Vibe Launcher హోమ్ బటన్</string>
-    <string name="home_key_description">రిమోట్ హోమ్ బటన్ టీవీ సొంత హోమ్ స్క్రీన్‌కు బదులుగా Vibe Launcher‌ను తెరుస్తుంది, నొక్కి పట్టుకుంటే టీవీ సెట్టింగ్‌లు తెరుచుకుంటాయి. స్క్రీన్‌పై ఏదీ చదవదు, మిగతా బటన్‌లన్నీ అలాగే పంపుతుంది.</string>
     <string name="permissions_title">రెండు అనుమతులు</string>
     <string name="permissions_why">తర్వాత Vibe Launcher రెండు అనుమతులు అడుగుతుంది.\n\nటీవీ జాబితాలు: మీ యాప్‌లు హోమ్ స్క్రీన్ కోసం ప్రచురించే కార్డ్‌ల చిత్రాలు చూపడానికి.\n\nలొకేషన్: ఈ అనుమతి ఉన్న యాప్‌లకు మాత్రమే Android వై-ఫై నెట్‌వర్క్ పేరు చూపుతుంది. Vibe Launcher దాన్ని ఆ పేరు కోసం మాత్రమే వాడుతుంది, టీవీ ఎక్కడ ఉందో ఎప్పుడూ చూడదు.\n\nఏదీ టీవీ బయటికి వెళ్లదు.</string>
     <string name="continue_button">కొనసాగించండి</string>
-    <string name="home_key_disclosure_title">హోమ్ బటన్‌ను ఉపయోగించండి</string>
-    <string name="home_key_disclosure">ఈ టీవీ యాప్‌లను హోమ్ యాప్‌గా మారనివ్వదు, కాబట్టి హోమ్ బటన్‌కు స్పందించడానికి Vibe Launcher‌కు యాక్సెసిబిలిటీ సర్వీస్ అవసరం.\n\nఇది హోమ్ బటన్‌ను చూసుకుంటుంది: నొక్కితే Vibe Launcher, నొక్కి పట్టుకుంటే సెట్టింగ్‌లు తెరుచుకుంటాయి, మిగతా బటన్‌లన్నీ అలాగే వెళ్తాయి. టీవీ సొంత హోమ్ స్క్రీన్ వచ్చినప్పుడు దాన్ని చూసి కప్పేస్తుంది. స్క్రీన్‌పై ఏదీ చదవదు, ఏదీ ఉంచుకోదు, ఎక్కడికీ ఏదీ పంపదు.\n\nఎప్పుడైనా సెట్టింగ్‌లు &gt; యాక్సెసిబిలిటీలో ఆఫ్ చేయండి.</string>
-    <string name="home_key_disclosure_more">మీరు “%1$s” ఆన్ చేస్తే, స్క్రీన్ ఆన్ అయినప్పుడు ఇది Vibe Launcherను కూడా తెరుస్తుంది, మీరు ముందుగా ఏదైనా బటన్ నొక్కితే తప్ప (బటన్ నొక్కబడిందని మాత్రమే గమనిస్తుంది, ఏది అని కాదు). సెట్టింగ్‌లలోని “%2$s” టీవీ పవర్ మెనూను తెరవడానికి దీన్ని ఉపయోగిస్తుంది.</string>
-    <string name="home_button">హోమ్ బటన్</string>
-    <string name="home_button_short">తమ సొంత హోమ్ స్క్రీన్‌ను ఉంచుకునే టీవీల కోసం: రిమోట్‌లోని హోమ్ బటన్ Vibe Launcherను తెరుస్తుంది, దాన్ని నొక్కి పట్టుకుంటే టీవీ సెట్టింగ్‌లు తెరుచుకుంటాయి.</string>
-    <string name="home_key_agree">అంగీకరిస్తున్నాను</string>
-    <string name="home_key_steps">తర్వాత: తెరుచుకునే జాబితాలో “%1$s” ఎంచుకుని ఆన్ చేయండి, ఆపై హోమ్ నొక్కండి.</string>
-    <string name="home_key_steps_settings">తర్వాత: ఈ టీవీలో దాని యాక్సెసిబిలిటీ సెట్టింగ్‌లకు నేరుగా వెళ్లే మార్గం లేదు, కాబట్టి దానికి బదులుగా Android సెట్టింగ్‌లు తెరుచుకుంటాయి. అక్కడ పరికర ప్రాధాన్యతలు &gt; యాక్సెసిబిలిటీకి వెళ్లి, “%1$s” ఎంచుకుని ఆన్ చేయండి, ఆపై హోమ్ నొక్కండి.</string>
     <string name="store_update">Vibe Launcher‌ను అప్‌డేట్ చేయండి</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">బ్యాకప్ మరియు రీస్టోర్</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">పూర్తయ్యాక డీబగ్గింగ్ ఆఫ్ చేయండి</string>
     <string name="debug_off_when_done_short">మీరు సెట్టింగ్‌ల నుండి బయటకు వచ్చినప్పుడు Vibe Launcher టీవీ డీబగ్గింగ్‌ను మళ్లీ ఆఫ్ చేస్తుంది, తర్వాతిసారి అవసరమైనప్పుడు దానంతట అదే మళ్లీ ఆన్ చేస్తుంది. అది ఆఫ్‌లో ఉన్నప్పుడు కంప్యూటర్ ADB ద్వారా టీవీని చేరుకోలేదు.</string>
     <string name="home_make">Vibe Launcherను హోమ్‌గా చేయండి</string>
-    <string name="home_make_short">టీవీ సొంత హోమ్ స్క్రీన్‌ను ఆఫ్ చేస్తుంది, దాంతో హోమ్ బటన్ Vibe Launcherను తెరుస్తుంది, హోమ్ బటన్ సేవ అవసరం లేకుండానే.</string>
+    <string name="home_make_short">టీవీ సొంత హోమ్ స్క్రీన్‌ను ఆఫ్ చేస్తుంది, కాబట్టి హోమ్ బటన్ Vibe Launcher‌ను తెరుస్తుంది.</string>
     <string name="home_make_warning">టీవీ సొంత హోమ్ స్క్రీన్ ఆఫ్ అవుతుంది, Vibe Launcher హోమ్ అవుతుంది. అది పని చేయకపోతే, అన్నీ వెంటనే మునుపటిలా చేయబడతాయి. “టీవీ సొంత హోమ్ స్క్రీన్‌కు తిరిగి వెళ్లు” దీన్ని రద్దు చేస్తుంది.</string>
     <string name="home_restore">టీవీ సొంత హోమ్ స్క్రీన్‌కు తిరిగి వెళ్లు</string>
     <string name="home_done">Vibe Launcher ఇప్పుడు హోమ్</string>

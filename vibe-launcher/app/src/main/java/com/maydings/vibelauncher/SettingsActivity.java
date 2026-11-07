@@ -38,7 +38,6 @@ public final class SettingsActivity extends Activity {
     protected void onResume() {
         super.onResume();
         screen.showSmartTube();   // installed or signed in meanwhile
-        screen.showHomeButton();   // turned on or off in Accessibility meanwhile
         screen.showWallpapers();   // some picked in a browsing grid meanwhile
     }
 

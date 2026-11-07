@@ -347,7 +347,6 @@ final class SettingsScreen {
     private String phoneUrl;
     private BroadcastReceiver packages;
     private Row smartTubeRow;
-    private Row homeButtonRow, restartRow;   // General's, while it's made
 
     private SettingsScreen(Context app, String language) {
         ctx = new ContextThemeWrapper(Lang.wrap(app), android.R.style.Theme_Material_NoActionBar);
@@ -378,8 +377,7 @@ final class SettingsScreen {
         root.link(R.string.tab_backdrops, null, this::backdrops);
         root.link(R.string.tab_weather, null, this::weather);
         root.link(R.string.tab_keys, null, this::apiKeys);
-        // Turning apps off goes through the TV's ADB, which Play wouldn't take: the adb build only.
-        if (!BuildConfig.STORE) appsRootRow = root.link(R.string.tab_apps, null, this::apps);
+        appsRootRow = root.link(R.string.tab_apps, null, this::apps);
         place(root, 0);
         languagePage = new Page(ctx.getString(R.string.language));   // its rows: addLanguages
         place(languagePage, screenW - rightX);   // off the screen until Language is picked
@@ -523,31 +521,11 @@ final class SettingsScreen {
         Row channelKeys = page.toggle(R.string.ignore_channel_keys, settings::ignoreChannelKeys,
                 settings::setIgnoreChannelKeys);
         channelKeys.about = R.string.ignore_channel_keys_short;
-        // The Home button service, on or off at any time (Home offers it once, on its first start): while
-        // Vibe Launcher isn't the TV's Home, or while it's on. On explains it first and opens Accessibility;
-        // Off turns it off here.
-        homeButtonRow = page.add(R.string.home_button,
-                () -> ctx.getString(DefaultHome.homeButtonOn(ctx) ? R.string.on : R.string.off), () -> {
-                    Runnable off = HomeButtonLink.turnOff;
-                    if (!DefaultHome.homeButtonOn(ctx)) {
-                        HomeButtonLink.offer(host);
-                    } else if (off != null) {
-                        off.run();
-                        handler.postDelayed(this::showHomeButton, 300);   // Android notes it a moment later
-                    } else {
-                        HomeButtonLink.openSettings(host);   // on, but not bound yet: off from Accessibility
-                    }
-                });
-        homeButtonRow.about = R.string.home_button_short;
-        homeButtonRow.view.setVisibility(BuildConfig.HOME_BUTTON
-                && (DefaultHome.homeButtonOn(ctx) || !DefaultHome.isHome(ctx)) ? View.VISIBLE : View.GONE);
-        // The TV's power menu, which asks before it restarts: only the Home button service can open it (an
-        // app may not restart the TV), so only while that's on.
-        restartRow = page.add(R.string.restart, null, () -> {
-            Runnable powerMenu = HomeButtonLink.powerMenu;
-            if (powerMenu != null) powerMenu.run();
-        });
-        showHomeButton();
+        // The TV restarted through its own ADB (an app may not restart it), after asking. runAdb connects first,
+        // walking through turning ADB on where it isn't yet; the reboot then goes without waiting for an answer,
+        // which would never come (the connection drops) and read as a failure.
+        page.add(R.string.restart, null, () -> explainThenDo(R.string.restart, R.string.restart_confirm,
+                () -> runAdb(page, null, r -> adb().execute(() -> Adb.shell("reboot", false)))));
         page.link(R.string.backup_restore, null, this::backups);
         Row version = page.add(R.string.updates, null, null);
         Row check = page.add(R.string.check_updates, null, null);
@@ -684,11 +662,9 @@ final class SettingsScreen {
         page.link(R.string.clock, () -> clockName(settings.clockHours()), this::clockHours);
         page.toggle(R.string.carets, settings::carets, settings::setCarets);
         page.link(R.string.glass_color, this::swatch, this::glassColour);
-        // The TV's own animation speed: only with WRITE_SECURE_SETTINGS, which only the adb build is ever given.
-        if (!BuildConfig.STORE) {
-            Row speed = page.link(R.string.anim_speed, () -> animName(TvControl.animationScale(ctx)), this::animSpeed);
-            speed.about = R.string.anim_short;
-        }
+        // The TV's own animation speed: with WRITE_SECURE_SETTINGS, which the TV's ADB grants (TvControl).
+        Row speed = page.link(R.string.anim_speed, () -> animName(TvControl.animationScale(ctx)), this::animSpeed);
+        speed.about = R.string.anim_short;
         return page;
     }
 
@@ -1394,18 +1370,17 @@ MainActivity.showError(host, R.string.anim_short);
         page.link(R.string.keys_help, null, this::keysHelp);
         key(page, R.string.tmdb_key, 0, R.string.tmdb_short);
         key(page, R.string.youtube_key, 1, R.string.youtube_short);
-        // SmartTube signed in beats a key (the user's own feed). The store build can't install apps: there
-        // the row only opens SmartTube, when it's on the TV.
+        // SmartTube signed in beats a key (the user's own feed). Not on the TV: Downloader installs it from its
+        // code, as it put Vibe Launcher on; without Downloader, how to get it.
         smartTubeRow = page.add("", null, () -> {
             Intent open = SmartTube.launchIntent(host);
             if (open != null) {
                 host.startActivity(open);
                 return;
             }
-            if (BuildConfig.STORE) return;
-            boolean started = SmartTube.install(host, res -> MainActivity.showError(host,
-                    res == R.string.update_failed ? R.string.smarttube_failed : res));
-            if (started) Toast.makeText(host, R.string.smarttube_downloading, Toast.LENGTH_LONG).show();
+            if (!SmartTube.openDownloader(host)) {
+                MainActivity.showError(host, ctx.getString(R.string.smarttube_get_downloader, SmartTube.CODE));
+            }
         });
         smartTubeRow.about = R.string.smarttube_short;
         showSmartTube();
@@ -1917,11 +1892,6 @@ MainActivity.showError(host, R.string.anim_short);
         runAdb(page, TvControl.restoreHomeCommand(ctx, stock), r -> {
             android.content.pm.PackageManager pm = ctx.getPackageManager();
             for (String pkg : stock) if (TvApps.isOn(pm, pkg)) TvApps.remember(ctx, pkg, true);
-            // The Home button service would cover the TV's own home screen as soon as it showed, and going back
-            // would seem not to work: off with it, as its own switch in General does (the service itself, not
-            // WRITE_SECURE_SETTINGS, which never touches accessibility).
-            Runnable serviceOff = HomeButtonLink.turnOff;
-            if (DefaultHome.homeButtonOn(ctx) && serviceOff != null) serviceOff.run();
             page.refresh();
             showTurnOffAgain();
         });
@@ -2626,7 +2596,7 @@ MainActivity.showError(host, R.string.anim_short);
                 SettingsScreen.this.restored();
             }
         };
-        if (!BuildConfig.STORE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) link.pairing = this::pairFromPhone;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) link.pairing = this::pairFromPhone;
         Wallpapers walls = Wallpapers.get(app);
         link.wallpapers = new PhoneLink.WallpaperUploads() {
             @Override
@@ -2669,18 +2639,10 @@ MainActivity.showError(host, R.string.anim_short);
         else host.registerReceiver(packages, filter);
     }
 
-    /** General's Home button row and Restart…, as the service is now; again when Settings is back in front. */
-    void showHomeButton() {
-        if (homeButtonRow == null) return;
-        homeButtonRow.refresh();
-        restartRow.view.setVisibility(HomeButtonLink.bound() ? View.VISIBLE : View.GONE);
-    }
-
     void showSmartTube() {
         if (smartTubeRow == null) return;
         boolean installed = SmartTube.launchIntent(ctx) != null;
         smartTubeRow.label.setText(installed ? R.string.smarttube_open : R.string.smarttube_install);
-        if (BuildConfig.STORE) smartTubeRow.view.setVisibility(installed ? View.VISIBLE : View.GONE);
     }
 
     // ---- updates -----------------------------------------------------------------------------------

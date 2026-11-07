@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher ക്രമീകരണം</string>
     <string name="android_settings">Android ക്രമീകരണം</string>
     <string name="make_home">Vibe Launcher-നെ ഹോം ആക്കുക</string>
-    <string name="home_not_changeable">ഈ ടിവി ആപ്പുകളെ ഹോം ആപ്പ് തിരഞ്ഞെടുക്കാൻ അനുവദിക്കുന്നില്ല. കമ്പ്യൂട്ടറിൽ നിന്ന് സജ്ജമാക്കുക: Vibe Launcher README കാണുക</string>
     <string name="tmdb_key">TMDB API കീ</string>
     <string name="youtube_key">YouTube API കീ</string>
     <string name="tiles_per_row">ഓരോ വരിയിലും ടൈലുകൾ</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s തുറക്കാനാകുന്നില്ല</string>
     <string name="smarttube_install">SmartTube ഇൻസ്റ്റാൾ ചെയ്യുക</string>
     <string name="smarttube_open">സൈൻ ഇൻ ചെയ്യാൻ SmartTube തുറക്കുക</string>
-    <string name="smarttube_downloading">SmartTube ഡൗൺലോഡ് ചെയ്യുന്നു…</string>
-    <string name="smarttube_allow_installs">ആപ്പുകൾ ഇൻസ്റ്റാൾ ചെയ്യാൻ Vibe Launcher-നെ അനുവദിക്കുക, തുടർന്ന് വീണ്ടും SmartTube ഇൻസ്റ്റാൾ ചെയ്യുക തിരഞ്ഞെടുക്കുക</string>
-    <string name="smarttube_failed">SmartTube ഇൻസ്റ്റാൾ ആയില്ല</string>
+    <string name="smarttube_get_downloader">SmartTube Downloader (AFTVnews-ന്റെ) വഴിയാണ് ഇൻസ്റ്റാൾ ചെയ്യുന്നത്: Play Store-ൽ നിന്ന് Downloader നേടി തുറന്ന് %s ടൈപ്പ് ചെയ്യുക.</string>
     <string name="play">പ്ലേ ചെയ്യുക</string>
     <string name="reload_backdrops">പശ്ചാത്തലങ്ങൾ വീണ്ടും ലോഡ് ചെയ്യുക</string>
     <string name="tab_backdrops">പശ്ചാത്തലങ്ങൾ</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">ഹോമിൽ ചാനൽ കീകൾ അവഗണിക്കുക</string>
     <string name="ignore_channel_keys_short">ഹോം കാണിക്കുമ്പോൾ ചാനൽ മുകളിലേക്കും താഴേക്കും ഒന്നും ചെയ്യില്ല, ടിവിയുടെ സ്വന്തം ടിവി ആപ്പ് തുറക്കുന്നതിന് പകരം.</string>
     <string name="restart">റീസ്റ്റാർട്ട്…</string>
+    <string name="restart_confirm">ടിവി ഇപ്പോൾ പുനരാരംഭിക്കും. തിരികെ വരാൻ ഏകദേശം ഒരു മിനിറ്റ് എടുക്കും.</string>
     <string name="time_remaining">%1$s ശേഷിക്കുന്നു</string>
-    <string name="home_key_name">Vibe Launcher ഹോം ബട്ടൺ</string>
-    <string name="home_key_description">റിമോട്ടിലെ ഹോം ബട്ടൺ ടിവിയുടെ സ്വന്തം ഹോം സ്ക്രീനിന് പകരം Vibe Launcher തുറക്കുന്നു, അമർത്തിപ്പിടിച്ചാൽ ടിവിയുടെ ക്രമീകരണം തുറക്കും. സ്ക്രീനിലുള്ളതൊന്നും വായിക്കില്ല, മറ്റെല്ലാ ബട്ടണുകളും അതുപോലെ കടത്തിവിടുന്നു.</string>
     <string name="permissions_title">രണ്ട് അനുമതികൾ</string>
     <string name="permissions_why">അടുത്തതായി Vibe Launcher രണ്ട് അനുമതികൾ ചോദിക്കും.\n\nടിവി ലിസ്റ്റിംഗുകൾ: നിങ്ങളുടെ ആപ്പുകൾ ഹോം സ്ക്രീനിനായി പ്രസിദ്ധീകരിക്കുന്ന കാർഡുകളിലെ ചിത്രങ്ങൾ കാണിക്കാൻ.\n\nലൊക്കേഷൻ: ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് മാത്രമേ Android വൈഫൈ നെറ്റ്‌വർക്കിന്റെ പേര് കാണിക്കൂ. Vibe Launcher അത് ആ പേരിനായി മാത്രം ഉപയോഗിക്കുന്നു, ടിവി എവിടെയാണെന്ന് ഒരിക്കലും നോക്കില്ല.\n\nഒന്നും ടിവിക്ക് പുറത്തുപോകില്ല.</string>
     <string name="continue_button">തുടരുക</string>
-    <string name="home_key_disclosure_title">ഹോം ബട്ടൺ ഉപയോഗിക്കുക</string>
-    <string name="home_key_disclosure">ഈ ടിവി ആപ്പുകളെ ഹോം ആപ്പാകാൻ അനുവദിക്കുന്നില്ല, അതിനാൽ ഹോം ബട്ടണിനോട് പ്രതികരിക്കാൻ Vibe Launcher-ന് ഒരു ഉപയോഗസഹായി സേവനം ആവശ്യമാണ്.\n\nഇത് ഹോം ബട്ടൺ ഏറ്റെടുക്കുന്നു: അമർത്തിയാൽ Vibe Launcher, അമർത്തിപ്പിടിച്ചാൽ ക്രമീകരണം തുറക്കും, മറ്റെല്ലാ ബട്ടണുകളും അതുപോലെ കടന്നുപോകും. ടിവിയുടെ സ്വന്തം ഹോം സ്ക്രീൻ വരുമ്പോൾ അത് കണ്ട് മറയ്ക്കുകയും ചെയ്യുന്നു. സ്ക്രീനിലുള്ളതൊന്നും വായിക്കില്ല, ഒന്നും സൂക്ഷിക്കില്ല, എവിടേക്കും ഒന്നും അയയ്ക്കില്ല.\n\nഎപ്പോൾ വേണമെങ്കിലും ക്രമീകരണം &gt; ഉപയോഗസഹായി എന്നതിൽ ഓഫാക്കാം.</string>
-    <string name="home_key_disclosure_more">നിങ്ങൾ “%1$s” ഓണാക്കിയാൽ, സ്‌ക്രീൻ ഓണാകുമ്പോഴും ഇത് Vibe Launcher തുറക്കും, നിങ്ങൾ ആദ്യം ഒരു ബട്ടൺ അമർത്തിയില്ലെങ്കിൽ (ഒരു ബട്ടൺ അമർത്തി എന്ന് മാത്രമേ ശ്രദ്ധിക്കൂ, ഏതെന്ന് അല്ല). ക്രമീകരണങ്ങളിലെ “%2$s” ടിവിയുടെ പവർ മെനു തുറക്കാൻ ഇത് ഉപയോഗിക്കുന്നു.</string>
-    <string name="home_button">ഹോം ബട്ടൺ</string>
-    <string name="home_button_short">സ്വന്തം ഹോം സ്‌ക്രീൻ നിലനിർത്തുന്ന ടിവികൾക്ക്: റിമോട്ടിലെ ഹോം ബട്ടൺ Vibe Launcher തുറക്കുന്നു, അത് അമർത്തിപ്പിടിച്ചാൽ ടിവിയുടെ ക്രമീകരണങ്ങൾ തുറക്കുന്നു.</string>
-    <string name="home_key_agree">സമ്മതിക്കുന്നു</string>
-    <string name="home_key_steps">അടുത്തത്: തുറക്കുന്ന ലിസ്റ്റിൽ “%1$s” തിരഞ്ഞെടുത്ത് ഓണാക്കുക, തുടർന്ന് ഹോം അമർത്തുക.</string>
-    <string name="home_key_steps_settings">അടുത്തത്: ഈ ടിവിയിൽ ഉപയോഗസഹായി ക്രമീകരണത്തിലേക്ക് നേരിട്ടുള്ള വഴിയില്ല, അതിനാൽ പകരം Android-ന്റെ ക്രമീകരണം തുറക്കും. അവിടെ ഉപകരണ മുൻഗണനകൾ &gt; ഉപയോഗസഹായി എന്നതിലേക്ക് പോകുക, “%1$s” തിരഞ്ഞെടുത്ത് ഓണാക്കുക, തുടർന്ന് ഹോം അമർത്തുക.</string>
     <string name="store_update">Vibe Launcher അപ്ഡേറ്റ് ചെയ്യുക</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ബാക്കപ്പും പുനഃസ്ഥാപനവും</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">കഴിഞ്ഞാൽ ഡീബഗ്ഗിംഗ് ഓഫാക്കുക</string>
     <string name="debug_off_when_done_short">നിങ്ങൾ ക്രമീകരണത്തിൽ നിന്ന് പുറത്തുപോകുമ്പോൾ Vibe Launcher ടിവിയുടെ ഡീബഗ്ഗിംഗ് വീണ്ടും ഓഫാക്കുന്നു, അടുത്ത തവണ ആവശ്യമുള്ളപ്പോൾ സ്വയം വീണ്ടും ഓണാക്കുന്നു. അത് ഓഫായിരിക്കുമ്പോൾ ഒരു കമ്പ്യൂട്ടറിന് ADB വഴി ടിവിയിൽ എത്താനാകില്ല.</string>
     <string name="home_make">Vibe Launcher-നെ ഹോം ആക്കുക</string>
-    <string name="home_make_short">ടിവിയുടെ സ്വന്തം ഹോം സ്‌ക്രീൻ ഓഫാക്കുന്നു, അതിനാൽ ഹോം ബട്ടൺ Vibe Launcher തുറക്കുന്നു, ഹോം ബട്ടൺ സേവനം ആവശ്യമില്ലാതെ.</string>
+    <string name="home_make_short">ടിവിയുടെ സ്വന്തം ഹോം സ്ക്രീൻ ഓഫാക്കുന്നു, അതിനാൽ ഹോം ബട്ടൺ Vibe Launcher തുറക്കും.</string>
     <string name="home_make_warning">ടിവിയുടെ സ്വന്തം ഹോം സ്‌ക്രീൻ ഓഫാകുകയും Vibe Launcher ഹോം ആകുകയും ചെയ്യുന്നു. അത് ശരിയായില്ലെങ്കിൽ, എല്ലാം ഉടൻ പഴയപടിയാക്കും. “ടിവിയുടെ സ്വന്തം ഹോം സ്‌ക്രീനിലേക്ക് മടങ്ങുക” ഇത് പഴയപടിയാക്കുന്നു.</string>
     <string name="home_restore">ടിവിയുടെ സ്വന്തം ഹോം സ്‌ക്രീനിലേക്ക് മടങ്ങുക</string>
     <string name="home_done">Vibe Launcher ഇപ്പോൾ ഹോം ആണ്</string>

@@ -12,13 +12,4 @@
         android:required="true"
         tools:replace="android:required" />
 
-    <!-- No Home button service (BuildConfig.HOME_BUTTON): nor the screen it opens at boot. -->
-    <application>
-        <service
-            android:name=".HomeKeyService"
-            tools:node="remove" />
-        <activity
-            android:name=".ProbeActivity"
-            tools:node="remove" />
-    </application>
 </manifest>

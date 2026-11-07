@@ -43,7 +43,6 @@
     <string name="vibe_settings">Innstillinger for Vibe Launcher</string>
     <string name="android_settings">Android-innstillinger</string>
     <string name="make_home">Bruk Vibe Launcher som startskjerm</string>
-    <string name="home_not_changeable">Denne TV-en lar ikke apper velge startskjermappen. Still det inn fra en datamaskin: se README for Vibe Launcher</string>
     <string name="tmdb_key">TMDB API-nøkkel</string>
     <string name="youtube_key">YouTube API-nøkkel</string>
     <string name="tiles_per_row">Ruter per rad</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Kan ikke åpne %1$s</string>
     <string name="smarttube_install">Installer SmartTube</string>
     <string name="smarttube_open">Åpne SmartTube for å logge på</string>
-    <string name="smarttube_downloading">Laster ned SmartTube…</string>
-    <string name="smarttube_allow_installs">Tillat Vibe Launcher å installere apper, og velg deretter Installer SmartTube igjen</string>
-    <string name="smarttube_failed">SmartTube ble ikke installert</string>
+    <string name="smarttube_get_downloader">SmartTube installeres med Downloader (fra AFTVnews): hent Downloader fra Play Butikk, åpne den og skriv %s.</string>
     <string name="play">Spill av</string>
     <string name="reload_backdrops">Last inn bakgrunner på nytt</string>
     <string name="tab_backdrops">Bakgrunner</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Ignorer kanalknapper på startskjermen</string>
     <string name="ignore_channel_keys_short">Kanal opp og ned gjør ingenting mens startskjermen vises, i stedet for å åpne TV-ens egen TV-app.</string>
     <string name="restart">Start på nytt…</string>
+    <string name="restart_confirm">TV-en starter på nytt nå. Det tar omtrent ett minutt før den er tilbake.</string>
     <string name="time_remaining">%1$s igjen</string>
-    <string name="home_key_name">Vibe Launcher-hjemknapp</string>
-    <string name="home_key_description">Får hjemknappen på fjernkontrollen til å åpne Vibe Launcher i stedet for TV-ens egen startskjerm, og et langt trykk til å åpne TV-ens innstillinger. Den leser ingenting på skjermen og sender alle andre knapper videre.</string>
     <string name="permissions_title">To tillatelser</string>
     <string name="permissions_why">Vibe Launcher ber nå om to tillatelser.\n\nTV-oversikt: for å vise bilder fra kortene appene dine publiserer for startskjermen.\n\nPosisjon: Android viser bare navnet på Wi-Fi-nettverket til apper med denne tillatelsen. Vibe Launcher bruker den bare til navnet og finner aldri ut hvor TV-en er.\n\nIngen av delene forlater TV-en.</string>
     <string name="continue_button">Fortsett</string>
-    <string name="home_key_disclosure_title">Bruk hjemknappen</string>
-    <string name="home_key_disclosure">Denne TV-en lar ikke apper bli startskjermappen, så Vibe Launcher trenger en tilgjengelighetstjeneste for å svare på hjemknappen.\n\nDen overtar hjemknappen: et trykk åpner Vibe Launcher, et langt trykk åpner innstillingene, og alle andre knapper går uendret videre. Den ser også når TV-ens egen startskjerm kommer opp, og dekker den. Den leser ingenting på skjermen, lagrer ingenting og sender ingenting noe sted.\n\nSlå den av når som helst under Innstillinger &gt; Tilgjengelighet.</string>
-    <string name="home_key_disclosure_more">Hvis du slår på «%1$s», åpner den også Vibe Launcher når skjermen slås på, med mindre du trykker på en knapp først (den merker seg bare at en knapp ble trykket, ikke hvilken). Og «%2$s» i Innstillinger bruker den til å åpne TV-ens strømmeny.</string>
-    <string name="home_button">Hjemknapp</string>
-    <string name="home_button_short">For TV-er som beholder sin egen startside: fjernkontrollens hjemknapp åpner Vibe Launcher, og holder du den inne, åpnes TV-ens innstillinger.</string>
-    <string name="home_key_agree">Godta</string>
-    <string name="home_key_steps">Neste: Velg «%1$s» i listen som åpnes, slå den på, og trykk så på hjem.</string>
-    <string name="home_key_steps_settings">Neste: Denne TV-en har ingen direkte vei til tilgjengelighetsinnstillingene, så Android-innstillingene åpnes i stedet. Gå der til Enhetsinnstillinger &gt; Tilgjengelighet, velg «%1$s», slå den på, og trykk så på hjem.</string>
     <string name="store_update">Oppdater Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sikkerhetskopi og gjenoppretting</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Slå av feilsøking etterpå</string>
     <string name="debug_off_when_done_short">Når du går ut av Innstillinger, slår Vibe Launcher av TV-ens feilsøking igjen, og på igjen av seg selv neste gang den trenger det. En datamaskin kan ikke nå TV-en over ADB mens den er av.</string>
     <string name="home_make">Gjør Vibe Launcher til startside</string>
-    <string name="home_make_short">Slår av TV-ens egen startside, så hjemknappen åpner Vibe Launcher, uten at det trengs noen hjemknapptjeneste.</string>
+    <string name="home_make_short">Slår av TV-ens egen startskjerm, så Hjem-knappen åpner Vibe Launcher.</string>
     <string name="home_make_warning">TV-ens egen startside slås av, og Vibe Launcher blir startside. Hvis det ikke fester seg, settes alt tilbake med en gang. «Tilbake til TV-ens egen startside» angrer det.</string>
     <string name="home_restore">Tilbake til TV-ens egen startside</string>
     <string name="home_done">Vibe Launcher er startside nå</string>

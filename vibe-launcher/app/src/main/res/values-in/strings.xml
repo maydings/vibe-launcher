@@ -43,7 +43,6 @@
     <string name="vibe_settings">Setelan Vibe Launcher</string>
     <string name="android_settings">Setelan Android</string>
     <string name="make_home">Jadikan Vibe Launcher layar utama</string>
-    <string name="home_not_changeable">TV ini tidak mengizinkan aplikasi memilih aplikasi layar utama. Atur dari komputer: lihat README Vibe Launcher</string>
     <string name="tmdb_key">Kunci API TMDB</string>
     <string name="youtube_key">Kunci API YouTube</string>
     <string name="tiles_per_row">Ubin per baris</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Tidak dapat membuka %1$s</string>
     <string name="smarttube_install">Instal SmartTube</string>
     <string name="smarttube_open">Buka SmartTube untuk masuk</string>
-    <string name="smarttube_downloading">Mengunduh SmartTube…</string>
-    <string name="smarttube_allow_installs">Izinkan Vibe Launcher menginstal aplikasi, lalu pilih Instal SmartTube lagi</string>
-    <string name="smarttube_failed">SmartTube tidak terinstal</string>
+    <string name="smarttube_get_downloader">SmartTube dipasang lewat Downloader (dari AFTVnews): dapatkan Downloader dari Play Store, buka, lalu ketik %s.</string>
     <string name="play">Putar</string>
     <string name="reload_backdrops">Muat ulang latar</string>
     <string name="tab_backdrops">Latar</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Abaikan tombol saluran di Beranda</string>
     <string name="ignore_channel_keys_short">Saluran Naik dan Turun tidak melakukan apa pun saat Beranda tampil, alih-alih membuka aplikasi TV bawaan TV.</string>
     <string name="restart">Mulai ulang…</string>
+    <string name="restart_confirm">TV akan dimulai ulang sekarang. Butuh sekitar satu menit untuk kembali.</string>
     <string name="time_remaining">Sisa %1$s</string>
-    <string name="home_key_name">Tombol Beranda Vibe Launcher</string>
-    <string name="home_key_description">Membuat tombol Beranda remote membuka Vibe Launcher, bukan layar beranda bawaan TV, dan menahannya membuka Setelan TV. Tidak membaca apa pun di layar dan meneruskan semua tombol lainnya.</string>
     <string name="permissions_title">Dua izin</string>
     <string name="permissions_why">Selanjutnya Vibe Launcher akan meminta dua izin.\n\nDaftar acara TV: untuk menampilkan gambar dari kartu yang dipublikasikan aplikasi Anda untuk layar beranda.\n\nLokasi: Android hanya menampilkan nama jaringan Wi-Fi kepada aplikasi yang memiliki izin ini. Vibe Launcher hanya memakainya untuk nama itu dan tidak pernah mencari tahu lokasi TV.\n\nKeduanya tidak keluar dari TV.</string>
     <string name="continue_button">Lanjutkan</string>
-    <string name="home_key_disclosure_title">Gunakan tombol Beranda</string>
-    <string name="home_key_disclosure">TV ini tidak mengizinkan aplikasi menjadi aplikasi beranda, jadi Vibe Launcher memerlukan layanan aksesibilitas untuk merespons tombol Beranda.\n\nLayanan ini mengambil alih tombol Beranda: menekannya membuka Vibe Launcher, menahannya membuka Setelan, dan semua tombol lain diteruskan apa adanya. Layanan ini juga melihat saat layar beranda bawaan TV muncul, lalu menutupinya. Tidak membaca apa pun di layar, tidak menyimpan apa pun, dan tidak mengirim apa pun ke mana pun.\n\nNonaktifkan kapan saja di Setelan &gt; Aksesibilitas.</string>
-    <string name="home_key_disclosure_more">Jika Anda mengaktifkan “%1$s”, layanan ini juga membuka Vibe Launcher saat layar menyala, kecuali Anda menekan tombol terlebih dahulu (hanya mencatat bahwa tombol ditekan, bukan yang mana). Dan “%2$s” di Setelan memakainya untuk membuka menu daya TV.</string>
-    <string name="home_button">Tombol Beranda</string>
-    <string name="home_button_short">Untuk TV yang tetap memakai layar berandanya sendiri: tombol Beranda di remote membuka Vibe Launcher, dan menahannya membuka Setelan TV.</string>
-    <string name="home_key_agree">Setuju</string>
-    <string name="home_key_steps">Berikutnya: di daftar yang terbuka, pilih “%1$s”, aktifkan, lalu tekan Beranda.</string>
-    <string name="home_key_steps_settings">Berikutnya: TV ini tidak punya jalan langsung ke setelan Aksesibilitas, jadi Setelan Android yang terbuka. Di sana, buka Preferensi Perangkat &gt; Aksesibilitas, pilih “%1$s”, aktifkan, lalu tekan Beranda.</string>
     <string name="store_update">Perbarui Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Cadangkan dan pulihkan</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Matikan proses debug setelah selesai</string>
     <string name="debug_off_when_done_short">Saat Anda keluar dari Setelan, Vibe Launcher mematikan lagi proses debug TV, dan mengaktifkannya sendiri saat dibutuhkan lagi. Selama mati, komputer tidak bisa menjangkau TV melalui ADB.</string>
     <string name="home_make">Jadikan Vibe Launcher sebagai Beranda</string>
-    <string name="home_make_short">Mematikan layar beranda bawaan TV, sehingga tombol Beranda membuka Vibe Launcher, tanpa perlu layanan Tombol Beranda.</string>
+    <string name="home_make_short">Mematikan layar utama bawaan TV, sehingga tombol Beranda membuka Vibe Launcher.</string>
     <string name="home_make_warning">Layar beranda bawaan TV dimatikan dan Vibe Launcher menjadi Beranda. Jika tidak berhasil, semuanya langsung dikembalikan. “Kembali ke layar beranda bawaan TV” membatalkannya.</string>
     <string name="home_restore">Kembali ke layar beranda bawaan TV</string>
     <string name="home_done">Vibe Launcher kini menjadi Beranda</string>

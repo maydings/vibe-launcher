@@ -43,7 +43,6 @@
     <string name="vibe_settings">Tetapan Vibe Launcher</string>
     <string name="android_settings">Tetapan Android</string>
     <string name="make_home">Jadikan Vibe Launcher skrin utama</string>
-    <string name="home_not_changeable">TV ini tidak membenarkan apl memilih apl skrin utama. Tetapkan dari komputer: lihat README Vibe Launcher</string>
     <string name="tmdb_key">Kunci API TMDB</string>
     <string name="youtube_key">Kunci API YouTube</string>
     <string name="tiles_per_row">Jubin setiap baris</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Tidak dapat membuka %1$s</string>
     <string name="smarttube_install">Pasang SmartTube</string>
     <string name="smarttube_open">Buka SmartTube untuk log masuk</string>
-    <string name="smarttube_downloading">Memuat turun SmartTube…</string>
-    <string name="smarttube_allow_installs">Benarkan Vibe Launcher memasang apl, kemudian pilih Pasang SmartTube sekali lagi</string>
-    <string name="smarttube_failed">SmartTube tidak dipasang</string>
+    <string name="smarttube_get_downloader">SmartTube dipasang melalui Downloader (oleh AFTVnews): dapatkan Downloader dari Play Store, bukanya dan taip %s.</string>
     <string name="play">Main</string>
     <string name="reload_backdrops">Muat semula latar</string>
     <string name="tab_backdrops">Latar</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Abaikan kekunci saluran di Laman Utama</string>
     <string name="ignore_channel_keys_short">Saluran Naik dan Turun tidak melakukan apa-apa semasa Laman Utama dipaparkan, bukannya membuka apl TV milik TV.</string>
     <string name="restart">Mula semula…</string>
+    <string name="restart_confirm">TV akan dimulakan semula sekarang. Ia mengambil kira-kira seminit untuk kembali.</string>
     <string name="time_remaining">%1$s lagi</string>
-    <string name="home_key_name">Butang Laman Utama Vibe Launcher</string>
-    <string name="home_key_description">Menjadikan butang Laman Utama alat kawalan jauh membuka Vibe Launcher dan bukannya skrin utama TV itu sendiri, dan menekannya lama membuka Tetapan TV. Ia tidak membaca apa-apa pada skrin dan melepaskan semua butang lain.</string>
     <string name="permissions_title">Dua kebenaran</string>
     <string name="permissions_why">Seterusnya Vibe Launcher akan meminta dua kebenaran.\n\nSenarai TV: untuk memaparkan gambar daripada kad yang diterbitkan apl anda untuk skrin utama.\n\nLokasi: Android hanya menunjukkan nama rangkaian Wi-Fi kepada apl yang mempunyai kebenaran ini. Vibe Launcher menggunakannya untuk nama itu sahaja dan tidak pernah mencari lokasi TV.\n\nKedua-duanya tidak keluar dari TV.</string>
     <string name="continue_button">Teruskan</string>
-    <string name="home_key_disclosure_title">Gunakan butang Laman Utama</string>
-    <string name="home_key_disclosure">TV ini tidak membenarkan apl menjadi apl laman utama, jadi Vibe Launcher memerlukan perkhidmatan kebolehaksesan untuk menjawab butang Laman Utama.\n\nIa mengambil alih butang Laman Utama: tekan untuk membuka Vibe Launcher, tekan lama untuk membuka Tetapan, dan semua butang lain dilepaskan tanpa diubah. Ia juga melihat apabila skrin utama TV itu sendiri muncul, lalu menutupnya. Ia tidak membaca apa-apa pada skrin, tidak menyimpan apa-apa dan tidak menghantar apa-apa ke mana-mana.\n\nMatikannya pada bila-bila masa dalam Tetapan &gt; Kebolehaksesan.</string>
-    <string name="home_key_disclosure_more">Jika anda menghidupkan “%1$s”, ia juga membuka Vibe Launcher apabila skrin dihidupkan, melainkan anda menekan butang dahulu (ia hanya mencatat bahawa butang ditekan, bukan yang mana). Dan “%2$s” dalam Tetapan menggunakannya untuk membuka menu kuasa TV.</string>
-    <string name="home_button">Butang Laman Utama</string>
-    <string name="home_button_short">Untuk TV yang mengekalkan skrin utamanya sendiri: butang Laman Utama pada alat kawalan membuka Vibe Launcher, dan menahannya membuka Tetapan TV.</string>
-    <string name="home_key_agree">Setuju</string>
-    <string name="home_key_steps">Seterusnya: dalam senarai yang dibuka, pilih “%1$s”, hidupkannya, kemudian tekan Laman Utama.</string>
-    <string name="home_key_steps_settings">Seterusnya: TV ini tiada jalan terus ke tetapan Kebolehaksesannya, jadi Tetapan Android dibuka sebaliknya. Di sana, pergi ke Pilihan Peranti &gt; Kebolehaksesan, pilih “%1$s”, hidupkannya, kemudian tekan Laman Utama.</string>
     <string name="store_update">Kemas kini Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sandaran dan pemulihan</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Matikan penyahpepijatan selepas selesai</string>
     <string name="debug_off_when_done_short">Apabila anda keluar dari Tetapan, Vibe Launcher mematikan semula penyahpepijatan TV, dan menghidupkannya semula sendiri apabila memerlukannya lagi. Semasa ia dimatikan, komputer tidak dapat mencapai TV melalui ADB.</string>
     <string name="home_make">Jadikan Vibe Launcher Laman Utama</string>
-    <string name="home_make_short">Mematikan skrin utama TV sendiri, supaya butang Laman Utama membuka Vibe Launcher, tanpa memerlukan perkhidmatan Butang Laman Utama.</string>
+    <string name="home_make_short">Mematikan skrin utama TV sendiri, supaya butang Laman Utama membuka Vibe Launcher.</string>
     <string name="home_make_warning">Skrin utama TV sendiri dimatikan dan Vibe Launcher menjadi Laman Utama. Jika tidak berjaya, semuanya dipulihkan serta-merta. “Kembali ke skrin utama TV sendiri” membatalkannya.</string>
     <string name="home_restore">Kembali ke skrin utama TV sendiri</string>
     <string name="home_done">Vibe Launcher kini Laman Utama</string>

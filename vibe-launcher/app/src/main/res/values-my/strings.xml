@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher ဆက်တင်များ</string>
     <string name="android_settings">Android ဆက်တင်များ</string>
     <string name="make_home">Vibe Launcher ကို ပင်မစာမျက်နှာ လုပ်ရန်</string>
-    <string name="home_not_changeable">ဤ TV သည် အက်ပ်များကို ပင်မအက်ပ် ရွေးခွင့်မပေးပါ။ ကွန်ပျူတာမှ သတ်မှတ်ပါ- Vibe Launcher ၏ README ကို ကြည့်ပါ</string>
     <string name="tmdb_key">TMDB API ကီး</string>
     <string name="youtube_key">YouTube API ကီး</string>
     <string name="tiles_per_row">တစ်တန်းလျှင် အကွက်</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s ကို ဖွင့်၍ မရပါ</string>
     <string name="smarttube_install">SmartTube ထည့်သွင်းရန်</string>
     <string name="smarttube_open">ဝင်ရန် SmartTube ကိုဖွင့်ပါ</string>
-    <string name="smarttube_downloading">SmartTube ဒေါင်းလုဒ်လုပ်နေသည်…</string>
-    <string name="smarttube_allow_installs">Vibe Launcher ကို အက်ပ်များ ထည့်သွင်းခွင့်ပြုပြီး SmartTube ထည့်သွင်းရန် ကို ထပ်ရွေးပါ</string>
-    <string name="smarttube_failed">SmartTube မထည့်သွင်းနိုင်ပါ</string>
+    <string name="smarttube_get_downloader">SmartTube ကို Downloader (AFTVnews) ဖြင့် ထည့်သွင်းသည်- Play Store မှ Downloader ကို ရယူ၍ ဖွင့်ပြီး %s ကို ရိုက်ထည့်ပါ။</string>
     <string name="play">ဖွင့်ရန်</string>
     <string name="reload_backdrops">နောက်ခံပုံများကို ပြန်ဖွင့်ရန်</string>
     <string name="tab_backdrops">နောက်ခံပုံများ</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">ပင်မတွင် ချန်နယ်ခလုတ်များကို လျစ်လျူရှုရန်</string>
     <string name="ignore_channel_keys_short">ပင်မ ပြနေစဉ် ချန်နယ် အပေါ်/အောက် ခလုတ်များသည် TV ၏ ကိုယ်ပိုင် TV အက်ပ်ကို မဖွင့်ဘဲ ဘာမှမလုပ်ပါ။</string>
     <string name="restart">ပြန်စရန်…</string>
+    <string name="restart_confirm">တီဗီ ယခု ပြန်စတင်ပါမည်။ ပြန်လာရန် တစ်မိနစ်ခန့် ကြာသည်။</string>
     <string name="time_remaining">%1$s ကျန်သည်</string>
-    <string name="home_key_name">Vibe Launcher ပင်မခလုတ်</string>
-    <string name="home_key_description">အဝေးထိန်း၏ ပင်မခလုတ်က TV ၏ ကိုယ်ပိုင်ပင်မစခရင်အစား Vibe Launcher ကို ဖွင့်ပြီး ဖိထားလျှင် TV ၏ ဆက်တင်များကို ဖွင့်သည်။ စခရင်ပေါ်ရှိ မည်သည့်အရာကိုမျှ မဖတ်ဘဲ အခြားခလုတ်အားလုံးကို ဆက်လက်ပေးပို့သည်။</string>
     <string name="permissions_title">ခွင့်ပြုချက် နှစ်ခု</string>
     <string name="permissions_why">နောက်တစ်ဆင့်တွင် Vibe Launcher က ခွင့်ပြုချက် နှစ်ခု တောင်းပါမည်။\n\nTV အစီအစဉ်စာရင်း- သင့်အက်ပ်များက ပင်မစခရင်အတွက် ထုတ်ပြန်သည့် ကတ်များမှ ပုံများကို ပြရန်။\n\nတည်နေရာ- Android သည် Wi-Fi ကွန်ရက်အမည်ကို ဤခွင့်ပြုချက်ရှိသော အက်ပ်များကိုသာ ပြသည်။ Vibe Launcher က ထိုအမည်အတွက်သာ အသုံးပြုပြီး TV ဘယ်မှာရှိသည်ကို ဘယ်တော့မှ မရှာပါ။\n\nမည်သည့်အရာမျှ TV မှ အပြင်သို့ မထွက်ပါ။</string>
     <string name="continue_button">ဆက်လုပ်ရန်</string>
-    <string name="home_key_disclosure_title">ပင်မခလုတ်ကို သုံးရန်</string>
-    <string name="home_key_disclosure">ဤ TV သည် အက်ပ်များကို ပင်မအက်ပ်အဖြစ် မခွင့်ပြုသောကြောင့် ပင်မခလုတ်ကို တုံ့ပြန်ရန် Vibe Launcher တွင် အများသုံးနိုင်မှု ဝန်ဆောင်မှု လိုအပ်သည်။\n\nပင်မခလုတ်ကို တာဝန်ယူသည်- နှိပ်လျှင် Vibe Launcher ပွင့်ပြီး ဖိထားလျှင် ဆက်တင်များ ပွင့်ကာ အခြားခလုတ်အားလုံး မပြောင်းဘဲ ဖြတ်သွားသည်။ TV ၏ ကိုယ်ပိုင်ပင်မစခရင် ပေါ်လာသည်ကိုလည်း မြင်ပြီး ဖုံးအုပ်သည်။ စခရင်ပေါ်ရှိ မည်သည့်အရာကိုမျှ မဖတ်၊ မည်သည့်အရာကိုမျှ မသိမ်းဆည်း၊ မည်သည့်နေရာသို့မျှ မပို့ပါ။\n\nဆက်တင်များ &gt; အများသုံးနိုင်မှု တွင် အချိန်မရွေး ပိတ်နိုင်သည်။</string>
-    <string name="home_key_disclosure_more">“%1$s” ကို ဖွင့်ထားလျှင် စခရင်ပွင့်လာချိန်တွင်လည်း Vibe Launcher ကို ဖွင့်ပေးသည်၊ သင် ခလုတ်တစ်ခုကို အရင်မနှိပ်မိလျှင်သာ (ခလုတ်နှိပ်ခဲ့ကြောင်းကိုသာ မှတ်သားပြီး မည်သည့်ခလုတ်ဖြစ်ကြောင်း မမှတ်ပါ)။ ဆက်တင်များရှိ “%2$s” သည် TV ၏ ပါဝါမီနူးကို ဖွင့်ရန် ၎င်းကို အသုံးပြုသည်။</string>
-    <string name="home_button">ပင်မခလုတ်</string>
-    <string name="home_button_short">ကိုယ်ပိုင် ပင်မစခရင်ကို ဆက်ထားသော TV များအတွက်- အဝေးထိန်း၏ ပင်မခလုတ်က Vibe Launcher ကို ဖွင့်ပြီး ဖိထားလျှင် TV ၏ ဆက်တင်များကို ဖွင့်သည်။</string>
-    <string name="home_key_agree">သဘောတူသည်</string>
-    <string name="home_key_steps">နောက်တစ်ဆင့်- ပွင့်လာသောစာရင်းတွင် “%1$s” ကို ရွေးပြီး ဖွင့်ကာ ပင်မကို နှိပ်ပါ။</string>
-    <string name="home_key_steps_settings">နောက်တစ်ဆင့်- ဤ TV တွင် ၎င်း၏ အများသုံးစွဲနိုင်မှု ဆက်တင်များသို့ တိုက်ရိုက်သွားရန် နည်းလမ်းမရှိသဖြင့် Android ၏ ဆက်တင်များကို အစားထိုး ဖွင့်ပါမည်။ ထိုနေရာတွင် စက်ပစ္စည်း ရွေးချယ်မှုများ &gt; အများသုံးစွဲနိုင်မှု သို့ သွားပြီး “%1$s” ကို ရွေးကာ ဖွင့်ပြီး ပင်မကို နှိပ်ပါ။</string>
     <string name="store_update">Vibe Launcher ကို အပ်ဒိတ်လုပ်ရန်</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">အရန်သိမ်းခြင်းနှင့် ပြန်ယူခြင်း</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">ပြီးလျှင် အမှားရှာပြင်ခြင်းကို ပိတ်ရန်</string>
     <string name="debug_off_when_done_short">ဆက်တင်များမှ ထွက်သောအခါ Vibe Launcher သည် TV ၏ အမှားရှာပြင်ခြင်းကို ပြန်ပိတ်ပြီး နောက်တစ်ကြိမ် လိုအပ်သည့်အခါ ၎င်းဘာသာ ပြန်ဖွင့်သည်။ ပိတ်ထားစဉ် ကွန်ပျူတာသည် ADB ဖြင့် TV သို့ ချိတ်ဆက်၍ မရပါ။</string>
     <string name="home_make">Vibe Launcher ကို ပင်မအဖြစ် ထားရန်</string>
-    <string name="home_make_short">TV ၏ ကိုယ်ပိုင် ပင်မစခရင်ကို ပိတ်၍ ပင်မခလုတ်က Vibe Launcher ကို ဖွင့်စေသည်။ ပင်မခလုတ် ဝန်ဆောင်မှု မလိုပါ။</string>
+    <string name="home_make_short">တီဗီ၏ ကိုယ်ပိုင် ပင်မမျက်နှာပြင်ကို ပိတ်ပြီး Home ခလုတ်က Vibe Launcher ကို ဖွင့်စေသည်။</string>
     <string name="home_make_warning">TV ၏ ကိုယ်ပိုင် ပင်မစခရင်ကို ပိတ်ပြီး Vibe Launcher သည် ပင်မ ဖြစ်လာသည်။ ၎င်း အလုပ်မဖြစ်ပါက အားလုံးကို ချက်ချင်း ပြန်ထားပေးသည်။ “TV ၏ ကိုယ်ပိုင် ပင်မစခရင်သို့ ပြန်သွားရန်” က ၎င်းကို ပြန်ဖျက်သည်။</string>
     <string name="home_restore">TV ၏ ကိုယ်ပိုင် ပင်မစခရင်သို့ ပြန်သွားရန်</string>
     <string name="home_done">Vibe Launcher သည် ယခု ပင်မ ဖြစ်ပါပြီ</string>

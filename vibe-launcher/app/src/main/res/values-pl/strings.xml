@@ -43,7 +43,6 @@
     <string name="vibe_settings">Ustawienia Vibe Launcher</string>
     <string name="android_settings">Ustawienia Androida</string>
     <string name="make_home">Ustaw Vibe Launcher jako ekran główny</string>
-    <string name="home_not_changeable">Ten telewizor nie pozwala aplikacjom wybrać aplikacji ekranu głównego. Ustaw to z komputera: zobacz README Vibe Launcher</string>
     <string name="tmdb_key">Klucz API TMDB</string>
     <string name="youtube_key">Klucz API YouTube</string>
     <string name="tiles_per_row">Kafelki w rzędzie</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Nie można otworzyć %1$s</string>
     <string name="smarttube_install">Zainstaluj SmartTube</string>
     <string name="smarttube_open">Otwórz SmartTube, aby się zalogować</string>
-    <string name="smarttube_downloading">Pobieranie SmartTube…</string>
-    <string name="smarttube_allow_installs">Zezwól Vibe Launcher na instalowanie aplikacji, a potem ponownie wybierz Zainstaluj SmartTube</string>
-    <string name="smarttube_failed">Nie udało się zainstalować SmartTube</string>
+    <string name="smarttube_get_downloader">SmartTube instaluje się przez Downloader (od AFTVnews): pobierz Downloader ze Sklepu Play, otwórz go i wpisz %s.</string>
     <string name="play">Odtwórz</string>
     <string name="reload_backdrops">Wczytaj tła ponownie</string>
     <string name="tab_backdrops">Tła</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Ignoruj przyciski kanałów na ekranie głównym</string>
     <string name="ignore_channel_keys_short">Kanał w górę i w dół nic nie robią, gdy widać ekran główny, zamiast otwierać własną aplikację TV telewizora.</string>
     <string name="restart">Uruchom ponownie…</string>
+    <string name="restart_confirm">Telewizor uruchomi się teraz ponownie. Wraca po około minucie.</string>
     <string name="time_remaining">Pozostało: %1$s</string>
-    <string name="home_key_name">Przycisk ekranu głównego Vibe Launcher</string>
-    <string name="home_key_description">Sprawia, że przycisk ekranu głównego na pilocie otwiera Vibe Launcher zamiast własnego ekranu głównego telewizora, a przytrzymany – ustawienia telewizora. Niczego nie odczytuje z ekranu i przepuszcza wszystkie inne przyciski.</string>
     <string name="permissions_title">Dwa uprawnienia</string>
     <string name="permissions_why">Za chwilę Vibe Launcher poprosi o dwa uprawnienia.\n\nProgram telewizyjny: aby pokazywać obrazy z kart, które Twoje aplikacje publikują na ekranie głównym.\n\nLokalizacja: Android pokazuje nazwę sieci Wi-Fi tylko aplikacjom z tym uprawnieniem. Vibe Launcher używa go tylko do tej nazwy i nigdy nie sprawdza, gdzie jest telewizor.\n\nŻadne z nich nie opuszcza telewizora.</string>
     <string name="continue_button">Dalej</string>
-    <string name="home_key_disclosure_title">Używaj przycisku ekranu głównego</string>
-    <string name="home_key_disclosure">Ten telewizor nie pozwala aplikacjom stać się aplikacją ekranu głównego, więc Vibe Launcher potrzebuje usługi ułatwień dostępu, żeby reagować na przycisk ekranu głównego.\n\nPrzejmuje przycisk ekranu głównego: naciśnięcie otwiera Vibe Launcher, przytrzymanie otwiera ustawienia, a wszystkie inne przyciski przechodzą bez zmian. Widzi też, kiedy pojawia się własny ekran główny telewizora, i go zasłania. Niczego nie odczytuje z ekranu, niczego nie przechowuje i nigdzie niczego nie wysyła.\n\nMożesz ją wyłączyć w dowolnej chwili w Ustawieniach &gt; Ułatwienia dostępu.</string>
-    <string name="home_key_disclosure_more">Jeśli włączysz „%1$s”, usługa otworzy też Vibe Launcher po włączeniu ekranu, chyba że najpierw naciśniesz przycisk (odnotowuje tylko, że przycisk został naciśnięty, nie który). A „%2$s” w Ustawieniach używa jej do otwarcia menu zasilania telewizora.</string>
-    <string name="home_button">Przycisk ekranu głównego</string>
-    <string name="home_button_short">Dla telewizorów, które zachowują własny ekran główny: przycisk ekranu głównego na pilocie otwiera Vibe Launcher, a przytrzymanie go otwiera ustawienia telewizora.</string>
-    <string name="home_key_agree">Zgadzam się</string>
-    <string name="home_key_steps">Dalej: na liście, która się otworzy, wybierz „%1$s”, włącz to i naciśnij przycisk ekranu głównego.</string>
-    <string name="home_key_steps_settings">Dalej: ten telewizor nie ma bezpośredniej drogi do ustawień ułatwień dostępu, więc zamiast tego otwierają się Ustawienia Androida. Tam przejdź do Ustawienia urządzenia &gt; Ułatwienia dostępu, wybierz „%1$s”, włącz to i naciśnij przycisk ekranu głównego.</string>
     <string name="store_update">Zaktualizuj Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Kopia zapasowa i przywracanie</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Wyłącz debugowanie po zakończeniu</string>
     <string name="debug_off_when_done_short">Gdy wychodzisz z Ustawień, Vibe Launcher znowu wyłącza debugowanie telewizora, a następnym razem, gdy będzie go potrzebować, sam je włącza. Gdy jest wyłączone, komputer nie może połączyć się z telewizorem przez ADB.</string>
     <string name="home_make">Ustaw Vibe Launcher jako ekran główny</string>
-    <string name="home_make_short">Wyłącza własny ekran główny telewizora, aby przycisk ekranu głównego otwierał Vibe Launcher, bez potrzeby usługi przycisku ekranu głównego.</string>
+    <string name="home_make_short">Wyłącza własny ekran główny telewizora, aby przycisk Home otwierał Vibe Launcher.</string>
     <string name="home_make_warning">Własny ekran główny telewizora zostaje wyłączony, a Vibe Launcher staje się ekranem głównym. Jeśli to się nie przyjmie, wszystko od razu wraca do poprzedniego stanu. „Wróć do własnego ekranu głównego telewizora” cofa zmianę.</string>
     <string name="home_restore">Wróć do własnego ekranu głównego telewizora</string>
     <string name="home_done">Vibe Launcher jest teraz ekranem głównym</string>

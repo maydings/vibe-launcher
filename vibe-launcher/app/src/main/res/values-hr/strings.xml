@@ -43,7 +43,6 @@
     <string name="vibe_settings">Postavke Vibe Launchera</string>
     <string name="android_settings">Postavke Androida</string>
     <string name="make_home">Postavi Vibe Launcher kao početni zaslon</string>
-    <string name="home_not_changeable">Ovaj televizor ne dopušta aplikacijama da biraju aplikaciju početnog zaslona. Postavite to s računala: pogledajte README Vibe Launchera</string>
     <string name="tmdb_key">TMDB API ključ</string>
     <string name="youtube_key">YouTube API ključ</string>
     <string name="tiles_per_row">Pločica u retku</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Nije moguće otvoriti %1$s</string>
     <string name="smarttube_install">Instaliraj SmartTube</string>
     <string name="smarttube_open">Otvori SmartTube za prijavu</string>
-    <string name="smarttube_downloading">Preuzimanje SmartTubea…</string>
-    <string name="smarttube_allow_installs">Dopustite Vibe Launcheru da instalira aplikacije, a zatim ponovno odaberite Instaliraj SmartTube</string>
-    <string name="smarttube_failed">SmartTube se nije instalirao</string>
+    <string name="smarttube_get_downloader">SmartTube se instalira putem Downloadera (AFTVnews): nabavite Downloader iz Trgovine Play, otvorite ga i upišite %s.</string>
     <string name="play">Reproduciraj</string>
     <string name="reload_backdrops">Ponovno učitaj pozadine</string>
     <string name="tab_backdrops">Pozadine</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Zanemari tipke kanala na početnom zaslonu</string>
     <string name="ignore_channel_keys_short">Kanal gore i dolje ne rade ništa dok je prikazan početni zaslon, umjesto da otvore TV aplikaciju televizora.</string>
     <string name="restart">Ponovno pokreni…</string>
+    <string name="restart_confirm">Televizor će se sada ponovno pokrenuti. Vraća se za otprilike minutu.</string>
     <string name="time_remaining">Još %1$s</string>
-    <string name="home_key_name">Tipka Početno za Vibe Launcher</string>
-    <string name="home_key_description">Tipka Početno na daljinskom otvara Vibe Launcher umjesto vlastitog početnog zaslona televizora, a dulji pritisak otvara postavke televizora. Ne čita ništa sa zaslona i propušta sve ostale tipke.</string>
     <string name="permissions_title">Dva dopuštenja</string>
     <string name="permissions_why">Vibe Launcher će sada zatražiti dva dopuštenja.\n\nTV program: za prikaz slika s kartica koje vaše aplikacije objavljuju za početni zaslon.\n\nLokacija: Android prikazuje naziv Wi-Fi mreže samo aplikacijama s tim dopuštenjem. Vibe Launcher ga koristi samo za taj naziv i nikad ne provjerava gdje je televizor.\n\nNi jedno ne napušta televizor.</string>
     <string name="continue_button">Nastavi</string>
-    <string name="home_key_disclosure_title">Koristi tipku Početno</string>
-    <string name="home_key_disclosure">Ovaj televizor ne dopušta aplikacijama da postanu aplikacija početnog zaslona, pa Vibe Launcheru treba usluga pristupačnosti da bi odgovorio na tipku Početno.\n\nPreuzima tipku Početno: pritisak otvara Vibe Launcher, dulji pritisak otvara postavke, a sve ostale tipke prolaze nepromijenjene. Vidi i kad se pojavi vlastiti početni zaslon televizora i prekriva ga. Ne čita ništa sa zaslona, ništa ne sprema i nikamo ništa ne šalje.\n\nIsključite je bilo kada u Postavke &gt; Pristupačnost.</string>
-    <string name="home_key_disclosure_more">Ako uključite „%1$s”, otvara i Vibe Launcher kad se zaslon uključi, osim ako prvo ne pritisnete tipku (bilježi samo da je tipka pritisnuta, ne koja). A „%2$s” u Postavkama njome otvara izbornik napajanja televizora.</string>
-    <string name="home_button">Tipka Početno</string>
-    <string name="home_button_short">Za televizore koji zadržavaju vlastiti početni zaslon: tipka Početno na daljinskom upravljaču otvara Vibe Launcher, a držanje te tipke otvara postavke televizora.</string>
-    <string name="home_key_agree">Slažem se</string>
-    <string name="home_key_steps">Zatim: na popisu koji se otvori odaberite „%1$s”, uključite ga i pritisnite Početno.</string>
-    <string name="home_key_steps_settings">Zatim: ovaj televizor nema izravan put do postavki pristupačnosti, pa se umjesto toga otvaraju Postavke Androida. Ondje idite na Postavke uređaja &gt; Pristupačnost, odaberite „%1$s”, uključite ga i pritisnite Početno.</string>
     <string name="store_update">Ažuriraj Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sigurnosna kopija i vraćanje</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Isključi otklanjanje pogrešaka nakon toga</string>
     <string name="debug_off_when_done_short">Kad izađete iz Postavki, Vibe Launcher ponovno isključuje otklanjanje pogrešaka na televizoru, a sljedeći put kad mu zatreba sam ga opet uključuje. Dok je isključeno, računalo ne može pristupiti televizoru putem ADB-a.</string>
     <string name="home_make">Postavi Vibe Launcher kao početni zaslon</string>
-    <string name="home_make_short">Isključuje vlastiti početni zaslon televizora, pa tipka Početno otvara Vibe Launcher, bez potrebe za uslugom Tipka Početno.</string>
+    <string name="home_make_short">Isključuje vlastiti početni zaslon televizora, pa tipka Početna otvara Vibe Launcher.</string>
     <string name="home_make_warning">Vlastiti početni zaslon televizora isključuje se i Vibe Launcher postaje početni zaslon. Ako to ne uspije, sve se odmah vraća. „Natrag na vlastiti početni zaslon televizora” to poništava.</string>
     <string name="home_restore">Natrag na vlastiti početni zaslon televizora</string>
     <string name="home_done">Vibe Launcher je sada početni zaslon</string>

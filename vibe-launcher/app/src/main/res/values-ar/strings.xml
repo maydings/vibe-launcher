@@ -43,7 +43,6 @@
     <string name="vibe_settings">إعدادات Vibe Launcher</string>
     <string name="android_settings">إعدادات Android</string>
     <string name="make_home">اجعل Vibe Launcher شاشتك الرئيسية</string>
-    <string name="home_not_changeable">لا يسمح هذا التلفزيون للتطبيقات باختيار تطبيق الشاشة الرئيسية. اضبطه من حاسوب: راجع ملف README الخاص بـ Vibe Launcher</string>
     <string name="tmdb_key">مفتاح TMDB API</string>
     <string name="youtube_key">مفتاح YouTube API</string>
     <string name="tiles_per_row">المربعات في كل صف</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">يتعذّر فتح %1$s</string>
     <string name="smarttube_install">تثبيت SmartTube</string>
     <string name="smarttube_open">فتح SmartTube لتسجيل الدخول</string>
-    <string name="smarttube_downloading">جارٍ تنزيل SmartTube…</string>
-    <string name="smarttube_allow_installs">اسمح لـ Vibe Launcher بتثبيت التطبيقات، ثم اختر تثبيت SmartTube مرة أخرى</string>
-    <string name="smarttube_failed">لم يتم تثبيت SmartTube</string>
+    <string name="smarttube_get_downloader">يُثبَّت SmartTube عبر Downloader (من AFTVnews): نزّل Downloader من متجر Play، وافتحه واكتب %s.</string>
     <string name="play">تشغيل</string>
     <string name="reload_backdrops">إعادة تحميل الخلفيات</string>
     <string name="tab_backdrops">الخلفيات</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">تجاهل مفاتيح القنوات في الشاشة الرئيسية</string>
     <string name="ignore_channel_keys_short">لا تفعل مفاتيح القناة التالية والسابقة شيئًا أثناء عرض الشاشة الرئيسية، بدلًا من فتح تطبيق التلفزيون الخاص بالجهاز.</string>
     <string name="restart">إعادة التشغيل…</string>
+    <string name="restart_confirm">سيُعاد تشغيل التلفزيون الآن. يستغرق الرجوع نحو دقيقة.</string>
     <string name="time_remaining">متبقٍ: %1$s</string>
-    <string name="home_key_name">زر الشاشة الرئيسية لـ Vibe Launcher</string>
-    <string name="home_key_description">يجعل زر الشاشة الرئيسية في جهاز التحكم يفتح Vibe Launcher بدل الشاشة الرئيسية للتلفزيون، ويفتح الضغط المطوّل عليه إعدادات التلفزيون. لا يقرأ شيئًا على الشاشة ويمرّر كل زر آخر كما هو.</string>
     <string name="permissions_title">إذنان</string>
     <string name="permissions_why">سيطلب Vibe Launcher إذنين بعد ذلك.\n\nقوائم التلفزيون: لعرض صور من البطاقات التي تنشرها تطبيقاتك للشاشة الرئيسية.\n\nالموقع: لا يُظهر Android اسم شبكة Wi-Fi إلا للتطبيقات التي تملك هذا الإذن. يستخدمه Vibe Launcher لهذا الاسم فقط ولا يبحث أبدًا عن مكان التلفزيون.\n\nلا يغادر أيٌّ منهما التلفزيون.</string>
     <string name="continue_button">متابعة</string>
-    <string name="home_key_disclosure_title">استخدام زر الشاشة الرئيسية</string>
-    <string name="home_key_disclosure">لا يسمح هذا التلفزيون للتطبيقات بأن تصبح تطبيق الشاشة الرئيسية، لذا يحتاج Vibe Launcher إلى خدمة إمكانية الوصول للاستجابة لزر الشاشة الرئيسية.\n\nيتولى زر الشاشة الرئيسية: الضغط يفتح Vibe Launcher، والضغط المطوّل يفتح الإعدادات، وكل زر آخر يمر كما هو. ويرى أيضًا متى تظهر الشاشة الرئيسية الخاصة بالتلفزيون فيغطيها. لا يقرأ شيئًا على الشاشة، ولا يحتفظ بشيء، ولا يرسل شيئًا إلى أي مكان.\n\nيمكنك إيقافه في أي وقت من الإعدادات &gt; إمكانية الوصول.</string>
-    <string name="home_key_disclosure_more">إذا شغّلت “%1$s”، فسيفتح أيضًا Vibe Launcher عند تشغيل الشاشة، ما لم تضغط على زر أولًا (يلاحظ فقط أنه تم الضغط على زر، لا أي زر). ويستخدمه “%2$s” في الإعدادات لفتح قائمة الطاقة في التلفزيون.</string>
-    <string name="home_button">زر الشاشة الرئيسية</string>
-    <string name="home_button_short">لأجهزة التلفزيون التي تُبقي شاشتها الرئيسية الخاصة: يفتح زر الشاشة الرئيسية في جهاز التحكم Vibe Launcher، والضغط عليه مطولًا يفتح إعدادات التلفزيون.</string>
-    <string name="home_key_agree">موافق</string>
-    <string name="home_key_steps">التالي: في القائمة التي تفتح، اختر “%1$s” وشغّله، ثم اضغط على زر الشاشة الرئيسية.</string>
-    <string name="home_key_steps_settings">التالي: لا يوفّر هذا التلفزيون طريقة مباشرة إلى إعدادات سهولة الاستخدام، لذا تُفتح إعدادات Android بدلاً من ذلك. هناك، انتقل إلى الإعدادات المفضّلة للجهاز &gt; سهولة الاستخدام، واختر “%1$s” وشغّله، ثم اضغط على زر الشاشة الرئيسية.</string>
     <string name="store_update">تحديث Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">النسخ الاحتياطي والاستعادة</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">إيقاف تصحيح الأخطاء عند الانتهاء</string>
     <string name="debug_off_when_done_short">عند مغادرة الإعدادات، يوقف Vibe Launcher تصحيح الأخطاء في التلفزيون مجددًا، ويشغّله من تلقاء نفسه في المرة التالية التي يحتاج إليه فيها. لا يمكن لأي كمبيوتر الوصول إلى التلفزيون عبر ADB أثناء إيقافه.</string>
     <string name="home_make">جعل Vibe Launcher الشاشة الرئيسية</string>
-    <string name="home_make_short">يوقف الشاشة الرئيسية الخاصة بالتلفزيون، فيفتح زر الشاشة الرئيسية Vibe Launcher دون الحاجة إلى خدمة زر الشاشة الرئيسية.</string>
+    <string name="home_make_short">يُطفئ الشاشة الرئيسية الخاصة بالتلفزيون، فيفتح زر الصفحة الرئيسية Vibe Launcher.</string>
     <string name="home_make_warning">تُوقَف الشاشة الرئيسية الخاصة بالتلفزيون ويصبح Vibe Launcher الشاشة الرئيسية. إذا لم ينجح ذلك، يُعاد كل شيء كما كان فورًا. ويتراجع خيار «العودة إلى الشاشة الرئيسية الخاصة بالتلفزيون» عن ذلك.</string>
     <string name="home_restore">العودة إلى الشاشة الرئيسية الخاصة بالتلفزيون</string>
     <string name="home_done">أصبح Vibe Launcher الشاشة الرئيسية الآن</string>

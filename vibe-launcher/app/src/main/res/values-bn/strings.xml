@@ -43,7 +43,6 @@
     <string name="vibe_settings">Vibe Launcher সেটিংস</string>
     <string name="android_settings">Android সেটিংস</string>
     <string name="make_home">Vibe Launcher-কে হোম বানান</string>
-    <string name="home_not_changeable">এই টিভি অ্যাপকে হোম অ্যাপ বেছে নিতে দেয় না। কম্পিউটার থেকে সেট করুন: Vibe Launcher-এর README দেখুন</string>
     <string name="tmdb_key">TMDB API কী</string>
     <string name="youtube_key">YouTube API কী</string>
     <string name="tiles_per_row">প্রতি সারিতে টাইল</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s খোলা যাচ্ছে না</string>
     <string name="smarttube_install">SmartTube ইনস্টল করুন</string>
     <string name="smarttube_open">সাইন ইন করতে SmartTube খুলুন</string>
-    <string name="smarttube_downloading">SmartTube ডাউনলোড হচ্ছে…</string>
-    <string name="smarttube_allow_installs">Vibe Launcher-কে অ্যাপ ইনস্টল করতে দিন, তারপর আবার SmartTube ইনস্টল করুন বেছে নিন</string>
-    <string name="smarttube_failed">SmartTube ইনস্টল হয়নি</string>
+    <string name="smarttube_get_downloader">SmartTube ইনস্টল হয় Downloader (AFTVnews-এর) দিয়ে: Play Store থেকে Downloader নিন, খুলুন এবং %s টাইপ করুন।</string>
     <string name="play">চালান</string>
     <string name="reload_backdrops">ব্যাকড্রপ আবার লোড করুন</string>
     <string name="tab_backdrops">ব্যাকড্রপ</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">হোমে চ্যানেল কী উপেক্ষা করুন</string>
     <string name="ignore_channel_keys_short">হোম দেখানোর সময় চ্যানেল আপ ও ডাউন কিছুই করবে না, টিভির নিজস্ব টিভি অ্যাপ খোলার বদলে।</string>
     <string name="restart">রিস্টার্ট…</string>
+    <string name="restart_confirm">টিভি এখন রিস্টার্ট হবে। ফিরে আসতে প্রায় এক মিনিট লাগে।</string>
     <string name="time_remaining">%1$s বাকি</string>
-    <string name="home_key_name">Vibe Launcher হোম বোতাম</string>
-    <string name="home_key_description">রিমোটের হোম বোতাম টিভির নিজের হোম স্ক্রিনের বদলে Vibe Launcher খোলে, আর চেপে ধরলে টিভির সেটিংস খোলে। এটি স্ক্রিনের কিছুই পড়ে না এবং বাকি সব বোতাম যেমন আছে তেমন পাঠিয়ে দেয়।</string>
     <string name="permissions_title">দুটি অনুমতি</string>
     <string name="permissions_why">এরপর Vibe Launcher দুটি অনুমতি চাইবে।\n\nটিভি তালিকা: আপনার অ্যাপগুলো হোম স্ক্রিনের জন্য যে কার্ড প্রকাশ করে, সেগুলোর ছবি দেখাতে।\n\nলোকেশন: Android শুধু এই অনুমতি থাকা অ্যাপকেই Wi-Fi নেটওয়ার্কের নাম দেখায়। Vibe Launcher এটি শুধু সেই নামের জন্য ব্যবহার করে, টিভি কোথায় আছে তা কখনো খোঁজে না।\n\nকোনোটিই টিভির বাইরে যায় না।</string>
     <string name="continue_button">চালিয়ে যান</string>
-    <string name="home_key_disclosure_title">হোম বোতাম ব্যবহার করুন</string>
-    <string name="home_key_disclosure">এই টিভি কোনো অ্যাপকে হোম অ্যাপ হতে দেয় না, তাই হোম বোতামে সাড়া দিতে Vibe Launcher-এর একটি অ্যাক্সেসিবিলিটি পরিষেবা দরকার।\n\nএটি হোম বোতাম নিয়ে নেয়: চাপলে Vibe Launcher খোলে, চেপে ধরলে সেটিংস খোলে, আর বাকি সব বোতাম যেমন আছে তেমনই চলে যায়। টিভির নিজের হোম স্ক্রিন এলে সেটাও দেখে এবং ঢেকে দেয়। স্ক্রিনের কিছুই পড়ে না, কিছুই রাখে না, কোথাও কিছু পাঠায় না।\n\nযেকোনো সময় সেটিংস &gt; অ্যাক্সেসিবিলিটি থেকে বন্ধ করুন।</string>
-    <string name="home_key_disclosure_more">আপনি “%1$s” চালু করলে, স্ক্রিন চালু হওয়ার সময় এটি Vibe Launcher-ও খোলে, যদি না আপনি আগে কোনো বোতাম চাপেন (এটি শুধু খেয়াল করে যে একটি বোতাম চাপা হয়েছে, কোনটি নয়)। আর সেটিংসের “%2$s” টিভির পাওয়ার মেনু খুলতে এটি ব্যবহার করে।</string>
-    <string name="home_button">হোম বোতাম</string>
-    <string name="home_button_short">যে টিভি নিজের হোম স্ক্রিন রেখে দেয় তার জন্য: রিমোটের হোম বোতাম Vibe Launcher খোলে, আর চেপে ধরে রাখলে টিভির সেটিংস খোলে।</string>
-    <string name="home_key_agree">সম্মত</string>
-    <string name="home_key_steps">এরপর: যে তালিকা খুলবে তাতে “%1$s” বেছে নিন, চালু করুন, তারপর হোম চাপুন।</string>
-    <string name="home_key_steps_settings">এরপর: এই টিভিতে অ্যাক্সেসিবিলিটি সেটিংসে সরাসরি যাওয়ার উপায় নেই, তাই এর বদলে Android-এর সেটিংস খুলবে। সেখানে ডিভাইসের পছন্দগুলি &gt; অ্যাক্সেসিবিলিটি-তে যান, “%1$s” বেছে নিন, চালু করুন, তারপর হোম চাপুন।</string>
     <string name="store_update">Vibe Launcher আপডেট করুন</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ব্যাকআপ ও রিস্টোর</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">কাজ শেষে ডিবাগিং বন্ধ করুন</string>
     <string name="debug_off_when_done_short">আপনি সেটিংস থেকে বেরোলে Vibe Launcher টিভির ডিবাগিং আবার বন্ধ করে দেয়, আর পরের বার দরকার হলে নিজেই আবার চালু করে। বন্ধ থাকার সময় কোনো কম্পিউটার ADB দিয়ে টিভিতে পৌঁছাতে পারে না।</string>
     <string name="home_make">Vibe Launcher-কে হোম করুন</string>
-    <string name="home_make_short">টিভির নিজের হোম স্ক্রিন বন্ধ করে, যাতে হোম বোতাম Vibe Launcher খোলে, হোম বোতাম পরিষেবার দরকার ছাড়াই।</string>
+    <string name="home_make_short">টিভির নিজস্ব হোম স্ক্রিন বন্ধ করে, যাতে হোম বোতাম Vibe Launcher খোলে।</string>
     <string name="home_make_warning">টিভির নিজের হোম স্ক্রিন বন্ধ করা হয় এবং Vibe Launcher হোম হয়ে যায়। তা কাজ না করলে সবকিছু সঙ্গে সঙ্গে আগের মতো ফিরিয়ে দেওয়া হয়। “টিভির নিজের হোম স্ক্রিনে ফিরে যান” এটি আগের মতো করে দেয়।</string>
     <string name="home_restore">টিভির নিজের হোম স্ক্রিনে ফিরে যান</string>
     <string name="home_done">Vibe Launcher এখন হোম</string>

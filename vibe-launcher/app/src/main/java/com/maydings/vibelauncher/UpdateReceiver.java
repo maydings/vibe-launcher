@@ -7,14 +7,11 @@ import android.content.pm.PackageInstaller;
 import android.widget.Toast;
 
 /**
- * Hears back from Android's installer about an update (or SmartTube) Updater handed it: shows its confirmation screen,
+ * Hears back from Android's installer about an update Updater handed it: shows its confirmation screen,
  * or says why it didn't install. Installing ends the launcher, and some TVs then leave the screen blank
  * until Home is pressed, so once the new version is in, this brings Home back.
  */
 public class UpdateReceiver extends BroadcastReceiver {
-
-    /** True when the install was another app (SmartTube), not this one's update. */
-    static final String EXTRA_OTHER_APP = "otherApp";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -31,12 +28,10 @@ public class UpdateReceiver extends BroadcastReceiver {
             Intent confirm = intent.getParcelableExtra(Intent.EXTRA_INTENT);
             if (confirm != null) context.startActivity(confirm.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         } else if (status != PackageInstaller.STATUS_SUCCESS) {
-            boolean other = intent.getBooleanExtra(EXTRA_OTHER_APP, false);
-            if (!other) Updater.installStopped(context);
+            Updater.installStopped(context);
             // Aborted is the user pressing Cancel: nothing to say.
             if (status != PackageInstaller.STATUS_FAILURE_ABORTED) {
-                int message = other ? R.string.smarttube_failed : R.string.update_failed;
-                Toast.makeText(context, Lang.wrap(context).getString(message), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, Lang.wrap(context).getString(R.string.update_failed), Toast.LENGTH_LONG).show();
             }
         }
     }

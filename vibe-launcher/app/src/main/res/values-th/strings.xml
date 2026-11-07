@@ -43,7 +43,6 @@
     <string name="vibe_settings">การตั้งค่า Vibe Launcher</string>
     <string name="android_settings">การตั้งค่า Android</string>
     <string name="make_home">ใช้ Vibe Launcher เป็นหน้าหลัก</string>
-    <string name="home_not_changeable">ทีวีเครื่องนี้ไม่ให้แอปเลือกแอปหน้าหลัก ตั้งค่าจากคอมพิวเตอร์: ดู README ของ Vibe Launcher</string>
     <string name="tmdb_key">คีย์ API ของ TMDB</string>
     <string name="youtube_key">คีย์ API ของ YouTube</string>
     <string name="tiles_per_row">ไทล์ต่อแถว</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">เปิด %1$s ไม่ได้</string>
     <string name="smarttube_install">ติดตั้ง SmartTube</string>
     <string name="smarttube_open">เปิด SmartTube เพื่อลงชื่อเข้าใช้</string>
-    <string name="smarttube_downloading">กำลังดาวน์โหลด SmartTube…</string>
-    <string name="smarttube_allow_installs">อนุญาตให้ Vibe Launcher ติดตั้งแอป แล้วเลือกติดตั้ง SmartTube อีกครั้ง</string>
-    <string name="smarttube_failed">ติดตั้ง SmartTube ไม่สำเร็จ</string>
+    <string name="smarttube_get_downloader">ติดตั้ง SmartTube ผ่าน Downloader (ของ AFTVnews): ดาวน์โหลด Downloader จาก Play Store เปิดแล้วพิมพ์ %s</string>
     <string name="play">เล่น</string>
     <string name="reload_backdrops">โหลดภาพพื้นหลังใหม่</string>
     <string name="tab_backdrops">ภาพพื้นหลัง</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">ไม่สนใจปุ่มช่องในหน้าหลัก</string>
     <string name="ignore_channel_keys_short">ปุ่มช่องขึ้นและลงจะไม่ทำอะไรขณะแสดงหน้าหลัก แทนที่จะเปิดแอปทีวีของตัวทีวีเอง</string>
     <string name="restart">รีสตาร์ท…</string>
+    <string name="restart_confirm">ทีวีจะรีสตาร์ทตอนนี้ ใช้เวลาราวหนึ่งนาทีกว่าจะกลับมา</string>
     <string name="time_remaining">เหลือ %1$s</string>
-    <string name="home_key_name">ปุ่มหน้าแรกของ Vibe Launcher</string>
-    <string name="home_key_description">ทำให้ปุ่มหน้าแรกบนรีโมตเปิด Vibe Launcher แทนหน้าจอหลักของทีวี และกดค้างไว้เพื่อเปิดการตั้งค่าทีวี โดยไม่อ่านสิ่งใดบนหน้าจอ และส่งปุ่มอื่นทั้งหมดต่อไปตามปกติ</string>
     <string name="permissions_title">สิทธิ์สองรายการ</string>
     <string name="permissions_why">ถัดไป Vibe Launcher จะขอสิทธิ์สองรายการ\n\nผังรายการทีวี: เพื่อแสดงภาพจากการ์ดที่แอปของคุณเผยแพร่สำหรับหน้าจอหลัก\n\nตำแหน่ง: Android จะแสดงชื่อเครือข่าย Wi-Fi ให้เฉพาะแอปที่มีสิทธิ์นี้ Vibe Launcher ใช้สิทธิ์นี้เพื่อชื่อนั้นเท่านั้น และไม่เคยค้นหาว่าทีวีอยู่ที่ไหน\n\nไม่มีข้อมูลใดออกจากทีวี</string>
     <string name="continue_button">ดำเนินการต่อ</string>
-    <string name="home_key_disclosure_title">ใช้ปุ่มหน้าแรก</string>
-    <string name="home_key_disclosure">ทีวีเครื่องนี้ไม่อนุญาตให้แอปเป็นแอปหน้าแรก Vibe Launcher จึงต้องใช้บริการการช่วยเหลือพิเศษเพื่อตอบสนองปุ่มหน้าแรก\n\nบริการนี้รับหน้าที่ปุ่มหน้าแรก: กดเพื่อเปิด Vibe Launcher กดค้างเพื่อเปิดการตั้งค่า และปุ่มอื่นทั้งหมดผ่านไปตามเดิม นอกจากนี้ยังรู้เมื่อหน้าจอหลักของทีวีเองขึ้นมาและจะปิดทับไว้ ไม่อ่านสิ่งใดบนหน้าจอ ไม่เก็บสิ่งใด และไม่ส่งสิ่งใดไปที่ใด\n\nปิดได้ทุกเมื่อในการตั้งค่า &gt; การช่วยเหลือพิเศษ</string>
-    <string name="home_key_disclosure_more">หากคุณเปิด “%1$s” บริการนี้จะเปิด Vibe Launcher เมื่อหน้าจอเปิดด้วย เว้นแต่คุณจะกดปุ่มก่อน (บันทึกเพียงว่ามีการกดปุ่ม ไม่ใช่ปุ่มใด) และ “%2$s” ในการตั้งค่าใช้บริการนี้เพื่อเปิดเมนูพลังงานของทีวี</string>
-    <string name="home_button">ปุ่มหน้าแรก</string>
-    <string name="home_button_short">สำหรับทีวีที่ยังใช้หน้าแรกของตัวเอง: ปุ่มหน้าแรกบนรีโมตจะเปิด Vibe Launcher และกดค้างไว้จะเปิดการตั้งค่าของทีวี</string>
-    <string name="home_key_agree">ยอมรับ</string>
-    <string name="home_key_steps">ขั้นต่อไป: ในรายการที่เปิดขึ้น เลือก “%1$s” แล้วเปิดใช้ จากนั้นกดปุ่มหน้าแรก</string>
-    <string name="home_key_steps_settings">ขั้นต่อไป: ทีวีนี้ไม่มีทางเข้าการตั้งค่าการช่วยเหลือพิเศษโดยตรง จึงเปิดการตั้งค่าของ Android แทน ในนั้นให้ไปที่ค่ากำหนดอุปกรณ์ &gt; การช่วยเหลือพิเศษ เลือก “%1$s” แล้วเปิดใช้ จากนั้นกดปุ่มหน้าแรก</string>
     <string name="store_update">อัปเดต Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">สำรองและกู้คืน</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">ปิดการแก้ไขข้อบกพร่องเมื่อเสร็จ</string>
     <string name="debug_off_when_done_short">เมื่อคุณออกจากการตั้งค่า Vibe Launcher จะปิดการแก้ไขข้อบกพร่องของทีวีอีกครั้ง และเปิดขึ้นเองในครั้งถัดไปที่ต้องใช้ ขณะที่ปิดอยู่ คอมพิวเตอร์จะเข้าถึงทีวีผ่าน ADB ไม่ได้</string>
     <string name="home_make">ตั้ง Vibe Launcher เป็นหน้าแรก</string>
-    <string name="home_make_short">ปิดหน้าแรกของทีวีเอง เพื่อให้ปุ่มหน้าแรกเปิด Vibe Launcher โดยไม่ต้องใช้บริการปุ่มหน้าแรก</string>
+    <string name="home_make_short">ปิดหน้าจอหลักของทีวีเอง เพื่อให้ปุ่มหน้าหลักเปิด Vibe Launcher</string>
     <string name="home_make_warning">หน้าแรกของทีวีเองจะถูกปิด และ Vibe Launcher จะกลายเป็นหน้าแรก หากไม่สำเร็จ ทุกอย่างจะถูกคืนค่าทันที “กลับไปใช้หน้าแรกของทีวีเอง” จะยกเลิกการเปลี่ยนแปลงนี้</string>
     <string name="home_restore">กลับไปใช้หน้าแรกของทีวีเอง</string>
     <string name="home_done">Vibe Launcher เป็นหน้าแรกแล้ว</string>

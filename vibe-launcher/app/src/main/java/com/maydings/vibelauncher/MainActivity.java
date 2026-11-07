@@ -673,7 +673,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     @Override
     protected void onResume() {
         super.onResume();
-        removePickerBackdrop();   // back from the default-Home picker
         inSettings = false;
         applyHighlight();   // chosen in Settings meanwhile
         refreshWeather();   // its settings may have changed meanwhile too
@@ -2304,89 +2303,22 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     /**
-     * Opened as an app rather than as Home (installed from a file, no computer): offer once to become the
-     * default Home where the TV has a way to (see DefaultHome). The gear menu offers it again later.
+     * Opened as an app rather than as Home: once, on its first start, Settings > Advanced > Default launcher,
+     * which makes it Home through the TV's own ADB and walks through turning that on. Not on the players where
+     * another Home stops casting (TvControl.homeUnsupported). The gear menu offers it again later.
      */
     private void askHomeOnce() {
-        if (getPreferences(MODE_PRIVATE).getBoolean("askedHome", false) || DefaultHome.isHome(this)) return;
+        if (getPreferences(MODE_PRIVATE).getBoolean("askedHome", false) || DefaultHome.isHome(this)
+                || TvControl.homeUnsupported()) return;
         getPreferences(MODE_PRIVATE).edit().putBoolean("askedHome", true).apply();
-        // On its first start: set up Home now, while the user is here to read it.
-        if (!DefaultHome.homeButtonOn(this)) offerHome();
+        offerHome();
     }
 
-    /**
-     * The system's own screen for choosing the default Home (DefaultHome.request), over black: Android 14's
-     * picker (permissioncontroller) is see-through, and its text sat on the tiles (upstream cleanyourtv,
-     * Haier MatrixTV DE). The black goes when Home is back in front (onResume).
-     */
-    private void makeHome(Intent request) {
-        if (pickerBackdrop == null) {
-            pickerBackdrop = new View(this);
-            pickerBackdrop.setBackgroundColor(Color.BLACK);
-            pickerBackdrop.setElevation(100 * density);   // over the glass and the bar, which have elevation
-            root.addView(pickerBackdrop, new FrameLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        }
-        try {
-            // The Android 10+ dialog answers with a result; Android 9's chooser is plain Home.
-            if (Build.VERSION.SDK_INT >= 29) startActivityForResult(request, 2);
-            else startActivity(request);
-        } catch (ActivityNotFoundException | SecurityException e) {
-            removePickerBackdrop();
-            // There's another way: the Home button service.
-            HomeButtonLink.offer(this);
-        }
-    }
-
-    /** Black behind the default-Home picker while it's up (makeHome). */
-    private View pickerBackdrop;
-
-    private void removePickerBackdrop() {
-        if (pickerBackdrop == null) return;
-        root.removeView(pickerBackdrop);
-        pickerBackdrop = null;
-    }
-
-    /**
-     * Android's own dialog for the default Home first, which needs nothing more, where the TV has it. Without
-     * it, or turned down (onActivityResult), the Home button service.
-     */
+    /** Settings > Advanced > Default launcher, already open. */
     private void offerHome() {
-        // The adb build with ADB allowed already: Settings > Apps > Default launcher, which switches Home through
-        // it (the TV's own launcher off, Vibe Launcher set as Home), on any TV where that's offered.
-        if (!BuildConfig.STORE && !TvControl.homeUnsupported()) {
-            Context app = getApplicationContext();
-            new Thread(() -> {
-                Adb.use(app);
-                boolean in = Adb.check(false).status == Adb.OK;
-                runOnUiThread(() -> {
-                    if (isFinishing()) return;
-                    if (in) {
-                        startActivity(new Intent(this, SettingsActivity.class)
-                                .putExtra(SettingsActivity.ON_DEFAULT_LAUNCHER, true));
-                    } else {
-                        offerHomeWithoutAdb();
-                    }
-                });
-            }, "OfferHome").start();
-            return;
-        }
-        offerHomeWithoutAdb();
-    }
-
-    /** Android's own Home choice where it can work; where the stock launcher outranks any choice, the service. */
-    private void offerHomeWithoutAdb() {
-        Intent request = DefaultHome.request(this);
-        if (DefaultHome.choiceWins(this) && request != null) makeHome(request);
-        else HomeButtonLink.offer(this);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 2 && !DefaultHome.isHome(this) && !DefaultHome.homeButtonOn(this)) {
-            HomeButtonLink.offer(this);
-        }
+        inSettings = true;
+        startActivity(new Intent(this, SettingsActivity.class).putExtra(SettingsActivity.ON_DEFAULT_LAUNCHER, true));
+        overridePendingTransition(R.anim.settings_in, R.anim.settings_hold);
     }
 
     /** A note with OK (named okLabel) and Cancel, in the update dialog's glass. Back counts as Cancel. */
@@ -2690,15 +2622,13 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 this::openSettings);
         addInputRow(rows, popup, R.drawable.ic_settings, getString(R.string.android_settings), -1,
                 () -> open(SystemSettings.intent(this)));
-        if (!DefaultHome.isHome(this) && !DefaultHome.homeButtonOn(this)) {
-            // The stock launcher stays on: the TV's default-Home dialog where it has one, else HomeKeyService.
+        if (!DefaultHome.isHome(this)) {
+            // The TV's own home screen still answers Home: Settings > Advanced > Default launcher switches it.
             addInputRow(rows, popup, R.drawable.ic_home, getString(R.string.make_home), -1, this::offerHome);
         }
-        // Last, under the meters' menu: the background apps closed through the TV's ADB (the adb build, once
-        // Settings > Apps has been allowed), and how much memory that gave back.
-        if (!BuildConfig.STORE) {
-            addInputRow(rows, popup, R.drawable.ic_memory, getString(R.string.free_memory), -1, this::freeMemory);
-        }
+        // Last, under the meters' menu: the background apps closed through the TV's ADB (once Settings >
+        // Advanced has been allowed), and how much memory that gave back.
+        addInputRow(rows, popup, R.drawable.ic_memory, getString(R.string.free_memory), -1, this::freeMemory);
         // Live while the menu is open.
         Runnable tick = new Runnable() {
             @Override

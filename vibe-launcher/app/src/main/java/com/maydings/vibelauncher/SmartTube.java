@@ -1,39 +1,26 @@
 package com.maydings.vibelauncher;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.Handler;
-import android.os.Looper;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.net.Uri;
 
 /**
  * SmartTube, the YouTube app whose home screen cards come from the signed-in user's own feed (the best
- * YouTube backdrop, with no key). Installs its latest stable release from its GitHub, checked against the
- * SHA-256 GitHub publishes for it, or opens it to sign in.
+ * YouTube backdrop, with no key). Opened to sign in when it's on the TV. Otherwise Downloader (AFTVnews)
+ * installs it, as people put Vibe Launcher itself on the TV: opened on SmartTube's Downloader code, which
+ * leads to SmartTube's own latest stable release on its GitHub.
  */
 final class SmartTube {
 
-    /** The stable build first: the one this installs. The rest are its beta and older names. */
+    /** The stable build first: the one Downloader's code installs. The rest are its beta and older names. */
     static final String[] PACKAGES = {"org.smarttube.stable", "org.smarttube.beta",
             "com.liskovsoft.smarttubetv", "com.liskovsoft.smarttubetv.beta", "com.teamsmart.videomanager.tv"};
 
-    private static final String LATEST = "https://api.github.com/repos/yuliskov/SmartTube/releases/latest";
-    private static final ExecutorService worker = Executors.newSingleThreadExecutor();
-    private static final Handler main = new Handler(Looper.getMainLooper());
-    /** A download on its way: pressing Install again doesn't start a second one. */
-    private static final AtomicBoolean busy = new AtomicBoolean();
+    /** SmartTube stable's Downloader code (aftv.news/28544, to smarttube_stable.apk on its GitHub). */
+    static final String CODE = "28544";
+    private static final String DOWNLOADER = "com.esaba.downloader";
 
     private SmartTube() {
     }
@@ -50,48 +37,18 @@ final class SmartTube {
     }
 
     /**
-     * Finds the latest stable APK for this TV's processor and hands it to Android's installer (Updater).
-     * False when a download is already on its way.
+     * Downloader opened on SmartTube's code, which fetches it and asks to install it. False when Downloader
+     * isn't on the TV (or won't open): the caller says to get it and type the code.
      */
-    static boolean install(Context context, Updater.InstallListener listener) {
-        if (!busy.compareAndSet(false, true)) return false;
-        Context app = context.getApplicationContext();
-        worker.execute(() -> {
-            int problem;
-            try {
-                String[] apk = latestApk();
-                problem = apk == null ? R.string.smarttube_failed
-                        : Updater.installNow(app, apk[0], apk[1], PACKAGES[0], R.string.smarttube_allow_installs);
-            } catch (IOException | JSONException | RuntimeException e) {
-                problem = R.string.smarttube_failed;   // offline, or GitHub busy
-            } finally {
-                busy.set(false);
-            }
-            int p = problem;
-            if (p != 0) main.post(() -> listener.onProblem(p));
-        });
-        return true;
-    }
-
-    /** The download address and SHA-256 of the build for this TV's processor (else the universal one). */
-    private static String[] latestApk() throws IOException, JSONException {
-        Map<String, String> headers = new HashMap<>();
-        headers.put("Accept", "application/vnd.github+json");
-        headers.put("User-Agent", "VibeLauncher");   // GitHub's API requires one
-        JSONArray assets = new JSONObject(Http.getText(LATEST, headers)).getJSONArray("assets");
-        // Names like SmartTube_stable_32.68_arm64-v8a.apk; the TV's preferred processor type first.
-        String[] wanted = new String[Build.SUPPORTED_ABIS.length + 1];
-        for (int i = 0; i < Build.SUPPORTED_ABIS.length; i++) wanted[i] = "_" + Build.SUPPORTED_ABIS[i] + ".apk";
-        wanted[wanted.length - 1] = "_universal.apk";
-        for (String suffix : wanted) {
-            for (int i = 0; i < assets.length(); i++) {
-                JSONObject a = assets.getJSONObject(i);
-                String name = a.optString("name"), digest = a.optString("digest");
-                if (name.startsWith("SmartTube_stable_") && name.endsWith(suffix) && digest.startsWith("sha256:")) {
-                    return new String[]{a.getString("browser_download_url"), digest.substring(7)};
-                }
-            }
+    static boolean openDownloader(Context context) {
+        Intent open = new Intent(Intent.ACTION_VIEW, Uri.parse("https://aftv.news/" + CODE))
+                .setPackage(DOWNLOADER).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (open.resolveActivity(context.getPackageManager()) == null) return false;
+        try {
+            context.startActivity(open);
+            return true;
+        } catch (ActivityNotFoundException | SecurityException e) {
+            return false;
         }
-        return null;
     }
 }

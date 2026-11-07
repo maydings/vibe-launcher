@@ -1,7 +1,7 @@
 # Vibe Launcher
 
 A free and open-source (MIT) home screen for Android TV, with no ads, ever. Plain
-Java, about 1.2 MB, no background services (but the optional Home button service); built for TVs with 1 to 2 GB of RAM. Android 8.0 (API 26) and newer, targets API 34 so Play Protect accepts it
+Java, about 1.2 MB, no background services; built for TVs with 1 to 2 GB of RAM. Android 8.0 (API 26) and newer, targets API 34 so Play Protect accepts it
 on Android 11+ devices such as the NVIDIA Shield.
 
 ![Vibe Launcher home with a backdrop behind the dock](docs/home.jpg)
@@ -39,22 +39,21 @@ Or by hand: `./gradlew assembleAdbDebug`, then `adb install -r -g app/build/outp
 That's the only script here. Making it Home, debloating and the rest are done on the TV, in Vibe
 Launcher's own Settings.
 
-**Two builds** come from the same code (`app/build.gradle`):
+**Two builds** come from the same code (`app/build.gradle`). They work the same way, the TV's own ADB included
+(Settings → Advanced: clean-up lists, Default launcher, Restart, animation speed); only how they update differs:
 
 | | `adb` (the GitHub releases, `build-and-install.sh`) | `store` (Google Play) |
 |---|---|---|
 | Installed with | the release APK with Downloader or a file manager (`build-and-install.sh` for development) | the store |
-| Stock launcher | turned off from the TV (Settings → Advanced → Default launcher), or left on | stays on |
-| Home button | with the stock launcher off, comes here by itself; left on, as the store build | the user turns on *Vibe Launcher Home button* in Settings → Accessibility; the service keeps Home from the stock launcher: a press opens Vibe Launcher, a hold the TV's Settings; a stock home that comes up anyway (Back out of an app) gets covered |
-| Accessibility service | `HomeKeyService` (both): hears only the stock launchers' screens opening, reads nothing on screen, keeps Home and passes every other key on; stops looking at keys while a game controller is connected (Home then reaches the stock launcher, which gets covered). Off until the user turns it on | same |
-| First start, and gear menu → *Make Home* (both, until Home comes here) | the TV's default-Home dialog only where it can work (no stock launcher outranks it); otherwise, or if that doesn't take, a note on what the Home button service sees and the steps, then Accessibility settings | same |
-| Remote's app buttons (Google TV) | the ones Google TV's launcher handled (YouTube, Free TV) stop working with it off | keep working |
 | Updates | checks the GitHub releases (daily, on waking, in the gear menu) and installs them | Play installs them; while Play has a newer version, the gear shows the green dot and its row (and Settings) opens Play's update screen |
-| Settings → General | version and *Check for updates*; *Home button* (On explains it, then Accessibility; Off turns it off), unless Vibe Launcher is already Home; *Restart…* while the service is on (it opens the TV's power menu) | version only; *Home button* and *Restart…* likewise |
-| Home at power-on (Settings → General, off by default) | the Home button service while it's on, and only if no key was pressed in that moment; otherwise Home's own process, a moment after the screen turns on | same |
-| SmartTube | Settings can install it | Settings only opens it, and only shows the button when it's on the TV |
-| Install permissions | `REQUEST_INSTALL_PACKAGES`, `KILL_BACKGROUND_PROCESSES` | none |
+| Install permissions | `REQUEST_INSTALL_PACKAGES`, `KILL_BACKGROUND_PROCESSES` (for its own updates) | none |
+| Listing | phones and TVs | TVs only (`android.software.leanback` required) |
 | Code of its own | `app/src/adb` (manifest, `StoreUpdates` that does nothing) | `app/src/store` (manifest: TV only; `StoreUpdates` asking Play) |
+
+Becoming Home goes through the TV's ADB in both: the first start, and the gear menu's *Make Vibe Launcher your
+Home* until it is, open Settings → Advanced → Default launcher, which walks through turning ADB on. SmartTube,
+when it's not on the TV, is installed by Downloader: the row opens Downloader on its code (28544), or says to
+get Downloader first.
 
 To try the store build: `FLAVOR=store ./build-and-install.sh 192.168.1.50`. For
 a store upload, `./gradlew bundleStoreRelease` makes `app/build/outputs/bundle/storeRelease/app-store-release.aab`.
@@ -155,7 +154,7 @@ their keys are set; film trailers from Cinemeta (`v3-cinemeta.strem.io`) without
 Netflix, Disney+, Prime Video, Apple TV+ or Max from the Streaming Catalogs add-on for Stremio
 (`…baby-beamup.club`) when that app publishes no cards; an
 HDHomeRun tuner on your network and SiliconDust's guide (`api.hdhomerun.com`, `img.hdhomerun.com`);
-and GitHub, for this project's updates and, when you ask, SmartTube. No analytics, no accounts,
+and GitHub, for this project's updates. No analytics, no accounts,
 nothing else.
 The full list, with what each is sent, is in the [privacy policy](docs/PRIVACY.md).
 
@@ -171,15 +170,14 @@ The full list, with what each is sent, is in the [privacy policy](docs/PRIVACY.m
 | `GlassView`, `FrostView` | The glass focus highlight and the frosted top bar (software blur; Android 9 has no live blur) |
 | `Backdrops` | Builds each dock app's pool of backdrops and serves one per visit. One for the whole app, kept when Home is rebuilt |
 | `ChannelSetup` | Asks apps to publish their home screen cards, as the stock launcher did |
-| `DefaultHome` | Offers to become the default Home through the TV's own dialog or chooser, where it has one |
+| `DefaultHome` | Whether Vibe Launcher is the TV's Home now |
 | `TitleArt`, `Tmdb`, `Stremio` | Clean backdrops and logos for films and shows by title: TMDB with a key, Stremio without |
 | `YouTubePopular`, `Plex`, `HdHomeRun` | The YouTube (popular videos or film trailers), Plex and HDHomeRun backdrop sources |
-| `SmartTube` | Installs SmartTube from its GitHub releases, or opens it to sign in |
+| `SmartTube` | Opens SmartTube to sign in, or Downloader on SmartTube's code to install it |
 | `Http` | Plain GET requests for all of the above, and the HDHomeRun's plain HTTP on the home network |
 | `VibeSettings`, `PhoneLink` | Stored keys and the phone page with its QR code |
 | `CpuInfo` | CPU use where the device allows it |
-| `PowerOnHome` | Home at power-on: Home shortly after the screen turns on (from the Home button service while it's bound) |
-| `HomeButtonLink` | What the store build's Home button service lends the app while bound: the TV's power menu for Restart… |
+| `PowerOnHome` | Home at power-on: Home shortly after the screen turns on |
 | `CrashGuard` | Falls back to the stock launcher's App info after repeated crashes |
 | `Wallpapers`, `WallpaperVideo`, `WallpaperBrowserActivity` | Custom wallpapers: the stored photos and videos, video playback on Home, and the Wallhaven/Pexels/Pixabay/NASA/Commons browser |
 | `Weather` | The weather line under the date (Open-Meteo, located by IP or a searched city) |

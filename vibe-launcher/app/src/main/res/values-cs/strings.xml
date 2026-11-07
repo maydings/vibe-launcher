@@ -43,7 +43,6 @@
     <string name="vibe_settings">Nastavení Vibe Launcher</string>
     <string name="android_settings">Nastavení Androidu</string>
     <string name="make_home">Nastavit Vibe Launcher jako domovskou obrazovku</string>
-    <string name="home_not_changeable">Tato televize nedovolí aplikacím vybrat domovskou aplikaci. Nastavte to z počítače: viz README Vibe Launcher</string>
     <string name="tmdb_key">Klíč API TMDB</string>
     <string name="youtube_key">Klíč API YouTube</string>
     <string name="tiles_per_row">Dlaždic v řadě</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s nelze otevřít</string>
     <string name="smarttube_install">Nainstalovat SmartTube</string>
     <string name="smarttube_open">Otevřít SmartTube a přihlásit se</string>
-    <string name="smarttube_downloading">Stahování SmartTube…</string>
-    <string name="smarttube_allow_installs">Povolte aplikaci Vibe Launcher instalovat aplikace a pak znovu zvolte Nainstalovat SmartTube</string>
-    <string name="smarttube_failed">SmartTube se nenainstaloval</string>
+    <string name="smarttube_get_downloader">SmartTube se instaluje přes Downloader (od AFTVnews): stáhněte Downloader z Obchodu Play, otevřete ho a zadejte %s.</string>
     <string name="play">Přehrát</string>
     <string name="reload_backdrops">Znovu načíst pozadí</string>
     <string name="tab_backdrops">Pozadí</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Ignorovat tlačítka kanálů na ploše</string>
     <string name="ignore_channel_keys_short">Tlačítka kanál nahoru a dolů na ploše nic nedělají, místo aby otevřela vlastní televizní aplikaci televize.</string>
     <string name="restart">Restartovat…</string>
+    <string name="restart_confirm">Televizor se teď restartuje. Zpět bude asi za minutu.</string>
     <string name="time_remaining">Zbývá %1$s</string>
-    <string name="home_key_name">Tlačítko Domů pro Vibe Launcher</string>
-    <string name="home_key_description">Tlačítko Domů na ovladači otevře Vibe Launcher místo vlastní domovské obrazovky televize a jeho podržení otevře nastavení televize. Nic na obrazovce nečte a všechna ostatní tlačítka propouští dál.</string>
     <string name="permissions_title">Dvě oprávnění</string>
     <string name="permissions_why">Vibe Launcher teď požádá o dvě oprávnění.\n\nTV program: aby mohl zobrazovat obrázky z karet, které vaše aplikace zveřejňují pro domovskou obrazovku.\n\nPoloha: Android ukazuje název sítě Wi-Fi jen aplikacím s tímto oprávněním. Vibe Launcher ho používá jen pro tento název a nikdy nezjišťuje, kde televize je.\n\nNic z toho televizi neopustí.</string>
     <string name="continue_button">Pokračovat</string>
-    <string name="home_key_disclosure_title">Používat tlačítko Domů</string>
-    <string name="home_key_disclosure">Tato televize nedovoluje aplikacím stát se domovskou aplikací, a tak Vibe Launcher potřebuje službu usnadnění, aby mohl reagovat na tlačítko Domů.\n\nPřevezme tlačítko Domů: stisk otevře Vibe Launcher, podržení otevře nastavení a všechna ostatní tlačítka projdou beze změny. Vidí také, kdy se objeví vlastní domovská obrazovka televize, a zakryje ji. Nic na obrazovce nečte, nic neukládá a nikam nic neposílá.\n\nKdykoli ji vypnete v Nastavení &gt; Usnadnění.</string>
-    <string name="home_key_disclosure_more">Když zapnete „%1$s“, otevře také Vibe Launcher při zapnutí obrazovky, pokud nejdřív nestisknete tlačítko (zaznamená jen, že bylo stisknuto tlačítko, ne které). A „%2$s“ v Nastavení ji používá k otevření nabídky napájení televizoru.</string>
-    <string name="home_button">Tlačítko Domů</string>
-    <string name="home_button_short">Pro televizory, které si nechávají vlastní domovskou obrazovku: tlačítko Domů na ovladači otevře Vibe Launcher a jeho podržení otevře nastavení televizoru.</string>
-    <string name="home_key_agree">Souhlasím</string>
-    <string name="home_key_steps">Dál: v seznamu, který se otevře, vyberte „%1$s“, zapněte ho a stiskněte Domů.</string>
-    <string name="home_key_steps_settings">Dál: tento televizor nemá přímou cestu k nastavení přístupnosti, proto se místo toho otevře Nastavení Androidu. Tam přejděte do Předvolby zařízení &gt; Přístupnost, vyberte „%1$s“, zapněte ho a stiskněte Domů.</string>
     <string name="store_update">Aktualizovat Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Záloha a obnovení</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Po dokončení vypnout ladění</string>
     <string name="debug_off_when_done_short">Když opustíte Nastavení, Vibe Launcher ladění televizoru znovu vypne a příště, až ho bude potřebovat, ho sám zase zapne. Dokud je vypnuté, počítač se k televizoru přes ADB nedostane.</string>
     <string name="home_make">Nastavit Vibe Launcher jako domovskou obrazovku</string>
-    <string name="home_make_short">Vypne vlastní domovskou obrazovku televizoru, takže tlačítko Domů otevře Vibe Launcher, bez potřeby služby Tlačítko Domů.</string>
+    <string name="home_make_short">Vypne vlastní domovskou obrazovku televizoru, takže tlačítko Domů otevře Vibe Launcher.</string>
     <string name="home_make_warning">Vlastní domovská obrazovka televizoru se vypne a Vibe Launcher se stane domovskou obrazovkou. Pokud se to neujme, vše se hned vrátí zpět. Volba „Zpět na vlastní domovskou obrazovku televizoru“ to vrátí.</string>
     <string name="home_restore">Zpět na vlastní domovskou obrazovku televizoru</string>
     <string name="home_done">Vibe Launcher je teď domovská obrazovka</string>

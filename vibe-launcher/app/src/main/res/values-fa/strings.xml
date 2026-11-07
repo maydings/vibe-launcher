@@ -43,7 +43,6 @@
     <string name="vibe_settings">تنظیمات Vibe Launcher</string>
     <string name="android_settings">تنظیمات Android</string>
     <string name="make_home">Vibe Launcher را صفحه اصلی کنید</string>
-    <string name="home_not_changeable">این تلویزیون اجازه نمی‌دهد برنامه‌ها برنامه صفحه اصلی را انتخاب کنند. از رایانه تنظیمش کنید: README برنامه Vibe Launcher را ببینید</string>
     <string name="tmdb_key">کلید API برای TMDB</string>
     <string name="youtube_key">کلید API برای YouTube</string>
     <string name="tiles_per_row">کاشی در هر ردیف</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">%1$s باز نمی‌شود</string>
     <string name="smarttube_install">نصب SmartTube</string>
     <string name="smarttube_open">باز کردن SmartTube برای ورود</string>
-    <string name="smarttube_downloading">در حال بارگیری SmartTube…</string>
-    <string name="smarttube_allow_installs">به Vibe Launcher اجازه نصب برنامه بدهید، سپس دوباره نصب SmartTube را انتخاب کنید</string>
-    <string name="smarttube_failed">SmartTube نصب نشد</string>
+    <string name="smarttube_get_downloader">SmartTube با Downloader (از AFTVnews) نصب می‌شود: Downloader را از Play Store بگیرید، بازش کنید و %s را تایپ کنید.</string>
     <string name="play">پخش</string>
     <string name="reload_backdrops">بارگذاری دوبارهٔ پس‌زمینه‌ها</string>
     <string name="tab_backdrops">پس‌زمینه‌ها</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">نادیده گرفتن کلیدهای کانال در صفحه اصلی</string>
     <string name="ignore_channel_keys_short">کلیدهای کانال بالا و پایین هنگام نمایش صفحه اصلی کاری نمی‌کنند، به‌جای باز کردن برنامه تلویزیون خود دستگاه.</string>
     <string name="restart">راه‌اندازی مجدد…</string>
+    <string name="restart_confirm">تلویزیون اکنون دوباره راه‌اندازی می‌شود. حدود یک دقیقه طول می‌کشد تا برگردد.</string>
     <string name="time_remaining">%1$s باقی‌مانده</string>
-    <string name="home_key_name">دکمه صفحه اصلی Vibe Launcher</string>
-    <string name="home_key_description">دکمه صفحه اصلی کنترل را به‌جای صفحه اصلی خود تلویزیون به باز کردن Vibe Launcher وامی‌دارد و نگه داشتن آن تنظیمات تلویزیون را باز می‌کند. چیزی از صفحه نمی‌خواند و بقیه دکمه‌ها را دست‌نخورده رد می‌کند.</string>
     <string name="permissions_title">دو مجوز</string>
     <string name="permissions_why">Vibe Launcher در ادامه دو مجوز درخواست می‌کند.\n\nفهرست برنامه‌های تلویزیون: برای نمایش تصاویر کارت‌هایی که برنامه‌هایتان برای صفحه اصلی منتشر می‌کنند.\n\nمکان: Android نام شبکه Wi-Fi را فقط به برنامه‌هایی نشان می‌دهد که این مجوز را دارند. Vibe Launcher فقط برای همین نام از آن استفاده می‌کند و هرگز دنبال مکان تلویزیون نمی‌رود.\n\nهیچ‌کدام از تلویزیون خارج نمی‌شود.</string>
     <string name="continue_button">ادامه</string>
-    <string name="home_key_disclosure_title">استفاده از دکمه صفحه اصلی</string>
-    <string name="home_key_disclosure">این تلویزیون اجازه نمی‌دهد برنامه‌ها برنامه صفحه اصلی شوند، بنابراین Vibe Launcher برای پاسخ به دکمه صفحه اصلی به یک سرویس دسترس‌پذیری نیاز دارد.\n\nدکمه صفحه اصلی را در دست می‌گیرد: فشار دادن Vibe Launcher را باز می‌کند، نگه داشتن تنظیمات را، و بقیه دکمه‌ها دست‌نخورده رد می‌شوند. همچنین می‌بیند کی صفحه اصلی خود تلویزیون ظاهر می‌شود و آن را می‌پوشاند. چیزی از صفحه نمی‌خواند، چیزی نگه نمی‌دارد و چیزی به جایی نمی‌فرستد.\n\nهر زمان خواستید از تنظیمات &gt; دسترس‌پذیری خاموشش کنید.</string>
-    <string name="home_key_disclosure_more">اگر «%1$s» را روشن کنید، هنگام روشن شدن صفحه نیز Vibe Launcher را باز می‌کند، مگر اینکه اول دکمه‌ای را فشار دهید (فقط ثبت می‌کند که دکمه‌ای فشرده شد، نه کدام). و «%2$s» در تنظیمات از آن برای باز کردن منوی پاور تلویزیون استفاده می‌کند.</string>
-    <string name="home_button">دکمه صفحه اصلی</string>
-    <string name="home_button_short">برای تلویزیون‌هایی که صفحه اصلی خودشان را نگه می‌دارند: دکمه صفحه اصلی کنترل، Vibe Launcher را باز می‌کند و نگه داشتن آن تنظیمات تلویزیون را باز می‌کند.</string>
-    <string name="home_key_agree">موافقم</string>
-    <string name="home_key_steps">بعد: در فهرستی که باز می‌شود «%1$s» را انتخاب و روشن کنید، سپس دکمه صفحه اصلی را بزنید.</string>
-    <string name="home_key_steps_settings">بعد: این تلویزیون راه مستقیمی به تنظیمات دسترس‌پذیری خود ندارد، بنابراین به‌جای آن تنظیمات Android باز می‌شود. در آنجا به اولویت‌های دستگاه &gt; دسترس‌پذیری بروید، «%1$s» را انتخاب و روشن کنید، سپس دکمه صفحه اصلی را بزنید.</string>
     <string name="store_update">به‌روزرسانی Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">پشتیبان‌گیری و بازیابی</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">خاموش کردن اشکال‌زدایی پس از اتمام</string>
     <string name="debug_off_when_done_short">وقتی از تنظیمات خارج می‌شوید، Vibe Launcher اشکال‌زدایی تلویزیون را دوباره خاموش می‌کند و دفعه بعد که به آن نیاز داشته باشد، خودش آن را روشن می‌کند. تا وقتی خاموش است، رایانه نمی‌تواند از طریق ADB به تلویزیون دسترسی پیدا کند.</string>
     <string name="home_make">تنظیم Vibe Launcher به‌عنوان صفحه اصلی</string>
-    <string name="home_make_short">صفحه اصلی خود تلویزیون را خاموش می‌کند تا دکمه صفحه اصلی، Vibe Launcher را باز کند، بدون نیاز به سرویس دکمه صفحه اصلی.</string>
+    <string name="home_make_short">صفحهٔ اصلی خود تلویزیون را خاموش می‌کند تا دکمهٔ خانه Vibe Launcher را باز کند.</string>
     <string name="home_make_warning">صفحه اصلی خود تلویزیون خاموش می‌شود و Vibe Launcher صفحه اصلی می‌شود. اگر این کار نگیرد، همه‌چیز فوراً به حالت قبل برمی‌گردد. گزینه «بازگشت به صفحه اصلی خود تلویزیون» آن را لغو می‌کند.</string>
     <string name="home_restore">بازگشت به صفحه اصلی خود تلویزیون</string>
     <string name="home_done">Vibe Launcher اکنون صفحه اصلی است</string>

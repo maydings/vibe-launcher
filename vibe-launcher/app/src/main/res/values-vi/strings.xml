@@ -43,7 +43,6 @@
     <string name="vibe_settings">Cài đặt Vibe Launcher</string>
     <string name="android_settings">Cài đặt Android</string>
     <string name="make_home">Đặt Vibe Launcher làm màn hình chính</string>
-    <string name="home_not_changeable">TV này không cho ứng dụng chọn ứng dụng màn hình chính. Hãy đặt từ máy tính: xem README của Vibe Launcher</string>
     <string name="tmdb_key">Khóa API TMDB</string>
     <string name="youtube_key">Khóa API YouTube</string>
     <string name="tiles_per_row">Số ô mỗi hàng</string>
@@ -101,9 +100,7 @@
     <string name="cant_open">Không mở được %1$s</string>
     <string name="smarttube_install">Cài đặt SmartTube</string>
     <string name="smarttube_open">Mở SmartTube để đăng nhập</string>
-    <string name="smarttube_downloading">Đang tải SmartTube…</string>
-    <string name="smarttube_allow_installs">Hãy cho phép Vibe Launcher cài đặt ứng dụng, rồi chọn lại Cài đặt SmartTube</string>
-    <string name="smarttube_failed">SmartTube chưa được cài đặt</string>
+    <string name="smarttube_get_downloader">SmartTube được cài qua Downloader (của AFTVnews): tải Downloader từ Play Store, mở ra và nhập %s.</string>
     <string name="play">Phát</string>
     <string name="reload_backdrops">Tải lại ảnh nền</string>
     <string name="tab_backdrops">Ảnh nền</string>
@@ -234,20 +231,11 @@
     <string name="ignore_channel_keys">Bỏ qua phím kênh trên màn hình chính</string>
     <string name="ignore_channel_keys_short">Phím lên kênh và xuống kênh không làm gì khi đang ở màn hình chính, thay vì mở ứng dụng TV của chính TV.</string>
     <string name="restart">Khởi động lại…</string>
+    <string name="restart_confirm">TV sẽ khởi động lại ngay bây giờ. Mất khoảng một phút để quay lại.</string>
     <string name="time_remaining">Còn %1$s</string>
-    <string name="home_key_name">Nút Màn hình chính của Vibe Launcher</string>
-    <string name="home_key_description">Khiến nút Màn hình chính trên điều khiển mở Vibe Launcher thay vì màn hình chính của TV, và nhấn giữ để mở Cài đặt của TV. Không đọc nội dung nào trên màn hình và để mọi nút khác đi qua như bình thường.</string>
     <string name="permissions_title">Hai quyền</string>
     <string name="permissions_why">Tiếp theo, Vibe Launcher sẽ xin hai quyền.\n\nLịch phát sóng TV: để hiện hình ảnh từ các thẻ mà ứng dụng của bạn đăng lên màn hình chính.\n\nVị trí: Android chỉ cho ứng dụng có quyền này thấy tên mạng Wi-Fi. Vibe Launcher chỉ dùng quyền này cho cái tên đó và không bao giờ tìm xem TV ở đâu.\n\nKhông gì trong số đó rời khỏi TV.</string>
     <string name="continue_button">Tiếp tục</string>
-    <string name="home_key_disclosure_title">Dùng nút Màn hình chính</string>
-    <string name="home_key_disclosure">TV này không cho ứng dụng trở thành ứng dụng màn hình chính, nên Vibe Launcher cần một dịch vụ hỗ trợ tiếp cận để phản hồi nút Màn hình chính.\n\nDịch vụ đảm nhận nút Màn hình chính: nhấn để mở Vibe Launcher, nhấn giữ để mở Cài đặt, mọi nút khác đi qua như bình thường. Dịch vụ cũng biết khi màn hình chính của chính TV hiện lên và che nó đi. Dịch vụ không đọc gì trên màn hình, không lưu gì và không gửi gì đi đâu cả.\n\nTắt bất cứ lúc nào trong Cài đặt &gt; Hỗ trợ tiếp cận.</string>
-    <string name="home_key_disclosure_more">Nếu bạn bật “%1$s”, dịch vụ cũng mở Vibe Launcher khi màn hình bật, trừ khi bạn nhấn một nút trước (chỉ ghi nhận rằng có nút được nhấn, không ghi nhận nút nào). Và “%2$s” trong Cài đặt dùng dịch vụ này để mở menu nguồn của TV.</string>
-    <string name="home_button">Nút Màn hình chính</string>
-    <string name="home_button_short">Dành cho TV vẫn giữ màn hình chính riêng: nút Màn hình chính trên điều khiển mở Vibe Launcher, còn nhấn giữ sẽ mở phần Cài đặt của TV.</string>
-    <string name="home_key_agree">Đồng ý</string>
-    <string name="home_key_steps">Tiếp theo: trong danh sách mở ra, chọn “%1$s”, bật lên rồi nhấn nút Màn hình chính.</string>
-    <string name="home_key_steps_settings">Tiếp theo: TV này không có cách mở thẳng phần cài đặt Hỗ trợ tiếp cận, nên phần Cài đặt của Android sẽ mở ra thay thế. Tại đó, hãy vào Lựa chọn ưu tiên cho thiết bị &gt; Hỗ trợ tiếp cận, chọn “%1$s”, bật lên rồi nhấn nút Màn hình chính.</string>
     <string name="store_update">Cập nhật Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sao lưu và khôi phục</string>
@@ -322,7 +310,7 @@
     <string name="debug_off_when_done">Tắt gỡ lỗi khi xong</string>
     <string name="debug_off_when_done_short">Khi bạn rời Cài đặt, Vibe Launcher sẽ tắt lại tính năng gỡ lỗi của TV, và tự bật lại vào lần tiếp theo cần đến. Trong lúc tắt, máy tính không thể kết nối với TV qua ADB.</string>
     <string name="home_make">Đặt Vibe Launcher làm Màn hình chính</string>
-    <string name="home_make_short">Tắt màn hình chính riêng của TV, để nút Màn hình chính mở Vibe Launcher mà không cần dịch vụ Nút Màn hình chính.</string>
+    <string name="home_make_short">Tắt màn hình chính sẵn có của TV, để nút Màn hình chính mở Vibe Launcher.</string>
     <string name="home_make_warning">Màn hình chính riêng của TV sẽ bị tắt và Vibe Launcher trở thành Màn hình chính. Nếu không thành công, mọi thứ sẽ được khôi phục ngay. “Quay lại màn hình chính riêng của TV” sẽ hoàn tác việc này.</string>
     <string name="home_restore">Quay lại màn hình chính riêng của TV</string>
     <string name="home_done">Vibe Launcher hiện là Màn hình chính</string>
