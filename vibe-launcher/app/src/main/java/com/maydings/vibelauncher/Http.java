@@ -1,5 +1,7 @@
 package com.maydings.vibelauncher;
 
+import android.net.Uri;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -17,12 +19,20 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 import java.util.Map;
 
-/** Plain GET requests for the backdrop sources (artwork, TMDB, YouTube, Plex, HDHomeRun). Worker threads only. */
+/** Plain GET requests for the backdrop and wallpaper sources (artwork, TMDB, YouTube, Plex, HDHomeRun). Worker threads only. */
 final class Http {
 
     private static final int MAX_TEXT_BYTES = 4 * 1024 * 1024;
+    /** Who's asking, as Wikimedia asks of apps; sent to Wikimedia only, the rest get Android's own as before. */
+    private static final String USER_AGENT = "VibeLauncher/" + BuildConfig.VERSION_NAME
+            + " (https://github.com/maydings/vibe-launcher)";
 
     private Http() {
+    }
+
+    private static boolean wikimedia(String url) {
+        String host = Uri.parse(url).getHost();
+        return host != null && (host.equals("wikimedia.org") || host.endsWith(".wikimedia.org"));
     }
 
     /** The body of a 200 reply, at most maxBytes long; anything else is an IOException. */
@@ -31,6 +41,7 @@ final class Http {
         try {
             c.setConnectTimeout(10000);
             c.setReadTimeout(15000);
+            if (wikimedia(url)) c.setRequestProperty("User-Agent", USER_AGENT);
             for (Map.Entry<String, String> h : headers.entrySet()) c.setRequestProperty(h.getKey(), h.getValue());
             int code = c.getResponseCode();
             if (code != 200) throw new IOException("HTTP " + code);
@@ -92,8 +103,11 @@ final class Http {
         try {
             c.setConnectTimeout(10000);
             c.setReadTimeout(15000);
+            if (wikimedia(url)) c.setRequestProperty("User-Agent", USER_AGENT);
             int code = c.getResponseCode();
             if (code != 200) throw new IOException("HTTP " + code);
+            // Too big by its own say: not fetched at all (else it would run to the limit before failing).
+            if (c.getContentLengthLong() > maxBytes) throw new IOException("over " + maxBytes + " bytes");
             try (InputStream in = c.getInputStream(); FileOutputStream out = new FileOutputStream(to)) {
                 byte[] buf = new byte[65536];
                 long total = 0;

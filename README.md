@@ -60,8 +60,9 @@ Out of the box it reads the cards your apps already publish (Netflix, Prime Vide
 others) and finds clean artwork for each title. You choose the order it looks: Nuvio, Stremio, TMDB or the
 app's own picture. Plex, YouTube (through SmartTube) and an HDHomeRun tuner each get their own pictures too.
 
-You can also use your own wallpapers: photos or videos sent from your phone, pictures from Wallhaven, or
-videos from Pexels. Show them only where an app has no picture, or instead of everything.
+You can also use your own wallpapers: photos or videos sent from your phone, or pictures and videos picked
+on the TV from Wallhaven, Pixabay, NASA, Wikimedia Commons or Pexels. Show them only where an app has no
+picture, or instead of everything.
 
 Leave Home alone for a minute and it turns into a slideshow of all of it.
 

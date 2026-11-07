@@ -22,7 +22,7 @@ import java.util.Random;
 
 /**
  * Custom wallpapers (Settings > Backdrops > Custom wallpapers): pictures and videos of the person's own, from the
- * phone (PhoneLink), Wallhaven or Pexels (WallpaperBrowserActivity), shown on Home instead of an app's glow, or
+ * phone (PhoneLink), Wallhaven, Pexels, Pixabay, NASA or Wikimedia Commons (WallpaperBrowserActivity), shown on Home instead of an app's glow, or
  * instead of every backdrop (VibeSettings.wallpaperMode). Kept in files/wallpapers, not the cache, which Android
  * may empty. A picture is stored already cut to the screen and darkened as backdrops are, so showing one is a
  * quick decode; a video as it came, darkened on screen by a layer over it. Which one shows is picked at random on
@@ -43,8 +43,9 @@ final class Wallpapers {
         }
     }
 
-    static final String PHONE = "phone", WALLHAVEN = "wallhaven", PEXELS = "pexels";
-    /** The biggest video taken (from the phone or Pexels): about a few minutes of 1080p. */
+    static final String PHONE = "phone", WALLHAVEN = "wallhaven", PEXELS = "pexels", PIXABAY = "pixabay",
+            NASA = "nasa", COMMONS = "commons";
+    /** The biggest video taken (from the phone or a browsed source): about a few minutes of 1080p. */
     static final long MAX_VIDEO = 500L * 1024 * 1024;
     /** Free space kept on the TV beyond a new video, so apps aren't left short. */
     private static final long KEEP_FREE = 300L * 1024 * 1024;
@@ -99,7 +100,7 @@ final class Wallpapers {
         return list().isEmpty();
     }
 
-    /** Whether one from this source with this name (a Wallhaven or Pexels id) is in already. */
+    /** Whether one from this source with this name (its id there) is in already. */
     boolean has(String source, String name) {
         for (Item item : list()) if (item.source.equals(source) && item.name.equals(name)) return true;
         return false;

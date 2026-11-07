@@ -419,6 +419,7 @@ final class PhoneLink {
                 + field("youtubeKey", "YouTube API key", settings.youtubeKey())
                 + field("plexToken", "Plex token", settings.plexToken())
                 + field("pexelsKey", "Pexels API key", settings.pexelsKey())
+                + field("pixabayKey", "Pixabay API key", settings.pixabayKey())
                 + "<button>Send to TV</button></form>";
     }
 

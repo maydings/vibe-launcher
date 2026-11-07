@@ -1,0 +1,2 @@
+* New wallpaper sources in Settings → Backdrops → Custom wallpapers: Pixabay (pictures and videos, free key), NASA and Wikimedia Commons (no key). Each has Pictures, Videos and Search.
+* A wrong Pixabay or Pexels key now says so, instead of saying the service couldn't be reached.

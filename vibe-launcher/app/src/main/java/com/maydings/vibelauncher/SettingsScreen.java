@@ -328,7 +328,7 @@ final class SettingsScreen {
     /** The SettingsActivity it's on, while it is: what opens other screens, dialogs and the keyboard. */
     private Activity host;
     private String language;
-    private final String[] keys = new String[4];   // TMDB, YouTube, Plex, Pexels, as saved
+    private final String[] keys = new String[5];   // TMDB, YouTube, Plex, Pexels, Pixabay, as saved
     private Row editing;
     private int editingKey;
 
@@ -396,6 +396,7 @@ final class SettingsScreen {
         keys[1] = settings.youtubeKey();
         keys[2] = settings.plexToken();
         keys[3] = settings.pexelsKey();
+        keys[4] = settings.pixabayKey();
         pages.clear();
         pages.add(root);
         root.view.animate().cancel();
@@ -1041,8 +1042,8 @@ MainActivity.showError(host, R.string.anim_short);
 
     /**
      * Backdrops > Custom wallpapers: when they show (Off, where an app has no picture, or always instead of the
-     * backdrops), adding them (from the phone's page, or picked from Wallhaven's or Pexels' grid), and the ones
-     * there, newest first: OK on one asks to delete it.
+     * backdrops), adding them (from the phone's page, or picked from Wallhaven's, Pexels', Pixabay's, NASA's or
+     * Commons' grid), and the ones there, newest first: OK on one asks to delete it.
      */
     private Page wallpapersPage() {
         Page page = new Page(ctx.getString(R.string.wp_custom));
@@ -1066,6 +1067,20 @@ MainActivity.showError(host, R.string.anim_short);
         });
         pexels.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
         pexels.about = R.string.pexels_short;
+        Row pixabay = page.add(R.string.wp_browse_pixabay, null, () -> {
+            if (settings.pixabayKey().isEmpty()) MainActivity.showError(host, R.string.wp_pixabay_no_key);
+            else host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.PIXABAY));
+        });
+        pixabay.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+        pixabay.about = R.string.pixabay_short;
+        Row nasa = page.add(R.string.wp_browse_nasa, null,
+                () -> host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.NASA)));
+        nasa.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+        nasa.about = R.string.wp_credit_nasa;
+        Row commons = page.add(R.string.wp_browse_commons, null,
+                () -> host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.COMMONS)));
+        commons.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+        commons.about = R.string.wp_credit_commons;
         Row mine = page.add(R.string.wp_mine, () -> String.valueOf(Wallpapers.get(ctx).list().size()),
                 () -> host.startActivity(WallpaperBrowserActivity.intent(host, WallpaperBrowserActivity.MINE)));
         mine.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
@@ -1396,6 +1411,7 @@ MainActivity.showError(host, R.string.anim_short);
         showSmartTube();
         key(page, R.string.plex_token, 2, R.string.plex_short);
         key(page, R.string.pexels_key, 3, R.string.pexels_short);
+        key(page, R.string.pixabay_key, 4, R.string.pixabay_short);
         if (phoneUrl != null) page.link(R.string.phone_paste, null,
                 () -> phone(R.string.phone_paste, phoneUrl, R.string.scan_to_paste));
         return page;
@@ -2562,7 +2578,7 @@ MainActivity.showError(host, R.string.anim_short);
         if (row == null) return;
         editing = null;
         keys[editingKey] = value(row.field, keys[editingKey]);
-        settings.save(keys[0], keys[1], keys[2], keys[3]);
+        settings.save(keys[0], keys[1], keys[2], keys[3], keys[4]);
         InputMethodManager imm = host != null ? (InputMethodManager) host.getSystemService(Context.INPUT_METHOD_SERVICE) : null;
         if (imm != null) imm.hideSoftInputFromWindow(row.field.getWindowToken(), 0);
         row.field.setVisibility(View.GONE);
@@ -2580,12 +2596,12 @@ MainActivity.showError(host, R.string.anim_short);
         if (link != null) link.stop();
         link = new PhoneLink(received -> {
             if (host == null) return;
-            String[] names = {"tmdbKey", "youtubeKey", "plexToken", "pexelsKey"};
+            String[] names = {"tmdbKey", "youtubeKey", "plexToken", "pexelsKey", "pixabayKey"};
             for (int i = 0; i < names.length; i++) {
                 String k = received.get(names[i]);
                 if (k != null) keys[i] = k.trim();
             }
-            settings.save(keys[0], keys[1], keys[2], keys[3]);
+            settings.save(keys[0], keys[1], keys[2], keys[3], keys[4]);
             for (Page page : pages) page.refresh();
             Toast.makeText(host, R.string.saved_from_phone, Toast.LENGTH_SHORT).show();
         }, settings);

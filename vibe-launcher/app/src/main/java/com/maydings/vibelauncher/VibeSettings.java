@@ -12,6 +12,7 @@ final class VibeSettings {
     private static final String YOUTUBE_KEY = "youtubeKey";
     private static final String PLEX_TOKEN = "plexToken";
     private static final String PEXELS_KEY = "pexelsKey";
+    private static final String PIXABAY_KEY = "pixabayKey";
     private static final String TOP_BAR_MINIMAL = "topBarMinimal", SHOW_CLOCK = "showClock", SHOW_DATE = "showDate";
     private static final String WALLPAPER_MODE = "wallpaperMode";
     /** Custom wallpapers (Backdrops > Custom wallpapers): not shown, shown where an app has no picture, or always. */
@@ -99,6 +100,11 @@ final class VibeSettings {
     /** Pexels API key (videos to pick as wallpapers), or "" when not set. */
     String pexelsKey() {
         return prefs.getString(PEXELS_KEY, "");
+    }
+
+    /** Pixabay API key (pictures and videos to pick as wallpapers), or "" when not set. */
+    String pixabayKey() {
+        return prefs.getString(PIXABAY_KEY, "");
     }
 
     /** When custom wallpapers show: WALLPAPER_OFF (the default), WALLPAPER_NO_PICTURE or WALLPAPER_ALWAYS. */
@@ -337,8 +343,9 @@ final class VibeSettings {
         prefs.edit().putStringSet(ART_OFF, off).apply();
     }
 
-    void save(String tmdbKey, String youtubeKey, String plexToken, String pexelsKey) {
+    void save(String tmdbKey, String youtubeKey, String plexToken, String pexelsKey, String pixabayKey) {
         prefs.edit().putString(TMDB_KEY, tmdbKey.trim()).putString(YOUTUBE_KEY, youtubeKey.trim())
-                .putString(PLEX_TOKEN, plexToken.trim()).putString(PEXELS_KEY, pexelsKey.trim()).apply();
+                .putString(PLEX_TOKEN, plexToken.trim()).putString(PEXELS_KEY, pexelsKey.trim())
+                .putString(PIXABAY_KEY, pixabayKey.trim()).apply();
     }
 }

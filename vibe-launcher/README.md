@@ -181,7 +181,7 @@ The full list, with what each is sent, is in the [privacy policy](docs/PRIVACY.m
 | `PowerOnHome` | Home at power-on: Home shortly after the screen turns on (from the Home button service while it's bound) |
 | `HomeButtonLink` | What the store build's Home button service lends the app while bound: the TV's power menu for Restart… |
 | `CrashGuard` | Falls back to the stock launcher's App info after repeated crashes |
-| `Wallpapers`, `WallpaperVideo`, `WallpaperBrowserActivity` | Custom wallpapers: the stored photos and videos, video playback on Home, and the Wallhaven/Pexels browser |
+| `Wallpapers`, `WallpaperVideo`, `WallpaperBrowserActivity` | Custom wallpapers: the stored photos and videos, video playback on Home, and the Wallhaven/Pexels/Pixabay/NASA/Commons browser |
 | `Weather` | The weather line under the date (Open-Meteo, located by IP or a searched city) |
 | `ShelfDial` | A dock folder's apps as a dial above it |
 | `Adb`, `AdbPairing`, `AdbMdns`, `Spake2`, `TvApps`, `CleanLists` | Reaching the TV's own ADB from the TV itself, and turning apps off and on (Settings → Advanced) |

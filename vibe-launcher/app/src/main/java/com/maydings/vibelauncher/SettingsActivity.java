@@ -39,7 +39,7 @@ public final class SettingsActivity extends Activity {
         super.onResume();
         screen.showSmartTube();   // installed or signed in meanwhile
         screen.showHomeButton();   // turned on or off in Accessibility meanwhile
-        screen.showWallpapers();   // some picked in the Wallhaven or Pexels grid meanwhile
+        screen.showWallpapers();   // some picked in a browsing grid meanwhile
     }
 
     /** Storage access for a backup on the TV, up to Android 10 (Backup.needsPermission). */

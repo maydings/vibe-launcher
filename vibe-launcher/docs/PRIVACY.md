@@ -12,7 +12,7 @@ that.
 | What | Why | Where |
 |---|---|---|
 | Settings (tiles per row, hidden apps, language, …) | to remember your choices | the app's private storage |
-| Keys you enter: TMDB, YouTube, Plex token, Pexels | to fetch artwork and titles from those services | the app's private storage; never shown in full again (the phone page shows the last four characters) |
+| Keys you enter: TMDB, YouTube, Plex token, Pexels, Pixabay | to fetch artwork and titles from those services | the app's private storage; never shown in full again (the phone page shows the last four characters) |
 | Tiles you've changed: names, pictures you chose, folders | to show your tiles as you set them up | the app's private storage |
 | A backup, only when you make one: the settings and keys above, and your tiles | to restore your setup, or move it to another TV | the TV's Download folder (`vibe-launcher-backup.json`), or your phone when you download it there |
 | Downloaded pictures (backdrops, logos) | to show a picture at once instead of waiting | the app's cache |
@@ -82,6 +82,9 @@ internet address). The services' own privacy policies apply to what they receive
 | ipapi.co, or ipwho.is when it doesn't answer | nothing beyond the request itself: the service works out the city from the TV's internet address | while the weather is on with Location set to Automatic, at most daily |
 | Wallhaven (`wallhaven.cc`, `w.wallhaven.cc`, `th.wallhaven.cc`) | what you search for, and requests for the pictures you see and pick | when you browse Wallhaven pictures in Settings > Backdrops > Custom wallpapers |
 | Pexels (`api.pexels.com`, `videos.pexels.com`, `images.pexels.com`) | your Pexels key, what you search for, and requests for the videos you see and pick | when you browse Pexels videos there (needs your key) |
+| Pixabay (`pixabay.com`, `cdn.pixabay.com`, `i.vimeocdn.com`) | your Pixabay key, what you search for, and requests for the pictures and videos you see and pick | when you browse Pixabay there (needs your key) |
+| NASA (`images-api.nasa.gov`, `images-assets.nasa.gov`) | what you search for, and requests for the pictures and videos you see and pick | when you browse NASA there |
+| Wikimedia Commons (`commons.wikimedia.org`, `upload.wikimedia.org`, `thumb.wikimedia.org`) | what you search for, and requests for the pictures and videos you see and pick | when you browse Wikimedia Commons there |
 | Plex (`plex.tv`, and your own Plex server) | your Plex token, to find your server and list On Deck and recently added | once you enter a Plex token |
 | HDHomeRun (your tuner, `api.hdhomerun.com`, `img.hdhomerun.com`) | your tuner's own guide code, for the guide's pictures | when an HDHomeRun tuner is on your network |
 | Your phone, on your home network | the keys page, a tile's picture page, the wallpaper page (a picture or video you send to the TV), or the backup page (a backup to download, holding your keys), while Settings or the tile's Edit menu is open | when you scan the QR code on the TV; it has a random address that changes each time |
