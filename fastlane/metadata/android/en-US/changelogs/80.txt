@@ -1,0 +1,1 @@
+* The tabs at the top of the wallpaper grids (Pictures, Videos, Search and the rest) now show which one is focused, in your highlight color, and which one you're on.

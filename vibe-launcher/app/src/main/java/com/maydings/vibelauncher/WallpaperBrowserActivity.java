@@ -236,6 +236,8 @@ public final class WallpaperBrowserActivity extends Activity {
             t.setPadding(dp(20), dp(8), dp(20), dp(8));
             t.setFocusable(true);
             t.setClickable(true);
+            // The pill's own looks: focused (the highlight color, below) and the tab that's showing (selected).
+            t.setBackgroundResource(R.drawable.pill_bg);
             Highlight.pill(t, highlight);
             t.setOnClickListener(v -> pickTab(which));
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
