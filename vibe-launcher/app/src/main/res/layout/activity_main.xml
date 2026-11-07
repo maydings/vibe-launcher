@@ -277,9 +277,8 @@
                     android:drawableStart="@drawable/ic_wifi"
                     android:nextFocusDown="@+id/grid" />
 
-                <!-- A green dot in the gear's hollow centre while an update is ready (MainActivity.showUpdateReady).
-                     Placed from the start: TopButton's 10dp margin and 16dp padding put the 22dp gear's centre
-                     37dp across and 21dp down. -->
+                <!-- A green dot in the gear's hollow centre while an update is ready (MainActivity.showUpdateReady),
+                     placed there from the gear's own position (MainActivity.placeUpdateDot). -->
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -295,9 +294,7 @@
                         android:id="@+id/updateDot"
                         android:layout_width="5dp"
                         android:layout_height="5dp"
-                        android:layout_gravity="top|start"
-                        android:layout_marginTop="18.5dp"
-                        android:layout_marginStart="34.5dp"
+                        android:layout_gravity="top|left"
                         android:background="@drawable/status_dot"
                         android:visibility="gone" />
                 </FrameLayout>

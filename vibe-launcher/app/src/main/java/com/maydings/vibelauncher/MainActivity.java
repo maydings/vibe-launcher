@@ -583,6 +583,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         btnInputs.setOnClickListener(v -> showInputs());
         btnWifi.setOnClickListener(v -> showNetwork());
         btnSettings.setOnClickListener(v -> showSettingsMenu(btnSettings));
+        // The update dot follows the gear wherever the bar's style puts it.
+        btnSettings.addOnLayoutChangeListener((v, l, t, r, b, ol, ot, or, ob) -> placeUpdateDot());
+        findViewById(R.id.updateDot).addOnLayoutChangeListener((v, l, t, r, b, ol, ot, or, ob) -> placeUpdateDot());
 
         // Keep focus on the top bar at its ends and at the top: Android's focus finder would otherwise
         // jump to a tile far below when there is nothing in that direction.
@@ -2730,6 +2733,24 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         overridePendingTransition(R.anim.settings_in, R.anim.settings_hold);
     }
 
+    /**
+     * The update dot in the gear's hollow centre, measured from where the gear is drawn (the pill's padding on the
+     * gear's side, half the gear, and the middle of its height): right in either top bar style and either direction.
+     */
+    private void placeUpdateDot() {
+        TextView pill = findViewById(R.id.btnSettings);
+        View dot = findViewById(R.id.updateDot);
+        android.graphics.drawable.Drawable[] d = pill.getCompoundDrawables();   // left and right, as laid out
+        boolean onLeft = d[0] != null;
+        android.graphics.drawable.Drawable gear = onLeft ? d[0] : d[2];
+        if (gear == null || dot.getWidth() == 0) return;   // the dot's own layout brings it here again
+        int w = gear.getBounds().width();
+        float cx = onLeft ? pill.getPaddingLeft() + w / 2f : pill.getWidth() - pill.getPaddingRight() - w / 2f;
+        float cy = pill.getPaddingTop() + (pill.getHeight() - pill.getPaddingTop() - pill.getPaddingBottom()) / 2f;
+        dot.setX(pill.getX() + cx - dot.getWidth() / 2f);
+        dot.setY(pill.getY() + cy - dot.getHeight() / 2f);
+    }
+
     void showUpdateReady() {
         boolean ready = BuildConfig.STORE ? StoreUpdates.available() : Updater.available(this) != null;
         findViewById(R.id.updateDot).setVisibility(ready ? View.VISIBLE : View.GONE);
@@ -3262,11 +3283,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 pill.setText(minimal ? "" : getString(p[1]));
             }
         }
-        View dot = findViewById(R.id.updateDot);   // in the gear's hollow centre, wherever the gear now is
-        ViewGroup.MarginLayoutParams dl = (ViewGroup.MarginLayoutParams) dot.getLayoutParams();
-        dl.topMargin = Math.round((minimal ? 15.5f : 18.5f) * density);
-        dl.setMarginStart(Math.round((minimal ? 15.5f : 34.5f) * density));
-        dot.setLayoutParams(dl);
         View buttons = findViewById(R.id.topButtons);
         android.widget.RelativeLayout.LayoutParams bl = (android.widget.RelativeLayout.LayoutParams) buttons.getLayoutParams();
         if (minimal) {
