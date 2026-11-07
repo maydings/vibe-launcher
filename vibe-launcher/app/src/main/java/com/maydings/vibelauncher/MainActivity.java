@@ -703,6 +703,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         }
         if (homeToTop) {
             homeToTop = false;
+            // Home pressed with the picture alone up: the rows back first (at once), else the first tile's name came
+            // in over the picture, beside its Play button.
+            if (pictureOnly) showRows(false, false);
             lastFocused = 0;
             // Focused once the grid is laid out at the top: before it, the glass was fitted to where the
             // tile was (pressed again and again, up by the clock), and the jump doesn't move it. Fitted

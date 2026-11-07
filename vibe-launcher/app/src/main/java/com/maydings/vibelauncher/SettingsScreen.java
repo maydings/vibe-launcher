@@ -148,6 +148,8 @@ final class SettingsScreen {
         final List<View> stops = new ArrayList<>();
         int footnote;   // under the list when the focused row has nothing to say
         Row opened;     // the row whose page is open, while this list is on the left
+        /** Its window trimmed to a whole number of rows when it scrolls: not for a page of other things (the wheel). */
+        boolean wholeRows = true;
 
         Page(CharSequence title) {
             this.title = title;
@@ -166,7 +168,7 @@ final class SettingsScreen {
                     super.onMeasure(widthSpec, heightSpec);
                     // A list taller than the window: the window made a whole number of rows, so no row shows in part
                     // and scrolling to the next row moves exactly one row (rows here are all the same height).
-                    if (getChildCount() == 0) return;
+                    if (getChildCount() == 0 || !wholeRows) return;
                     ViewGroup content = (ViewGroup) getChildAt(0);
                     int inner = getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
                     if (content.getMeasuredHeight() <= inner) return;
@@ -728,6 +730,7 @@ MainActivity.showError(host, R.string.anim_short);
      */
     private Page glassColour() {
         Page page = new Page(ctx.getString(R.string.glass_color));
+        page.wholeRows = false;   // a row, the preview and the wheel: all of it shows, not a whole number of rows
         page.footnote = R.string.glass_color_hint;
         int tint = settings.glassTint();
         // The preview: a white tile, the glass over it as Home draws it on a focused tile.
@@ -768,7 +771,7 @@ MainActivity.showError(host, R.string.anim_short);
                 back();
             }
         });
-        page.list.addView(wheel[0], new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (200 * density)));
+        page.list.addView(wheel[0], new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (180 * density)));
         page.stops.add(wheel[0]);
         page.about.setText(R.string.glass_color_hint);
         return page;
