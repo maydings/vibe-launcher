@@ -86,6 +86,15 @@ final class TvControl {
         return caps != null && caps.hasTransport(android.net.NetworkCapabilities.TRANSPORT_WIFI);
     }
 
+    /**
+     * A player's own network debugging switch, apart from USB debugging: the Shield's Network debugging
+     * (adb_tcp_enabled), which opens port 5555 while USB debugging (only its USB port there) stays off. 1 on, 0 off,
+     * -1 when the TV has no such switch.
+     */
+    static int networkDebugging(Context context) {
+        return Settings.Global.getInt(context.getContentResolver(), "adb_tcp_enabled", -1);
+    }
+
     /** Waits for adbd to answer, once debugging has been turned on, up to ms; whether it did. Worker thread. */
     static boolean waitForAdb(long ms) {
         long end = System.currentTimeMillis() + ms;
@@ -113,18 +122,23 @@ final class TvControl {
 
     /**
      * One shell command from outside Settings > Apps (the top bar's Free memory), never asking the TV: Vibe Launcher
-     * has to have been allowed there before. Debugging off, it's turned on for it (with the permission) and, with
-     * Turn debugging off when done, off again after. Worker thread.
+     * has to have been allowed there before. Nothing answering with debugging off, it's turned on for it (with the
+     * permission) and, with Turn debugging off when done, off again after. Worker thread.
      */
     static Adb.Result shellQuietly(Context context, String command) {
         Adb.use(context);
         boolean turnedOn = false;
-        if (Settings.Global.getInt(context.getContentResolver(), Settings.Global.ADB_ENABLED, 0) != 1) {
-            if (!setDebugging(context, true)) return new Adb.Result(Adb.OFF, "");
+        // Tried as it is first: USB debugging off, a player's own switch (the Shield's Network debugging) may have
+        // the port open anyway. Only if nothing answers is USB debugging turned on, and never on a player with a
+        // switch of its own: USB debugging there is only its USB port, and changing it restarts adbd.
+        Adb.Result r = Adb.shell(command, false);
+        if (r.status == Adb.OFF && networkDebugging(context) == -1
+                && Settings.Global.getInt(context.getContentResolver(), Settings.Global.ADB_ENABLED, 0) != 1
+                && setDebugging(context, true)) {
             turnedOn = true;
             waitForAdb(10000);   // its port
+            r = Adb.shell(command, false);
         }
-        Adb.Result r = Adb.shell(command, false);
         boolean wirelessOn = false;
         if (r.status == Adb.OFF && bringUpWireless(context)) {
             wirelessOn = true;

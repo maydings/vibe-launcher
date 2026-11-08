@@ -50,8 +50,12 @@ Launcher's own Settings.
 | Listing | phones and TVs | TVs only (`android.software.leanback` required) |
 | Code of its own | `app/src/adb` (manifest, `StoreUpdates` that does nothing) | `app/src/store` (manifest: TV only; `StoreUpdates` asking Play) |
 
-Becoming Home goes through the TV's ADB in both: the first start, and the gear menu's *Make Vibe Launcher your
-Home* until it is, open Settings → Advanced → Default launcher, which walks through turning ADB on. SmartTube,
+Becoming Home goes through the device's ADB in both: the first start, and the gear menu's *Make Vibe Launcher your
+Home* until it is, open Settings → Advanced → Default launcher, which walks through turning ADB on. For devices whose
+software won't let ADB be turned on, Settings → Advanced → Home button (accessibility), right under it, offers
+`HomeKeyService` instead: an accessibility service that answers the Home button. It's offered only after a live ADB
+check finds no way in, warns when ADB has worked on the device before, and once ADB works it offers to make Vibe
+Launcher Home through it and turn the service off. SmartTube,
 when it's not on the TV, is installed by Downloader: the row opens Downloader on its code (28544), or says to
 get Downloader first.
 

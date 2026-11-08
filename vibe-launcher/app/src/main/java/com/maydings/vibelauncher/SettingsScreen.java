@@ -194,7 +194,13 @@ final class SettingsScreen {
                     if (rect.top < top) delta = rect.top - top;
                     else if (rect.bottom > bottom) delta = rect.bottom - bottom;
                     int max = Math.max(0, getChildAt(0).getHeight() + getPaddingTop() + getPaddingBottom() - getHeight());
-                    return Math.max(0, Math.min(max, getScrollY() + delta)) - getScrollY();
+                    int to = Math.max(0, Math.min(max, getScrollY() + delta));
+                    // Within half a row of an end: all the way. Else the last row's margin and the list's padding
+                    // stayed below the edge, and Down on it (nowhere to go) scrolled that little bit more on its own.
+                    int near = Math.round(24 * density);
+                    if (delta > 0 && max - to < near) to = max;
+                    else if (delta < 0 && to < near) to = 0;
+                    return to - getScrollY();
                 }
 
                 // Only what's in the window is drawn: the column around the list doesn't clip (the focused row grows
@@ -407,6 +413,7 @@ final class SettingsScreen {
         title.setText(root.title);
         startPhoneLink();
         watchSmartTube();
+        switchOffered = false;   // a new visit: ADB found working may offer the switch again
         ViewGroup parent = (ViewGroup) screen.getParent();
         if (parent != null) parent.removeView(screen);
         return screen;
@@ -472,6 +479,7 @@ final class SettingsScreen {
         usedAdb = false;
         host.unregisterReceiver(packages);
         smartTubeRow = null;
+        homeButtonRow = null;
         for (Page page : pages) {
             if (page != root && page != languagePage) stage.removeView(page.view);
         }
@@ -524,8 +532,13 @@ final class SettingsScreen {
         // The TV restarted through its own ADB (an app may not restart it), after asking. runAdb connects first,
         // walking through turning ADB on where it isn't yet; the reboot then goes without waiting for an answer,
         // which would never come (the connection drops) and read as a failure.
+        // No way in over ADB, with the Home button service on: the TV's power menu, which only it can open.
         page.add(R.string.restart, null, () -> explainThenDo(R.string.restart, R.string.restart_confirm,
-                () -> runAdb(page, null, r -> adb().execute(() -> Adb.shell("reboot", false)))));
+                () -> runAdb(page, null, r -> adb().execute(() -> Adb.shell("reboot", false)),
+                        HomeButtonLink.bound() ? () -> {
+                            Runnable powerMenu = HomeButtonLink.powerMenu;
+                            if (powerMenu != null) powerMenu.run();
+                        } : null)));
         page.link(R.string.backup_restore, null, this::backups);
         Row version = page.add(R.string.updates, null, null);
         Row check = page.add(R.string.check_updates, null, null);
@@ -1646,6 +1659,7 @@ MainActivity.showError(host, R.string.anim_short);
             handler.post(() -> {
                 adbStatus = r.status;
                 page.refresh();
+                if (r.status == Adb.OK) adbWorks();
             });
             // Paired as far as Vibe Launcher knows, and Wireless debugging on: does the TV still take the key?
             // (Turned down, AdbTlsKey forgets it and the row says Not paired.)
@@ -1660,6 +1674,42 @@ MainActivity.showError(host, R.string.anim_short);
         Row launcher = defaultLauncherRow = page.link(R.string.default_launcher, () -> ctx.getString(DefaultHome.isHome(ctx)
                 ? R.string.app_name : R.string.home_stock), this::defaultLauncher);
         launcher.about = TvControl.homeUnsupported() ? R.string.home_unsupported : R.string.home_make_short;
+        // Right under Default launcher, the other way, for devices whose software won't let ADB be turned on: an
+        // accessibility service that answers the Home button. Always listed; greyed out with a note while ADB works,
+        // the recommended way. On, it turns off.
+        homeButtonRow = page.add(R.string.home_button_accessibility,
+                () -> ctx.getString(DefaultHome.homeButtonOn(ctx) ? R.string.on : R.string.off), () -> {
+                    if (DefaultHome.homeButtonOn(ctx)) {
+                        homeButtonOff();
+                        return;
+                    }
+                    // A live check first, both ways in (port 5555, opened by USB debugging or a player's own Network
+                    // debugging switch, then Wireless debugging), not the last answer: only with no ADB at all is the
+                    // service offered.
+                    if (adbBusy) return;
+                    adbBusy = true;
+                    adb().execute(() -> {
+                        Adb.Result r = Adb.check(false);
+                        handler.post(() -> {
+                            adbBusy = false;
+                            if (host == null) return;
+                            adbStatus = r.status;
+                            showHomeButton();
+                            if (r.status == Adb.OK || r.status == Adb.NOT_ALLOWED) {
+                                // In, or only not allowed yet: ADB is there, Vibe Launcher above is the way.
+                                MainActivity.showError(host, R.string.home_button_adb_note);
+                            } else if (Adb.everWorked(ctx)) {
+                                // Not now, but it has before: most likely debugging is only turned off. Said first;
+                                // the service still there to choose.
+                                explainThenDo(R.string.home_button_accessibility, R.string.adb_worked_before,
+                                        R.string.home_button_anyway, () -> HomeButtonLink.offer(host));
+                            } else {
+                                HomeButtonLink.offer(host);
+                            }
+                        });
+                    });
+                });
+        showHomeButton();   // greyed out while ADB works: the poll above keeps it so as ADB comes or goes
         // Last: a choice most people never touch (and one that locks a computer's ADB out while it's on).
         Row offWhenDone = page.toggle(R.string.debug_off_when_done, settings::adbOffWhenDone, settings::setAdbOffWhenDone);
         offWhenDone.about = R.string.debug_off_when_done_short;
@@ -1694,10 +1744,13 @@ MainActivity.showError(host, R.string.anim_short);
         page.list.addView(statusNote);
         Row dev = page.add(R.string.dev_options, () -> onOff(devOptionsOn()), this::openDevOrAbout);
         dev.about = R.string.dev_options_short;
-        Row usb = page.add(R.string.usb_adb_debugging, () -> inUse(!Adb.usedWireless(),
-                onOff(adbSetting(android.provider.Settings.Global.ADB_ENABLED) == 1)),
+        // The Shield's own Network debugging switch in place of USB debugging, which there is only its USB port.
+        boolean ownSwitch = TvControl.networkDebugging(ctx) != -1;
+        Row usb = page.add(ownSwitch ? R.string.network_debugging : R.string.usb_adb_debugging,
+                () -> inUse(!Adb.usedWireless(), onOff(ownSwitch ? TvControl.networkDebugging(ctx) == 1
+                        : adbSetting(android.provider.Settings.Global.ADB_ENABLED) == 1)),
                 () -> unlessConnectedOtherWay(true, this::openDevOrAbout));
-        usb.about = R.string.usb_adb_debugging_short;
+        usb.about = ownSwitch ? R.string.network_debugging_short : R.string.usb_adb_debugging_short;
         wirelessRow = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             Row wireless = page.add(R.string.wireless_debugging, () -> inUse(Adb.usedWireless(),
@@ -1774,6 +1827,7 @@ MainActivity.showError(host, R.string.anim_short);
     /** The rows brought up to date, ADB connection's status with them. */
     private void refreshAdbPages() {
         for (Page page : pages) page.refresh();
+        showHomeButton();
         if (statusRow != null) {
             statusRow.label.setText(adbStatusText());
             statusNote.setText(adbStatus == Adb.OK ? R.string.adb_ready_note : R.string.adb_connect_short);
@@ -1802,6 +1856,7 @@ MainActivity.showError(host, R.string.anim_short);
                         adbLooking = false;
                         if (!adbBusy) adbStatus = r.status;
                         refreshAdbPages();
+                        if (adbStatus == Adb.OK) adbWorks();
                     });
                 });
             } else {
@@ -1858,10 +1913,51 @@ MainActivity.showError(host, R.string.anim_short);
         Row stock = page.add(R.string.home_stock, () -> DefaultHome.isHome(ctx) ? "" : "✓", () -> {
             if (DefaultHome.isHome(ctx)) restoreHome(page);
         });
-        // The TV's own only while there's one turned off to bring back (or it's in use now).
+        // The stock launcher only while there's one turned off to bring back (or it's in use now).
         stock.view.setVisibility(!DefaultHome.isHome(ctx) || !TvControl.stockOff(ctx).isEmpty() ? View.VISIBLE : View.GONE);
         page.opened = DefaultHome.isHome(ctx) ? vibe : stock;
         return page;
+    }
+
+    /** Advanced's accessibility Home button row, while it's made. */
+    private Row homeButtonRow;
+    /** The switch from the Home button service to ADB has been offered this visit to Settings. */
+    private boolean switchOffered;
+
+    /** The accessibility row as the service and ADB are now; again when Settings is back from Accessibility. */
+    void showHomeButton() {
+        if (homeButtonRow == null) return;
+        homeButtonRow.refresh();
+        boolean greyed = adbStatus == Adb.OK && !DefaultHome.homeButtonOn(ctx);
+        homeButtonRow.label.setAlpha(greyed ? 0.45f : 1f);
+        homeButtonRow.value.setAlpha(greyed ? 0.45f : 1f);
+        homeButtonRow.about = greyed ? R.string.home_button_adb_note : R.string.home_button_short;
+        if (homeButtonRow.view.hasFocus() && appsPage != null) showAbout(appsPage, homeButtonRow);
+    }
+
+    /** The Home button service off: by itself while it's running, else from the TV's Accessibility settings. */
+    private void homeButtonOff() {
+        Runnable off = HomeButtonLink.turnOff;
+        if (off != null) off.run();
+        else if (host != null) HomeButtonLink.openSettings(host);
+        handler.postDelayed(this::showHomeButton, 300);   // Android notes it a moment later
+    }
+
+    /**
+     * ADB works now, while the Home button service is on: asked once a visit whether to make Vibe Launcher Home
+     * through ADB and turn the service off. Cancel leaves both as they are. Already Home that way, only the
+     * service goes.
+     */
+    private void adbWorks() {
+        if (switchOffered || host == null || !DefaultHome.homeButtonOn(ctx)) return;
+        switchOffered = true;
+        explainThenDo(R.string.adb_found_title, R.string.adb_found, R.string.home_make, () -> {
+            if (DefaultHome.isHome(ctx) && TvControl.stockOn(ctx).isEmpty()) {
+                homeButtonOff();
+                return;
+            }
+            makeHome(pages.get(pages.size() - 1), this::homeButtonOff);
+        });
     }
 
     /**
@@ -1870,6 +1966,11 @@ MainActivity.showError(host, R.string.anim_short);
      * go in our record, so Turn all back on brings them back too.
      */
     private void makeHome(Page page) {
+        makeHome(page, null);
+    }
+
+    /** As makeHome, then done once Vibe Launcher is Home (the Home button service turned off, after adbWorks). */
+    private void makeHome(Page page, Runnable done) {
         List<String> stock = TvControl.stockOn(ctx);
         runAdb(page, TvControl.makeHomeCommand(ctx, stock), r -> {
             boolean failed = r.output.contains("FAILED") || !DefaultHome.isHome(ctx);
@@ -1880,6 +1981,7 @@ MainActivity.showError(host, R.string.anim_short);
             if (!failed) for (String pkg : stock) TvApps.remember(ctx, pkg, false);
             if (failed) MainActivity.showError(host, R.string.home_failed);
             else Toast.makeText(host, R.string.home_done, Toast.LENGTH_LONG).show();
+            if (!failed && done != null) done.run();
             page.refresh();   // the tick moves (runAdb refreshes once before the restore above lands)
             showTurnOffAgain();
         });
@@ -1892,6 +1994,9 @@ MainActivity.showError(host, R.string.anim_short);
         runAdb(page, TvControl.restoreHomeCommand(ctx, stock), r -> {
             android.content.pm.PackageManager pm = ctx.getPackageManager();
             for (String pkg : stock) if (TvApps.isOn(pm, pkg)) TvApps.remember(ctx, pkg, true);
+            // The Home button service would cover the stock home screen as soon as it showed, and going back would
+            // seem not to work: off with it too.
+            if (DefaultHome.homeButtonOn(ctx)) homeButtonOff();
             page.refresh();
             showTurnOffAgain();
         });
@@ -2142,33 +2247,33 @@ MainActivity.showError(host, R.string.anim_short);
      * opens Developer options, saying what to turn on. One at a time: OK pressed meanwhile does nothing.
      */
     private void runAdb(Page page, String command, java.util.function.Consumer<Adb.Result> then) {
+        runAdb(page, command, then, null);
+    }
+
+    /** As runAdb, with otherwise run instead of the explanations when there's no way in (null for those). */
+    private void runAdb(Page page, String command, java.util.function.Consumer<Adb.Result> then, Runnable otherwise) {
         if (adbBusy || host == null) return;
-        // What's off can be seen before trying: Developer options not unlocked yet (its About screen, to unlock
-        // them), or USB/ADB debugging off (Developer options). Both are Global settings any app may read.
+        // Developer options not unlocked yet: its About screen, to unlock them. A Global setting any app may read.
         int devOptions = adbSetting(android.provider.Settings.Global.DEVELOPMENT_SETTINGS_ENABLED);
         int debugging = adbSetting(android.provider.Settings.Global.ADB_ENABLED);
-        // Given WRITE_SECURE_SETTINGS before (TvControl), Vibe Launcher turns debugging back on itself, with no
-        // trip to Developer options, and waits for its port before connecting.
-        boolean waitForPort = false;
-        if (debugging != 1 && TvControl.setDebugging(ctx, true)) {
-            debugging = 1;
-            waitForPort = true;
-        }
-        if (debugging != 1 && devOptions != 1) {
+        int network = TvControl.networkDebugging(ctx);   // the Shield's Network debugging; -1 on other TVs
+        if (debugging != 1 && network != 1 && devOptions != 1 && !Adb.wirelessOn(ctx)) {
             adbStatus = Adb.OFF;
+            if (otherwise != null) {
+                otherwise.run();
+                return;
+            }
             explainThenOpen(R.string.adb_dev_options, this::openAbout);
             page.refresh();
             return;
         }
         android.util.Log.i("VibeAdb", "runAdb: devOptions=" + devOptions + " adb_enabled=" + debugging
-                + " wireless=" + Adb.wirelessSetting(ctx) + " paired=" + AdbTlsKey.paired(ctx));
-        if (debugging == 0 && !Adb.wirelessOn(ctx)) {
-            adbStatus = Adb.OFF;
-            openDeveloperOptions();
-            page.refresh();
-            return;
-        }
-        boolean wait = waitForPort;
+                + " network=" + network + " wireless=" + Adb.wirelessSetting(ctx) + " paired=" + AdbTlsKey.paired(ctx));
+        // USB debugging off isn't taken as no way in: some players open port 5555 with a switch of their own (the
+        // Shield's Network debugging) while USB debugging stays off. Tried first; only if nothing answers is USB
+        // debugging turned on (with WRITE_SECURE_SETTINGS) or asked for; never on a player with a network switch of
+        // its own, where USB debugging is only its USB port and changing it restarts adbd (dropping the connection).
+        boolean usbOff = debugging != 1 && network == -1;
         // Not let in yet: the TV is about to ask whether to allow Vibe Launcher. Said in a window first (a message
         // at the bottom went before it could be read), and Continue connects, which brings up the TV's question.
         boolean asks = adbStatus != Adb.OK && adbStatus != Adb.OFF && adbStatus != Adb.NOT_PAIRED;
@@ -2184,7 +2289,10 @@ MainActivity.showError(host, R.string.anim_short);
         // never left on Connecting.
         long deadline = System.currentTimeMillis() + 15000;
         adb().execute(() -> {
-            if (wait) {   // adbd takes a moment to open its port once debugging is on: up to ten seconds
+            Adb.Result first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
+            // Nothing answered with USB debugging off: on now, given WRITE_SECURE_SETTINGS before (TvControl), with
+            // no trip to Developer options. adbd takes a moment to open its port: up to ten seconds.
+            if (first.status == Adb.OFF && usbOff && TvControl.setDebugging(app, true)) {
                 for (int i = 0; i < 20 && System.currentTimeMillis() < deadline - 5000
                         && Adb.check(false).status == Adb.OFF; i++) {
                     try {
@@ -2193,8 +2301,8 @@ MainActivity.showError(host, R.string.anim_short);
                         return;
                     }
                 }
+                first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
             }
-            Adb.Result first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
             // Port 5555 shut, paired for Wireless debugging and that's off: on again (with the permission), and again.
             if (first.status == Adb.OFF && TvControl.bringUpWireless(app)) {
                 first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
@@ -2208,8 +2316,18 @@ MainActivity.showError(host, R.string.anim_short);
                 adbStatus = r.status;
                 if (r.status == Adb.OK) usedAdb = true;
                 if (host == null) return;
+                int net = TvControl.networkDebugging(ctx);
+                boolean stillOff = net != -1 ? net != 1
+                        : adbSetting(android.provider.Settings.Global.ADB_ENABLED) != 1;
                 if (r.status == Adb.OK) {
                     then.accept(r);
+                    adbWorks();
+                } else if (otherwise != null) {
+                    otherwise.run();
+                } else if (r.status == Adb.OFF && stillOff && !Adb.wirelessOn(ctx)) {
+                    // Nothing open at all: the player's Network debugging, else USB debugging (or the TV's name for it).
+                    if (net != -1) explainThenOpen(R.string.adb_network_turn_on, this::openDeveloperOptionsNow);
+                    else openDeveloperOptions();
                 } else if (r.status == Adb.OFF && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                     offerWireless();
                 } else if (r.status == Adb.OFF) {
@@ -2225,8 +2343,23 @@ MainActivity.showError(host, R.string.anim_short);
             });
         });
         };
-        if (asks) explainThenDo(R.string.adb_connection, R.string.adb_allow_prompt, go);
-        else go.run();
+        if (!asks) {
+            go.run();
+            return;
+        }
+        // Not known yet (Settings > Apps not opened this time): asked quietly first, and the window only when the TV
+        // really is going to ask. Already allowed, the action goes straight on.
+        adbBusy = true;
+        adb().execute(() -> {
+            Adb.Result known = Adb.check(false);
+            handler.post(() -> {
+                adbBusy = false;
+                if (host == null) return;
+                adbStatus = known.status;
+                if (known.status == Adb.OK || known.status == Adb.OFF || known.status == Adb.NOT_PAIRED) go.run();
+                else explainThenDo(R.string.adb_connection, R.string.adb_allow_prompt, go);
+            });
+        });
     }
 
     /** A connect from the status row running: Connecting…, yellow, until there's an answer (15 seconds at most). */
@@ -2283,7 +2416,7 @@ MainActivity.showError(host, R.string.anim_short);
     private String pairWith(String code, String typedPort) {
         Context app = ctx.getApplicationContext();
         android.util.Log.i("VibeAdb", "pair: code from phone, typed port=" + typedPort + " wifi=" + TvControl.onWifi(app));
-        if (!TvControl.onWifi(app)) return "The TV isn't on Wi-Fi. Wireless debugging only works on Wi-Fi.";
+        if (!TvControl.onWifi(app)) return "The device isn't on Wi-Fi. Wireless debugging only works on Wi-Fi.";
         int port = -1;
         if (typedPort != null) {
             port = Integer.parseInt(typedPort.substring(typedPort.lastIndexOf(':') + 1));
@@ -2291,7 +2424,7 @@ MainActivity.showError(host, R.string.anim_short);
             port = AdbMdns.find(app, AdbMdns.PAIRING, 8000);
         }
         if (port <= 0 || port > 65535) {
-            return "Vibe Launcher couldn't find the pairing window on the TV. Keep it open (Pair device with pairing "
+            return "Vibe Launcher couldn't find the pairing window on the device. Keep it open (Pair device with pairing "
                     + "code), then try again, or type the port as well.";
         }
         int result = AdbPairing.pair(app, "127.0.0.1", port, code);
@@ -2299,15 +2432,15 @@ MainActivity.showError(host, R.string.anim_short);
         switch (result) {
             case AdbPairing.OK:
                 handler.post(this::afterPairing);
-                return "Paired. On the TV, press Back until Vibe Launcher's settings show again.";
+                return "Paired. On the device, press Back until Vibe Launcher's settings show again.";
             case AdbPairing.WRONG_CODE:
-                return "The TV turned the code down. Check it, or choose Pair device with pairing code again for a "
+                return "The device turned the code down. Check it, or choose Pair device with pairing code again for a "
                         + "new one.";
             case AdbPairing.UNREACHABLE:
-                return "The TV's pairing window has closed. Choose Pair device with pairing code again, then send the "
+                return "The device's pairing window has closed. Choose Pair device with pairing code again, then send the "
                         + "new code.";
             case AdbPairing.NO_KEY:
-                return "This TV can't keep the key Vibe Launcher needs.";
+                return "This device can't keep the key Vibe Launcher needs.";
             default:
                 return "Pairing didn't work. Choose Pair device with pairing code again and send the new code.";
         }
@@ -2325,6 +2458,7 @@ MainActivity.showError(host, R.string.anim_short);
                 adbStatus = r.status;
                 if (r.status == Adb.OK) usedAdb = true;
                 for (Page page : pages) page.refresh();
+                if (r.status == Adb.OK) adbWorks();
             });
         });
     }

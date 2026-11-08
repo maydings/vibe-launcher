@@ -180,7 +180,7 @@ final class PhoneLink {
                 Map<String, String> fields = parseForm(readBody(in, contentLength(head, MAX_BODY)));
                 String digits = fields.get("code"), port = fields.get("port");
                 if (digits == null || !digits.matches("\\d{6}")) {
-                    respondText(s, "400 Bad Request", "Type the 6-digit code the TV shows.");
+                    respondText(s, "400 Bad Request", "Type the 6-digit code the device shows.");
                 } else if (port != null && !port.matches("(.*:)?\\d{1,5}")) {
                     respondText(s, "400 Bad Request", "The port is the number after the colon, such as 37123.");
                 } else {
@@ -189,7 +189,7 @@ final class PhoneLink {
                         answer = p.pair(digits, port);
                     } catch (RuntimeException | Error e) {   // the phone hears what went wrong, not a dropped connection
                         android.util.Log.w("VibeAdb", "pairing failed", e);
-                        answer = "Pairing failed on the TV (" + e.getClass().getSimpleName() + "). Try again.";
+                        answer = "Pairing failed on the device (" + e.getClass().getSimpleName() + "). Try again.";
                     }
                     respondText(s, "200 OK", answer);
                 }
@@ -199,18 +199,18 @@ final class PhoneLink {
             return;
         }
         if (request.length < 2 || !request[1].equals("/" + code)) {
-            respond(s, "404 Not Found", page("This link has expired. Scan the code on the TV again."));
+            respond(s, "404 Not Found", page("This link has expired. Scan the code on the device again."));
             return;
         }
         if (request[0].equals("POST") && pictureFor != null) {
             Map<String, String> fields = new HashMap<>();
             fields.put("picture", readBody(in, contentLength(head, MAX_PICTURE)));
             main.post(() -> listener.onReceived(fields));
-            respond(s, "200 OK", page("Sent. The picture is on your TV."));
+            respond(s, "200 OK", page("Sent. The picture is on your device."));
         } else if (request[0].equals("POST")) {
             Map<String, String> fields = parseForm(readBody(in, contentLength(head, MAX_BODY)));
             main.post(() -> listener.onReceived(fields));
-            respond(s, "200 OK", page("Sent. The keys are saved on your TV."));
+            respond(s, "200 OK", page("Sent. The keys are saved on your device."));
         } else {
             respond(s, "200 OK", pictureFor != null ? pictureForm() : form());
         }
@@ -232,7 +232,7 @@ final class PhoneLink {
             }
             if (b.restore(readBody(in, length))) {
                 main.post(b::restored);
-                respondText(s, "200 OK", "Restored. Home is starting again on your TV.");
+                respondText(s, "200 OK", "Restored. Home is starting again on your device.");
             } else {
                 respondText(s, "400 Bad Request", "That isn't a Vibe Launcher backup this version can read.");
             }
@@ -253,7 +253,7 @@ final class PhoneLink {
         } else if (path.equals("/backup")) {
             respond(s, "200 OK", backupForm());
         } else {
-            respond(s, "404 Not Found", page("This link has expired. Scan the code on the TV again."));
+            respond(s, "404 Not Found", page("This link has expired. Scan the code on the device again."));
         }
     }
 
@@ -276,7 +276,7 @@ final class PhoneLink {
         }
         if (video ? !w.roomFor(length) : length > MAX_WALLPAPER_PICTURE) {
             respondText(s, "413 Payload Too Large", video
-                    ? "Too big: videos can be up to 500 MB, and the TV needs room for them."
+                    ? "Too big: videos can be up to 500 MB, and the device needs room for them."
                     : "That picture is too big.");
             return;
         }
@@ -310,11 +310,11 @@ final class PhoneLink {
             }
         }
         if (w.received(file, video)) {
-            respondText(s, "200 OK", video ? "Added. The video is in your wallpapers on the TV."
-                    : "Added. The picture is in your wallpapers on the TV.");
+            respondText(s, "200 OK", video ? "Added. The video is in your wallpapers on the device."
+                    : "Added. The picture is in your wallpapers on the device.");
         } else {
-            respondText(s, "415 Unsupported Media Type", video ? "The TV couldn't use that video."
-                    : "The TV couldn't use that picture.");
+            respondText(s, "415 Unsupported Media Type", video ? "The device couldn't use that video."
+                    : "The device couldn't use that picture.");
         }
     }
 
@@ -414,13 +414,13 @@ final class PhoneLink {
     private String form() {
         return "<!doctype html><title>Vibe Launcher</title>" + STYLE
                 + "<h1>Vibe Launcher settings</h1><p>Paste your keys, then tap Send. Leave a field empty to keep "
-                + "what the TV already has.</p><form method=post action='/" + code + "'>"
+                + "what the device already has.</p><form method=post action='/" + code + "'>"
                 + field("tmdbKey", "TMDB API key", settings.tmdbKey())
                 + field("youtubeKey", "YouTube API key", settings.youtubeKey())
                 + field("plexToken", "Plex token", settings.plexToken())
                 + field("pexelsKey", "Pexels API key", settings.pexelsKey())
                 + field("pixabayKey", "Pixabay API key", settings.pixabayKey())
-                + "<button>Send to TV</button></form>";
+                + "<button>Send to device</button></form>";
     }
 
     /**
@@ -442,7 +442,7 @@ final class PhoneLink {
                 + "<p id=hint></p>"
                 + "<input type=range id=z min=0 max=1000 value=0>"
                 + "<div class=row><button id=fill>Fill</button><button id=fit>Fit</button></div>"
-                + "<button id=send disabled>Send to TV</button><p id=m></p>"
+                + "<button id=send disabled>Send to device</button><p id=m></p>"
                 + "<script>"
                 + "var W=640,H=360,img=null,s=1,x=0,y=0,lo=1,hi=1,c=document.getElementById('c'),g=c.getContext('2d'),"
                 + "z=document.getElementById('z'),pts={},last=null;"
@@ -479,7 +479,7 @@ final class PhoneLink {
                 + "document.getElementById('send').onclick=function(){var b=this;b.disabled=true;"
                 + "fetch(location.pathname,{method:'POST',headers:{'Content-Type':'text/plain'},"
                 + "body:c.toDataURL('image/jpeg',0.92)}).then(function(r){return r.text();}).then(function(){"
-                + "document.getElementById('m').textContent='Sent. The picture is on your TV.';b.disabled=false;})"
+                + "document.getElementById('m').textContent='Sent. The picture is on your device.';b.disabled=false;})"
                 + ".catch(function(){b.disabled=false;document.getElementById('m').textContent='Not sent: try again.';});};"
                 + "</script>";
     }
@@ -497,14 +497,14 @@ final class PhoneLink {
                 + ".row{display:flex;gap:10px;margin-top:14px}.row button{margin-top:0;background:#333;color:#fff}"
                 + "progress{width:100%;margin-top:16px;height:10px}#hint{font-size:14px;margin-top:8px}"
                 + "#note{font-size:14px}</style>"
-                + "<h1>Wallpaper for your TV</h1>"
+                + "<h1>Wallpaper for your device</h1>"
                 + "<p>Choose a photo or a video. A photo can be moved and zoomed to fit the screen; a video plays on the "
-                + "TV silently, round and round.</p>"
+                + "device silently, round and round.</p>"
                 + "<input type=file id=f accept='image/*,video/*'>"
                 + "<div id=crop hidden><canvas id=c width=1920 height=1080></canvas><p id=hint>Drag to move, pinch to zoom.</p>"
                 + "<input type=range id=z min=0 max=1000 value=0>"
                 + "<div class=row><button id=fill>Fill</button><button id=fit>Fit</button></div></div>"
-                + "<button id=send disabled>Send to TV</button><progress id=p max=100 value=0 hidden></progress>"
+                + "<button id=send disabled>Send to device</button><progress id=p max=100 value=0 hidden></progress>"
                 + "<p id=m></p>"
                 + "<p id=note>Videos: at least 720p, up to 500 MB. 4K video at 60 frames per second may freeze on some TVs; "
                 + "4K at 30 fps or 1080p plays smoothly. A video taken from this page comes out small, so record in your "
@@ -578,14 +578,14 @@ final class PhoneLink {
                 + "private.</p>"
                 + "<a class=b href='/" + code + "/backup.json' download>Download backup</a>"
                 + "<h2>Restore</h2>"
-                + "<p>Choose a backup. Everything on the TV is replaced by the backup's, then Home starts again.</p>"
+                + "<p>Choose a backup. Everything on the device is replaced by the backup's, then Home starts again.</p>"
                 + "<input type=file id=f accept='.json,application/json'>"
-                + "<button id=send disabled>Restore on TV</button><p id=m></p>"
+                + "<button id=send disabled>Restore on device</button><p id=m></p>"
                 + "<script>"
                 + "var f=document.getElementById('f'),b=document.getElementById('send'),m=document.getElementById('m');"
                 + "f.onchange=function(){b.disabled=!f.files.length;m.textContent='';};"
                 + "b.onclick=function(){if(!f.files.length)return;"
-                + "if(!confirm('Replace all settings, tiles, folders and keys on the TV with this backup?'))return;"
+                + "if(!confirm('Replace all settings, tiles, folders and keys on the device with this backup?'))return;"
                 + "b.disabled=true;m.textContent='Sending…';var r=new FileReader();"
                 + "r.onload=function(){fetch(location.pathname,{method:'POST',headers:{'Content-Type':'application/json'},"
                 + "body:r.result}).then(function(x){return x.text();}).then(function(t){m.textContent=t;b.disabled=false;})"
@@ -604,13 +604,13 @@ final class PhoneLink {
                 + "<style>#code{font-size:32px;letter-spacing:10px;text-align:center}details{margin-top:24px;color:#aaa}"
                 + "summary{cursor:pointer}</style>"
                 + "<h1>Pair Vibe Launcher</h1>"
-                + "<p>On the TV, in Developer options, turn on Wireless debugging, open it and choose Pair device "
+                + "<p>On the device, in Developer options, turn on Wireless debugging, open it and choose Pair device "
                 + "with pairing code. Type the 6-digit code it shows here.</p>"
                 + "<form id=f><label for=code>Pairing code</label>"
                 + "<input id=code name=code inputmode=numeric pattern='[0-9]{6}' maxlength=6 autocomplete=one-time-code "
                 + "required>"
                 + "<details><summary>Didn't pair?</summary><p>Type the port as well: the number after the colon "
-                + "under the code on the TV, such as 37123.</p><input id=port name=port inputmode=numeric "
+                + "under the code on the device, such as 37123.</p><input id=port name=port inputmode=numeric "
                 + "maxlength=21></details>"
                 + "<button id=send>Pair</button></form><p id=m></p>"
                 + "<script>"

@@ -81,7 +81,8 @@ phone. It turns debugging back off when you leave Settings. Then:
   turn the rest off.
 - **Apps you can turn off**: every app on the TV, on or off with OK.
 - **Turn all back on**: undoes everything Vibe Launcher turned off, and nothing else.
-- **Default launcher**: makes Vibe Launcher the real Home, or puts your TV's own back.
+- **Default launcher**: makes Vibe Launcher the real Home, or puts the stock launcher back.
+- **Home button (accessibility)**: for devices whose software won't let ADB be turned on, an accessibility service makes the remote's Home button open Vibe Launcher. Using ADB is recommended when it's available.
 
 Parts the TV needs (Android itself, the Play Store, the remote, Wi-Fi, the inputs) are protected and
 can't be turned off from here. A turned-off app is still installed, and one press brings it back.

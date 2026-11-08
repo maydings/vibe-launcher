@@ -44,10 +44,15 @@ there: turning an app off or on, making Vibe Launcher Home (or the TV's own home
 background apps, restarting the TV when you pick *Restart…* (after asking), and once, granting itself the permission above. Which apps it turned off is kept with
 its settings (and in a backup).
 
-## No accessibility service
+## The accessibility Home button (off unless you turn it on)
 
-Vibe Launcher becomes Home through the TV's own ADB (Settings > Advanced > Default launcher), so it has no
-accessibility service and never sees your key presses in other apps or anything on screen. Installing SmartTube
+Vibe Launcher becomes Home through the device's own ADB (Settings > Advanced > Default launcher). Only for devices whose
+software won't let ADB be turned on, Settings > Advanced > Home button (accessibility) offers an accessibility service
+instead, which you turn on yourself in the device's Accessibility settings, after a window saying what it does. While
+it's on, it sees the remote's keys and acts only on Home (a press opens Vibe Launcher, a hold the device's Settings),
+passing every other key on; and it hears only that one of the stock launcher's screens came up, to cover it. It reads
+nothing on screen, keeps nothing and sends nothing anywhere. If ADB works later, Vibe Launcher offers to become Home
+through it and turn the service off. Installing SmartTube
 is left to Downloader: Vibe Launcher only opens it on SmartTube's code.
 
 ## What goes over the network

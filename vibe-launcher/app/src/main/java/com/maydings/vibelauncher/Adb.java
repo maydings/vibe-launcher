@@ -99,6 +99,25 @@ final class Adb {
         app = context.getApplicationContext();
     }
 
+    /**
+     * Vibe Launcher has got in over this TV's ADB at least once, either way: port 5555 (opened by USB debugging, or
+     * by a player's own Network debugging switch, the Shield's) or Wireless debugging. Kept in a file of its own, outside backups: it's this TV's. Offering the accessibility Home
+     * button, Settings warns that ADB is then most likely just turned off.
+     */
+    static boolean everWorked(Context context) {
+        return state(context).getBoolean("everWorked", false);
+    }
+
+    private static android.content.SharedPreferences state(Context context) {
+        return context.getApplicationContext().getSharedPreferences("adb_state", Context.MODE_PRIVATE);
+    }
+
+    /** A connection got in: remembered once. */
+    private static void worked() {
+        Context c = app;
+        if (c != null && !everWorked(c)) state(c).edit().putBoolean("everWorked", true).apply();
+    }
+
     /** Whether the last call that got in went through Wireless debugging (what to turn off when done). */
     static boolean usedWireless() {
         return viaWireless;
@@ -202,7 +221,10 @@ final class Adb {
             s.setSoTimeout(ANSWER_MS);
             Link link = new Link(s);
             link.status = link.connect(ask, deadline);
-            if (link.status == OK) viaWireless = false;
+            if (link.status == OK) {
+                viaWireless = false;
+                worked();
+            }
             return link;
         }
 
@@ -269,6 +291,7 @@ final class Adb {
                             link.maxData = Math.max(1024, Math.min(cnxn.arg1, MAX_DATA));
                             link.status = OK;
                             viaWireless = true;
+                            worked();
                             return link;
                         }
                     }

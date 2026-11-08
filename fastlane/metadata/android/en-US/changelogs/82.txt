@@ -1,0 +1,4 @@
+* Nvidia Shield: works over its own Network debugging, without turning USB debugging on; Restart no longer fails the first time.
+* Settings → Advanced → Home button (accessibility) is back, for devices whose software won't let ADB be turned on. It's offered only after a live ADB check finds no way in, and once ADB works it offers to switch.
+* The launcher choice reads Vibe Launcher / Stock launcher; texts say "device" instead of "TV".
+* The ADB connection page no longer scrolls twice at its last row.

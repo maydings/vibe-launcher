@@ -24,4 +24,19 @@ final class DefaultHome {
         ResolveInfo ri = context.getPackageManager().resolveActivity(home(), PackageManager.MATCH_DEFAULT_ONLY);
         return ri != null && ri.activityInfo != null && context.getPackageName().equals(ri.activityInfo.packageName);
     }
+
+    /**
+     * The Home button (HomeKeyService) is on under Settings > Accessibility: the way to Home for TVs whose software
+     * keeps ADB shut, offered under Settings > Advanced > Default launcher.
+     */
+    static boolean homeButtonOn(Context context) {
+        String on = android.provider.Settings.Secure.getString(context.getContentResolver(),
+                android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+        if (on == null) return false;
+        String pkg = context.getPackageName();
+        for (String service : on.split(":")) {
+            if (service.equals(pkg + "/.HomeKeyService") || service.equals(pkg + "/" + pkg + ".HomeKeyService")) return true;
+        }
+        return false;
+    }
 }
