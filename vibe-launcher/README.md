@@ -55,7 +55,10 @@ Home* until it is, open Settings → Advanced → Default launcher, which walks 
 software won't let ADB be turned on, Settings → Advanced → Home button (accessibility), right under it, offers
 `HomeKeyService` instead: an accessibility service that answers the Home button. It's offered only after a live ADB
 check finds no way in, warns when ADB has worked on the device before, and once ADB works it offers to make Vibe
-Launcher Home through it and turn the service off. SmartTube,
+Launcher Home through it and turn the service off. Where ADB once granted `WRITE_SECURE_SETTINGS`, Agree in its
+disclosure window turns the service on directly (`TvControl.turnOnHomeButton`); otherwise Android's Accessibility
+settings open. *Home at power-on* needs either Home or this service: with neither, the same window is offered when the
+setting is turned on, and once on Home's start. SmartTube,
 when it's not on the TV, is installed by Downloader: the row opens Downloader on its code (28544), or says to
 get Downloader first.
 

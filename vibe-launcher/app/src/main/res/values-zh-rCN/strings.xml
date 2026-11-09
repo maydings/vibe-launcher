@@ -235,7 +235,8 @@
     <string name="home_key_name">Vibe Launcher 主页键</string>
     <string name="home_key_description">让遥控器的主页按钮打开 Vibe Launcher 而不是原厂启动器，长按则打开设备设置。它不读取屏幕内容，其他按键都照常放行。</string>
     <string name="home_key_disclosure_title">使用主页键</string>
-    <string name="home_key_disclosure">这台设备无法开启 ADB，因此 Vibe Launcher 需要一项无障碍服务来响应主页按钮。\n\n它接管主页按钮：按一下打开 Vibe Launcher，长按打开设置，其他按键都照常放行。它也会看到原厂启动器何时出现，并将其遮住。它不读取屏幕内容，不保存任何东西，也不向任何地方发送任何东西。\n\n可随时在“设置 &gt; 无障碍”中关闭。</string>
+    <string name="home_key_disclosure_why">这台设备无法开启 ADB，因此 Vibe Launcher 需要一项无障碍服务来响应主页按钮。</string>
+    <string name="home_key_disclosure">它接管主页按钮：按一下打开 Vibe Launcher，长按打开设置，其他按键都照常放行。它也会看到原厂启动器何时出现，并将其遮住。它不读取屏幕内容，不保存任何东西，也不向任何地方发送任何东西。\n\n可随时在“设置 &gt; 无障碍”中关闭。</string>
     <string name="home_key_disclosure_more">如果开启“%1$s”，屏幕亮起时它也会打开 Vibe Launcher，除非您先按了某个键（只记录有键被按下，不记录是哪个键）。设置中的“%2$s”也用它来打开设备的电源菜单。</string>
     <string name="home_button">主页键</string>
     <string name="home_button_short">有 ADB 时，建议用 ADB 设置主页按钮。无障碍功能适用于无法开启 ADB 的设备。</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">同意</string>
     <string name="home_key_steps">下一步：在打开的列表中选择“%1$s”并开启，然后按主页键。</string>
     <string name="home_key_steps_settings">下一步：这台设备没有直达无障碍设置的入口，因此会打开 Android 设置。请在那里进入“设备偏好设置 &gt; 无障碍”，选择“%1$s”，开启它，然后按主页键。</string>
+    <string name="home_key_steps_direct">你同意后它会立即开启。</string>
+    <string name="home_key_on">“%1$s”已开启。</string>
+    <string name="power_on_needs_service">“%1$s”需要“%2$s”才能可靠运行，但它已关闭。没有它，设备唤醒时 Vibe Launcher 通常没有在运行，因此无法自行出现。</string>
     <string name="time_remaining">剩余 %1$s</string>
     <string name="permissions_title">两项权限</string>
     <string name="permissions_why">Vibe Launcher 接下来会申请两项权限。\n\n电视节目单：用于显示您的应用为主屏幕发布的卡片中的图片。\n\n位置信息：Android 只向拥有此权限的应用显示 Wi-Fi 网络名称。Vibe Launcher 只用它来显示这个名称，从不查询设备所在位置。\n\n两者都不会离开设备。</string>

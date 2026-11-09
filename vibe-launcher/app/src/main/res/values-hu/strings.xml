@@ -235,7 +235,8 @@
     <string name="home_key_name">Vibe Launcher Kezdőképernyő gomb</string>
     <string name="home_key_description">A távirányító Kezdőlap gombja a gyári indító helyett a Vibe Launchert nyitja meg, nyomva tartva pedig az eszköz beállításait. Semmit sem olvas a képernyőről, és minden más gombot átenged.</string>
     <string name="home_key_disclosure_title">A Kezdőképernyő gomb használata</string>
-    <string name="home_key_disclosure">Ezen az eszközön az ADB nem kapcsolható be, ezért a Vibe Launchernek kisegítő szolgáltatás kell, hogy válaszolni tudjon a Kezdőlap gombra.\n\nÁtveszi a Kezdőlap gombot: egy nyomás a Vibe Launchert nyitja meg, a nyomva tartás a beállításokat, minden más gomb változatlanul működik. Azt is látja, ha a gyári indító megjelenik, és eltakarja. Semmit sem olvas a képernyőről, semmit sem tárol, és semmit sem küld el.\n\nBármikor kikapcsolhatja: Beállítások &gt; Kisegítő lehetőségek.</string>
+    <string name="home_key_disclosure_why">Ezen az eszközön az ADB nem kapcsolható be, ezért a Vibe Launchernek kisegítő szolgáltatás kell, hogy válaszolni tudjon a Kezdőlap gombra.</string>
+    <string name="home_key_disclosure">Átveszi a Kezdőlap gombot: egy nyomás a Vibe Launchert nyitja meg, a nyomva tartás a beállításokat, minden más gomb változatlanul működik. Azt is látja, ha a gyári indító megjelenik, és eltakarja. Semmit sem olvas a képernyőről, semmit sem tárol, és semmit sem küld el.\n\nBármikor kikapcsolhatja: Beállítások &gt; Kisegítő lehetőségek.</string>
     <string name="home_key_disclosure_more">Ha bekapcsolja a(z) „%1$s” beállítást, a képernyő bekapcsolásakor is megnyitja a Vibe Launchert, hacsak előbb meg nem nyom egy gombot (csak azt jegyzi meg, hogy gombnyomás történt, azt nem, hogy melyik). A(z) „%2$s” pedig a beállításokban ezzel nyitja meg az eszköz be-/kikapcsolási menüjét.</string>
     <string name="home_button">Kezdőképernyő gomb</string>
     <string name="home_button_short">Ha elérhető, a Kezdőlap gombot ajánlott ADB-vel beállítani. A kisegítő funkció azoknak az eszközöknek szól, amelyeken az ADB nem kapcsolható be.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Elfogadom</string>
     <string name="home_key_steps">Ezután: a megnyíló listában válassza ki ezt: „%1$s”, kapcsolja be, majd nyomja meg a Kezdőképernyő gombot.</string>
     <string name="home_key_steps_settings">Következik: ezen az eszközön nincs közvetlen út a kisegítő beállításokhoz, ezért az Android beállításai nyílnak meg. Ott lépjen az Eszközbeállítások &gt; Kisegítő lehetőségek pontra, válassza a(z) „%1$s” elemet, kapcsolja be, majd nyomja meg a Kezdőlap gombot.</string>
+    <string name="home_key_steps_direct">Amint elfogadja, bekapcsol.</string>
+    <string name="home_key_on">„%1$s” bekapcsolva.</string>
+    <string name="power_on_needs_service">„%1$s” megbízható működéséhez „%2$s” szükséges, ami ki van kapcsolva. Nélküle a Vibe Launcher általában nem fut, amikor az eszköz felébred, így magától nem tud megjelenni.</string>
     <string name="time_remaining">Még %1$s</string>
     <string name="permissions_title">Két engedély</string>
     <string name="permissions_why">A Vibe Launcher most két engedélyt kér.\n\nTV-műsorinformációk: hogy megjeleníthesse a képeket azokról a kártyákról, amelyeket az alkalmazások a kezdőképernyőre tesznek közzé.\n\nHely: az Android csak az ezzel rendelkező alkalmazásoknak mutatja meg a Wi-Fi-hálózat nevét. A Vibe Launcher csak erre a névre használja, és sosem nézi meg, hol van az eszköz.\n\nEgyik sem hagyja el az eszközt.</string>

@@ -235,7 +235,8 @@
     <string name="home_key_name">Vibe Launcher Home-Taste</string>
     <string name="home_key_description">Lässt die Home-Taste der Fernbedienung Vibe Launcher statt des Standard-Launchers öffnen, und langes Drücken die Einstellungen des Geräts. Es liest nichts vom Bildschirm und gibt jede andere Taste weiter.</string>
     <string name="home_key_disclosure_title">Home-Taste verwenden</string>
-    <string name="home_key_disclosure">Auf diesem Gerät lässt sich ADB nicht einschalten, daher braucht Vibe Launcher einen Bedienungshilfe-Dienst, um auf die Home-Taste zu reagieren.\n\nEr übernimmt die Home-Taste: Drücken öffnet Vibe Launcher, langes Drücken die Einstellungen, alle anderen Tasten bleiben unberührt. Er bemerkt auch, wenn der Standard-Launcher erscheint, und überdeckt ihn. Er liest nichts vom Bildschirm, speichert nichts und sendet nichts.\n\nDu kannst ihn jederzeit unter Einstellungen &gt; Bedienungshilfen ausschalten.</string>
+    <string name="home_key_disclosure_why">Auf diesem Gerät lässt sich ADB nicht einschalten, daher braucht Vibe Launcher einen Bedienungshilfe-Dienst, um auf die Home-Taste zu reagieren.</string>
+    <string name="home_key_disclosure">Er übernimmt die Home-Taste: Drücken öffnet Vibe Launcher, langes Drücken die Einstellungen, alle anderen Tasten bleiben unberührt. Er bemerkt auch, wenn der Standard-Launcher erscheint, und überdeckt ihn. Er liest nichts vom Bildschirm, speichert nichts und sendet nichts.\n\nDu kannst ihn jederzeit unter Einstellungen &gt; Bedienungshilfen ausschalten.</string>
     <string name="home_key_disclosure_more">Wenn du „%1$s“ einschaltest, öffnet er Vibe Launcher auch beim Einschalten des Bildschirms, außer du drückst vorher eine Taste (er merkt sich nur, dass eine Taste gedrückt wurde, nicht welche). Und „%2$s“ in den Einstellungen öffnet damit das Ein/Aus-Menü des Geräts.</string>
     <string name="home_button">Home-Taste</string>
     <string name="home_button_short">Wenn ADB verfügbar ist, wird empfohlen, die Home-Taste darüber einzurichten. Die Bedienungshilfe ist für Geräte, auf denen sich ADB nicht einschalten lässt.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Zustimmen</string>
     <string name="home_key_steps">Als Nächstes: Wähle in der Liste, die sich öffnet, „%1$s“, schalte es ein und drücke dann Home.</string>
     <string name="home_key_steps_settings">Als Nächstes: Dieses Gerät bietet keinen direkten Weg zu den Bedienungshilfen, daher öffnen sich die Android-Einstellungen. Geh dort zu Geräteeinstellungen &gt; Bedienungshilfen, wähle „%1$s“, schalte es ein und drück dann Home.</string>
+    <string name="home_key_steps_direct">Die Taste wird eingeschaltet, sobald du zustimmst.</string>
+    <string name="home_key_on">„%1$s“ ist eingeschaltet.</string>
+    <string name="power_on_needs_service">„%1$s“ braucht „%2$s“, um zuverlässig zu funktionieren, und die ist ausgeschaltet. Ohne sie läuft Vibe Launcher meist nicht, wenn das Gerät aufwacht, und kann daher nicht von selbst erscheinen.</string>
     <string name="time_remaining">Noch %1$s</string>
     <string name="permissions_title">Zwei Berechtigungen</string>
     <string name="permissions_why">Vibe Launcher fragt gleich nach zwei Berechtigungen.\n\nTV-Programminfos: um Bilder aus den Karten zu zeigen, die deine Apps für den Startbildschirm veröffentlichen.\n\nStandort: Android zeigt den Namen des WLANs nur Apps mit dieser Berechtigung. Vibe Launcher nutzt sie nur für diesen Namen und schaut nie nach, wo das Gerät ist.\n\nBeides verlässt das Gerät nicht.</string>

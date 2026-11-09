@@ -235,7 +235,8 @@
     <string name="home_key_name">Tlačidlo Domov pre Vibe Launcher</string>
     <string name="home_key_description">Tlačidlo Domov na ovládači otvorí Vibe Launcher namiesto predvoleného spúšťača a jeho podržanie otvorí nastavenia zariadenia. Nič nečíta z obrazovky a všetky ostatné tlačidlá prepúšťa.</string>
     <string name="home_key_disclosure_title">Používať tlačidlo Domov</string>
-    <string name="home_key_disclosure">Na tomto zariadení nejde zapnúť ADB, preto Vibe Launcher potrebuje službu dostupnosti, aby mohol reagovať na tlačidlo Domov.\n\nPreberá tlačidlo Domov: stlačenie otvorí Vibe Launcher, podržanie otvorí nastavenia a všetky ostatné tlačidlá prejdú bez zmeny. Vidí aj, keď sa objaví predvolený spúšťač, a zakryje ho. Nič nečíta z obrazovky, nič neukladá a nikam nič neposiela.\n\nVypnúť ju môžete kedykoľvek v Nastavenia &gt; Dostupnosť.</string>
+    <string name="home_key_disclosure_why">Na tomto zariadení nejde zapnúť ADB, preto Vibe Launcher potrebuje službu dostupnosti, aby mohol reagovať na tlačidlo Domov.</string>
+    <string name="home_key_disclosure">Preberá tlačidlo Domov: stlačenie otvorí Vibe Launcher, podržanie otvorí nastavenia a všetky ostatné tlačidlá prejdú bez zmeny. Vidí aj, keď sa objaví predvolený spúšťač, a zakryje ho. Nič nečíta z obrazovky, nič neukladá a nikam nič neposiela.\n\nVypnúť ju môžete kedykoľvek v Nastavenia &gt; Dostupnosť.</string>
     <string name="home_key_disclosure_more">Ak zapnete „%1$s“, otvorí Vibe Launcher aj po zapnutí obrazovky, ak predtým nestlačíte tlačidlo (zaznamená len, že nejaké bolo stlačené, nie ktoré). A „%2$s“ v nastaveniach jej pomocou otvára ponuku napájania zariadenia.</string>
     <string name="home_button">Tlačidlo Domov</string>
     <string name="home_button_short">Ak je ADB k dispozícii, odporúčame nastaviť tlačidlo Domov cez neho. Funkcia dostupnosti je pre zariadenia, kde ADB nejde zapnúť.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Súhlasím</string>
     <string name="home_key_steps">Ďalej: v zozname, ktorý sa otvorí, vyberte „%1$s“, zapnite ho a stlačte Domov.</string>
     <string name="home_key_steps_settings">Ďalej: toto zariadenie nemá priamu cestu do nastavení dostupnosti, takže sa otvoria nastavenia Androidu. Tam prejdite do Predvoľby zariadenia &gt; Dostupnosť, vyberte „%1$s“, zapnite ju a stlačte Domov.</string>
+    <string name="home_key_steps_direct">Zapne sa, hneď ako súhlasíte.</string>
+    <string name="home_key_on">„%1$s“ je zapnuté.</string>
+    <string name="power_on_needs_service">„%1$s“ potrebuje na spoľahlivé fungovanie „%2$s“, ktoré je vypnuté. Bez neho Vibe Launcher po prebudení zariadenia zvyčajne nebeží, takže sa nemôže zobraziť sám.</string>
     <string name="time_remaining">Zostáva %1$s</string>
     <string name="permissions_title">Dve povolenia</string>
     <string name="permissions_why">Vibe Launcher teraz požiada o dve povolenia.\n\nTV program: aby mohol zobrazovať obrázky z kariet, ktoré vaše aplikácie zverejňujú na domovskú obrazovku.\n\nPoloha: Android ukazuje názov siete Wi-Fi len aplikáciám s týmto povolením. Vibe Launcher ho používa len na tento názov a nikdy nezisťuje, kde zariadenie je.\n\nNič z toho zariadenie neopustí.</string>

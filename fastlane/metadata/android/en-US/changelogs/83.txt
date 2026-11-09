@@ -1,0 +1,3 @@
+* Home at power-on: when it needs the accessibility Home button and that's off, Vibe Launcher says so and offers to turn it on.
+* Where ADB has given Vibe Launcher its permission, Agree turns the accessibility Home button on directly, then checks it's running; otherwise Accessibility settings open.
+* The Home button window only says ADB can't be turned on where it never has, and Settings shows the Home button's new state straight away.

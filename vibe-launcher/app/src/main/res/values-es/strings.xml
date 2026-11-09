@@ -235,7 +235,8 @@
     <string name="home_key_name">Botón de inicio de Vibe Launcher</string>
     <string name="home_key_description">Hace que el botón Inicio del mando abra Vibe Launcher en lugar del launcher de serie, y que al mantenerlo pulsado se abran los ajustes del dispositivo. No lee nada de la pantalla y deja pasar todas las demás teclas.</string>
     <string name="home_key_disclosure_title">Usar el botón de inicio</string>
-    <string name="home_key_disclosure">Este dispositivo no permite activar ADB, así que Vibe Launcher necesita un servicio de accesibilidad para responder al botón Inicio.\n\nToma el botón Inicio: una pulsación abre Vibe Launcher, mantenerlo abre los ajustes y todas las demás teclas pasan sin cambios. También ve cuándo aparece el launcher de serie y lo cubre. No lee nada de la pantalla, no guarda nada y no envía nada a ningún sitio.\n\nDesactívalo cuando quieras en Ajustes &gt; Accesibilidad.</string>
+    <string name="home_key_disclosure_why">Este dispositivo no permite activar ADB, así que Vibe Launcher necesita un servicio de accesibilidad para responder al botón Inicio.</string>
+    <string name="home_key_disclosure">Toma el botón Inicio: una pulsación abre Vibe Launcher, mantenerlo abre los ajustes y todas las demás teclas pasan sin cambios. También ve cuándo aparece el launcher de serie y lo cubre. No lee nada de la pantalla, no guarda nada y no envía nada a ningún sitio.\n\nDesactívalo cuando quieras en Ajustes &gt; Accesibilidad.</string>
     <string name="home_key_disclosure_more">Si activas «%1$s», también abre Vibe Launcher al encenderse la pantalla, salvo que pulses antes una tecla (solo anota que se pulsó una tecla, no cuál). Y «%2$s» en los ajustes lo usa para abrir el menú de apagado del dispositivo.</string>
     <string name="home_button">Botón de inicio</string>
     <string name="home_button_short">Se recomienda usar ADB para configurar el botón Inicio cuando esté disponible. La función de accesibilidad es para dispositivos en los que no se puede activar ADB.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Aceptar</string>
     <string name="home_key_steps">A continuación: en la lista que se abre, elige «%1$s», actívalo y pulsa Inicio.</string>
     <string name="home_key_steps_settings">Siguiente: este dispositivo no tiene acceso directo a los ajustes de accesibilidad, así que se abren los ajustes de Android. Allí, ve a Preferencias del dispositivo &gt; Accesibilidad, elige «%1$s», actívalo y pulsa Inicio.</string>
+    <string name="home_key_steps_direct">Se activa en cuanto aceptas.</string>
+    <string name="home_key_on">«%1$s» está activado.</string>
+    <string name="power_on_needs_service">«%1$s» necesita «%2$s» para funcionar de forma fiable, y está desactivado. Sin él, Vibe Launcher no suele estar en marcha cuando el dispositivo se enciende, así que no puede aparecer por sí solo.</string>
     <string name="time_remaining">Quedan %1$s</string>
     <string name="permissions_title">Dos permisos</string>
     <string name="permissions_why">Vibe Launcher te pedirá dos permisos.\n\nGuía de TV: para mostrar imágenes de las tarjetas que tus apps publican para la pantalla de inicio.\n\nUbicación: Android solo muestra el nombre de la red Wi-Fi a las apps que la tienen. Vibe Launcher la usa solo para ese nombre y nunca busca dónde está el dispositivo.\n\nNinguno de los dos sale del dispositivo.</string>

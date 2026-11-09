@@ -235,7 +235,8 @@
     <string name="home_key_name">Butonul Acasă pentru Vibe Launcher</string>
     <string name="home_key_description">Face ca butonul Acasă al telecomenzii să deschidă Vibe Launcher în locul lansatorului implicit, iar apăsarea lungă setările dispozitivului. Nu citește nimic de pe ecran și lasă să treacă toate celelalte taste.</string>
     <string name="home_key_disclosure_title">Folosiți butonul Acasă</string>
-    <string name="home_key_disclosure">Pe acest dispozitiv ADB nu poate fi activat, așa că Vibe Launcher are nevoie de un serviciu de accesibilitate ca să răspundă la butonul Acasă.\n\nPreia butonul Acasă: o apăsare deschide Vibe Launcher, o apăsare lungă deschide setările, iar toate celelalte taste trec neschimbate. Vede și când apare lansatorul implicit și îl acoperă. Nu citește nimic de pe ecran, nu păstrează nimic și nu trimite nimic nicăieri.\n\nÎl poți opri oricând din Setări &gt; Accesibilitate.</string>
+    <string name="home_key_disclosure_why">Pe acest dispozitiv ADB nu poate fi activat, așa că Vibe Launcher are nevoie de un serviciu de accesibilitate ca să răspundă la butonul Acasă.</string>
+    <string name="home_key_disclosure">Preia butonul Acasă: o apăsare deschide Vibe Launcher, o apăsare lungă deschide setările, iar toate celelalte taste trec neschimbate. Vede și când apare lansatorul implicit și îl acoperă. Nu citește nimic de pe ecran, nu păstrează nimic și nu trimite nimic nicăieri.\n\nÎl poți opri oricând din Setări &gt; Accesibilitate.</string>
     <string name="home_key_disclosure_more">Dacă activezi „%1$s”, deschide și Vibe Launcher când se aprinde ecranul, dacă nu apeși mai întâi o tastă (reține doar că s-a apăsat o tastă, nu care). Iar „%2$s” din setări îl folosește pentru a deschide meniul de pornire/oprire al dispozitivului.</string>
     <string name="home_button">Butonul Acasă</string>
     <string name="home_button_short">Când este disponibil, se recomandă folosirea ADB pentru a seta butonul Acasă. Funcția de accesibilitate este pentru dispozitivele pe care ADB nu poate fi activat.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Sunt de acord</string>
     <string name="home_key_steps">Apoi: în lista care se deschide, alegeți „%1$s”, activați-l și apăsați Acasă.</string>
     <string name="home_key_steps_settings">Urmează: acest dispozitiv nu are o cale directă spre setările de accesibilitate, așa că se deschid setările Android. Acolo mergi la Preferințe dispozitiv &gt; Accesibilitate, alege „%1$s”, activează-l, apoi apasă Acasă.</string>
+    <string name="home_key_steps_direct">Se activează imediat ce sunteți de acord.</string>
+    <string name="home_key_on">„%1$s” este activat.</string>
+    <string name="power_on_needs_service">„%1$s” are nevoie de „%2$s” pentru a funcționa sigur, iar acesta este dezactivat. Fără el, Vibe Launcher de obicei nu rulează când dispozitivul se trezește, așa că nu poate apărea singur.</string>
     <string name="time_remaining">Mai sunt %1$s</string>
     <string name="permissions_title">Două permisiuni</string>
     <string name="permissions_why">Vibe Launcher îți va cere două permisiuni.\n\nProgram TV: ca să arate imagini din cardurile pe care aplicațiile tale le publică pentru ecranul de pornire.\n\nLocație: Android arată numele rețelei Wi-Fi doar aplicațiilor care o au. Vibe Launcher o folosește doar pentru acel nume și nu caută niciodată unde se află dispozitivul.\n\nNiciuna nu părăsește dispozitivul.</string>

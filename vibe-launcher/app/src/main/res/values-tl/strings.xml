@@ -235,7 +235,8 @@
     <string name="home_key_name">Home button ng Vibe Launcher</string>
     <string name="home_key_description">Ginagawang buksan ng Home button ng remote ang Vibe Launcher sa halip na ang stock launcher, at kapag pinindot nang matagal, ang Settings ng device. Wala itong binabasa sa screen at pinapadaan ang lahat ng iba pang key.</string>
     <string name="home_key_disclosure_title">Gamitin ang Home button</string>
-    <string name="home_key_disclosure">Hindi ma-on ang ADB sa device na ito, kaya kailangan ng Vibe Launcher ng accessibility service para tumugon sa Home button.\n\nKinukuha nito ang Home button: ang isang pindot ay nagbubukas ng Vibe Launcher, ang matagal na pindot ay nagbubukas ng Settings, at dumadaan nang walang pagbabago ang lahat ng iba pang key. Nakikita rin nito kapag lumitaw ang stock launcher, at tinatakpan ito. Wala itong binabasa sa screen, walang iniimbak at walang ipinapadala kahit saan.\n\nI-off ito anumang oras sa Settings &gt; Accessibility.</string>
+    <string name="home_key_disclosure_why">Hindi ma-on ang ADB sa device na ito, kaya kailangan ng Vibe Launcher ng accessibility service para tumugon sa Home button.</string>
+    <string name="home_key_disclosure">Kinukuha nito ang Home button: ang isang pindot ay nagbubukas ng Vibe Launcher, ang matagal na pindot ay nagbubukas ng Settings, at dumadaan nang walang pagbabago ang lahat ng iba pang key. Nakikita rin nito kapag lumitaw ang stock launcher, at tinatakpan ito. Wala itong binabasa sa screen, walang iniimbak at walang ipinapadala kahit saan.\n\nI-off ito anumang oras sa Settings &gt; Accessibility.</string>
     <string name="home_key_disclosure_more">Kapag in-on mo ang “%1$s”, binubuksan din nito ang Vibe Launcher kapag bumukas ang screen, maliban kung may pinindot kang key bago iyon (itinatala lang nito na may pinindot na key, hindi kung alin). At ginagamit ito ng “%2$s” sa Settings para buksan ang power menu ng device.</string>
     <string name="home_button">Home button</string>
     <string name="home_button_short">Kapag available, inirerekomendang gamitin ang ADB para itakda ang Home button. Ang accessibility feature ay para sa mga device kung saan hindi ma-on ang ADB.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Sumasang-ayon</string>
     <string name="home_key_steps">Susunod: sa listahang magbubukas, piliin ang “%1$s”, i-on ito, saka pindutin ang Home.</string>
     <string name="home_key_steps_settings">Susunod: walang direktang daan ang device na ito papunta sa accessibility settings, kaya bubukas ang Settings ng Android. Doon, pumunta sa Device Preferences &gt; Accessibility, piliin ang “%1$s”, i-on ito, pagkatapos ay pindutin ang Home.</string>
+    <string name="home_key_steps_direct">Bubuksan ito agad kapag pumayag ka.</string>
+    <string name="home_key_on">Naka-on ang “%1$s”.</string>
+    <string name="power_on_needs_service">Kailangan ng “%1$s” ang “%2$s” para gumana nang maayos, at naka-off ito. Kung wala ito, kadalasang hindi tumatakbo ang Vibe Launcher kapag nagising ang device, kaya hindi ito makakalabas nang kusa.</string>
     <string name="time_remaining">%1$s pa ang natitira</string>
     <string name="permissions_title">Dalawang pahintulot</string>
     <string name="permissions_why">Hihingi ng dalawang pahintulot ang Vibe Launcher.\n\nTV listings: para ipakita ang mga larawan mula sa mga card na inilalathala ng iyong mga app para sa home screen.\n\nLokasyon: ipinapakita lang ng Android ang pangalan ng Wi-Fi network sa mga app na mayroon nito. Ginagamit ito ng Vibe Launcher para sa pangalang iyon lang at hindi kailanman inaalam kung nasaan ang device.\n\nWala sa mga ito ang lumalabas sa device.</string>

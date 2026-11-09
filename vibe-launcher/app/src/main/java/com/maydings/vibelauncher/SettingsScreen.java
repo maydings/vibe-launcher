@@ -524,7 +524,11 @@ final class SettingsScreen {
         Page page = new Page(ctx.getString(R.string.tab_general));
         page.link(R.string.language, () -> language.isEmpty()
                 ? ctx.getString(R.string.language_system) : Lang.name(language), this::languages);
-        page.toggle(R.string.power_on_home, settings::powerOnHome, settings::setPowerOnHome);
+        // Turned on where nothing can do it reliably (not Home, Home button service off): the service offered.
+        page.toggle(R.string.power_on_home, settings::powerOnHome, on -> {
+            settings.setPowerOnHome(on);
+            if (on && host != null && HomeButtonLink.powerOnNeedsIt(ctx)) HomeButtonLink.offerForPowerOn(host, this::showHomeButton);
+        });
         page.link(R.string.back_button, () -> backName(settings.backAction()), this::backAction);
         Row channelKeys = page.toggle(R.string.ignore_channel_keys, settings::ignoreChannelKeys,
                 settings::setIgnoreChannelKeys);
@@ -1702,9 +1706,9 @@ MainActivity.showError(host, R.string.anim_short);
                                 // Not now, but it has before: most likely debugging is only turned off. Said first;
                                 // the service still there to choose.
                                 explainThenDo(R.string.home_button_accessibility, R.string.adb_worked_before,
-                                        R.string.home_button_anyway, () -> HomeButtonLink.offer(host));
+                                        R.string.home_button_anyway, () -> HomeButtonLink.offer(host, null, this::showHomeButton));
                             } else {
-                                HomeButtonLink.offer(host);
+                                HomeButtonLink.offer(host, null, this::showHomeButton);
                             }
                         });
                     });

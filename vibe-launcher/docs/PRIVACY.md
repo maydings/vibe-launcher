@@ -32,7 +32,7 @@ saved in the Download folder, which stays until you delete it.
 | Storage (`WRITE_EXTERNAL_STORAGE`, Android 10 and older only) | to save a settings backup in the Download folder and read it back, asked the first time you do |
 | **GitHub build only:** install packages (`REQUEST_INSTALL_PACKAGES`), close background apps (`KILL_BACKGROUND_PROCESSES`) | to install its own updates; Android asks you to confirm each install. The second closes the TV's Settings in the background so its install switch shows Vibe Launcher's name |
 | See all apps (`QUERY_ALL_PACKAGES`) | so Settings > Advanced can list every app on the TV, system parts too, to turn them off and on. The list stays on the TV |
-| Change secure settings (`WRITE_SECURE_SETTINGS`) | not given by installing: the TV's own ADB grants it the first time Settings > Advanced connects. Used only to turn debugging and Wireless debugging on and off (when Vibe Launcher needs it, and again when Settings closes, unless you switch that off) and to set the animation speed you pick in Appearance; never for anything else, such as accessibility services or the keyboard |
+| Change secure settings (`WRITE_SECURE_SETTINGS`) | not given by installing: the TV's own ADB grants it the first time Settings > Advanced connects. Used only to turn debugging and Wireless debugging on and off (when Vibe Launcher needs it, and again when Settings closes, unless you switch that off) to set the animation speed you pick in Appearance, and to turn on Vibe Launcher's own accessibility Home button when you press Agree in the window that says what it does (below); never for anything else, such as other accessibility services, turning any of them off, or the keyboard |
 
 **Settings > Advanced** turns apps off through the TV's own network debugging, which you
 turn on and allow yourself. Vibe Launcher connects only to the TV itself (`127.0.0.1`), never to another
@@ -48,7 +48,9 @@ its settings (and in a backup).
 
 Vibe Launcher becomes Home through the device's own ADB (Settings > Advanced > Default launcher). Only for devices whose
 software won't let ADB be turned on, Settings > Advanced > Home button (accessibility) offers an accessibility service
-instead, which you turn on yourself in the device's Accessibility settings, after a window saying what it does. While
+instead, which you turn on yourself in the device's Accessibility settings, after a window saying what it does; if ADB
+has given Vibe Launcher the permission above, pressing Agree in that window turns it on instead. Having *Home at
+power-on* on without it brings up the same window. While
 it's on, it sees the remote's keys and acts only on Home (a press opens Vibe Launcher, a hold the device's Settings),
 passing every other key on; and it hears only that one of the stock launcher's screens came up, to cover it. It reads
 nothing on screen, keeps nothing and sends nothing anywhere. If ADB works later, Vibe Launcher offers to become Home

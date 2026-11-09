@@ -235,7 +235,8 @@
     <string name="home_key_name">Butang Laman Utama Vibe Launcher</string>
     <string name="home_key_description">Membuat butang Laman Utama alat kawalan membuka Vibe Launcher dan bukannya pelancar asal, dan menahannya membuka Tetapan peranti. Ia tidak membaca apa-apa pada skrin dan membenarkan semua kekunci lain.</string>
     <string name="home_key_disclosure_title">Gunakan butang Laman Utama</string>
-    <string name="home_key_disclosure">Pada peranti ini ADB tidak boleh dihidupkan, jadi Vibe Launcher memerlukan perkhidmatan kebolehcapaian untuk menjawab butang Laman Utama.\n\nIa mengambil alih butang Laman Utama: tekan membuka Vibe Launcher, tahan membuka Tetapan, dan semua kekunci lain diteruskan tanpa perubahan. Ia juga nampak bila pelancar asal muncul, lalu menutupnya. Ia tidak membaca apa-apa pada skrin, tidak menyimpan apa-apa dan tidak menghantar apa-apa ke mana-mana.\n\nMatikannya bila-bila masa di Tetapan &gt; Kebolehcapaian.</string>
+    <string name="home_key_disclosure_why">Pada peranti ini ADB tidak boleh dihidupkan, jadi Vibe Launcher memerlukan perkhidmatan kebolehcapaian untuk menjawab butang Laman Utama.</string>
+    <string name="home_key_disclosure">Ia mengambil alih butang Laman Utama: tekan membuka Vibe Launcher, tahan membuka Tetapan, dan semua kekunci lain diteruskan tanpa perubahan. Ia juga nampak bila pelancar asal muncul, lalu menutupnya. Ia tidak membaca apa-apa pada skrin, tidak menyimpan apa-apa dan tidak menghantar apa-apa ke mana-mana.\n\nMatikannya bila-bila masa di Tetapan &gt; Kebolehcapaian.</string>
     <string name="home_key_disclosure_more">Jika anda menghidupkan “%1$s”, ia juga membuka Vibe Launcher apabila skrin dihidupkan, melainkan anda menekan kekunci dahulu (ia hanya mencatat bahawa kekunci ditekan, bukan yang mana). Dan “%2$s” dalam Tetapan menggunakannya untuk membuka menu kuasa peranti.</string>
     <string name="home_button">Butang Laman Utama</string>
     <string name="home_button_short">Jika tersedia, disyorkan menggunakan ADB untuk menetapkan butang Laman Utama. Ciri kebolehcapaian adalah untuk peranti yang ADB-nya tidak boleh dihidupkan.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Setuju</string>
     <string name="home_key_steps">Seterusnya: dalam senarai yang dibuka, pilih “%1$s”, hidupkannya, kemudian tekan Laman Utama.</string>
     <string name="home_key_steps_settings">Seterusnya: peranti ini tiada laluan terus ke tetapan kebolehcapaian, jadi Tetapan Android dibuka. Di sana, pergi ke Pilihan Peranti &gt; Kebolehcapaian, pilih “%1$s”, hidupkan, kemudian tekan Laman Utama.</string>
+    <string name="home_key_steps_direct">Ia dihidupkan sebaik sahaja anda bersetuju.</string>
+    <string name="home_key_on">“%1$s” dihidupkan.</string>
+    <string name="power_on_needs_service">“%1$s” memerlukan “%2$s” untuk berfungsi dengan baik, dan ia dimatikan. Tanpanya, Vibe Launcher biasanya tidak berjalan apabila peranti bangun, jadi ia tidak boleh muncul sendiri.</string>
     <string name="time_remaining">%1$s lagi</string>
     <string name="permissions_title">Dua kebenaran</string>
     <string name="permissions_why">Vibe Launcher akan meminta dua kebenaran.\n\nJadual TV: untuk menunjukkan gambar daripada kad yang diterbitkan oleh apl anda untuk skrin utama.\n\nLokasi: Android hanya menunjukkan nama rangkaian Wi-Fi kepada apl yang memilikinya. Vibe Launcher menggunakannya untuk nama itu sahaja dan tidak pernah mencari lokasi peranti.\n\nKedua-duanya tidak keluar dari peranti.</string>

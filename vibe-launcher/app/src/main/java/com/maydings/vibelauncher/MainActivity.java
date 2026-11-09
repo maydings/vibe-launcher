@@ -2309,9 +2309,21 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      */
     private void askHomeOnce() {
         if (getPreferences(MODE_PRIVATE).getBoolean("askedHome", false) || DefaultHome.isHome(this)
-                || TvControl.homeUnsupported()) return;
+                || TvControl.homeUnsupported()) {
+            askPowerOnServiceOnce();
+            return;
+        }
         getPreferences(MODE_PRIVATE).edit().putBoolean("askedHome", true).apply();
         offerHome();
+    }
+
+    /**
+     * Home at power-on on, with neither Home nor the Home button service to do it (HomeButtonLink.powerOnNeedsIt):
+     * once, the service offered, saying why; Settings > General offers it again whenever the setting is turned on.
+     */
+    private void askPowerOnServiceOnce() {
+        if (HomeButtonLink.askedForPowerOn(this) || !HomeButtonLink.powerOnNeedsIt(this)) return;
+        HomeButtonLink.offerForPowerOn(this, null);
     }
 
     /** Settings > Advanced > Default launcher, already open. */

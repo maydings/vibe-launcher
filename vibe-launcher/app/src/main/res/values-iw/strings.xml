@@ -235,7 +235,8 @@
     <string name="home_key_name">כפתור הבית של Vibe Launcher</string>
     <string name="home_key_description">גורם לכפתור הבית בשלט לפתוח את Vibe Launcher במקום מפעיל ברירת המחדל, ולחיצה ארוכה פותחת את הגדרות המכשיר. הוא לא קורא שום דבר מהמסך ומעביר את כל שאר המקשים.</string>
     <string name="home_key_disclosure_title">שימוש בכפתור הבית</string>
-    <string name="home_key_disclosure">במכשיר הזה אי אפשר להפעיל ADB, ולכן Vibe Launcher צריך שירות נגישות כדי להגיב לכפתור הבית.\n\nהוא לוקח את כפתור הבית: לחיצה פותחת את Vibe Launcher, לחיצה ארוכה פותחת את ההגדרות, וכל שאר המקשים עוברים בלי שינוי. הוא גם רואה מתי מפעיל ברירת המחדל מופיע, ומכסה אותו. הוא לא קורא שום דבר מהמסך, לא שומר שום דבר ולא שולח שום דבר לשום מקום.\n\nכבו אותו מתי שתרצו בהגדרות &gt; נגישות.</string>
+    <string name="home_key_disclosure_why">במכשיר הזה אי אפשר להפעיל ADB, ולכן Vibe Launcher צריך שירות נגישות כדי להגיב לכפתור הבית.</string>
+    <string name="home_key_disclosure">הוא לוקח את כפתור הבית: לחיצה פותחת את Vibe Launcher, לחיצה ארוכה פותחת את ההגדרות, וכל שאר המקשים עוברים בלי שינוי. הוא גם רואה מתי מפעיל ברירת המחדל מופיע, ומכסה אותו. הוא לא קורא שום דבר מהמסך, לא שומר שום דבר ולא שולח שום דבר לשום מקום.\n\nכבו אותו מתי שתרצו בהגדרות &gt; נגישות.</string>
     <string name="home_key_disclosure_more">אם תפעילו את „%1$s”, הוא גם פותח את Vibe Launcher כשהמסך נדלק, אלא אם תלחצו קודם על מקש (הוא רושם רק שמקש נלחץ, לא איזה). ו„%2$s” בהגדרות משתמש בו כדי לפתוח את תפריט ההפעלה של המכשיר.</string>
     <string name="home_button">כפתור הבית</string>
     <string name="home_button_short">כשיש ADB, מומלץ להשתמש בו כדי להגדיר את כפתור הבית. תכונת הנגישות מיועדת למכשירים שבהם אי אפשר להפעיל ADB.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">אני מסכים/ה</string>
     <string name="home_key_steps">השלב הבא: ברשימה שנפתחת בחרו “%1$s”, הפעילו אותו ולחצו על כפתור הבית.</string>
     <string name="home_key_steps_settings">הבא: למכשיר הזה אין דרך ישירה להגדרות הנגישות, ולכן ייפתחו הגדרות Android. שם עברו אל העדפות המכשיר &gt; נגישות, בחרו „%1$s”, הפעילו ולחצו על כפתור הבית.</string>
+    <string name="home_key_steps_direct">הוא מופעל מיד כשמסכימים.</string>
+    <string name="home_key_on">“%1$s” מופעל.</string>
+    <string name="power_on_needs_service">“%1$s” צריך את “%2$s” כדי לפעול באופן אמין, והוא כבוי. בלעדיו, Vibe Launcher בדרך כלל לא פועל כשהמכשיר מתעורר, ולכן לא יכול להופיע מעצמו.</string>
     <string name="time_remaining">נותרו %1$s</string>
     <string name="permissions_title">שתי הרשאות</string>
     <string name="permissions_why">Vibe Launcher יבקש עכשיו שתי הרשאות.\n\nלוח שידורים: כדי להציג תמונות מהכרטיסים שהאפליקציות שלכם מפרסמות למסך הבית.\n\nמיקום: Android מציג את שם רשת ה-Wi-Fi רק לאפליקציות שיש להן אותו. Vibe Launcher משתמש בו רק בשביל השם הזה ואף פעם לא מחפש איפה המכשיר.\n\nשום דבר מהם לא יוצא מהמכשיר.</string>

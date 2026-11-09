@@ -235,7 +235,8 @@
     <string name="home_key_name">Vibe Launcherin aloitusnäyttöpainike</string>
     <string name="home_key_description">Saa kaukosäätimen Koti-painikkeen avaamaan Vibe Launcherin vakiokäynnistimen sijaan, ja pitkä painallus avaa laitteen asetukset. Se ei lue näytöltä mitään ja päästää kaikki muut painikkeet läpi.</string>
     <string name="home_key_disclosure_title">Käytä aloitusnäyttöpainiketta</string>
-    <string name="home_key_disclosure">Tässä laitteessa ADB:tä ei voi ottaa käyttöön, joten Vibe Launcher tarvitsee esteettömyyspalvelun vastatakseen Koti-painikkeeseen.\n\nSe ottaa Koti-painikkeen: painallus avaa Vibe Launcherin, pitkä painallus avaa asetukset, ja kaikki muut painikkeet menevät läpi muuttumattomina. Se huomaa myös, kun vakiokäynnistin tulee esiin, ja peittää sen. Se ei lue näytöltä mitään, ei tallenna mitään eikä lähetä mitään minnekään.\n\nPoista se käytöstä milloin tahansa kohdassa Asetukset &gt; Esteettömyys.</string>
+    <string name="home_key_disclosure_why">Tässä laitteessa ADB:tä ei voi ottaa käyttöön, joten Vibe Launcher tarvitsee esteettömyyspalvelun vastatakseen Koti-painikkeeseen.</string>
+    <string name="home_key_disclosure">Se ottaa Koti-painikkeen: painallus avaa Vibe Launcherin, pitkä painallus avaa asetukset, ja kaikki muut painikkeet menevät läpi muuttumattomina. Se huomaa myös, kun vakiokäynnistin tulee esiin, ja peittää sen. Se ei lue näytöltä mitään, ei tallenna mitään eikä lähetä mitään minnekään.\n\nPoista se käytöstä milloin tahansa kohdassa Asetukset &gt; Esteettömyys.</string>
     <string name="home_key_disclosure_more">Jos otat käyttöön kohdan ”%1$s”, se avaa Vibe Launcherin myös näytön käynnistyessä, ellet paina ensin jotain painiketta (se kirjaa vain, että painiketta painettiin, ei mitä). Ja ”%2$s” asetuksissa avaa sen avulla laitteen virtavalikon.</string>
     <string name="home_button">Aloitusnäyttöpainike</string>
     <string name="home_button_short">Kun ADB on käytettävissä, Koti-painike kannattaa asettaa sen kautta. Esteettömyystoiminto on laitteille, joissa ADB:tä ei voi ottaa käyttöön.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Hyväksy</string>
     <string name="home_key_steps">Seuraavaksi: valitse avautuvasta luettelosta ”%1$s”, ota se käyttöön ja paina aloitusnäyttöpainiketta.</string>
     <string name="home_key_steps_settings">Seuraavaksi: tässä laitteessa ei ole suoraa reittiä esteettömyysasetuksiin, joten Androidin asetukset avautuvat. Siirry siellä kohtaan Laitteen asetukset &gt; Esteettömyys, valitse ”%1$s”, ota se käyttöön ja paina sitten Koti.</string>
+    <string name="home_key_steps_direct">Se kytkeytyy päälle heti, kun hyväksyt.</string>
+    <string name="home_key_on">”%1$s” on päällä.</string>
+    <string name="power_on_needs_service">”%1$s” tarvitsee toimiakseen luotettavasti ”%2$s”, joka on pois päältä. Ilman sitä Vibe Launcher ei yleensä ole käynnissä laitteen herätessä, joten se ei voi tulla esiin itsestään.</string>
     <string name="time_remaining">%1$s jäljellä</string>
     <string name="permissions_title">Kaksi lupaa</string>
     <string name="permissions_why">Vibe Launcher pyytää seuraavaksi kahta lupaa.\n\nTV-ohjelmatiedot: jotta voidaan näyttää kuvia korteista, joita sovelluksesi julkaisevat aloitusnäytölle.\n\nSijainti: Android näyttää Wi-Fi-verkon nimen vain sovelluksille, joilla se on. Vibe Launcher käyttää sitä vain tuohon nimeen eikä koskaan selvitä, missä laite on.\n\nKumpikaan ei lähde laitteesta.</string>

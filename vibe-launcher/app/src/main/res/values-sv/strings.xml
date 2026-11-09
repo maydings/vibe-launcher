@@ -235,7 +235,8 @@
     <string name="home_key_name">Vibe Launcher-hemknapp</string>
     <string name="home_key_description">Gör att fjärrkontrollens Hem-knapp öppnar Vibe Launcher i stället för standardstartaren, och ett långt tryck öppnar enhetens inställningar. Den läser ingenting på skärmen och släpper igenom alla andra knappar.</string>
     <string name="home_key_disclosure_title">Använd hemknappen</string>
-    <string name="home_key_disclosure">På den här enheten går ADB inte att slå på, så Vibe Launcher behöver en tillgänglighetstjänst för att svara på Hem-knappen.\n\nDen tar Hem-knappen: ett tryck öppnar Vibe Launcher, ett långt tryck öppnar inställningarna, och alla andra knappar går igenom som vanligt. Den ser också när standardstartaren visas och täcker över den. Den läser ingenting på skärmen, sparar ingenting och skickar ingenting någonstans.\n\nStäng av den när du vill under Inställningar &gt; Tillgänglighet.</string>
+    <string name="home_key_disclosure_why">På den här enheten går ADB inte att slå på, så Vibe Launcher behöver en tillgänglighetstjänst för att svara på Hem-knappen.</string>
+    <string name="home_key_disclosure">Den tar Hem-knappen: ett tryck öppnar Vibe Launcher, ett långt tryck öppnar inställningarna, och alla andra knappar går igenom som vanligt. Den ser också när standardstartaren visas och täcker över den. Den läser ingenting på skärmen, sparar ingenting och skickar ingenting någonstans.\n\nStäng av den när du vill under Inställningar &gt; Tillgänglighet.</string>
     <string name="home_key_disclosure_more">Om du slår på ”%1$s” öppnar den också Vibe Launcher när skärmen tänds, om du inte trycker på en knapp först (den noterar bara att en knapp trycktes, inte vilken). Och ”%2$s” i inställningarna använder den för att öppna enhetens strömmeny.</string>
     <string name="home_button">Hemknapp</string>
     <string name="home_button_short">Om ADB finns rekommenderas att Hem-knappen ställs in med ADB. Tillgänglighetsfunktionen är för enheter där ADB inte går att slå på.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Godkänn</string>
     <string name="home_key_steps">Nästa steg: välj ”%1$s” i listan som öppnas, slå på den och tryck sedan på hem.</string>
     <string name="home_key_steps_settings">Nästa steg: den här enheten har ingen direkt väg till tillgänglighetsinställningarna, så Androids inställningar öppnas i stället. Gå där till Enhetsinställningar &gt; Tillgänglighet, välj ”%1$s”, slå på den och tryck sedan på Hem.</string>
+    <string name="home_key_steps_direct">Den slås på så fort du godkänner.</string>
+    <string name="home_key_on">”%1$s” är på.</string>
+    <string name="power_on_needs_service">”%1$s” behöver ”%2$s” för att fungera pålitligt, och den är av. Utan den körs Vibe Launcher oftast inte när enheten vaknar, så den kan inte komma fram av sig själv.</string>
     <string name="time_remaining">%1$s kvar</string>
     <string name="permissions_title">Två behörigheter</string>
     <string name="permissions_why">Vibe Launcher kommer att be om två behörigheter.\n\nTv-tablåer: för att visa bilder från korten som dina appar publicerar för startskärmen.\n\nPlats: Android visar bara wifinätverkets namn för appar som har den. Vibe Launcher använder den bara för det namnet och tar aldrig reda på var enheten är.\n\nIngen av dem lämnar enheten.</string>

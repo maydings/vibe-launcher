@@ -239,7 +239,8 @@
     <string name="home_key_name">Vibe Launcher Home button</string>
     <string name="home_key_description">Makes the remote\'s Home button open Vibe Launcher instead of the stock launcher, and holding it open the device\'s Settings. It reads nothing on screen and passes every other key on.</string>
     <string name="home_key_disclosure_title">Use the Home button</string>
-    <string name="home_key_disclosure">This device doesn\'t let ADB be turned on, so Vibe Launcher needs an accessibility service to answer the Home button.\n\nIt takes the Home button: a press opens Vibe Launcher, a hold opens Settings, and every other key passes on untouched. It also sees when the stock launcher comes up, and covers it. It reads nothing on screen, keeps nothing and sends nothing anywhere.\n\nTurn it off any time in Settings &gt; Accessibility.</string>
+    <string name="home_key_disclosure_why">This device doesn\'t let ADB be turned on, so Vibe Launcher needs an accessibility service to answer the Home button.</string>
+    <string name="home_key_disclosure">It takes the Home button: a press opens Vibe Launcher, a hold opens Settings, and every other key passes on untouched. It also sees when the stock launcher comes up, and covers it. It reads nothing on screen, keeps nothing and sends nothing anywhere.\n\nTurn it off any time in Settings &gt; Accessibility.</string>
     <string name="home_key_disclosure_more">If you turn on “%1$s”, it also opens Vibe Launcher when the screen turns on, unless you press a key first (it notes only that a key was pressed, not which). And “%2$s” in Settings uses it to open the device\'s power menu.</string>
     <string name="home_button">Home button</string>
     <string name="home_button_short">Using ADB to set the Home button is recommended when it\'s available. The accessibility feature is for devices where ADB can\'t be turned on.</string>
@@ -252,6 +253,9 @@
     <string name="home_key_agree">Agree</string>
     <string name="home_key_steps">Next: in the list that opens, choose “%1$s”, turn it on, then press Home.</string>
     <string name="home_key_steps_settings">Next: this device has no direct way to its Accessibility settings, so Android\'s Settings open instead. There, go to Device Preferences &gt; Accessibility, choose “%1$s”, turn it on, then press Home.</string>
+    <string name="home_key_steps_direct">It turns on as soon as you agree.</string>
+    <string name="home_key_on">“%1$s” is on.</string>
+    <string name="power_on_needs_service">“%1$s” needs “%2$s” to work reliably, and it\'s off. Without it, Vibe Launcher usually isn\'t running when the device wakes up, so it can\'t come up by itself.</string>
     <string name="time_remaining">%1$s remaining</string>
     <string name="permissions_title">Two permissions</string>
     <string name="permissions_why">Vibe Launcher will ask for two permissions next.\n\nTV listings: to show pictures from the cards your apps publish for the home screen.\n\nLocation: Android only shows the Wi-Fi network\'s name to apps with it. Vibe Launcher uses it for that name alone and never looks up where the device is.\n\nNeither leaves the device.</string>

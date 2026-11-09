@@ -20,7 +20,9 @@ import java.util.Locale;
  * other way. Vibe Launcher only ever changes these with it, each when asked: debugging on and off (adb_enabled,
  * and on Android 11 and up adb_wifi_enabled, Wireless debugging, once paired: off when Settings closes if "Turn
  * debugging off when done" is on, and back on by itself when it next needs ADB), and the animation speeds
- * (Appearance). Nothing else, in particular not the accessibility services or the keyboard.
+ * (Appearance), and turning on Vibe Launcher's own Home button service (HomeKeyService), after the window saying
+ * what it does and only when OK is pressed there (HomeButtonLink.offer). Nothing else: no other accessibility
+ * service, never turning one off, and not the keyboard.
  * <p>
  * Home: the TV's own launchers turned off and Vibe Launcher set as Home in one shell command, which turns them
  * back on if any step fails; then SettingsScreen checks Android really sends Home here. Back to the TV's own home
@@ -57,6 +59,27 @@ final class TvControl {
         } catch (SecurityException e) {
             return false;
         }
+    }
+
+    /**
+     * Vibe Launcher's Home button service (HomeKeyService) added to Android's list of accessibility services that
+     * are on, keeping every other one as it was, and accessibility switched on; false without the permission or if
+     * Android doesn't list it as on afterwards. Only after the user agreed in HomeButtonLink.offer's window.
+     */
+    static boolean turnOnHomeButton(Context context) {
+        if (!canWrite(context)) return false;
+        if (DefaultHome.homeButtonOn(context)) return true;
+        android.content.ContentResolver resolver = context.getContentResolver();
+        String me = new android.content.ComponentName(context, HomeKeyService.class).flattenToString();
+        try {
+            String on = Settings.Secure.getString(resolver, Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+            String list = on == null || on.trim().isEmpty() ? me : on + ":" + me;
+            if (!Settings.Secure.putString(resolver, Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES, list)) return false;
+            Settings.Secure.putInt(resolver, Settings.Secure.ACCESSIBILITY_ENABLED, 1);
+        } catch (SecurityException e) {
+            return false;
+        }
+        return DefaultHome.homeButtonOn(context);
     }
 
     /**

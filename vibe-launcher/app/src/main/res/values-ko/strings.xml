@@ -235,7 +235,8 @@
     <string name="home_key_name">Vibe Launcher 홈 버튼</string>
     <string name="home_key_description">리모컨의 홈 버튼이 기본 런처 대신 Vibe Launcher를 열고, 길게 누르면 기기 설정이 열립니다. 화면의 내용은 읽지 않으며 다른 모든 키는 그대로 통과시킵니다.</string>
     <string name="home_key_disclosure_title">홈 버튼 사용</string>
-    <string name="home_key_disclosure">이 기기에서는 ADB를 켤 수 없으므로, Vibe Launcher가 홈 버튼에 응답하려면 접근성 서비스가 필요합니다.\n\n이 서비스가 홈 버튼을 맡습니다: 누르면 Vibe Launcher, 길게 누르면 설정이 열리고, 다른 모든 키는 그대로 통과합니다. 기본 런처가 나타나는 것도 보고 그 위를 덮습니다. 화면의 내용은 읽지 않고, 아무것도 저장하지 않으며, 어디로도 아무것도 보내지 않습니다.\n\n설정 &gt; 접근성에서 언제든 끌 수 있습니다.</string>
+    <string name="home_key_disclosure_why">이 기기에서는 ADB를 켤 수 없으므로, Vibe Launcher가 홈 버튼에 응답하려면 접근성 서비스가 필요합니다.</string>
+    <string name="home_key_disclosure">이 서비스가 홈 버튼을 맡습니다: 누르면 Vibe Launcher, 길게 누르면 설정이 열리고, 다른 모든 키는 그대로 통과합니다. 기본 런처가 나타나는 것도 보고 그 위를 덮습니다. 화면의 내용은 읽지 않고, 아무것도 저장하지 않으며, 어디로도 아무것도 보내지 않습니다.\n\n설정 &gt; 접근성에서 언제든 끌 수 있습니다.</string>
     <string name="home_key_disclosure_more">“%1$s”을(를) 켜면, 먼저 키를 누르지 않는 한 화면이 켜질 때도 Vibe Launcher를 엽니다(키가 눌렸다는 사실만 기록하며 어떤 키인지는 기록하지 않음). 또한 설정의 “%2$s”은(는) 이를 사용해 기기의 전원 메뉴를 엽니다.</string>
     <string name="home_button">홈 버튼</string>
     <string name="home_button_short">ADB를 사용할 수 있다면 ADB로 홈 버튼을 설정하는 것을 권장합니다. 접근성 기능은 ADB를 켤 수 없는 기기를 위한 것입니다.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">동의</string>
     <string name="home_key_steps">다음: 열리는 목록에서 ‘%1$s’을(를) 선택해 사용 설정한 다음 홈 버튼을 누르세요.</string>
     <string name="home_key_steps_settings">다음: 이 기기에는 접근성 설정으로 바로 가는 길이 없으므로 Android 설정이 열립니다. 거기서 기기 환경설정 &gt; 접근성으로 가서 “%1$s”을(를) 선택하고 켠 다음 홈을 누르세요.</string>
+    <string name="home_key_steps_direct">동의하면 바로 켜집니다.</string>
+    <string name="home_key_on">‘%1$s’ 켜짐.</string>
+    <string name="power_on_needs_service">‘%1$s’이(가) 제대로 작동하려면 ‘%2$s’이(가) 필요하지만 꺼져 있습니다. 없으면 기기가 켜질 때 Vibe Launcher가 대개 실행 중이 아니어서 스스로 나타날 수 없습니다.</string>
     <string name="time_remaining">%1$s 남음</string>
     <string name="permissions_title">두 가지 권한</string>
     <string name="permissions_why">Vibe Launcher가 이제 두 가지 권한을 요청합니다.\n\nTV 편성표: 앱이 홈 화면용으로 게시하는 카드의 이미지를 보여 주기 위해.\n\n위치: Android는 이 권한이 있는 앱에만 Wi-Fi 네트워크 이름을 보여 줍니다. Vibe Launcher는 그 이름에만 사용하며 기기가 어디에 있는지 절대 찾지 않습니다.\n\n어느 것도 기기 밖으로 나가지 않습니다.</string>

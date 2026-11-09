@@ -235,7 +235,8 @@
     <string name="home_key_name">Vibe Launcher-startknop</string>
     <string name="home_key_description">Laat de Home-knop van de afstandsbediening Vibe Launcher openen in plaats van de standaardlauncher, en lang indrukken de instellingen van het apparaat. Het leest niets op het scherm en laat alle andere toetsen door.</string>
     <string name="home_key_disclosure_title">De startknop gebruiken</string>
-    <string name="home_key_disclosure">Op dit apparaat kan ADB niet aan, dus heeft Vibe Launcher een toegankelijkheidsservice nodig om op de Home-knop te reageren.\n\nDie neemt de Home-knop over: drukken opent Vibe Launcher, lang drukken de instellingen, en alle andere toetsen gaan ongewijzigd door. Hij ziet ook wanneer de standaardlauncher verschijnt en dekt die af. Hij leest niets op het scherm, bewaart niets en verstuurt niets.\n\nZet hem altijd uit via Instellingen &gt; Toegankelijkheid.</string>
+    <string name="home_key_disclosure_why">Op dit apparaat kan ADB niet aan, dus heeft Vibe Launcher een toegankelijkheidsservice nodig om op de Home-knop te reageren.</string>
+    <string name="home_key_disclosure">Die neemt de Home-knop over: drukken opent Vibe Launcher, lang drukken de instellingen, en alle andere toetsen gaan ongewijzigd door. Hij ziet ook wanneer de standaardlauncher verschijnt en dekt die af. Hij leest niets op het scherm, bewaart niets en verstuurt niets.\n\nZet hem altijd uit via Instellingen &gt; Toegankelijkheid.</string>
     <string name="home_key_disclosure_more">Als je ‘%1$s’ aanzet, opent hij Vibe Launcher ook als het scherm aangaat, tenzij je eerst een toets indrukt (hij onthoudt alleen dát er een toets werd ingedrukt, niet welke). En ‘%2$s’ in de instellingen gebruikt hem om het aan/uit-menu van het apparaat te openen.</string>
     <string name="home_button">Startknop</string>
     <string name="home_button_short">Als ADB beschikbaar is, wordt aangeraden de Home-knop daarmee in te stellen. De toegankelijkheidsfunctie is voor apparaten waarop ADB niet aan kan.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Akkoord</string>
     <string name="home_key_steps">Daarna: kies in de lijst die opent ‘%1$s’, zet het aan en druk op de startknop.</string>
     <string name="home_key_steps_settings">Volgende stap: dit apparaat heeft geen directe weg naar de toegankelijkheidsinstellingen, dus de Android-instellingen openen. Ga daar naar Apparaatvoorkeuren &gt; Toegankelijkheid, kies ‘%1$s’, zet het aan en druk op Home.</string>
+    <string name="home_key_steps_direct">Hij gaat aan zodra je akkoord gaat.</string>
+    <string name="home_key_on">‘%1$s’ staat aan.</string>
+    <string name="power_on_needs_service">‘%1$s’ heeft ‘%2$s’ nodig om betrouwbaar te werken, en die staat uit. Zonder draait Vibe Launcher meestal niet als het apparaat wakker wordt, en kan het dus niet vanzelf verschijnen.</string>
     <string name="time_remaining">Nog %1$s</string>
     <string name="permissions_title">Twee machtigingen</string>
     <string name="permissions_why">Vibe Launcher vraagt zo om twee rechten.\n\nTv-programma\'s: om afbeeldingen te tonen van de kaarten die je apps voor het startscherm publiceren.\n\nLocatie: Android laat de naam van het wifinetwerk alleen zien aan apps met dit recht. Vibe Launcher gebruikt het alleen voor die naam en zoekt nooit op waar het apparaat is.\n\nGeen van beide verlaat het apparaat.</string>

@@ -235,7 +235,8 @@
     <string name="home_key_name">Vibe Launcher የመነሻ አዝራር</string>
     <string name="home_key_description">የሪሞቱ Home አዝራር ከመጀመሪያው ማስጀመሪያ ይልቅ Vibe Launcherን እንዲከፍት ያደርጋል፣ ተጭኖ መያዝ ደግሞ የመሣሪያውን ቅንብሮች። በማያ ገጹ ላይ ምንም አያነብም፣ ሌሎቹን ቁልፎች በሙሉ ያሳልፋል።</string>
     <string name="home_key_disclosure_title">የመነሻ አዝራሩን ይጠቀሙ</string>
-    <string name="home_key_disclosure">በዚህ መሣሪያ ላይ ADB ሊበራ አይችልም፣ ስለዚህ Vibe Launcher ለHome አዝራር ምላሽ ለመስጠት የተደራሽነት አገልግሎት ያስፈልገዋል።\n\nየHome አዝራሩን ይይዛል፦ መጫን Vibe Launcherን ይከፍታል፣ ተጭኖ መያዝ ቅንብሮችን፣ ሌሎቹ ቁልፎች በሙሉ ሳይለወጡ ያልፋሉ። የመጀመሪያው ማስጀመሪያ ሲመጣም አይቶ ይሸፍነዋል። በማያ ገጹ ላይ ምንም አያነብም፣ ምንም አያስቀምጥም፣ ወደየትም ምንም አይልክም።\n\nበማንኛውም ጊዜ በቅንብሮች &gt; ተደራሽነት ውስጥ ያጥፉት።</string>
+    <string name="home_key_disclosure_why">በዚህ መሣሪያ ላይ ADB ሊበራ አይችልም፣ ስለዚህ Vibe Launcher ለHome አዝራር ምላሽ ለመስጠት የተደራሽነት አገልግሎት ያስፈልገዋል።</string>
+    <string name="home_key_disclosure">የHome አዝራሩን ይይዛል፦ መጫን Vibe Launcherን ይከፍታል፣ ተጭኖ መያዝ ቅንብሮችን፣ ሌሎቹ ቁልፎች በሙሉ ሳይለወጡ ያልፋሉ። የመጀመሪያው ማስጀመሪያ ሲመጣም አይቶ ይሸፍነዋል። በማያ ገጹ ላይ ምንም አያነብም፣ ምንም አያስቀምጥም፣ ወደየትም ምንም አይልክም።\n\nበማንኛውም ጊዜ በቅንብሮች &gt; ተደራሽነት ውስጥ ያጥፉት።</string>
     <string name="home_key_disclosure_more">“%1$s”ን ካበሩ፣ መጀመሪያ ቁልፍ ካልጫኑ በስተቀር ማያው ሲበራም Vibe Launcherን ይከፍታል (ቁልፍ መጫኑን ብቻ ይመዘግባል፣ የትኛው እንደሆነ አይደለም)። በቅንብሮች ውስጥ ያለው “%2$s” ደግሞ የመሣሪያውን የኃይል ምናሌ ለመክፈት ይጠቀምበታል።</string>
     <string name="home_button">የመነሻ አዝራር</string>
     <string name="home_button_short">ሲገኝ የHome አዝራሩን በADB ማዘጋጀት ይመከራል። የተደራሽነት ባህሪው ADB ሊበራባቸው ለማይችሉ መሣሪያዎች ነው።</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">እስማማለሁ</string>
     <string name="home_key_steps">ቀጥሎ፦ በሚከፈተው ዝርዝር ውስጥ “%1$s”ን ይምረጡ፣ ያብሩት፣ ከዚያ መነሻን ይጫኑ።</string>
     <string name="home_key_steps_settings">ቀጣይ፦ ይህ መሣሪያ ወደ ተደራሽነት ቅንብሮች ቀጥታ መንገድ የለውም፣ ስለዚህ የAndroid ቅንብሮች ይከፈታሉ። እዚያ ወደ የመሣሪያ ምርጫዎች &gt; ተደራሽነት ይሂዱ፣ “%1$s”ን ይምረጡ፣ ያብሩት፣ ከዚያ Home ይጫኑ።</string>
+    <string name="home_key_steps_direct">ሲስማሙ ወዲያውኑ ይበራል።</string>
+    <string name="home_key_on">“%1$s” በርቷል።</string>
+    <string name="power_on_needs_service">“%1$s” በአስተማማኝ ሁኔታ እንዲሠራ “%2$s” ያስፈልገዋል፣ እና አሁን ጠፍቷል። ያለሱ፣ መሣሪያው ሲነቃ Vibe Launcher ብዙውን ጊዜ አይሠራም፣ ስለዚህ በራሱ ሊከፈት አይችልም።</string>
     <string name="time_remaining">%1$s ቀርቷል</string>
     <string name="permissions_title">ሁለት ፈቃዶች</string>
     <string name="permissions_why">Vibe Launcher አሁን ሁለት ፈቃዶችን ይጠይቃል።\n\nየቲቪ ዝርዝሮች፦ መተግበሪያዎችዎ ለመነሻ ማያ የሚያትሟቸውን ካርዶች ሥዕሎች ለማሳየት።\n\nአካባቢ፦ Android የWi-Fi አውታረ መረቡን ስም የሚያሳየው ይህ ፈቃድ ላላቸው መተግበሪያዎች ብቻ ነው። Vibe Launcher ለዚያ ስም ብቻ ይጠቀምበታል፣ መሣሪያው የት እንዳለ በጭራሽ አይፈልግም።\n\nአንዳቸውም ከመሣሪያው አይወጡም።</string>

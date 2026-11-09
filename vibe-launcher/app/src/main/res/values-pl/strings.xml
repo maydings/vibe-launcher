@@ -235,7 +235,8 @@
     <string name="home_key_name">Przycisk ekranu głównego Vibe Launcher</string>
     <string name="home_key_description">Sprawia, że przycisk Home na pilocie otwiera Vibe Launcher zamiast fabrycznego launchera, a jego przytrzymanie otwiera ustawienia urządzenia. Niczego nie czyta z ekranu i przepuszcza wszystkie inne klawisze.</string>
     <string name="home_key_disclosure_title">Używaj przycisku ekranu głównego</string>
-    <string name="home_key_disclosure">Na tym urządzeniu nie da się włączyć ADB, więc Vibe Launcher potrzebuje usługi ułatwień dostępu, by reagować na przycisk Home.\n\nPrzejmuje przycisk Home: naciśnięcie otwiera Vibe Launcher, przytrzymanie otwiera ustawienia, a wszystkie inne klawisze działają bez zmian. Widzi też, kiedy pojawia się fabryczny launcher, i go zasłania. Niczego nie czyta z ekranu, niczego nie przechowuje i nigdzie niczego nie wysyła.\n\nMożesz ją wyłączyć w każdej chwili w Ustawienia &gt; Ułatwienia dostępu.</string>
+    <string name="home_key_disclosure_why">Na tym urządzeniu nie da się włączyć ADB, więc Vibe Launcher potrzebuje usługi ułatwień dostępu, by reagować na przycisk Home.</string>
+    <string name="home_key_disclosure">Przejmuje przycisk Home: naciśnięcie otwiera Vibe Launcher, przytrzymanie otwiera ustawienia, a wszystkie inne klawisze działają bez zmian. Widzi też, kiedy pojawia się fabryczny launcher, i go zasłania. Niczego nie czyta z ekranu, niczego nie przechowuje i nigdzie niczego nie wysyła.\n\nMożesz ją wyłączyć w każdej chwili w Ustawienia &gt; Ułatwienia dostępu.</string>
     <string name="home_key_disclosure_more">Jeśli włączysz „%1$s”, otworzy też Vibe Launcher po włączeniu ekranu, chyba że wcześniej naciśniesz jakiś klawisz (zapamiętuje tylko, że klawisz został naciśnięty, nie który). A „%2$s” w ustawieniach używa jej, by otworzyć menu zasilania urządzenia.</string>
     <string name="home_button">Przycisk ekranu głównego</string>
     <string name="home_button_short">Jeśli ADB jest dostępne, zalecamy ustawienie przycisku Home przez ADB. Funkcja ułatwień dostępu jest dla urządzeń, na których nie da się włączyć ADB.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Zgadzam się</string>
     <string name="home_key_steps">Dalej: na liście, która się otworzy, wybierz „%1$s”, włącz to i naciśnij przycisk ekranu głównego.</string>
     <string name="home_key_steps_settings">Dalej: to urządzenie nie ma bezpośredniej drogi do ustawień ułatwień dostępu, więc otworzą się ustawienia Androida. Tam przejdź do Ustawienia urządzenia &gt; Ułatwienia dostępu, wybierz „%1$s”, włącz i naciśnij Home.</string>
+    <string name="home_key_steps_direct">Włącza się, gdy tylko wyrazisz zgodę.</string>
+    <string name="home_key_on">„%1$s” jest włączony.</string>
+    <string name="power_on_needs_service">„%1$s” potrzebuje „%2$s”, by działać niezawodnie, a jest on wyłączony. Bez niego Vibe Launcher zwykle nie działa, gdy urządzenie się wybudza, więc nie może pojawić się sam.</string>
     <string name="time_remaining">Pozostało: %1$s</string>
     <string name="permissions_title">Dwa uprawnienia</string>
     <string name="permissions_why">Vibe Launcher poprosi teraz o dwa uprawnienia.\n\nProgram TV: aby pokazywać obrazy z kart, które Twoje aplikacje publikują na ekran główny.\n\nLokalizacja: Android pokazuje nazwę sieci Wi-Fi tylko aplikacjom z tym uprawnieniem. Vibe Launcher używa go tylko do tej nazwy i nigdy nie sprawdza, gdzie jest urządzenie.\n\nŻadne z nich nie opuszcza urządzenia.</string>

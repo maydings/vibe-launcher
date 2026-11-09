@@ -235,7 +235,8 @@
     <string name="home_key_name">Kitufe cha Mwanzo cha Vibe Launcher</string>
     <string name="home_key_description">Hufanya kitufe cha Mwanzo cha rimoti kifungue Vibe Launcher badala ya kizinduzi asili, na kukishikilia hufungua Mipangilio ya kifaa. Haisomi chochote kwenye skrini na huruhusu vitufe vingine vyote kupita.</string>
     <string name="home_key_disclosure_title">Tumia kitufe cha Mwanzo</string>
-    <string name="home_key_disclosure">Kwenye kifaa hiki ADB haiwezi kuwashwa, kwa hivyo Vibe Launcher inahitaji huduma ya ufikivu ili kujibu kitufe cha Mwanzo.\n\nInachukua kitufe cha Mwanzo: kubonyeza hufungua Vibe Launcher, kushikilia hufungua Mipangilio, na vitufe vingine vyote hupita bila kubadilika. Pia inaona kizinduzi asili kinapotokea, na kukifunika. Haisomi chochote kwenye skrini, haihifadhi chochote na haitumi chochote popote.\n\nIzime wakati wowote katika Mipangilio &gt; Ufikivu.</string>
+    <string name="home_key_disclosure_why">Kwenye kifaa hiki ADB haiwezi kuwashwa, kwa hivyo Vibe Launcher inahitaji huduma ya ufikivu ili kujibu kitufe cha Mwanzo.</string>
+    <string name="home_key_disclosure">Inachukua kitufe cha Mwanzo: kubonyeza hufungua Vibe Launcher, kushikilia hufungua Mipangilio, na vitufe vingine vyote hupita bila kubadilika. Pia inaona kizinduzi asili kinapotokea, na kukifunika. Haisomi chochote kwenye skrini, haihifadhi chochote na haitumi chochote popote.\n\nIzime wakati wowote katika Mipangilio &gt; Ufikivu.</string>
     <string name="home_key_disclosure_more">Ukiwasha “%1$s”, pia hufungua Vibe Launcher skrini inapowaka, isipokuwa ubonyeze kitufe kwanza (huandika tu kwamba kitufe kimebonyezwa, si kipi). Na “%2$s” katika Mipangilio huitumia kufungua menyu ya nishati ya kifaa.</string>
     <string name="home_button">Kitufe cha Mwanzo</string>
     <string name="home_button_short">Inapopatikana, inapendekezwa kutumia ADB kuweka kitufe cha Mwanzo. Kipengele cha ufikivu ni kwa vifaa ambavyo ADB haiwezi kuwashwa.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Ninakubali</string>
     <string name="home_key_steps">Kisha: katika orodha itakayofunguka, chagua “%1$s”, iwashe, kisha ubonyeze Mwanzo.</string>
     <string name="home_key_steps_settings">Inayofuata: kifaa hiki hakina njia ya moja kwa moja ya mipangilio ya ufikivu, kwa hivyo Mipangilio ya Android itafunguka. Huko, nenda kwenye Mapendeleo ya Kifaa &gt; Ufikivu, chagua “%1$s”, iwashe, kisha ubonyeze Mwanzo.</string>
+    <string name="home_key_steps_direct">Huwashwa mara tu unapokubali.</string>
+    <string name="home_key_on">“%1$s” imewashwa.</string>
+    <string name="power_on_needs_service">“%1$s” inahitaji “%2$s” ili ifanye kazi kwa uhakika, na imezimwa. Bila hiyo, kwa kawaida Vibe Launcher haifanyi kazi kifaa kinapoamka, kwa hivyo haiwezi kujitokeza yenyewe.</string>
     <string name="time_remaining">Zimebaki %1$s</string>
     <string name="permissions_title">Ruhusa mbili</string>
     <string name="permissions_why">Vibe Launcher itaomba ruhusa mbili.\n\nOrodha za TV: kuonyesha picha kutoka kwa kadi ambazo programu zako huchapisha kwa skrini ya kwanza.\n\nMahali: Android huonyesha jina la mtandao wa Wi-Fi kwa programu zenye ruhusa hii pekee. Vibe Launcher huitumia kwa jina hilo tu na kamwe haitafuti kifaa kiko wapi.\n\nHakuna kinachotoka kwenye kifaa.</string>

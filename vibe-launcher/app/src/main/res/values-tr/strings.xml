@@ -235,7 +235,8 @@
     <string name="home_key_name">Vibe Launcher Ana ekran düğmesi</string>
     <string name="home_key_description">Kumandanın Ana Ekran tuşunun varsayılan başlatıcı yerine Vibe Launcher\'ı, basılı tutulunca da cihazın ayarlarını açmasını sağlar. Ekrandaki hiçbir şeyi okumaz ve diğer tüm tuşları geçirir.</string>
     <string name="home_key_disclosure_title">Ana ekran düğmesini kullan</string>
-    <string name="home_key_disclosure">Bu cihazda ADB açılamıyor, bu yüzden Vibe Launcher\'ın Ana Ekran tuşuna yanıt verebilmesi için bir erişilebilirlik hizmetine ihtiyacı var.\n\nAna Ekran tuşunu üstlenir: bir basış Vibe Launcher\'ı açar, basılı tutmak ayarları açar ve diğer tüm tuşlar değişmeden geçer. Varsayılan başlatıcı göründüğünde bunu da fark eder ve üstünü kapatır. Ekrandaki hiçbir şeyi okumaz, hiçbir şey saklamaz ve hiçbir yere bir şey göndermez.\n\nİstediğiniz zaman Ayarlar &gt; Erişilebilirlik\'ten kapatın.</string>
+    <string name="home_key_disclosure_why">Bu cihazda ADB açılamıyor, bu yüzden Vibe Launcher\'ın Ana Ekran tuşuna yanıt verebilmesi için bir erişilebilirlik hizmetine ihtiyacı var.</string>
+    <string name="home_key_disclosure">Ana Ekran tuşunu üstlenir: bir basış Vibe Launcher\'ı açar, basılı tutmak ayarları açar ve diğer tüm tuşlar değişmeden geçer. Varsayılan başlatıcı göründüğünde bunu da fark eder ve üstünü kapatır. Ekrandaki hiçbir şeyi okumaz, hiçbir şey saklamaz ve hiçbir yere bir şey göndermez.\n\nİstediğiniz zaman Ayarlar &gt; Erişilebilirlik\'ten kapatın.</string>
     <string name="home_key_disclosure_more">“%1$s” özelliğini açarsanız, önce bir tuşa basmadıkça ekran açıldığında da Vibe Launcher\'ı açar (yalnızca bir tuşa basıldığını not eder, hangisi olduğunu değil). Ayarlardaki “%2$s” de cihazın güç menüsünü açmak için bunu kullanır.</string>
     <string name="home_button">Ana ekran düğmesi</string>
     <string name="home_button_short">Kullanılabildiğinde Ana Ekran tuşunu ADB ile ayarlamanız önerilir. Erişilebilirlik özelliği, ADB\'nin açılamadığı cihazlar içindir.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Kabul ediyorum</string>
     <string name="home_key_steps">Sonra: açılan listede “%1$s” seçeneğini seçip açın, ardından Ana ekran düğmesine basın.</string>
     <string name="home_key_steps_settings">Sonraki adım: bu cihazda erişilebilirlik ayarlarına doğrudan bir yol yok, bu yüzden Android ayarları açılır. Orada Cihaz Tercihleri &gt; Erişilebilirlik\'e gidin, “%1$s” öğesini seçin, açın ve ardından Ana Ekran tuşuna basın.</string>
+    <string name="home_key_steps_direct">Kabul ettiğiniz anda açılır.</string>
+    <string name="home_key_on">“%1$s” açık.</string>
+    <string name="power_on_needs_service">“%1$s” ayarının güvenilir çalışması için “%2$s” gerekir ve şu an kapalı. O olmadan cihaz uyandığında Vibe Launcher genellikle çalışmıyor olur, bu yüzden kendiliğinden açılamaz.</string>
     <string name="time_remaining">%1$s kaldı</string>
     <string name="permissions_title">İki izin</string>
     <string name="permissions_why">Vibe Launcher şimdi iki izin isteyecek.\n\nTV yayın akışı: uygulamalarınızın ana ekran için yayınladığı kartlardaki görselleri göstermek için.\n\nKonum: Android, Wi-Fi ağının adını yalnızca bu izne sahip uygulamalara gösterir. Vibe Launcher bunu yalnızca bu ad için kullanır ve cihazın nerede olduğuna asla bakmaz.\n\nHiçbiri cihazdan dışarı çıkmaz.</string>

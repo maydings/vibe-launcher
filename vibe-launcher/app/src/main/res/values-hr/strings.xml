@@ -235,7 +235,8 @@
     <string name="home_key_name">Tipka Početno za Vibe Launcher</string>
     <string name="home_key_description">Tipka Početna na daljinskom otvara Vibe Launcher umjesto izvornog pokretača, a dugi pritisak postavke uređaja. Ne čita ništa sa zaslona i propušta sve ostale tipke.</string>
     <string name="home_key_disclosure_title">Koristi tipku Početno</string>
-    <string name="home_key_disclosure">Na ovom uređaju ADB se ne može uključiti, pa Vibe Launcheru treba usluga pristupačnosti da bi odgovarao na tipku Početna.\n\nPreuzima tipku Početna: pritisak otvara Vibe Launcher, dugi pritisak otvara postavke, a sve ostale tipke prolaze nepromijenjene. Vidi i kada se pojavi izvorni pokretač te ga prekrije. Ne čita ništa sa zaslona, ništa ne sprema i nikamo ništa ne šalje.\n\nIsključite je bilo kada u Postavke &gt; Pristupačnost.</string>
+    <string name="home_key_disclosure_why">Na ovom uređaju ADB se ne može uključiti, pa Vibe Launcheru treba usluga pristupačnosti da bi odgovarao na tipku Početna.</string>
+    <string name="home_key_disclosure">Preuzima tipku Početna: pritisak otvara Vibe Launcher, dugi pritisak otvara postavke, a sve ostale tipke prolaze nepromijenjene. Vidi i kada se pojavi izvorni pokretač te ga prekrije. Ne čita ništa sa zaslona, ništa ne sprema i nikamo ništa ne šalje.\n\nIsključite je bilo kada u Postavke &gt; Pristupačnost.</string>
     <string name="home_key_disclosure_more">Ako uključite „%1$s”, otvara Vibe Launcher i kad se zaslon uključi, osim ako prije ne pritisnete tipku (bilježi samo da je tipka pritisnuta, ne koja). A „%2$s” u postavkama koristi je za otvaranje izbornika napajanja uređaja.</string>
     <string name="home_button">Tipka Početno</string>
     <string name="home_button_short">Kad je dostupan, preporučuje se postaviti tipku Početna putem ADB-a. Značajka pristupačnosti namijenjena je uređajima na kojima se ADB ne može uključiti.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Slažem se</string>
     <string name="home_key_steps">Zatim: na popisu koji se otvori odaberite „%1$s”, uključite ga i pritisnite Početno.</string>
     <string name="home_key_steps_settings">Dalje: ovaj uređaj nema izravan put do postavki pristupačnosti, pa se otvaraju postavke Androida. Ondje idite na Postavke uređaja &gt; Pristupačnost, odaberite „%1$s”, uključite je i pritisnite Početna.</string>
+    <string name="home_key_steps_direct">Uključuje se čim pristanete.</string>
+    <string name="home_key_on">„%1$s” je uključen.</string>
+    <string name="power_on_needs_service">„%1$s” treba „%2$s” da bi pouzdano radio, a on je isključen. Bez njega Vibe Launcher obično ne radi kad se uređaj probudi, pa se ne može sam pojaviti.</string>
     <string name="time_remaining">Još %1$s</string>
     <string name="permissions_title">Dva dopuštenja</string>
     <string name="permissions_why">Vibe Launcher će sada zatražiti dva dopuštenja.\n\nTV program: za prikaz slika s kartica koje vaše aplikacije objavljuju za početni zaslon.\n\nLokacija: Android pokazuje naziv Wi-Fi mreže samo aplikacijama koje je imaju. Vibe Launcher je koristi samo za taj naziv i nikad ne traži gdje je uređaj.\n\nNijedno ne napušta uređaj.</string>

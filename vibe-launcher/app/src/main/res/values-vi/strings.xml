@@ -235,7 +235,8 @@
     <string name="home_key_name">Nút Màn hình chính của Vibe Launcher</string>
     <string name="home_key_description">Làm nút Màn hình chính trên điều khiển mở Vibe Launcher thay cho trình chạy gốc, và giữ nút để mở Cài đặt của thiết bị. Nó không đọc gì trên màn hình và cho mọi phím khác đi qua.</string>
     <string name="home_key_disclosure_title">Dùng nút Màn hình chính</string>
-    <string name="home_key_disclosure">Thiết bị này không bật được ADB, nên Vibe Launcher cần một dịch vụ hỗ trợ tiếp cận để phản hồi nút Màn hình chính.\n\nNó nhận nút Màn hình chính: nhấn để mở Vibe Launcher, giữ để mở Cài đặt, còn mọi phím khác đi qua như cũ. Nó cũng thấy khi trình chạy gốc hiện lên và che nó đi. Nó không đọc gì trên màn hình, không lưu gì và không gửi gì đi đâu.\n\nTắt nó bất cứ lúc nào trong Cài đặt &gt; Hỗ trợ tiếp cận.</string>
+    <string name="home_key_disclosure_why">Thiết bị này không bật được ADB, nên Vibe Launcher cần một dịch vụ hỗ trợ tiếp cận để phản hồi nút Màn hình chính.</string>
+    <string name="home_key_disclosure">Nó nhận nút Màn hình chính: nhấn để mở Vibe Launcher, giữ để mở Cài đặt, còn mọi phím khác đi qua như cũ. Nó cũng thấy khi trình chạy gốc hiện lên và che nó đi. Nó không đọc gì trên màn hình, không lưu gì và không gửi gì đi đâu.\n\nTắt nó bất cứ lúc nào trong Cài đặt &gt; Hỗ trợ tiếp cận.</string>
     <string name="home_key_disclosure_more">Nếu bạn bật “%1$s”, nó cũng mở Vibe Launcher khi màn hình bật, trừ khi bạn nhấn một phím trước (nó chỉ ghi nhận có phím được nhấn, không biết phím nào). Và “%2$s” trong Cài đặt dùng nó để mở menu nguồn của thiết bị.</string>
     <string name="home_button">Nút Màn hình chính</string>
     <string name="home_button_short">Khi có ADB, bạn nên dùng ADB để đặt nút Màn hình chính. Tính năng hỗ trợ tiếp cận dành cho thiết bị không bật được ADB.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Đồng ý</string>
     <string name="home_key_steps">Tiếp theo: trong danh sách mở ra, chọn “%1$s”, bật lên rồi nhấn nút Màn hình chính.</string>
     <string name="home_key_steps_settings">Tiếp theo: thiết bị này không có đường vào thẳng cài đặt hỗ trợ tiếp cận, nên Cài đặt Android sẽ mở ra. Ở đó, vào Tùy chọn thiết bị &gt; Hỗ trợ tiếp cận, chọn “%1$s”, bật lên, rồi nhấn Màn hình chính.</string>
+    <string name="home_key_steps_direct">Tính năng này bật ngay khi bạn đồng ý.</string>
+    <string name="home_key_on">“%1$s” đang bật.</string>
+    <string name="power_on_needs_service">“%1$s” cần “%2$s” để hoạt động ổn định, nhưng nó đang tắt. Không có nó, Vibe Launcher thường không chạy khi thiết bị thức dậy nên không thể tự hiện lên.</string>
     <string name="time_remaining">Còn %1$s</string>
     <string name="permissions_title">Hai quyền</string>
     <string name="permissions_why">Vibe Launcher sẽ xin hai quyền.\n\nDanh sách TV: để hiện ảnh từ các thẻ mà ứng dụng của bạn đăng cho màn hình chính.\n\nVị trí: Android chỉ hiện tên mạng Wi-Fi cho ứng dụng có quyền này. Vibe Launcher chỉ dùng nó cho tên đó và không bao giờ tìm xem thiết bị ở đâu.\n\nKhông gì rời khỏi thiết bị.</string>

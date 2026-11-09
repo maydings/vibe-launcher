@@ -235,7 +235,8 @@
     <string name="home_key_name">Tombol Beranda Vibe Launcher</string>
     <string name="home_key_description">Membuat tombol Beranda remote membuka Vibe Launcher, bukan peluncur bawaan, dan menahannya membuka Setelan perangkat. Tidak membaca apa pun di layar dan meneruskan semua tombol lain.</string>
     <string name="home_key_disclosure_title">Gunakan tombol Beranda</string>
-    <string name="home_key_disclosure">Di perangkat ini ADB tidak bisa diaktifkan, jadi Vibe Launcher memerlukan layanan aksesibilitas untuk merespons tombol Beranda.\n\nLayanan ini mengambil tombol Beranda: tekan untuk membuka Vibe Launcher, tahan untuk membuka Setelan, dan semua tombol lain diteruskan tanpa perubahan. Layanan ini juga melihat saat peluncur bawaan muncul, lalu menutupinya. Tidak membaca apa pun di layar, tidak menyimpan apa pun, dan tidak mengirim apa pun ke mana pun.\n\nMatikan kapan saja di Setelan &gt; Aksesibilitas.</string>
+    <string name="home_key_disclosure_why">Di perangkat ini ADB tidak bisa diaktifkan, jadi Vibe Launcher memerlukan layanan aksesibilitas untuk merespons tombol Beranda.</string>
+    <string name="home_key_disclosure">Layanan ini mengambil tombol Beranda: tekan untuk membuka Vibe Launcher, tahan untuk membuka Setelan, dan semua tombol lain diteruskan tanpa perubahan. Layanan ini juga melihat saat peluncur bawaan muncul, lalu menutupinya. Tidak membaca apa pun di layar, tidak menyimpan apa pun, dan tidak mengirim apa pun ke mana pun.\n\nMatikan kapan saja di Setelan &gt; Aksesibilitas.</string>
     <string name="home_key_disclosure_more">Jika Anda mengaktifkan “%1$s”, layanan ini juga membuka Vibe Launcher saat layar menyala, kecuali Anda menekan tombol lebih dulu (hanya mencatat bahwa tombol ditekan, bukan tombol yang mana). Dan “%2$s” di Setelan memakainya untuk membuka menu daya perangkat.</string>
     <string name="home_button">Tombol Beranda</string>
     <string name="home_button_short">Jika tersedia, sebaiknya gunakan ADB untuk menyetel tombol Beranda. Fitur aksesibilitas ditujukan untuk perangkat yang ADB-nya tidak bisa diaktifkan.</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">Setuju</string>
     <string name="home_key_steps">Berikutnya: di daftar yang terbuka, pilih “%1$s”, aktifkan, lalu tekan Beranda.</string>
     <string name="home_key_steps_settings">Berikutnya: perangkat ini tidak punya jalan langsung ke setelan aksesibilitas, jadi Setelan Android yang terbuka. Di sana, buka Preferensi Perangkat &gt; Aksesibilitas, pilih “%1$s”, aktifkan, lalu tekan Beranda.</string>
+    <string name="home_key_steps_direct">Fitur ini langsung aktif setelah Anda setuju.</string>
+    <string name="home_key_on">“%1$s” aktif.</string>
+    <string name="power_on_needs_service">“%1$s” memerlukan “%2$s” agar berfungsi dengan andal, dan fitur itu nonaktif. Tanpanya, Vibe Launcher biasanya tidak berjalan saat perangkat menyala kembali, sehingga tidak bisa muncul sendiri.</string>
     <string name="time_remaining">Sisa %1$s</string>
     <string name="permissions_title">Dua izin</string>
     <string name="permissions_why">Vibe Launcher akan meminta dua izin.\n\nDaftar acara TV: untuk menampilkan gambar dari kartu yang dipublikasikan aplikasi Anda untuk layar utama.\n\nLokasi: Android hanya menampilkan nama jaringan Wi-Fi kepada aplikasi yang memilikinya. Vibe Launcher memakainya hanya untuk nama itu dan tidak pernah mencari lokasi perangkat.\n\nKeduanya tidak keluar dari perangkat.</string>

@@ -235,7 +235,8 @@
     <string name="home_key_name">Vibe Launcher ホームボタン</string>
     <string name="home_key_description">リモコンのホームボタンで標準ランチャーの代わりに Vibe Launcher を開き、長押しでデバイスの設定を開きます。画面の内容は読まず、ほかのキーはすべてそのまま通します。</string>
     <string name="home_key_disclosure_title">ホームボタンを使う</string>
-    <string name="home_key_disclosure">このデバイスでは ADB をオンにできないため、Vibe Launcher がホームボタンに応えるにはユーザー補助サービスが必要です。\n\nこのサービスがホームボタンを受け持ちます：押すと Vibe Launcher、長押しで設定が開き、ほかのキーはすべてそのまま通ります。標準ランチャーが表示されたことにも気づき、その上を覆います。画面の内容は読まず、何も保存せず、どこにも何も送りません。\n\n設定 &gt; ユーザー補助 でいつでもオフにできます。</string>
+    <string name="home_key_disclosure_why">このデバイスでは ADB をオンにできないため、Vibe Launcher がホームボタンに応えるにはユーザー補助サービスが必要です。</string>
+    <string name="home_key_disclosure">このサービスがホームボタンを受け持ちます：押すと Vibe Launcher、長押しで設定が開き、ほかのキーはすべてそのまま通ります。標準ランチャーが表示されたことにも気づき、その上を覆います。画面の内容は読まず、何も保存せず、どこにも何も送りません。\n\n設定 &gt; ユーザー補助 でいつでもオフにできます。</string>
     <string name="home_key_disclosure_more">「%1$s」をオンにすると、先にキーを押さない限り、画面がオンになったときにも Vibe Launcher を開きます（キーが押されたことだけを記録し、どのキーかは記録しません）。また、設定の「%2$s」はこれを使ってデバイスの電源メニューを開きます。</string>
     <string name="home_button">ホームボタン</string>
     <string name="home_button_short">ADB が使える場合は、ADB でホームボタンを設定することをおすすめします。ユーザー補助機能は、ADB をオンにできないデバイス向けです。</string>
@@ -248,6 +249,9 @@
     <string name="home_key_agree">同意する</string>
     <string name="home_key_steps">次に、表示されるリストで「%1$s」を選んでオンにし、ホームボタンを押してください。</string>
     <string name="home_key_steps_settings">次に：このデバイスにはユーザー補助設定へ直接行く方法がないため、Android の設定が開きます。そこで [デバイス設定] &gt; [ユーザー補助] に進み、「%1$s」を選んでオンにし、ホームを押してください。</string>
+    <string name="home_key_steps_direct">同意するとすぐにオンになります。</string>
+    <string name="home_key_on">「%1$s」 はオンです。</string>
+    <string name="power_on_needs_service">「%1$s」 を確実に動かすには 「%2$s」 が必要ですが、オフになっています。これがないと、デバイスが起動したときに Vibe Launcher が動いていないことが多く、自分で表示できません。</string>
     <string name="time_remaining">残り %1$s</string>
     <string name="permissions_title">2 つの権限</string>
     <string name="permissions_why">Vibe Launcher はこのあと 2 つの権限を求めます。\n\n番組表：アプリがホーム画面用に公開するカードの画像を表示するため。\n\n位置情報：Android はこの権限を持つアプリにだけ Wi-Fi ネットワーク名を見せます。Vibe Launcher はその名前にだけ使い、デバイスの場所を調べることはありません。\n\nどちらもデバイスの外には出ません。</string>
