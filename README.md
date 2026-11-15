@@ -61,9 +61,14 @@ Out of the box it reads the cards your apps already publish (Netflix, Prime Vide
 others) and finds clean artwork for each title. You choose the order it looks: Nuvio, Stremio, TMDB or the
 app's own picture. Plex, YouTube (through SmartTube) and an HDHomeRun tuner each get their own pictures too.
 
-You can also use your own wallpapers: photos or videos sent from your phone, or pictures and videos picked
-on the TV from Wallhaven, Pixabay, NASA, Wikimedia Commons or Pexels. Show them only where an app has no
-picture, or instead of everything.
+You can also use your own pictures and videos, all added in one place (Settings → Pictures and videos): sent
+from your phone, or picked on the TV from Wallhaven, Pixabay, NASA, Wikimedia Commons or Pexels. Each is kept
+once, and you choose where it shows:
+
+- **Each app and folder** can have its own backdrops (tile menu → Edit → Backdrops): one always shows, or a
+  different one each visit. They take the place of anything else that app would show.
+- **Custom wallpapers** has its own list too: show it only where an app has no picture, or instead of everything.
+- **Tile pictures** go on app and folder tiles (tile menu → Edit → Change picture), cropped on your phone.
 
 Leave Home alone for a minute and it turns into a slideshow of all of it.
 

@@ -732,9 +732,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 wallpapers.reshuffle();
                 backdropPkg = null;
                 // Loaded here: the tile usually kept its focus, so no focus change would load it.
-                if (heroShown && adapter.inDock(lastFocused)) {
-                    showBackdrop(adapter.packageAt(lastFocused), adapter.ambientColorAt(lastFocused));
-                }
+                if (heroShown && adapter.inDock(lastFocused)) showBackdropAt(lastFocused);
             }
             // Else back from a side panel, such as the TV's Settings: Home is as it was.
             refreshPools.run();
@@ -1031,7 +1029,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         } else {
             heroName.setY(y);
         }
-        showBackdrop(pkg, color);
+        showBackdrop(listKeyAt(position), pkg, color);
     }
 
     /**
@@ -1040,16 +1038,34 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      * drawn above the stills and would otherwise flash over a picture while the next one loads.
      */
     private void showBackdrop(String pkg, int color) {
+        showBackdrop(pkg, pkg, color);
+    }
+
+    /**
+     * As showBackdrop, where key's own list (an app's package or a folder's key: tile menu > Edit > Backdrops) wins
+     * over everything when it has any; pkg is whose pictures show otherwise.
+     */
+    private void showBackdrop(String key, String pkg, int color) {
         boolean always = settings.wallpaperMode() == VibeSettings.WALLPAPER_ALWAYS;
+        if (wallpapers.hasList(key)) {
+            if (key.equals(backdropKey) && java.util.Objects.equals(pkg, backdropPkg) && wallpaperShown) return;
+            backdropPkg = pkg;
+            backdropKey = key;
+            backdropColor = color;
+            showOwnList(key, color);
+            return;
+        }
         if (pkg == null) {   // e.g. the All apps tile in the dock
             backdropPkg = null;
+            backdropKey = null;
             backdropColor = color;
             if (always && showWallpaper(color)) return;
             fadeBackdrop(null, null, null, color);
             return;
         }
-        if (pkg.equals(backdropPkg)) return;
+        if (pkg.equals(backdropPkg) && java.util.Objects.equals(key, backdropKey)) return;
         backdropPkg = pkg;
+        backdropKey = key;
         backdropColor = color;
         if (always && showWallpaper(color)) return;   // custom wallpapers instead of every backdrop
         backdrops.load(pkg, (loaded, bitmap, logo, title, link) -> {
@@ -1150,6 +1166,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private boolean videoOnScreen;
     /** The wallpaper picture in backdropImage now, by id: moving along the dock in Always keeps it, no reload. */
     private String wallpaperOnScreen;
+    /** The list the wallpaper showing came from (Wallpapers.ROTATION, an app's or a folder's): Left/Right go along it. */
+    private String wallpaperList = Wallpapers.ROTATION;
+    /** The list key (an app's package or a folder's) whose backdrop is showing, with backdropPkg. */
+    private String backdropKey;
 
     /**
      * An app's picture as it loaded, or, when it has none and Settings > Backdrops > Custom wallpapers says
@@ -1162,12 +1182,48 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         fadeBackdrop(bitmap, logo, title, color);
     }
 
-    /** This visit's custom wallpaper behind the dock; false when there are none. */
+    /** This visit's custom wallpaper (Custom wallpapers' own list) behind the dock; false when there are none. */
     private boolean showWallpaper(int color) {
-        Wallpapers.Item item = wallpapers.current();
+        Wallpapers.Item item = wallpapers.current(Wallpapers.ROTATION);
         if (item == null) return false;
+        wallpaperList = Wallpapers.ROTATION;
         showWallpaperItem(item, color);
         return true;
+    }
+
+    /** This visit's one from an app's or a folder's own list. */
+    private void showOwnList(String key, int color) {
+        Wallpapers.Item item = wallpapers.current(key);
+        if (item == null) {
+            fadeBackdrop(null, null, null, color);
+            return;
+        }
+        wallpaperList = key;
+        showWallpaperItem(item, color);
+    }
+
+    /** The list a tile's backdrop comes from first: a folder's key, or the app's package; null for neither. */
+    private String listKeyAt(int position) {
+        if (adapter.isFolder(position)) {
+            String id = adapter.folderIdAt(position);
+            return id != null ? Folders.KEY_PREFIX + id : null;
+        }
+        return adapter.packageAt(position);
+    }
+
+    /** The backdrop of the tile at this position: its own list, a folder's app's pictures, or the app's. */
+    private void showBackdropAt(int position) {
+        String pkg = adapter.isFolder(position) ? folderApp(position) : adapter.packageAt(position);
+        showBackdrop(listKeyAt(position), pkg, adapter.ambientColorAt(position));
+    }
+
+    /** The list that shows for this app where it's one of many (the slideshow): its own, else its folder's. */
+    private String ownListFor(String pkg) {
+        if (wallpapers.hasList(pkg)) return pkg;
+        for (Folders.Folder f : adapter.folders.all()) {
+            if (f.apps.contains(pkg) && wallpapers.hasList(Folders.KEY_PREFIX + f.id)) return Folders.KEY_PREFIX + f.id;
+        }
+        return null;
     }
 
     /** A wallpaper: a picture through fadeBackdrop (already darkened), or a video playing under the stills. */
@@ -1229,6 +1285,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         // Which ones, not how many: one deleted and another added leaves the count as it was.
         StringBuilder ids = new StringBuilder(String.valueOf(settings.wallpaperMode()));
         for (Wallpapers.Item item : wallpapers.list()) ids.append('|').append(item.id);
+        ids.append('|').append(wallpapers.listsState());   // ticked for an app, a folder or Custom wallpapers
         String state = ids.toString();
         if (state.equals(wallpaperState)) return;
         boolean first = wallpaperState.isEmpty();
@@ -1236,13 +1293,13 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (first || !heroShown || lastFocused < 0 || !adapter.inDock(lastFocused)) return;
         wallpapers.reshuffle();
         backdropPkg = null;
-        String pkg = adapter.isFolder(lastFocused) ? folderApp(lastFocused) : adapter.packageAt(lastFocused);
-        showBackdrop(pkg, adapter.ambientColorAt(lastFocused));
+        backdropKey = null;
+        showBackdropAt(lastFocused);
     }
 
     /** Always on, with wallpapers to show: the apps' pictures don't come up anywhere. */
     private boolean wallpapersAlways() {
-        return settings.wallpaperMode() == VibeSettings.WALLPAPER_ALWAYS && !wallpapers.isEmpty();
+        return settings.wallpaperMode() == VibeSettings.WALLPAPER_ALWAYS && wallpapers.hasList(Wallpapers.ROTATION);
     }
 
     /** The video goes, once the picture or glow taking over from it has faded in; not if one was started since. */
@@ -1634,7 +1691,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         // None while the menus move, in the slideshow, or under a menu or dialog (Home hasn't the focus).
         boolean shown = !caretsHeld && !slideshow && hasWindowFocus();
         boolean on = shown && settings.carets();   // the Play pill isn't an arrow: it stays when they're off
-        boolean more = on && pictureOnly && (wallpaperShown || wallpapersAlways() ? wallpapers.count() > 1
+        boolean more = on && pictureOnly && (wallpaperShown || wallpapersAlways()
+                ? wallpapers.listOf(wallpaperShown ? wallpaperList : Wallpapers.ROTATION).size() > 1
                 : backdropPkg != null && backdrops.stillCount(backdropPkg) > 1);
         boolean dock = on && !pictureOnly && onDock();
         showCaret(caretDock, dock);
@@ -1976,9 +2034,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     private void nextSlide() {
         if (!slideshow) return;
-        if (settings.wallpaperMode() == VibeSettings.WALLPAPER_ALWAYS && !wallpapers.isEmpty()) {
+        if (wallpapersAlways()) {
             // Always: the wallpapers are the pictures, so they're the slideshow's too.
-            Wallpapers.Item item = wallpapers.next();
+            Wallpapers.Item item = wallpapers.next(Wallpapers.ROTATION);
+            wallpaperList = Wallpapers.ROTATION;
             if (item != null) showWallpaperItem(item, backdropColor);
             slideEntry = null;
             handler.postDelayed(nextSlide, SLIDE_MS);
@@ -1988,6 +2047,13 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (!slideshow) return;
             slidePkg = pkg;
             slideEntry = entry;
+            String own = ownListFor(pkg);
+            if (own != null) {   // an app with its own list (or its folder's) shows from it here too
+                Wallpapers.Item item = wallpapers.next(own);
+                wallpaperList = own;
+                if (item != null) showWallpaperItem(item, backdropColor);
+                return;
+            }
             fadeBackdrop(bitmap, logo, entry.title, backdropColor);
         });
         handler.postDelayed(nextSlide, SLIDE_MS);
@@ -2056,6 +2122,14 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         playInfo.setVisibility(View.GONE);
         grid.playSoundEffect(direction > 0
                 ? SoundEffectConstants.NAVIGATION_RIGHT : SoundEffectConstants.NAVIGATION_LEFT);
+        String key = listKeyAt(next);
+        if (wallpapers.hasList(key)) {   // its own list wins
+            backdropKey = key;
+            showOwnList(key, backdropColor);
+            updateCarets();
+            return;
+        }
+        backdropKey = key;
         if (settings.wallpaperMode() == VibeSettings.WALLPAPER_ALWAYS && showWallpaper(backdropColor)) {
             updateCarets();   // the wallpaper stays: no app pictures in Always
             return;
@@ -2073,7 +2147,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void stepPicture(int direction) {
         if (wallpaperShown || wallpapersAlways()) {
             // A wallpaper is what shows (Always, or an app with no picture of its own): the next wallpaper.
-            Wallpapers.Item item = wallpapers.step(direction);
+            Wallpapers.Item item = wallpapers.step(wallpaperShown ? wallpaperList : Wallpapers.ROTATION, direction);
             if (item == null) return;
             cancelHold();
             showWallpaperItem(item, backdropColor);
@@ -3068,7 +3142,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 adapter.startMove(at);
                 Toast.makeText(this, R.string.move_hint, Toast.LENGTH_LONG).show();
             });
-            addInputRow(rows, popup, R.drawable.ic_edit, getString(R.string.rename_folder), -1, () -> renameFolder(id));
+            addInputRow(rows, popup, R.drawable.ic_edit, getString(R.string.edit_tile), -1, () -> editFolder(id, card));
             addInputRow(rows, popup, R.drawable.ic_delete, getString(R.string.remove_folder), -1, () -> removeFolder(id));
         }
         if (!adapter.userHidden().isEmpty()) {
@@ -3412,7 +3486,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (shelfFolder != null) folderPicks.put(shelfFolder, app.pkg);
             heroName.setText(app.label);   // the app's name while it's in the middle
             shelf.selector.setContentDescription(app.label);
-            showBackdrop(app.pkg, adapter.ambientColorAt(shelfFolderPos));
+            // The app's own list, else its folder's, else the app's pictures.
+            String key = wallpapers.hasList(app.pkg) || shelfFolder == null ? app.pkg : Folders.KEY_PREFIX + shelfFolder;
+            showBackdrop(key, app.pkg, adapter.ambientColorAt(shelfFolderPos));
         }
 
         @Override
@@ -3591,6 +3667,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         else keys.remove(at);
         keys.addAll(at, f.apps);
         adapter.folders.delete(id);
+        new TileCustom(this).reset(Folders.KEY_PREFIX + id);   // its tile picture stays among the tile pictures
+        wallpapers.forgetList(Folders.KEY_PREFIX + id);
         adapter.saveOrder(keys);
         adapter.reload();
         int focus = at;
@@ -3649,7 +3727,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         LinearLayout rows = panel.findViewById(R.id.rows);
         PopupWindow popup = newMenu(panel);
         addInputRow(rows, popup, R.drawable.ic_image, getString(R.string.change_picture), -1,
-                () -> changePicture(pkg, e.label));
+                () -> pickTilePicture(pkg, e.label));
+        addInputRow(rows, popup, R.drawable.ic_play, getString(R.string.tab_backdrops), -1,
+                () -> pickBackdrops(pkg, e.label, anchor));
         if (custom.picture(pkg) == null && (e.ownBanner || custom.useIcon(pkg))) {
             boolean icon = custom.useIcon(pkg);
             addInputRow(rows, popup, R.drawable.ic_all_apps, getString(icon ? R.string.use_banner : R.string.use_icon), -1,
@@ -3680,68 +3760,72 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         folderChanged();
     }
 
+    /** A grid picked from returns here: the tile or list it was for is drawn again (onActivityResult). */
+    private static final int REQUEST_PICK = 41;
+
     /**
-     * Change picture: a QR code for a page on the phone (PhoneLink), where a picture is chosen, cropped or
-     * fitted to the tile and sent; it becomes the tile's, and the note closes.
+     * Change picture: the tile pictures (Settings > Pictures and videos, the one place they're added), OK on one
+     * putting it on this tile (an app's package, or a folder's key), OK on it again taking it off.
      */
-    private void changePicture(String pkg, String label) {
-        Dialog[] shown = {null};
-        PhoneLink link = new PhoneLink(fields -> {
-            Bitmap picture = decodePicture(fields.get("picture"));
-            if (picture != null && new TileCustom(this).setPicture(pkg, picture)) {
-                tileChanged(pkg);
-                Toast.makeText(this, R.string.picture_saved, Toast.LENGTH_SHORT).show();
-                if (shown[0] != null) shown[0].dismiss();
-            } else {
-                showError(this, R.string.picture_failed);
-            }
-        }, settings, label);
-        String url = link.start();
-        if (url == null) {   // offline: no home network for the phone to reach the TV on
-            showError(this, R.string.not_available);
-            return;
-        }
-        View panel = getLayoutInflater().inflate(R.layout.dialog_update, findViewById(android.R.id.content), false);
-        ((TextView) panel.findViewById(R.id.updateTitle)).setText(R.string.change_picture);
-        ((TextView) panel.findViewById(R.id.notes)).setText(getString(R.string.picture_scan, label));
-        ImageView qr = new ImageView(this);
-        int size = Math.round(220 * density);
-        qr.setImageBitmap(PhoneLink.qr(url, size));
-        LinearLayout.LayoutParams qrLp = new LinearLayout.LayoutParams(size, size);
-        qrLp.gravity = Gravity.CENTER_HORIZONTAL;
-        qrLp.topMargin = Math.round(18 * density);
-        qrLp.bottomMargin = Math.round(6 * density);
-        ((LinearLayout) panel).addView(qr, 2, qrLp);
-        panel.findViewById(R.id.install).setVisibility(View.GONE);   // nothing to confirm: the phone sends it
-        Dialog dialog = new Dialog(this, android.R.style.Theme_Material_Dialog_NoActionBar);
-        dialog.setContentView(panel);
-        Window window = dialog.getWindow();
-        if (window != null) {
-            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            window.setLayout(Math.round(560 * density), ViewGroup.LayoutParams.WRAP_CONTENT);
-        }
-        panel.findViewById(R.id.cancelUpdate).setOnClickListener(v -> dialog.dismiss());
-        dialog.setOnDismissListener(d -> link.stop());
-        shown[0] = dialog;
-        dialog.show();
-        panel.findViewById(R.id.cancelUpdate).requestFocus();
+    private void pickTilePicture(String key, String label) {
+        inSettings = true;   // the grid is over Home as Settings is: nothing on Home restarts meanwhile
+        startActivityForResult(WallpaperBrowserActivity.mine(this, WallpaperBrowserActivity.TILES, key, label),
+                REQUEST_PICK);
     }
 
-    /** The phone's "data:image/...;base64,..." picture, or null when it isn't one (or is unreasonably large). */
-    private static Bitmap decodePicture(String dataUrl) {
-        if (dataUrl == null || !dataUrl.startsWith("data:image/")) return null;
-        int comma = dataUrl.indexOf(',');
-        if (comma < 0) return null;
-        try {
-            byte[] bytes = android.util.Base64.decode(dataUrl.substring(comma + 1), android.util.Base64.DEFAULT);
-            android.graphics.BitmapFactory.Options o = new android.graphics.BitmapFactory.Options();
-            o.inJustDecodeBounds = true;
-            android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.length, o);
-            if (o.outWidth <= 0 || o.outHeight <= 0 || o.outWidth > 4096 || o.outHeight > 4096) return null;
-            return android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        } catch (IllegalArgumentException | OutOfMemoryError e) {
-            return null;
+    /** Backdrops: this tile's own list, ticked from the backdrop pictures or the backdrop videos. */
+    private void pickBackdrops(String key, String label, View anchor) {
+        View panel = getLayoutInflater().inflate(R.layout.popup_inputs, root, false);
+        LinearLayout rows = panel.findViewById(R.id.rows);
+        PopupWindow popup = newMenu(panel);
+        addInputRow(rows, popup, R.drawable.ic_image, getString(R.string.backdrop_pictures), -1, () -> {
+            inSettings = true;
+            startActivityForResult(WallpaperBrowserActivity.mine(this, WallpaperBrowserActivity.PICTURES, key, label),
+                    REQUEST_PICK);
+        });
+        addInputRow(rows, popup, R.drawable.ic_play, getString(R.string.backdrop_videos), -1, () -> {
+            inSettings = true;
+            startActivityForResult(WallpaperBrowserActivity.mine(this, WallpaperBrowserActivity.VIDEOS, key, label),
+                    REQUEST_PICK);
+        });
+        showMenu(popup, panel, rows, anchor, Gravity.START);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode != REQUEST_PICK || resultCode != RESULT_OK || data == null) return;
+        String key = data.getStringExtra(WallpaperBrowserActivity.LIST);
+        // A tile picture deleted there may have been on any tile: all of them drawn again. The backdrops follow in
+        // onResume (applyWallpaperChange sees the lists changed).
+        adapter.reload();
+        if (folderView != null) folderView.adapter.reload();
+        shelfContents = null;
+        if (key != null && !key.startsWith(Folders.KEY_PREFIX)) tileChanged(key);
+    }
+
+    /** A folder's Edit, as an app's: its tile picture, its backdrops, Rename, or Reset to its preview. */
+    private void editFolder(String id, View anchor) {
+        adapter.folders.reread();
+        Folders.Folder f = adapter.folders.get(id);
+        if (f == null) return;
+        String key = Folders.KEY_PREFIX + id;
+        View panel = getLayoutInflater().inflate(R.layout.popup_inputs, root, false);
+        LinearLayout rows = panel.findViewById(R.id.rows);
+        PopupWindow popup = newMenu(panel);
+        addInputRow(rows, popup, R.drawable.ic_image, getString(R.string.change_picture), -1,
+                () -> pickTilePicture(key, f.name));
+        addInputRow(rows, popup, R.drawable.ic_play, getString(R.string.tab_backdrops), -1,
+                () -> pickBackdrops(key, f.name, anchor));
+        addInputRow(rows, popup, R.drawable.ic_edit, getString(R.string.rename_folder), -1, () -> renameFolder(id));
+        if (new TileCustom(this).changed(key)) {
+            addInputRow(rows, popup, R.drawable.ic_restore, getString(R.string.reset_tile), -1, () -> {
+                new TileCustom(this).reset(key);
+                adapter.reload();
+                shelfContents = null;
+            });
         }
+        showMenu(popup, panel, rows, anchor, Gravity.START);
     }
 
     /** OK on an open folder's name: Rename, Remove folder, or Close (as Back). */
@@ -3750,7 +3834,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         View panel = getLayoutInflater().inflate(R.layout.popup_inputs, root, false);
         LinearLayout rows = panel.findViewById(R.id.rows);
         PopupWindow popup = newMenu(panel);
-        addInputRow(rows, popup, R.drawable.ic_edit, getString(R.string.rename_folder), -1, () -> renameFolder(id));
+        addInputRow(rows, popup, R.drawable.ic_edit, getString(R.string.edit_tile), -1,
+                () -> editFolder(id, folderView != null ? folderView.title : root));
         addInputRow(rows, popup, R.drawable.ic_delete, getString(R.string.remove_folder), -1, () -> {
             closeFolder();
             removeFolder(id);   // after closing, so focus ends on the folder's first app, in its place

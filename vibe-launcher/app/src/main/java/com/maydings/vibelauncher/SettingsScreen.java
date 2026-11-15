@@ -381,6 +381,7 @@ final class SettingsScreen {
         generalRow = root.link(R.string.tab_general, null, this::general);
         root.link(R.string.tab_appearance, null, this::appearance);
         root.link(R.string.tab_backdrops, null, this::backdrops);
+        root.link(R.string.media_title, null, this::media);
         root.link(R.string.tab_weather, null, this::weather);
         root.link(R.string.tab_keys, null, this::apiKeys);
         appsRootRow = root.link(R.string.tab_apps, null, this::apps);
@@ -1031,8 +1032,6 @@ MainActivity.showError(host, R.string.anim_short);
     private static final int[] WALLPAPER_MODES = {R.string.off, R.string.wp_use_no_picture, R.string.wp_use_always};
 
     /** Backdrops > Custom wallpapers while it's open: its list is brought up to date as wallpapers come in. */
-    private Page wallpaperPage;
-
     /**
      * Backdrops > Custom wallpapers: when they show (Off, where an app has no picture, or always instead of the
      * backdrops), adding them (from the phone's page, or picked from Wallhaven's, Pexels', Pixabay's, NASA's or
@@ -1040,26 +1039,88 @@ MainActivity.showError(host, R.string.anim_short);
      */
     private Page wallpapersPage() {
         Page page = new Page(ctx.getString(R.string.wp_custom));
-        wallpaperPage = page;
         page.footnote = R.string.wp_custom_short;
         Row use = page.link(R.string.wp_use, () -> ctx.getString(WALLPAPER_MODES[settings.wallpaperMode()]),
                 this::wallpaperModes);
         use.about = R.string.wp_use_short;
+        // Its own list, ticked from everything uploaded (Pictures and videos, the one place they come in).
+        String name = ctx.getString(R.string.wp_custom);
+        Row pictures = page.add(R.string.backdrop_pictures,
+                () -> String.valueOf(countOf(Wallpapers.get(ctx).listOf(Wallpapers.ROTATION), false)),
+                () -> host.startActivity(WallpaperBrowserActivity.mine(host, WallpaperBrowserActivity.PICTURES,
+                        Wallpapers.ROTATION, name)));
+        pictures.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+        pictures.about = R.string.media_tick_short;
+        Row videos = page.add(R.string.backdrop_videos,
+                () -> String.valueOf(countOf(Wallpapers.get(ctx).listOf(Wallpapers.ROTATION), true)),
+                () -> host.startActivity(WallpaperBrowserActivity.mine(host, WallpaperBrowserActivity.VIDEOS,
+                        Wallpapers.ROTATION, name)));
+        videos.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+        videos.about = R.string.media_tick_short;
+        Row add = page.link(R.string.media_title, null, this::media);
+        add.about = R.string.media_short;
+        return page;
+    }
+
+    /** How many of these are videos (or pictures). */
+    private static int countOf(List<Wallpapers.Item> items, boolean video) {
+        int n = 0;
+        for (Wallpapers.Item item : items) if (item.video == video) n++;
+        return n;
+    }
+
+    // ---- pictures and videos ---------------------------------------------------------------------------
+
+    /**
+     * Pictures and videos: the one place they come in, in three buckets, each kept once: tile pictures (for a tile,
+     * tile menu > Edit > Change picture), and backdrop pictures and videos (for an app's, a folder's or Custom
+     * wallpapers' list). Each: Add from phone, the sources to browse, and what's on the device (OK deletes).
+     */
+    private Page media() {
+        Page page = new Page(ctx.getString(R.string.media_title));
+        page.footnote = R.string.media_short;
+        page.link(R.string.tile_pictures, () -> String.valueOf(new TilePictures(ctx).list().size()), this::tilePictures);
+        page.link(R.string.backdrop_pictures, () -> String.valueOf(countOf(Wallpapers.get(ctx).list(), false)),
+                () -> backdropMedia(false));
+        page.link(R.string.backdrop_videos, () -> String.valueOf(countOf(Wallpapers.get(ctx).list(), true)),
+                () -> backdropMedia(true));
+        return page;
+    }
+
+    private Page tilePictures() {
+        Page page = new Page(ctx.getString(R.string.tile_pictures));
+        if (phoneUrl != null && link != null && link.tileUrl() != null) {
+            Row phone = page.link(R.string.wp_add_phone, null,
+                    () -> phone(R.string.wp_add_phone, link.tileUrl(), R.string.tp_scan));
+            phone.about = R.string.tp_add_phone_short;
+        }
+        Row there = page.add(R.string.media_on_device, () -> String.valueOf(new TilePictures(ctx).list().size()),
+                () -> host.startActivity(WallpaperBrowserActivity.mine(host, WallpaperBrowserActivity.TILES, null, null)));
+        there.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+        return page;
+    }
+
+    /** Backdrop pictures, or videos: from the phone, the sources that have them, and those on the device. */
+    private Page backdropMedia(boolean video) {
+        Page page = new Page(ctx.getString(video ? R.string.backdrop_videos : R.string.backdrop_pictures));
         if (phoneUrl != null && link != null && link.wallpaperUrl() != null) {
             Row phone = page.link(R.string.wp_add_phone, null,
                     () -> phone(R.string.wp_add_phone, link.wallpaperUrl(), R.string.wp_scan));
             phone.about = R.string.wp_add_phone_short;
         }
-        Row wallhaven = page.add(R.string.wp_browse_wallhaven, null,
-                () -> host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.WALLHAVEN)));
-        wallhaven.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
-        wallhaven.about = R.string.wp_credit_wallhaven;
-        Row pexels = page.add(R.string.wp_browse_pexels, null, () -> {
-            if (settings.pexelsKey().isEmpty()) MainActivity.showError(host, R.string.wp_pexels_no_key);
-            else host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.PEXELS));
-        });
-        pexels.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
-        pexels.about = R.string.pexels_short;
+        if (!video) {
+            Row wallhaven = page.add(R.string.wp_browse_wallhaven, null,
+                    () -> host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.WALLHAVEN)));
+            wallhaven.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+            wallhaven.about = R.string.wp_credit_wallhaven;
+        } else {
+            Row pexels = page.add(R.string.wp_browse_pexels, null, () -> {
+                if (settings.pexelsKey().isEmpty()) MainActivity.showError(host, R.string.wp_pexels_no_key);
+                else host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.PEXELS));
+            });
+            pexels.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+            pexels.about = R.string.pexels_short;
+        }
         Row pixabay = page.add(R.string.wp_browse_pixabay, null, () -> {
             if (settings.pixabayKey().isEmpty()) MainActivity.showError(host, R.string.wp_pixabay_no_key);
             else host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.PIXABAY));
@@ -1074,10 +1135,10 @@ MainActivity.showError(host, R.string.anim_short);
                 () -> host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.COMMONS)));
         commons.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
         commons.about = R.string.wp_credit_commons;
-        Row mine = page.add(R.string.wp_mine, () -> String.valueOf(Wallpapers.get(ctx).list().size()),
-                () -> host.startActivity(WallpaperBrowserActivity.intent(host, WallpaperBrowserActivity.MINE)));
-        mine.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
-        mine.about = R.string.wp_mine_short;
+        Row there = page.add(R.string.media_on_device, () -> String.valueOf(countOf(Wallpapers.get(ctx).list(), video)),
+                () -> host.startActivity(WallpaperBrowserActivity.mine(host,
+                        video ? WallpaperBrowserActivity.VIDEOS : WallpaperBrowserActivity.PICTURES, null, null)));
+        there.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
         return page;
     }
 
@@ -1097,7 +1158,7 @@ MainActivity.showError(host, R.string.anim_short);
 
     /** Back on Settings (from a wallpaper grid), or one arrived from the phone: how many there are now. */
     void showWallpapers() {
-        if (wallpaperPage != null && pages.contains(wallpaperPage)) wallpaperPage.refresh();
+        for (Page page : pages) page.refresh();   // the counts on whichever pages are open
     }
 
     /** The sources switched on and usable, in order: "TMDB, Nuvio, …". */
@@ -1620,6 +1681,7 @@ MainActivity.showError(host, R.string.anim_short);
         url.setTextSize(13);
         url.setTypeface(UiFont.get(ctx, R.string.font_regular));
         url.setPadding(0, (int) (6 * density), 0, 0);
+        url.setGravity(android.view.Gravity.CENTER_HORIZONTAL);   // under the code, as the instruction is
         box.addView(url);
         page.list.addView(box, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -2753,6 +2815,12 @@ MainActivity.showError(host, R.string.anim_short);
                 if (added) handler.post(SettingsScreen.this::showWallpapers);
                 return added;
             }
+        };
+        link.tilePictures = dataUrl -> {
+            android.graphics.Bitmap picture = TilePictures.decode(dataUrl);
+            boolean added = picture != null && new TilePictures(app).add(picture) != null;
+            if (added) handler.post(SettingsScreen.this::showWallpapers);
+            return added;
         };
         phoneUrl = link.start();
     }

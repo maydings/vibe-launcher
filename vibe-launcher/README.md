@@ -186,7 +186,8 @@ The full list, with what each is sent, is in the [privacy policy](docs/PRIVACY.m
 | `CpuInfo` | CPU use where the device allows it |
 | `PowerOnHome` | Home at power-on: Home shortly after the screen turns on |
 | `CrashGuard` | Falls back to the stock launcher's App info after repeated crashes |
-| `Wallpapers`, `WallpaperVideo`, `WallpaperBrowserActivity` | Custom wallpapers: the stored photos and videos, video playback on Home, and the Wallhaven/Pexels/Pixabay/NASA/Commons browser |
+| `Wallpapers`, `WallpaperVideo`, `WallpaperBrowserActivity` | Backdrop pictures and videos, each stored once, with the lists that pick from them (each app's and folder's, and Custom wallpapers'); video playback on Home; the grids that pick for a list and the Wallhaven/Pexels/Pixabay/NASA/Commons browser |
+| `TilePictures`, `TileCustom` | Tile pictures, each stored once, and what each app or folder tile shows (its picture, icon or name) |
 | `Weather` | The weather line under the date (Open-Meteo, located by IP or a searched city) |
 | `ShelfDial` | A dock folder's apps as a dial above it |
 | `Adb`, `AdbPairing`, `AdbMdns`, `Spake2`, `TvApps`, `CleanLists` | Reaching the TV's own ADB from the TV itself, and turning apps off and on (Settings → Advanced) |

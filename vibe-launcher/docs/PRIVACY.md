@@ -73,14 +73,14 @@ internet address). The services' own privacy policies apply to what they receive
 | Open-Meteo (`api.open-meteo.com`) | the weather location, as a latitude and longitude rounded to the city, and °C or °F | while the weather is on (Settings > Weather; on by default), at most every 20 minutes |
 | Open-Meteo geocoding (`geocoding-api.open-meteo.com`) | the city name you type, and the TV's language | when you search for a city in Settings > Weather > Location |
 | ipapi.co, or ipwho.is when it doesn't answer | nothing beyond the request itself: the service works out the city from the TV's internet address | while the weather is on with Location set to Automatic, at most daily |
-| Wallhaven (`wallhaven.cc`, `w.wallhaven.cc`, `th.wallhaven.cc`) | what you search for, and requests for the pictures you see and pick | when you browse Wallhaven pictures in Settings > Backdrops > Custom wallpapers |
+| Wallhaven (`wallhaven.cc`, `w.wallhaven.cc`, `th.wallhaven.cc`) | what you search for, and requests for the pictures you see and pick | when you browse Wallhaven pictures in Settings > Pictures and videos |
 | Pexels (`api.pexels.com`, `videos.pexels.com`, `images.pexels.com`) | your Pexels key, what you search for, and requests for the videos you see and pick | when you browse Pexels videos there (needs your key) |
 | Pixabay (`pixabay.com`, `cdn.pixabay.com`, `i.vimeocdn.com`) | your Pixabay key, what you search for, and requests for the pictures and videos you see and pick | when you browse Pixabay there (needs your key) |
 | NASA (`images-api.nasa.gov`, `images-assets.nasa.gov`) | what you search for, and requests for the pictures and videos you see and pick | when you browse NASA there |
 | Wikimedia Commons (`commons.wikimedia.org`, `upload.wikimedia.org`, `thumb.wikimedia.org`) | what you search for, and requests for the pictures and videos you see and pick | when you browse Wikimedia Commons there |
 | Plex (`plex.tv`, and your own Plex server) | your Plex token, to find your server and list On Deck and recently added | once you enter a Plex token |
 | HDHomeRun (your tuner, `api.hdhomerun.com`, `img.hdhomerun.com`) | your tuner's own guide code, for the guide's pictures | when an HDHomeRun tuner is on your network |
-| Your phone, on your home network | the keys page, a tile's picture page, the wallpaper page (a picture or video you send to the TV), or the backup page (a backup to download, holding your keys), while Settings or the tile's Edit menu is open | when you scan the QR code on the TV; it has a random address that changes each time |
+| Your phone, on your home network | the keys page, the tile picture page, the backdrop page (a picture or video you send to the TV), or the backup page (a backup to download, holding your keys), while Settings is open | when you scan the QR code on the TV; it has a random address that changes each time |
 | **GitHub build only:** GitHub (`api.github.com`, `github.com`) | a request for this project's latest release | daily, when the TV wakes, and from the gear menu |
 | GitHub (`api.github.com`, `raw.githubusercontent.com`) | requests for Clean Your TV's lists of what to turn off on each TV; nothing about your TV is sent (the list for it is picked on the TV) | when you open Settings > Advanced > Clean-up lists, and a list |
 

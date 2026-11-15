@@ -21,12 +21,17 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Custom wallpapers (Settings > Backdrops > Custom wallpapers): pictures and videos of the person's own, from the
- * phone (PhoneLink), Wallhaven, Pexels, Pixabay, NASA or Wikimedia Commons (WallpaperBrowserActivity), shown on Home instead of an app's glow, or
- * instead of every backdrop (VibeSettings.wallpaperMode). Kept in files/wallpapers, not the cache, which Android
- * may empty. A picture is stored already cut to the screen and darkened as backdrops are, so showing one is a
- * quick decode; a video as it came, darkened on screen by a layer over it. Which one shows is picked at random on
- * each visit to Home, never the same twice running when there's a choice.
+ * Backdrop pictures and videos of the person's own (Settings > Pictures and videos), from the phone (PhoneLink),
+ * Wallhaven, Pexels, Pixabay, NASA or Wikimedia Commons (WallpaperBrowserActivity), each kept once, in
+ * files/wallpapers, not the cache, which Android may empty. A picture is stored already cut to the screen and
+ * darkened as backdrops are, so showing one is a quick decode; a video as it came, darkened on screen by a layer
+ * over it.
+ * <p>
+ * Lists say where they show, by key: an app's package or "folder:<id>" (tile menu > Edit > Backdrops), which then
+ * shows only from its list, whatever else is set; and ROTATION, Settings > Backdrops > Custom wallpapers' own,
+ * shown instead of an app's glow or of every backdrop (VibeSettings.wallpaperMode). A new one is on no list until
+ * it's ticked for one. Which one of a list shows is picked at random on each visit to Home, never the same twice
+ * running when there's a choice; with one, it's always that one.
  */
 final class Wallpapers {
 
@@ -50,13 +55,18 @@ final class Wallpapers {
     /** Free space kept on the TV beyond a new video, so apps aren't left short. */
     private static final long KEEP_FREE = 300L * 1024 * 1024;
 
+    /** The list of Settings > Backdrops > Custom wallpapers (not an app's or a folder's). */
+    static final String ROTATION = "*";
+
     private static Wallpapers instance;
 
     private final File dir;
     private final SharedPreferences prefs;
     private final Random random = new Random();
-    /** This visit's wallpaper (pick); the last one shown, so the next visit picks another. */
-    private String current, last;
+    /** Each list's wallpaper this visit (pick), and the last one it showed, so the next visit picks another. */
+    private final java.util.Map<String, String> current = new java.util.HashMap<>(), last = new java.util.HashMap<>();
+    /** The lists by key, as last read (lists()). */
+    private JSONObject lists;
 
     static synchronized Wallpapers get(Context context) {
         if (instance == null) instance = new Wallpapers(context.getApplicationContext());
@@ -68,6 +78,7 @@ final class Wallpapers {
         //noinspection ResultOfMethodCallIgnored
         dir.mkdirs();
         prefs = context.getSharedPreferences("wallpapers", Context.MODE_PRIVATE);
+        lists();   // made now, the first time, with every one there is before any new one comes
     }
 
     /** Where they're kept; a new file goes here (a .part while it arrives) before add. */
@@ -180,58 +191,155 @@ final class Wallpapers {
         listed = null;
         //noinspection ResultOfMethodCallIgnored
         file(gone).delete();
-        if (gone.id.equals(current)) current = null;
+        JSONObject all = lists();
+        for (java.util.Iterator<String> it = all.keys(); it.hasNext(); ) {
+            String key = it.next();
+            if (gone.id.equals(current.get(key))) current.remove(key);
+            JSONArray a = all.optJSONArray(key);
+            try {
+                if (a != null) all.put(key, without(a, gone.id));
+            } catch (JSONException ignored) {
+            }
+        }
+        saveLists();
     }
 
-    /** This visit's wallpaper, picked the first time it's asked for after reshuffle; null when there are none. */
-    synchronized Item current() {
-        List<Item> all = list();
-        if (all.isEmpty()) return null;
-        for (Item item : all) if (item.id.equals(current)) return item;
-        return pick(all);
+    // ---- lists ---------------------------------------------------------------------------------------
+
+    /** The lists by key; the first time, Custom wallpapers' holds every one there is. */
+    private synchronized JSONObject lists() {
+        if (lists != null) return lists;
+        String saved = prefs.getString("lists", null);
+        try {
+            if (saved != null) {
+                lists = new JSONObject(saved);
+                return lists;
+            }
+        } catch (JSONException e) {
+            // unreadable: as the first time
+        }
+        lists = new JSONObject();
+        JSONArray all = new JSONArray();
+        for (Item item : list()) all.put(item.id);
+        try {
+            lists.put(ROTATION, all);
+        } catch (JSONException ignored) {
+        }
+        saveLists();
+        return lists;
     }
 
-    /** Another one than now (the slideshow's next), or the same when it's the only one. */
-    synchronized Item next() {
-        List<Item> all = list();
+    private void saveLists() {
+        prefs.edit().putString("lists", lists().toString()).apply();
+    }
+
+    private static JSONArray without(JSONArray a, String id) {
+        JSONArray kept = new JSONArray();
+        for (int i = 0; i < a.length(); i++) if (!id.equals(a.optString(i))) kept.put(a.optString(i));
+        return kept;
+    }
+
+    /** What's on this list, in the order they were added (only those still here). */
+    synchronized List<Item> listOf(String key) {
+        JSONArray a = lists().optJSONArray(key);
+        List<Item> out = new ArrayList<>();
+        if (a == null || a.length() == 0) return out;
+        java.util.Set<String> ids = new java.util.HashSet<>();
+        for (int i = 0; i < a.length(); i++) ids.add(a.optString(i));
+        for (Item item : list()) if (ids.contains(item.id)) out.add(item);
+        return out;
+    }
+
+    /** Whether this list has any to show. */
+    boolean hasList(String key) {
+        return key != null && !listOf(key).isEmpty();
+    }
+
+    synchronized boolean inList(String key, String id) {
+        JSONArray a = lists().optJSONArray(key);
+        if (a == null) return false;
+        for (int i = 0; i < a.length(); i++) if (id.equals(a.optString(i))) return true;
+        return false;
+    }
+
+    /** Ticks it on this list or takes it off. */
+    synchronized void setInList(String key, String id, boolean in) {
+        JSONArray a = lists().optJSONArray(key);
+        if (a == null) a = new JSONArray();
+        a = without(a, id);
+        if (in) a.put(id);
+        try {
+            if (a.length() == 0 && !ROTATION.equals(key)) lists().remove(key);
+            else lists().put(key, a);
+        } catch (JSONException ignored) {
+        }
+        if (!in && id.equals(current.get(key))) current.remove(key);
+        saveLists();
+    }
+
+    /** A folder gone: its list too. */
+    synchronized void forgetList(String key) {
+        lists().remove(key);
+        current.remove(key);
+        last.remove(key);
+        saveLists();
+    }
+
+    /** Every list as it is now, to tell when one changed (Home, back from Settings or a grid). */
+    synchronized String listsState() {
+        return lists().toString();
+    }
+
+    /** This visit's one from the list, picked the first time it's asked for after reshuffle; null when it's empty. */
+    synchronized Item current(String key) {
+        List<Item> all = listOf(key);
         if (all.isEmpty()) return null;
-        last = current;
-        return pick(all);
+        for (Item item : all) if (item.id.equals(current.get(key))) return item;
+        return pick(key, all);
+    }
+
+    /** Another one from the list than now (the slideshow's next), or the same when it's the only one. */
+    synchronized Item next(String key) {
+        List<Item> all = listOf(key);
+        if (all.isEmpty()) return null;
+        last.put(key, current.get(key));
+        return pick(key, all);
     }
 
     /**
      * The one before or after this visit's (direction -1 or 1), in the order they were added, going round: Left
      * and Right on the picture alone. Null when there's no other.
      */
-    synchronized Item step(int direction) {
-        List<Item> all = list();
+    synchronized Item step(String key, int direction) {
+        List<Item> all = listOf(key);
         if (all.size() < 2) return null;
         int at = 0;
-        for (int i = 0; i < all.size(); i++) if (all.get(i).id.equals(current)) at = i;
+        for (int i = 0; i < all.size(); i++) if (all.get(i).id.equals(current.get(key))) at = i;
         Item item = all.get(((at + direction) % all.size() + all.size()) % all.size());
-        last = current;
-        current = item.id;
+        last.put(key, current.get(key));
+        current.put(key, item.id);
         return item;
     }
 
-    /** How many there are. */
+    /** How many there are, on no list or any. */
     int count() {
         return list().size();
     }
 
-    /** Home came back: the next one asked for is picked afresh. */
+    /** Home came back: the next one asked for, from each list, is picked afresh. */
     synchronized void reshuffle() {
-        if (current != null) last = current;
-        current = null;
+        last.putAll(current);
+        current.clear();
     }
 
-    private Item pick(List<Item> all) {
+    private Item pick(String key, List<Item> all) {
         List<Item> choice = new ArrayList<>(all);
+        String before = last.get(key);
         if (choice.size() > 1) {
-            for (int i = choice.size() - 1; i >= 0; i--) if (choice.get(i).id.equals(last)) choice.remove(i);
+            for (int i = choice.size() - 1; i >= 0; i--) if (choice.get(i).id.equals(before)) choice.remove(i);
         }
         Item item = choice.get(random.nextInt(choice.size()));
-        current = item.id;
+        current.put(key, item.id);
         return item;
     }
 

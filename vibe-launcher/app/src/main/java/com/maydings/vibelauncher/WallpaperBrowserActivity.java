@@ -66,8 +66,14 @@ import java.util.concurrent.Executors;
 public final class WallpaperBrowserActivity extends Activity {
 
     static final String SOURCE = "source";
-    /** The person's own wallpapers (Wallpapers), to see and delete: no tabs, no downloads. */
+    /**
+     * The person's own (no tabs, no downloads), one bucket (KIND): backdrop pictures or videos (Wallpapers), or tile
+     * pictures (TilePictures). With LIST, picked for it: a backdrop list (an app's, a folder's, or
+     * Wallpapers.ROTATION) ticks any number, a tile (its key) one; OK picks, holding OK deletes. Without, OK deletes.
+     */
     static final String MINE = "mine";
+    static final String KIND = "kind", LIST = "list", LABEL = "label";
+    static final String PICTURES = "pictures", VIDEOS = "videos", TILES = "tiles";
     private static final int COLUMNS = 4;
     /** The tabs: the first list (Wallhaven's top, Pexels' popular, the others' pictures), the second, a search. */
     private static final int FIRST = 0, SECOND = 1, SEARCH = 2;
@@ -159,6 +165,8 @@ public final class WallpaperBrowserActivity extends Activity {
     private boolean mine;
     /** In MINE: each grid item's wallpaper. */
     private final java.util.Map<String, Wallpapers.Item> items = new java.util.HashMap<>();
+    /** In MINE: the bucket (PICTURES, VIDEOS or TILES), and the list or tile it's picked for (null: to delete). */
+    private String kind, listKey, listLabel;
     private String pexelsKey, pixabayKey;
     private Wallpapers wallpapers;
     private File apiCache;
@@ -191,6 +199,10 @@ public final class WallpaperBrowserActivity extends Activity {
         source = getIntent().getStringExtra(SOURCE);
         if (source == null) source = Wallpapers.WALLHAVEN;
         mine = MINE.equals(source);
+        kind = getIntent().getStringExtra(KIND);
+        if (kind == null) kind = PICTURES;
+        listKey = getIntent().getStringExtra(LIST);
+        listLabel = getIntent().getStringExtra(LABEL);
         VibeSettings settings = new VibeSettings(this);
         pexelsKey = settings.pexelsKey();
         pixabayKey = settings.pixabayKey();
@@ -288,7 +300,8 @@ public final class WallpaperBrowserActivity extends Activity {
         credit.setTextSize(13);
         credit.setSingleLine(true);
         credit.setEllipsize(TextUtils.TruncateAt.END);
-        credit.setText(mine ? getString(R.string.wp_delete_short) : sourceCredit());
+        credit.setText(!mine ? sourceCredit() : listKey == null ? getString(R.string.wp_delete_short)
+                : getString(TILES.equals(kind) ? R.string.tp_pick_short : R.string.media_tick_short));
         root.addView(credit);
 
         setContentView(root);
@@ -326,7 +339,11 @@ public final class WallpaperBrowserActivity extends Activity {
 
     /** The grid's heading. */
     private String title() {
-        if (mine) return getString(R.string.wp_mine);
+        if (mine) {
+            String bucket = getString(TILES.equals(kind) ? R.string.tile_pictures
+                    : VIDEOS.equals(kind) ? R.string.backdrop_videos : R.string.backdrop_pictures);
+            return listLabel != null ? listLabel + " · " + bucket : bucket;
+        }
         if (isPexels()) return getString(R.string.wp_pexels_title);
         if (isWallhaven()) return getString(R.string.wp_wallhaven_title);
         return serviceName(source);
@@ -820,7 +837,17 @@ public final class WallpaperBrowserActivity extends Activity {
         generation++;
         results.clear();
         items.clear();
+        if (TILES.equals(kind)) {
+            List<String> ids = new TilePictures(this).list();
+            java.util.Collections.reverse(ids);   // newest first
+            TilePictures pictures = new TilePictures(this);
+            for (String id : ids) {
+                String path = pictures.file(id).getPath();
+                results.add(new Result(id, "tile:" + path, path, "", null, false));
+            }
+        }
         for (Wallpapers.Item item : Wallpapers.sorted(wallpapers.list())) {
+            if (TILES.equals(kind) || item.video != VIDEOS.equals(kind)) continue;
             String name;
             switch (item.source) {
                 case Wallpapers.WALLHAVEN: name = getString(R.string.wp_item_wallhaven); break;
@@ -840,7 +867,7 @@ public final class WallpaperBrowserActivity extends Activity {
         }
         ended = true;
         adapter.notifyDataSetChanged();
-        message.setText(results.isEmpty() ? getString(R.string.wp_mine_empty) : "");
+        message.setText(results.isEmpty() ? emptyText() : "");
         if (!results.isEmpty()) grid.post(() -> {
             RecyclerView.ViewHolder h = grid.findViewHolderForAdapterPosition(0);
             if (h != null) h.itemView.requestFocus();
@@ -850,9 +877,10 @@ public final class WallpaperBrowserActivity extends Activity {
     /** MINE: asks, then deletes it from the TV; the one after it (or before, at the end) takes focus. */
     private void askDelete(Result r, int position) {
         Wallpapers.Item item = items.get(r.id);
-        if (item == null) return;
+        boolean tile = TILES.equals(kind);
+        if (item == null && !tile) return;
         View panel = getLayoutInflater().inflate(R.layout.dialog_update, findViewById(android.R.id.content), false);
-        ((TextView) panel.findViewById(R.id.updateTitle)).setText(R.string.wp_delete_title);
+        ((TextView) panel.findViewById(R.id.updateTitle)).setText(R.string.media_delete_title);
         panel.findViewById(R.id.notesScroll).setVisibility(View.GONE);   // the question is enough
         TextView go = panel.findViewById(R.id.install), cancel = panel.findViewById(R.id.cancelUpdate);
         go.setText(R.string.wp_delete);
@@ -868,14 +896,16 @@ public final class WallpaperBrowserActivity extends Activity {
         cancel.setOnClickListener(v -> dialog.dismiss());
         go.setOnClickListener(v -> {
             dialog.dismiss();
-            wallpapers.delete(item);
+            if (tile) new TilePictures(this).delete(r.id);
+            else wallpapers.delete(item);
             items.remove(r.id);
+            changed();
             int at = results.indexOf(r);
             if (at < 0) return;
             results.remove(at);
             adapter.notifyItemRemoved(at);
             if (results.isEmpty()) {
-                message.setText(R.string.wp_mine_empty);
+                message.setText(emptyText());
                 return;
             }
             int next = Math.min(at, results.size() - 1);
@@ -886,6 +916,41 @@ public final class WallpaperBrowserActivity extends Activity {
         });
         dialog.show();
         cancel.requestFocus();   // the safe one first
+    }
+
+    /** Nothing in the bucket: where they're added (the one place). */
+    private String emptyText() {
+        return getString(R.string.media_empty, getString(R.string.settings) + " > " + getString(R.string.media_title));
+    }
+
+    /** Whether the grid marks it: on the list or tile it's picked for, or (browsing) already downloaded. */
+    private boolean ticked(Result r) {
+        if (!mine) return wallpapers.has(source, r.id);
+        if (listKey == null) return false;
+        if (TILES.equals(kind)) return r.id.equals(new TileCustom(this).pictureId(listKey));
+        return wallpapers.inList(listKey, r.id);
+    }
+
+    /** OK on one, picking for a list or a tile: on or off the list; the tile's picture, or none again. */
+    private void pick(Result r) {
+        if (TILES.equals(kind)) {
+            TileCustom custom = new TileCustom(this);
+            custom.setPicture(listKey, r.id.equals(custom.pictureId(listKey)) ? null : r.id);
+        } else {
+            wallpapers.setInList(listKey, r.id, !wallpapers.inList(listKey, r.id));
+        }
+        changed();
+        adapter.notifyItemRangeChanged(0, results.size());   // ticks: a tile has one, so another one's goes
+    }
+
+    /** Something picked or deleted here: whoever opened the grid draws again what it shows (MainActivity). */
+    private void changed() {
+        setResult(RESULT_OK, new android.content.Intent().putExtra(LIST, listKey));
+    }
+
+    /** A grid of one bucket, to pick for a list or a tile (listKey, its name as label), or to delete (both null). */
+    static Intent mine(Context context, String kind, String listKey, String label) {
+        return intent(context, MINE).putExtra(KIND, kind).putExtra(LIST, listKey).putExtra(LABEL, label);
     }
 
     /** Source and id of each one being downloaded now (main thread). */
@@ -1043,8 +1108,14 @@ public final class WallpaperBrowserActivity extends Activity {
             });
             frame.setOnClickListener(v -> {
                 if (h.result == null) return;
-                if (mine) askDelete(h.result, h.getAdapterPosition());
+                if (mine && listKey != null) pick(h.result);
+                else if (mine) askDelete(h.result, h.getAdapterPosition());
                 else take(h.result);
+            });
+            frame.setOnLongClickListener(v -> {
+                if (h.result == null || !mine || listKey == null) return false;
+                askDelete(h.result, h.getAdapterPosition());
+                return true;
             });
             return h;
         }
@@ -1054,7 +1125,7 @@ public final class WallpaperBrowserActivity extends Activity {
             Result r = results.get(position);
             h.result = r;
             h.label.setText(r.label);
-            h.tick.setVisibility(!mine && wallpapers.has(source, r.id) ? View.VISIBLE : View.GONE);
+            h.tick.setVisibility(ticked(r) ? View.VISIBLE : View.GONE);
             Bitmap cached = cache.get(r.thumb);
             h.image.setImageBitmap(cached);
             h.image.setTag(r.thumb);
@@ -1079,6 +1150,7 @@ public final class WallpaperBrowserActivity extends Activity {
     /** A thumbnail, decoded no bigger than a grid cell needs: from the web, a file on the TV, or a video's frame. */
     private static Bitmap thumb(String url) {
         if (url.startsWith("video:")) return videoFrame(url.substring(6));
+        if (url.startsWith("tile:")) return BitmapFactory.decodeFile(url.substring(5));   // 640 x 360 already
         if (url.startsWith("file:")) {
             BitmapFactory.Options o = new BitmapFactory.Options();
             o.inSampleSize = 4;   // a 1920 x 1080 wallpaper, down to a cell's 480 x 270

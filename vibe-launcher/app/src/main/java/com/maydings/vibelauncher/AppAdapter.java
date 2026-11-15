@@ -74,6 +74,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         final boolean allApps;
         /** The app has a banner of its own (Edit offers its icon instead, and back). */
         boolean ownBanner;
+        /** A folder's tile picture, by id, when it shows one (look: a new one draws it again); else null. */
+        String pictureId;
         /** A folder's tile: its id and its apps, in order; null for an app. */
         final String folderId;
         final List<Entry> members;
@@ -94,12 +96,18 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
             this.members = Collections.emptyList();
         }
 
-        /** A folder's tile, its preview drawn from its apps (FolderDrawable). */
-        Entry(Context ctx, Folders.Folder folder, List<Entry> members) {
+        /**
+         * A folder's tile: its tile picture when one is chosen (tile menu > Edit > Change picture), else its preview
+         * drawn from its apps (FolderDrawable).
+         */
+        Entry(Context ctx, Folders.Folder folder, List<Entry> members, TileCustom custom) {
             this.label = folder.name;
             this.component = new ComponentName(ctx.getPackageName(), Folders.KEY_PREFIX + folder.id);
             this.pkg = ctx.getPackageName();
-            this.banner = new FolderDrawable(members);
+            File picture = custom.picture(Folders.KEY_PREFIX + folder.id);
+            Bitmap chosen = picture != null ? BitmapFactory.decodeFile(picture.getPath()) : null;
+            this.pictureId = chosen != null ? custom.pictureId(Folders.KEY_PREFIX + folder.id) : null;
+            this.banner = chosen != null ? new BitmapDrawable(ctx.getResources(), chosen) : new FolderDrawable(members);
             this.icon = null;
             this.allApps = false;
             this.folderId = folder.id;
@@ -114,7 +122,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         /** What the tile shows, to tell when it must be drawn again: a folder's name and apps too. */
         String look() {
             if (folderId == null) return label;
-            StringBuilder sb = new StringBuilder(label);
+            StringBuilder sb = new StringBuilder(label).append('|').append(pictureId);
             for (Entry m : members) sb.append('|').append(m.pkg);
             return sb.toString();
         }
@@ -296,6 +304,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
     private List<Entry> withFolders(List<Entry> apps) {
         List<Entry> out = new ArrayList<>(apps);
         Set<String> claimed = new HashSet<>();   // in one folder only, even if the saved list says otherwise
+        TileCustom custom = new TileCustom(ctx);
         for (Folders.Folder f : folders.all()) {
             List<Entry> members = new ArrayList<>();
             for (String pkg : f.apps) {
@@ -309,7 +318,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
             }
             if (members.isEmpty()) continue;
             out.removeAll(members);
-            out.add(new Entry(ctx, f, members));
+            out.add(new Entry(ctx, f, members, custom));
         }
         return out;
     }

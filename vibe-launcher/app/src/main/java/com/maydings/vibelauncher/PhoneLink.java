@@ -78,6 +78,15 @@ final class PhoneLink {
         boolean received(java.io.File file, boolean video);
     }
 
+    /**
+     * Tile pictures from the phone (Settings > Pictures and videos > Tile pictures > Add from phone): one cropped to
+     * the tile's 16:9 on the phone, sent as a JPEG data URL.
+     */
+    interface TilePictureUploads {
+        /** The phone's "data:image/...;base64,..." picture arrived: true when it was added. On the page's thread. */
+        boolean received(String dataUrl);
+    }
+
     private static final int PORT = 8765;
     /** A wallpaper picture: a 1920 x 1080 JPEG from the phone, well under this. */
     private static final int MAX_WALLPAPER_PICTURE = 30 * 1024 * 1024;
@@ -94,23 +103,17 @@ final class PhoneLink {
     Pairing pairing;
     /** Set by Settings: the wallpaper page is there while it is. */
     WallpaperUploads wallpapers;
+    /** Set by Settings: the tile picture page is there while it is. */
+    TilePictureUploads tilePictures;
     private final VibeSettings settings;
-    /** The app whose tile picture the page is for (tile menu > Edit > Change picture); null for the keys page. */
-    private final String pictureFor;
     private final Handler main = new Handler(Looper.getMainLooper());
     private final String code;
     private ServerSocket server;
     private String url;
 
     PhoneLink(Listener listener, VibeSettings settings) {
-        this(listener, settings, null);
-    }
-
-    /** The page for choosing a picture for this app's tile; it arrives as the field "picture", a data URL. */
-    PhoneLink(Listener listener, VibeSettings settings, String pictureFor) {
         this.listener = listener;
         this.settings = settings;
-        this.pictureFor = pictureFor;
         SecureRandom r = new SecureRandom();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 8; i++) sb.append("abcdefghjkmnpqrstuvwxyz23456789".charAt(r.nextInt(31)));
@@ -174,6 +177,18 @@ final class PhoneLink {
             handleWallpaper(s, in, head, request[0], request[1], w);
             return;
         }
+        TilePictureUploads tp = tilePictures;
+        if (tp != null && request.length >= 2 && request[1].equals("/" + code + "/tile")) {
+            if (request[0].equals("POST")) {
+                boolean added = tp.received(readBody(in, contentLength(head, MAX_PICTURE)));
+                respondText(s, added ? "200 OK" : "400 Bad Request", added
+                        ? "Sent. The picture is in your tile pictures on the device."
+                        : "That picture couldn't be used. Try another.");
+            } else {
+                respond(s, "200 OK", pictureForm());
+            }
+            return;
+        }
         Pairing p = pairing;
         if (p != null && request.length >= 2 && request[1].equals("/" + code + "/pair")) {
             if (request[0].equals("POST")) {
@@ -202,17 +217,12 @@ final class PhoneLink {
             respond(s, "404 Not Found", page("This link has expired. Scan the code on the device again."));
             return;
         }
-        if (request[0].equals("POST") && pictureFor != null) {
-            Map<String, String> fields = new HashMap<>();
-            fields.put("picture", readBody(in, contentLength(head, MAX_PICTURE)));
-            main.post(() -> listener.onReceived(fields));
-            respond(s, "200 OK", page("Sent. The picture is on your device."));
-        } else if (request[0].equals("POST")) {
+        if (request[0].equals("POST")) {
             Map<String, String> fields = parseForm(readBody(in, contentLength(head, MAX_BODY)));
             main.post(() -> listener.onReceived(fields));
             respond(s, "200 OK", page("Sent. The keys are saved on your device."));
         } else {
-            respond(s, "200 OK", pictureFor != null ? pictureForm() : form());
+            respond(s, "200 OK", form());
         }
     }
 
@@ -310,8 +320,8 @@ final class PhoneLink {
             }
         }
         if (w.received(file, video)) {
-            respondText(s, "200 OK", video ? "Added. The video is in your wallpapers on the device."
-                    : "Added. The picture is in your wallpapers on the device.");
+            respondText(s, "200 OK", video ? "Added. The video is in your backdrop videos on the device."
+                    : "Added. The picture is in your backdrop pictures on the device.");
         } else {
             respondText(s, "415 Unsupported Media Type", video ? "The device couldn't use that video."
                     : "The device couldn't use that picture.");
@@ -322,6 +332,11 @@ final class PhoneLink {
     private static String tooSmall(int w, int h) {
         return "That video is only " + w + " × " + h + ". Videos have to be at least 720p. Videos taken from "
                 + "this page come out small, so record in your Camera app and choose the clip here instead.";
+    }
+
+    /** The address of the tile picture page, once started. */
+    String tileUrl() {
+        return url != null ? url + "/tile" : null;
     }
 
     /** The address of the wallpaper page, once started. */
@@ -435,7 +450,7 @@ final class PhoneLink {
                 + "display:block}input[type=range]{width:100%;margin-top:18px;padding:0;border:0;background:none}"
                 + ".row{display:flex;gap:10px;margin-top:14px}.row button{margin-top:0;background:#333;color:#fff}"
                 + "#hint{font-size:14px;margin-top:8px}</style>"
-                + "<h1>Picture for " + escape(pictureFor) + "</h1>"
+                + "<h1>Tile picture</h1>"
                 + "<p>Choose a picture, then drag it and pinch to fit the tile.</p>"
                 + "<input type=file id=f accept='image/*'>"
                 + "<canvas id=c width=640 height=360></canvas>"
@@ -478,8 +493,8 @@ final class PhoneLink {
                 + "zoom(s*Math.exp(-e.deltaY*0.0015),p.x,p.y);};"
                 + "document.getElementById('send').onclick=function(){var b=this;b.disabled=true;"
                 + "fetch(location.pathname,{method:'POST',headers:{'Content-Type':'text/plain'},"
-                + "body:c.toDataURL('image/jpeg',0.92)}).then(function(r){return r.text();}).then(function(){"
-                + "document.getElementById('m').textContent='Sent. The picture is on your device.';b.disabled=false;})"
+                + "body:c.toDataURL('image/jpeg',0.92)}).then(function(r){return r.text();}).then(function(t){"
+                + "document.getElementById('m').textContent=t;b.disabled=false;})"
                 + ".catch(function(){b.disabled=false;document.getElementById('m').textContent='Not sent: try again.';});};"
                 + "</script>";
     }
@@ -497,7 +512,7 @@ final class PhoneLink {
                 + ".row{display:flex;gap:10px;margin-top:14px}.row button{margin-top:0;background:#333;color:#fff}"
                 + "progress{width:100%;margin-top:16px;height:10px}#hint{font-size:14px;margin-top:8px}"
                 + "#note{font-size:14px}</style>"
-                + "<h1>Wallpaper for your device</h1>"
+                + "<h1>Backdrop for your device</h1>"
                 + "<p>Choose a photo or a video. A photo can be moved and zoomed to fit the screen; a video plays on the "
                 + "device silently, round and round.</p>"
                 + "<input type=file id=f accept='image/*,video/*'>"

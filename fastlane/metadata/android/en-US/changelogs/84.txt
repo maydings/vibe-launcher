@@ -1,0 +1,6 @@
+* Settings → Pictures and videos: one place to add tile pictures, backdrop pictures and videos, each kept once.
+* Apps and folders can have their own backdrops (Edit → Backdrops): one always shows, more take turns.
+* Folders can have a tile picture; one picture can go on several tiles.
+* Custom wallpapers has its own list.
+* In a picking grid, OK ticks or unticks; hold OK to delete.
+* A folder's Rename is now under Edit, as an app's is.
