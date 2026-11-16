@@ -1,0 +1,7 @@
+* Font and Clock and weather font are two separate choices.
+* The minimal top bar is the default.
+* Deleting from the Library asks one question, "Delete this item from your device?", with Cancel selected.
+* Ticking a picture in a grid no longer makes it jump a row for a moment.
+* The clock's digits keep their width, so the date beside it stays put.
+* Settings opens on TCL TVs whose Settings app has no standard entry.
+* Less memory kept after Home redraws.

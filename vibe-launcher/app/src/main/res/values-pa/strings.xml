@@ -121,13 +121,12 @@
     <string name="media_on_device">ਇਸ ਡੀਵਾਈਸ ਉੱਤੇ</string>
     <string name="tp_add_phone_short">ਫ਼ੋਨ ਤੋਂ ਤਸਵੀਰ ਭੇਜੋ, ਉੱਥੇ ਹੀ ਟਾਈਲ ਮੁਤਾਬਕ ਫ੍ਰੇਮ ਕਰਕੇ।</string>
     <string name="tp_scan">ਟਾਈਲ ਤਸਵੀਰ ਭੇਜਣ ਲਈ ਫ਼ੋਨ ਨਾਲ ਸਕੈਨ ਕਰੋ</string>
-    <string name="media_tick_short">OK: ਚਾਲੂ ਜਾਂ ਬੰਦ · OK ਦਬਾ ਕੇ ਰੱਖੋ: ਮਿਟਾਓ · ਇੱਕ ਹੋਵੇ ਤਾਂ ਹਮੇਸ਼ਾ ਉਹੀ; ਵੱਧ ਹੋਣ ਤਾਂ ਵਾਰੀ-ਵਾਰੀ</string>
+    <string name="media_tick_short">OK: ਚਾਲੂ ਜਾਂ ਬੰਦ · OK ਦਬਾ ਕੇ ਰੱਖੋ: ਮਿਟਾਓ</string>
     <string name="tp_pick_short">OK: ਇਸ ਟਾਈਲ ਉੱਤੇ, ਜਾਂ ਹਟਾਓ · OK ਦਬਾ ਕੇ ਰੱਖੋ: ਮਿਟਾਓ</string>
     <string name="media_empty">ਹਾਲੇ ਕੁਝ ਨਹੀਂ। %1$s ਵਿੱਚ ਜੋੜੋ।</string>
-    <string name="media_delete_title">ਡੀਵਾਈਸ ਤੋਂ ਮਿਟਾਉਣਾ ਹੈ? ਇਹ ਹਰ ਉਸ ਟਾਈਲ ਅਤੇ ਸੂਚੀ ਤੋਂ ਹਟ ਜਾਵੇਗਾ ਜਿਸ ਵਿੱਚ ਹੈ।</string>
+    <string name="media_delete_title">ਕੀ ਇਹ ਆਈਟਮ ਤੁਹਾਡੇ ਡੀਵਾਈਸ ਤੋਂ ਮਿਟਾਉਣੀ ਹੈ?</string>
     <string name="font">ਫ਼ੌਂਟ</string>
     <string name="clock_font">ਘੜੀ ਅਤੇ ਮੌਸਮ ਦਾ ਫ਼ੌਂਟ</string>
-    <string name="font_same">ਫ਼ੌਂਟ ਵਾਂਗ</string>
     <string name="font_sans">ਸੈਂਸ ਸੈਰਿਫ਼</string>
     <string name="font_serif">ਸੈਰਿਫ਼</string>
     <string name="font_mono">ਮੋਨੋਸਪੇਸ</string>
@@ -143,7 +142,6 @@
     <string name="font_added">ਫ਼ੌਂਟ ਜੋੜਿਆ ਗਿਆ</string>
     <string name="font_failed">ਉਹ ਫ਼ੌਂਟ ਜੋੜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਕੋਈ ਹੋਰ ਅਜ਼ਮਾਓ।</string>
     <string name="font_not_covered">ਇਸ ਫ਼ੌਂਟ ਵਿੱਚ %1$s ਅੱਖਰ ਨਹੀਂ ਹਨ, ਇਸ ਲਈ ਸਿਸਟਮ ਫ਼ੌਂਟ ਦਿਖਾਈ ਦਿੰਦਾ ਹੈ।</string>
-    <string name="font_delete_title">ਡੀਵਾਈਸ ਤੋਂ ਇਹ ਫ਼ੌਂਟ ਮਿਟਾਉਣਾ ਹੈ?</string>
     <string name="font_credit">Google Fonts ਦੇ ਫ਼ੌਂਟ, Fontsource ਦੀ ਸੂਚੀ ਵਿੱਚ; ਹਰ ਇੱਕ ਆਪਣੇ ਲਾਇਸੰਸ ਹੇਠ</string>
     <string name="font_add">ਫ਼ੌਂਟ ਜੋੜੋ</string>
     <string name="wp_custom_short">ਹੋਮ ਪਿੱਛੇ ਤੁਹਾਡੀਆਂ ਆਪਣੀਆਂ ਤਸਵੀਰਾਂ ਅਤੇ ਵੀਡੀਓ: ਜਿੱਥੇ ਐਪ ਦੀ ਤਸਵੀਰ ਨਹੀਂ, ਜਾਂ ਸਾਰੇ ਪਿਛੋਕੜਾਂ ਦੀ ਥਾਂ।</string>

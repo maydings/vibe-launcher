@@ -121,13 +121,12 @@
     <string name="media_on_device">اس ڈیوائس پر</string>
     <string name="tp_add_phone_short">فون سے تصویر بھیجیں، وہیں ٹائل کے مطابق فریم کر کے۔</string>
     <string name="tp_scan">ٹائل تصویر بھیجنے کے لیے فون سے اسکین کریں</string>
-    <string name="media_tick_short">OK: آن یا آف · OK دبائے رکھیں: حذف · ایک ہو تو ہمیشہ وہی؛ زیادہ ہوں تو باری باری</string>
+    <string name="media_tick_short">OK: آن یا آف · OK دبائے رکھیں: حذف</string>
     <string name="tp_pick_short">OK: اس ٹائل پر، یا ہٹائیں · OK دبائے رکھیں: حذف</string>
     <string name="media_empty">ابھی کچھ نہیں۔ %1$s میں شامل کریں۔</string>
-    <string name="media_delete_title">ڈیوائس سے حذف کریں؟ یہ ہر اس ٹائل اور فہرست سے ہٹ جائے گا جس میں ہے۔</string>
+    <string name="media_delete_title">یہ آئٹم اپنی ڈیوائس سے حذف کریں؟</string>
     <string name="font">فونٹ</string>
     <string name="clock_font">گھڑی اور موسم کا فونٹ</string>
-    <string name="font_same">فونٹ جیسا</string>
     <string name="font_sans">بغیر سیرف</string>
     <string name="font_serif">سیرف</string>
     <string name="font_mono">یکساں چوڑائی</string>
@@ -143,7 +142,6 @@
     <string name="font_added">فونٹ شامل ہو گیا</string>
     <string name="font_failed">یہ فونٹ شامل نہیں ہو سکا۔ کوئی اور آزمائیں۔</string>
     <string name="font_not_covered">اس فونٹ میں %1$s کے حروف نہیں، اس لیے سسٹم فونٹ دکھایا جاتا ہے۔</string>
-    <string name="font_delete_title">یہ فونٹ ڈیوائس سے حذف کریں؟</string>
     <string name="font_credit">Google Fonts کے فونٹس، Fontsource کی فہرست میں؛ ہر ایک اپنے لائسنس کے تحت</string>
     <string name="font_add">فونٹس شامل کریں</string>
     <string name="wp_custom_short">ہوم کے پیچھے آپ کی اپنی تصاویر اور ویڈیوز: جہاں ایپ کی تصویر نہیں، یا تمام پس منظر کی جگہ۔</string>

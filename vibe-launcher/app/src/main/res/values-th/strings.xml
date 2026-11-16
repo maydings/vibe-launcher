@@ -121,13 +121,12 @@
     <string name="media_on_device">ในอุปกรณ์นี้</string>
     <string name="tp_add_phone_short">ส่งรูปจากโทรศัพท์ โดยจัดกรอบให้พอดีไทล์บนโทรศัพท์</string>
     <string name="tp_scan">สแกนด้วยโทรศัพท์เพื่อส่งรูปไทล์</string>
-    <string name="media_tick_short">OK: เปิดหรือปิด · กด OK ค้าง: ลบ · มีหนึ่งรูปแสดงเสมอ หลายรูปสลับกัน</string>
+    <string name="media_tick_short">OK: เปิดหรือปิด · กด OK ค้าง: ลบ</string>
     <string name="tp_pick_short">OK: ใช้กับไทล์นี้หรือเอาออก · กด OK ค้าง: ลบ</string>
     <string name="media_empty">ยังไม่มีอะไร เพิ่มได้ใน %1$s</string>
-    <string name="media_delete_title">ลบออกจากอุปกรณ์ไหม จะถูกนำออกจากทุกไทล์และรายการที่มีอยู่</string>
+    <string name="media_delete_title">ลบรายการนี้ออกจากอุปกรณ์ของคุณไหม</string>
     <string name="font">แบบอักษร</string>
     <string name="clock_font">แบบอักษรนาฬิกาและสภาพอากาศ</string>
-    <string name="font_same">เหมือนแบบอักษร</string>
     <string name="font_sans">ไม่มีเชิง</string>
     <string name="font_serif">มีเชิง</string>
     <string name="font_mono">ความกว้างคงที่</string>
@@ -143,7 +142,6 @@
     <string name="font_added">เพิ่มแบบอักษรแล้ว</string>
     <string name="font_failed">เพิ่มแบบอักษรนั้นไม่ได้ ลองแบบอื่น</string>
     <string name="font_not_covered">แบบอักษรนี้ไม่มีตัวอักษร%1$s จึงแสดงแบบอักษรของระบบแทน</string>
-    <string name="font_delete_title">ลบแบบอักษรนี้ออกจากอุปกรณ์ไหม</string>
     <string name="font_credit">แบบอักษรจาก Google Fonts ในรายการของ Fontsource แต่ละแบบมีสัญญาอนุญาตของตัวเอง</string>
     <string name="font_add">เพิ่มแบบอักษร</string>
     <string name="wp_custom_short">รูปและวิดีโอของคุณเองหลังหน้าหลัก: ตรงที่แอปไม่มีรูป หรือแทนพื้นหลังทั้งหมด</string>

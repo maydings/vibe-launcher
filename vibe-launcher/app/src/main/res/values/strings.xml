@@ -125,13 +125,12 @@
     <string name="media_on_device">On this device</string>
     <string name="tp_add_phone_short">Send a picture from your phone, framed there to fit a tile.</string>
     <string name="tp_scan">Scan with your phone to send a tile picture</string>
-    <string name="media_tick_short">OK: on or off · Hold OK: Delete · One always shows; more take turns</string>
+    <string name="media_tick_short">OK: on or off · Hold OK: Delete</string>
     <string name="tp_pick_short">OK: on this tile, or off · Hold OK: Delete</string>
     <string name="media_empty">Nothing here yet. Add some in %1$s.</string>
-    <string name="media_delete_title">Delete it from the device? It comes off every tile and list it\'s on.</string>
+    <string name="media_delete_title">Delete this item from your device?</string>
     <string name="font">Font</string>
     <string name="clock_font">Clock and weather font</string>
-    <string name="font_same">Same as font</string>
     <string name="font_sans">Sans serif</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Monospace</string>
@@ -147,7 +146,6 @@
     <string name="font_added">Font added</string>
     <string name="font_failed">That font couldn\'t be added. Try another.</string>
     <string name="font_not_covered">This font has no %1$s letters, so the system font shows for it.</string>
-    <string name="font_delete_title">Delete this font from the device?</string>
     <string name="font_credit">Fonts from Google Fonts, listed by Fontsource; each under its own licence</string>
     <string name="font_add">Add fonts</string>
     <string name="wp_custom_short">Your own pictures and videos behind Home: where an app has no picture, or instead of every backdrop.</string>

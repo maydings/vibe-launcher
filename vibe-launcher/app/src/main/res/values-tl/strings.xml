@@ -121,13 +121,12 @@
     <string name="media_on_device">Sa device na ito</string>
     <string name="tp_add_phone_short">Magpadala ng larawan mula sa phone, naka-frame doon para sa tile.</string>
     <string name="tp_scan">I-scan gamit ang phone para magpadala ng larawan ng tile</string>
-    <string name="media_tick_short">OK: on o off · Pindutin nang matagal ang OK: Burahin · Isa, laging iyon; marami, nagsasalitan</string>
+    <string name="media_tick_short">OK: on o off · Pindutin nang matagal ang OK: Burahin</string>
     <string name="tp_pick_short">OK: sa tile na ito, o alisin · Pindutin nang matagal ang OK: Burahin</string>
     <string name="media_empty">Wala pa rito. Magdagdag sa %1$s.</string>
-    <string name="media_delete_title">Burahin sa device? Aalisin ito sa bawat tile at listahang kinalalagyan nito.</string>
+    <string name="media_delete_title">Burahin ang item na ito sa iyong device?</string>
     <string name="font">Font</string>
     <string name="clock_font">Font ng orasan at panahon</string>
-    <string name="font_same">Kapareho ng font</string>
     <string name="font_sans">Sans serif</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Monospace</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Naidagdag ang font</string>
     <string name="font_failed">Hindi maidagdag ang font na iyon. Sumubok ng iba.</string>
     <string name="font_not_covered">Walang %1$s na titik ang font na ito, kaya ang font ng system ang lumalabas.</string>
-    <string name="font_delete_title">Burahin ang font na ito sa device?</string>
     <string name="font_credit">Mga font mula sa Google Fonts, inilista ng Fontsource; bawat isa\'y may sariling lisensya</string>
     <string name="font_add">Magdagdag ng font</string>
     <string name="wp_custom_short">Sarili mong mga larawan at video sa likod ng Home: kung saan walang larawan ang app, o kapalit ng lahat ng backdrop.</string>

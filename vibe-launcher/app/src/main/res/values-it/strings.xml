@@ -121,13 +121,12 @@
     <string name="media_on_device">Su questo dispositivo</string>
     <string name="tp_add_phone_short">Invia un\'immagine dal telefono, inquadrata lì per un riquadro.</string>
     <string name="tp_scan">Scansiona col telefono per inviare un\'immagine del riquadro</string>
-    <string name="media_tick_short">OK: sì o no · Tieni premuto OK: Elimina · Una si vede sempre; di più si alternano</string>
+    <string name="media_tick_short">OK: sì o no · Tieni premuto OK: Elimina</string>
     <string name="tp_pick_short">OK: su questo riquadro, o togli · Tieni premuto OK: Elimina</string>
     <string name="media_empty">Ancora niente. Aggiungine in %1$s.</string>
-    <string name="media_delete_title">Eliminarlo dal dispositivo? Sparisce da ogni riquadro ed elenco in cui si trova.</string>
+    <string name="media_delete_title">Eliminare questo elemento dal dispositivo?</string>
     <string name="font">Carattere</string>
     <string name="clock_font">Carattere di orologio e meteo</string>
-    <string name="font_same">Come il carattere</string>
     <string name="font_sans">Senza grazie</string>
     <string name="font_serif">Con grazie</string>
     <string name="font_mono">Monospaziato</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Carattere aggiunto</string>
     <string name="font_failed">Impossibile aggiungere il carattere. Provane un altro.</string>
     <string name="font_not_covered">Questo carattere non ha le lettere di %1$s, quindi si vede quello di sistema.</string>
-    <string name="font_delete_title">Eliminare questo carattere dal dispositivo?</string>
     <string name="font_credit">Caratteri da Google Fonts, elencati da Fontsource; ognuno con la propria licenza</string>
     <string name="font_add">Aggiungi caratteri</string>
     <string name="wp_custom_short">Le tue foto e i tuoi video dietro la Home: dove un\'app non ha un\'immagine, o al posto di tutti gli sfondi.</string>

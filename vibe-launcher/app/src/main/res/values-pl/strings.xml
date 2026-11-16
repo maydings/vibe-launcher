@@ -121,13 +121,12 @@
     <string name="media_on_device">Na tym urządzeniu</string>
     <string name="tp_add_phone_short">Wyślij obraz z telefonu, tam dopasowany do kafelka.</string>
     <string name="tp_scan">Zeskanuj telefonem, aby wysłać obraz kafelka</string>
-    <string name="media_tick_short">OK: wł. lub wył. · Przytrzymaj OK: Usuń · Jeden widać zawsze; więcej na zmianę</string>
+    <string name="media_tick_short">OK: wł. lub wył. · Przytrzymaj OK: Usuń</string>
     <string name="tp_pick_short">OK: na ten kafelek lub zdejmij · Przytrzymaj OK: Usuń</string>
     <string name="media_empty">Jeszcze nic tu nie ma. Dodaj w %1$s.</string>
-    <string name="media_delete_title">Usunąć z urządzenia? Zniknie z każdego kafelka i listy, na których jest.</string>
+    <string name="media_delete_title">Usunąć ten element z urządzenia?</string>
     <string name="font">Czcionka</string>
     <string name="clock_font">Czcionka zegara i pogody</string>
-    <string name="font_same">Jak czcionka</string>
     <string name="font_sans">Bezszeryfowa</string>
     <string name="font_serif">Szeryfowa</string>
     <string name="font_mono">O stałej szerokości</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Dodano czcionkę</string>
     <string name="font_failed">Nie udało się dodać tej czcionki. Spróbuj innej.</string>
     <string name="font_not_covered">Ta czcionka nie ma liter dla: %1$s, więc widać czcionkę systemową.</string>
-    <string name="font_delete_title">Usunąć tę czcionkę z urządzenia?</string>
     <string name="font_credit">Czcionki z Google Fonts, wykaz z Fontsource; każda na własnej licencji</string>
     <string name="font_add">Dodaj czcionki</string>
     <string name="wp_custom_short">Twoje zdjęcia i filmy za ekranem głównym: tam, gdzie aplikacja nie ma obrazu, albo zamiast wszystkich teł.</string>

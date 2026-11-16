@@ -121,13 +121,12 @@
     <string name="media_on_device">या डिव्हाइसवर</string>
     <string name="tp_add_phone_short">फोनवरून चित्र पाठवा, तिथेच टाइलसाठी बसवून.</string>
     <string name="tp_scan">टाइल चित्र पाठवण्यासाठी फोनने स्कॅन करा</string>
-    <string name="media_tick_short">OK: चालू किंवा बंद · OK दाबून धरा: हटवा · एक असल्यास नेहमी तेच; जास्त असल्यास आलटून पालटून</string>
+    <string name="media_tick_short">OK: चालू किंवा बंद · OK दाबून धरा: हटवा</string>
     <string name="tp_pick_short">OK: या टाइलवर, किंवा काढा · OK दाबून धरा: हटवा</string>
     <string name="media_empty">अजून काही नाही. %1$s मध्ये जोडा.</string>
-    <string name="media_delete_title">डिव्हाइसमधून हटवायचे? ते ज्या टाइल व सूचीत आहे तिथून काढले जाईल.</string>
+    <string name="media_delete_title">हा आयटम तुमच्या डिव्हाइसमधून हटवायचा?</string>
     <string name="font">फॉन्ट</string>
     <string name="clock_font">घड्याळ आणि हवामानाचा फॉन्ट</string>
-    <string name="font_same">फॉन्टसारखाच</string>
     <string name="font_sans">सॅन्स सेरिफ</string>
     <string name="font_serif">सेरिफ</string>
     <string name="font_mono">मोनोस्पेस</string>
@@ -143,7 +142,6 @@
     <string name="font_added">फॉन्ट जोडला</string>
     <string name="font_failed">तो फॉन्ट जोडता आला नाही. दुसरा वापरून पहा.</string>
     <string name="font_not_covered">या फॉन्टमध्ये %1$s अक्षरे नाहीत, म्हणून सिस्टम फॉन्ट दिसतो.</string>
-    <string name="font_delete_title">डिव्हाइसमधून हा फॉन्ट हटवायचा?</string>
     <string name="font_credit">Google Fonts चे फॉन्ट, Fontsource च्या यादीत; प्रत्येक स्वतःच्या परवान्याखाली</string>
     <string name="font_add">फॉन्ट जोडा</string>
     <string name="wp_custom_short">होमच्या मागे तुमचे स्वतःचे फोटो आणि व्हिडिओ: जिथे ॲपचे चित्र नाही तिथे, किंवा सर्व पार्श्वभूमींऐवजी.</string>

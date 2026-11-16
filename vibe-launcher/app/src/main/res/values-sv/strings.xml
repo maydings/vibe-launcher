@@ -121,13 +121,12 @@
     <string name="media_on_device">På den här enheten</string>
     <string name="tp_add_phone_short">Skicka en bild från telefonen, beskuren där för en ruta.</string>
     <string name="tp_scan">Skanna med telefonen för att skicka en rutbild</string>
-    <string name="media_tick_short">OK: på eller av · Håll OK: Radera · En visas alltid; fler turas om</string>
+    <string name="media_tick_short">OK: på eller av · Håll OK: Radera</string>
     <string name="tp_pick_short">OK: på den här rutan, eller av · Håll OK: Radera</string>
     <string name="media_empty">Inget här än. Lägg till under %1$s.</string>
-    <string name="media_delete_title">Radera den från enheten? Den tas bort från alla rutor och listor den finns på.</string>
+    <string name="media_delete_title">Radera det här objektet från din enhet?</string>
     <string name="font">Typsnitt</string>
     <string name="clock_font">Typsnitt för klocka och väder</string>
-    <string name="font_same">Samma som typsnitt</string>
     <string name="font_sans">Sans serif</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Monospace</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Typsnitt tillagt</string>
     <string name="font_failed">Typsnittet kunde inte läggas till. Prova ett annat.</string>
     <string name="font_not_covered">Det här typsnittet saknar bokstäver för %1$s, så systemets typsnitt visas.</string>
-    <string name="font_delete_title">Radera det här typsnittet från enheten?</string>
     <string name="font_credit">Typsnitt från Google Fonts, listade av Fontsource; vart och ett med egen licens</string>
     <string name="font_add">Lägg till typsnitt</string>
     <string name="wp_custom_short">Dina egna bilder och videor bakom startskärmen: där en app saknar bild, eller i stället för alla bakgrunder.</string>

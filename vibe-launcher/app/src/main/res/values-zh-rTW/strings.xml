@@ -121,13 +121,12 @@
     <string name="media_on_device">這部裝置上</string>
     <string name="tp_add_phone_short">從手機傳送圖片，在手機上裁成圖塊大小。</string>
     <string name="tp_scan">用手機掃描以傳送圖塊圖片</string>
-    <string name="media_tick_short">確定：選取或取消 · 按住確定：刪除 · 只有一個時一律顯示它；多個時輪流顯示</string>
+    <string name="media_tick_short">確定：選取或取消 · 按住確定：刪除</string>
     <string name="tp_pick_short">確定：用於此圖塊或取消 · 按住確定：刪除</string>
     <string name="media_empty">這裡還沒有內容。請在「%1$s」中加入。</string>
-    <string name="media_delete_title">要從裝置刪除嗎？它會從所有用到它的圖塊和清單中移除。</string>
+    <string name="media_delete_title">要從裝置刪除此項目嗎？</string>
     <string name="font">字型</string>
     <string name="clock_font">時鐘和天氣字型</string>
-    <string name="font_same">與字型相同</string>
     <string name="font_sans">無襯線</string>
     <string name="font_serif">襯線</string>
     <string name="font_mono">等寬</string>
@@ -143,7 +142,6 @@
     <string name="font_added">已加入字型</string>
     <string name="font_failed">無法加入該字型，請換一個。</string>
     <string name="font_not_covered">此字型沒有%1$s文字，因此顯示系統字型。</string>
-    <string name="font_delete_title">要從裝置刪除此字型嗎？</string>
     <string name="font_credit">來自 Google Fonts 的字型，由 Fontsource 列出；各自依循自己的授權</string>
     <string name="font_add">加入字型</string>
     <string name="wp_custom_short">在主畫面後方顯示你自己的圖片和影片：在應用程式沒有圖片的地方，或取代所有背景圖。</string>

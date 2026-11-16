@@ -54,6 +54,7 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.SoundEffectConstants;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -390,7 +391,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         backdrops = Backdrops.get(this);
         backdrops.attach(firstStill, watchingChanged);
         if (!askPermissionsOnce()) askHomeOnce();
-        ConnectivityManager cm = getSystemService(ConnectivityManager.class);
+        // The app's: one made from this activity keeps it (and so every earlier Home) alive on Android 12 and up.
+        ConnectivityManager cm = getApplicationContext().getSystemService(ConnectivityManager.class);
         if (cm != null) cm.registerDefaultNetworkCallback(networkCallback);
         // For Home's whole life: on screen a change shows at once; behind an app it only marks the tiles out of
         // date, so coming back rebuilds them only when apps changed.
@@ -629,18 +631,23 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         btnWifi.setOnKeyListener(pillKeys);
         btnSettings.setOnKeyListener(pillKeys);
 
-        // Hide the glass when focus leaves the tiles.
-        getWindow().getDecorView().getViewTreeObserver().addOnGlobalFocusChangeListener((oldF, newF) -> {
-            boolean onTile = newF != null && newF.getId() == R.id.card;
-            if (!onTile) hideGlass();
-            // Arriving on the top bar: the network pill as it is now (it otherwise follows the network
-            // callbacks and each return to Home).
-            if (isPill(newF) && !isPill(oldF)) updateWifiLabel();
-            if (onTile && rowsAway && !pictureOnly) bringRowsBack();   // Down twice from the top bar
-            updateTopBar();
-            updateCarets();
-        });
+        getWindow().getDecorView().getViewTreeObserver().addOnGlobalFocusChangeListener(focusWatcher);
     }
+
+    /**
+     * Hides the glass when focus leaves the tiles, and keeps the top bar and the arrows as focus moves. Added in
+     * onCreate and removed in onDestroy: left on the window, it kept every earlier Home alive across recreate().
+     */
+    private final ViewTreeObserver.OnGlobalFocusChangeListener focusWatcher = (oldF, newF) -> {
+        boolean onTile = newF != null && newF.getId() == R.id.card;
+        if (!onTile) hideGlass();
+        // Arriving on the top bar: the network pill as it is now (it otherwise follows the network
+        // callbacks and each return to Home).
+        if (isPill(newF) && !isPill(oldF)) updateWifiLabel();
+        if (onTile && rowsAway && !pictureOnly) bringRowsBack();   // Down twice from the top bar
+        updateTopBar();
+        updateCarets();
+    };
 
     /** Keeps the clocks (the top bar's, the slideshow's) moving before Android 12 where the firmware stops ACTION_TIME_TICK. */
     private ClockRefresh clockRefresh;
@@ -814,7 +821,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         // This Home's own threads: a new Home makes its own (else two more idle threads per restart).
         if (wallpaperThread != null) wallpaperThread.shutdownNow();
         if (weatherThread != null) weatherThread.shutdownNow();
-        ConnectivityManager cm = getSystemService(ConnectivityManager.class);
+        ViewTreeObserver tree = getWindow().getDecorView().getViewTreeObserver();
+        if (tree.isAlive()) tree.removeOnGlobalFocusChangeListener(focusWatcher);
+        ConnectivityManager cm = getApplicationContext().getSystemService(ConnectivityManager.class);   // as registered
         if (cm != null) {
             try {
                 cm.unregisterNetworkCallback(networkCallback);
@@ -2515,7 +2524,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         String text = getString(R.string.wifi);
         int icon = R.drawable.ic_wifi;
         try {
-            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            ConnectivityManager cm = getApplicationContext().getSystemService(ConnectivityManager.class);
             Network net = cm != null ? cm.getActiveNetwork() : null;
             NetworkCapabilities caps = net != null ? cm.getNetworkCapabilities(net) : null;
             // The pill names the physical connection; a VPN on top of it shows in the dropdown.
@@ -2588,7 +2597,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         addSeparator(rows);
         int firstNetworkRow = rows.getChildCount();
 
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = getApplicationContext().getSystemService(ConnectivityManager.class);
         if (cm != null) {
             for (Network net : cm.getAllNetworks()) {
                 NetworkCapabilities caps = cm.getNetworkCapabilities(net);

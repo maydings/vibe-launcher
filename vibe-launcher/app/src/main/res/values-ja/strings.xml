@@ -121,13 +121,12 @@
     <string name="media_on_device">このデバイス</string>
     <string name="tp_add_phone_short">スマホから画像を送信。タイルに合わせてスマホ上で切り抜きます。</string>
     <string name="tp_scan">スマホでスキャンしてタイル画像を送信</string>
-    <string name="media_tick_short">OK：オン/オフ · OK長押し：削除 · 1つなら常にそれ、複数なら交代で</string>
+    <string name="media_tick_short">OK：オン/オフ · OK長押し：削除</string>
     <string name="tp_pick_short">OK：このタイルに設定/解除 · OK長押し：削除</string>
     <string name="media_empty">まだ何もありません。%1$s で追加してください。</string>
-    <string name="media_delete_title">デバイスから削除しますか？設定されているすべてのタイルとリストから外れます。</string>
+    <string name="media_delete_title">この項目をデバイスから削除しますか？</string>
     <string name="font">フォント</string>
     <string name="clock_font">時計と天気のフォント</string>
-    <string name="font_same">フォントと同じ</string>
     <string name="font_sans">ゴシック体</string>
     <string name="font_serif">明朝体</string>
     <string name="font_mono">等幅</string>
@@ -143,7 +142,6 @@
     <string name="font_added">フォントを追加しました</string>
     <string name="font_failed">そのフォントを追加できませんでした。別のものをお試しください。</string>
     <string name="font_not_covered">このフォントには%1$sの文字がないため、システムフォントで表示されます。</string>
-    <string name="font_delete_title">このフォントをデバイスから削除しますか？</string>
     <string name="font_credit">Google Fonts のフォント（Fontsource による一覧）。それぞれ独自のライセンス</string>
     <string name="font_add">フォントを追加</string>
     <string name="wp_custom_short">ホームの背景に自分の写真や動画を表示：アプリに画像がない場所に、またはすべての背景画像の代わりに。</string>

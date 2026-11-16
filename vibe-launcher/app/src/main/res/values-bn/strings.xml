@@ -121,13 +121,12 @@
     <string name="media_on_device">এই ডিভাইসে</string>
     <string name="tp_add_phone_short">ফোন থেকে একটি ছবি পাঠান, সেখানেই টাইলে মানানসই করে সাজিয়ে।</string>
     <string name="tp_scan">টাইলের ছবি পাঠাতে ফোন দিয়ে স্ক্যান করুন</string>
-    <string name="media_tick_short">OK: চালু বা বন্ধ · OK ধরে রাখুন: মুছুন · একটি হলে সবসময় সেটি; বেশি হলে পালা করে</string>
+    <string name="media_tick_short">OK: চালু বা বন্ধ · OK ধরে রাখুন: মুছুন</string>
     <string name="tp_pick_short">OK: এই টাইলে, বা সরান · OK ধরে রাখুন: মুছুন</string>
     <string name="media_empty">এখনও কিছু নেই। %1$s-এ যোগ করুন।</string>
-    <string name="media_delete_title">ডিভাইস থেকে মুছবেন? যে টাইল ও তালিকায় আছে সব থেকে সরে যাবে।</string>
+    <string name="media_delete_title">আপনার ডিভাইস থেকে এই আইটেমটি মুছবেন?</string>
     <string name="font">ফন্ট</string>
     <string name="clock_font">ঘড়ি ও আবহাওয়ার ফন্ট</string>
-    <string name="font_same">ফন্টের মতোই</string>
     <string name="font_sans">স্যান্স সেরিফ</string>
     <string name="font_serif">সেরিফ</string>
     <string name="font_mono">মনোস্পেস</string>
@@ -143,7 +142,6 @@
     <string name="font_added">ফন্ট যোগ হয়েছে</string>
     <string name="font_failed">এই ফন্ট যোগ করা গেল না। অন্যটি চেষ্টা করুন।</string>
     <string name="font_not_covered">এই ফন্টে %1$s অক্ষর নেই, তাই সিস্টেম ফন্ট দেখানো হয়।</string>
-    <string name="font_delete_title">ডিভাইস থেকে এই ফন্ট মুছবেন?</string>
     <string name="font_credit">Google Fonts-এর ফন্ট, Fontsource-এর তালিকায়; প্রতিটি নিজস্ব লাইসেন্সে</string>
     <string name="font_add">ফন্ট যোগ করুন</string>
     <string name="wp_custom_short">হোমের পেছনে আপনার নিজের ছবি ও ভিডিও: যেখানে অ্যাপের ছবি নেই, অথবা সব ব্যাকড্রপের বদলে।</string>

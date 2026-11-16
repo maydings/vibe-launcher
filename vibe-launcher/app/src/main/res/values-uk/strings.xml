@@ -121,13 +121,12 @@
     <string name="media_on_device">На цьому пристрої</string>
     <string name="tp_add_phone_short">Надішліть зображення з телефона, підігнане там під плитку.</string>
     <string name="tp_scan">Скануйте телефоном, щоб надіслати зображення плитки</string>
-    <string name="media_tick_short">OK: увімк. чи вимк. · Утримувати OK: Видалити · Одне — завжди воно; кілька — по черзі</string>
+    <string name="media_tick_short">OK: увімк. чи вимк. · Утримувати OK: Видалити</string>
     <string name="tp_pick_short">OK: на цю плитку або прибрати · Утримувати OK: Видалити</string>
     <string name="media_empty">Тут поки нічого немає. Додайте в %1$s.</string>
-    <string name="media_delete_title">Видалити з пристрою? Воно зникне з усіх плиток і списків, де є.</string>
+    <string name="media_delete_title">Видалити цей елемент із пристрою?</string>
     <string name="font">Шрифт</string>
     <string name="clock_font">Шрифт годинника й погоди</string>
-    <string name="font_same">Як основний шрифт</string>
     <string name="font_sans">Без засічок</string>
     <string name="font_serif">Із засічками</string>
     <string name="font_mono">Моноширинний</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Шрифт додано</string>
     <string name="font_failed">Не вдалося додати шрифт. Спробуйте інший.</string>
     <string name="font_not_covered">У цьому шрифті немає літер для мови %1$s, тому показано системний шрифт.</string>
-    <string name="font_delete_title">Видалити цей шрифт із пристрою?</string>
     <string name="font_credit">Шрифти з Google Fonts у списку Fontsource; кожен із власною ліцензією</string>
     <string name="font_add">Додати шрифти</string>
     <string name="wp_custom_short">Ваші фото й відео на тлі головного екрана: де в застосунку немає картинки або замість усіх фонів.</string>

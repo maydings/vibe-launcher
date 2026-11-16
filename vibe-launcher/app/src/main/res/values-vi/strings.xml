@@ -121,13 +121,12 @@
     <string name="media_on_device">Trên thiết bị này</string>
     <string name="tp_add_phone_short">Gửi một hình từ điện thoại, căn khung ở đó cho vừa ô.</string>
     <string name="tp_scan">Quét bằng điện thoại để gửi hình ô</string>
-    <string name="media_tick_short">OK: bật hoặc tắt · Giữ OK: Xóa · Một thì luôn hiện; nhiều thì luân phiên</string>
+    <string name="media_tick_short">OK: bật hoặc tắt · Giữ OK: Xóa</string>
     <string name="tp_pick_short">OK: dùng cho ô này, hoặc bỏ · Giữ OK: Xóa</string>
     <string name="media_empty">Chưa có gì. Thêm trong %1$s.</string>
-    <string name="media_delete_title">Xóa khỏi thiết bị? Nó sẽ bị bỏ khỏi mọi ô và danh sách đang có nó.</string>
+    <string name="media_delete_title">Xóa mục này khỏi thiết bị của bạn?</string>
     <string name="font">Phông chữ</string>
     <string name="clock_font">Phông chữ đồng hồ và thời tiết</string>
-    <string name="font_same">Giống phông chữ</string>
     <string name="font_sans">Không chân</string>
     <string name="font_serif">Có chân</string>
     <string name="font_mono">Đơn cách</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Đã thêm phông chữ</string>
     <string name="font_failed">Không thêm được phông chữ đó. Hãy thử phông khác.</string>
     <string name="font_not_covered">Phông này không có chữ %1$s nên phông hệ thống được dùng.</string>
-    <string name="font_delete_title">Xóa phông chữ này khỏi thiết bị?</string>
     <string name="font_credit">Phông chữ từ Google Fonts, do Fontsource liệt kê; mỗi phông theo giấy phép riêng</string>
     <string name="font_add">Thêm phông chữ</string>
     <string name="wp_custom_short">Ảnh và video của riêng bạn sau màn hình chính: ở nơi ứng dụng không có ảnh, hoặc thay cho mọi ảnh nền.</string>

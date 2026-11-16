@@ -121,13 +121,12 @@
     <string name="media_on_device">ဤစက်ပေါ်တွင်</string>
     <string name="tp_add_phone_short">ဖုန်းမှ ပုံပို့ပါ၊ ထိုနေရာတွင် အကွက်နှင့်ကိုက်အောင် ညှိပါ။</string>
     <string name="tp_scan">အကွက်ပုံ ပို့ရန် ဖုန်းဖြင့် စကင်ဖတ်ပါ</string>
-    <string name="media_tick_short">OK- ဖွင့် သို့မဟုတ် ပိတ် · OK ဖိထား- ဖျက် · တစ်ခုဆို အမြဲပြ၊ များလျှင် အလှည့်ကျ</string>
+    <string name="media_tick_short">OK- ဖွင့် သို့မဟုတ် ပိတ် · OK ဖိထား- ဖျက်</string>
     <string name="tp_pick_short">OK- ဤအကွက်ပေါ် သို့မဟုတ် ဖယ် · OK ဖိထား- ဖျက်</string>
     <string name="media_empty">ဘာမှ မရှိသေးပါ။ %1$s တွင် ထည့်ပါ။</string>
-    <string name="media_delete_title">စက်မှ ဖျက်မလား။ ၎င်းရှိသော အကွက်နှင့် စာရင်းအားလုံးမှ ဖယ်ရှားပါမည်။</string>
+    <string name="media_delete_title">ဤအရာကို သင့်စက်မှ ဖျက်မလား။</string>
     <string name="font">ဖောင့်</string>
     <string name="clock_font">နာရီနှင့် ရာသီဥတု ဖောင့်</string>
-    <string name="font_same">ဖောင့်နှင့် အတူတူ</string>
     <string name="font_sans">Sans serif</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Monospace</string>
@@ -143,7 +142,6 @@
     <string name="font_added">ဖောင့် ထည့်ပြီး</string>
     <string name="font_failed">ထိုဖောင့်ကို ထည့်၍မရပါ။ အခြားတစ်ခု စမ်းပါ။</string>
     <string name="font_not_covered">ဤဖောင့်တွင် %1$s စာလုံးများ မပါသဖြင့် စနစ်ဖောင့် ပြပါသည်။</string>
-    <string name="font_delete_title">ဤဖောင့်ကို စက်မှ ဖျက်မလား။</string>
     <string name="font_credit">Google Fonts မှ ဖောင့်များ၊ Fontsource စာရင်း၊ တစ်ခုချင်း ကိုယ်ပိုင်လိုင်စင်ဖြင့်</string>
     <string name="font_add">ဖောင့်များ ထည့်ရန်</string>
     <string name="wp_custom_short">ပင်မနောက်တွင် သင့်ကိုယ်ပိုင် ဓာတ်ပုံနှင့် ဗီဒီယိုများ- အက်ပ်တွင် ပုံမရှိသည့်နေရာ သို့မဟုတ် နောက်ခံပုံအားလုံးအစား။</string>

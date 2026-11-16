@@ -121,13 +121,12 @@
     <string name="media_on_device">Bu cihazda</string>
     <string name="tp_add_phone_short">Telefondan bir resim gönderin; orada kutucuğa göre kırpılır.</string>
     <string name="tp_scan">Kutucuk resmi göndermek için telefonla tarayın</string>
-    <string name="media_tick_short">Tamam: açık veya kapalı · Tamam\'ı basılı tut: Sil · Bir taneyse hep o; fazlaysa sırayla</string>
+    <string name="media_tick_short">Tamam: açık veya kapalı · Tamam\'ı basılı tut: Sil</string>
     <string name="tp_pick_short">Tamam: bu kutucukta veya kaldır · Tamam\'ı basılı tut: Sil</string>
     <string name="media_empty">Henüz bir şey yok. %1$s bölümünden ekleyin.</string>
-    <string name="media_delete_title">Cihazdan silinsin mi? Bulunduğu her kutucuk ve listeden kaldırılır.</string>
+    <string name="media_delete_title">Bu öğe cihazınızdan silinsin mi?</string>
     <string name="font">Yazı tipi</string>
     <string name="clock_font">Saat ve hava durumu yazı tipi</string>
-    <string name="font_same">Yazı tipiyle aynı</string>
     <string name="font_sans">Tırnaksız</string>
     <string name="font_serif">Tırnaklı</string>
     <string name="font_mono">Eş aralıklı</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Yazı tipi eklendi</string>
     <string name="font_failed">Bu yazı tipi eklenemedi. Başka birini deneyin.</string>
     <string name="font_not_covered">Bu yazı tipinde %1$s harfleri yok, bu yüzden sistem yazı tipi görünür.</string>
-    <string name="font_delete_title">Bu yazı tipi cihazdan silinsin mi?</string>
     <string name="font_credit">Google Fonts yazı tipleri, Fontsource listesinden; her biri kendi lisansıyla</string>
     <string name="font_add">Yazı tipi ekle</string>
     <string name="wp_custom_short">Kendi fotoğraf ve videolarınız Ana ekranın arkasında: bir uygulamanın resmi olmadığı yerde ya da tüm arka planların yerine.</string>

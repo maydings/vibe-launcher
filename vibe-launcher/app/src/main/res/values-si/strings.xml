@@ -121,13 +121,12 @@
     <string name="media_on_device">මෙම උපාංගයේ</string>
     <string name="tp_add_phone_short">දුරකථනයෙන් පින්තූරයක් යවන්න, එහිදීම ටයිලයට ගැළපෙන ලෙස සකසා.</string>
     <string name="tp_scan">ටයිල් පින්තූරයක් යැවීමට දුරකථනයෙන් ස්කෑන් කරන්න</string>
-    <string name="media_tick_short">OK: සක්‍රිය හෝ අක්‍රිය · OK අල්ලාගෙන: මකන්න · එකක් නම් සැමවිට එය; වැඩි නම් මාරුවෙන්</string>
+    <string name="media_tick_short">OK: සක්‍රිය හෝ අක්‍රිය · OK අල්ලාගෙන: මකන්න</string>
     <string name="tp_pick_short">OK: මෙම ටයිලයට, හෝ ඉවත් කරන්න · OK අල්ලාගෙන: මකන්න</string>
     <string name="media_empty">තවම කිසිවක් නැත. %1$s තුළ එක් කරන්න.</string>
-    <string name="media_delete_title">උපාංගයෙන් මකන්නද? එය ඇති සෑම ටයිලයකින්ම සහ ලැයිස්තුවකින්ම ඉවත් වේ.</string>
+    <string name="media_delete_title">මෙම අයිතමය ඔබේ උපාංගයෙන් මකන්නද?</string>
     <string name="font">අකුරු</string>
     <string name="clock_font">ඔරලෝසු සහ කාලගුණ අකුරු</string>
-    <string name="font_same">අකුරු මෙන්ම</string>
     <string name="font_sans">Sans serif</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Monospace</string>
@@ -143,7 +142,6 @@
     <string name="font_added">අකුරු එක් කළා</string>
     <string name="font_failed">එම අකුරු එක් කළ නොහැකි විය. වෙනත් එකක් උත්සාහ කරන්න.</string>
     <string name="font_not_covered">මෙම අකුරු වර්ගයේ %1$s අකුරු නැත, එබැවින් පද්ධති අකුරු පෙන්වයි.</string>
-    <string name="font_delete_title">උපාංගයෙන් මෙම අකුරු මකන්නද?</string>
     <string name="font_credit">Google Fonts අකුරු, Fontsource ලැයිස්තුවේ; එක් එක් තමන්ගේ බලපත්‍රය යටතේ</string>
     <string name="font_add">අකුරු එක් කරන්න</string>
     <string name="wp_custom_short">මුල් තිරයට පිටුපසින් ඔබේම ඡායාරූප සහ වීඩියෝ: යෙදුමට රූපයක් නැති තැන, හෝ සියලු පසුබිම් වෙනුවට.</string>

@@ -121,13 +121,12 @@
     <string name="media_on_device">Di perangkat ini</string>
     <string name="tp_add_phone_short">Kirim gambar dari ponsel, dibingkai di sana agar pas di ubin.</string>
     <string name="tp_scan">Pindai dengan ponsel untuk mengirim gambar ubin</string>
-    <string name="media_tick_short">OK: aktif atau nonaktif · Tahan OK: Hapus · Satu selalu tampil; lebih bergantian</string>
+    <string name="media_tick_short">OK: aktif atau nonaktif · Tahan OK: Hapus</string>
     <string name="tp_pick_short">OK: di ubin ini, atau lepas · Tahan OK: Hapus</string>
     <string name="media_empty">Belum ada apa-apa. Tambahkan di %1$s.</string>
-    <string name="media_delete_title">Hapus dari perangkat? Akan dilepas dari setiap ubin dan daftar tempatnya.</string>
+    <string name="media_delete_title">Hapus item ini dari perangkat Anda?</string>
     <string name="font">Font</string>
     <string name="clock_font">Font jam dan cuaca</string>
-    <string name="font_same">Sama seperti font</string>
     <string name="font_sans">Sans serif</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Monospace</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Font ditambahkan</string>
     <string name="font_failed">Font itu tidak bisa ditambahkan. Coba yang lain.</string>
     <string name="font_not_covered">Font ini tidak punya huruf %1$s, jadi font sistem yang tampil.</string>
-    <string name="font_delete_title">Hapus font ini dari perangkat?</string>
     <string name="font_credit">Font dari Google Fonts, didaftar oleh Fontsource; masing-masing dengan lisensinya</string>
     <string name="font_add">Tambah font</string>
     <string name="wp_custom_short">Foto dan video Anda sendiri di belakang Beranda: saat aplikasi tak punya gambar, atau sebagai ganti semua latar.</string>

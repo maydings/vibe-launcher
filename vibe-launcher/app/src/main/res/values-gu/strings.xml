@@ -121,13 +121,12 @@
     <string name="media_on_device">આ ડિવાઇસ પર</string>
     <string name="tp_add_phone_short">ફોનમાંથી ચિત્ર મોકલો, ત્યાં જ ટાઇલ માટે ગોઠવીને.</string>
     <string name="tp_scan">ટાઇલ ચિત્ર મોકલવા ફોનથી સ્કેન કરો</string>
-    <string name="media_tick_short">OK: ચાલુ કે બંધ · OK પકડી રાખો: ડિલીટ · એક હોય તો હંમેશાં તે; વધુ હોય તો વારાફરતી</string>
+    <string name="media_tick_short">OK: ચાલુ કે બંધ · OK પકડી રાખો: ડિલીટ</string>
     <string name="tp_pick_short">OK: આ ટાઇલ પર, કે દૂર · OK પકડી રાખો: ડિલીટ</string>
     <string name="media_empty">હજી કંઈ નથી. %1$s માં ઉમેરો.</string>
-    <string name="media_delete_title">ડિવાઇસમાંથી ડિલીટ કરવું? તે જે ટાઇલ અને સૂચિમાં છે તે બધેથી નીકળી જશે.</string>
+    <string name="media_delete_title">તમારા ડિવાઇસમાંથી આ આઇટમ ડિલીટ કરવી?</string>
     <string name="font">ફૉન્ટ</string>
     <string name="clock_font">ઘડિયાળ અને હવામાનનો ફૉન્ટ</string>
-    <string name="font_same">ફૉન્ટ જેવો જ</string>
     <string name="font_sans">સાન્સ સેરિફ</string>
     <string name="font_serif">સેરિફ</string>
     <string name="font_mono">મોનોસ્પેસ</string>
@@ -143,7 +142,6 @@
     <string name="font_added">ફૉન્ટ ઉમેરાયો</string>
     <string name="font_failed">તે ફૉન્ટ ઉમેરી શકાયો નહીં. બીજો અજમાવો.</string>
     <string name="font_not_covered">આ ફૉન્ટમાં %1$s અક્ષરો નથી, તેથી સિસ્ટમ ફૉન્ટ દેખાય છે.</string>
-    <string name="font_delete_title">ડિવાઇસમાંથી આ ફૉન્ટ ડિલીટ કરવો?</string>
     <string name="font_credit">Google Fonts ના ફૉન્ટ, Fontsource ની સૂચિમાં; દરેક પોતાના લાઇસન્સ હેઠળ</string>
     <string name="font_add">ફૉન્ટ ઉમેરો</string>
     <string name="wp_custom_short">હોમ પાછળ તમારાં પોતાનાં ચિત્રો અને વીડિયો: જ્યાં ઍપ પાસે ચિત્ર નથી, અથવા બધા બેકડ્રોપને બદલે.</string>

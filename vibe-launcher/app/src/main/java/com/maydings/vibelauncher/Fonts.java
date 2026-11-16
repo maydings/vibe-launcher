@@ -26,8 +26,8 @@ import java.util.Map;
  */
 final class Fonts {
 
-    /** Vibe Launcher's own font, the default; and for the clock, the same as the rest. */
-    static final String OUTFIT = "", SAME = "same";
+    /** Vibe Launcher's own font, the default for both choices. */
+    static final String OUTFIT = "";
     /** The system's families offered, by Android's names. */
     static final String[] SYSTEM = {"sys:sans-serif", "sys:serif", "sys:monospace", "sys:sans-serif-condensed"};
     /** The biggest font file taken: Chinese, Japanese and Korean fonts run to several megabytes a weight. */
@@ -149,7 +149,7 @@ final class Fonts {
         file(id, true).delete();
         VibeSettings settings = new VibeSettings(context);
         if (id.equals(settings.uiFont())) settings.setUiFont(OUTFIT);
-        if (id.equals(settings.clockFont())) settings.setClockFont(SAME);
+        if (id.equals(settings.clockFont())) settings.setClockFont(OUTFIT);
         changed();
     }
 
@@ -157,7 +157,7 @@ final class Fonts {
 
     /** A choice's typeface (regular, or medium for headings); null for Outfit or a font no longer here. */
     static Typeface typeface(Context context, String choice, boolean medium) {
-        if (choice == null || OUTFIT.equals(choice) || SAME.equals(choice)) return null;
+        if (choice == null || OUTFIT.equals(choice)) return null;
         String key = choice + (medium ? "|m" : "|r");
         synchronized (typefaces) {
             if (typefaces.containsKey(key)) return typefaces.get(key);
@@ -212,7 +212,6 @@ final class Fonts {
     /** A choice's name to list: Outfit, the system family's, or the font's own. */
     static String name(Context context, String choice) {
         if (choice == null || OUTFIT.equals(choice)) return "Outfit";
-        if (SAME.equals(choice)) return context.getString(R.string.font_same);
         switch (choice) {
             case "sys:sans-serif": return context.getString(R.string.font_sans);
             case "sys:serif": return context.getString(R.string.font_serif);

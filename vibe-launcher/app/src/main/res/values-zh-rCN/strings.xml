@@ -121,13 +121,12 @@
     <string name="media_on_device">此设备上</string>
     <string name="tp_add_phone_short">从手机发送图片，在手机上裁剪成磁贴大小。</string>
     <string name="tp_scan">用手机扫码发送磁贴图片</string>
-    <string name="media_tick_short">确定：选中或取消 · 长按确定：删除 · 只有一个时总显示它；多个时轮流显示</string>
+    <string name="media_tick_short">确定：选中或取消 · 长按确定：删除</string>
     <string name="tp_pick_short">确定：用于此磁贴或取消 · 长按确定：删除</string>
     <string name="media_empty">这里还没有内容。请在%1$s中添加。</string>
-    <string name="media_delete_title">要从设备中删除吗？它会从所有用到它的磁贴和列表中移除。</string>
+    <string name="media_delete_title">要从设备中删除此项吗？</string>
     <string name="font">字体</string>
     <string name="clock_font">时钟和天气字体</string>
-    <string name="font_same">与字体相同</string>
     <string name="font_sans">无衬线</string>
     <string name="font_serif">衬线</string>
     <string name="font_mono">等宽</string>
@@ -143,7 +142,6 @@
     <string name="font_added">已添加字体</string>
     <string name="font_failed">无法添加该字体，请换一个。</string>
     <string name="font_not_covered">此字体没有%1$s文字，因此显示系统字体。</string>
-    <string name="font_delete_title">要从设备中删除此字体吗？</string>
     <string name="font_credit">来自 Google Fonts 的字体，由 Fontsource 列出；各自遵循自己的许可</string>
     <string name="font_add">添加字体</string>
     <string name="wp_custom_short">在主屏幕后显示你自己的图片和视频：在应用没有图片的地方，或代替所有背景图。</string>

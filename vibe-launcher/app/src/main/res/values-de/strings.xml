@@ -121,13 +121,12 @@
     <string name="media_on_device">Auf diesem Gerät</string>
     <string name="tp_add_phone_short">Sende ein Bild vom Handy, dort passend für eine Kachel zugeschnitten.</string>
     <string name="tp_scan">Scanne mit dem Handy, um ein Kachelbild zu senden</string>
-    <string name="media_tick_short">OK: an oder aus · OK halten: Löschen · Eins zeigt immer; mehrere wechseln sich ab</string>
+    <string name="media_tick_short">OK: an oder aus · OK halten: Löschen</string>
     <string name="tp_pick_short">OK: auf diese Kachel oder weg · OK halten: Löschen</string>
     <string name="media_empty">Noch nichts hier. Füge etwas unter %1$s hinzu.</string>
-    <string name="media_delete_title">Vom Gerät löschen? Es verschwindet von jeder Kachel und Liste, auf der es ist.</string>
+    <string name="media_delete_title">Dieses Element von deinem Gerät löschen?</string>
     <string name="font">Schriftart</string>
     <string name="clock_font">Schrift für Uhr und Wetter</string>
-    <string name="font_same">Wie Schriftart</string>
     <string name="font_sans">Serifenlos</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Monospace</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Schrift hinzugefügt</string>
     <string name="font_failed">Diese Schrift konnte nicht hinzugefügt werden. Versuche eine andere.</string>
     <string name="font_not_covered">Diese Schrift hat keine Buchstaben für %1$s, daher wird die Systemschrift gezeigt.</string>
-    <string name="font_delete_title">Diese Schrift vom Gerät löschen?</string>
     <string name="font_credit">Schriften von Google Fonts, gelistet von Fontsource; jede unter eigener Lizenz</string>
     <string name="font_add">Schriften hinzufügen</string>
     <string name="wp_custom_short">Eigene Bilder und Videos hinter dem Startbildschirm: wo eine App kein Bild hat, oder statt aller Hintergründe.</string>

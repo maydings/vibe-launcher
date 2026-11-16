@@ -286,6 +286,8 @@ public final class WallpaperBrowserActivity extends Activity {
         grid.setPadding(dp(8), dp(16), dp(8), dp(16));
         adapter = new Adapter();
         grid.setAdapter(adapter);
+        // No cross-fade when a card changes: the new card would show a row down for a moment, with the focus.
+        ((androidx.recyclerview.widget.SimpleItemAnimator) grid.getItemAnimator()).setSupportsChangeAnimations(false);
         body.addView(grid, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
         message = new TextView(this);
@@ -934,15 +936,25 @@ public final class WallpaperBrowserActivity extends Activity {
 
     /** OK on one, picking for a list or a tile: on or off the list; the tile's picture, or none again. */
     private void pick(Result r) {
+        int was = -1;   // a tile has one picture: the one ticked before loses its tick
         if (TILES.equals(kind)) {
             TileCustom custom = new TileCustom(this);
-            custom.setPicture(listKey, r.id.equals(custom.pictureId(listKey)) ? null : r.id);
+            String before = custom.pictureId(listKey);
+            for (int i = 0; i < results.size(); i++) if (results.get(i).id.equals(before)) was = i;
+            custom.setPicture(listKey, r.id.equals(before) ? null : r.id);
         } else {
             wallpapers.setInList(listKey, r.id, !wallpapers.inList(listKey, r.id));
         }
         changed();
-        adapter.notifyItemRangeChanged(0, results.size());   // ticks: a tile has one, so another one's goes
+        // Only the ticks, on the cards as they are: a full change makes new cards that cross-fade in, laid out for
+        // a moment a row down, with the focus.
+        int at = results.indexOf(r);
+        if (at >= 0) adapter.notifyItemChanged(at, TICK);
+        if (was >= 0 && was != at) adapter.notifyItemChanged(was, TICK);
     }
+
+    /** The payload for a tick changed, and nothing else on the card. */
+    private static final Object TICK = new Object();
 
     /** Something picked or deleted here: whoever opened the grid draws again what it shows (MainActivity). */
     private void changed() {
@@ -1119,6 +1131,15 @@ public final class WallpaperBrowserActivity extends Activity {
                 return true;
             });
             return h;
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull Holder h, int position, @NonNull List<Object> payloads) {
+            if (payloads.contains(TICK) && h.result != null) {
+                h.tick.setVisibility(ticked(h.result) ? View.VISIBLE : View.GONE);
+                return;
+            }
+            onBindViewHolder(h, position);
         }
 
         @Override

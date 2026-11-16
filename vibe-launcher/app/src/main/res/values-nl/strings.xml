@@ -121,13 +121,12 @@
     <string name="media_on_device">Op dit apparaat</string>
     <string name="tp_add_phone_short">Stuur een afbeelding vanaf je telefoon, daar passend gemaakt voor een tegel.</string>
     <string name="tp_scan">Scan met je telefoon om een tegelafbeelding te sturen</string>
-    <string name="media_tick_short">OK: aan of uit · OK ingedrukt: Verwijderen · Eén toont altijd; meer wisselen af</string>
+    <string name="media_tick_short">OK: aan of uit · OK ingedrukt: Verwijderen</string>
     <string name="tp_pick_short">OK: op deze tegel, of eraf · OK ingedrukt: Verwijderen</string>
     <string name="media_empty">Nog niets hier. Voeg iets toe in %1$s.</string>
-    <string name="media_delete_title">Verwijderen van het apparaat? Het gaat van elke tegel en lijst waar het op staat.</string>
+    <string name="media_delete_title">Dit item van je apparaat verwijderen?</string>
     <string name="font">Lettertype</string>
     <string name="clock_font">Lettertype voor klok en weer</string>
-    <string name="font_same">Zelfde als lettertype</string>
     <string name="font_sans">Schreefloos</string>
     <string name="font_serif">Schreef</string>
     <string name="font_mono">Monospace</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Lettertype toegevoegd</string>
     <string name="font_failed">Dat lettertype kon niet worden toegevoegd. Probeer een ander.</string>
     <string name="font_not_covered">Dit lettertype heeft geen letters voor %1$s, dus het systeemlettertype verschijnt.</string>
-    <string name="font_delete_title">Dit lettertype van het apparaat verwijderen?</string>
     <string name="font_credit">Lettertypen van Google Fonts, vermeld door Fontsource; elk onder een eigen licentie</string>
     <string name="font_add">Lettertypen toevoegen</string>
     <string name="wp_custom_short">Je eigen foto\'s en video\'s achter het startscherm: waar een app geen afbeelding heeft, of in plaats van alle achtergronden.</string>

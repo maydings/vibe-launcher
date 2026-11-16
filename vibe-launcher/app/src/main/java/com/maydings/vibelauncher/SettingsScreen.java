@@ -1100,14 +1100,13 @@ MainActivity.showError(host, R.string.anim_short);
 
     /**
      * Font, or Clock and weather font: Outfit, the system's families and the fonts on the device (Fonts), each
-     * named in itself, the chosen one ticked; for the clock, Same as font first. A font without the current
+     * named in itself, the chosen one ticked; the two are chosen apart. A font without the current
      * language's letters says so: the system font shows for that language instead (UiFont). Picked, Home and
      * Settings are made again in it, back here on Appearance.
      */
     private Page fontPicker(boolean clock) {
         Page page = new Page(ctx.getString(clock ? R.string.clock_font : R.string.font));
         List<String> choices = new ArrayList<>();
-        if (clock) choices.add(Fonts.SAME);
         choices.add(Fonts.OUTFIT);
         java.util.Collections.addAll(choices, Fonts.SYSTEM);
         for (Fonts.Item item : new Fonts(ctx).list()) choices.add(item.id);
@@ -1125,12 +1124,11 @@ MainActivity.showError(host, R.string.anim_short);
                     h.recreate();
                 }
             });
-            // Each named in itself: Outfit in Outfit, Same as font in the font chosen for the rest.
-            String shows = Fonts.SAME.equals(choice) ? settings.uiFont() : choice;
-            android.graphics.Typeface face = Fonts.OUTFIT.equals(shows)
-                    ? ctx.getResources().getFont(R.font.outfit) : Fonts.typeface(ctx, shows, false);
+            // Each named in itself, Outfit too.
+            android.graphics.Typeface face = Fonts.OUTFIT.equals(choice)
+                    ? ctx.getResources().getFont(R.font.outfit) : Fonts.typeface(ctx, choice, false);
             if (face != null) row.label.setTypeface(face);
-            if (!Fonts.covers(ctx, shows, sample)) {
+            if (!Fonts.covers(ctx, choice, sample)) {
                 row.aboutText = ctx.getString(R.string.font_not_covered, language);
             }
             if (choice.equals(clock ? settings.clockFont() : settings.uiFont())) page.opened = row;   // focus starts here

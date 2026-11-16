@@ -30,7 +30,6 @@ final class UiFont {
     private static Typeface pick(Context context, int stringRes, boolean clock) {
         VibeSettings settings = new VibeSettings(context);
         String choice = clock ? settings.clockFont() : settings.uiFont();
-        if (Fonts.SAME.equals(choice)) choice = settings.uiFont();
         boolean medium = stringRes == R.string.font_medium;
         if (!Fonts.OUTFIT.equals(choice)) {
             Typeface t = Fonts.typeface(context, choice, medium);

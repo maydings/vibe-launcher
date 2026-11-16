@@ -121,13 +121,12 @@
     <string name="media_on_device">Sur cet appareil</string>
     <string name="tp_add_phone_short">Envoyez une image depuis le téléphone, cadrée là-bas pour une vignette.</string>
     <string name="tp_scan">Scannez avec le téléphone pour envoyer une image de vignette</string>
-    <string name="media_tick_short">OK : oui ou non · Maintenir OK : Supprimer · Une seule s\'affiche toujours ; plusieurs alternent</string>
+    <string name="media_tick_short">OK : oui ou non · Maintenir OK : Supprimer</string>
     <string name="tp_pick_short">OK : sur cette vignette, ou retirer · Maintenir OK : Supprimer</string>
     <string name="media_empty">Rien ici pour l\'instant. Ajoutez-en dans %1$s.</string>
-    <string name="media_delete_title">La supprimer de l\'appareil ? Elle disparaît de chaque vignette et liste où elle figure.</string>
+    <string name="media_delete_title">Supprimer cet élément de votre appareil ?</string>
     <string name="font">Police</string>
     <string name="clock_font">Police de l\'horloge et de la météo</string>
-    <string name="font_same">Comme la police</string>
     <string name="font_sans">Sans empattement</string>
     <string name="font_serif">Avec empattement</string>
     <string name="font_mono">Chasse fixe</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Police ajoutée</string>
     <string name="font_failed">Cette police n\'a pas pu être ajoutée. Essayez-en une autre.</string>
     <string name="font_not_covered">Cette police n\'a pas les lettres de %1$s : la police du système s\'affiche à la place.</string>
-    <string name="font_delete_title">Supprimer cette police de l\'appareil ?</string>
     <string name="font_credit">Polices de Google Fonts, listées par Fontsource ; chacune sous sa propre licence</string>
     <string name="font_add">Ajouter des polices</string>
     <string name="wp_custom_short">Vos photos et vidéos derrière l\'accueil : là où une appli n\'a pas d\'image, ou à la place de tous les arrière-plans.</string>

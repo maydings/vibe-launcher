@@ -8,7 +8,7 @@ with a code typed on a phone.
 
 No ads, no accounts, no tracking. Free and open source.
 
-![Home with the full top bar: Netflix in the dock, The Lincoln Lawyer behind it](vibe-launcher/docs/home.jpg)
+![Home with the minimal top bar: just the time, the weather and three round buttons](vibe-launcher/docs/home-minimal.jpg)
 
 ## Get it on your TV
 
@@ -43,12 +43,12 @@ everything that app has. Hold OK and it opens that exact film or episode.
 Group apps into folders. A folder in the dock turns into a small dial above it: Left and Right spin it,
 and the background follows whichever app is in the middle.
 
-| ![A folder's dial above the dock, HBO Max in the middle](vibe-launcher/docs/folder-dial.jpg) | ![The minimal top bar: just the time, the weather and three round buttons](vibe-launcher/docs/home-minimal.jpg) |
+| ![A folder's dial above the dock, HBO Max in the middle](vibe-launcher/docs/folder-dial.jpg) | ![The full top bar: Netflix in the dock, The Lincoln Lawyer behind it](vibe-launcher/docs/home.jpg) |
 |---|---|
 
-The top bar has the clock, the date and the weather, plus menus for your inputs, the network and
-settings. Don't want a bar? Switch to the minimal one: a small clock and the weather on the left, three
-round buttons on the right, nothing else over your picture.
+The top bar is minimal: a small clock and the weather on the left, three round buttons on the right
+(your inputs, the network and settings), nothing else over your picture. Want more? Switch to the full
+bar, with the date and the menus spelled out.
 
 The Inputs menu lists your HDMI ports and what's plugged into each, by name, even behind a switch.
 

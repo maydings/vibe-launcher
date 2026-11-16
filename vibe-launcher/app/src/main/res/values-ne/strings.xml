@@ -121,13 +121,12 @@
     <string name="media_on_device">यो यन्त्रमा</string>
     <string name="tp_add_phone_short">फोनबाट तस्बिर पठाउनुहोस्, त्यहीँ टाइलअनुसार मिलाएर।</string>
     <string name="tp_scan">टाइल तस्बिर पठाउन फोनले स्क्यान गर्नुहोस्</string>
-    <string name="media_tick_short">OK: खोल्ने वा बन्द · OK थिचिराख्नुहोस्: मेटाउनुहोस् · एउटा भए सधैं त्यही; धेरै भए पालैपालो</string>
+    <string name="media_tick_short">OK: खोल्ने वा बन्द · OK थिचिराख्नुहोस्: मेटाउनुहोस्</string>
     <string name="tp_pick_short">OK: यो टाइलमा, वा हटाउनुहोस् · OK थिचिराख्नुहोस्: मेटाउनुहोस्</string>
     <string name="media_empty">अहिलेसम्म केही छैन। %1$s मा थप्नुहोस्।</string>
-    <string name="media_delete_title">यन्त्रबाट मेटाउने? यो भएका सबै टाइल र सूचीबाट हट्छ।</string>
+    <string name="media_delete_title">यो वस्तु तपाईंको यन्त्रबाट मेटाउने?</string>
     <string name="font">फन्ट</string>
     <string name="clock_font">घडी र मौसमको फन्ट</string>
-    <string name="font_same">फन्ट जस्तै</string>
     <string name="font_sans">स्यान्स सेरिफ</string>
     <string name="font_serif">सेरिफ</string>
     <string name="font_mono">मोनोस्पेस</string>
@@ -143,7 +142,6 @@
     <string name="font_added">फन्ट थपियो</string>
     <string name="font_failed">त्यो फन्ट थप्न सकिएन। अर्को प्रयास गर्नुहोस्।</string>
     <string name="font_not_covered">यो फन्टमा %1$s अक्षरहरू छैनन्, त्यसैले प्रणालीको फन्ट देखिन्छ।</string>
-    <string name="font_delete_title">यन्त्रबाट यो फन्ट मेटाउने?</string>
     <string name="font_credit">Google Fonts का फन्टहरू, Fontsource को सूचीमा; प्रत्येक आफ्नै इजाजतपत्रमा</string>
     <string name="font_add">फन्टहरू थप्नुहोस्</string>
     <string name="wp_custom_short">होमपछाडि तपाईंका आफ्नै तस्बिर र भिडियो: जहाँ एपको तस्बिर छैन, वा सबै पृष्ठभूमिको सट्टा।</string>

@@ -121,13 +121,12 @@
     <string name="media_on_device">በዚህ መሣሪያ ላይ</string>
     <string name="tp_add_phone_short">ከስልክዎ ሥዕል ይላኩ፣ እዚያው ለሰድር እንዲስማማ ተቀርጾ።</string>
     <string name="tp_scan">የሰድር ሥዕል ለመላክ በስልክዎ ይቃኙ</string>
-    <string name="media_tick_short">እሺ፦ አብራ ወይም አጥፋ · እሺን ይያዙ፦ ሰርዝ · አንድ ሁልጊዜ ይታያል፤ ብዙ ተራ በተራ</string>
+    <string name="media_tick_short">እሺ፦ አብራ ወይም አጥፋ · እሺን ይያዙ፦ ሰርዝ</string>
     <string name="tp_pick_short">እሺ፦ በዚህ ሰድር ላይ ወይም አውጣ · እሺን ይያዙ፦ ሰርዝ</string>
     <string name="media_empty">እስካሁን ምንም የለም። በ%1$s ውስጥ ያክሉ።</string>
-    <string name="media_delete_title">ከመሣሪያው ይሰረዝ? ካለበት ሰድር እና ዝርዝር ሁሉ ይወጣል።</string>
+    <string name="media_delete_title">ይህ ንጥል ከመሣሪያዎ ይሰረዝ?</string>
     <string name="font">ቅርጸ-ቁምፊ</string>
     <string name="clock_font">የሰዓት እና የአየር ሁኔታ ቅርጸ-ቁምፊ</string>
-    <string name="font_same">ከቅርጸ-ቁምፊው ጋር አንድ</string>
     <string name="font_sans">ሳንስ ሰሪፍ</string>
     <string name="font_serif">ሰሪፍ</string>
     <string name="font_mono">ሞኖስፔስ</string>
@@ -143,7 +142,6 @@
     <string name="font_added">ቅርጸ-ቁምፊ ታክሏል</string>
     <string name="font_failed">ያ ቅርጸ-ቁምፊ ሊታከል አልቻለም። ሌላ ይሞክሩ።</string>
     <string name="font_not_covered">ይህ ቅርጸ-ቁምፊ የ%1$s ፊደላት የሉትም፣ ስለዚህ የሥርዓቱ ቅርጸ-ቁምፊ ይታያል።</string>
-    <string name="font_delete_title">ይህ ቅርጸ-ቁምፊ ከመሣሪያው ይሰረዝ?</string>
     <string name="font_credit">ቅርጸ-ቁምፊዎች ከGoogle Fonts፣ በFontsource የተዘረዘሩ፤ እያንዳንዱ በራሱ ፈቃድ</string>
     <string name="font_add">ቅርጸ-ቁምፊዎችን ያክሉ</string>
     <string name="wp_custom_short">የራስዎ ሥዕሎች እና ቪዲዮዎች ከመነሻ ጀርባ፦ መተግበሪያ ሥዕል በሌለበት፣ ወይም በሁሉም ዳራዎች ምትክ።</string>

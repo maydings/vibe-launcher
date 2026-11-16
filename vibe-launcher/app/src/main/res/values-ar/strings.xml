@@ -121,13 +121,12 @@
     <string name="media_on_device">على هذا الجهاز</string>
     <string name="tp_add_phone_short">أرسل صورة من هاتفك، مؤطّرة هناك لتناسب البلاطة.</string>
     <string name="tp_scan">امسح الرمز بهاتفك لإرسال صورة بلاطة</string>
-    <string name="media_tick_short">موافق: تشغيل أو إيقاف · اضغط مطولاً: حذف · واحدة تظهر دائماً؛ وأكثر تتناوب</string>
+    <string name="media_tick_short">موافق: تشغيل أو إيقاف · اضغط مطولاً: حذف</string>
     <string name="tp_pick_short">موافق: على هذه البلاطة أو إزالتها · اضغط مطولاً: حذف</string>
     <string name="media_empty">لا شيء هنا بعد. أضف بعضها في %1$s.</string>
-    <string name="media_delete_title">حذفه من الجهاز؟ سيُزال من كل بلاطة وقائمة هو فيها.</string>
+    <string name="media_delete_title">حذف هذا العنصر من جهازك؟</string>
     <string name="font">الخط</string>
     <string name="clock_font">خط الساعة والطقس</string>
-    <string name="font_same">مثل الخط</string>
     <string name="font_sans">بلا زوائد</string>
     <string name="font_serif">بزوائد</string>
     <string name="font_mono">أحادي المسافة</string>
@@ -143,7 +142,6 @@
     <string name="font_added">تمت إضافة الخط</string>
     <string name="font_failed">تعذّرت إضافة هذا الخط. جرّب خطًا آخر.</string>
     <string name="font_not_covered">لا يحتوي هذا الخط على حروف %1$s، لذا يظهر خط النظام لها.</string>
-    <string name="font_delete_title">حذف هذا الخط من الجهاز؟</string>
     <string name="font_credit">خطوط من Google Fonts، مدرجة عبر Fontsource؛ لكل منها ترخيصه</string>
     <string name="font_add">إضافة خطوط</string>
     <string name="wp_custom_short">صورك ومقاطع الفيديو خاصتك خلف الشاشة الرئيسية: حيث لا توجد صورة للتطبيق، أو بدل كل الخلفيات.</string>

@@ -121,13 +121,12 @@
     <string name="media_on_device">ఈ పరికరంలో</string>
     <string name="tp_add_phone_short">ఫోన్ నుండి చిత్రం పంపండి, అక్కడే టైల్‌కు సరిపోయేలా ఫ్రేమ్ చేసి.</string>
     <string name="tp_scan">టైల్ చిత్రం పంపడానికి ఫోన్‌తో స్కాన్ చేయండి</string>
-    <string name="media_tick_short">OK: ఆన్ లేదా ఆఫ్ · OK నొక్కి ఉంచండి: తొలగించు · ఒకటైతే ఎప్పుడూ అదే; ఎక్కువైతే వంతుల వారీగా</string>
+    <string name="media_tick_short">OK: ఆన్ లేదా ఆఫ్ · OK నొక్కి ఉంచండి: తొలగించు</string>
     <string name="tp_pick_short">OK: ఈ టైల్‌పై, లేదా తీసివేయి · OK నొక్కి ఉంచండి: తొలగించు</string>
     <string name="media_empty">ఇంకా ఏమీ లేదు. %1$sలో జోడించండి.</string>
-    <string name="media_delete_title">పరికరం నుండి తొలగించాలా? అది ఉన్న ప్రతి టైల్, జాబితా నుండి తీసివేయబడుతుంది.</string>
+    <string name="media_delete_title">ఈ అంశాన్ని మీ పరికరం నుండి తొలగించాలా?</string>
     <string name="font">ఫాంట్</string>
     <string name="clock_font">గడియారం మరియు వాతావరణ ఫాంట్</string>
-    <string name="font_same">ఫాంట్ లాగే</string>
     <string name="font_sans">సాన్స్ సెరిఫ్</string>
     <string name="font_serif">సెరిఫ్</string>
     <string name="font_mono">మోనోస్పేస్</string>
@@ -143,7 +142,6 @@
     <string name="font_added">ఫాంట్ జోడించబడింది</string>
     <string name="font_failed">ఆ ఫాంట్‌ను జోడించలేకపోయాం. వేరొకటి ప్రయత్నించండి.</string>
     <string name="font_not_covered">ఈ ఫాంట్‌లో %1$s అక్షరాలు లేవు, కాబట్టి సిస్టమ్ ఫాంట్ కనిపిస్తుంది.</string>
-    <string name="font_delete_title">పరికరం నుండి ఈ ఫాంట్‌ను తొలగించాలా?</string>
     <string name="font_credit">Google Fonts ఫాంట్‌లు, Fontsource జాబితాలో; ప్రతిదీ దాని సొంత లైసెన్స్‌తో</string>
     <string name="font_add">ఫాంట్‌లను జోడించండి</string>
     <string name="wp_custom_short">హోమ్ వెనుక మీ సొంత చిత్రాలు, వీడియోలు: యాప్‌కు చిత్రం లేని చోట, లేదా అన్ని బ్యాక్‌డ్రాప్‌లకు బదులుగా.</string>

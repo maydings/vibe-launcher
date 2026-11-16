@@ -121,13 +121,12 @@
     <string name="media_on_device">ಈ ಸಾಧನದಲ್ಲಿ</string>
     <string name="tp_add_phone_short">ಫೋನ್‌ನಿಂದ ಚಿತ್ರ ಕಳುಹಿಸಿ, ಅಲ್ಲೇ ಟೈಲ್‌ಗೆ ಹೊಂದಿಸಿ.</string>
     <string name="tp_scan">ಟೈಲ್ ಚಿತ್ರ ಕಳುಹಿಸಲು ಫೋನ್‌ನಲ್ಲಿ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
-    <string name="media_tick_short">OK: ಆನ್ ಅಥವಾ ಆಫ್ · OK ಹಿಡಿದುಕೊಳ್ಳಿ: ಅಳಿಸಿ · ಒಂದಿದ್ದರೆ ಯಾವಾಗಲೂ ಅದು; ಹೆಚ್ಚಿದ್ದರೆ ಸರದಿಯಲ್ಲಿ</string>
+    <string name="media_tick_short">OK: ಆನ್ ಅಥವಾ ಆಫ್ · OK ಹಿಡಿದುಕೊಳ್ಳಿ: ಅಳಿಸಿ</string>
     <string name="tp_pick_short">OK: ಈ ಟೈಲ್‌ನಲ್ಲಿ, ಅಥವಾ ತೆಗೆಯಿರಿ · OK ಹಿಡಿದುಕೊಳ್ಳಿ: ಅಳಿಸಿ</string>
     <string name="media_empty">ಇನ್ನೂ ಏನೂ ಇಲ್ಲ. %1$s ನಲ್ಲಿ ಸೇರಿಸಿ.</string>
-    <string name="media_delete_title">ಸಾಧನದಿಂದ ಅಳಿಸಬೇಕೇ? ಅದು ಇರುವ ಎಲ್ಲ ಟೈಲ್ ಮತ್ತು ಪಟ್ಟಿಗಳಿಂದ ತೆಗೆಯಲಾಗುತ್ತದೆ.</string>
+    <string name="media_delete_title">ಈ ಐಟಂ ಅನ್ನು ನಿಮ್ಮ ಸಾಧನದಿಂದ ಅಳಿಸಬೇಕೇ?</string>
     <string name="font">ಫಾಂಟ್</string>
     <string name="clock_font">ಗಡಿಯಾರ ಮತ್ತು ಹವಾಮಾನ ಫಾಂಟ್</string>
-    <string name="font_same">ಫಾಂಟ್‌ನಂತೆಯೇ</string>
     <string name="font_sans">ಸ್ಯಾನ್ಸ್ ಸೆರಿಫ್</string>
     <string name="font_serif">ಸೆರಿಫ್</string>
     <string name="font_mono">ಮೊನೊಸ್ಪೇಸ್</string>
@@ -143,7 +142,6 @@
     <string name="font_added">ಫಾಂಟ್ ಸೇರಿಸಲಾಗಿದೆ</string>
     <string name="font_failed">ಆ ಫಾಂಟ್ ಸೇರಿಸಲಾಗಲಿಲ್ಲ. ಬೇರೊಂದನ್ನು ಪ್ರಯತ್ನಿಸಿ.</string>
     <string name="font_not_covered">ಈ ಫಾಂಟ್‌ನಲ್ಲಿ %1$s ಅಕ್ಷರಗಳಿಲ್ಲ, ಆದ್ದರಿಂದ ಸಿಸ್ಟಮ್ ಫಾಂಟ್ ತೋರಿಸಲಾಗುತ್ತದೆ.</string>
-    <string name="font_delete_title">ಸಾಧನದಿಂದ ಈ ಫಾಂಟ್ ಅಳಿಸಬೇಕೇ?</string>
     <string name="font_credit">Google Fonts ನ ಫಾಂಟ್‌ಗಳು, Fontsource ಪಟ್ಟಿಯಲ್ಲಿ; ಪ್ರತಿಯೊಂದೂ ತನ್ನ ಪರವಾನಗಿಯಲ್ಲಿ</string>
     <string name="font_add">ಫಾಂಟ್‌ಗಳನ್ನು ಸೇರಿಸಿ</string>
     <string name="wp_custom_short">ಹೋಮ್ ಹಿಂದೆ ನಿಮ್ಮ ಸ್ವಂತ ಚಿತ್ರಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳು: ಆ್ಯಪ್‌ಗೆ ಚಿತ್ರವಿಲ್ಲದಲ್ಲಿ, ಅಥವಾ ಎಲ್ಲಾ ಹಿನ್ನೆಲೆಗಳ ಬದಲು.</string>

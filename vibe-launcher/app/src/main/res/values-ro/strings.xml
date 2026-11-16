@@ -121,13 +121,12 @@
     <string name="media_on_device">Pe acest dispozitiv</string>
     <string name="tp_add_phone_short">Trimiteți o imagine de pe telefon, încadrată acolo pentru o placă.</string>
     <string name="tp_scan">Scanați cu telefonul pentru a trimite o imagine de placă</string>
-    <string name="media_tick_short">OK: da sau nu · Țineți OK: Ștergeți · Una se vede mereu; mai multe alternează</string>
+    <string name="media_tick_short">OK: da sau nu · Țineți OK: Ștergeți</string>
     <string name="tp_pick_short">OK: pe această placă sau scoateți · Țineți OK: Ștergeți</string>
     <string name="media_empty">Încă nimic aici. Adăugați în %1$s.</string>
-    <string name="media_delete_title">Ștergeți de pe dispozitiv? Dispare de pe fiecare placă și listă pe care e.</string>
+    <string name="media_delete_title">Ștergeți acest element de pe dispozitiv?</string>
     <string name="font">Font</string>
     <string name="clock_font">Fontul ceasului și al vremii</string>
-    <string name="font_same">La fel ca fontul</string>
     <string name="font_sans">Fără serife</string>
     <string name="font_serif">Cu serife</string>
     <string name="font_mono">Monospațiat</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Font adăugat</string>
     <string name="font_failed">Fontul nu a putut fi adăugat. Încercați altul.</string>
     <string name="font_not_covered">Acest font nu are litere pentru %1$s, așa că se afișează fontul sistemului.</string>
-    <string name="font_delete_title">Ștergeți acest font de pe dispozitiv?</string>
     <string name="font_credit">Fonturi din Google Fonts, listate de Fontsource; fiecare sub licența sa</string>
     <string name="font_add">Adăugați fonturi</string>
     <string name="wp_custom_short">Pozele și videoclipurile tale în spatele ecranului de pornire: unde o aplicație nu are imagine sau în locul tuturor fundalurilor.</string>

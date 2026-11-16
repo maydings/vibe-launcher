@@ -121,13 +121,12 @@
     <string name="media_on_device">Σε αυτήν τη συσκευή</string>
     <string name="tp_add_phone_short">Στείλτε μια εικόνα από το τηλέφωνο, πλαισιωμένη εκεί για πλακίδιο.</string>
     <string name="tp_scan">Σαρώστε με το τηλέφωνο για να στείλετε εικόνα πλακιδίου</string>
-    <string name="media_tick_short">OK: ναι ή όχι · Κρατήστε OK: Διαγραφή · Μία φαίνεται πάντα· περισσότερες εναλλάσσονται</string>
+    <string name="media_tick_short">OK: ναι ή όχι · Κρατήστε OK: Διαγραφή</string>
     <string name="tp_pick_short">OK: σε αυτό το πλακίδιο ή αφαίρεση · Κρατήστε OK: Διαγραφή</string>
     <string name="media_empty">Τίποτα ακόμα. Προσθέστε στο %1$s.</string>
-    <string name="media_delete_title">Διαγραφή από τη συσκευή; Φεύγει από κάθε πλακίδιο και λίστα όπου βρίσκεται.</string>
+    <string name="media_delete_title">Διαγραφή αυτού του στοιχείου από τη συσκευή σας;</string>
     <string name="font">Γραμματοσειρά</string>
     <string name="clock_font">Γραμματοσειρά ρολογιού και καιρού</string>
-    <string name="font_same">Ίδια με τη γραμματοσειρά</string>
     <string name="font_sans">Sans serif</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Σταθερού πλάτους</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Η γραμματοσειρά προστέθηκε</string>
     <string name="font_failed">Δεν ήταν δυνατή η προσθήκη. Δοκιμάστε άλλη.</string>
     <string name="font_not_covered">Αυτή η γραμματοσειρά δεν έχει γράμματα για %1$s, οπότε εμφανίζεται η γραμματοσειρά του συστήματος.</string>
-    <string name="font_delete_title">Διαγραφή αυτής της γραμματοσειράς από τη συσκευή;</string>
     <string name="font_credit">Γραμματοσειρές από το Google Fonts, στη λίστα του Fontsource· η καθεμία με τη δική της άδεια</string>
     <string name="font_add">Προσθήκη γραμματοσειρών</string>
     <string name="wp_custom_short">Δικές σας φωτογραφίες και βίντεο πίσω από την αρχική οθόνη: όπου μια εφαρμογή δεν έχει εικόνα, ή αντί για όλα τα φόντα.</string>

@@ -121,13 +121,12 @@
     <string name="media_on_device">ഈ ഉപകരണത്തിൽ</string>
     <string name="tp_add_phone_short">ഫോണിൽ നിന്ന് ചിത്രം അയയ്ക്കുക, അവിടെ ടൈലിന് ചേരുംവിധം ക്രമീകരിച്ച്.</string>
     <string name="tp_scan">ടൈൽ ചിത്രം അയയ്ക്കാൻ ഫോണിൽ സ്കാൻ ചെയ്യുക</string>
-    <string name="media_tick_short">OK: ഓൺ അല്ലെങ്കിൽ ഓഫ് · OK അമർത്തിപ്പിടിക്കുക: ഇല്ലാതാക്കുക · ഒന്നെങ്കിൽ എപ്പോഴും അത്; കൂടുതലെങ്കിൽ മാറിമാറി</string>
+    <string name="media_tick_short">OK: ഓൺ അല്ലെങ്കിൽ ഓഫ് · OK അമർത്തിപ്പിടിക്കുക: ഇല്ലാതാക്കുക</string>
     <string name="tp_pick_short">OK: ഈ ടൈലിൽ, അല്ലെങ്കിൽ നീക്കുക · OK അമർത്തിപ്പിടിക്കുക: ഇല്ലാതാക്കുക</string>
     <string name="media_empty">ഇവിടെ ഇതുവരെ ഒന്നുമില്ല. %1$s-ൽ ചേർക്കുക.</string>
-    <string name="media_delete_title">ഉപകരണത്തിൽ നിന്ന് ഇല്ലാതാക്കണോ? അതുള്ള എല്ലാ ടൈലുകളിൽ നിന്നും ലിസ്റ്റുകളിൽ നിന്നും നീങ്ങും.</string>
+    <string name="media_delete_title">ഈ ഇനം നിങ്ങളുടെ ഉപകരണത്തിൽ നിന്ന് ഇല്ലാതാക്കണോ?</string>
     <string name="font">ഫോണ്ട്</string>
     <string name="clock_font">ക്ലോക്കിന്റെയും കാലാവസ്ഥയുടെയും ഫോണ്ട്</string>
-    <string name="font_same">ഫോണ്ടിന് തുല്യം</string>
     <string name="font_sans">സാൻസ് സെരിഫ്</string>
     <string name="font_serif">സെരിഫ്</string>
     <string name="font_mono">മോണോസ്പേസ്</string>
@@ -143,7 +142,6 @@
     <string name="font_added">ഫോണ്ട് ചേർത്തു</string>
     <string name="font_failed">ആ ഫോണ്ട് ചേർക്കാനായില്ല. മറ്റൊന്ന് ശ്രമിക്കുക.</string>
     <string name="font_not_covered">ഈ ഫോണ്ടിൽ %1$s അക്ഷരങ്ങളില്ല, അതിനാൽ സിസ്റ്റം ഫോണ്ട് കാണിക്കുന്നു.</string>
-    <string name="font_delete_title">ഉപകരണത്തിൽ നിന്ന് ഈ ഫോണ്ട് ഇല്ലാതാക്കണോ?</string>
     <string name="font_credit">Google Fonts-ലെ ഫോണ്ടുകൾ, Fontsource പട്ടികയിൽ; ഓരോന്നും സ്വന്തം ലൈസൻസിൽ</string>
     <string name="font_add">ഫോണ്ടുകൾ ചേർക്കുക</string>
     <string name="wp_custom_short">ഹോമിന് പിന്നിൽ നിങ്ങളുടെ സ്വന്തം ചിത്രങ്ങളും വീഡിയോകളും: ആപ്പിന് ചിത്രമില്ലാത്തിടത്ത്, അല്ലെങ്കിൽ എല്ലാ പശ്ചാത്തലങ്ങൾക്കും പകരം.</string>

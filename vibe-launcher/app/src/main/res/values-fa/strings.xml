@@ -121,13 +121,12 @@
     <string name="media_on_device">روی این دستگاه</string>
     <string name="tp_add_phone_short">تصویری از تلفن بفرستید که همان‌جا برای کاشی قاب شده.</string>
     <string name="tp_scan">برای فرستادن تصویر کاشی با تلفن اسکن کنید</string>
-    <string name="media_tick_short">OK: روشن یا خاموش · نگه داشتن OK: حذف · یکی همیشه نمایش؛ بیشتر به نوبت</string>
+    <string name="media_tick_short">OK: روشن یا خاموش · نگه داشتن OK: حذف</string>
     <string name="tp_pick_short">OK: روی این کاشی یا برداشتن · نگه داشتن OK: حذف</string>
     <string name="media_empty">هنوز چیزی نیست. در %1$s اضافه کنید.</string>
-    <string name="media_delete_title">از دستگاه حذف شود؟ از هر کاشی و فهرستی که در آن است برداشته می‌شود.</string>
+    <string name="media_delete_title">این مورد از دستگاه شما حذف شود؟</string>
     <string name="font">قلم</string>
     <string name="clock_font">قلم ساعت و آب‌وهوا</string>
-    <string name="font_same">مانند قلم</string>
     <string name="font_sans">بدون گیره</string>
     <string name="font_serif">گیره‌دار</string>
     <string name="font_mono">هم‌عرض</string>
@@ -143,7 +142,6 @@
     <string name="font_added">قلم اضافه شد</string>
     <string name="font_failed">این قلم اضافه نشد. قلم دیگری امتحان کنید.</string>
     <string name="font_not_covered">این قلم حروف %1$s را ندارد، پس قلم سیستم نشان داده می‌شود.</string>
-    <string name="font_delete_title">این قلم از دستگاه حذف شود؟</string>
     <string name="font_credit">قلم‌ها از Google Fonts، فهرست‌شده توسط Fontsource؛ هر کدام با مجوز خود</string>
     <string name="font_add">افزودن قلم</string>
     <string name="wp_custom_short">عکس‌ها و ویدیوهای خودتان پشت صفحه اصلی: جایی که برنامه تصویری ندارد، یا به‌جای همه پس‌زمینه‌ها.</string>

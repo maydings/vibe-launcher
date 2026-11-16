@@ -121,13 +121,12 @@
     <string name="media_on_device">במכשיר הזה</string>
     <string name="tp_add_phone_short">שולחים תמונה מהטלפון, ממוסגרת שם לאריח.</string>
     <string name="tp_scan">סורקים בטלפון כדי לשלוח תמונת אריח</string>
-    <string name="media_tick_short">OK: כן או לא · החזקת OK: מחיקה · אחת מוצגת תמיד; יותר מתחלפות</string>
+    <string name="media_tick_short">OK: כן או לא · החזקת OK: מחיקה</string>
     <string name="tp_pick_short">OK: על האריח הזה, או הסרה · החזקת OK: מחיקה</string>
     <string name="media_empty">אין כאן כלום עדיין. מוסיפים ב%1$s.</string>
-    <string name="media_delete_title">למחוק מהמכשיר? יוסר מכל אריח ורשימה שהוא בהם.</string>
+    <string name="media_delete_title">למחוק את הפריט הזה מהמכשיר?</string>
     <string name="font">גופן</string>
     <string name="clock_font">גופן השעון ומזג האוויר</string>
-    <string name="font_same">כמו הגופן</string>
     <string name="font_sans">ללא תגים</string>
     <string name="font_serif">עם תגים</string>
     <string name="font_mono">ברוחב קבוע</string>
@@ -143,7 +142,6 @@
     <string name="font_added">הגופן נוסף</string>
     <string name="font_failed">לא ניתן להוסיף את הגופן. נסו אחר.</string>
     <string name="font_not_covered">בגופן הזה אין אותיות של %1$s, ולכן מוצג גופן המערכת.</string>
-    <string name="font_delete_title">למחוק את הגופן מהמכשיר?</string>
     <string name="font_credit">גופנים מ-Google Fonts, ברשימה של Fontsource; כל אחד ברישיון שלו</string>
     <string name="font_add">הוספת גופנים</string>
     <string name="wp_custom_short">תמונות וסרטונים משלך מאחורי מסך הבית: איפה שלאפליקציה אין תמונה, או במקום כל תמונות הרקע.</string>

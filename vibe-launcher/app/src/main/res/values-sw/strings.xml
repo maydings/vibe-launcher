@@ -121,13 +121,12 @@
     <string name="media_on_device">Kwenye kifaa hiki</string>
     <string name="tp_add_phone_short">Tuma picha kutoka simuni, iliyopangwa huko kutoshea kigae.</string>
     <string name="tp_scan">Changanua kwa simu ili kutuma picha ya kigae</string>
-    <string name="media_tick_short">OK: washa au zima · Shikilia OK: Futa · Moja huonekana kila wakati; zaidi hupokezana</string>
+    <string name="media_tick_short">OK: washa au zima · Shikilia OK: Futa</string>
     <string name="tp_pick_short">OK: kwenye kigae hiki, au ondoa · Shikilia OK: Futa</string>
     <string name="media_empty">Hakuna kitu bado. Ongeza katika %1$s.</string>
-    <string name="media_delete_title">Ifute kwenye kifaa? Itaondolewa kwenye kila kigae na orodha ilipo.</string>
+    <string name="media_delete_title">Futa kipengee hiki kwenye kifaa chako?</string>
     <string name="font">Fonti</string>
     <string name="clock_font">Fonti ya saa na hali ya hewa</string>
-    <string name="font_same">Sawa na fonti</string>
     <string name="font_sans">Sans serif</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Monospace</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Fonti imeongezwa</string>
     <string name="font_failed">Fonti hiyo haikuweza kuongezwa. Jaribu nyingine.</string>
     <string name="font_not_covered">Fonti hii haina herufi za %1$s, kwa hivyo fonti ya mfumo inaonyeshwa.</string>
-    <string name="font_delete_title">Ifute fonti hii kwenye kifaa?</string>
     <string name="font_credit">Fonti kutoka Google Fonts, zilizoorodheshwa na Fontsource; kila moja na leseni yake</string>
     <string name="font_add">Ongeza fonti</string>
     <string name="wp_custom_short">Picha na video zako nyuma ya Skrini ya kwanza: pale programu haina picha, au badala ya mandhari zote.</string>

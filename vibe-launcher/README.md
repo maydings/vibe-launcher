@@ -4,7 +4,7 @@ A free and open-source (MIT) home screen for Android TV, with no ads, ever. Plai
 Java, about 1.2 MB, no background services; built for TVs with 1 to 2 GB of RAM. Android 8.0 (API 26) and newer, targets API 34 so Play Protect accepts it
 on Android 11+ devices such as the NVIDIA Shield.
 
-![Vibe Launcher home with a backdrop behind the dock](docs/home.jpg)
+![Vibe Launcher home with a backdrop behind the dock](docs/home-minimal.jpg)
 
 For what it does and how to install the ready-built APK, see the [main README](../README.md). This
 page covers configuring, building and how the backdrops work.

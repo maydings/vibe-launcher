@@ -121,13 +121,12 @@
     <string name="media_on_device">V tomto zariadení</string>
     <string name="tp_add_phone_short">Pošlite obrázok z telefónu, tam upravený pre dlaždicu.</string>
     <string name="tp_scan">Naskenujte telefónom a pošlite obrázok dlaždice</string>
-    <string name="media_tick_short">OK: zapnúť či vypnúť · Podržať OK: Odstrániť · Jeden sa ukazuje vždy; viac sa strieda</string>
+    <string name="media_tick_short">OK: zapnúť či vypnúť · Podržať OK: Odstrániť</string>
     <string name="tp_pick_short">OK: na túto dlaždicu, alebo preč · Podržať OK: Odstrániť</string>
     <string name="media_empty">Zatiaľ tu nič nie je. Pridajte niečo v %1$s.</string>
-    <string name="media_delete_title">Odstrániť zo zariadenia? Zmizne zo všetkých dlaždíc a zoznamov, kde je.</string>
+    <string name="media_delete_title">Odstrániť túto položku zo zariadenia?</string>
     <string name="font">Písmo</string>
     <string name="clock_font">Písmo hodín a počasia</string>
-    <string name="font_same">Rovnaké ako písmo</string>
     <string name="font_sans">Bezpätkové</string>
     <string name="font_serif">Pätkové</string>
     <string name="font_mono">Neproporcionálne</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Písmo pridané</string>
     <string name="font_failed">Toto písmo sa nedalo pridať. Skúste iné.</string>
     <string name="font_not_covered">Toto písmo nemá písmená pre %1$s, preto sa zobrazí systémové písmo.</string>
-    <string name="font_delete_title">Odstrániť toto písmo zo zariadenia?</string>
     <string name="font_credit">Písma z Google Fonts, zoznam z Fontsource; každé pod vlastnou licenciou</string>
     <string name="font_add">Pridať písma</string>
     <string name="wp_custom_short">Vaše fotky a videá za plochou: tam, kde aplikácia nemá obrázok, alebo namiesto všetkých pozadí.</string>

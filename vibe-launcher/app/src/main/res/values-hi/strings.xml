@@ -121,13 +121,12 @@
     <string name="media_on_device">इस डिवाइस पर</string>
     <string name="tp_add_phone_short">फ़ोन से तस्वीर भेजें, वहीं टाइल के हिसाब से फ़्रेम करके।</string>
     <string name="tp_scan">टाइल तस्वीर भेजने के लिए फ़ोन से स्कैन करें</string>
-    <string name="media_tick_short">OK: चालू या बंद · OK दबाए रखें: हटाएँ · एक हो तो हमेशा वही; ज़्यादा हों तो बारी-बारी</string>
+    <string name="media_tick_short">OK: चालू या बंद · OK दबाए रखें: हटाएँ</string>
     <string name="tp_pick_short">OK: इस टाइल पर, या हटाएँ · OK दबाए रखें: हटाएँ</string>
     <string name="media_empty">अभी यहाँ कुछ नहीं। %1$s में जोड़ें।</string>
-    <string name="media_delete_title">डिवाइस से हटाएँ? यह हर उस टाइल और सूची से हट जाएगा जिसमें है।</string>
+    <string name="media_delete_title">इस आइटम को अपने डिवाइस से हटाएँ?</string>
     <string name="font">फ़ॉन्ट</string>
     <string name="clock_font">घड़ी और मौसम का फ़ॉन्ट</string>
-    <string name="font_same">फ़ॉन्ट जैसा ही</string>
     <string name="font_sans">सैन्स सेरिफ़</string>
     <string name="font_serif">सेरिफ़</string>
     <string name="font_mono">मोनोस्पेस</string>
@@ -143,7 +142,6 @@
     <string name="font_added">फ़ॉन्ट जोड़ा गया</string>
     <string name="font_failed">यह फ़ॉन्ट नहीं जोड़ा जा सका। दूसरा आज़माएँ।</string>
     <string name="font_not_covered">इस फ़ॉन्ट में %1$s के अक्षर नहीं हैं, इसलिए सिस्टम फ़ॉन्ट दिखता है।</string>
-    <string name="font_delete_title">इस फ़ॉन्ट को डिवाइस से हटाएँ?</string>
     <string name="font_credit">Google Fonts के फ़ॉन्ट, Fontsource की सूची में; हर एक अपने लाइसेंस के तहत</string>
     <string name="font_add">फ़ॉन्ट जोड़ें</string>
     <string name="wp_custom_short">होम के पीछे आपकी अपनी तस्वीरें और वीडियो: जहाँ ऐप की तस्वीर नहीं है, या सभी बैकड्रॉप की जगह.</string>

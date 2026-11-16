@@ -121,13 +121,12 @@
     <string name="media_on_device">Tällä laitteella</string>
     <string name="tp_add_phone_short">Lähetä kuva puhelimesta, siellä rajattuna ruutuun sopivaksi.</string>
     <string name="tp_scan">Lähetä ruutukuva skannaamalla puhelimella</string>
-    <string name="media_tick_short">OK: päälle tai pois · Pidä OK: Poista · Yksi näkyy aina; useampi vuorotellen</string>
+    <string name="media_tick_short">OK: päälle tai pois · Pidä OK: Poista</string>
     <string name="tp_pick_short">OK: tähän ruutuun tai pois · Pidä OK: Poista</string>
     <string name="media_empty">Täällä ei ole vielä mitään. Lisää kohdassa %1$s.</string>
-    <string name="media_delete_title">Poistetaanko laitteelta? Se lähtee jokaisesta ruudusta ja listasta, jossa se on.</string>
+    <string name="media_delete_title">Poistetaanko tämä kohde laitteeltasi?</string>
     <string name="font">Fontti</string>
     <string name="clock_font">Kellon ja sään fontti</string>
-    <string name="font_same">Sama kuin fontti</string>
     <string name="font_sans">Päätteetön</string>
     <string name="font_serif">Päätteellinen</string>
     <string name="font_mono">Tasalevyinen</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Fontti lisätty</string>
     <string name="font_failed">Fonttia ei voitu lisätä. Kokeile toista.</string>
     <string name="font_not_covered">Tässä fontissa ei ole kielen %1$s kirjaimia, joten järjestelmän fontti näkyy.</string>
-    <string name="font_delete_title">Poistetaanko tämä fontti laitteelta?</string>
     <string name="font_credit">Fontit Google Fontsista, luettelo Fontsourcelta; kukin omalla lisenssillään</string>
     <string name="font_add">Lisää fontteja</string>
     <string name="wp_custom_short">Omat kuvasi ja videosi aloitusnäytön taustalla: kun sovelluksella ei ole kuvaa, tai kaikkien taustakuvien sijaan.</string>

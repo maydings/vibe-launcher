@@ -694,6 +694,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         if (e.banner != null) {
             h.banner.setImageDrawable(e.banner);
             h.banner.setVisibility(View.VISIBLE);
+            h.icon.setImageDrawable(null);   // a recycled tile's icon, hidden, let go
             h.icon.setVisibility(View.GONE);
             h.label.setVisibility(View.GONE);
         } else {

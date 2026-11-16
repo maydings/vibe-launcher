@@ -183,6 +183,8 @@ public final class FontBrowserActivity extends Activity {
         list.setPadding(dp(8), dp(16), dp(8), dp(16));
         adapter = new Adapter();
         list.setAdapter(adapter);
+        // A row redrawn (its preview, its tick) stays put, with the focus: no cross-fade from a new row.
+        ((androidx.recyclerview.widget.SimpleItemAnimator) list.getItemAnimator()).setSupportsChangeAnimations(false);
         body.addView(list, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
         message = new TextView(this);
@@ -459,7 +461,7 @@ public final class FontBrowserActivity extends Activity {
     /** MINE: asks, then deletes it from the device (a choice that was it goes back to Outfit). */
     private void askDelete(Font f) {
         View panel = getLayoutInflater().inflate(R.layout.dialog_update, findViewById(android.R.id.content), false);
-        ((TextView) panel.findViewById(R.id.updateTitle)).setText(R.string.font_delete_title);
+        ((TextView) panel.findViewById(R.id.updateTitle)).setText(R.string.media_delete_title);
         panel.findViewById(R.id.notesScroll).setVisibility(View.GONE);
         TextView go = panel.findViewById(R.id.install), cancel = panel.findViewById(R.id.cancelUpdate);
         go.setText(R.string.wp_delete);
@@ -492,7 +494,7 @@ public final class FontBrowserActivity extends Activity {
             });
         });
         dialog.show();
-        cancel.requestFocus();
+        cancel.requestFocus();   // the safe one first
     }
 
     // ---- the list ----------------------------------------------------------------------------------

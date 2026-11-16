@@ -121,13 +121,12 @@
     <string name="media_on_device">En este dispositivo</string>
     <string name="tp_add_phone_short">Envía una imagen desde el móvil, encuadrada allí para un mosaico.</string>
     <string name="tp_scan">Escanea con el móvil para enviar una imagen de mosaico</string>
-    <string name="media_tick_short">OK: sí o no · Mantén OK: Eliminar · Con una, siempre esa; con más, se turnan</string>
+    <string name="media_tick_short">OK: sí o no · Mantén OK: Eliminar</string>
     <string name="tp_pick_short">OK: en este mosaico, o quitar · Mantén OK: Eliminar</string>
     <string name="media_empty">Aún no hay nada. Añade algo en %1$s.</string>
-    <string name="media_delete_title">¿Eliminarlo del dispositivo? Se quita de cada mosaico y lista donde esté.</string>
+    <string name="media_delete_title">¿Eliminar este elemento de tu dispositivo?</string>
     <string name="font">Fuente</string>
     <string name="clock_font">Fuente del reloj y el tiempo</string>
-    <string name="font_same">Igual que la fuente</string>
     <string name="font_sans">Sans serif</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Monoespaciada</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Fuente añadida</string>
     <string name="font_failed">No se pudo añadir esa fuente. Prueba otra.</string>
     <string name="font_not_covered">Esta fuente no tiene letras de %1$s, así que se muestra la del sistema.</string>
-    <string name="font_delete_title">¿Eliminar esta fuente del dispositivo?</string>
     <string name="font_credit">Fuentes de Google Fonts, listadas por Fontsource; cada una con su licencia</string>
     <string name="font_add">Añadir fuentes</string>
     <string name="wp_custom_short">Tus fotos y vídeos detrás del inicio: donde una app no tiene imagen, o en lugar de todos los fondos.</string>

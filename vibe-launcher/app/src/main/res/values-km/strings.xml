@@ -121,13 +121,12 @@
     <string name="media_on_device">នៅលើឧបករណ៍នេះ</string>
     <string name="tp_add_phone_short">ផ្ញើរូបភាពពីទូរសព្ទ ដែលកាត់នៅទីនោះឱ្យសមនឹងក្រឡា។</string>
     <string name="tp_scan">ស្កេនដោយទូរសព្ទ ដើម្បីផ្ញើរូបភាពក្រឡា</string>
-    <string name="media_tick_short">OK៖ បើក ឬបិទ · សង្កត់ OK៖ លុប · មួយបង្ហាញជានិច្ច; ច្រើនផ្លាស់វេន</string>
+    <string name="media_tick_short">OK៖ បើក ឬបិទ · សង្កត់ OK៖ លុប</string>
     <string name="tp_pick_short">OK៖ លើក្រឡានេះ ឬដកចេញ · សង្កត់ OK៖ លុប</string>
     <string name="media_empty">មិនទាន់មានអ្វីទេ។ បន្ថែមនៅក្នុង %1$s។</string>
-    <string name="media_delete_title">លុបពីឧបករណ៍? វានឹងដកចេញពីគ្រប់ក្រឡា និងបញ្ជីដែលវានៅ។</string>
+    <string name="media_delete_title">លុបធាតុនេះពីឧបករណ៍របស់អ្នក?</string>
     <string name="font">ពុម្ពអក្សរ</string>
     <string name="clock_font">ពុម្ពអក្សរនាឡិកា និងអាកាសធាតុ</string>
-    <string name="font_same">ដូចពុម្ពអក្សរ</string>
     <string name="font_sans">Sans serif</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Monospace</string>
@@ -143,7 +142,6 @@
     <string name="font_added">បានបន្ថែមពុម្ពអក្សរ</string>
     <string name="font_failed">មិនអាចបន្ថែមពុម្ពអក្សរនោះបានទេ។ សាកល្បងមួយផ្សេង។</string>
     <string name="font_not_covered">ពុម្ពអក្សរនេះគ្មានអក្សរ %1$s ទេ ដូច្នេះពុម្ពអក្សរប្រព័ន្ធត្រូវបានបង្ហាញ។</string>
-    <string name="font_delete_title">លុបពុម្ពអក្សរនេះពីឧបករណ៍?</string>
     <string name="font_credit">ពុម្ពអក្សរពី Google Fonts ដែលរាយដោយ Fontsource; នីមួយៗមានអាជ្ញាប័ណ្ណផ្ទាល់</string>
     <string name="font_add">បន្ថែមពុម្ពអក្សរ</string>
     <string name="wp_custom_short">រូបភាព និងវីដេអូរបស់អ្នកនៅពីក្រោយទំព័រដើម៖ កន្លែងដែលកម្មវិធីគ្មានរូបភាព ឬជំនួសផ្ទៃខាងក្រោយទាំងអស់។</string>

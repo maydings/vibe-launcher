@@ -71,9 +71,9 @@ final class VibeSettings {
         return prefs.getString(PLEX_TOKEN, "");
     }
 
-    /** The top bar as small icons, the time and the weather over the background, with no bar (off by default). */
+    /** The top bar as small icons, the time and the weather over the background, with no bar (the default). */
     boolean topBarMinimal() {
-        return prefs.getBoolean(TOP_BAR_MINIMAL, false);
+        return prefs.getBoolean(TOP_BAR_MINIMAL, true);   // Minimal unless Full is chosen
     }
 
     void setTopBarMinimal(boolean on) {
@@ -117,9 +117,13 @@ final class VibeSettings {
         prefs.edit().putString(UI_FONT, choice).apply();
     }
 
-    /** The font for the clock, the date and the weather: Fonts.SAME (the default) or as uiFont. */
+    /**
+     * The font for the clock, the date and the weather, chosen apart from uiFont: Fonts.OUTFIT (the default), a
+     * system family or a font's id. A saved "same" (following uiFont) reads as uiFont's choice.
+     */
     String clockFont() {
-        return prefs.getString(CLOCK_FONT, Fonts.SAME);
+        String choice = prefs.getString(CLOCK_FONT, Fonts.OUTFIT);
+        return "same".equals(choice) ? uiFont() : choice;
     }
 
     void setClockFont(String choice) {

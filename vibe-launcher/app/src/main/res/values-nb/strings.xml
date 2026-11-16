@@ -121,13 +121,12 @@
     <string name="media_on_device">På denne enheten</string>
     <string name="tp_add_phone_short">Send et bilde fra telefonen, tilpasset en flis der.</string>
     <string name="tp_scan">Skann med telefonen for å sende et flisbilde</string>
-    <string name="media_tick_short">OK: på eller av · Hold OK: Slett · Ett vises alltid; flere bytter på</string>
+    <string name="media_tick_short">OK: på eller av · Hold OK: Slett</string>
     <string name="tp_pick_short">OK: på denne flisen, eller av · Hold OK: Slett</string>
     <string name="media_empty">Ingenting her ennå. Legg til under %1$s.</string>
-    <string name="media_delete_title">Slette det fra enheten? Det fjernes fra alle fliser og lister det er på.</string>
+    <string name="media_delete_title">Slette dette elementet fra enheten din?</string>
     <string name="font">Skrift</string>
     <string name="clock_font">Skrift for klokke og vær</string>
-    <string name="font_same">Samme som skrift</string>
     <string name="font_sans">Sans serif</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Monospace</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Skrift lagt til</string>
     <string name="font_failed">Skriften kunne ikke legges til. Prøv en annen.</string>
     <string name="font_not_covered">Denne skriften har ingen bokstaver for %1$s, så systemskriften vises.</string>
-    <string name="font_delete_title">Slette denne skriften fra enheten?</string>
     <string name="font_credit">Skrifter fra Google Fonts, listet av Fontsource; hver med sin egen lisens</string>
     <string name="font_add">Legg til skrifter</string>
     <string name="wp_custom_short">Dine egne bilder og videoer bak startskjermen: der en app ikke har et bilde, eller i stedet for alle bakgrunner.</string>

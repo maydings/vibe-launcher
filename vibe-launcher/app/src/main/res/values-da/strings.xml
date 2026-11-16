@@ -121,13 +121,12 @@
     <string name="media_on_device">På denne enhed</string>
     <string name="tp_add_phone_short">Send et billede fra telefonen, tilpasset en flise dér.</string>
     <string name="tp_scan">Scan med telefonen for at sende et flisebillede</string>
-    <string name="media_tick_short">OK: til eller fra · Hold OK: Slet · Ét vises altid; flere skiftes</string>
+    <string name="media_tick_short">OK: til eller fra · Hold OK: Slet</string>
     <string name="tp_pick_short">OK: på denne flise, eller af · Hold OK: Slet</string>
     <string name="media_empty">Intet her endnu. Tilføj noget under %1$s.</string>
-    <string name="media_delete_title">Slet det fra enheden? Det fjernes fra alle fliser og lister, det er på.</string>
+    <string name="media_delete_title">Slet dette element fra din enhed?</string>
     <string name="font">Skrifttype</string>
     <string name="clock_font">Skrifttype til ur og vejr</string>
-    <string name="font_same">Samme som skrifttype</string>
     <string name="font_sans">Sans serif</string>
     <string name="font_serif">Serif</string>
     <string name="font_mono">Monospace</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Skrifttype tilføjet</string>
     <string name="font_failed">Skrifttypen kunne ikke tilføjes. Prøv en anden.</string>
     <string name="font_not_covered">Denne skrifttype har ingen bogstaver til %1$s, så systemets skrifttype vises.</string>
-    <string name="font_delete_title">Slet denne skrifttype fra enheden?</string>
     <string name="font_credit">Skrifttyper fra Google Fonts, listet af Fontsource; hver under sin egen licens</string>
     <string name="font_add">Tilføj skrifttyper</string>
     <string name="wp_custom_short">Dine egne billeder og videoer bag startskærmen: hvor en app ikke har et billede, eller i stedet for alle baggrunde.</string>

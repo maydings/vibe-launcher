@@ -188,6 +188,7 @@
                             android:textColor="#FFFFFFFF"
                             android:textSize="52sp"
                             android:fontFamily="@string/font_regular"
+                            android:fontFeatureSettings="tnum"
                             android:letterSpacing="-0.04"
                             android:includeFontPadding="false" />
 
@@ -324,6 +325,7 @@
             android:textColor="#FFFFFFFF"
             android:textSize="52sp"
             android:fontFamily="@string/font_regular"
+            android:fontFeatureSettings="tnum"
             android:letterSpacing="-0.04"
             android:includeFontPadding="false" />
 

@@ -121,13 +121,12 @@
     <string name="media_on_device">Na ovom uređaju</string>
     <string name="tp_add_phone_short">Pošaljite sliku s telefona, ondje uokvirenu za pločicu.</string>
     <string name="tp_scan">Skenirajte telefonom za slanje slike pločice</string>
-    <string name="media_tick_short">OK: uključi ili isključi · Držite OK: Izbriši · Jedna se uvijek prikazuje; više se izmjenjuje</string>
+    <string name="media_tick_short">OK: uključi ili isključi · Držite OK: Izbriši</string>
     <string name="tp_pick_short">OK: na ovu pločicu ili ukloni · Držite OK: Izbriši</string>
     <string name="media_empty">Ovdje još nema ničega. Dodajte u %1$s.</string>
-    <string name="media_delete_title">Izbrisati s uređaja? Nestaje sa svih pločica i popisa na kojima je.</string>
+    <string name="media_delete_title">Izbrisati ovu stavku s uređaja?</string>
     <string name="font">Font</string>
     <string name="clock_font">Font sata i vremena</string>
-    <string name="font_same">Isto kao font</string>
     <string name="font_sans">Bez serifa</string>
     <string name="font_serif">Serifni</string>
     <string name="font_mono">Jednake širine</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Font dodan</string>
     <string name="font_failed">Taj font nije moguće dodati. Pokušajte drugi.</string>
     <string name="font_not_covered">Ovaj font nema slova za %1$s, pa se prikazuje font sustava.</string>
-    <string name="font_delete_title">Izbrisati ovaj font s uređaja?</string>
     <string name="font_credit">Fontovi s Google Fontsa, popis s Fontsourcea; svaki pod vlastitom licencom</string>
     <string name="font_add">Dodaj fontove</string>
     <string name="wp_custom_short">Vaše slike i videozapisi iza početnog zaslona: gdje aplikacija nema sliku ili umjesto svih pozadina.</string>

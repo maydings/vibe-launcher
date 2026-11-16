@@ -63,6 +63,7 @@
             <action android:name="android.settings.SETTINGS" />
         </intent>
         <package android:name="com.android.tv.settings" />
+        <package android:name="com.tcl.settings" />
         <!-- Every Home app on the TV: the stock launchers Default launcher turns off and back on (TvControl). -->
         <intent>
             <action android:name="android.intent.action.MAIN" />

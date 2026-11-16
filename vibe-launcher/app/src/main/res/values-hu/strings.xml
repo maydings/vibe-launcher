@@ -121,13 +121,12 @@
     <string name="media_on_device">Ezen az eszközön</string>
     <string name="tp_add_phone_short">Küldjön képet a telefonról, ott csempéhez igazítva.</string>
     <string name="tp_scan">Szkennelje be a telefonnal csempekép küldéséhez</string>
-    <string name="media_tick_short">OK: be vagy ki · OK nyomva tartása: Törlés · Egy mindig látszik; több felváltva</string>
+    <string name="media_tick_short">OK: be vagy ki · OK nyomva tartása: Törlés</string>
     <string name="tp_pick_short">OK: erre a csempére vagy le · OK nyomva tartása: Törlés</string>
     <string name="media_empty">Még nincs itt semmi. Adjon hozzá itt: %1$s.</string>
-    <string name="media_delete_title">Törli az eszközről? Lekerül minden csempéről és listáról, amelyen szerepel.</string>
+    <string name="media_delete_title">Törli ezt az elemet az eszközről?</string>
     <string name="font">Betűtípus</string>
     <string name="clock_font">Óra és időjárás betűtípusa</string>
-    <string name="font_same">Mint a betűtípus</string>
     <string name="font_sans">Talpatlan</string>
     <string name="font_serif">Talpas</string>
     <string name="font_mono">Fix szélességű</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Betűtípus hozzáadva</string>
     <string name="font_failed">Ezt a betűtípust nem sikerült hozzáadni. Próbáljon másikat.</string>
     <string name="font_not_covered">Ebben a betűtípusban nincsenek %1$s betűk, ezért a rendszer betűtípusa látszik.</string>
-    <string name="font_delete_title">Törli ezt a betűtípust az eszközről?</string>
     <string name="font_credit">Betűtípusok a Google Fontsból, a Fontsource listájából; mindegyik saját licenccel</string>
     <string name="font_add">Betűtípusok hozzáadása</string>
     <string name="wp_custom_short">Saját képek és videók a kezdőképernyő mögött: ahol egy alkalmazásnak nincs képe, vagy az összes háttér helyett.</string>

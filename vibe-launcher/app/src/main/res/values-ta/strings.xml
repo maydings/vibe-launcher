@@ -121,13 +121,12 @@
     <string name="media_on_device">இந்தச் சாதனத்தில்</string>
     <string name="tp_add_phone_short">ஃபோனிலிருந்து படம் அனுப்புங்கள், அங்கேயே டைலுக்குப் பொருந்த அமைத்து.</string>
     <string name="tp_scan">டைல் படம் அனுப்ப ஃபோனால் ஸ்கேன் செய்யுங்கள்</string>
-    <string name="media_tick_short">OK: இயக்கு அல்லது நிறுத்து · OK-ஐப் பிடிக்க: நீக்கு · ஒன்றெனில் எப்போதும் அது; அதிகமெனில் மாறி மாறி</string>
+    <string name="media_tick_short">OK: இயக்கு அல்லது நிறுத்து · OK-ஐப் பிடிக்க: நீக்கு</string>
     <string name="tp_pick_short">OK: இந்த டைலில், அல்லது அகற்று · OK-ஐப் பிடிக்க: நீக்கு</string>
     <string name="media_empty">இன்னும் எதுவும் இல்லை. %1$s-இல் சேர்க்கவும்.</string>
-    <string name="media_delete_title">சாதனத்திலிருந்து நீக்கவா? அது உள்ள ஒவ்வொரு டைல், பட்டியலிலிருந்தும் அகற்றப்படும்.</string>
+    <string name="media_delete_title">இந்த உருப்படியை உங்கள் சாதனத்திலிருந்து நீக்கவா?</string>
     <string name="font">எழுத்துரு</string>
     <string name="clock_font">கடிகாரம் மற்றும் வானிலை எழுத்துரு</string>
-    <string name="font_same">எழுத்துருவைப் போலவே</string>
     <string name="font_sans">சான்ஸ் செரிஃப்</string>
     <string name="font_serif">செரிஃப்</string>
     <string name="font_mono">மோனோஸ்பேஸ்</string>
@@ -143,7 +142,6 @@
     <string name="font_added">எழுத்துரு சேர்க்கப்பட்டது</string>
     <string name="font_failed">அந்த எழுத்துருவைச் சேர்க்க முடியவில்லை. வேறொன்றை முயலவும்.</string>
     <string name="font_not_covered">இந்த எழுத்துருவில் %1$s எழுத்துகள் இல்லை, எனவே கணினி எழுத்துரு காட்டப்படுகிறது.</string>
-    <string name="font_delete_title">சாதனத்திலிருந்து இந்த எழுத்துருவை நீக்கவா?</string>
     <string name="font_credit">Google Fonts எழுத்துருக்கள், Fontsource பட்டியலில்; ஒவ்வொன்றும் தன் உரிமத்தில்</string>
     <string name="font_add">எழுத்துருக்களைச் சேர்</string>
     <string name="wp_custom_short">முகப்புக்குப் பின்னால் உங்கள் சொந்தப் படங்களும் வீடியோக்களும்: ஆப்ஸில் படம் இல்லாத இடத்தில், அல்லது எல்லாப் பின்னணிகளுக்கும் பதிலாக.</string>

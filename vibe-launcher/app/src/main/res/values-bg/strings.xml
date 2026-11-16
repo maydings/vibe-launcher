@@ -121,13 +121,12 @@
     <string name="media_on_device">На това устройство</string>
     <string name="tp_add_phone_short">Изпратете снимка от телефона, нагласена там за плочка.</string>
     <string name="tp_scan">Сканирайте с телефона, за да изпратите снимка за плочка</string>
-    <string name="media_tick_short">OK: вкл. или изкл. · Задръжте OK: Изтриване · Една винаги се показва; повече се редуват</string>
+    <string name="media_tick_short">OK: вкл. или изкл. · Задръжте OK: Изтриване</string>
     <string name="tp_pick_short">OK: на тази плочка или махане · Задръжте OK: Изтриване</string>
     <string name="media_empty">Още няма нищо. Добавете в %1$s.</string>
-    <string name="media_delete_title">Да се изтрие ли от устройството? Махат се от всяка плочка и списък, където е.</string>
+    <string name="media_delete_title">Да се изтрие ли този елемент от устройството ви?</string>
     <string name="font">Шрифт</string>
     <string name="clock_font">Шрифт за часовника и времето</string>
-    <string name="font_same">Като шрифта</string>
     <string name="font_sans">Безсерифен</string>
     <string name="font_serif">Серифен</string>
     <string name="font_mono">Равноширок</string>
@@ -143,7 +142,6 @@
     <string name="font_added">Шрифтът е добавен</string>
     <string name="font_failed">Този шрифт не можа да се добави. Опитайте друг.</string>
     <string name="font_not_covered">Този шрифт няма букви за %1$s, затова се показва системният шрифт.</string>
-    <string name="font_delete_title">Да се изтрие ли този шрифт от устройството?</string>
     <string name="font_credit">Шрифтове от Google Fonts, изброени от Fontsource; всеки със собствен лиценз</string>
     <string name="font_add">Добавяне на шрифтове</string>
     <string name="wp_custom_short">Ваши снимки и видеа зад началния екран: където приложението няма снимка или вместо всички фонове.</string>
