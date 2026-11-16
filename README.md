@@ -1,7 +1,7 @@
 # Vibe Launcher
 
-A home screen for Android TV and Google TV, and a way to clean the junk off your TV. Version 4 does both
-from the TV itself. You don't need a computer, a cable or a script, just a TV that's online (and a phone\*).
+A customizable home screen for Android/Google TV with built-in ADB debugging to debloat your TV without the
+need for any other device\* or AI.
 
 \* Only if your TV has nothing but Wireless debugging (some Google TV devices): it needs a one-time pairing
 with a code typed on a phone.
