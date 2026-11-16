@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Tile pictures (Settings > Pictures and videos > Tile pictures): pictures of the person's own for tiles, each kept
+ * Tile pictures (Settings > Library > Tile pictures): pictures of the person's own for tiles, each kept
  * once, at a tile's 16:9 (PICTURE_W x PICTURE_H), in files/tiles/pic_&lt;id&gt;.png; which tile shows which is
  * TileCustom's ("pic"). The list is in the "tiles" preferences, so a backup carries it with the files (Backup).
  * Added only from the phone (PhoneLink's tile page, cropped there), the one place pictures come in.

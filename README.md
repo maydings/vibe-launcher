@@ -61,7 +61,7 @@ Out of the box it reads the cards your apps already publish (Netflix, Prime Vide
 others) and finds clean artwork for each title. You choose the order it looks: Nuvio, Stremio, TMDB or the
 app's own picture. Plex, YouTube (through SmartTube) and an HDHomeRun tuner each get their own pictures too.
 
-You can also use your own pictures and videos, all added in one place (Settings → Pictures and videos): sent
+You can also use your own pictures and videos, all added in one place (Settings → Library): sent
 from your phone, or picked on the TV from Wallhaven, Pixabay, NASA, Wikimedia Commons or Pexels. Each is kept
 once, and you choose where it shows:
 
@@ -69,6 +69,11 @@ once, and you choose where it shows:
   different one each visit. They take the place of anything else that app would show.
 - **Custom wallpapers** has its own list too: show it only where an app has no picture, or instead of everything.
 - **Tile pictures** go on app and folder tiles (tile menu → Edit → Change picture), cropped on your phone.
+
+Fonts too: pick one for Vibe Launcher's text and another for the clock and weather (Settings → Appearance), from
+Outfit, the TV's own, or any of Google's 2,000 fonts (browsed on the TV, those for your language first) or a .ttf or
+.otf from your phone. A font without your language's letters isn't used for it: the TV's own font is, so nothing
+shows in two fonts at once.
 
 Leave Home alone for a minute and it turns into a slideshow of all of it.
 

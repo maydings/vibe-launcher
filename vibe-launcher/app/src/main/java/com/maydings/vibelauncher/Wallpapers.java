@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Backdrop pictures and videos of the person's own (Settings > Pictures and videos), from the phone (PhoneLink),
+ * Backdrop pictures and videos of the person's own (Settings > Library), from the phone (PhoneLink),
  * Wallhaven, Pexels, Pixabay, NASA or Wikimedia Commons (WallpaperBrowserActivity), each kept once, in
  * files/wallpapers, not the cache, which Android may empty. A picture is stored already cut to the screen and
  * darkened as backdrops are, so showing one is a quick decode; a video as it came, darkened on screen by a layer

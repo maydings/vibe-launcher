@@ -79,12 +79,21 @@ final class PhoneLink {
     }
 
     /**
-     * Tile pictures from the phone (Settings > Pictures and videos > Tile pictures > Add from phone): one cropped to
+     * Tile pictures from the phone (Settings > Library > Tile pictures > Add from phone): one cropped to
      * the tile's 16:9 on the phone, sent as a JPEG data URL.
      */
     interface TilePictureUploads {
         /** The phone's "data:image/...;base64,..." picture arrived: true when it was added. On the page's thread. */
         boolean received(String dataUrl);
+    }
+
+    /** Fonts from the phone (Settings > Library > Fonts > Add from phone): a .ttf or .otf file. */
+    interface FontUploads {
+        /** Where an arriving file goes (Fonts.incoming). */
+        java.io.File incoming();
+
+        /** The file arrived whole, with the phone's name for it: true when it was added. On the page's thread. */
+        boolean received(java.io.File file, String name);
     }
 
     private static final int PORT = 8765;
@@ -105,6 +114,8 @@ final class PhoneLink {
     WallpaperUploads wallpapers;
     /** Set by Settings: the tile picture page is there while it is. */
     TilePictureUploads tilePictures;
+    /** Set by Settings: the font page is there while it is. */
+    FontUploads fonts;
     private final VibeSettings settings;
     private final Handler main = new Handler(Looper.getMainLooper());
     private final String code;
@@ -175,6 +186,11 @@ final class PhoneLink {
         WallpaperUploads w = wallpapers;
         if (w != null && request.length >= 2 && request[1].startsWith("/" + code + "/wallpaper")) {
             handleWallpaper(s, in, head, request[0], request[1], w);
+            return;
+        }
+        FontUploads fu = fonts;
+        if (fu != null && request.length >= 2 && request[1].startsWith("/" + code + "/font")) {
+            handleFont(s, in, head, request[0], request[1], fu);
             return;
         }
         TilePictureUploads tp = tilePictures;
@@ -332,6 +348,82 @@ final class PhoneLink {
     private static String tooSmall(int w, int h) {
         return "That video is only " + w + " × " + h + ". Videos have to be at least 720p. Videos taken from "
                 + "this page come out small, so record in your Camera app and choose the clip here instead.";
+    }
+
+    /** The font page, and a font sent from it (POST /font?name=...), written straight to a file. */
+    private void handleFont(Socket s, InputStream in, String head, String method, String path, FontUploads f)
+            throws IOException {
+        if (!method.equals("POST")) {
+            respond(s, "200 OK", fontForm());
+            return;
+        }
+        s.setSoTimeout(60000);
+        long length = contentLength(head, Integer.MAX_VALUE);
+        if (length <= 0) {
+            respondText(s, "400 Bad Request", "Nothing arrived. Try again.");
+            return;
+        }
+        if (length > Fonts.MAX_FILE) {
+            respondText(s, "413 Payload Too Large", "That font is too big: up to 25 MB.");
+            return;
+        }
+        String name = "";
+        int q = path.indexOf("name=");
+        if (q >= 0) {
+            String raw = path.substring(q + 5);
+            int amp = raw.indexOf('&');
+            if (amp >= 0) raw = raw.substring(0, amp);
+            try {
+                name = java.net.URLDecoder.decode(raw, "UTF-8");
+            } catch (IllegalArgumentException e) {
+                name = "";
+            }
+        }
+        java.io.File file = f.incoming();
+        long got = 0;
+        try (java.io.FileOutputStream out = new java.io.FileOutputStream(file)) {
+            byte[] buf = new byte[64 * 1024];
+            int n;
+            while (got < length && (n = in.read(buf, 0, (int) Math.min(buf.length, length - got))) > 0) {
+                out.write(buf, 0, n);
+                got += n;
+            }
+        } catch (IOException e) {
+            //noinspection ResultOfMethodCallIgnored
+            file.delete();
+            throw e;
+        }
+        if (got < length) {
+            //noinspection ResultOfMethodCallIgnored
+            file.delete();
+            respondText(s, "400 Bad Request", "It didn't all arrive. Try again.");
+            return;
+        }
+        if (f.received(file, name)) {
+            respondText(s, "200 OK", "Added. The font is in your fonts on the device: pick it in Settings > Appearance.");
+        } else {
+            respondText(s, "415 Unsupported Media Type", "The device couldn't use that file. Send a .ttf or .otf font.");
+        }
+    }
+
+    /** Choosing a font file on the phone and sending it as it is. */
+    private String fontForm() {
+        return "<!doctype html><title>Vibe Launcher</title>" + STYLE
+                + "<h1>Font for your device</h1>"
+                + "<p>Choose a .ttf or .otf font file (up to 25 MB).</p>"
+                + "<input type=file id=f accept='.ttf,.otf,font/ttf,font/otf,application/x-font-ttf'>"
+                + "<button id=send disabled>Send to device</button><p id=m></p>"
+                + "<script>var f=document.getElementById('f'),b=document.getElementById('send'),"
+                + "m=document.getElementById('m');f.onchange=function(){b.disabled=!f.files.length;m.textContent='';};"
+                + "b.onclick=function(){var x=f.files[0];if(!x)return;b.disabled=true;m.textContent='Sending…';"
+                + "fetch(location.pathname+'?name='+encodeURIComponent(x.name),{method:'POST',body:x})"
+                + ".then(function(r){return r.text();}).then(function(t){m.textContent=t;b.disabled=false;})"
+                + ".catch(function(){m.textContent='Not sent: try again.';b.disabled=false;});};</script>";
+    }
+
+    /** The address of the font page, once started. */
+    String fontUrl() {
+        return url != null ? url + "/font" : null;
     }
 
     /** The address of the tile picture page, once started. */

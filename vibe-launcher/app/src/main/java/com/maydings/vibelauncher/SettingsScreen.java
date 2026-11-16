@@ -68,7 +68,8 @@ final class SettingsScreen {
      */
     static void prepare(Context context) {
         String language = new VibeSettings(context).language();
-        if (prepared != null && (prepared.host != null || prepared.builtFor.equals(language))) return;
+        if (prepared != null && (prepared.host != null || (prepared.builtFor.equals(language)
+                && prepared.builtWith.equals(fontKey(context))))) return;
         prepared = new SettingsScreen(context.getApplicationContext(), language);
         prepared.handler.postDelayed(prepared::step, STEP_GAP_MS);
     }
@@ -311,6 +312,13 @@ final class SettingsScreen {
     /** For making the views and reading strings: the app's context in the chosen language, with a theme. */
     private final Context ctx;
     private final String builtFor;   // the language it was made in
+    private final String builtWith;   // and the fonts (fontKey): a new choice makes it again
+
+    /** The font choices the screen is drawn in. */
+    private static String fontKey(Context context) {
+        VibeSettings s = new VibeSettings(context);
+        return s.uiFont() + "|" + s.clockFont();
+    }
     private final float density;
     private final VibeSettings settings;
     private final View screen;
@@ -320,6 +328,7 @@ final class SettingsScreen {
     private final Page root;
     private final Page languagePage;
     private final Row generalRow;
+    private Row appearanceRow;
     private final List<Page> pages = new ArrayList<>();
     /** Where the lists sit: the left column (over the logo) and the right one, and their width. */
     private final int leftX, rightX, columnW, screenW, screenH;
@@ -357,6 +366,8 @@ final class SettingsScreen {
     private SettingsScreen(Context app, String language) {
         ctx = new ContextThemeWrapper(Lang.wrap(app), android.R.style.Theme_Material_NoActionBar);
         builtFor = language;
+        builtWith = fontKey(app);
+        FontInflater.install(LayoutInflater.from(ctx));   // the chosen font for the layouts made here
         this.language = language;
         density = ctx.getResources().getDisplayMetrics().density;
         settings = new VibeSettings(ctx);
@@ -379,7 +390,7 @@ final class SettingsScreen {
 
         root = new Page(ctx.getString(R.string.settings));
         generalRow = root.link(R.string.tab_general, null, this::general);
-        root.link(R.string.tab_appearance, null, this::appearance);
+        appearanceRow = root.link(R.string.tab_appearance, null, this::appearance);
         root.link(R.string.tab_backdrops, null, this::backdrops);
         root.link(R.string.media_title, null, this::media);
         root.link(R.string.tab_weather, null, this::weather);
@@ -448,6 +459,20 @@ final class SettingsScreen {
     }
 
     /** Opens on General, already in place (Settings back in a new language): Language has the focus. */
+    /** Whether the font choices changed since the screen was made (a chosen font deleted meanwhile). */
+    boolean fontsChanged() {
+        return !builtWith.equals(fontKey(ctx));
+    }
+
+    /** Settings made again after a font was chosen: back on Appearance, as it was left. */
+    void showAppearance() {
+        Page page = appearance();
+        open(page, appearanceRow);
+        logo.setTranslationX(offLeft(logo));
+        root.view.setTranslationX(leftX - rightX);
+        page.view.setTranslationX(0f);
+    }
+
     void showGeneral() {
         Page page = general();
         open(page, generalRow);
@@ -665,6 +690,8 @@ final class SettingsScreen {
 
     private Page appearance() {
         Page page = new Page(ctx.getString(R.string.tab_appearance));
+        page.link(R.string.font, () -> Fonts.name(ctx, settings.uiFont()), () -> fontPicker(false));
+        page.link(R.string.clock_font, () -> Fonts.name(ctx, settings.clockFont()), () -> fontPicker(true));
         Row bar = page.link(R.string.top_bar, () -> ctx.getString(settings.topBarMinimal()
                 ? R.string.top_bar_minimal : R.string.top_bar_full), this::topBar);
         bar.about = R.string.top_bar_short;
@@ -1043,7 +1070,7 @@ MainActivity.showError(host, R.string.anim_short);
         Row use = page.link(R.string.wp_use, () -> ctx.getString(WALLPAPER_MODES[settings.wallpaperMode()]),
                 this::wallpaperModes);
         use.about = R.string.wp_use_short;
-        // Its own list, ticked from everything uploaded (Pictures and videos, the one place they come in).
+        // Its own list, ticked from everything uploaded (Library, the one place they come in).
         String name = ctx.getString(R.string.wp_custom);
         Row pictures = page.add(R.string.backdrop_pictures,
                 () -> String.valueOf(countOf(Wallpapers.get(ctx).listOf(Wallpapers.ROTATION), false)),
@@ -1069,10 +1096,73 @@ MainActivity.showError(host, R.string.anim_short);
         return n;
     }
 
+    // ---- fonts -----------------------------------------------------------------------------------------
+
+    /**
+     * Font, or Clock and weather font: Outfit, the system's families and the fonts on the device (Fonts), each
+     * named in itself, the chosen one ticked; for the clock, Same as font first. A font without the current
+     * language's letters says so: the system font shows for that language instead (UiFont). Picked, Home and
+     * Settings are made again in it, back here on Appearance.
+     */
+    private Page fontPicker(boolean clock) {
+        Page page = new Page(ctx.getString(clock ? R.string.clock_font : R.string.font));
+        List<String> choices = new ArrayList<>();
+        if (clock) choices.add(Fonts.SAME);
+        choices.add(Fonts.OUTFIT);
+        java.util.Collections.addAll(choices, Fonts.SYSTEM);
+        for (Fonts.Item item : new Fonts(ctx).list()) choices.add(item.id);
+        String sample = UiFont.sample(ctx), language = UiFont.languageName(ctx);
+        for (String choice : choices) {
+            Row row = page.add(Fonts.name(ctx, choice), () -> choice.equals(clock ? settings.clockFont()
+                    : settings.uiFont()) ? "✓" : "", () -> {
+                if (clock) settings.setClockFont(choice);
+                else settings.setUiFont(choice);
+                Fonts.changed();
+                rebuildHome();
+                Activity h = host;
+                if (h != null) {
+                    h.setIntent(h.getIntent().putExtra(SettingsActivity.ON_APPEARANCE, true));
+                    h.recreate();
+                }
+            });
+            // Each named in itself: Outfit in Outfit, Same as font in the font chosen for the rest.
+            String shows = Fonts.SAME.equals(choice) ? settings.uiFont() : choice;
+            android.graphics.Typeface face = Fonts.OUTFIT.equals(shows)
+                    ? ctx.getResources().getFont(R.font.outfit) : Fonts.typeface(ctx, shows, false);
+            if (face != null) row.label.setTypeface(face);
+            if (!Fonts.covers(ctx, shows, sample)) {
+                row.aboutText = ctx.getString(R.string.font_not_covered, language);
+            }
+            if (choice.equals(clock ? settings.clockFont() : settings.uiFont())) page.opened = row;   // focus starts here
+        }
+        Row add = page.link(R.string.font_add, null, this::fontsPage);
+        add.about = R.string.fonts_short;
+        return page;
+    }
+
+    /** Library > Fonts: from the phone, Google Fonts (FontBrowserActivity), and those on the device. */
+    private Page fontsPage() {
+        Page page = new Page(ctx.getString(R.string.fonts));
+        page.footnote = R.string.fonts_short;
+        if (phoneUrl != null && link != null && link.fontUrl() != null) {
+            Row phone = page.link(R.string.wp_add_phone, null,
+                    () -> phone(R.string.wp_add_phone, link.fontUrl(), R.string.font_scan));
+            phone.about = R.string.font_add_phone_short;
+        }
+        Row browse = page.add(R.string.fonts_browse, null,
+                () -> host.startActivity(FontBrowserActivity.intent(host, false)));
+        browse.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+        browse.about = R.string.font_credit;
+        Row there = page.add(R.string.media_on_device, () -> String.valueOf(new Fonts(ctx).list().size()),
+                () -> host.startActivity(FontBrowserActivity.intent(host, true)));
+        there.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+        return page;
+    }
+
     // ---- pictures and videos ---------------------------------------------------------------------------
 
     /**
-     * Pictures and videos: the one place they come in, in three buckets, each kept once: tile pictures (for a tile,
+     * Library: the one place they come in, in three buckets, each kept once: tile pictures (for a tile,
      * tile menu > Edit > Change picture), and backdrop pictures and videos (for an app's, a folder's or Custom
      * wallpapers' list). Each: Add from phone, the sources to browse, and what's on the device (OK deletes).
      */
@@ -1084,6 +1174,7 @@ MainActivity.showError(host, R.string.anim_short);
                 () -> backdropMedia(false));
         page.link(R.string.backdrop_videos, () -> String.valueOf(countOf(Wallpapers.get(ctx).list(), true)),
                 () -> backdropMedia(true));
+        page.link(R.string.fonts, () -> String.valueOf(new Fonts(ctx).list().size()), this::fontsPage);
         return page;
     }
 
@@ -2812,6 +2903,21 @@ MainActivity.showError(host, R.string.anim_short);
             @Override
             public boolean received(java.io.File file, boolean video) {
                 boolean added = walls.add(file, video, Wallpapers.PHONE, "", screenW, screenH) != null;
+                if (added) handler.post(SettingsScreen.this::showWallpapers);
+                return added;
+            }
+        };
+        link.fonts = new PhoneLink.FontUploads() {
+            @Override
+            public java.io.File incoming() {
+                return new Fonts(app).incoming();
+            }
+
+            @Override
+            public boolean received(java.io.File file, String name) {
+                String family = name.replaceAll("(?i)\\.(ttf|otf)$", "").replace('_', ' ').replace('-', ' ').trim();
+                if (family.isEmpty()) family = "Font";
+                boolean added = new Fonts(app).add(file, null, family, Fonts.PHONE) != null;
                 if (added) handler.post(SettingsScreen.this::showWallpapers);
                 return added;
             }

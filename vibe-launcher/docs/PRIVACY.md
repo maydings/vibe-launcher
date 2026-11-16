@@ -73,7 +73,9 @@ internet address). The services' own privacy policies apply to what they receive
 | Open-Meteo (`api.open-meteo.com`) | the weather location, as a latitude and longitude rounded to the city, and °C or °F | while the weather is on (Settings > Weather; on by default), at most every 20 minutes |
 | Open-Meteo geocoding (`geocoding-api.open-meteo.com`) | the city name you type, and the TV's language | when you search for a city in Settings > Weather > Location |
 | ipapi.co, or ipwho.is when it doesn't answer | nothing beyond the request itself: the service works out the city from the TV's internet address | while the weather is on with Location set to Automatic, at most daily |
-| Wallhaven (`wallhaven.cc`, `w.wallhaven.cc`, `th.wallhaven.cc`) | what you search for, and requests for the pictures you see and pick | when you browse Wallhaven pictures in Settings > Pictures and videos |
+| Fontsource (`api.fontsource.org`) | a request for its list of fonts (kept a day on the TV) | when you browse fonts in Settings > Library > Fonts |
+| Google Fonts (`fonts.googleapis.com`, `fonts.gstatic.com`) | the name of the font you focus (to show its name in it) or pick (to download it) | when you browse fonts in Settings > Library > Fonts |
+| Wallhaven (`wallhaven.cc`, `w.wallhaven.cc`, `th.wallhaven.cc`) | what you search for, and requests for the pictures you see and pick | when you browse Wallhaven pictures in Settings > Library |
 | Pexels (`api.pexels.com`, `videos.pexels.com`, `images.pexels.com`) | your Pexels key, what you search for, and requests for the videos you see and pick | when you browse Pexels videos there (needs your key) |
 | Pixabay (`pixabay.com`, `cdn.pixabay.com`, `i.vimeocdn.com`) | your Pixabay key, what you search for, and requests for the pictures and videos you see and pick | when you browse Pixabay there (needs your key) |
 | NASA (`images-api.nasa.gov`, `images-assets.nasa.gov`) | what you search for, and requests for the pictures and videos you see and pick | when you browse NASA there |

@@ -16,6 +16,8 @@ public final class SettingsActivity extends Activity {
     static final String ON_GENERAL = "onGeneral";
     /** Open on Apps > Default launcher (the top bar's Make Vibe Launcher your Home, with ADB allowed). */
     static final String ON_DEFAULT_LAUNCHER = "onDefaultLauncher";
+    /** Back after a font change: opens on Appearance, where the font was picked. */
+    static final String ON_APPEARANCE = "onAppearance";
 
     private SettingsScreen screen;
 
@@ -26,10 +28,14 @@ public final class SettingsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FontInflater.install(this);
         super.onCreate(savedInstanceState);
         screen = SettingsScreen.get(this);
         setContentView(screen.attach(this));
-        if (getIntent().getBooleanExtra(ON_GENERAL, false)) screen.showGeneral();
+        if (getIntent().getBooleanExtra(ON_APPEARANCE, false)) {
+            getIntent().removeExtra(ON_APPEARANCE);   // once: opened again later, it starts at the top
+            screen.showAppearance();
+        } else if (getIntent().getBooleanExtra(ON_GENERAL, false)) screen.showGeneral();
         else if (getIntent().getBooleanExtra(ON_DEFAULT_LAUNCHER, false)) screen.showDefaultLauncher();
         else screen.first().requestFocus();
     }
@@ -40,6 +46,12 @@ public final class SettingsActivity extends Activity {
         screen.showSmartTube();   // installed or signed in meanwhile
         screen.showHomeButton();   // turned on or off in Accessibility meanwhile
         screen.showWallpapers();   // some picked in a browsing grid meanwhile
+        if (screen.fontsChanged()) {   // the chosen font deleted in Fonts: Home and Settings in Outfit again
+            MainActivity home = MainActivity.current();
+            if (home != null) home.recreate();
+            setIntent(getIntent().putExtra(ON_APPEARANCE, true));
+            recreate();
+        }
     }
 
     /** Storage access for a backup on the TV, up to Android 10 (Backup.needsPermission). */

@@ -335,6 +335,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FontInflater.install(this);   // the chosen fonts (Appearance > Font) for the layouts' text
         super.onCreate(savedInstanceState);
         CrashGuard.install(this);
         PowerOnHome.register(this);
@@ -3764,7 +3765,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private static final int REQUEST_PICK = 41;
 
     /**
-     * Change picture: the tile pictures (Settings > Pictures and videos, the one place they're added), OK on one
+     * Change picture: the tile pictures (Settings > Library, the one place they're added), OK on one
      * putting it on this tile (an app's package, or a folder's key), OK on it again taking it off.
      */
     private void pickTilePicture(String key, String label) {

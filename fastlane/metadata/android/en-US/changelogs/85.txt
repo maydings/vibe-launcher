@@ -1,0 +1,4 @@
+* Fonts: pick one for the text and another for the clock and weather (Settings → Appearance).
+* Add fonts in Settings → Library → Fonts: browse Google's fonts on the TV, those for your language first, or send a .ttf/.otf from your phone.
+* A font without your language's letters isn't used for it: the system font is, so nothing shows in two fonts.
+* Pictures and videos is now Library.

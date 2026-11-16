@@ -195,6 +195,7 @@ public final class WallpaperBrowserActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle state) {
+        FontInflater.install(this);
         super.onCreate(state);
         source = getIntent().getStringExtra(SOURCE);
         if (source == null) source = Wallpapers.WALLHAVEN;

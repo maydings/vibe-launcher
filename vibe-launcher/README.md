@@ -187,6 +187,7 @@ The full list, with what each is sent, is in the [privacy policy](docs/PRIVACY.m
 | `PowerOnHome` | Home at power-on: Home shortly after the screen turns on |
 | `CrashGuard` | Falls back to the stock launcher's App info after repeated crashes |
 | `Wallpapers`, `WallpaperVideo`, `WallpaperBrowserActivity` | Backdrop pictures and videos, each stored once, with the lists that pick from them (each app's and folder's, and Custom wallpapers'); video playback on Home; the grids that pick for a list and the Wallhaven/Pexels/Pixabay/NASA/Commons browser |
+| `Fonts`, `FontFile`, `UiFont`, `FontInflater`, `FontBrowserActivity` | Fonts, each stored once (Google Fonts, listed by Fontsource, or the phone); which characters a font file has; the chosen font and the clock's, or the system font where a language isn't covered; applying it to layouts as they're made; the font browser |
 | `TilePictures`, `TileCustom` | Tile pictures, each stored once, and what each app or folder tile shows (its picture, icon or name) |
 | `Weather` | The weather line under the date (Open-Meteo, located by IP or a searched city) |
 | `ShelfDial` | A dock folder's apps as a dial above it |
