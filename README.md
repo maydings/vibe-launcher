@@ -109,7 +109,8 @@ comes from your phone: scan the QR code on screen and do it there.
 | ![Settings](vibe-launcher/docs/settings-main.jpg) | ![Film & show sources, in the order they're tried](vibe-launcher/docs/settings-sources.jpg) |
 |---|---|
 
-Pick the highlight color for whatever's focused on a color wheel, with a preview on a white tile.
+Pick the highlight color for whatever's focused on a color wheel, with a preview on a white tile. Set how much of your
+picture shows through the dock and the top bar on a slider, with a sample of each as it moves.
 
 | ![Highlight color: a color wheel and a preview of the focus on a white tile](vibe-launcher/docs/color-wheel.jpg) | ![Advanced: ADB connection, Debloat, Default launcher](vibe-launcher/docs/settings-advanced.jpg) |
 |---|---|

@@ -251,6 +251,9 @@
     <string name="glass_color">Markeringsfärg</string>
     <string name="glass_white">Återställ</string>
     <string name="glass_color_hint">Pilarna flyttar pricken: färgen runt hjulet, blekare mot mitten. Tryck OK när du är klar.</string>
+    <string name="dock_opacity">Dockans opacitet</string>
+    <string name="top_bar_opacity">Övre fältets opacitet</string>
+    <string name="dock_opacity_hint">Använd upp och ned för att justera opacitetsreglaget</string>
     <string name="power_on_home">Hem vid påslagning</string>
     <string name="ignore_channel_keys">Ignorera kanalknappar på startskärmen</string>
     <string name="ignore_channel_keys_short">Kanal upp och ner gör ingenting medan Hem visas, i stället för att öppna enhetens tv-app.</string>

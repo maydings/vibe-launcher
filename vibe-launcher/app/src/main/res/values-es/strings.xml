@@ -251,6 +251,9 @@
     <string name="glass_color">Color de resaltado</string>
     <string name="glass_white">Restablecer</string>
     <string name="glass_color_hint">Las flechas mueven el punto: el color alrededor de la rueda, más pálido hacia el centro. Pulsa OK al terminar.</string>
+    <string name="dock_opacity">Opacidad del dock</string>
+    <string name="top_bar_opacity">Opacidad de la barra superior</string>
+    <string name="dock_opacity_hint">Usa arriba y abajo para ajustar el control de opacidad</string>
     <string name="power_on_home">Inicio al encender</string>
     <string name="ignore_channel_keys">Ignorar las teclas de canal en el inicio</string>
     <string name="ignore_channel_keys_short">Canal arriba y abajo no hacen nada mientras se muestra el Inicio, en lugar de abrir la app de TV del dispositivo.</string>

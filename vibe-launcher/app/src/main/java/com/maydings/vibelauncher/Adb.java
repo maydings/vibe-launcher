@@ -217,10 +217,21 @@ final class Adb {
                 off.status = OFF;   // nothing listening: debugging is off
                 return off;
             }
-            s.setTcpNoDelay(true);
-            s.setSoTimeout(ANSWER_MS);
-            Link link = new Link(s);
-            link.status = link.connect(ask, deadline);
+            Link link;
+            try {
+                s.setTcpNoDelay(true);
+                s.setSoTimeout(ANSWER_MS);
+                link = new Link(s);
+                link.status = link.connect(ask, deadline);
+            } catch (IOException | RuntimeException e) {
+                // Accepted then reset (adbd restarting): the socket closed here, the reset the error reported.
+                try {
+                    s.close();
+                } catch (IOException closing) {
+                    e.addSuppressed(closing);
+                }
+                throw e;
+            }
             if (link.status == OK) {
                 viaWireless = false;
                 worked();

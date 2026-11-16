@@ -26,7 +26,10 @@ public class FrostView extends View {
 
     private static final int SCALE = 8;           // the strip is drawn at 1/8 size
     private static final int BLUR_RADIUS = 2;     // in downscaled pixels, three passes ~ a gaussian
-    private static final int TINT = 0xA6000000;   // darkens the frost so the clock and buttons stay legible
+    /** The dark tint's opacity by default, in percent (Appearance > Top bar opacity). */
+    static final int DEFAULT_OPACITY = 65;
+    /** Darkens the frost so the clock and buttons stay legible; its alpha is the chosen opacity. */
+    private int tint = Percent.alpha(DEFAULT_OPACITY) << 24;
     private static final int HAIRLINE = 0x26FFFFFF;
 
     private final Paint bitmapPaint = new Paint(Paint.FILTER_BITMAP_FLAG);
@@ -66,6 +69,12 @@ public class FrostView extends View {
     protected void onMeasure(int widthSpec, int heightSpec) {
         int h = MeasureSpec.getMode(heightSpec) == MeasureSpec.EXACTLY ? MeasureSpec.getSize(heightSpec) : 0;
         setMeasuredDimension(MeasureSpec.getSize(widthSpec), h);
+    }
+
+    /** The dark tint's opacity, in percent (0: only the frost; 100: black). */
+    void setOpacity(int percent) {
+        tint = Percent.alpha(percent) << 24;
+        invalidate();
     }
 
     /** The view to frost (the app grid). */
@@ -300,13 +309,13 @@ public class FrostView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         float line = getResources().getDisplayMetrics().density;
-        float tint = onlyOverTiles ? amount : Math.max(amount, under);
-        if (tint > 0f) {
+        float strength = onlyOverTiles ? amount : Math.max(amount, under);
+        if (strength > 0f) {
             dst.set(0, 0, getWidth(), getHeight());
             // Full strength: the frost is transparent where nothing is underneath, and it stands in for
             // the clipped-away tiles, so it must not fade (that let the sharp tiles show through).
             if (amount > 0f && frost != null) canvas.drawBitmap(frost, null, dst, bitmapPaint);
-            fillPaint.setColor(scaleAlpha(TINT, tint));
+            fillPaint.setColor(scaleAlpha(tint, strength));
             canvas.drawRect(0, 0, getWidth(), getHeight() - line, fillPaint);
         }
         // The bar's bottom line, always and at full strength: fading with the tint, it went and came back as

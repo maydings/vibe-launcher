@@ -251,6 +251,9 @@
     <string name="glass_color">हाइलाइट का रंग</string>
     <string name="glass_white">रीसेट</string>
     <string name="glass_color_hint">तीर बिंदु को हिलाते हैं: पहिए के चारों ओर रंग, बीच की ओर हल्का। हो जाने पर OK दबाएँ।</string>
+    <string name="dock_opacity">डॉक की अपारदर्शिता</string>
+    <string name="top_bar_opacity">ऊपरी बार की अपारदर्शिता</string>
+    <string name="dock_opacity_hint">अपारदर्शिता स्लाइडर बदलने के लिए ऊपर और नीचे का उपयोग करें</string>
     <string name="power_on_home">चालू होने पर होम</string>
     <string name="ignore_channel_keys">होम पर चैनल बटन अनदेखा करें</string>
     <string name="ignore_channel_keys_short">होम दिखते समय चैनल ऊपर और नीचे कुछ नहीं करते, बजाय डिवाइस का टीवी ऐप खोलने के।</string>

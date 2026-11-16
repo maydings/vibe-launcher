@@ -251,6 +251,9 @@
     <string name="glass_color">தனிப்படுத்தல் நிறம்</string>
     <string name="glass_white">மீட்டமை</string>
     <string name="glass_color_hint">அம்புகள் புள்ளியை நகர்த்தும்: சக்கரத்தைச் சுற்றி நிறம், நடுவை நோக்கி வெளிர். முடிந்ததும் OK அழுத்தவும்.</string>
+    <string name="dock_opacity">டாக் ஒளிபுகாமை</string>
+    <string name="top_bar_opacity">மேல் பட்டியின் ஒளிபுகாமை</string>
+    <string name="dock_opacity_hint">ஒளிபுகாமை ஸ்லைடரைச் சரிசெய்ய மேலும் கீழும் பயன்படுத்தவும்</string>
     <string name="power_on_home">இயக்கும்போது முகப்பு</string>
     <string name="ignore_channel_keys">முகப்பில் சேனல் விசைகளைப் புறக்கணி</string>
     <string name="ignore_channel_keys_short">முகப்பு காட்டப்படும்போது சேனல் மேல் மற்றும் கீழ் எதுவும் செய்யாது, சாதனத்தின் டிவி ஆப்ஸைத் திறப்பதற்குப் பதிலாக.</string>

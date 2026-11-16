@@ -251,6 +251,9 @@
     <string name="glass_color">Warna serlahan</string>
     <string name="glass_white">Tetapkan semula</string>
     <string name="glass_color_hint">Anak panah menggerakkan titik: warna di sekeliling roda, lebih pucat ke tengah. Tekan OK apabila selesai.</string>
+    <string name="dock_opacity">Kelegapan dok</string>
+    <string name="top_bar_opacity">Kelegapan bar atas</string>
+    <string name="dock_opacity_hint">Gunakan atas dan bawah untuk melaraskan peluncur kelegapan</string>
     <string name="power_on_home">Laman utama semasa dihidupkan</string>
     <string name="ignore_channel_keys">Abaikan kekunci saluran di Laman Utama</string>
     <string name="ignore_channel_keys_short">Saluran atas dan bawah tidak melakukan apa-apa semasa Laman Utama dipaparkan, bukannya membuka apl TV peranti.</string>

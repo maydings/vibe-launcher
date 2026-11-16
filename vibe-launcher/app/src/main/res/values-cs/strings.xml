@@ -251,6 +251,9 @@
     <string name="glass_color">Barva zvýraznění</string>
     <string name="glass_white">Obnovit</string>
     <string name="glass_color_hint">Šipky posouvají tečku: barva je po obvodu kruhu, ke středu bledší. Hotovo potvrďte OK.</string>
+    <string name="dock_opacity">Neprůhlednost doku</string>
+    <string name="top_bar_opacity">Neprůhlednost horní lišty</string>
+    <string name="dock_opacity_hint">Nahoru a dolů upravíte posuvník neprůhlednosti</string>
     <string name="power_on_home">Domů po zapnutí</string>
     <string name="ignore_channel_keys">Ignorovat tlačítka kanálů na ploše</string>
     <string name="ignore_channel_keys_short">Kanál nahoru a dolů nic nedělají, dokud je zobrazená domovská obrazovka, místo aby otevřely TV aplikaci zařízení.</string>

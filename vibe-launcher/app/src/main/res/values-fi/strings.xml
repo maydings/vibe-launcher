@@ -251,6 +251,9 @@
     <string name="glass_color">Korostuksen väri</string>
     <string name="glass_white">Palauta</string>
     <string name="glass_color_hint">Nuolet siirtävät pistettä: väri kiertää kehää, keskustaa kohti vaaleampi. Lopuksi OK.</string>
+    <string name="dock_opacity">Telakan peittävyys</string>
+    <string name="top_bar_opacity">Yläpalkin peittävyys</string>
+    <string name="dock_opacity_hint">Säädä peittävyyden liukusäädintä ylä- ja alanuolella</string>
     <string name="power_on_home">Koti käynnistettäessä</string>
     <string name="ignore_channel_keys">Ohita kanavanäppäimet aloitusnäytössä</string>
     <string name="ignore_channel_keys_short">Kanava ylös ja alas eivät tee mitään aloitusnäytön ollessa esillä, sen sijaan että ne avaisivat laitteen TV-sovelluksen.</string>

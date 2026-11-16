@@ -251,6 +251,9 @@
     <string name="glass_color">Kulay ng highlight</string>
     <string name="glass_white">I-reset</string>
     <string name="glass_color_hint">Ginagalaw ng mga arrow ang tuldok: ang kulay sa paligid ng gulong, mas maputla papunta sa gitna. Pindutin ang OK kapag tapos na.</string>
+    <string name="dock_opacity">Opacity ng dock</string>
+    <string name="top_bar_opacity">Opacity ng itaas na bar</string>
+    <string name="dock_opacity_hint">Gamitin ang taas at baba para i-adjust ang slider ng opacity</string>
     <string name="power_on_home">Home sa pag-on</string>
     <string name="ignore_channel_keys">Huwag pansinin ang mga channel key sa Home</string>
     <string name="ignore_channel_keys_short">Walang ginagawa ang Channel up at down habang nakikita ang Home, sa halip na buksan ang TV app ng device.</string>

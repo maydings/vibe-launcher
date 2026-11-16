@@ -251,6 +251,9 @@
     <string name="glass_color">Màu đánh dấu</string>
     <string name="glass_white">Đặt lại</string>
     <string name="glass_color_hint">Các phím mũi tên di chuyển chấm: màu quanh vòng tròn, nhạt dần về giữa. Nhấn OK khi xong.</string>
+    <string name="dock_opacity">Độ mờ của dock</string>
+    <string name="top_bar_opacity">Độ mờ của thanh trên cùng</string>
+    <string name="dock_opacity_hint">Dùng lên và xuống để chỉnh thanh trượt độ mờ</string>
     <string name="power_on_home">Màn hình chính khi bật</string>
     <string name="ignore_channel_keys">Bỏ qua phím kênh trên màn hình chính</string>
     <string name="ignore_channel_keys_short">Kênh lên và xuống không làm gì khi đang hiện Màn hình chính, thay vì mở ứng dụng TV của thiết bị.</string>

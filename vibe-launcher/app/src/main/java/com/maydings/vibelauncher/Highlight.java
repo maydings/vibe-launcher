@@ -9,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * The highlight color (Settings > Appearance > Highlight color) on everything that shows focus besides the
- * glass: the top bar's pills, the menus' rows, the Play pill's fill, Settings' rows and the update window's
- * buttons. Their drawables are white where focused; tinted in the color there (SRC_IN keeps each one's own
+ * The highlight color (Settings > Appearance > Highlight color) on Home's focus besides the glass: the top bar's
+ * pills, the menus' rows, the Play pill's fill and the update window opened from Home. Settings and its screens
+ * keep white (SETTINGS). Drawables are white where focused; tinted in the color there (SRC_IN keeps each one's own
  * transparency) and left white elsewhere. Text on the color turns dark or white, whichever reads.
  */
 final class Highlight {
@@ -21,6 +21,12 @@ final class Highlight {
 
     private Highlight() {
     }
+
+    /**
+     * Settings' own highlight, and its screens' (the picking grids, the font browser): white, whatever Home's is. The
+     * chosen colour (Appearance > Highlight color) is Home's: its tiles, top bar and menus.
+     */
+    static final int SETTINGS = WHITE;
 
     /** The chosen color, opaque (white unless chosen). */
     static int color(Context context) {

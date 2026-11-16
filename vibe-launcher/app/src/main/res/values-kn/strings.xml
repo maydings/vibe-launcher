@@ -251,6 +251,9 @@
     <string name="glass_color">ಹೈಲೈಟ್ ಬಣ್ಣ</string>
     <string name="glass_white">ಮರುಹೊಂದಿಸಿ</string>
     <string name="glass_color_hint">ಬಾಣಗಳು ಚುಕ್ಕೆಯನ್ನು ಸರಿಸುತ್ತವೆ: ಚಕ್ರದ ಸುತ್ತ ಬಣ್ಣ, ಮಧ್ಯದ ಕಡೆಗೆ ಮಸುಕು. ಮುಗಿದಾಗ OK ಒತ್ತಿ.</string>
+    <string name="dock_opacity">ಡಾಕ್ ಅಪಾರದರ್ಶಕತೆ</string>
+    <string name="top_bar_opacity">ಮೇಲಿನ ಪಟ್ಟಿಯ ಅಪಾರದರ್ಶಕತೆ</string>
+    <string name="dock_opacity_hint">ಅಪಾರದರ್ಶಕತೆ ಸ್ಲೈಡರ್ ಹೊಂದಿಸಲು ಮೇಲೆ ಮತ್ತು ಕೆಳಗೆ ಬಳಸಿ</string>
     <string name="power_on_home">ಆನ್ ಆದಾಗ ಹೋಮ್</string>
     <string name="ignore_channel_keys">ಹೋಮ್‌ನಲ್ಲಿ ಚಾನಲ್ ಕೀಗಳನ್ನು ನಿರ್ಲಕ್ಷಿಸಿ</string>
     <string name="ignore_channel_keys_short">ಹೋಮ್ ತೋರುತ್ತಿರುವಾಗ ಚಾನೆಲ್ ಮೇಲೆ ಮತ್ತು ಕೆಳಗೆ ಏನೂ ಮಾಡುವುದಿಲ್ಲ, ಸಾಧನದ ಟಿವಿ ಆ್ಯಪ್ ತೆರೆಯುವ ಬದಲು.</string>

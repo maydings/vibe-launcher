@@ -251,6 +251,9 @@
     <string name="glass_color">Колір виділення</string>
     <string name="glass_white">Скинути</string>
     <string name="glass_color_hint">Стрілки рухають крапку: колір — по колу, до центру блідіший. Коли готово, натисніть OK.</string>
+    <string name="dock_opacity">Непрозорість дока</string>
+    <string name="top_bar_opacity">Непрозорість верхньої панелі</string>
+    <string name="dock_opacity_hint">Використовуйте вгору й униз, щоб налаштувати повзунок непрозорості</string>
     <string name="power_on_home">Головний екран при ввімкненні</string>
     <string name="ignore_channel_keys">Ігнорувати кнопки каналів на головному екрані</string>
     <string name="ignore_channel_keys_short">Кнопки «Канал вгору» і «Канал вниз» нічого не роблять, поки відкрито головний екран, замість того щоб відкривати ТВ-застосунок пристрою.</string>

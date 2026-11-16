@@ -251,6 +251,9 @@
     <string name="glass_color">အသားပေး အရောင်</string>
     <string name="glass_white">ပြန်သတ်မှတ်ရန်</string>
     <string name="glass_color_hint">မြားများက အစက်ကို ရွှေ့သည်- ဘီးပတ်လည်တွင် အရောင်၊ အလယ်သို့ ဖျော့လာသည်။ ပြီးလျှင် OK ကို နှိပ်ပါ။</string>
+    <string name="dock_opacity">ဒေါ့ခ် အလင်းမပေါက်မှု</string>
+    <string name="top_bar_opacity">အပေါ်ဘား အလင်းမပေါက်မှု</string>
+    <string name="dock_opacity_hint">အလင်းမပေါက်မှု ဆလိုက်ဒါ ချိန်ရန် အပေါ်နှင့် အောက်ကို သုံးပါ</string>
     <string name="power_on_home">ဖွင့်သည့်အခါ ပင်မ</string>
     <string name="ignore_channel_keys">ပင်မတွင် ချန်နယ်ခလုတ်များကို လျစ်လျူရှုရန်</string>
     <string name="ignore_channel_keys_short">Home ပြနေစဉ် ချန်နယ် အပေါ်နှင့် အောက်သည် စက်၏ TV အက်ပ်ကို ဖွင့်မည့်အစား ဘာမှ မလုပ်ပါ။</string>

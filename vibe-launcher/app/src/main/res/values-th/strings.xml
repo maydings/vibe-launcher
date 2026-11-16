@@ -251,6 +251,9 @@
     <string name="glass_color">สีไฮไลต์</string>
     <string name="glass_white">รีเซ็ต</string>
     <string name="glass_color_hint">ลูกศรเลื่อนจุด: สีไล่รอบวงล้อ และจางลงเมื่อเข้าใกล้กลาง กด OK เมื่อเสร็จ</string>
+    <string name="dock_opacity">ความทึบของแถบด็อก</string>
+    <string name="top_bar_opacity">ความทึบของแถบด้านบน</string>
+    <string name="dock_opacity_hint">ใช้ขึ้นและลงเพื่อปรับแถบเลื่อนความทึบ</string>
     <string name="power_on_home">หน้าหลักเมื่อเปิดเครื่อง</string>
     <string name="ignore_channel_keys">ไม่สนใจปุ่มช่องในหน้าหลัก</string>
     <string name="ignore_channel_keys_short">ช่องขึ้นและลงไม่ทำอะไรขณะแสดงหน้าแรก แทนที่จะเปิดแอปทีวีของอุปกรณ์</string>

@@ -251,6 +251,9 @@
     <string name="glass_color">Kolor podświetlenia</string>
     <string name="glass_white">Resetuj</string>
     <string name="glass_color_hint">Strzałki przesuwają kropkę: kolor wokół koła, bledszy ku środkowi. Na koniec naciśnij OK.</string>
+    <string name="dock_opacity">Krycie doku</string>
+    <string name="top_bar_opacity">Krycie górnego paska</string>
+    <string name="dock_opacity_hint">Użyj góry i dołu, aby ustawić suwak krycia</string>
     <string name="power_on_home">Ekran główny po włączeniu</string>
     <string name="ignore_channel_keys">Ignoruj przyciski kanałów na ekranie głównym</string>
     <string name="ignore_channel_keys_short">Kanał w górę i w dół nic nie robią, gdy widać ekran główny, zamiast otwierać aplikację TV urządzenia.</string>

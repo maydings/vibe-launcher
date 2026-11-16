@@ -251,6 +251,9 @@
     <string name="glass_color">رنگ برجسته‌سازی</string>
     <string name="glass_white">بازنشانی</string>
     <string name="glass_color_hint">پیکان‌ها نقطه را جابه‌جا می‌کنند: رنگ دور چرخ است و به سمت مرکز کم‌رنگ‌تر. در پایان OK را بزنید.</string>
+    <string name="dock_opacity">کدری داک</string>
+    <string name="top_bar_opacity">کدری نوار بالا</string>
+    <string name="dock_opacity_hint">برای تنظیم لغزنده کدری از بالا و پایین استفاده کنید</string>
     <string name="power_on_home">خانه هنگام روشن شدن</string>
     <string name="ignore_channel_keys">نادیده گرفتن کلیدهای کانال در صفحه اصلی</string>
     <string name="ignore_channel_keys_short">کانال بالا و پایین تا وقتی صفحه اصلی نمایش داده می‌شود کاری نمی‌کنند، به‌جای باز کردن برنامه تلویزیون دستگاه.</string>

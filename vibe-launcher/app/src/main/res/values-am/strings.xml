@@ -251,6 +251,9 @@
     <string name="glass_color">የማድመቂያ ቀለም</string>
     <string name="glass_white">ዳግም አስጀምር</string>
     <string name="glass_color_hint">ቀስቶቹ ነጥቡን ያንቀሳቅሳሉ፦ ቀለሙ በክቡ ዙሪያ፣ ወደ መሃል ሲጠጋ ይደበዝዛል። ሲጨርሱ OK ይጫኑ።</string>
+    <string name="dock_opacity">የመትከያ ግልጽነት</string>
+    <string name="top_bar_opacity">የላይኛው አሞሌ ግልጽነት</string>
+    <string name="dock_opacity_hint">የግልጽነት ተንሸራታቹን ለማስተካከል ላይ እና ታች ይጠቀሙ</string>
     <string name="power_on_home">ሲበራ መነሻ</string>
     <string name="ignore_channel_keys">በመነሻ ላይ የቻናል ቁልፎችን ችላ በል</string>
     <string name="ignore_channel_keys_short">Home በሚታይበት ጊዜ የቻናል ላይ እና ታች ምንም አያደርጉም፣ የመሣሪያውን የቲቪ መተግበሪያ ከመክፈት ይልቅ።</string>

@@ -251,6 +251,9 @@
     <string name="glass_color">हाइलाइटको रङ</string>
     <string name="glass_white">रिसेट</string>
     <string name="glass_color_hint">तीरहरूले थोप्लो सार्छन्: पाङ्ग्राको वरिपरि रङ, बीचतिर फिक्का। सकिएपछि OK थिच्नुहोस्।</string>
+    <string name="dock_opacity">डकको अपारदर्शिता</string>
+    <string name="top_bar_opacity">माथिल्लो पट्टीको अपारदर्शिता</string>
+    <string name="dock_opacity_hint">अपारदर्शिता स्लाइडर मिलाउन माथि र तल प्रयोग गर्नुहोस्</string>
     <string name="power_on_home">खोल्दा होम</string>
     <string name="ignore_channel_keys">होममा च्यानल कीहरू बेवास्ता गर्नुहोस्</string>
     <string name="ignore_channel_keys_short">होम देखिँदा च्यानल माथि र तल केही गर्दैनन्, यन्त्रको टिभी एप खोल्नुको सट्टा।</string>

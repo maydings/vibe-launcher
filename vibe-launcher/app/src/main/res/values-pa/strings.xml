@@ -251,6 +251,9 @@
     <string name="glass_color">ਹਾਈਲਾਈਟ ਦਾ ਰੰਗ</string>
     <string name="glass_white">ਰੀਸੈੱਟ</string>
     <string name="glass_color_hint">ਤੀਰ ਬਿੰਦੂ ਨੂੰ ਹਿਲਾਉਂਦੇ ਹਨ: ਪਹੀਏ ਦੁਆਲੇ ਰੰਗ, ਵਿਚਕਾਰ ਵੱਲ ਫਿੱਕਾ। ਹੋ ਜਾਣ ਤੇ OK ਦਬਾਓ।</string>
+    <string name="dock_opacity">ਡੌਕ ਦੀ ਅਪਾਰਦਰਸ਼ਤਾ</string>
+    <string name="top_bar_opacity">ਉੱਪਰਲੀ ਪੱਟੀ ਦੀ ਅਪਾਰਦਰਸ਼ਤਾ</string>
+    <string name="dock_opacity_hint">ਅਪਾਰਦਰਸ਼ਤਾ ਸਲਾਈਡਰ ਠੀਕ ਕਰਨ ਲਈ ਉੱਪਰ ਅਤੇ ਹੇਠਾਂ ਵਰਤੋ</string>
     <string name="power_on_home">ਚਾਲੂ ਹੋਣ ਤੇ ਹੋਮ</string>
     <string name="ignore_channel_keys">ਹੋਮ \'ਤੇ ਚੈਨਲ ਕੁੰਜੀਆਂ ਨੂੰ ਅਣਡਿੱਠ ਕਰੋ</string>
     <string name="ignore_channel_keys_short">ਹੋਮ ਦਿਸਣ ਦੌਰਾਨ ਚੈਨਲ ਉੱਪਰ ਅਤੇ ਹੇਠਾਂ ਕੁਝ ਨਹੀਂ ਕਰਦੇ, ਡਿਵਾਈਸ ਦੀ ਟੀਵੀ ਐਪ ਖੋਲ੍ਹਣ ਦੀ ਬਜਾਏ।</string>

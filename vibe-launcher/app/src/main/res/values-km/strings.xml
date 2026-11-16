@@ -251,6 +251,9 @@
     <string name="glass_color">ពណ៌​បន្លិច</string>
     <string name="glass_white">កំណត់ឡើងវិញ</string>
     <string name="glass_color_hint">ព្រួញ​ផ្លាស់ទី​ចំណុច៖ ពណ៌​នៅ​ជុំវិញ​កង់ ស្រាល​ជាង​ឆ្ពោះ​ទៅ​កណ្ដាល។ ចុច OK នៅពេលរួចរាល់។</string>
+    <string name="dock_opacity">ភាពស្រអាប់របស់ឌុក</string>
+    <string name="top_bar_opacity">ភាពស្រអាប់របារខាងលើ</string>
+    <string name="dock_opacity_hint">ប្រើឡើង និងចុះ ដើម្បីកែតម្រូវគ្រាប់រំកិលភាពស្រអាប់</string>
     <string name="power_on_home">ទំព័រដើមពេលបើក</string>
     <string name="ignore_channel_keys">មិនអើពើគ្រាប់ចុចប៉ុស្តិ៍នៅលើទំព័រដើម</string>
     <string name="ignore_channel_keys_short">ប៉ុស្តិ៍ឡើង និងចុះ មិនធ្វើអ្វីទេ ពេលកំពុងបង្ហាញ Home ជំនួសឱ្យការបើកកម្មវិធីទូរទស្សន៍របស់ឧបករណ៍។</string>

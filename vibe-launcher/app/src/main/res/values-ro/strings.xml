@@ -251,6 +251,9 @@
     <string name="glass_color">Culoarea evidențierii</string>
     <string name="glass_white">Resetează</string>
     <string name="glass_color_hint">Săgețile mută punctul: culoarea de jur împrejurul roții, mai palidă spre centru. Apasă OK când ai terminat.</string>
+    <string name="dock_opacity">Opacitatea dock-ului</string>
+    <string name="top_bar_opacity">Opacitatea barei de sus</string>
+    <string name="dock_opacity_hint">Folosiți sus și jos pentru a regla cursorul de opacitate</string>
     <string name="power_on_home">Acasă la pornire</string>
     <string name="ignore_channel_keys">Ignoră tastele de canal pe ecranul de pornire</string>
     <string name="ignore_channel_keys_short">Canal sus și jos nu fac nimic cât timp e afișat ecranul Acasă, în loc să deschidă aplicația TV a dispozitivului.</string>

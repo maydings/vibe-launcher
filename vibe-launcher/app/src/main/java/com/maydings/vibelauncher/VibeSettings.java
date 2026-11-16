@@ -15,7 +15,8 @@ final class VibeSettings {
     private static final String PIXABAY_KEY = "pixabayKey";
     private static final String TOP_BAR_MINIMAL = "topBarMinimal", SHOW_CLOCK = "showClock", SHOW_DATE = "showDate";
     private static final String WALLPAPER_MODE = "wallpaperMode";
-    private static final String UI_FONT = "uiFont", CLOCK_FONT = "clockFont";
+    private static final String UI_FONT = "uiFont", CLOCK_FONT = "clockFont", DOCK_OPACITY = "dockOpacity",
+            TOP_BAR_OPACITY = "topBarOpacity";
     /** Custom wallpapers (Backdrops > Custom wallpapers): not shown, shown where an app has no picture, or always. */
     static final int WALLPAPER_OFF = 0, WALLPAPER_NO_PICTURE = 1, WALLPAPER_ALWAYS = 2;
     private static final String COLUMNS = "columns";
@@ -106,6 +107,24 @@ final class VibeSettings {
     /** Pixabay API key (pictures and videos to pick as wallpapers), or "" when not set. */
     String pixabayKey() {
         return prefs.getString(PIXABAY_KEY, "");
+    }
+
+    /** The top bar's dark tint, in percent, 0 to 100 (FrostView.DEFAULT_OPACITY by default). */
+    int topBarOpacity() {
+        return Percent.clamp(prefs.getInt(TOP_BAR_OPACITY, FrostView.DEFAULT_OPACITY));
+    }
+
+    void setTopBarOpacity(int percent) {
+        prefs.edit().putInt(TOP_BAR_OPACITY, percent).apply();
+    }
+
+    /** The dock band's opacity in percent, 0 to 100 (100 by default: nothing shows through). */
+    int dockOpacity() {
+        return Percent.clamp(prefs.getInt(DOCK_OPACITY, 100));
+    }
+
+    void setDockOpacity(int percent) {
+        prefs.edit().putInt(DOCK_OPACITY, percent).apply();
     }
 
     /** The font for Vibe Launcher's text: Fonts.OUTFIT (the default), a system family or a font's id (Fonts). */

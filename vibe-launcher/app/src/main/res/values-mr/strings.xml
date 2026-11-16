@@ -251,6 +251,9 @@
     <string name="glass_color">हायलाइटचा रंग</string>
     <string name="glass_white">रीसेट</string>
     <string name="glass_color_hint">बाण ठिपका हलवतात: चाकाभोवती रंग, मध्याकडे फिकट. झाल्यावर OK दाबा.</string>
+    <string name="dock_opacity">डॉकची अपारदर्शकता</string>
+    <string name="top_bar_opacity">वरच्या बारची अपारदर्शकता</string>
+    <string name="dock_opacity_hint">अपारदर्शकता स्लायडर बदलण्यासाठी वर आणि खाली वापरा</string>
     <string name="power_on_home">सुरू होताना होम</string>
     <string name="ignore_channel_keys">होमवर चॅनेल की दुर्लक्षित करा</string>
     <string name="ignore_channel_keys_short">होम दिसत असताना चॅनल वर आणि खाली काहीच करत नाहीत, डिव्हाइसचे टीव्ही अ‍ॅप उघडण्याऐवजी.</string>

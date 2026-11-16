@@ -251,6 +251,9 @@
     <string name="glass_color">강조 색상</string>
     <string name="glass_white">초기화</string>
     <string name="glass_color_hint">화살표로 점을 움직입니다. 원을 따라 색이 바뀌고, 가운데로 갈수록 옅어집니다. 다 되면 OK를 누르세요.</string>
+    <string name="dock_opacity">독 불투명도</string>
+    <string name="top_bar_opacity">상단 바 불투명도</string>
+    <string name="dock_opacity_hint">위아래로 불투명도 슬라이더를 조정하세요</string>
     <string name="power_on_home">전원 켤 때 홈</string>
     <string name="ignore_channel_keys">홈에서 채널 키 무시</string>
     <string name="ignore_channel_keys_short">홈이 표시되는 동안 채널 위/아래는 기기의 TV 앱을 여는 대신 아무 동작도 하지 않습니다.</string>

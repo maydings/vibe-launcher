@@ -251,6 +251,9 @@
     <string name="glass_color">高亮颜色</string>
     <string name="glass_white">重置</string>
     <string name="glass_color_hint">方向键移动圆点：沿色轮改变颜色，越靠近中心越浅。完成后按 OK。</string>
+    <string name="dock_opacity">程序坞不透明度</string>
+    <string name="top_bar_opacity">顶栏不透明度</string>
+    <string name="dock_opacity_hint">用上下键调整不透明度滑块</string>
     <string name="power_on_home">开机时显示主屏幕</string>
     <string name="ignore_channel_keys">在主屏幕上忽略频道键</string>
     <string name="ignore_channel_keys_short">显示主屏幕时，频道上下键不起作用，而不会打开设备的电视应用。</string>

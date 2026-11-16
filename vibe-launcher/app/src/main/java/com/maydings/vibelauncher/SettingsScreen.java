@@ -149,6 +149,8 @@ final class SettingsScreen {
         final List<View> stops = new ArrayList<>();
         int footnote;   // under the list when the focused row has nothing to say
         Row opened;     // the row whose page is open, while this list is on the left
+        /** Keeps what the page changed and holds back for a moment (the opacity's), however it's left; or null. */
+        Runnable save;
         /** Its window trimmed to a whole number of rows when it scrolls: not for a page of other things (the wheel). */
         boolean wholeRows = true;
 
@@ -157,8 +159,11 @@ final class SettingsScreen {
             view = new LinearLayout(ctx);
             view.setOrientation(LinearLayout.VERTICAL);
             // A long list (a clean-up list's plan, the lists themselves) stops short of the column's bottom: the
-            // text under it keeps room for five lines, where it had none and was cut off.
-            int maxListH = screenH - (int) ((82 + 16) * density) - (int) (110 * density);
+            // text under it keeps room for four lines (ABOUT_DP), the list as many rows as fit above them.
+            int maxListH = screenH - (int) ((82 + 16) * density) - (int) (ABOUT_DP * density);
+            // Room for the focused row to grow (1.035 of the column's width) without its corners being cut, and
+            // while the list scrolls, a lane at the end for the scroll hint, so a focused row never reaches it.
+            int pad = (int) (6 * density), side = (int) (columnW * 0.02f) + 2, lane = (int) (SCROLL_LANE_DP * density);
             ScrollView scroll = new ScrollView(ctx) {
                 @Override
                 protected void onMeasure(int widthSpec, int heightSpec) {
@@ -167,6 +172,13 @@ final class SettingsScreen {
                         heightSpec = View.MeasureSpec.makeMeasureSpec(maxListH, View.MeasureSpec.AT_MOST);
                     }
                     super.onMeasure(widthSpec, heightSpec);
+                    boolean scrolls = getChildCount() > 0 && getChildAt(0).getMeasuredHeight()
+                            > getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
+                    int end = side + (scrolls ? lane : 0);
+                    if (getPaddingEnd() != end) {   // the lane only while there's a hint to put in it
+                        setPaddingRelative(side, pad, end, pad);
+                        super.onMeasure(widthSpec, heightSpec);
+                    }
                     // A list taller than the window: the window made a whole number of rows, so no row shows in part
                     // and scrolling to the next row moves exactly one row (rows here are all the same height).
                     if (getChildCount() == 0 || !wholeRows) return;
@@ -212,6 +224,38 @@ final class SettingsScreen {
                     canvas.clipRect(getScrollX(), getScrollY(), getScrollX() + getWidth(), getScrollY() + getHeight());
                     super.dispatchDraw(canvas);
                     canvas.restore();
+                    drawScrollHint(canvas);
+                }
+
+                /**
+                 * A slim bar at the right while the list is taller than its window, its thumb where the window is:
+                 * there are more rows than show. Always there (a TV has no touch to bring a fading one back).
+                 */
+                private void drawScrollHint(android.graphics.Canvas canvas) {
+                    if (getChildCount() == 0) return;
+                    int content = getChildAt(0).getHeight() + getPaddingTop() + getPaddingBottom();
+                    int window = getHeight();
+                    if (content <= window + 1) return;
+                    // In its own lane at the list's edge (SCROLL_LANE_DP of padding), clear of a focused row as it
+                    // grows, and a little short of the window's ends.
+                    float w = 3f * density, inset = 16f * density, edge = 2f * density;
+                    boolean rtl = getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+                    float x = getScrollX() + (rtl ? edge : getWidth() - w - edge);
+                    float top = getScrollY() + inset, bottom = getScrollY() + window - inset;
+                    float span = bottom - top;
+                    float thumbH = Math.max(18f * density, span * window / content);
+                    float max = content - window;
+                    float thumbTop = top + (span - thumbH) * (max <= 0 ? 0f : getScrollY() / max);
+                    scrollRect.set(x, top, x + w, bottom);
+                    canvas.drawRoundRect(scrollRect, w, w, scrollTrack);
+                    scrollRect.set(x, thumbTop, x + w, thumbTop + thumbH);
+                    canvas.drawRoundRect(scrollRect, w, w, scrollThumb);
+                }
+
+                @Override
+                protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+                    super.onScrollChanged(l, t, oldl, oldt);
+                    invalidate();   // the thumb follows
                 }
             };
             scroll.setVerticalScrollBarEnabled(false);
@@ -220,9 +264,7 @@ final class SettingsScreen {
             // focus out of sight, so only the rows can have it.
             scroll.setFocusable(false);
             scroll.setClipToPadding(false);
-            // Room for the focused row to grow (1.035 of the column's width) without its corners being cut.
-            int pad = (int) (6 * density), side = (int) (columnW * 0.02f) + 2;
-            scroll.setPadding(side, pad, side, pad);
+            scroll.setPaddingRelative(side, pad, side, pad);   // and the lane while it scrolls (onMeasure)
             list = new LinearLayout(ctx);
             list.setOrientation(LinearLayout.VERTICAL);
             scroll.addView(list);
@@ -240,7 +282,7 @@ final class SettingsScreen {
             about.setPadding(side + pad, (int) (10 * density), side + pad, 0);
             // The rest of the column, down to the bottom; a long text (a long translation) gets smaller to fit.
             view.addView(about, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1f));
-            about.setAutoSizeTextTypeUniformWithConfiguration(11, 14, 1, android.util.TypedValue.COMPLEX_UNIT_SP);
+            about.setAutoSizeTextTypeUniformWithConfiguration(8, 14, 1, android.util.TypedValue.COMPLEX_UNIT_SP);
         }
 
         Row add(int label, Supplier<CharSequence> valueOf, Runnable action) {
@@ -329,16 +371,28 @@ final class SettingsScreen {
     private final Page languagePage;
     private final Row generalRow;
     private Row appearanceRow;
+    /** The scroll hint's lane at the end of a list, beside the room a focused row grows into. */
+    private static final int SCROLL_LANE_DP = 10;
+    /** The room kept under a page's list for its text: four lines (a longer text gets smaller), the rest for rows. */
+    private static final int ABOUT_DP = 80;
+    /** The scroll hint at the right of a long list (Page): its track and its thumb. */
+    private final android.graphics.Paint scrollTrack = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG),
+            scrollThumb = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+    private final android.graphics.RectF scrollRect = new android.graphics.RectF();
+    {
+        scrollTrack.setColor(0x1FFFFFFF);
+        scrollThumb.setColor(0x80FFFFFF);
+    }
     private final List<Page> pages = new ArrayList<>();
     /** Where the lists sit: the left column (over the logo) and the right one, and their width. */
     private final int leftX, rightX, columnW, screenW, screenH;
-    /** For making the languages a few at a time (prepare); nothing else is posted on it. */
+    /** For making the languages a few at a time (prepare), the kept phone page's end and the opacity's saving. */
     private final android.os.Handler handler = new android.os.Handler(android.os.Looper.getMainLooper());
     private int nextLanguage = -1;   // -1 for the TV's own language, then Lang.TAGS
     private boolean laidOut;
 
-    /** The highlight color, for the rows' focused look. */
-    private int highlight;
+    /** The rows' focused look: Settings' own white (Highlight.SETTINGS), whatever Home's highlight is. */
+    private final int highlight = Highlight.SETTINGS;
 
     /** The SettingsActivity it's on, while it is: what opens other screens, dialogs and the keyboard. */
     private Activity host;
@@ -372,7 +426,6 @@ final class SettingsScreen {
         density = ctx.getResources().getDisplayMetrics().density;
         settings = new VibeSettings(ctx);
         Adb.use(app);
-        highlight = Highlight.color(ctx);
         int w = screenW = ctx.getResources().getDisplayMetrics().widthPixels;
         screenH = ctx.getResources().getDisplayMetrics().heightPixels;
         // The list from 55% of the width to 95%, the picture centred in the left half.
@@ -406,7 +459,6 @@ final class SettingsScreen {
     /** SettingsActivity showing it: back to the first list, with the values as they are now. */
     View attach(Activity activity) {
         host = activity;
-        recolor(Highlight.color(ctx));
         language = settings.language();
         keys[0] = settings.tmdbKey();
         keys[1] = settings.youtubeKey();
@@ -483,8 +535,14 @@ final class SettingsScreen {
     }
 
     /** SettingsActivity going: everything but the first list and the languages goes, ready for next time. */
+    /** The open pages' held-back changes kept now: Settings going out of sight (SettingsActivity.onPause). */
+    void save() {
+        for (Page page : pages) if (page.save != null) page.save.run();
+    }
+
     void detach(Activity activity) {
         if (host != activity) return;
+        save();
         if (editing != null) endEdit();
         if (System.currentTimeMillis() < keepLinkUntil) {
             handler.removeCallbacks(stopKeptLink);
@@ -528,15 +586,6 @@ final class SettingsScreen {
         ViewGroup parent = (ViewGroup) screen.getParent();
         if (parent != null) parent.removeView(screen);
         host = null;
-    }
-
-    /** The rows on screen, and the languages kept ready, in this highlight color. */
-    private void recolor(int color) {
-        if (color == highlight) return;
-        highlight = color;
-        for (Page page : pages) for (Row row : page.rows) Highlight.settingRow(row.view, color);
-        for (Row row : root.rows) Highlight.settingRow(row.view, color);
-        for (Row row : languagePage.rows) Highlight.settingRow(row.view, color);
     }
 
     /** Home, if it's there: what tiles per row, the language, the backdrops and the top bar change. */
@@ -707,6 +756,9 @@ final class SettingsScreen {
         page.link(R.string.clock, () -> clockName(settings.clockHours()), this::clockHours);
         page.toggle(R.string.carets, settings::carets, settings::setCarets);
         page.link(R.string.glass_color, this::swatch, this::glassColour);
+        page.link(R.string.dock_opacity, () -> Percent.format(settings.dockOpacity()), () -> opacity(false));
+        // Both bars: the full one's strip, and the minimal one's tint where apps scroll up under it.
+        page.link(R.string.top_bar_opacity, () -> Percent.format(settings.topBarOpacity()), () -> opacity(true));
         // The TV's own animation speed: with WRITE_SECURE_SETTINGS, which the TV's ADB grants (TvControl).
         Row speed = page.link(R.string.anim_speed, () -> animName(TvControl.animationScale(ctx)), this::animSpeed);
         speed.about = R.string.anim_short;
@@ -775,7 +827,6 @@ MainActivity.showError(host, R.string.anim_short);
             settings.setGlassTint(0xFFFFFF);
             glass.setTint(0xFFFFFF);
             wheel[0].set(0xFFFFFF);
-            recolor(0xFFFFFFFF);
         });
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 grownH + 2 * glow + (int) (12 * density));
@@ -785,7 +836,6 @@ MainActivity.showError(host, R.string.anim_short);
             public void picked(int rgb) {
                 settings.setGlassTint(rgb);
                 glass.setTint(rgb);
-                recolor(0xFF000000 | rgb);
             }
 
             @Override
@@ -796,6 +846,52 @@ MainActivity.showError(host, R.string.anim_short);
         page.list.addView(wheel[0], new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (180 * density)));
         page.stops.add(wheel[0]);
         page.about.setText(R.string.glass_color_hint);
+        return page;
+    }
+
+    /**
+     * Dock opacity, or Top bar opacity: a vertical slider, as a volume's (OpacitySliderView), with a small dock or
+     * top bar over a wallpaper below it (DockSampleView) that follows as it moves. Saved once it rests a moment
+     * (not every step while held), and whenever the page is left: OK, Left, Back or Home.
+     */
+    private Page opacity(boolean topBar) {
+        Page page = new Page(ctx.getString(topBar ? R.string.top_bar_opacity : R.string.dock_opacity));
+        page.wholeRows = false;   // the slider and the sample: all of it shows
+        int start = topBar ? settings.topBarOpacity() : settings.dockOpacity();
+        DockSampleView sample = new DockSampleView(ctx, start, topBar);
+        int[] chosen = {start};
+        Runnable save = () -> {
+            handler.removeCallbacks(page.save);
+            int now = topBar ? settings.topBarOpacity() : settings.dockOpacity();
+            if (now == chosen[0]) return;
+            if (topBar) settings.setTopBarOpacity(chosen[0]);
+            else settings.setDockOpacity(chosen[0]);
+        };
+        page.save = save;
+        OpacitySliderView slider = new OpacitySliderView(ctx, start,
+                UiFont.get(ctx, R.string.font_regular), new OpacitySliderView.Listener() {
+                    @Override
+                    public void changed(int percent) {
+                        chosen[0] = percent;
+                        sample.setPercent(percent);
+                        handler.removeCallbacks(save);
+                        handler.postDelayed(save, 400);
+                    }
+
+                    @Override
+                    public void done() {
+                        back();   // which saves
+                    }
+                });
+        // Both inside the page's window (Page: the screen less the title and the text under it), the sample's
+        // bottom, the dock, too: the slider about half of it, the sample most of the rest.
+        int room = screenH - (int) ((82 + 16) * density) - (int) (ABOUT_DP * density) - (int) (24 * density);
+        page.list.addView(slider, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, room * 52 / 100));
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, room * 42 / 100);
+        lp.topMargin = room * 4 / 100;
+        page.list.addView(sample, lp);
+        page.stops.add(slider);
+        page.about.setText(R.string.dock_opacity_hint);
         return page;
     }
 
@@ -2764,6 +2860,7 @@ MainActivity.showError(host, R.string.anim_short);
             return;
         }
         Page gone = pages.remove(pages.size() - 1);
+        if (gone.save != null) gone.save.run();
         pollAdb();   // back on Apps or ADB connection (from pairing, say): looked at again; stops itself elsewhere
         gone.view.animate().cancel();
         gone.view.animate().translationX(screenW - rightX).setDuration(SLIDE_MS)
@@ -3053,7 +3150,8 @@ MainActivity.showError(host, R.string.anim_short);
             scroll.requestLayout();
         });
         View install = panel.findViewById(R.id.install), cancel = panel.findViewById(R.id.cancelUpdate);
-        int highlight = Highlight.color(activity);
+        // Opened from Home's gear: Home's highlight; from Settings: Settings' white.
+        int highlight = activity instanceof MainActivity ? Highlight.color(activity) : Highlight.SETTINGS;
         Highlight.pill((TextView) install, highlight);
         Highlight.pill((TextView) cancel, highlight);
         cancel.setOnClickListener(v -> dialog.dismiss());

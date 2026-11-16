@@ -251,6 +251,9 @@
     <string name="glass_color">Warna sorotan</string>
     <string name="glass_white">Setel ulang</string>
     <string name="glass_color_hint">Tombol panah menggerakkan titik: warna di sekeliling roda, makin pucat ke tengah. Tekan OK jika sudah selesai.</string>
+    <string name="dock_opacity">Opasitas dok</string>
+    <string name="top_bar_opacity">Opasitas bilah atas</string>
+    <string name="dock_opacity_hint">Gunakan atas dan bawah untuk mengatur penggeser opasitas</string>
     <string name="power_on_home">Beranda saat dinyalakan</string>
     <string name="ignore_channel_keys">Abaikan tombol saluran di Beranda</string>
     <string name="ignore_channel_keys_short">Channel atas dan bawah tidak melakukan apa-apa saat Beranda tampil, alih-alih membuka aplikasi TV perangkat.</string>

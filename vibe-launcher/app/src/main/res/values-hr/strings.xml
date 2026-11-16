@@ -251,6 +251,9 @@
     <string name="glass_color">Boja isticanja</string>
     <string name="glass_white">Vrati</string>
     <string name="glass_color_hint">Strelice pomiču točku: boja je po krugu, prema sredini bljeđa. Za kraj pritisnite OK.</string>
+    <string name="dock_opacity">Neprozirnost trake</string>
+    <string name="top_bar_opacity">Neprozirnost gornje trake</string>
+    <string name="dock_opacity_hint">Gore i dolje za podešavanje klizača neprozirnosti</string>
     <string name="power_on_home">Početni zaslon pri uključivanju</string>
     <string name="ignore_channel_keys">Zanemari tipke kanala na početnom zaslonu</string>
     <string name="ignore_channel_keys_short">Kanal gore i dolje ne rade ništa dok je prikazan početni zaslon, umjesto da otvore TV aplikaciju uređaja.</string>

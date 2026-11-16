@@ -251,6 +251,9 @@
     <string name="glass_color">హైలైట్ రంగు</string>
     <string name="glass_white">రీసెట్</string>
     <string name="glass_color_hint">బాణాలు చుక్కను కదుపుతాయి: చక్రం చుట్టూ రంగు, మధ్య వైపు లేతగా. పూర్తయ్యాక OK నొక్కండి.</string>
+    <string name="dock_opacity">డాక్ అపారదర్శకత</string>
+    <string name="top_bar_opacity">పై పట్టీ అపారదర్శకత</string>
+    <string name="dock_opacity_hint">అపారదర్శకత స్లైడర్‌ను సర్దుబాటు చేయడానికి పైకి, కిందికి ఉపయోగించండి</string>
     <string name="power_on_home">ఆన్ చేసినప్పుడు హోమ్</string>
     <string name="ignore_channel_keys">హోమ్‌లో ఛానెల్ కీలను విస్మరించు</string>
     <string name="ignore_channel_keys_short">హోమ్ కనిపిస్తున్నప్పుడు ఛానెల్ పైకి, కిందకి ఏమీ చేయవు, పరికరం టీవీ యాప్‌ను తెరవడానికి బదులు.</string>

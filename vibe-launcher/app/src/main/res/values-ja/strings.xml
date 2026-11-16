@@ -251,6 +251,9 @@
     <string name="glass_color">ハイライトの色</string>
     <string name="glass_white">リセット</string>
     <string name="glass_color_hint">矢印キーで点を動かします：円の周りで色が変わり、中心に近いほど淡くなります。完了したら OK を押します。</string>
+    <string name="dock_opacity">ドックの不透明度</string>
+    <string name="top_bar_opacity">上部バーの不透明度</string>
+    <string name="dock_opacity_hint">上下キーで不透明度スライダーを調整します</string>
     <string name="power_on_home">電源オン時にホーム</string>
     <string name="ignore_channel_keys">ホームでチャンネルキーを無視</string>
     <string name="ignore_channel_keys_short">ホームの表示中は、デバイスのテレビアプリを開く代わりに、チャンネルの上下は何もしません。</string>

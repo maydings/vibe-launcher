@@ -118,7 +118,7 @@ public final class FontBrowserActivity extends Activity {
         mine = getIntent().getBooleanExtra(MINE, false);
         fonts = new Fonts(this);
         density = getResources().getDisplayMetrics().density;
-        highlight = Highlight.color(this);
+        highlight = Highlight.SETTINGS;
         script = script(Locale.getDefault());
 
         LinearLayout root = new LinearLayout(this);

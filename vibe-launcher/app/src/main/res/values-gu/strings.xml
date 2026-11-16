@@ -251,6 +251,9 @@
     <string name="glass_color">હાઇલાઇટનો રંગ</string>
     <string name="glass_white">રીસેટ</string>
     <string name="glass_color_hint">તીર બિંદુને ખસેડે છે: પૈડાની આસપાસ રંગ, વચ્ચે તરફ ફિક્કો. પૂર્ણ થાય ત્યારે OK દબાવો.</string>
+    <string name="dock_opacity">ડૉકની અપારદર્શકતા</string>
+    <string name="top_bar_opacity">ટોચના બારની અપારદર્શકતા</string>
+    <string name="dock_opacity_hint">અપારદર્શકતા સ્લાઇડર ગોઠવવા ઉપર અને નીચેનો ઉપયોગ કરો</string>
     <string name="power_on_home">ચાલુ થતાં હોમ</string>
     <string name="ignore_channel_keys">હોમ પર ચેનલ કી અવગણો</string>
     <string name="ignore_channel_keys_short">હોમ દેખાતું હોય ત્યારે ચૅનલ ઉપર અને નીચે કંઈ કરતા નથી, ઉપકરણની ટીવી ઍપ ખોલવાને બદલે.</string>

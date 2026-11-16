@@ -74,6 +74,12 @@ public final class SettingsActivity extends Activity {
     }
 
     @Override
+    protected void onPause() {
+        screen.save();   // what's open keeps what it changed, before Home comes back
+        super.onPause();
+    }
+
+    @Override
     protected void onDestroy() {
         screen.detach(this);
         super.onDestroy();

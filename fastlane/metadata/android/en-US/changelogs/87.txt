@@ -1,0 +1,7 @@
+* Dock opacity and Top bar opacity (Settings → Appearance): a slider, with a sample of the dock or the top bar over your own wallpaper.
+* Settings' lists show more rows, and a scroll bar when there are more than fit. Long notes under a list get smaller to fit.
+* Settings keeps a white highlight; your highlight colour is Home's.
+* Remove in a tile's menu is for the apps you installed. Built-in apps are turned off in Advanced.
+* Reload backdrops never deletes a picture still in use, and clears up after itself even if the TV restarts.
+* Home reads the dock's backdrops ahead, and rebuilds once when several apps update together.
+* Focus stays on the tile you're on after a scroll.

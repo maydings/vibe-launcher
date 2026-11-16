@@ -251,6 +251,9 @@
     <string name="glass_color">Rangi ya kuangazia</string>
     <string name="glass_white">Weka upya</string>
     <string name="glass_color_hint">Mishale husogeza kitone: rangi kuzunguka gurudumu, hafifu zaidi kuelekea katikati. Bonyeza OK ukimaliza.</string>
+    <string name="dock_opacity">Uangavu wa gati</string>
+    <string name="top_bar_opacity">Uangavu wa upau wa juu</string>
+    <string name="dock_opacity_hint">Tumia juu na chini kurekebisha kitelezi cha uangavu</string>
     <string name="power_on_home">Nyumbani inapowashwa</string>
     <string name="ignore_channel_keys">Puuza vitufe vya chaneli kwenye Skrini ya kwanza</string>
     <string name="ignore_channel_keys_short">Chaneli juu na chini hazifanyi chochote wakati Mwanzo unaonyeshwa, badala ya kufungua programu ya TV ya kifaa.</string>

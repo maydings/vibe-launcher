@@ -251,6 +251,9 @@
     <string name="glass_color">Цвят на открояването</string>
     <string name="glass_white">Нулиране</string>
     <string name="glass_color_hint">Стрелките местят точката: цветът е по кръга, по-блед към средата. OK, когато сте готови.</string>
+    <string name="dock_opacity">Непрозрачност на лентата</string>
+    <string name="top_bar_opacity">Непрозрачност на горната лента</string>
+    <string name="dock_opacity_hint">Използвайте нагоре и надолу, за да нагласите плъзгача за непрозрачност</string>
     <string name="power_on_home">Начало при включване</string>
     <string name="ignore_channel_keys">Игнориране на бутоните за канали на началния екран</string>
     <string name="ignore_channel_keys_short">Канал нагоре и надолу не правят нищо, докато е показан началният екран, вместо да отварят ТВ приложението на устройството.</string>

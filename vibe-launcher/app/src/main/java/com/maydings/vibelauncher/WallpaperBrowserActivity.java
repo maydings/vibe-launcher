@@ -210,7 +210,7 @@ public final class WallpaperBrowserActivity extends Activity {
         wallpapers = Wallpapers.get(this);
         apiCache = new File(getCacheDir(), "wallpaper-api");
         density = getResources().getDisplayMetrics().density;
-        highlight = Highlight.color(this);
+        highlight = Highlight.SETTINGS;   // a Settings screen, as the grids are opened from Settings and Edit
 
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
@@ -1003,7 +1003,7 @@ public final class WallpaperBrowserActivity extends Activity {
                     // Its tick: that one cell only, as the same view (a payload), so the focus stays on it. Redrawing
                     // the whole grid left nothing focused and the remote did nothing.
                     int at = results.indexOf(r);
-                    if (at >= 0) adapter.notifyItemChanged(at, "tick");
+                    if (at >= 0) adapter.notifyItemChanged(at, TICK);   // the tick only: the thumbnail stays
                 } else {
                     MainActivity.showError(this, R.string.wp_download_failed);
                 }

@@ -251,6 +251,9 @@
     <string name="glass_color">نمایاں رنگ</string>
     <string name="glass_white">ری سیٹ</string>
     <string name="glass_color_hint">تیر نقطے کو ہلاتے ہیں: پہیے کے گرد رنگ، درمیان کی طرف ہلکا۔ مکمل ہونے پر OK دبائیں۔</string>
+    <string name="dock_opacity">ڈاک کی دھندلاہٹ</string>
+    <string name="top_bar_opacity">اوپری بار کی دھندلاہٹ</string>
+    <string name="dock_opacity_hint">دھندلاہٹ کا سلائیڈر ٹھیک کرنے کے لیے اوپر اور نیچے استعمال کریں</string>
     <string name="power_on_home">آن ہونے پر ہوم</string>
     <string name="ignore_channel_keys">ہوم پر چینل کیز کو نظر انداز کریں</string>
     <string name="ignore_channel_keys_short">چینل اوپر اور نیچے ہوم اسکرین دکھنے کے دوران کچھ نہیں کرتے، بجائے ڈیوائس کی ٹی وی ایپ کھولنے کے۔</string>

@@ -251,6 +251,9 @@
     <string name="glass_color">Markeringskleur</string>
     <string name="glass_white">Herstellen</string>
     <string name="glass_color_hint">De pijlen verplaatsen de stip: de kleur rond het wiel, bleker naar het midden. Druk op OK als je klaar bent.</string>
+    <string name="dock_opacity">Dekking van het dock</string>
+    <string name="top_bar_opacity">Dekking van de bovenbalk</string>
+    <string name="dock_opacity_hint">Gebruik omhoog en omlaag om de dekkingsschuifregelaar in te stellen</string>
     <string name="power_on_home">Start bij inschakelen</string>
     <string name="ignore_channel_keys">Kanaaltoetsen negeren op het startscherm</string>
     <string name="ignore_channel_keys_short">Kanaal omhoog en omlaag doen niets terwijl Home in beeld is, in plaats van de tv-app van het apparaat te openen.</string>

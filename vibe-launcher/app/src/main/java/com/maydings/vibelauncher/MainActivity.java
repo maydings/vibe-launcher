@@ -294,17 +294,27 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 appsChanged = true;
                 return;
             }
-            adapter.reload();
-            if (folderView != null) folderChanged();
-            appsChangedUnseen();   // shown already: no rebuild for it on the next return
-            ChannelSetup.run(MainActivity.this);   // a new or updated app asked for its home screen cards now
-            // Tiles may have moved: once they settle, bring the glass to wherever focus went.
-            grid.postOnAnimation(() -> {
-                RecyclerView.ItemAnimator animator = grid.getItemAnimator();
-                if (animator != null) animator.isRunning(MainActivity.this::refreshFocusedTile);
-                else refreshFocusedTile();
-            });
+            // Several apps at once (an update batch, a clean-up): one rebuild once they stop coming.
+            handler.removeCallbacks(appsChangedNow);
+            handler.postDelayed(appsChangedNow, 300);
         }
+    };
+    /** The tiles rebuilt for apps installed, updated or removed while Home is on screen (packageReceiver). */
+    private final Runnable appsChangedNow = () -> {
+        if (!started) {
+            appsChanged = true;
+            return;
+        }
+        adapter.reload();
+        if (this.folderView != null) folderChanged();   // "this.": the field is declared further down
+        appsChangedUnseen();   // shown already: no rebuild for it on the next return
+        ChannelSetup.run(this);   // a new or updated app asked for its home screen cards now
+        // Tiles may have moved: once they settle, bring the glass to wherever focus went.
+        grid.postOnAnimation(() -> {
+            RecyclerView.ItemAnimator animator = grid.getItemAnimator();
+            if (animator != null) animator.isRunning(this::refreshFocusedTile);
+            else refreshFocusedTile();
+        });
     };
     /**
      * Rebuilds the dock apps' backdrop pools that are due (six hours old), then comes back when the next
@@ -484,7 +494,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         grid.setLayoutManager(layout);
         grid.setHasFixedSize(true);
         grid.setItemAnimator(new TileAnimator());
-        grid.addItemDecoration(new DockDecoration(adapter, COLUMNS, density));
+        dockDecoration = new DockDecoration(adapter, COLUMNS, density);   // its opacity: onResume
+        grid.addItemDecoration(dockDecoration);
         grid.setLayoutAnimation(new LayoutAnimationController(
                 AnimationUtils.loadAnimation(this, R.anim.tile_enter), 0.06f));
         grid.setAdapter(adapter);
@@ -511,7 +522,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 onChanged();
             }
         });
-        FrostView frost = findViewById(R.id.frost);
+        frost = findViewById(R.id.frost);   // its opacity: onResume
         frost.setSource(grid);
         frost.setBackdrop(backdrop);
 
@@ -683,6 +694,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         super.onResume();
         inSettings = false;
         applyHighlight();   // chosen in Settings meanwhile
+        applyOpacities();   // and the dock's and the top bar's opacity
         refreshWeather();   // its settings may have changed meanwhile too
         applyWallpaperChange();   // and the custom wallpapers
         applyTopBarStyle();   // and the top bar's look
@@ -747,6 +759,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             return;
         }
         rebuildOnResume = false;
+        handler.removeCallbacks(appsChangedNow);   // this rebuild covers a waiting app change too
         appsChangedUnseen();   // caught up: count from here
         glassShown = false;
         glass.setAlpha(0f);
@@ -756,8 +769,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (grid.getAdapter() == null) grid.setAdapter(adapter);   // let go of in onTrimMemory
         adapter.reload();
         if (folderView != null) folderChanged();   // an app in it may have gone while away
-        // After the reload: on a cold start the grid was still empty, and with no dock apps the next check
-        // would have been six hours away.
+        // After the reload: on a cold start the grid is empty until it, and with no dock apps the next check
+        // is six hours away.
         refreshPools.run();
         ChannelSetup.run(this);
         backdropPkg = null;
@@ -2181,23 +2194,44 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void focusTile(int position) {
         if (adapter.getItemCount() == 0) return;
         final int pos = Math.max(0, Math.min(position, adapter.getItemCount() - 1));
+        // One wait for a scroll at a time, and none once a tile is focused here: a wait left behind would pull
+        // focus to its own tile when some later scroll settles.
+        if (pendingFocus != null) {
+            grid.removeOnScrollListener(pendingFocus);
+            pendingFocus = null;
+        }
         RecyclerView.ViewHolder vh = grid.findViewHolderForAdapterPosition(pos);
         if (vh != null) {
             vh.itemView.findViewById(R.id.card).requestFocus();
             return;
         }
         // Not laid out yet: scroll there, then focus once the scroll settles.
-        grid.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        RecyclerView.OnScrollListener waiting = new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView rv, int newState) {
-                if (newState != RecyclerView.SCROLL_STATE_IDLE) return;
-                rv.removeOnScrollListener(this);
-                RecyclerView.ViewHolder h = rv.findViewHolderForAdapterPosition(pos);
-                View target = h != null ? h.itemView.findViewById(R.id.card) : rv.getChildAt(0);
-                if (target != null) target.requestFocus();
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) focusSettled(this, pos);
+            }
+        };
+        pendingFocus = waiting;
+        grid.addOnScrollListener(waiting);
+        grid.smoothScrollToPosition(pos);
+        // Already in place (only not laid out yet): no scroll starts, so no settle comes; focused next frame instead.
+        grid.postOnAnimation(() -> {
+            if (pendingFocus == waiting && grid.getScrollState() == RecyclerView.SCROLL_STATE_IDLE) {
+                focusSettled(waiting, pos);
             }
         });
-        grid.smoothScrollToPosition(pos);
+    }
+
+    /** focusTile's wait for a scroll to settle, if any. */
+    private RecyclerView.OnScrollListener pendingFocus;
+
+    private void focusSettled(RecyclerView.OnScrollListener waiting, int pos) {
+        grid.removeOnScrollListener(waiting);
+        if (pendingFocus == waiting) pendingFocus = null;
+        RecyclerView.ViewHolder h = grid.findViewHolderForAdapterPosition(pos);
+        View target = h != null ? h.itemView.findViewById(R.id.card) : grid.getChildAt(0);
+        if (target != null) target.requestFocus();
     }
 
     // ---- top bar ---------------------------------------------------------------------------------
@@ -2741,7 +2775,19 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         showMenu(popup, panel, rows, anchor, Gravity.END);
     }
 
-    /** The green dot in the Settings gear: shown while a newer release is waiting to be installed. */
+    /** The dock band behind the first row; its opacity follows Appearance > Dock opacity. */
+    private DockDecoration dockDecoration;
+    /** The top bar's frost and tint; its opacity follows Appearance > Top bar opacity. */
+    private FrostView frost;
+
+    /** The dock band's and the top bar's opacity, as Appearance has them. */
+    private void applyOpacities() {
+        if (frost != null) frost.setOpacity(settings.topBarOpacity());
+        if (dockDecoration == null) return;
+        dockDecoration.setOpacity(settings.dockOpacity());
+        grid.invalidate();
+    }
+
     /** The highlight color on the glass, the top bar's pills and the Play pill's fill (menus take it as made). */
     private void applyHighlight() {
         highlight = Highlight.color(this);
@@ -2777,6 +2823,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         dot.setY(pill.getY() + cy - dot.getHeight() / 2f);
     }
 
+    /** The green dot in the Settings gear: shown while a newer release is waiting to be installed. */
     void showUpdateReady() {
         boolean ready = BuildConfig.STORE ? StoreUpdates.available() : Updater.available(this) != null;
         findViewById(R.id.updateDot).setVisibility(ready ? View.VISIBLE : View.GONE);
@@ -3264,7 +3311,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (state.equals(topBarApplied)) return;
         topBarApplied = state;
         // Minimal: frosted only where the apps scroll up under it, not a strip over the pictures.
-        ((FrostView) findViewById(R.id.frost)).setOnlyOverTiles(minimal);
+        frost.setOnlyOverTiles(minimal);
         View inner = (View) findViewById(R.id.leftBlock).getParent();
         ViewGroup.MarginLayoutParams ip = (ViewGroup.MarginLayoutParams) inner.getLayoutParams();
         ip.topMargin = dp(minimal ? 18 : 26);
@@ -3808,10 +3855,14 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         String key = data.getStringExtra(WallpaperBrowserActivity.LIST);
         // A tile picture deleted there may have been on any tile: all of them drawn again. The backdrops follow in
         // onResume (applyWallpaperChange sees the lists changed).
+        // The changed tile marked first, then one rebuild for both.
+        if (key != null && !key.startsWith(Folders.KEY_PREFIX)) {
+            adapter.markUpdated(key);
+            if (folderView != null) folderView.adapter.markUpdated(key);
+        }
         adapter.reload();
         if (folderView != null) folderView.adapter.reload();
         shelfContents = null;
-        if (key != null && !key.startsWith(Folders.KEY_PREFIX)) tileChanged(key);
     }
 
     /** A folder's Edit, as an app's: its tile picture, its backdrops, Rename, or Reset to its preview. */

@@ -251,6 +251,9 @@
     <string name="glass_color">ഹൈലൈറ്റ് നിറം</string>
     <string name="glass_white">പുനഃസജ്ജമാക്കുക</string>
     <string name="glass_color_hint">അമ്പടയാളങ്ങൾ കുത്ത് നീക്കുന്നു: ചക്രത്തിന് ചുറ്റും നിറം, നടുവിലേക്ക് മങ്ങിയത്. കഴിഞ്ഞാൽ OK അമർത്തുക.</string>
+    <string name="dock_opacity">ഡോക്ക് അതാര്യത</string>
+    <string name="top_bar_opacity">മുകളിലെ ബാറിന്റെ അതാര്യത</string>
+    <string name="dock_opacity_hint">അതാര്യത സ്ലൈഡർ ക്രമീകരിക്കാൻ മുകളിലും താഴെയും ഉപയോഗിക്കുക</string>
     <string name="power_on_home">ഓണാകുമ്പോൾ ഹോം</string>
     <string name="ignore_channel_keys">ഹോമിൽ ചാനൽ കീകൾ അവഗണിക്കുക</string>
     <string name="ignore_channel_keys_short">ഹോം കാണിക്കുമ്പോൾ ചാനൽ മുകളിലേക്കും താഴേക്കും ഒന്നും ചെയ്യുന്നില്ല, ഉപകരണത്തിന്റെ ടിവി ആപ്പ് തുറക്കുന്നതിനു പകരം.</string>

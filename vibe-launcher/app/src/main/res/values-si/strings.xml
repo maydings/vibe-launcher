@@ -251,6 +251,9 @@
     <string name="glass_color">ඉස්මතු කිරීමේ වර්ණය</string>
     <string name="glass_white">යළි සකසන්න</string>
     <string name="glass_color_hint">ඊතල තිත ගෙන යයි: රෝදය වටා වර්ණය, මැදට යන විට මැලවේ. අවසන් වූ විට OK ඔබන්න.</string>
+    <string name="dock_opacity">ඩොක් පාරාන්ධතාව</string>
+    <string name="top_bar_opacity">ඉහළ තීරුවේ පාරාන්ධතාව</string>
+    <string name="dock_opacity_hint">පාරාන්ධතා ස්ලයිඩරය සීරුමාරු කිරීමට ඉහළ සහ පහළ භාවිත කරන්න</string>
     <string name="power_on_home">ක්‍රියාත්මක වන විට මුල් පිටුව</string>
     <string name="ignore_channel_keys">මුල් තිරයේ නාලිකා යතුරු නොසලකන්න</string>
     <string name="ignore_channel_keys_short">Home පෙන්වන අතරතුර නාලිකා ඉහළ සහ පහළ කිසිවක් නොකරයි, උපාංගයේ TV යෙදුම විවෘත කරනවා වෙනුවට.</string>

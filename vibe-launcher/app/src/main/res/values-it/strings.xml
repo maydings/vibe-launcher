@@ -251,6 +251,9 @@
     <string name="glass_color">Colore di evidenziazione</string>
     <string name="glass_white">Ripristina</string>
     <string name="glass_color_hint">Le frecce muovono il punto: il colore attorno alla ruota, più tenue verso il centro. Premi OK quando hai finito.</string>
+    <string name="dock_opacity">Opacità del dock</string>
+    <string name="top_bar_opacity">Opacità della barra superiore</string>
+    <string name="dock_opacity_hint">Usa su e giù per regolare il cursore dell\'opacità</string>
     <string name="power_on_home">Home all\'accensione</string>
     <string name="ignore_channel_keys">Ignora i tasti canale nella Home</string>
     <string name="ignore_channel_keys_short">Canale su e giù non fanno nulla mentre è visibile la Home, invece di aprire l\'app TV del dispositivo.</string>

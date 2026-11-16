@@ -251,6 +251,9 @@
     <string name="glass_color">醒目提示顏色</string>
     <string name="glass_white">重設</string>
     <string name="glass_color_hint">方向鍵移動圓點：沿色輪改變顏色，越靠近中心越淡。完成後按 OK。</string>
+    <string name="dock_opacity">Dock 不透明度</string>
+    <string name="top_bar_opacity">頂端列不透明度</string>
+    <string name="dock_opacity_hint">用上下鍵調整不透明度滑桿</string>
     <string name="power_on_home">開機時顯示主畫面</string>
     <string name="ignore_channel_keys">在主畫面上忽略頻道鍵</string>
     <string name="ignore_channel_keys_short">顯示主畫面時，頻道上下鍵不會有任何作用，而不會開啟裝置的電視應用程式。</string>

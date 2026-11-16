@@ -251,6 +251,9 @@
     <string name="glass_color">Cor do destaque</string>
     <string name="glass_white">Redefinir</string>
     <string name="glass_color_hint">As setas movem o ponto: a cor ao redor da roda, mais clara em direção ao centro. Aperte OK ao terminar.</string>
+    <string name="dock_opacity">Opacidade do dock</string>
+    <string name="top_bar_opacity">Opacidade da barra superior</string>
+    <string name="dock_opacity_hint">Use cima e baixo para ajustar o controle de opacidade</string>
     <string name="power_on_home">Início ao ligar</string>
     <string name="ignore_channel_keys">Ignorar as teclas de canal na tela inicial</string>
     <string name="ignore_channel_keys_short">Canal acima e abaixo não fazem nada enquanto a tela inicial aparece, em vez de abrir o app de TV do dispositivo.</string>

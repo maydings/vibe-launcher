@@ -22,6 +22,8 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
     private final Paint band = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint edge = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final RectF rect = new RectF();
+    /** The band's colour (its opacity is Appearance > Dock opacity) and its edge's (DockSampleView too). */
+    static final int BAND = 0xFF141416, EDGE = 0x1FFFFFFF;
     /** The band's margin above and below the tiles (Home places the app's name and the Play pill from it). */
     static final float PAD_DP = 10f;
 
@@ -29,10 +31,15 @@ public class DockDecoration extends RecyclerView.ItemDecoration {
         this.adapter = adapter;
         this.columns = columns;
         this.density = density;
-        band.setColor(0xFF141416);
+        band.setColor(BAND);
         edge.setStyle(Paint.Style.STROKE);
         edge.setStrokeWidth(density);
-        edge.setColor(0x1FFFFFFF);
+        edge.setColor(EDGE);
+    }
+
+    /** How much of the background the band hides, in percent (100: none shows through); the edge stays. */
+    void setOpacity(int percent) {
+        band.setAlpha(Percent.alpha(percent));
     }
 
     @Override

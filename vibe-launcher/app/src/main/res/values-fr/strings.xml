@@ -251,6 +251,9 @@
     <string name="glass_color">Couleur de surbrillance</string>
     <string name="glass_white">Réinitialiser</string>
     <string name="glass_color_hint">Les flèches déplacent le point : la couleur autour de la roue, plus pâle vers le centre. OK pour terminer.</string>
+    <string name="dock_opacity">Opacité du dock</string>
+    <string name="top_bar_opacity">Opacité de la barre du haut</string>
+    <string name="dock_opacity_hint">Utilisez haut et bas pour régler le curseur d\'opacité</string>
     <string name="power_on_home">Accueil à l\'allumage</string>
     <string name="ignore_channel_keys">Ignorer les touches de chaîne sur l\'accueil</string>
     <string name="ignore_channel_keys_short">Chaîne + et Chaîne − ne font rien tant que l\'accueil est affiché, au lieu d\'ouvrir l\'appli TV de l\'appareil.</string>

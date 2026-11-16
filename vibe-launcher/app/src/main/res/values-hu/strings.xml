@@ -251,6 +251,9 @@
     <string name="glass_color">Kiemelés színe</string>
     <string name="glass_white">Visszaállítás</string>
     <string name="glass_color_hint">A nyilak mozgatják a pontot: a szín körben a keréken, középfelé halványabb. Ha kész, nyomd meg az OK gombot.</string>
+    <string name="dock_opacity">A dokk átlátszatlansága</string>
+    <string name="top_bar_opacity">A felső sáv átlátszatlansága</string>
+    <string name="dock_opacity_hint">A fel és le gombbal állítsa az átlátszatlanság csúszkáját</string>
     <string name="power_on_home">Kezdőképernyő bekapcsoláskor</string>
     <string name="ignore_channel_keys">Csatornagombok figyelmen kívül hagyása a kezdőképernyőn</string>
     <string name="ignore_channel_keys_short">A Csatorna fel és le nem csinál semmit, amíg a kezdőképernyő látszik, ahelyett, hogy megnyitná az eszköz TV-alkalmazását.</string>

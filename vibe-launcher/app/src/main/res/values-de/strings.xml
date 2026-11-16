@@ -251,6 +251,9 @@
     <string name="glass_color">Farbe der Hervorhebung</string>
     <string name="glass_white">Zurücksetzen</string>
     <string name="glass_color_hint">Die Pfeile bewegen den Punkt: die Farbe rund ums Rad, blasser zur Mitte hin. Mit OK fertig.</string>
+    <string name="dock_opacity">Deckkraft des Docks</string>
+    <string name="top_bar_opacity">Deckkraft der oberen Leiste</string>
+    <string name="dock_opacity_hint">Mit Hoch und Runter den Deckkraft-Regler einstellen</string>
     <string name="power_on_home">Startseite beim Einschalten</string>
     <string name="ignore_channel_keys">Kanaltasten auf dem Startbildschirm ignorieren</string>
     <string name="ignore_channel_keys_short">Kanal hoch und runter tun nichts, während Home angezeigt wird, statt die TV-App des Geräts zu öffnen.</string>

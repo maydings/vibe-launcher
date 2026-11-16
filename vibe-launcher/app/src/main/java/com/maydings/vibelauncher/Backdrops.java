@@ -102,6 +102,18 @@ final class Backdrops {
             this.link = link;
             this.made = made;
         }
+
+        // The same picture is the same still file: a pool read back from disk makes new Entry objects, and
+        // shown, the carousel and put()'s guard must still know them.
+        @Override
+        public boolean equals(Object o) {
+            return o instanceof Entry && still.getPath().equals(((Entry) o).still.getPath());
+        }
+
+        @Override
+        public int hashCode() {
+            return still.getPath().hashCode();
+        }
     }
 
     /**
@@ -256,6 +268,11 @@ final class Backdrops {
         hdHomeRun = new HdHomeRun(context);
         worker.prestartCoreThread();   // waiting on the queue, so jobs can go straight to its front
         builder.execute(this::prune);
+        // The dock's pools read from disk here, not on the main thread the first time Home asks for them: the
+        // first tiles of the saved arrangement (a row is at most six), each under the lock only for its own read.
+        builder.execute(() -> {
+            for (String pkg : AppAdapter.firstTiles(context, 8)) pool(pkg);
+        });
         builder.execute(() -> hdHomeRun.restore(resolver));   // the pill's channel for pictures read back from disk
     }
 
@@ -264,14 +281,20 @@ final class Backdrops {
      * backdrops): the next refresh of each app finds it with none. Builds under way are dropped.
      */
     void reload() {
+        File oldPools = new File(poolRoot.getParentFile(), "pools-old-" + System.nanoTime());
+        File oldCards = new File(root.getParentFile(), "cards-old-" + System.nanoTime());
         synchronized (this) {
             generation.incrementAndGet();
             pools.clear();
             shown.clear();
             before.clear();
-            deleteTree(poolRoot);
-            deleteTree(root);
+            // Moved aside at once (a rename) and deleted on the pool thread, as hundreds of files are too many
+            // for the main thread. New stills go into fresh folders meanwhile, which the delete never touches.
+            // A folder that can't be moved (there is none yet) is left: sweep and prune clear what nothing uses.
+            if (!poolRoot.renameTo(oldPools)) oldPools = null;
+            if (!root.renameTo(oldCards)) oldCards = null;
         }
+        if (oldPools != null || oldCards != null) builder.execute(this::deleteOld);
         building.clear();
         attempted.clear();
         unsuitable.clear();
@@ -497,7 +520,7 @@ final class Backdrops {
             carouselPkg = pkg;
             if (switched) {
                 if (first == null) first = choose(pkg);   // this visit's still, if its file is still there
-            } else if (!jump || first == shown.get(pkg)) {
+            } else if (!jump || java.util.Objects.equals(first, shown.get(pkg))) {
                 first = null;
             }
             if (first != null) shown.put(pkg, first);
@@ -539,7 +562,7 @@ final class Backdrops {
             Pool p = pool(pkg);
             if (p == null) continue;
             for (Entry e : p.entries) {
-                if (e == showing) continue;
+                if (e.equals(showing)) continue;
                 all.add(e);
                 owners.add(pkg);
             }
@@ -595,9 +618,20 @@ final class Backdrops {
     /** The keys and the permission a pool was built with: changing any of them rebuilds it. */
     private String fingerprint() {
         boolean cards = context.checkSelfPermission(PERMISSION) == PackageManager.PERMISSION_GRANTED;
-        return sha1(settings.tmdbKey() + "|" + settings.youtubeKey() + "|" + settings.plexToken() + "|" + cards
-                + "|" + STILL_FORMAT + "|" + POOL_VERSION);
+        String made = settings.tmdbKey() + "|" + settings.youtubeKey() + "|" + settings.plexToken() + "|" + cards
+                + "|" + STILL_FORMAT + "|" + POOL_VERSION;
+        // Asked for each dock app on every return to Home: hashed again only when what it's made of changed.
+        synchronized (fingerprintLock) {
+            if (!made.equals(fingerprintOf)) {
+                fingerprintOf = made;
+                fingerprint = sha1(made);
+            }
+            return fingerprint;
+        }
     }
+
+    private final Object fingerprintLock = new Object();
+    private String fingerprintOf, fingerprint;
 
     /** When the app's pool should next be refreshed (in the past when it's due now). */
     private synchronized long dueAt(String pkg) {
@@ -733,6 +767,7 @@ final class Backdrops {
             } catch (RuntimeException | OutOfMemoryError e) {
                 more = false;
                 b.collector = null;   // what's in the pool stays; the next refresh tries again
+                attempted.put(b.pkg, System.currentTimeMillis());   // after RETRY_MS, not on the next focus
             }
             if (more) continue;
             active.remove(b);
@@ -795,7 +830,7 @@ final class Backdrops {
                 deleteStill(e);
                 return false;
             }
-            if (gone != null && gone != shown.get(pkg)) deleteStill(gone);
+            if (gone != null && !gone.equals(shown.get(pkg))) deleteStill(gone);
         }
         if (first) main.post(() -> {
             FirstStillListener listener = firstStill;
@@ -832,7 +867,7 @@ final class Backdrops {
                     Entry old = p.entries.get(i);
                     if (old.made >= b.built) continue;
                     p.entries.remove(i);
-                    if (old != on) deleteStill(old);
+                    if (!old.equals(on)) deleteStill(old);
                 }
             }
             p.built = b.built;
@@ -881,7 +916,7 @@ final class Backdrops {
     }
 
     /**
-     * Deletes the files no pool lists: stills replaced while on screen, and 1.5.2's folders per build once
+     * Deletes the files no pool lists: stills replaced while on screen, and folders of stills once
      * their stills are all replaced. Only pools in the current form (index.txt): an old one still in use
      * is left as it is. Pool thread.
      */
@@ -914,6 +949,15 @@ final class Backdrops {
             } else if (!used.contains(f.getPath())) {
                 f.delete();
             }
+        }
+    }
+
+    /** The folders reload moved aside ("pools-old-…", "cards-old-…"): deleted, whenever they were left. */
+    private void deleteOld() {
+        File[] all = poolRoot.getParentFile().listFiles();
+        if (all == null) return;
+        for (File f : all) {
+            if (f.getName().startsWith("pools-old-") || f.getName().startsWith("cards-old-")) deleteTree(f);
         }
     }
 
@@ -1438,6 +1482,7 @@ final class Backdrops {
      * because it was uninstalled, disabled or hidden. Brought back, it has no pool and gets a fresh one.
      */
     private void prune() {
+        deleteOld();
         long now = System.currentTimeMillis();
         File[] files = root.listFiles();
         if (files != null) for (File f : files) if (now - f.lastModified() > CACHE_MS) f.delete();
@@ -1447,18 +1492,13 @@ final class Backdrops {
         if (apps.isEmpty()) return;   // the app list unreadable (early in boot?): never take that as "none"
         Set<String> keep = new HashSet<>();
         for (String pkg : apps) keep.add(sha1(pkg));   // pools are named by hash
-        boolean dropped = false;
         for (File d : dirs) {
-            if (keep.contains(d.getName())) continue;
-            deleteTree(d);
-            dropped = true;
+            if (!keep.contains(d.getName())) deleteTree(d);
         }
-        // Forget the dropped pools too, or a cached one would still be served: read from disk again,
-        // an app that comes back starts with none.
-        if (dropped) {
-            synchronized (this) {
-                pools.clear();
-            }
+        // Forget the dropped pools too, or a cached one would still be served: an app that comes back starts
+        // with none. Only those: the others' pools (and the entries shown from them) stay as they are.
+        synchronized (this) {
+            pools.keySet().removeIf(pkg -> !keep.contains(sha1(pkg)));
         }
     }
 }

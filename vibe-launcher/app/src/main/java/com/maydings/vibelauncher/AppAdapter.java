@@ -231,7 +231,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
             }
             fresh = inside;
         } else {
-            fresh = withFolders(fresh);
+            fresh = withFolders(fresh, custom);
             // The saved arrangement wins; apps installed since then go at the end, alphabetically.
             String saved = prefs.getString(KEY_ORDER, "");
             List<String> order = saved.isEmpty() ? favourites : Arrays.asList(saved.split(","));
@@ -301,10 +301,9 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
      * no tile, but is kept: an app missing for a moment (being updated, on storage not mounted yet) mustn't
      * lose its folder. Only emptying it by hand deletes it (MainActivity.folderChanged).
      */
-    private List<Entry> withFolders(List<Entry> apps) {
+    private List<Entry> withFolders(List<Entry> apps, TileCustom custom) {   // custom: read once per reload
         List<Entry> out = new ArrayList<>(apps);
         Set<String> claimed = new HashSet<>();   // in one folder only, even if the saved list says otherwise
-        TileCustom custom = new TileCustom(ctx);
         for (Folders.Folder f : folders.all()) {
             List<Entry> members = new ArrayList<>();
             for (String pkg : f.apps) {
@@ -389,6 +388,20 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
     }
 
     /**
+     * The first apps of the saved arrangement, in order (folders left out): the dock and what follows it. Empty
+     * before the tiles were ever arranged. Safe off the main thread.
+     */
+    static List<String> firstTiles(Context ctx, int count) {
+        List<String> first = new ArrayList<>();
+        String saved = ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString(KEY_ORDER, "");
+        for (String key : saved.split(",")) {
+            if (first.size() >= count) break;
+            if (!key.isEmpty() && !key.startsWith(Folders.KEY_PREFIX)) first.add(key);
+        }
+        return first;
+    }
+
+    /**
      * The apps that can be tiles right now: installed, enabled and not hidden (by config.xml or from the
      * menu). Backdrops keeps pools only for these. Safe off the main thread.
      */
@@ -423,6 +436,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         if (!isApp(position)) return false;
         try {
             int flags = ctx.getPackageManager().getApplicationInfo(items.get(position).pkg, 0).flags;
+            // Installed apps only: for a built-in one, even updated, Android's uninstall only puts the factory
+            // version back (its data gone) and the app stays. Those are turned off in Advanced instead.
             return (flags & android.content.pm.ApplicationInfo.FLAG_SYSTEM) == 0;
         } catch (PackageManager.NameNotFoundException e) {
             return false;

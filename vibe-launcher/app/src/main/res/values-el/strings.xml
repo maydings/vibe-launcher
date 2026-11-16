@@ -251,6 +251,9 @@
     <string name="glass_color">Χρώμα επισήμανσης</string>
     <string name="glass_white">Επαναφορά</string>
     <string name="glass_color_hint">Τα βέλη μετακινούν την κουκκίδα: το χρώμα γύρω από τον τροχό, πιο απαλό προς το κέντρο. Πατήστε OK όταν τελειώσετε.</string>
+    <string name="dock_opacity">Αδιαφάνεια βάσης</string>
+    <string name="top_bar_opacity">Αδιαφάνεια επάνω γραμμής</string>
+    <string name="dock_opacity_hint">Χρησιμοποιήστε πάνω και κάτω για να ρυθμίσετε το ρυθμιστικό αδιαφάνειας</string>
     <string name="power_on_home">Αρχική κατά την ενεργοποίηση</string>
     <string name="ignore_channel_keys">Παράβλεψη πλήκτρων καναλιών στην αρχική οθόνη</string>
     <string name="ignore_channel_keys_short">Τα Κανάλι πάνω και κάτω δεν κάνουν τίποτα όσο φαίνεται η Αρχική, αντί να ανοίγουν την εφαρμογή TV της συσκευής.</string>

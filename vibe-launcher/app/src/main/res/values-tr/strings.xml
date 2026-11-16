@@ -251,6 +251,9 @@
     <string name="glass_color">Vurgu rengi</string>
     <string name="glass_white">Sıfırla</string>
     <string name="glass_color_hint">Oklar noktayı hareket ettirir: renk tekerleğin çevresinde, merkeze doğru daha soluk. Bitince OK\'a basın.</string>
+    <string name="dock_opacity">Dock opaklığı</string>
+    <string name="top_bar_opacity">Üst çubuk opaklığı</string>
+    <string name="dock_opacity_hint">Opaklık kaydırıcısını ayarlamak için yukarı ve aşağıyı kullanın</string>
     <string name="power_on_home">Açılışta ana ekran</string>
     <string name="ignore_channel_keys">Ana ekranda kanal tuşlarını yok say</string>
     <string name="ignore_channel_keys_short">Kanal yukarı ve aşağı, Ana Ekran gösterilirken cihazın TV uygulamasını açmak yerine hiçbir şey yapmaz.</string>

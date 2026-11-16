@@ -251,6 +251,9 @@
     <string name="glass_color">হাইলাইটের রং</string>
     <string name="glass_white">রিসেট</string>
     <string name="glass_color_hint">তীর চিহ্নগুলো বিন্দুটি সরায়: চাকার চারপাশে রং, মাঝের দিকে ফিকে। শেষ হলে OK চাপুন।</string>
+    <string name="dock_opacity">ডকের অস্বচ্ছতা</string>
+    <string name="top_bar_opacity">উপরের বারের অস্বচ্ছতা</string>
+    <string name="dock_opacity_hint">অস্বচ্ছতার স্লাইডার ঠিক করতে উপরে ও নিচে ব্যবহার করুন</string>
     <string name="power_on_home">চালু হলে হোম</string>
     <string name="ignore_channel_keys">হোমে চ্যানেল কী উপেক্ষা করুন</string>
     <string name="ignore_channel_keys_short">হোম দেখানোর সময় চ্যানেল উপর ও নিচ কিছু করে না, ডিভাইসের টিভি অ্যাপ খোলার বদলে।</string>

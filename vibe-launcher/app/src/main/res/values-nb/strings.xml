@@ -251,6 +251,9 @@
     <string name="glass_color">Uthevingsfarge</string>
     <string name="glass_white">Tilbakestill</string>
     <string name="glass_color_hint">Pilene flytter prikken: fargen rundt hjulet, blekere mot midten. Trykk OK når du er ferdig.</string>
+    <string name="dock_opacity">Dokkens dekkevne</string>
+    <string name="top_bar_opacity">Topplinjens dekkevne</string>
+    <string name="dock_opacity_hint">Bruk opp og ned for å justere glidebryteren for dekkevne</string>
     <string name="power_on_home">Hjem ved påslåing</string>
     <string name="ignore_channel_keys">Ignorer kanalknapper på startskjermen</string>
     <string name="ignore_channel_keys_short">Kanal opp og ned gjør ingenting mens Hjem vises, i stedet for å åpne enhetens TV-app.</string>

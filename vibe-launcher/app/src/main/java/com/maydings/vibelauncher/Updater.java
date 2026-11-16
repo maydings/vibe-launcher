@@ -94,8 +94,16 @@ final class Updater {
 
     /** A build signed with a key other than the release one (someone's own): releases can't install over it. */
     static boolean isDevelopmentBuild(Context context) {
-        return !RELEASE_CERT.equals(signingCert(context));
+        Boolean dev = developmentBuild;
+        if (dev != null) return dev;
+        String cert = signingCert(context);
+        dev = !RELEASE_CERT.equals(cert);
+        if (!cert.isEmpty()) developmentBuild = dev;   // unreadable just now (early in boot): asked again next time
+        return dev;
     }
+
+    /** isDevelopmentBuild's answer, once read: the signature can't change while the app runs. */
+    private static volatile Boolean developmentBuild;
 
     /** SHA-256 of this app's signing certificate, or "" when it can't be read. */
     @SuppressWarnings("deprecation")
