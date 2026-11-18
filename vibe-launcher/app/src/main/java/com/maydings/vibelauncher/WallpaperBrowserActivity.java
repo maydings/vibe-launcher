@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.text.format.Formatter;
 import android.util.LruCache;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -59,6 +60,8 @@ import java.util.concurrent.Executors;
  * <li>NASA's Image and Video Library: pictures and videos, no key.
  * <li>Wikimedia Commons: featured pictures, and videos in VP8 only (most of Commons' are VP9, AV1 or Theora,
  * which older TVs can't play or play badly), no key.
+ * <li>Apple TV aerials: Apple's screensaver videos in its four groups, one tab each (AppleAerials), no key. Each is
+ * hundreds of MB: its size shows on the line at the bottom, and it comes in only with AppleAerials.FREE_KEPT to spare.
  * </ul>
  * The last three have Pictures, Videos and a Search that finds both. A video is taken in its largest version up to
  * 1080p.
@@ -67,9 +70,9 @@ public final class WallpaperBrowserActivity extends Activity {
 
     static final String SOURCE = "source";
     /**
-     * The person's own (no tabs, no downloads), one bucket (KIND): backdrop pictures or videos (Wallpapers), or tile
-     * pictures (TilePictures). With LIST, picked for it: a backdrop list (an app's, a folder's, or
-     * Wallpapers.ROTATION) ticks any number, a tile (its key) one; OK picks, holding OK deletes. Without, OK deletes.
+     * The Library (no tabs, no downloads), by KIND: its videos, or its pictures (VIDEOS, PICTURES), or its pictures
+     * for a tile, which takes no video (TILES). With LIST, picked for it: a list (a tile's own, Wallpapers.ROTATION
+     * or SCREENSAVER) ticks any number, a tile (its key) one; OK picks, holding OK deletes. Without, OK deletes.
      */
     static final String MINE = "mine";
     static final String KIND = "kind", LIST = "list", LABEL = "label";
@@ -77,6 +80,8 @@ public final class WallpaperBrowserActivity extends Activity {
     private static final int COLUMNS = 4;
     /** The tabs: the first list (Wallhaven's top, Pexels' popular, the others' pictures), the second, a search. */
     private static final int FIRST = 0, SECOND = 1, SEARCH = 2;
+    /** Apple TV aerials' tabs: APPLE_GROUP plus the group's index (AppleAerials.GROUPS). */
+    private static final int APPLE_GROUP = 10;
 
     private static final String WALLHAVEN = "https://wallhaven.cc/api/v1/search?purity=100&categories=111"
             + "&atleast=1920x1080&ratios=16x9&page=%d";
@@ -114,11 +119,20 @@ public final class WallpaperBrowserActivity extends Activity {
 
     /**
      * One thumbnail: its id there, what to download (a picture, a video, or NASA's list of a video's files), a line
-     * under it, and the line about it at the bottom while it has focus (its maker; null: the grid's own).
+     * under it, and the line about it at the bottom while it has focus (its maker; null: the grid's own). title:
+     * what the source calls it, kept as its name in the Library (null when it has no name there). odd (MINE): a
+     * picture not made for what's being picked, a tile's for a backdrop or the other way round.
      */
     private static final class Result {
         final String id, thumb, full, label, credit;
         final boolean video;
+        String title;
+        boolean odd;
+
+        Result named(String title) {
+            this.title = title;
+            return this;
+        }
 
         Result(String id, String thumb, String full, String label, String credit, boolean video) {
             this.id = id;
@@ -236,6 +250,10 @@ public final class WallpaperBrowserActivity extends Activity {
         } else if (isWallhaven()) {
             names = new int[]{R.string.wp_toplist, R.string.wp_latest, R.string.wp_search};
             tabIds = new int[]{FIRST, SECOND, SEARCH};
+        } else if (isApple()) {
+            names = new int[]{R.string.wp_apple_space, R.string.wp_apple_landscapes, R.string.wp_apple_cities,
+                    R.string.wp_apple_underwater};
+            tabIds = new int[]{APPLE_GROUP, APPLE_GROUP + 1, APPLE_GROUP + 2, APPLE_GROUP + 3};
         } else {
             names = new int[]{R.string.wp_pictures, R.string.wp_videos, R.string.wp_search};
             tabIds = new int[]{FIRST, SECOND, SEARCH};
@@ -303,13 +321,13 @@ public final class WallpaperBrowserActivity extends Activity {
         credit.setTextSize(13);
         credit.setSingleLine(true);
         credit.setEllipsize(TextUtils.TruncateAt.END);
-        credit.setText(!mine ? sourceCredit() : listKey == null ? getString(R.string.wp_delete_short)
-                : getString(TILES.equals(kind) ? R.string.tp_pick_short : R.string.media_tick_short));
+        credit.setText(mine ? mineLine(null) : sourceCredit());
         root.addView(credit);
 
         setContentView(root);
         if (mine) {
             showMine();
+            nameAerials();
             return;
         }
         if (isPexels() && pexelsKey.isEmpty()) {
@@ -321,7 +339,7 @@ public final class WallpaperBrowserActivity extends Activity {
             return;
         }
         if (isPixabay()) pages.execute(this::dropOldReplies);
-        pickTab(FIRST);
+        pickTab(isApple() ? APPLE_GROUP : FIRST);
     }
 
     private boolean isWallhaven() {
@@ -340,15 +358,22 @@ public final class WallpaperBrowserActivity extends Activity {
         return Wallpapers.NASA.equals(source);
     }
 
+    private boolean isApple() {
+        return Wallpapers.APPLE.equals(source);
+    }
+
     /** The grid's heading. */
     private String title() {
         if (mine) {
-            String bucket = getString(TILES.equals(kind) ? R.string.tile_pictures
+            // Picked for a tile or a list: what it's for. The Library itself: its pictures, or its videos.
+            String bucket = getString(listKey == null ? VIDEOS.equals(kind) ? R.string.wp_videos : R.string.wp_pictures
+                    : TILES.equals(kind) ? R.string.change_picture
                     : VIDEOS.equals(kind) ? R.string.backdrop_videos : R.string.backdrop_pictures);
             return listLabel != null ? listLabel + " · " + bucket : bucket;
         }
         if (isPexels()) return getString(R.string.wp_pexels_title);
         if (isWallhaven()) return getString(R.string.wp_wallhaven_title);
+        if (isApple()) return getString(R.string.wp_apple_title);
         return serviceName(source);
     }
 
@@ -360,6 +385,7 @@ public final class WallpaperBrowserActivity extends Activity {
             case Wallpapers.PIXABAY: return "Pixabay";
             case Wallpapers.NASA: return "NASA";
             case Wallpapers.COMMONS: return "Wikimedia Commons";
+            case Wallpapers.APPLE: return "Apple";
             default: return "";
         }
     }
@@ -371,6 +397,7 @@ public final class WallpaperBrowserActivity extends Activity {
             case Wallpapers.PIXABAY: return getString(R.string.wp_credit_pixabay);
             case Wallpapers.NASA: return getString(R.string.wp_credit_nasa);
             case Wallpapers.COMMONS: return getString(R.string.wp_credit_commons);
+            case Wallpapers.APPLE: return getString(R.string.wp_credit_apple);
             default: return getString(R.string.wp_credit_wallhaven);
         }
     }
@@ -403,8 +430,8 @@ public final class WallpaperBrowserActivity extends Activity {
         emptyPages = 0;
         ended = false;
         // A list is only one kind; a search, both.
-        picturesEnded = tab == SECOND && !isWallhaven() && !isPexels();
-        videosEnded = tab == FIRST && !isWallhaven() && !isPexels();
+        picturesEnded = isApple() || tab == SECOND && !isWallhaven() && !isPexels();
+        videosEnded = !isApple() && tab == FIRST && !isWallhaven() && !isPexels();
         loading = false;
         message.setText(R.string.wp_loading);
         credit.setText(sourceCredit());
@@ -488,6 +515,16 @@ public final class WallpaperBrowserActivity extends Activity {
                 Part pics = pictures ? commonsPictures(t == SEARCH ? q : "", p) : new Part();
                 Part vids = videos ? commonsVideos(t == SEARCH ? q : "", p) : new Part();
                 return mix(b, pics, vids);
+            }
+            case Wallpapers.APPLE: {   // a group in one page
+                if (p == 1) {
+                    for (AppleAerials.Video v : AppleAerials.group(this, t - APPLE_GROUP)) {
+                        b.results.add(new Result(v.id, "aerial:" + v.id + "|" + v.url, v.url, v.name, null, true)
+                                .named(v.name));
+                    }
+                }
+                b.videos = false;
+                return b;
             }
             default: {
                 String u = String.format(Locale.ROOT, WALLHAVEN, p);
@@ -706,14 +743,14 @@ public final class WallpaperBrowserActivity extends Activity {
             String by = title.isEmpty() ? null : title + " · NASA";
             if (video) {
                 part.results.add(new Result(id, safeUrl(thumb), safeUrl(item.optString("href")), "▶ " + title, by,
-                        true));
+                        true).named(title));
                 continue;
             }
             if (!wide) continue;   // a tall one, cut to the screen, would be its middle strip
             String full = fitW >= 1280 ? fit
                     : !orig.isEmpty() && (origW == 0 || origW >= 1280) && origSize <= MAX_PICTURE ? orig : "";
             if (full.isEmpty()) continue;
-            part.results.add(new Result(id, safeUrl(thumb), safeUrl(full), title, by, false));
+            part.results.add(new Result(id, safeUrl(thumb), safeUrl(full), title, by, false).named(title));
         }
         return part;
     }
@@ -752,7 +789,7 @@ public final class WallpaperBrowserActivity extends Activity {
             if (full.isEmpty()) continue;
             String thumb = full.replaceFirst("/\\d+px-", "/500px-");
             part.results.add(new Result(String.valueOf(page.optLong("pageid")), thumb, full, w + " × " + h,
-                    commonsCredit(ii), false));
+                    commonsCredit(ii), false).named(commonsName(page)));
         }
         return part;
     }
@@ -780,7 +817,8 @@ public final class WallpaperBrowserActivity extends Activity {
             if (at > 0) thumb = thumb.substring(0, at);
             if (full.isEmpty() || thumb.isEmpty()) continue;
             part.results.add(new Result(String.valueOf(page.optLong("pageid")), thumb, full,
-                    duration((int) Math.round(vi.optDouble("duration", 0))), commonsCredit(vi), true));
+                    duration((int) Math.round(vi.optDouble("duration", 0))), commonsCredit(vi), true)
+                    .named(commonsName(page)));
         }
         return part;
     }
@@ -808,6 +846,16 @@ public final class WallpaperBrowserActivity extends Activity {
     }
 
     /** "By (its author) · (its licence) · Wikimedia Commons", as far as they're known. */
+    /** A Commons page's name as a title: "File:Aurora over Tromsø.jpg" is "Aurora over Tromsø". */
+    private static String commonsName(JSONObject page) {
+        String name = page.optString("title");
+        int colon = name.indexOf(':');
+        if (colon >= 0) name = name.substring(colon + 1);
+        int dot = name.lastIndexOf('.');
+        if (dot > 0) name = name.substring(0, dot);
+        return name.replace('_', ' ').trim();
+    }
+
     private String commonsCredit(JSONObject info) {
         JSONObject meta = info.optJSONObject("extmetadata");
         String artist = "", licence = "";
@@ -835,37 +883,30 @@ public final class WallpaperBrowserActivity extends Activity {
         return String.format(Locale.ROOT, "▶ %d:%02d", seconds / 60, seconds % 60);
     }
 
-    /** MINE: the wallpapers there are, newest first, each by its own picture (a video by a frame of it). */
+    /**
+     * MINE: the Library's videos, or its pictures, newest first, each by its own picture (a video by a frame of
+     * it). Pictures come in two sizes, those cut to the screen and the tile pictures: for a tile the tile pictures
+     * first, otherwise those cut to the screen first. The others follow, and picked for something they weren't
+     * made for they're odd: dimmed, and the line at the bottom says why.
+     */
     private void showMine() {
         generation++;
         results.clear();
         items.clear();
-        if (TILES.equals(kind)) {
-            List<String> ids = new TilePictures(this).list();
-            java.util.Collections.reverse(ids);   // newest first
-            TilePictures pictures = new TilePictures(this);
-            for (String id : ids) {
-                String path = pictures.file(id).getPath();
-                results.add(new Result(id, "tile:" + path, path, "", null, false));
-            }
-        }
+        boolean tiles = TILES.equals(kind), videos = VIDEOS.equals(kind);
+        List<Wallpapers.Item> fitting = new ArrayList<>(), others = new ArrayList<>();
         for (Wallpapers.Item item : Wallpapers.sorted(wallpapers.list())) {
-            if (TILES.equals(kind) || item.video != VIDEOS.equals(kind)) continue;
-            String name;
-            switch (item.source) {
-                case Wallpapers.WALLHAVEN: name = getString(R.string.wp_item_wallhaven); break;
-                case Wallpapers.PEXELS: name = getString(R.string.wp_item_pexels); break;
-                case Wallpapers.PIXABAY:
-                case Wallpapers.NASA:
-                case Wallpapers.COMMONS:
-                    name = getString(item.video ? R.string.wp_item_video_from : R.string.wp_item_picture_from,
-                            serviceName(item.source));
-                    break;
-                default:
-                    name = getString(item.video ? R.string.wp_item_phone_video : R.string.wp_item_phone_picture);
-            }
+            if (item.video != videos) continue;
+            (videos || item.small == tiles ? fitting : others).add(item);
+        }
+        fitting.addAll(others);
+        if (tiles && listKey != null && !listKey.startsWith("folder:")) addOwn();
+        for (Wallpapers.Item item : fitting) {
             String path = wallpapers.file(item).getPath();
-            results.add(new Result(item.id, (item.video ? "video:" : "file:") + path, path, name, null, item.video));
+            Result r = new Result(item.id, item.video ? "video:" + item.id : (item.small ? "tile:" : "file:") + path, path,
+                    nameOf(item), null, item.video);
+            r.odd = listKey != null && !videos && item.small != tiles;
+            results.add(r);
             items.put(item.id, item);
         }
         ended = true;
@@ -877,15 +918,123 @@ public final class WallpaperBrowserActivity extends Activity {
         });
     }
 
-    /** MINE: asks, then deletes it from the TV; the one after it (or before, at the end) takes focus. */
+    /** The ids of the two cards before the Library's when picking for an app's tile: its banner and its icon. */
+    private static final String OWN_BANNER = "@banner", OWN_ICON = "@icon";
+    /** The app's banner (null without one, or with one too square to fill a tile) and icon, for those cards. */
+    private android.graphics.drawable.Drawable ownBanner, ownIcon;
+
+    /** Picking for an app's tile: its own banner (when it has one) and icon, first in the grid. */
+    private void addOwn() {
+        android.content.pm.PackageManager pm = getPackageManager();
+        Intent launch = pm.getLeanbackLaunchIntentForPackage(listKey);
+        if (launch == null) launch = pm.getLaunchIntentForPackage(listKey);
+        ownBanner = null;
+        ownIcon = null;
+        try {
+            if (launch != null && launch.getComponent() != null) {
+                ownBanner = pm.getActivityBanner(launch);
+                ownIcon = pm.getActivityIcon(launch);
+            } else {
+                ownBanner = pm.getApplicationBanner(listKey);
+                ownIcon = pm.getApplicationIcon(listKey);
+            }
+        } catch (android.content.pm.PackageManager.NameNotFoundException e) {
+            return;   // gone meanwhile: the Library's alone
+        }
+        if (ownBanner != null
+                && !AppAdapter.isBannerShaped(ownBanner.getIntrinsicWidth(), ownBanner.getIntrinsicHeight())) {
+            ownBanner = null;   // as on its tile (AppAdapter)
+        }
+        if (ownBanner != null) {
+            results.add(new Result(OWN_BANNER, "own:banner", "", getString(R.string.use_banner), null, false));
+        }
+        if (ownIcon != null) {
+            results.add(new Result(OWN_ICON, "own:icon", "", getString(R.string.use_icon), null, false));
+        }
+    }
+
+    /** The app's banner filling a cell, or its icon on a plate as a tile without a banner shows it. */
+    private static Bitmap drawn(android.graphics.drawable.Drawable d, boolean fill) {
+        if (d == null) return null;
+        int w = 480, h = 270;
+        Bitmap b = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        android.graphics.Canvas c = new android.graphics.Canvas(b);
+        if (fill) {
+            d.setBounds(0, 0, w, h);
+        } else {
+            c.drawColor(0xFF2A2A2E);
+            int side = Math.round(h * 0.7f), x = (w - side) / 2, y = (h - side) / 2;
+            d.setBounds(x, y, x + side, y + side);
+        }
+        d.draw(c);
+        return b;
+    }
+
+    /**
+     * What a Library item is called: its title, with the service it came from ("Greenland (Apple)"), or the one
+     * typed on the phone; without one, what it is and where it's from ("NASA picture", "Uploaded video").
+     */
+    private String nameOf(Wallpapers.Item item) {
+        boolean uploaded = Wallpapers.PHONE.equals(item.source) || Wallpapers.TILE.equals(item.source)
+                || item.source.isEmpty();
+        if (!item.title.isEmpty()) return uploaded ? item.title : item.title + " (" + serviceName(item.source) + ")";
+        if (uploaded) return getString(item.video ? R.string.wp_item_phone_video : R.string.wp_item_phone_picture);
+        switch (item.source) {
+            case Wallpapers.WALLHAVEN: return getString(R.string.wp_item_wallhaven);
+            case Wallpapers.PEXELS: return getString(R.string.wp_item_pexels);
+            default:
+                return getString(item.video ? R.string.wp_item_video_from : R.string.wp_item_picture_from,
+                        serviceName(item.source));
+        }
+    }
+
+    /** MINE: the line at the bottom for the one focused: the keys, after why it's odd when it is. */
+    private String mineLine(Result r) {
+        String keys = getString(listKey == null ? R.string.wp_delete_short
+                : TILES.equals(kind) ? R.string.tp_pick_short : R.string.media_tick_short);
+        if (r == null || !r.odd) return keys;
+        return getString(TILES.equals(kind) ? R.string.lib_big_for_tile : R.string.lib_small_for_backdrop)
+                + " · " + keys;
+    }
+
+    /**
+     * Apple's videos kept without a name (their id there is all that's kept): named from Apple's list, which is
+     * here already when they came from it. Worker thread, then the grid again.
+     */
+    private void nameAerials() {
+        List<Wallpapers.Item> unnamed = new ArrayList<>();
+        for (Wallpapers.Item item : wallpapers.list()) {
+            if (Wallpapers.APPLE.equals(item.source) && item.title.isEmpty()) unnamed.add(item);
+        }
+        if (unnamed.isEmpty()) return;
+        pages.execute(() -> {
+            boolean named = false;
+            for (Wallpapers.Item item : unnamed) {
+                String name = AppleAerials.nameOf(this, item.name);
+                if (name == null || name.isEmpty()) continue;
+                wallpapers.setTitle(item, name);
+                named = true;
+            }
+            if (named) main.post(() -> {
+                if (!isDestroyed()) showMine();
+            });
+        });
+    }
+
+    /**
+     * MINE: one of the Library's, by its name: Rename (the TV's keyboard), Delete from the TV (the one after it,
+     * or before at the end, then takes focus), or Cancel.
+     */
     private void askDelete(Result r, int position) {
         Wallpapers.Item item = items.get(r.id);
-        boolean tile = TILES.equals(kind);
-        if (item == null && !tile) return;
+        if (item == null) return;
         View panel = getLayoutInflater().inflate(R.layout.dialog_update, findViewById(android.R.id.content), false);
-        ((TextView) panel.findViewById(R.id.updateTitle)).setText(R.string.media_delete_title);
-        panel.findViewById(R.id.notesScroll).setVisibility(View.GONE);   // the question is enough
+        ((TextView) panel.findViewById(R.id.updateTitle)).setText(r.label);
+        panel.findViewById(R.id.notesScroll).setVisibility(View.GONE);   // its name is enough
         TextView go = panel.findViewById(R.id.install), cancel = panel.findViewById(R.id.cancelUpdate);
+        TextView rename = panel.findViewById(R.id.extra);
+        rename.setText(R.string.rename_folder);
+        rename.setVisibility(View.VISIBLE);
         go.setText(R.string.wp_delete);
         android.app.Dialog dialog = new android.app.Dialog(this, android.R.style.Theme_Material_Dialog_NoActionBar);
         dialog.setContentView(panel);
@@ -896,11 +1045,15 @@ public final class WallpaperBrowserActivity extends Activity {
         }
         Highlight.pill(go, highlight);
         Highlight.pill(cancel, highlight);
+        Highlight.pill(rename, highlight);
         cancel.setOnClickListener(v -> dialog.dismiss());
+        rename.setOnClickListener(v -> {
+            dialog.dismiss();
+            askName(r);
+        });
         go.setOnClickListener(v -> {
             dialog.dismiss();
-            if (tile) new TilePictures(this).delete(r.id);
-            else wallpapers.delete(item);
+            wallpapers.delete(item);   // off every list and tile that showed it
             items.remove(r.id);
             changed();
             int at = results.indexOf(r);
@@ -921,6 +1074,26 @@ public final class WallpaperBrowserActivity extends Activity {
         cancel.requestFocus();   // the safe one first
     }
 
+    /**
+     * MINE: the TV's keyboard on what a Library item is called (its title; nothing typed: none, and it's listed
+     * by where it came from again). Its card then says the new name.
+     */
+    private void askName(Result r) {
+        Wallpapers.Item item = items.get(r.id);
+        if (item == null) return;
+        NameDialog.ask(this, R.string.tile_name, item.title, Wallpapers.MAX_TITLE, highlight, typed -> {
+            wallpapers.setTitle(item, typed.replaceAll("\\s+", " ").trim());
+            Wallpapers.Item now = wallpapers.item(item.id);
+            int at = results.indexOf(r);
+            if (now == null || at < 0) return;
+            items.put(now.id, now);
+            Result renamed = new Result(r.id, r.thumb, r.full, nameOf(now), r.credit, r.video);
+            renamed.odd = r.odd;
+            results.set(at, renamed);
+            adapter.notifyItemChanged(at);
+        });
+    }
+
     /** Nothing in the bucket: where they're added (the one place). */
     private String emptyText() {
         return getString(R.string.media_empty, getString(R.string.settings) + " > " + getString(R.string.media_title));
@@ -930,27 +1103,42 @@ public final class WallpaperBrowserActivity extends Activity {
     private boolean ticked(Result r) {
         if (!mine) return wallpapers.has(source, r.id);
         if (listKey == null) return false;
-        if (TILES.equals(kind)) return r.id.equals(new TileCustom(this).pictureId(listKey));
+        if (TILES.equals(kind)) {
+            TileCustom custom = tileCustom();
+            String picture = custom.pictureId(listKey);
+            // Without a picture of the Library's, the app's own: its icon when chosen (or it has no banner).
+            if (OWN_BANNER.equals(r.id)) return picture == null && !custom.useIcon(listKey);
+            if (OWN_ICON.equals(r.id)) return picture == null && (custom.useIcon(listKey) || ownBanner == null);
+            return r.id.equals(picture);
+        }
         return wallpapers.inList(listKey, r.id);
+    }
+
+    /** What the tiles show, read once for this grid: every card asks it for its tick. */
+    private TileCustom tileCustom;
+
+    private TileCustom tileCustom() {
+        if (tileCustom == null) tileCustom = new TileCustom(this);
+        return tileCustom;
     }
 
     /** OK on one, picking for a list or a tile: on or off the list; the tile's picture, or none again. */
     private void pick(Result r) {
-        int was = -1;   // a tile has one picture: the one ticked before loses its tick
-        if (TILES.equals(kind)) {
-            TileCustom custom = new TileCustom(this);
-            String before = custom.pictureId(listKey);
-            for (int i = 0; i < results.size(); i++) if (results.get(i).id.equals(before)) was = i;
-            custom.setPicture(listKey, r.id.equals(before) ? null : r.id);
+        if (TILES.equals(kind)) {   // a tile shows one thing: the app's banner, its icon, or a picture
+            TileCustom custom = tileCustom();
+            if (OWN_BANNER.equals(r.id) || OWN_ICON.equals(r.id)) {
+                custom.setPicture(listKey, null);
+                custom.setUseIcon(listKey, OWN_ICON.equals(r.id) && ownBanner != null);
+            } else {
+                custom.setPicture(listKey, r.id.equals(custom.pictureId(listKey)) ? null : r.id);
+            }
         } else {
             wallpapers.setInList(listKey, r.id, !wallpapers.inList(listKey, r.id));
         }
         changed();
         // Only the ticks, on the cards as they are: a full change makes new cards that cross-fade in, laid out for
         // a moment a row down, with the focus.
-        int at = results.indexOf(r);
-        if (at >= 0) adapter.notifyItemChanged(at, TICK);
-        if (was >= 0 && was != at) adapter.notifyItemChanged(was, TICK);
+        adapter.notifyItemRangeChanged(0, results.size(), TICK);
     }
 
     /** The payload for a tick changed, and nothing else on the card. */
@@ -981,9 +1169,24 @@ public final class WallpaperBrowserActivity extends Activity {
         int w = getResources().getDisplayMetrics().widthPixels, h = getResources().getDisplayMetrics().heightPixels;
         int screenW = Math.max(w, h), screenH = Math.min(w, h);
         boolean nasaVideo = r.video && isNasa();
+        boolean apple = isApple();
         String from = source;
         downloads.execute(() -> {
             Wallpapers.Item added = null;
+            if (apple) {
+                // Its size first: in only with room to spare (AppleAerials.FREE_KEPT), and no limit beyond that.
+                long size = AppleAerials.size(r.full), free = wallpapers.free();
+                if (size <= 0 || free - size < AppleAerials.FREE_KEPT) {
+                    main.post(() -> {
+                        fetching.remove(what);
+                        if (isDestroyed()) return;
+                        MainActivity.showError(this, size <= 0 ? getString(R.string.wp_offline, serviceName(from))
+                                : getString(R.string.wp_no_room, Formatter.formatShortFileSize(this, size),
+                                Formatter.formatShortFileSize(this, Math.max(0, free))));
+                    });
+                    return;
+                }
+            }
             try {
                 // NASA's video is a list of its files: the large one, else the next that fits.
                 List<String> files = nasaVideo ? nasaVideoFiles(r.full) : Collections.singletonList(r.full);
@@ -1016,10 +1219,17 @@ public final class WallpaperBrowserActivity extends Activity {
         File part = wallpapers.incoming();
         try {
             // A video's size isn't known before it comes: it may only fill what's spare beyond the TV's share.
-            long room = r.video ? wallpapers.videoRoom() : MAX_PICTURE;
+            long room = !r.video ? MAX_PICTURE : Wallpapers.APPLE.equals(from)
+                    ? Math.min(Integer.MAX_VALUE, wallpapers.free() - AppleAerials.FREE_KEPT) : wallpapers.videoRoom();
             if (room <= 0) return null;
             Http.download(url, part, (int) room);
-            return wallpapers.add(part, r.video, from, r.id, screenW, screenH);
+            Wallpapers.Item added = wallpapers.add(part, r.video, from, r.id, r.title, screenW, screenH);
+            if (added != null && added.video) {   // the picture the grid showed it by: its thumbnail in the Library
+                Bitmap shown = cache.get(r.thumb);
+                if (shown == null) shown = thumb(r.thumb);
+                if (shown != null) wallpapers.keepThumb(added, shown);
+            }
+            return added;
         } catch (IOException | RuntimeException e) {
             android.util.Log.i("VibeWallpapers", "download failed: " + url, e);
             return null;
@@ -1114,8 +1324,9 @@ public final class WallpaperBrowserActivity extends Activity {
             frame.setOnFocusChangeListener((v, focused) -> {
                 frame.setForeground(focused ? ring : null);
                 v.animate().scaleX(focused ? 1.06f : 1f).scaleY(focused ? 1.06f : 1f).setDuration(150).start();
-                if (focused && h.result != null && !mine) {
-                    credit.setText(h.result.credit != null ? h.result.credit : sourceCredit());
+                if (focused && h.result != null) {
+                    credit.setText(mine ? mineLine(h.result)
+                            : h.result.credit != null ? h.result.credit : appleLine(h.result));
                 }
                 if (focused && !mine && h.getAdapterPosition() >= results.size() - 2 * COLUMNS) more();
             });
@@ -1148,6 +1359,7 @@ public final class WallpaperBrowserActivity extends Activity {
             h.result = r;
             h.label.setText(r.label);
             h.tick.setVisibility(ticked(r) ? View.VISIBLE : View.GONE);
+            h.image.setAlpha(r.odd ? 0.5f : 1f);   // not made for this: it can be picked all the same
             Bitmap cached = cache.get(r.thumb);
             h.image.setImageBitmap(cached);
             h.image.setTag(r.thumb);
@@ -1158,7 +1370,10 @@ public final class WallpaperBrowserActivity extends Activity {
                 if (b == null) return;
                 main.post(() -> {
                     cache.put(r.thumb, b);
-                    if (gen == generation && r.thumb.equals(h.image.getTag())) h.image.setImageBitmap(b);
+                    if (gen == generation && r.thumb.equals(h.image.getTag())) {
+                        h.image.setImageBitmap(b);
+                        if (isApple() && h.itemView.hasFocus()) credit.setText(appleLine(r));   // its size now known
+                    }
                 });
             });
         }
@@ -1169,9 +1384,42 @@ public final class WallpaperBrowserActivity extends Activity {
         }
     }
 
+    /** Apple's: the video's name and size (once known) before the credit; the others', the credit. */
+    private String appleLine(Result r) {
+        if (!isApple()) return sourceCredit();
+        long size = AppleAerials.knownSize(r.full);
+        return r.label + (size > 0 ? " · " + Formatter.formatShortFileSize(this, size) : "") + " · "
+                + sourceCredit();
+    }
+
     /** A thumbnail, decoded no bigger than a grid cell needs: from the web, a file on the TV, or a video's frame. */
-    private static Bitmap thumb(String url) {
-        if (url.startsWith("video:")) return videoFrame(url.substring(6));
+    private Bitmap thumb(String url) {
+        if (url.startsWith("aerial:")) {   // "aerial:" id "|" url: a frame read over the network, then kept
+            int bar = url.indexOf('|');
+            return AppleAerials.thumbnail(this, url.substring(7, bar), url.substring(bar + 1));
+        }
+        if (url.equals("own:banner")) return drawn(ownBanner, true);
+        if (url.equals("own:icon")) return drawn(ownIcon, false);
+        if (url.startsWith("video:")) return videoThumb(url.substring(6));
+        return thumbOf(url);
+    }
+
+    /**
+     * A Library video's thumbnail ("video:" id): the picture kept beside it, else made now and kept: a frame of
+     * the file, or for Apple's (when the device won't read a frame of it) the one Apple's grid shows.
+     */
+    private Bitmap videoThumb(String id) {
+        Wallpapers.Item item = wallpapers.item(id);
+        if (item == null) return null;
+        Bitmap b = wallpapers.thumb(item);
+        if (b != null) return b;
+        b = videoFrame(wallpapers.file(item).getPath());
+        if (b == null && Wallpapers.APPLE.equals(item.source)) b = AppleAerials.thumbnail(this, item.name);
+        if (b != null) wallpapers.keepThumb(item, b);
+        return b;
+    }
+
+    private static Bitmap thumbOf(String url) {
         if (url.startsWith("tile:")) return BitmapFactory.decodeFile(url.substring(5));   // 640 x 360 already
         if (url.startsWith("file:")) {
             BitmapFactory.Options o = new BitmapFactory.Options();

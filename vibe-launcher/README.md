@@ -140,7 +140,9 @@ the picture. With it off (the default), the bar always shows, and Up on the dock
 straight through to it.
 
 After a minute without a key on Home (not while a menu, Settings or a tile's move is open), the same
-view runs as a slideshow: a random still from any dock app's pool every 10 s, with no carets, glass or
+view runs as a slideshow: every 10 s (a video wallpaper plays to its end first) a random still from a dock app's pool (an app picked first, then one of
+its stills), or as Settings → Appearance → Screensaver backdrops says, only the selected app's or folder's, or
+the slideshow's own list of Library pictures and videos (`Wallpapers.SCREENSAVER`); with no carets, glass or
 play button; only the top bar's time and AM/PM, where they are on the bar (`slideClock`; Settings →
 Appearance → Screensaver clock). Any key stops it on the still showing, with its app picked, so the play button opens it. The
 screen is kept on for it only until the TV's own screen-off time since the last key. Settings → General
@@ -186,9 +188,10 @@ The full list, with what each is sent, is in the [privacy policy](docs/PRIVACY.m
 | `CpuInfo` | CPU use where the device allows it |
 | `PowerOnHome` | Home at power-on: Home shortly after the screen turns on |
 | `CrashGuard` | Falls back to the stock launcher's App info after repeated crashes |
-| `Wallpapers`, `WallpaperVideo`, `WallpaperBrowserActivity` | Backdrop pictures and videos, each stored once, with the lists that pick from them (each app's and folder's, and Custom wallpapers'); video playback on Home; the grids that pick for a list and the Wallhaven/Pexels/Pixabay/NASA/Commons browser |
+| `Wallpapers`, `WallpaperVideo`, `WallpaperBrowserActivity` | The Library: pictures and videos, each stored once with its name, the lists that name them by id (each tile's own, Custom wallpapers', the slideshow's) and what each tile is set to show (Automatic: the app's pictures, else Custom wallpapers, else its colour; or one of them alone, or its own list); video playback on Home; the grids that pick for a list or a tile and the Wallhaven/Pexels/Pixabay/NASA/Commons/Apple browser |
 | `Fonts`, `FontFile`, `UiFont`, `FontInflater`, `FontBrowserActivity` | Fonts, each stored once (Google Fonts, listed by Fontsource, or the phone); which characters a font file has; the chosen font and the clock's, or the system font where a language isn't covered; applying it to layouts as they're made; the font browser |
-| `TilePictures`, `TileCustom` | Tile pictures, each stored once, and what each app or folder tile shows (its picture, icon or name) |
+| `TilePictures`, `TileCustom` | The Library's tile-sized pictures, each stored once, and what each app or folder tile shows (any Library picture, its icon or a name) |
+| `NameDialog` | The TV's keyboard on a name (a tile, a folder, a Library item), in the launcher's own panel |
 | `Weather` | The weather line under the date (Open-Meteo, located by IP or a searched city) |
 | `ShelfDial` | A dock folder's apps as a dial above it |
 | `Adb`, `AdbPairing`, `AdbMdns`, `Spake2`, `TvApps`, `CleanLists` | Reaching the TV's own ADB from the TV itself, and turning apps off and on (Settings → Advanced) |

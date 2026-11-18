@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Apple's aerial videos (Settings > Library > Apple TV aerials, WallpaperBrowserActivity) come from sylvan.apple.com,
+  whose certificate is issued under Apple Root CA: trusted for that host only, beside the system's own. Everything
+  else keeps Android's defaults.
+-->
+<network-security-config>
+    <domain-config>
+        <domain includeSubdomains="false">sylvan.apple.com</domain>
+        <trust-anchors>
+            <certificates src="@raw/apple_root_ca" />
+            <certificates src="system" />
+        </trust-anchors>
+    </domain-config>
+</network-security-config>

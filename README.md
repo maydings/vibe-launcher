@@ -3,8 +3,7 @@
 A customizable home screen for Android/Google TV with built-in ADB debugging to debloat your TV without the
 need for any other device\* or AI.
 
-\* Only if your TV has nothing but Wireless debugging (some Google TV devices): it needs a one-time pairing
-with a code typed on a phone.
+\* A phone may be required to enter a one-time pairing code to enable adb on some devices. No phone app needed.
 
 No ads, no accounts, no tracking. Free and open source.
 
@@ -62,20 +61,23 @@ others) and finds clean artwork for each title. You choose the order it looks: N
 app's own picture. Plex, YouTube (through SmartTube) and an HDHomeRun tuner each get their own pictures too.
 
 You can also use your own pictures and videos, all added in one place (Settings → Library): sent
-from your phone, or picked on the TV from Wallhaven, Pixabay, NASA, Wikimedia Commons or Pexels. Each is kept
-once, and you choose where it shows:
+from your phone, or picked on the TV from Wallhaven, Pixabay, NASA, Wikimedia Commons, Pexels or Apple TV's
+aerial screensaver videos. Each is kept once, under its own name, and can be used anywhere:
 
-- **Each app and folder** can have its own backdrops (tile menu → Edit → Backdrops): one always shows, or a
-  different one each visit. They take the place of anything else that app would show.
-- **Custom wallpapers** has its own list too: show it only where an app has no picture, or instead of everything.
-- **Tile pictures** go on app and folder tiles (tile menu → Edit → Change picture), cropped on your phone.
+- **Each app and folder** chooses what shows behind it (tile menu → Edit → Backdrops). Left on Automatic, that's
+  the app's own pictures, then Custom wallpapers where it has none, then its color. Or set it to one thing only:
+  the app's pictures, Custom wallpapers, its color, or your own selection from the Library.
+- **Custom wallpapers** (Settings → Backdrops) is the list that shows behind any app with no picture of its own.
+- **Any picture** can go on an app or folder tile (tile menu → Edit → Change icon, beside the app’s own banner and icon). Those cropped for a tile
+  on your phone are listed first; the bigger ones made for backdrops follow.
 
 Fonts too: pick one for Vibe Launcher's text and another for the clock and weather (Settings → Appearance), from
 Outfit, the TV's own, or any of Google's 2,000 fonts (browsed on the TV, those for your language first) or a .ttf or
 .otf from your phone. A font without your language's letters isn't used for it: the TV's own font is, so nothing
 shows in two fonts at once.
 
-Leave Home alone for a minute and it turns into a slideshow of all of it.
+Leave Home alone for a minute and it turns into a slideshow of all of it; or of just the app or folder you were on,
+or of a list of its own that you tick in the Library (Settings → Appearance → Screensaver backdrops).
 
 ## Cleaning up your TV
 
@@ -91,6 +93,9 @@ phone. It turns debugging back off when you leave Settings. Then:
   turn the rest off.
 - **Apps you can turn off**: every app on the TV, on or off with OK.
 - **Turn all back on**: undoes everything Vibe Launcher turned off, and nothing else.
+- **Ad blocking**: blocks ad and tracking servers for every app on the TV, through the TV's own Private DNS
+  and a service that filters them: AdGuard, AdGuard Family, Mullvad or your own. Ads built into the video
+  itself, as on YouTube and Prime Video, still show. Android 9 or newer.
 - **Default launcher**: makes Vibe Launcher the real Home, or puts the stock launcher back.
 - **Home button (accessibility)**: for devices whose software won't let ADB be turned on, an accessibility service makes the remote's Home button open Vibe Launcher. Using ADB is recommended when it's available.
 

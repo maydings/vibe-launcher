@@ -1,0 +1,9 @@
+* Ad blocking for the whole TV (Settings → Advanced): AdGuard, AdGuard Family, Mullvad, or a DNS service of your own, sent from your phone and confirmed on the TV. Not in the store build.
+* Apple TV aerials in the Library, beside Pexels, Pixabay, NASA and Wikimedia Commons.
+* One Library for every picture and video: any picture can go on a tile or behind it.
+* Each tile chooses its backdrops (tile menu → Edit → Backdrops): Automatic, the app's own pictures, Custom wallpapers, its color, or your own selection.
+* Screensaver backdrops (Settings → Appearance): its own list, the selected app or folder, or every app. Pictures and videos mix, and a video plays to its end.
+* Library items have names: the real one from Apple, NASA and Commons, one you type on the phone when uploading, or Rename on the TV.
+* Change icon (tile menu → Edit): the app's banner, its icon, or a picture from the Library.
+* The phone link stays the same after a restart, so a phone that scanned it once still works. Forget phones makes a new one.
+* Saved videos show a thumbnail in the Library.

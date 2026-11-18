@@ -17,13 +17,19 @@ final class VibeSettings {
     private static final String WALLPAPER_MODE = "wallpaperMode";
     private static final String UI_FONT = "uiFont", CLOCK_FONT = "clockFont", DOCK_OPACITY = "dockOpacity",
             TOP_BAR_OPACITY = "topBarOpacity";
-    /** Custom wallpapers (Backdrops > Custom wallpapers): not shown, shown where an app has no picture, or always. */
-    static final int WALLPAPER_OFF = 0, WALLPAPER_NO_PICTURE = 1, WALLPAPER_ALWAYS = 2;
+    /**
+     * What the screensaver shows (Appearance > Screensaver backdrops): every dock app's backdrops, those of the
+     * app or folder selected, or its own list.
+     */
+    static final int SLIDES_ALL = 0, SLIDES_SELECTED = 1, SLIDES_OWN = 2;
+    /** wallpaperShowKept: Custom wallpapers' switch off, where an app has no picture, or always. */
+    static final int SHOW_KEPT_OFF = 0, SHOW_KEPT_NO_PICTURE = 1, SHOW_KEPT_ALWAYS = 2;
     private static final String COLUMNS = "columns";
     private static final String LANGUAGE = "language";
     private static final String HIDE_INACTIVE_INPUTS = "hideInactiveInputs";
     private static final String AUTO_HIDE_BAR = "autoHideBar";
     private static final String SLIDESHOW_CLOCK = "slideshowClock";
+    private static final String SLIDESHOW_FROM = "slideshowFrom";
     private static final String POWER_ON_HOME = "powerOnHome";
     private static final String DOCK_APPS = "dockApps";
     private static final String GLASS_TINT = "glassTint";
@@ -149,14 +155,13 @@ final class VibeSettings {
         prefs.edit().putString(CLOCK_FONT, choice).apply();
     }
 
-    /** When custom wallpapers show: WALLPAPER_OFF (the default), WALLPAPER_NO_PICTURE or WALLPAPER_ALWAYS. */
-    int wallpaperMode() {
-        int m = prefs.getInt(WALLPAPER_MODE, WALLPAPER_OFF);
-        return m >= WALLPAPER_OFF && m <= WALLPAPER_ALWAYS ? m : WALLPAPER_OFF;
-    }
-
-    void setWallpaperMode(int mode) {
-        prefs.edit().putInt(WALLPAPER_MODE, mode).apply();
+    /**
+     * Custom wallpapers' switch as a device's own data may keep it: 0 off (also when there's none), 1 where an app
+     * has no picture, 2 always. Read once, into what each tile shows (Wallpapers.firstChoices).
+     */
+    int wallpaperShowKept() {
+        int m = prefs.getInt(WALLPAPER_MODE, SHOW_KEPT_OFF);
+        return m >= SHOW_KEPT_OFF && m <= SHOW_KEPT_ALWAYS ? m : SHOW_KEPT_OFF;
     }
 
     /** Tiles per row on Home (4, 5 or 6), or the given default when not chosen. */
@@ -222,6 +227,19 @@ final class VibeSettings {
 
     void setSlideshowClock(boolean show) {
         prefs.edit().putBoolean(SLIDESHOW_CLOCK, show).apply();
+    }
+
+    /**
+     * What the slideshow shows: SLIDES_ALL (the default: every dock app's backdrops), SLIDES_SELECTED (those of
+     * the app or folder selected when Home was left) or SLIDES_OWN (its own list: Wallpapers.SCREENSAVER).
+     */
+    int slideshowFrom() {
+        int from = prefs.getInt(SLIDESHOW_FROM, SLIDES_ALL);
+        return from >= SLIDES_ALL && from <= SLIDES_OWN ? from : SLIDES_ALL;
+    }
+
+    void setSlideshowFrom(int from) {
+        prefs.edit().putInt(SLIDESHOW_FROM, from).apply();
     }
 
     /** The small arrows on Home that show where the remote goes (on by default). */

@@ -13,8 +13,9 @@ import java.util.List;
 
 /**
  * What the user changed on a tile (tile menu > Edit), by its key (an app's package, or "folder:<id>"): its name,
- * its icon instead of its banner, or one of the tile pictures (TilePictures) by id. The choices are kept with the
- * tile order (the "tiles" preferences, as JSON by key).
+ * its icon instead of its banner, or one of the Library's pictures by id (a tile picture, TilePictures', or one
+ * cut to the screen, Wallpapers'). The choices are kept with the tile order (the "tiles" preferences, as JSON by
+ * key).
  * <p>
  * A picture kept for one app alone (files/tiles/&lt;package&gt;.png with "picture": true, as a backup may still
  * bring) is taken into the tile pictures when read, and the tile keeps showing it.
@@ -87,12 +88,21 @@ final class TileCustom {
         return id.isEmpty() ? null : id;
     }
 
-    /** The file of the tile picture chosen for the tile, or null. */
+    /** The file of the picture chosen for the tile, or null: a tile picture, or one of the Library's others. */
     File picture(String key) {
         String id = pictureId(key);
         if (id == null) return null;
         File f = new TilePictures(context).file(id);
-        return f.exists() ? f : null;
+        if (f.exists()) return f;
+        Wallpapers library = Wallpapers.get(context);
+        Wallpapers.Item item = library.item(id);
+        return item != null && !item.video ? library.file(item) : null;
+    }
+
+    /** The picture chosen for the tile, at a tile's size, or null. */
+    android.graphics.Bitmap pictureBitmap(String key) {
+        File f = picture(key);
+        return f != null ? TilePictures.forTile(f) : null;
     }
 
     /** Anything changed on this tile (for Reset). */
@@ -108,13 +118,13 @@ final class TileCustom {
         put(key, "icon", icon ? Boolean.TRUE : null);
     }
 
-    /** One of the tile pictures (by id) as the tile's; null for none (its own banner, or a folder's preview). */
+    /** One of the Library's pictures (by id) as the tile's; null for none (its own banner, or a folder's preview). */
     void setPicture(String key, String id) {
         if (id != null) put(key, "icon", null);   // a picture of its own replaces either
         put(key, "pic", id);
     }
 
-    /** A tile picture deleted: off every tile that showed it. */
+    /** A picture deleted from the Library: off every tile that showed it. */
     void forgetPicture(String id) {
         boolean changed = false;
         List<String> keys = new ArrayList<>();
@@ -129,7 +139,7 @@ final class TileCustom {
         if (changed) save();
     }
 
-    /** The tile as it was made: its own name and banner (the tile picture stays among the tile pictures). */
+    /** The tile as it was made: its own name and banner (the picture stays in the Library). */
     void reset(String key) {
         all.remove(key);
         save();

@@ -44,7 +44,7 @@ import java.util.function.Supplier;
  * it back when it closes. The other pages are made as they're opened (a few rows, current values).
  *
  * General: language, reloading the backdrops, Home at power-on, the Home button service, Restart… (service
- * on), backup and restore (Backup, on the TV or through the phone) and updates (Updater). Appearance: tiles per row, inputs, the top bar and the slideshow's clock. API
+ * on), backup and restore (Backup, on the TV or through the phone) and updates (Updater). Appearance: tiles per row, inputs, the top bar and the slideshow's clock and backdrops. API
  * keys: the TMDB, YouTube and Plex keys, edited in place and explained under the list, SmartTube to install
  * or sign in to (the key-free way to YouTube backdrops), and a QR code for pasting the keys from a phone
  * (PhoneLink). Apps (adb build only): turning the TV's apps off and on through its own network debugging
@@ -619,6 +619,16 @@ final class SettingsScreen {
                             if (powerMenu != null) powerMenu.run();
                         } : null)));
         page.link(R.string.backup_restore, null, this::backups);
+        // The phone link's code made anew: a phone that kept the page's address can't reach this device any more.
+        Row forget = page.add(R.string.phone_forget, null, () -> explainThenDo(R.string.phone_forget,
+                R.string.phone_forget_confirm, () -> {
+                    PhoneLink.newCode(ctx.getApplicationContext());
+                    keepLinkUntil = 0;
+                    handler.removeCallbacks(stopKeptLink);
+                    startPhoneLink();
+                    if (host != null) Toast.makeText(host, R.string.phone_forgotten, Toast.LENGTH_SHORT).show();
+                }));
+        forget.about = R.string.phone_forget_short;
         Row version = page.add(R.string.updates, null, null);
         Row check = page.add(R.string.check_updates, null, null);
         showUpdates(version, check);
@@ -753,6 +763,8 @@ final class SettingsScreen {
             if (home != null) home.updateTopBar();
         });
         page.toggle(R.string.slideshow_clock, settings::slideshowClock, settings::setSlideshowClock);
+        Row idle = page.link(R.string.idle_backdrops, null, this::idleBackdrops);
+        idle.about = R.string.idle_backdrops_short;
         page.link(R.string.clock, () -> clockName(settings.clockHours()), this::clockHours);
         page.toggle(R.string.carets, settings::carets, settings::setCarets);
         page.link(R.string.glass_color, this::swatch, this::glassColour);
@@ -762,6 +774,46 @@ final class SettingsScreen {
         // The TV's own animation speed: with WRITE_SECURE_SETTINGS, which the TV's ADB grants (TvControl).
         Row speed = page.link(R.string.anim_speed, () -> animName(TvControl.animationScale(ctx)), this::animSpeed);
         speed.about = R.string.anim_short;
+        return page;
+    }
+
+    /** The names of VibeSettings.slideshowFrom's values, by value. */
+    private static final int[] IDLE_FROM = {R.string.idle_all, R.string.idle_selected, R.string.idle_own};
+
+    /**
+     * Appearance > Screensaver backdrops: what the slideshow shows (its own list, the selected app's or folder's
+     * backdrops, or every app's), and its own list, ticked from the Library's pictures and videos.
+     */
+    private Page idleBackdrops() {
+        Page page = new Page(ctx.getString(R.string.idle_backdrops));
+        page.footnote = R.string.idle_backdrops_short;
+        page.link(R.string.wp_use, () -> ctx.getString(IDLE_FROM[settings.slideshowFrom()]), this::idleFrom);
+        String name = ctx.getString(R.string.idle_backdrops);
+        for (boolean video : new boolean[]{false, true}) {
+            Row row = page.add(video ? R.string.backdrop_videos : R.string.backdrop_pictures,
+                    () -> String.valueOf(countOf(Wallpapers.get(ctx).listOf(Wallpapers.SCREENSAVER), video)),
+                    () -> host.startActivity(WallpaperBrowserActivity.mine(host, video
+                            ? WallpaperBrowserActivity.VIDEOS : WallpaperBrowserActivity.PICTURES,
+                            Wallpapers.SCREENSAVER, name)));
+            row.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+            row.about = R.string.media_tick_short;
+        }
+        Row add = page.link(R.string.media_title, null, this::media);
+        add.about = R.string.media_short;
+        return page;
+    }
+
+    private Page idleFrom() {
+        Page page = new Page(ctx.getString(R.string.wp_use));
+        page.footnote = R.string.idle_backdrops_short;
+        for (int from : new int[]{VibeSettings.SLIDES_OWN, VibeSettings.SLIDES_SELECTED, VibeSettings.SLIDES_ALL}) {
+            // Picked, it's ticked and the list stays: Back or Left goes back.
+            Row row = page.add(IDLE_FROM[from], () -> from == settings.slideshowFrom() ? "✓" : "", () -> {
+                settings.setSlideshowFrom(from);
+                for (Page open : pages) open.refresh();   // the lists on the left say it too
+            });
+            if (from == settings.slideshowFrom()) page.opened = row;
+        }
         return page;
     }
 
@@ -1088,8 +1140,8 @@ MainActivity.showError(host, R.string.anim_short);
         Page page = new Page(ctx.getString(R.string.tab_backdrops));
         Row sources = page.link(R.string.art_sources, this::artSummary, this::artSources);
         sources.about = R.string.art_sources_short;
-        Row custom = page.link(R.string.wp_custom, () -> ctx.getString(WALLPAPER_MODES[settings.wallpaperMode()]),
-                this::wallpapersPage);
+        Row custom = page.link(R.string.wp_custom,
+                () -> String.valueOf(Wallpapers.get(ctx).listOf(Wallpapers.ROTATION).size()), this::wallpapersPage);
         custom.about = R.string.wp_custom_short;
         page.link(R.string.picture_format, () -> ctx.getString(settings.jpegStills() ? R.string.picture_jpeg
                 : R.string.picture_png), this::pictureFormat);
@@ -1152,20 +1204,14 @@ MainActivity.showError(host, R.string.anim_short);
 
     // ---- custom wallpapers ---------------------------------------------------------------------------
 
-    private static final int[] WALLPAPER_MODES = {R.string.off, R.string.wp_use_no_picture, R.string.wp_use_always};
-
-    /** Backdrops > Custom wallpapers while it's open: its list is brought up to date as wallpapers come in. */
     /**
-     * Backdrops > Custom wallpapers: when they show (Off, where an app has no picture, or always instead of the
-     * backdrops), adding them (from the phone's page, or picked from Wallhaven's, Pexels', Pixabay's, NASA's or
-     * Commons' grid), and the ones there, newest first: OK on one asks to delete it.
+     * Backdrops > Custom wallpapers: the list of the Library's pictures and videos that shows behind an app with
+     * no picture of its own, and behind any tile set to show them (its menu > Edit > Backdrops): ticked here, and
+     * the Library, where they're added.
      */
     private Page wallpapersPage() {
         Page page = new Page(ctx.getString(R.string.wp_custom));
         page.footnote = R.string.wp_custom_short;
-        Row use = page.link(R.string.wp_use, () -> ctx.getString(WALLPAPER_MODES[settings.wallpaperMode()]),
-                this::wallpaperModes);
-        use.about = R.string.wp_use_short;
         // Its own list, ticked from everything uploaded (Library, the one place they come in).
         String name = ctx.getString(R.string.wp_custom);
         Row pictures = page.add(R.string.backdrop_pictures,
@@ -1257,41 +1303,36 @@ MainActivity.showError(host, R.string.anim_short);
 
     /**
      * Library: the one place they come in, in three buckets, each kept once: tile pictures (for a tile,
-     * tile menu > Edit > Change picture), and backdrop pictures and videos (for an app's, a folder's or Custom
+     * tile menu > Edit > Change icon), and backdrop pictures and videos (for an app's, a folder's or Custom
      * wallpapers' list). Each: Add from phone, the sources to browse, and what's on the device (OK deletes).
      */
     private Page media() {
         Page page = new Page(ctx.getString(R.string.media_title));
         page.footnote = R.string.media_short;
-        page.link(R.string.tile_pictures, () -> String.valueOf(new TilePictures(ctx).list().size()), this::tilePictures);
-        page.link(R.string.backdrop_pictures, () -> String.valueOf(countOf(Wallpapers.get(ctx).list(), false)),
-                () -> backdropMedia(false));
-        page.link(R.string.backdrop_videos, () -> String.valueOf(countOf(Wallpapers.get(ctx).list(), true)),
-                () -> backdropMedia(true));
+        page.link(R.string.wp_pictures, () -> String.valueOf(countOf(Wallpapers.get(ctx).list(), false)),
+                () -> libraryMedia(false));
+        page.link(R.string.wp_videos, () -> String.valueOf(countOf(Wallpapers.get(ctx).list(), true)),
+                () -> libraryMedia(true));
         page.link(R.string.fonts, () -> String.valueOf(new Fonts(ctx).list().size()), this::fontsPage);
         return page;
     }
 
-    private Page tilePictures() {
-        Page page = new Page(ctx.getString(R.string.tile_pictures));
-        if (phoneUrl != null && link != null && link.tileUrl() != null) {
-            Row phone = page.link(R.string.wp_add_phone, null,
-                    () -> phone(R.string.wp_add_phone, link.tileUrl(), R.string.tp_scan));
-            phone.about = R.string.tp_add_phone_short;
-        }
-        Row there = page.add(R.string.media_on_device, () -> String.valueOf(new TilePictures(ctx).list().size()),
-                () -> host.startActivity(WallpaperBrowserActivity.mine(host, WallpaperBrowserActivity.TILES, null, null)));
-        there.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
-        return page;
-    }
-
-    /** Backdrop pictures, or videos: from the phone, the sources that have them, and those on the device. */
-    private Page backdropMedia(boolean video) {
-        Page page = new Page(ctx.getString(video ? R.string.backdrop_videos : R.string.backdrop_pictures));
+    /**
+     * The Library's pictures, or its videos: from the phone (a picture cut to the screen there, or, Tile pictures,
+     * framed small for a tile), the sources that have them, and those on the device. Any of them can be used
+     * anywhere: a picture on a tile, either behind Home.
+     */
+    private Page libraryMedia(boolean video) {
+        Page page = new Page(ctx.getString(video ? R.string.wp_videos : R.string.wp_pictures));
         if (phoneUrl != null && link != null && link.wallpaperUrl() != null) {
             Row phone = page.link(R.string.wp_add_phone, null,
                     () -> phone(R.string.wp_add_phone, link.wallpaperUrl(), R.string.wp_scan));
             phone.about = R.string.wp_add_phone_short;
+        }
+        if (!video && phoneUrl != null && link != null && link.tileUrl() != null) {
+            Row tile = page.link(R.string.tile_pictures, null,
+                    () -> phone(R.string.tile_pictures, link.tileUrl(), R.string.tp_scan));
+            tile.about = R.string.tp_add_phone_short;
         }
         if (!video) {
             Row wallhaven = page.add(R.string.wp_browse_wallhaven, null,
@@ -1320,24 +1361,16 @@ MainActivity.showError(host, R.string.anim_short);
                 () -> host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.COMMONS)));
         commons.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
         commons.about = R.string.wp_credit_commons;
+        if (video) {   // videos only, and big ones
+            Row apple = page.add(R.string.wp_browse_apple, null,
+                    () -> host.startActivity(WallpaperBrowserActivity.intent(host, Wallpapers.APPLE)));
+            apple.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+            apple.about = R.string.wp_apple_short;
+        }
         Row there = page.add(R.string.media_on_device, () -> String.valueOf(countOf(Wallpapers.get(ctx).list(), video)),
                 () -> host.startActivity(WallpaperBrowserActivity.mine(host,
                         video ? WallpaperBrowserActivity.VIDEOS : WallpaperBrowserActivity.PICTURES, null, null)));
         there.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
-        return page;
-    }
-
-    private Page wallpaperModes() {
-        Page page = new Page(ctx.getString(R.string.wp_use));
-        for (int mode = 0; mode < WALLPAPER_MODES.length; mode++) {
-            int value = mode;
-            // Picked, it's ticked and the list stays: Back or Left goes back.
-            Row row = page.add(WALLPAPER_MODES[mode], () -> value == settings.wallpaperMode() ? "✓" : "", () -> {
-                settings.setWallpaperMode(value);
-                page.refresh();
-            });
-            if (mode == settings.wallpaperMode()) page.opened = row;
-        }
         return page;
     }
 
@@ -1871,6 +1904,8 @@ MainActivity.showError(host, R.string.anim_short);
         page.list.addView(box, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
         page.stops.add(box);
+        page.footnote = R.string.phone_keep;   // the address stays: bookmarked, it's there whenever Settings is
+        page.about.setText(R.string.phone_keep);
         return page;
     }
 
@@ -1922,6 +1957,10 @@ MainActivity.showError(host, R.string.anim_short);
         pollAdb();
         Row debloat = page.link(R.string.debloat, null, this::debloat);
         debloat.about = R.string.apps_short;
+        if (AdBlock.supported()) {
+            Row ads = page.link(R.string.ad_blocking, this::adBlockName, this::adBlocking);
+            ads.about = R.string.ad_blocking_short;
+        }
         Row launcher = defaultLauncherRow = page.link(R.string.default_launcher, () -> ctx.getString(DefaultHome.isHome(ctx)
                 ? R.string.app_name : R.string.home_stock), this::defaultLauncher);
         launcher.about = TvControl.homeUnsupported() ? R.string.home_unsupported : R.string.home_make_short;
@@ -2268,6 +2307,172 @@ MainActivity.showError(host, R.string.anim_short);
             handler.post(() -> addAppRows(page, apps, 0));
         }, "TvApps").start();
         return page;
+    }
+
+    // ---- ad blocking -----------------------------------------------------------------------------------
+
+    /** Ad blocking while it's open, its Add custom DNS row and phone page, and the hostname being checked. */
+    private Page adBlockPage, adPhonePage;
+    private Row adAddRow;
+    private String adChecking;
+    /** The person's own services' rows on the open Ad blocking page, by hostname (lower case). */
+    private final java.util.Map<String, Row> adCustomRows = new java.util.HashMap<>();
+
+    /** What Ad blocking uses now: Off, a service's name, or a hostname of the device's own. */
+    private String adBlockName() {
+        String now = AdBlock.active(ctx);
+        return now == null ? ctx.getString(R.string.off) : AdBlock.nameOf(ctx, now);
+    }
+
+    /** A choice's mark: ticked when in use, Checking… while it's being tried. */
+    private String adMark(String hostname) {
+        if (adChecking != null) return adChecking.equalsIgnoreCase(hostname) ? ctx.getString(R.string.ad_checking) : "";
+        String now = AdBlock.active(ctx);
+        return (now == null ? hostname == null : now.equalsIgnoreCase(hostname)) ? "✓" : "";
+    }
+
+    /**
+     * Advanced > Ad blocking (AdBlock): Off, three filtering DNS services, the person's own (each with its name),
+     * and Add custom DNS, which opens the phone's page for a name and an address. Picked, a choice is tried and the
+     * list stays; one that doesn't answer is undone, with a note. Hold OK on one's own: Delete.
+     */
+    private Page adBlocking() {
+        Page page = new Page(ctx.getString(R.string.ad_blocking));
+        adBlockPage = page;
+        adCustomRows.clear();
+        page.footnote = R.string.ad_blocking_short;
+        String now = AdBlock.active(ctx);
+        Row off = page.add(R.string.off, () -> adMark(null), () -> chooseAdBlock(null));
+        if (now == null) page.opened = off;
+        for (int i = 0; i < AdBlock.HOSTS.length; i++) {
+            Row row = adRow(page, AdBlock.NAMES[i], AdBlock.HOSTS[i]);
+            if (i == 1) row.about = R.string.ad_family_short;
+        }
+        for (String[] c : AdBlock.customs(ctx)) customAdRow(page, c[0], c[1]);
+        adAddRow = page.add(R.string.ad_custom_add, null, () -> {
+            if (phoneUrl == null || link == null || link.dnsUrl() == null) {
+                MainActivity.showError(host, R.string.ad_no_network);
+                return;
+            }
+            adPhonePage = phone(R.string.ad_custom_add, link.dnsUrl(), R.string.ad_custom_scan);
+            open(adPhonePage, adAddRow);
+        });
+        adAddRow.about = R.string.ad_custom_add_short;
+        adAddRow.view.findViewById(R.id.chevron).setVisibility(View.VISIBLE);
+        return page;
+    }
+
+    private Row adRow(Page page, String name, String hostname) {
+        Row row = page.add(name, () -> adMark(hostname), () -> chooseAdBlock(hostname));
+        if (hostname.equalsIgnoreCase(AdBlock.active(ctx))) page.opened = row;
+        return row;
+    }
+
+    /** One of the person's own: its address under the list, and Hold OK to delete it. */
+    private Row customAdRow(Page page, String name, String hostname) {
+        Row row = adRow(page, name, hostname);
+        row.aboutText = ctx.getString(R.string.ad_custom_item_short, hostname);
+        adCustomRows.put(hostname.toLowerCase(java.util.Locale.ROOT), row);
+        row.view.setOnLongClickListener(v -> {
+            askDeleteCustomAd(page, row, hostname);
+            return true;
+        });
+        return row;
+    }
+
+    /** "Delete this item from your device?", Cancel first, as in the Library. In use, ad blocking goes off first. */
+    private void askDeleteCustomAd(Page page, Row row, String hostname) {
+        if (host == null || adChecking != null) return;
+        confirm(ctx.getString(R.string.media_delete_title), null, R.string.wp_delete, true, () -> {
+            if (hostname.equalsIgnoreCase(AdBlock.active(ctx))) AdBlock.off(ctx);
+            AdBlock.removeCustom(ctx, hostname);
+            adCustomRows.remove(hostname.toLowerCase(java.util.Locale.ROOT));
+            int at = page.rows.indexOf(row);
+            page.rows.remove(row);
+            page.stops.remove(row.view);
+            page.list.removeView(row.view);
+            if (page.opened == row) page.opened = null;
+            refreshAdBlock();
+            Row next = at >= 0 && at < page.rows.size() ? page.rows.get(at) : adAddRow;
+            if (next != null) next.view.requestFocus();
+        });
+    }
+
+    /** A service the phone sent is being asked about (customAdFromPhone): one at a time. */
+    private boolean adAsking;
+
+    /**
+     * A service the phone sent (PhoneLink's DNS page). It changes where every app's lookups go, so it's asked
+     * here first, with its name and address, Cancel first: nothing is added or turned on without Continue.
+     */
+    private void customAdFromPhone(String name, String hostname) {
+        if (host == null || adAsking) return;
+        String label = name == null ? "" : name.replaceAll("\\s+", " ").trim();
+        adAsking = true;
+        Dialog asked = confirm(ctx.getString(R.string.ad_custom_add),
+                label.isEmpty() || label.equalsIgnoreCase(hostname) ? hostname : label + "\n" + hostname,
+                R.string.continue_button, true, () -> addCustomAd(name, hostname));
+        if (asked == null) adAsking = false;
+        else asked.setOnDismissListener(d -> adAsking = false);
+    }
+
+    /** The phone's service, agreed to here: its row (or its new name), back to the list, turned on. */
+    private void addCustomAd(String name, String hostname) {
+        if (host == null) return;
+        AdBlock.addCustom(ctx, name, hostname);
+        if (adBlockPage != null && pages.contains(adBlockPage)) {
+            Row known = adCustomRows.get(hostname.toLowerCase(java.util.Locale.ROOT));
+            if (known == null) {
+                // Before Add custom DNS, after the others.
+                Row row = customAdRow(adBlockPage, AdBlock.nameOf(ctx, hostname), hostname);
+                adBlockPage.list.removeView(row.view);
+                adBlockPage.list.addView(row.view, adBlockPage.list.indexOfChild(adAddRow.view));
+                adBlockPage.rows.remove(row);
+                adBlockPage.rows.add(adBlockPage.rows.indexOf(adAddRow), row);
+                adBlockPage.stops.remove(row.view);
+                adBlockPage.stops.add(adBlockPage.stops.indexOf(adAddRow.view), row.view);
+            } else {
+                known.label.setText(AdBlock.nameOf(ctx, hostname));   // sent again: renamed
+            }
+            if (adPhonePage != null && !pages.isEmpty() && pages.get(pages.size() - 1) == adPhonePage) back();
+        }
+        adPhonePage = null;
+        chooseAdBlock(hostname);
+    }
+
+    /** Ad blocking off (null) or through a hostname: set, then checked off the main thread, undone if it fails. */
+    private void chooseAdBlock(String hostname) {
+        if (adChecking != null) return;   // one at a time
+        if (!TvControl.canWrite(ctx)) {
+            MainActivity.showError(host, R.string.ad_needs_adb);
+            return;
+        }
+        String now = AdBlock.active(ctx);
+        if (hostname == null ? now == null : hostname.equalsIgnoreCase(now)) return;
+        if (hostname == null) {
+            if (!AdBlock.off(ctx)) MainActivity.showError(host, R.string.ad_needs_adb);
+            refreshAdBlock();
+            return;
+        }
+        adChecking = hostname;
+        refreshAdBlock();
+        Context app = ctx.getApplicationContext();
+        new Thread(() -> {
+            boolean ok = AdBlock.use(app, hostname) && AdBlock.check(app, hostname);
+            if (!ok) AdBlock.off(app);   // never left with names that don't resolve
+            handler.post(() -> {
+                adChecking = null;
+                refreshAdBlock();
+                if (!ok && host != null) {
+                    MainActivity.showError(host, ctx.getString(R.string.ad_failed, AdBlock.nameOf(ctx, hostname)));
+                }
+            });
+        }, "AdBlock").start();
+    }
+
+    private void refreshAdBlock() {
+        if (adBlockPage != null) adBlockPage.refresh();
+        if (appsPage != null) appsPage.refresh();
     }
 
     private java.util.concurrent.ExecutorService adb() {
@@ -2743,12 +2948,22 @@ MainActivity.showError(host, R.string.anim_short);
 
     /** As explainThenDo, its button saying what it does (Delete). */
     private void explainThenDo(int title, int message, int button, Runnable open) {
-        if (host == null) return;
+        confirm(ctx.getString(title), ctx.getString(message), button, false, open);
+    }
+
+    /**
+     * The launcher's own window asking before something is done: a title, what it's about (null: the title says
+     * it all, and the window is narrower), a button that does it and Cancel. cancelFirst: Cancel has the focus,
+     * for what can't be undone or wasn't asked for here. The window, or null when Settings isn't showing.
+     */
+    private Dialog confirm(CharSequence title, CharSequence message, int button, boolean cancelFirst, Runnable then) {
+        if (host == null) return null;
         Activity activity = host;
         View panel = LayoutInflater.from(ctx).inflate(R.layout.dialog_update,
                 activity.findViewById(android.R.id.content), false);
         ((TextView) panel.findViewById(R.id.updateTitle)).setText(title);
-        ((TextView) panel.findViewById(R.id.notes)).setText(message);
+        if (message != null) ((TextView) panel.findViewById(R.id.notes)).setText(message);
+        else panel.findViewById(R.id.notesScroll).setVisibility(View.GONE);
         TextView go = panel.findViewById(R.id.install), cancel = panel.findViewById(R.id.cancelUpdate);
         go.setText(button);
         Dialog dialog = new Dialog(activity, android.R.style.Theme_Material_Dialog_NoActionBar);
@@ -2756,17 +2971,18 @@ MainActivity.showError(host, R.string.anim_short);
         Window window = dialog.getWindow();
         if (window != null) {
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            window.setLayout((int) (560 * density), ViewGroup.LayoutParams.WRAP_CONTENT);
+            window.setLayout((int) ((message != null ? 560 : 420) * density), ViewGroup.LayoutParams.WRAP_CONTENT);
         }
         Highlight.pill(go, highlight);
         Highlight.pill(cancel, highlight);
         cancel.setOnClickListener(v -> dialog.dismiss());
         go.setOnClickListener(v -> {
             dialog.dismiss();
-            if (host == activity) open.run();
+            if (host == activity) then.run();
         });
         dialog.show();
-        go.requestFocus();
+        (cancelFirst ? cancel : go).requestFocus();
+        return dialog;
     }
 
     /**
@@ -2960,8 +3176,9 @@ MainActivity.showError(host, R.string.anim_short);
             settings.save(keys[0], keys[1], keys[2], keys[3], keys[4]);
             for (Page page : pages) page.refresh();
             Toast.makeText(host, R.string.saved_from_phone, Toast.LENGTH_SHORT).show();
-        }, settings);
+        }, settings, PhoneLink.savedCode(ctx.getApplicationContext()));
         Context app = ctx.getApplicationContext();
+        if (AdBlock.supported()) link.customDns = this::customAdFromPhone;
         link.backups = new PhoneLink.Backups() {
             @Override
             public String make() {
@@ -2996,8 +3213,8 @@ MainActivity.showError(host, R.string.anim_short);
             }
 
             @Override
-            public boolean received(java.io.File file, boolean video) {
-                boolean added = walls.add(file, video, Wallpapers.PHONE, "", screenW, screenH) != null;
+            public boolean received(java.io.File file, boolean video, String name) {
+                boolean added = walls.add(file, video, Wallpapers.PHONE, "", name, screenW, screenH) != null;
                 if (added) handler.post(SettingsScreen.this::showWallpapers);
                 return added;
             }
@@ -3017,9 +3234,12 @@ MainActivity.showError(host, R.string.anim_short);
                 return added;
             }
         };
-        link.tilePictures = dataUrl -> {
+        link.tilePictures = (dataUrl, name) -> {
             android.graphics.Bitmap picture = TilePictures.decode(dataUrl);
-            boolean added = picture != null && new TilePictures(app).add(picture) != null;
+            TilePictures tiles = new TilePictures(app);
+            String id = picture != null ? tiles.add(picture) : null;
+            boolean added = id != null;
+            if (added && !name.isEmpty()) tiles.setTitle(id, name);
             if (added) handler.post(SettingsScreen.this::showWallpapers);
             return added;
         };

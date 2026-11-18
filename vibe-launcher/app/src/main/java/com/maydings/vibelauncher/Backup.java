@@ -216,6 +216,7 @@ final class Backup {
                 ok = false;
             }
         }
+        Wallpapers.tilePicturesChanged();   // the Library lists them: read again
         return ok;
     }
 

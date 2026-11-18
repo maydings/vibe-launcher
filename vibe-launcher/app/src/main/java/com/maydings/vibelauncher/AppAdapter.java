@@ -9,7 +9,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Outline;
@@ -33,7 +32,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -97,15 +95,14 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         }
 
         /**
-         * A folder's tile: its tile picture when one is chosen (tile menu > Edit > Change picture), else its preview
+         * A folder's tile: its tile picture when one is chosen (tile menu > Edit > Change icon), else its preview
          * drawn from its apps (FolderDrawable).
          */
         Entry(Context ctx, Folders.Folder folder, List<Entry> members, TileCustom custom) {
             this.label = folder.name;
             this.component = new ComponentName(ctx.getPackageName(), Folders.KEY_PREFIX + folder.id);
             this.pkg = ctx.getPackageName();
-            File picture = custom.picture(Folders.KEY_PREFIX + folder.id);
-            Bitmap chosen = picture != null ? BitmapFactory.decodeFile(picture.getPath()) : null;
+            Bitmap chosen = custom.pictureBitmap(Folders.KEY_PREFIX + folder.id);
             this.pictureId = chosen != null ? custom.pictureId(Folders.KEY_PREFIX + folder.id) : null;
             this.banner = chosen != null ? new BitmapDrawable(ctx.getResources(), chosen) : new FolderDrawable(members);
             this.icon = null;
@@ -205,8 +202,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
             if (banner != null && !isBannerShaped(banner.getIntrinsicWidth(), banner.getIntrinsicHeight())) banner = null;
             boolean ownBanner = banner != null;
             // Tile menu > Edit: a picture of the user's own, or the icon instead of the banner, and a name.
-            File picture = custom.picture(pkg);
-            Bitmap chosen = picture != null ? BitmapFactory.decodeFile(picture.getPath()) : null;
+            Bitmap chosen = custom.pictureBitmap(pkg);
             if (chosen != null) banner = new BitmapDrawable(ctx.getResources(), chosen);
             else if (custom.useIcon(pkg)) banner = null;
             String name = custom.name(pkg);

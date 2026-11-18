@@ -555,22 +555,32 @@ final class Backdrops {
         });
     }
 
+    /**
+     * An app first, each as likely as the next, then one of its stills: by still, an app with a few (or with its
+     * own wallpapers, which show in place of its stills) hardly ever came up beside apps with dozens.
+     */
     private synchronized Entry pickSlide(List<String> pkgs, Entry showing, String[] owner) {
-        List<Entry> all = new ArrayList<>();
+        List<List<Entry>> byApp = new ArrayList<>();
         List<String> owners = new ArrayList<>();
         for (String pkg : pkgs) {
             Pool p = pool(pkg);
             if (p == null) continue;
-            for (Entry e : p.entries) {
-                if (e.equals(showing)) continue;
-                all.add(e);
-                owners.add(pkg);
-            }
+            List<Entry> stills = new ArrayList<>();
+            for (Entry e : p.entries) if (!e.equals(showing)) stills.add(e);
+            if (stills.isEmpty()) continue;
+            byApp.add(stills);
+            owners.add(pkg);
         }
-        if (all.isEmpty()) return null;
-        int i = random.nextInt(all.size());
+        if (byApp.isEmpty()) return null;
+        int i = random.nextInt(byApp.size());
         owner[0] = owners.get(i);
-        return all.get(i);
+        List<Entry> stills = byApp.get(i);
+        return stills.get(random.nextInt(stills.size()));
+    }
+
+    /** The app's still this visit (the one Home shows for it), or null when none has been picked. */
+    synchronized Entry shownOf(String pkg) {
+        return pkg == null ? null : shown.get(pkg);
     }
 
     /** Makes this the app's still for this visit: the slideshow stopped on it. */

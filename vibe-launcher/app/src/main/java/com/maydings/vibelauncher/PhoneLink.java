@@ -1,5 +1,6 @@
 package com.maydings.vibelauncher;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Looper;
@@ -29,8 +30,9 @@ import java.util.Map;
 
 /**
  * A tiny web page on the home network for typing settings on a phone instead of the remote. Runs only
- * while the settings dialog is open; the link carries a random code, so only someone who can see the
- * TV's QR code can send anything.
+ * while Settings is open; the link carries a random code, so only someone who has seen the TV's QR code can send
+ * anything. The code is kept (savedCode), so a phone that bookmarked a page finds it again whenever Settings is
+ * open, until Forget phones makes a new one (newCode). Every page links to the others (head).
  */
 final class PhoneLink {
 
@@ -64,8 +66,9 @@ final class PhoneLink {
     }
 
     /**
-     * Custom wallpapers from the phone (Settings > Backdrops > Custom wallpapers > Add from phone): a picture,
-     * cut to 16:9 on the phone, or a video, each written straight to a file on the TV as it arrives.
+     * The Library's pictures and videos from the phone (Settings > Library > Add from phone): a picture, cut to
+     * 16:9 on the phone, or a video, each written straight to a file on the TV as it arrives, with the name
+     * typed for it there, if any.
      */
     interface WallpaperUploads {
         /** Where an arriving file goes (Wallpapers.incoming). */
@@ -74,17 +77,20 @@ final class PhoneLink {
         /** Whether a video this big may come (Wallpapers.roomFor). */
         boolean roomFor(long bytes);
 
-        /** The file arrived whole: true when it was added. On the page's thread. */
-        boolean received(java.io.File file, boolean video);
+        /** The file arrived whole, to be called name ("" for none): true when it was added. On the page's thread. */
+        boolean received(java.io.File file, boolean video, String name);
     }
 
     /**
-     * Tile pictures from the phone (Settings > Library > Tile pictures > Add from phone): one cropped to
-     * the tile's 16:9 on the phone, sent as a JPEG data URL.
+     * Tile pictures from the phone (Settings > Library > Pictures > Tile pictures): one cropped to the tile's
+     * 16:9 on the phone, sent as a JPEG data URL, with the name typed for it there, if any.
      */
     interface TilePictureUploads {
-        /** The phone's "data:image/...;base64,..." picture arrived: true when it was added. On the page's thread. */
-        boolean received(String dataUrl);
+        /**
+         * The phone's "data:image/...;base64,..." picture arrived, to be called name ("" for none): true when it
+         * was added. On the page's thread.
+         */
+        boolean received(String dataUrl, String name);
     }
 
     /** Fonts from the phone (Settings > Library > Fonts > Add from phone): a .ttf or .otf file. */
@@ -117,18 +123,73 @@ final class PhoneLink {
     /** Set by Settings: the font page is there while it is. */
     FontUploads fonts;
     private final VibeSettings settings;
+    /** Ad blocking's own services, added from the DNS page (/dns): a name and a hostname; null: no such page. */
+    interface CustomDns {
+        /**
+         * On the main thread; the hostname already checked and made plain (AdBlock.clean). Nothing is added or
+         * turned on by this alone: the device asks first (SettingsScreen.customAdFromPhone).
+         */
+        void added(String name, String host);
+    }
+
+    CustomDns customDns;
     private final Handler main = new Handler(Looper.getMainLooper());
     private final String code;
     private ServerSocket server;
     private String url;
 
-    PhoneLink(Listener listener, VibeSettings settings) {
+    PhoneLink(Listener listener, VibeSettings settings, String code) {
         this.listener = listener;
         this.settings = settings;
+        this.code = code;
+    }
+
+    /** The link's code: made once and kept on this device (not in a backup: each device has its own). */
+    static String savedCode(Context context) {
+        android.content.SharedPreferences p = context.getSharedPreferences(LINK_PREFS, Context.MODE_PRIVATE);
+        String code = p.getString(KEY_CODE, "");
+        return code.isEmpty() ? newCode(context) : code;
+    }
+
+    /** A new code, kept: phones with the old link can't reach this device any more (Forget phones). */
+    static String newCode(Context context) {
         SecureRandom r = new SecureRandom();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 8; i++) sb.append("abcdefghjkmnpqrstuvwxyz23456789".charAt(r.nextInt(31)));
-        code = sb.toString();
+        for (int i = 0; i < 12; i++) sb.append("abcdefghjkmnpqrstuvwxyz23456789".charAt(r.nextInt(31)));
+        String code = sb.toString();
+        context.getSharedPreferences(LINK_PREFS, Context.MODE_PRIVATE).edit().putString(KEY_CODE, code).apply();
+        return code;
+    }
+
+    private static final String LINK_PREFS = "phonelink", KEY_CODE = "code";
+
+    /** The top of every page: the style, and links to the others, the one shown marked. */
+    private String head(String current) {
+        StringBuilder nav = new StringBuilder("<nav>");
+        String[][] all = {{"", "Keys"}, {"/wallpaper", "Library"}, {"/font", "Fonts"}, {"/tile", "Tile picture"},
+                {"/dns", "Custom DNS"}, {"/backup", "Backup"}, {"/pair", "Pairing"}};
+        for (String[] page : all) {
+            if (!offered(page[0])) continue;
+            nav.append("<a href='/").append(code).append(page[0]).append("'")
+                    .append(page[0].equals(current) ? " class=on" : "").append(">").append(page[1]).append("</a>");
+        }
+        return "<!doctype html><title>Vibe Launcher</title>" + STYLE
+                + "<style>nav{display:flex;flex-wrap:wrap;gap:8px;margin:-8px 0 8px}nav a{color:#ccc;"
+                + "text-decoration:none;font-size:14px;padding:6px 12px;border-radius:16px;background:#222}"
+                + "nav a.on{background:#fff;color:#000}</style>" + nav.append("</nav>");
+    }
+
+    /** Whether a page is there now: each but the keys' only while Settings has set what it needs. */
+    private boolean offered(String path) {
+        switch (path) {
+            case "/wallpaper": return wallpapers != null;
+            case "/font": return fonts != null;
+            case "/tile": return tilePictures != null;
+            case "/dns": return customDns != null;
+            case "/backup": return backups != null;
+            case "/pair": return pairing != null;
+            default: return true;
+        }
     }
 
     /** Starts listening; returns the page's address, or null when offline or the port is taken. */
@@ -194,14 +255,33 @@ final class PhoneLink {
             return;
         }
         TilePictureUploads tp = tilePictures;
-        if (tp != null && request.length >= 2 && request[1].equals("/" + code + "/tile")) {
+        if (tp != null && request.length >= 2 && (request[1].equals("/" + code + "/tile")
+                || request[1].startsWith("/" + code + "/tile?"))) {
             if (request[0].equals("POST")) {
-                boolean added = tp.received(readBody(in, contentLength(head, MAX_PICTURE)));
+                boolean added = tp.received(readBody(in, contentLength(head, MAX_PICTURE)), nameIn(request[1]));
                 respondText(s, added ? "200 OK" : "400 Bad Request", added
-                        ? "Sent. The picture is in your tile pictures on the device."
+                        ? "Sent. The picture is in the Library on the device, for any tile."
                         : "That picture couldn't be used. Try another.");
             } else {
                 respond(s, "200 OK", pictureForm());
+            }
+            return;
+        }
+        CustomDns cd = customDns;
+        if (cd != null && request.length >= 2 && request[1].equals("/" + code + "/dns")) {
+            if (request[0].equals("POST")) {
+                Map<String, String> fields = parseForm(readBody(in, contentLength(head, MAX_BODY)));
+                String typed = fields.get("host");
+                String host = typed == null ? "" : AdBlock.clean(typed);
+                if (host.isEmpty()) {
+                    respondText(s, "400 Bad Request", "That isn't a DNS address. It looks like abc123.dns.nextdns.io.");
+                } else {
+                    String name = fields.get("name");
+                    main.post(() -> cd.added(name, host));
+                    respondText(s, "200 OK", "Sent. Confirm it on the device to turn it on.");
+                }
+            } else {
+                respond(s, "200 OK", dnsForm());
             }
             return;
         }
@@ -335,12 +415,26 @@ final class PhoneLink {
                 return;
             }
         }
-        if (w.received(file, video)) {
-            respondText(s, "200 OK", video ? "Added. The video is in your backdrop videos on the device."
-                    : "Added. The picture is in your backdrop pictures on the device.");
+        if (w.received(file, video, nameIn(path))) {
+            respondText(s, "200 OK", video ? "Added. The video is in the Library on the device."
+                    : "Added. The picture is in the Library on the device.");
         } else {
             respondText(s, "415 Unsupported Media Type", video ? "The device couldn't use that video."
                     : "The device couldn't use that picture.");
+        }
+    }
+
+    /** The name sent with an upload (the address's name=...), or "" when there's none. */
+    private static String nameIn(String path) {
+        int q = path.indexOf("name=");
+        if (q < 0) return "";
+        String raw = path.substring(q + 5);
+        int amp = raw.indexOf('&');
+        if (amp >= 0) raw = raw.substring(0, amp);
+        try {
+            return java.net.URLDecoder.decode(raw, "UTF-8").trim();
+        } catch (IllegalArgumentException | java.io.UnsupportedEncodingException e) {
+            return "";
         }
     }
 
@@ -367,18 +461,7 @@ final class PhoneLink {
             respondText(s, "413 Payload Too Large", "That font is too big: up to 25 MB.");
             return;
         }
-        String name = "";
-        int q = path.indexOf("name=");
-        if (q >= 0) {
-            String raw = path.substring(q + 5);
-            int amp = raw.indexOf('&');
-            if (amp >= 0) raw = raw.substring(0, amp);
-            try {
-                name = java.net.URLDecoder.decode(raw, "UTF-8");
-            } catch (IllegalArgumentException e) {
-                name = "";
-            }
-        }
+        String name = nameIn(path);
         java.io.File file = f.incoming();
         long got = 0;
         try (java.io.FileOutputStream out = new java.io.FileOutputStream(file)) {
@@ -408,7 +491,7 @@ final class PhoneLink {
 
     /** Choosing a font file on the phone and sending it as it is. */
     private String fontForm() {
-        return "<!doctype html><title>Vibe Launcher</title>" + STYLE
+        return head("/font")
                 + "<h1>Font for your device</h1>"
                 + "<p>Choose a .ttf or .otf font file (up to 25 MB).</p>"
                 + "<input type=file id=f accept='.ttf,.otf,font/ttf,font/otf,application/x-font-ttf'>"
@@ -427,6 +510,10 @@ final class PhoneLink {
     }
 
     /** The address of the tile picture page, once started. */
+    String dnsUrl() {
+        return url != null ? url + "/dns" : null;
+    }
+
     String tileUrl() {
         return url != null ? url + "/tile" : null;
     }
@@ -519,7 +606,7 @@ final class PhoneLink {
             + "p{color:#aaa}</style>";
 
     private String form() {
-        return "<!doctype html><title>Vibe Launcher</title>" + STYLE
+        return head("")
                 + "<h1>Vibe Launcher settings</h1><p>Paste your keys, then tap Send. Leave a field empty to keep "
                 + "what the device already has.</p><form method=post action='/" + code + "'>"
                 + field("tmdbKey", "TMDB API key", settings.tmdbKey())
@@ -537,7 +624,7 @@ final class PhoneLink {
      * so only a small JPEG crosses the network.
      */
     private String pictureForm() {
-        return "<!doctype html><title>Vibe Launcher</title>" + STYLE
+        return head("/tile")
                 + "<style>canvas{width:100%;border-radius:12px;margin-top:20px;background:#1c1c1e;touch-action:none;"
                 + "display:block}input[type=range]{width:100%;margin-top:18px;padding:0;border:0;background:none}"
                 + ".row{display:flex;gap:10px;margin-top:14px}.row button{margin-top:0;background:#333;color:#fff}"
@@ -549,6 +636,8 @@ final class PhoneLink {
                 + "<p id=hint></p>"
                 + "<input type=range id=z min=0 max=1000 value=0>"
                 + "<div class=row><button id=fill>Fill</button><button id=fit>Fit</button></div>"
+                + "<label for=n>Name (optional)</label>"
+                + "<input id=n maxlength=60 placeholder='Uploaded photo' autocomplete=off>"
                 + "<button id=send disabled>Send to device</button><p id=m></p>"
                 + "<script>"
                 + "var W=640,H=360,img=null,s=1,x=0,y=0,lo=1,hi=1,c=document.getElementById('c'),g=c.getContext('2d'),"
@@ -584,7 +673,8 @@ final class PhoneLink {
                 + "c.onwheel=function(e){if(!img)return;e.preventDefault();var p=at(e);"
                 + "zoom(s*Math.exp(-e.deltaY*0.0015),p.x,p.y);};"
                 + "document.getElementById('send').onclick=function(){var b=this;b.disabled=true;"
-                + "fetch(location.pathname,{method:'POST',headers:{'Content-Type':'text/plain'},"
+                + "fetch(location.pathname+'?name='+encodeURIComponent(document.getElementById('n').value),"
+                + "{method:'POST',headers:{'Content-Type':'text/plain'},"
                 + "body:c.toDataURL('image/jpeg',0.92)}).then(function(r){return r.text();}).then(function(t){"
                 + "document.getElementById('m').textContent=t;b.disabled=false;})"
                 + ".catch(function(){b.disabled=false;document.getElementById('m').textContent='Not sent: try again.';});};"
@@ -598,19 +688,21 @@ final class PhoneLink {
      */
     private String wallpaperForm() {
         String min = String.valueOf(Wallpapers.MIN_VIDEO_SIDE);
-        return "<!doctype html><title>Vibe Launcher</title>" + STYLE
+        return head("/wallpaper")
                 + "<style>canvas{width:100%;border-radius:12px;margin-top:20px;background:#1c1c1e;touch-action:none;"
                 + "display:block}input[type=range]{width:100%;margin-top:18px;padding:0;border:0;background:none}"
                 + ".row{display:flex;gap:10px;margin-top:14px}.row button{margin-top:0;background:#333;color:#fff}"
                 + "progress{width:100%;margin-top:16px;height:10px}#hint{font-size:14px;margin-top:8px}"
                 + "#note{font-size:14px}</style>"
-                + "<h1>Backdrop for your device</h1>"
+                + "<h1>Add to the Library</h1>"
                 + "<p>Choose a photo or a video. A photo can be moved and zoomed to fit the screen; a video plays on the "
-                + "device silently, round and round.</p>"
+                + "device silently. Either can then be used behind any app, and a photo on any tile.</p>"
                 + "<input type=file id=f accept='image/*,video/*'>"
                 + "<div id=crop hidden><canvas id=c width=1920 height=1080></canvas><p id=hint>Drag to move, pinch to zoom.</p>"
                 + "<input type=range id=z min=0 max=1000 value=0>"
                 + "<div class=row><button id=fill>Fill</button><button id=fit>Fit</button></div></div>"
+                + "<label for=n>Name (optional)</label>"
+                + "<input id=n maxlength=60 placeholder='Uploaded photo or video' autocomplete=off>"
                 + "<button id=send disabled>Send to device</button><progress id=p max=100 value=0 hidden></progress>"
                 + "<p id=m></p>"
                 + "<p id=note>Videos: at least 720p, up to 500 MB. 4K video at 60 frames per second may freeze on some TVs; "
@@ -661,7 +753,8 @@ final class PhoneLink {
                 + "zoom(s*Math.exp(-e.deltaY*0.0015),p.x,p.y);};"
                 // up as a plain body, with how far it's got; the TV's answer is the message
                 + "function up(kind,body){send.disabled=true;var q=new XMLHttpRequest();"
-                + "q.open('POST',location.pathname+'?kind='+kind);bar.hidden=false;bar.value=0;"
+                + "q.open('POST',location.pathname+'?kind='+kind+'&name='"
+                + "+encodeURIComponent(document.getElementById('n').value));bar.hidden=false;bar.value=0;"
                 + "q.upload.onprogress=function(e){if(e.lengthComputable)bar.value=Math.round(100*e.loaded/e.total);};"
                 + "q.onload=function(){m.textContent=q.responseText;send.disabled=false;bar.hidden=true;};"
                 + "q.onerror=function(){m.textContent='Not sent: try again.';send.disabled=false;bar.hidden=true;};"
@@ -676,7 +769,7 @@ final class PhoneLink {
      * asked about once (it replaces everything), and sent as it is; the TV says whether it took it.
      */
     private String backupForm() {
-        return "<!doctype html><title>Vibe Launcher</title>" + STYLE
+        return head("/backup")
                 + "<style>a.b{display:block;box-sizing:border-box;margin-top:20px;padding:14px;text-align:center;"
                 + "font-weight:600;border-radius:12px;background:#fff;color:#000;text-decoration:none}"
                 + "h2{font-weight:500;font-size:19px;margin-top:40px}input[type=file]{margin-top:12px}</style>"
@@ -706,8 +799,30 @@ final class PhoneLink {
      * The pairing code, sent as soon as it's typed: the TV's pairing window stays open meanwhile, and its code is
      * only good while it is. The port is only there for when the TV can't find its own pairing window.
      */
+    /** Ad blocking's own service: a name for its row on the device, and the address its provider gives. */
+    private String dnsForm() {
+        return head("/dns")
+                + "<h1>Custom DNS</h1>"
+                + "<p>Give it a name, then type the DNS address your service gives you for Android's Private DNS "
+                + "(for NextDNS, like abc123.dns.nextdns.io).</p>"
+                + "<form id=f><label for=name>Name</label>"
+                + "<input id=name name=name maxlength=40 placeholder='My NextDNS' autocomplete=off>"
+                + "<label for=host>DNS address</label>"
+                + "<input id=host name=host required placeholder='abc123.dns.nextdns.io' inputmode=url "
+                + "autocomplete=off autocapitalize=off spellcheck=false>"
+                + "<button id=send>Add to device</button></form><p id=m></p>"
+                + "<script>"
+                + "var f=document.getElementById('f'),b=document.getElementById('send'),m=document.getElementById('m');"
+                + "f.onsubmit=function(e){e.preventDefault();b.disabled=true;m.textContent='Sending…';"
+                + "fetch(location.pathname,{method:'POST',headers:{'Content-Type':"
+                + "'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})"
+                + ".then(function(r){return r.text();}).then(function(t){m.textContent=t;b.disabled=false;})"
+                + ".catch(function(){m.textContent='Not sent: try again.';b.disabled=false;});};"
+                + "</script>";
+    }
+
     private String pairForm() {
-        return "<!doctype html><title>Vibe Launcher</title>" + STYLE
+        return head("/pair")
                 + "<style>#code{font-size:32px;letter-spacing:10px;text-align:center}details{margin-top:24px;color:#aaa}"
                 + "summary{cursor:pointer}</style>"
                 + "<h1>Pair Vibe Launcher</h1>"
@@ -741,7 +856,7 @@ final class PhoneLink {
                 + " placeholder=\"" + hint + "\" autocomplete=off autocapitalize=off spellcheck=false>";
     }
 
-    private static String escape(String s) {
+        private static String escape(String s) {
         return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;");
     }
 

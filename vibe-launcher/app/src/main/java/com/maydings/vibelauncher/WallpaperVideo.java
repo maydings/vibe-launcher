@@ -13,7 +13,8 @@ import java.io.File;
  * A video wallpaper on Home (Wallpapers): muted, round and round, filling the screen (its edges cut off, as a
  * picture's are). On a TextureView, which fades and sits under the pictures like any view (a SurfaceView would
  * be a window of its own). Paused while Home isn't in front or a menu is over it, to spare the TV's processor.
- * A file that won't play hides it, and Home shows the app's glow instead (onFailed).
+ * A file that won't play hides it, and Home shows the app's glow instead (onFailed). In the slideshow it plays
+ * once to its end and says so (setOnce, onEnded), so the next slide waits for it.
  */
 final class WallpaperVideo implements TextureView.SurfaceTextureListener {
 
@@ -23,6 +24,9 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
 
         /** It couldn't be played. */
         void onFailed();
+
+        /** Set to play once (setOnce), it reached its end and stands on its last frame: resume plays it again. */
+        void onEnded();
     }
 
     private final TextureView view;
@@ -31,6 +35,7 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
     private Surface surface;
     private File playing, wanted;
     private boolean paused;
+    private boolean once;   // to its end and no further (the slideshow's), instead of round and round
     /**
      * The player has the video loaded: only then may it be started or paused (before, Android calls it an error,
      * -38, and the video was taken for one that won't play). Until then pause and resume only say what's wanted.
@@ -60,6 +65,21 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
         start();
     }
 
+    /**
+     * Once to its end, which is then said (onEnded), or round and round again: for the one playing now and those
+     * after it. One that had ended goes round again.
+     */
+    void setOnce(boolean once) {
+        this.once = once;
+        if (player == null || !prepared) return;   // not loaded yet: start() sets it
+        try {
+            player.setLooping(!once);
+            if (!once && !paused && !player.isPlaying()) player.start();
+        } catch (RuntimeException ignored) {
+            // a player in no state for it: the next one is set as it starts
+        }
+    }
+
     /** Stops and lets the video go (another picture shows now). */
     void stop() {
         wanted = null;
@@ -69,6 +89,15 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
 
     boolean isShowing() {
         return wanted != null;
+    }
+
+    /** How long the video playing is, in milliseconds; 0 while it isn't known. */
+    int duration() {
+        try {
+            return player != null && prepared ? Math.max(0, player.getDuration()) : 0;
+        } catch (IllegalStateException e) {
+            return 0;
+        }
     }
 
     /** Held still (Home behind something), and on again. */
@@ -91,13 +120,19 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
         try {
             p.setDataSource(file.getPath());
             p.setSurface(surface);
-            p.setLooping(true);
+            p.setLooping(!once);
+            p.setOnCompletionListener(mp -> {
+                if (player != mp) return;
+                if (once) listener.onEnded();
+                else if (!paused) mp.start();   // set to go round as it ended
+            });
             p.setVolume(0f, 0f);
             p.setOnVideoSizeChangedListener((mp, w, h) -> fill(w, h));
             p.setOnPreparedListener(mp -> {
                 if (player != mp) return;
                 prepared = true;
                 playing = file;
+                mp.setLooping(!once);   // as asked for while it loaded
                 fill(mp.getVideoWidth(), mp.getVideoHeight());
                 if (!paused) mp.start();
             });

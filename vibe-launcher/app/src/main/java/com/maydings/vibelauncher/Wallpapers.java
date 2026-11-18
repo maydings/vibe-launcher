@@ -21,35 +21,56 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Backdrop pictures and videos of the person's own (Settings > Library), from the phone (PhoneLink),
- * Wallhaven, Pexels, Pixabay, NASA or Wikimedia Commons (WallpaperBrowserActivity), each kept once, in
- * files/wallpapers, not the cache, which Android may empty. A picture is stored already cut to the screen and
- * darkened as backdrops are, so showing one is a quick decode; a video as it came, darkened on screen by a layer
+ * The Library (Settings > Library): the person's own pictures and videos, from the phone (PhoneLink), Wallhaven,
+ * Pexels, Pixabay, NASA, Wikimedia Commons or Apple's aerials (WallpaperBrowserActivity), each kept once and
+ * usable anywhere: as a tile's picture (TileCustom) or behind Home. Those cut to the screen, and the videos, are
+ * in files/wallpapers, not the cache, which Android may empty; the tile pictures, framed small on the phone, are
+ * TilePictures', and listed here with the rest (small). A picture is stored as it looks, cut to the screen, and
+ * darkened as backdrops are when it shows as one (backdrop); a video as it came, darkened on screen by a layer
  * over it.
  * <p>
- * Lists say where they show, by key: an app's package or "folder:<id>" (tile menu > Edit > Backdrops), which then
- * shows only from its list, whatever else is set; and ROTATION, Settings > Backdrops > Custom wallpapers' own,
- * shown instead of an app's glow or of every backdrop (VibeSettings.wallpaperMode). A new one is on no list until
- * it's ticked for one. Which one of a list shows is picked at random on each visit to Home, never the same twice
- * running when there's a choice; with one, it's always that one.
+ * Lists say what shows where, by key, each naming Library items by id: an app's package or "folder:<id>" (tile
+ * menu > Edit > Backdrops), the tile's own; ROTATION, Settings > Backdrops > Custom wallpapers' own, shown for
+ * an app with no picture or for a tile set to them; and SCREENSAVER, the slideshow's own when it's set to show it
+ * (VibeSettings.slideshowFrom). What a tile shows is its choice (AUTO, or one thing alone). A new item is on no
+ * list until it's ticked for one. Which one of a list shows is picked at random on each visit to Home, never the
+ * same twice running when there's a choice; with one, it's always that one.
  */
 final class Wallpapers {
 
-    /** One wallpaper: its id (also its file's name), a video or not, where it came from, and a name to list. */
+    /**
+     * One thing in the Library: its id (also its file's name), a video or not, where it came from (source) and
+     * its id there (name), and what it's called (title: the source's name for it, or the one typed on the phone;
+     * "" for none). small: a tile picture (TilePictures: 640 x 360), soft as a backdrop. dark: a picture saved
+     * already darkened as a backdrop, dim on a tile.
+     */
     static final class Item {
-        final String id, source, name;
-        final boolean video;
+        final String id, source, name, title;
+        final boolean video, small, dark;
 
-        Item(String id, boolean video, String source, String name) {
+        Item(String id, boolean video, String source, String name, String title, boolean small, boolean dark) {
             this.id = id;
             this.video = video;
             this.source = source;
             this.name = name;
+            this.title = title == null ? "" : title;
+            this.small = small;
+            this.dark = dark;
         }
     }
 
     static final String PHONE = "phone", WALLHAVEN = "wallhaven", PEXELS = "pexels", PIXABAY = "pixabay",
-            NASA = "nasa", COMMONS = "commons";
+            NASA = "nasa", COMMONS = "commons", APPLE = "apple";
+    /** The source of a tile picture (small): from the phone, framed there for a tile. */
+    static final String TILE = "tile";
+    /**
+     * What a tile shows behind Home (choice): AUTO, the app's own pictures, else Custom wallpapers' list, else its
+     * colour; or one of them alone, with nothing in its place when it has none: the app's pictures (CONTENT),
+     * Custom wallpapers (SYSTEM), its colour (COLOUR), or the tile's own list (OWN).
+     */
+    static final int AUTO = 0, CONTENT = 1, SYSTEM = 2, COLOUR = 3, OWN = 4;
+    /** The longest a title is kept. */
+    static final int MAX_TITLE = 60;
     /** The biggest video taken (from the phone or a browsed source): about a few minutes of 1080p. */
     static final long MAX_VIDEO = 500L * 1024 * 1024;
     /** Free space kept on the TV beyond a new video, so apps aren't left short. */
@@ -57,9 +78,13 @@ final class Wallpapers {
 
     /** The list of Settings > Backdrops > Custom wallpapers (not an app's or a folder's). */
     static final String ROTATION = "*";
+    /** The slideshow's own list (Settings > Appearance > Screensaver backdrops): no package, which has a dot. */
+    static final String SCREENSAVER = "screensaver";
 
+    @android.annotation.SuppressLint("StaticFieldLeak")   // holds the application's context, never an activity's
     private static Wallpapers instance;
 
+    private final Context context;
     private final File dir;
     private final SharedPreferences prefs;
     private final Random random = new Random();
@@ -74,11 +99,25 @@ final class Wallpapers {
     }
 
     private Wallpapers(Context context) {
+        this.context = context;
         dir = new File(context.getFilesDir(), "wallpapers");
         //noinspection ResultOfMethodCallIgnored
         dir.mkdirs();
         prefs = context.getSharedPreferences("wallpapers", Context.MODE_PRIVATE);
         lists();   // made now, the first time, with every one there is before any new one comes
+        firstChoices();
+    }
+
+    /** How many times the tile pictures have changed: list() is read again when it has moved on. */
+    private static final java.util.concurrent.atomic.AtomicInteger tileChanges =
+            new java.util.concurrent.atomic.AtomicInteger();
+
+    /**
+     * The tile pictures changed (TilePictures): list() is read again. Takes no lock: it's called with the
+     * Library's held (delete, setTitle) and from other threads (a phone's upload) alike.
+     */
+    static void tilePicturesChanged() {
+        tileChanges.incrementAndGet();
     }
 
     /** Where they're kept; a new file goes here (a .part while it arrives) before add. */
@@ -86,25 +125,39 @@ final class Wallpapers {
         return dir;
     }
 
-    /** list() as last read: asked for on nearly every key on Home, so read once; add and delete clear it. */
+    /** The items as last read: asked for on nearly every key on Home, so read once; add and delete clear it. */
     private List<Item> listed;
+    /** tileChanges when listed was read. */
+    private int listedAt;
 
-    /** All of them, oldest first. */
+    /** All of them, oldest first: a copy, the caller's own. */
     synchronized List<Item> list() {
-        if (listed != null) return new ArrayList<>(listed);
+        return new ArrayList<>(items());
+    }
+
+    /** All of them, oldest first, as kept here: read only, under the Library's lock. */
+    private List<Item> items() {
+        int now = tileChanges.get();
+        if (listed != null && listedAt == now) return listed;
         List<Item> out = new ArrayList<>();
         try {
             JSONArray a = new JSONArray(prefs.getString("items", "[]"));
             for (int i = 0; i < a.length(); i++) {
                 JSONObject o = a.getJSONObject(i);
-                Item item = new Item(o.getString("id"), o.optBoolean("video"), o.optString("source"), o.optString("name"));
+                boolean video = o.optBoolean("video");
+                Item item = new Item(o.getString("id"), video, o.optString("source"), o.optString("name"),
+                        o.optString("title"), false, !video && !o.optBoolean("plain"));
                 if (file(item).exists()) out.add(item);
             }
         } catch (JSONException e) {
             // unreadable: none
         }
+        // The tile pictures are in the same Library: kept where a backup carries them, listed here with the rest.
+        TilePictures tiles = new TilePictures(context);
+        for (String id : tiles.list()) out.add(new Item(id, false, TILE, "", tiles.title(id), true, false));
         listed = out;
-        return new ArrayList<>(out);
+        listedAt = now;
+        return out;
     }
 
     boolean isEmpty() {
@@ -117,9 +170,60 @@ final class Wallpapers {
         return false;
     }
 
-    /** The file shown for it: the finished picture, or the video. */
+    /** Its file: the picture (cut to the screen, or a tile's), or the video. */
     File file(Item item) {
+        if (item.small) return new TilePictures(context).file(item.id);
         return new File(dir, item.id + (item.video ? ".mp4" : ".jpg"));
+    }
+
+    /** Where a video's thumbnail is kept, beside it. */
+    private File thumbFile(Item item) {
+        return new File(dir, item.id + ".thumb");
+    }
+
+    /** A video's thumbnail, when one is kept; else null. */
+    Bitmap thumb(Item item) {
+        File kept = thumbFile(item);
+        return kept.length() > 0 ? BitmapFactory.decodeFile(kept.getPath()) : null;
+    }
+
+    /** Keeps a video's thumbnail (cell-sized), for the grids to show without reading the video. */
+    void keepThumb(Item item, Bitmap thumb) {
+        File kept = thumbFile(item);
+        try (FileOutputStream out = new FileOutputStream(kept)) {
+            thumb.compress(Bitmap.CompressFormat.JPEG, 85, out);
+        } catch (IOException | RuntimeException e) {
+            //noinspection ResultOfMethodCallIgnored
+            kept.delete();   // made again next time
+        }
+    }
+
+    /** The one with this id, or null. */
+    synchronized Item item(String id) {
+        if (id == null) return null;
+        for (Item item : items()) if (item.id.equals(id)) return item;
+        return null;
+    }
+
+    /**
+     * A picture as a backdrop: darkened here as backdrops are (Backdrops.darken), unless it was saved so. Shown
+     * scaled to the screen by the view, so a tile picture comes out soft. Null when it can't be read. Worker thread.
+     */
+    Bitmap backdrop(Item item) {
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inMutable = !item.dark;
+        try {
+            Bitmap b = BitmapFactory.decodeFile(file(item).getPath(), o);
+            if (b != null && !item.dark) Backdrops.darken(b);
+            return b;
+        } catch (RuntimeException | OutOfMemoryError e) {
+            return null;
+        }
+    }
+
+    /** Free space where the wallpapers are kept. */
+    long free() {
+        return dir.getUsableSpace();
     }
 
     /** A new file's place while it arrives, for a download or an upload to write to, then add. */
@@ -138,12 +242,15 @@ final class Wallpapers {
     }
 
     /**
-     * Adds a picture (any size: cut to this screen and darkened, then saved) or a video (moved in as it is). The
-     * file it came in is gone afterwards. Null when it couldn't be used. Worker thread.
+     * Adds a picture (any size: cut to this screen, then saved as it looks, to be darkened when it shows as a
+     * backdrop) or a video (moved in as it is), with what it's called (title, "" for none). The file it came in is
+     * gone afterwards. Null when it couldn't be used. Worker thread.
      */
-    Item add(File arrived, boolean video, String source, String name, int screenW, int screenH) {
+    Item add(File arrived, boolean video, String source, String name, String title, int screenW, int screenH) {
         String id = String.valueOf(System.currentTimeMillis());
-        Item item = new Item(id, video, source, name);
+        String called = title == null ? "" : title.replaceAll("\\s+", " ").trim();
+        if (called.length() > MAX_TITLE) called = called.substring(0, MAX_TITLE).trim();
+        Item item = new Item(id, video, source, name, called, false, false);
         File to = file(item);
         try {
             if (video) {
@@ -168,7 +275,8 @@ final class Wallpapers {
         synchronized (this) {
             try {
                 JSONArray a = new JSONArray(prefs.getString("items", "[]"));
-                a.put(new JSONObject().put("id", id).put("video", video).put("source", source).put("name", name));
+                a.put(new JSONObject().put("id", id).put("video", video).put("source", source).put("name", name)
+                        .put("title", called).put("plain", !video));
                 prefs.edit().putString("items", a.toString()).apply();
                 listed = null;
             } catch (JSONException e) {
@@ -178,8 +286,34 @@ final class Wallpapers {
         return item;
     }
 
-    /** Takes it out, file and all. */
+    /** What it's called from now on ("" for nothing: it's listed by where it came from). */
+    synchronized void setTitle(Item item, String title) {
+        if (item.small) {
+            new TilePictures(context).setTitle(item.id, title);
+            listed = null;
+            return;
+        }
+        try {
+            JSONArray a = new JSONArray(prefs.getString("items", "[]"));
+            for (int i = 0; i < a.length(); i++) {
+                JSONObject o = a.getJSONObject(i);
+                if (o.optString("id").equals(item.id)) o.put("title", title == null ? "" : title);
+            }
+            prefs.edit().putString("items", a.toString()).apply();
+            listed = null;
+        } catch (JSONException ignored) {
+        }
+    }
+
+    /** Takes it out, file and all, off every list and every tile that showed it. */
     synchronized void delete(Item gone) {
+        if (gone.small) {
+            new TilePictures(context).delete(gone.id);   // its file, and off the tiles showing it
+            listed = null;
+            offLists(gone);
+            return;
+        }
+        new TileCustom(context).forgetPicture(gone.id);
         try {
             JSONArray a = new JSONArray(prefs.getString("items", "[]")), kept = new JSONArray();
             for (int i = 0; i < a.length(); i++) {
@@ -191,6 +325,12 @@ final class Wallpapers {
         listed = null;
         //noinspection ResultOfMethodCallIgnored
         file(gone).delete();
+        //noinspection ResultOfMethodCallIgnored
+        thumbFile(gone).delete();
+        offLists(gone);
+    }
+
+    private void offLists(Item gone) {
         JSONObject all = lists();
         for (java.util.Iterator<String> it = all.keys(); it.hasNext(); ) {
             String key = it.next();
@@ -220,7 +360,7 @@ final class Wallpapers {
         }
         lists = new JSONObject();
         JSONArray all = new JSONArray();
-        for (Item item : list()) all.put(item.id);
+        for (Item item : list()) if (!item.small) all.put(item.id);
         try {
             lists.put(ROTATION, all);
         } catch (JSONException ignored) {
@@ -246,13 +386,18 @@ final class Wallpapers {
         if (a == null || a.length() == 0) return out;
         java.util.Set<String> ids = new java.util.HashSet<>();
         for (int i = 0; i < a.length(); i++) ids.add(a.optString(i));
-        for (Item item : list()) if (ids.contains(item.id)) out.add(item);
+        for (Item item : items()) if (ids.contains(item.id)) out.add(item);
         return out;
     }
 
-    /** Whether this list has any to show. */
-    boolean hasList(String key) {
-        return key != null && !listOf(key).isEmpty();
+    /** Whether this list has any to show: asked on every key on Home, so nothing is copied for it. */
+    synchronized boolean hasList(String key) {
+        JSONArray a = key == null ? null : lists().optJSONArray(key);
+        if (a == null || a.length() == 0) return false;
+        for (Item item : items()) {
+            for (int i = 0; i < a.length(); i++) if (item.id.equals(a.optString(i))) return true;
+        }
+        return false;
     }
 
     synchronized boolean inList(String key, String id) {
@@ -275,19 +420,96 @@ final class Wallpapers {
         }
         if (!in && id.equals(current.get(key))) current.remove(key);
         saveLists();
+        // A tile's own list: ticking one for it is choosing the list; its last one unticked, the choice goes.
+        if (ROTATION.equals(key) || SCREENSAVER.equals(key)) return;
+        if (in) setChoice(key, OWN);
+        else if (choices().optInt(key, AUTO) == OWN && !hasList(key)) setChoice(key, AUTO);
     }
 
-    /** A folder gone: its list too. */
+    /** A folder gone: its list too, and what it was set to show. */
     synchronized void forgetList(String key) {
         lists().remove(key);
         current.remove(key);
         last.remove(key);
         saveLists();
+        setChoice(key, AUTO);
     }
 
-    /** Every list as it is now, to tell when one changed (Home, back from Settings or a grid). */
+    /** Every list and choice as it is now, to tell when one changed (Home, back from Settings or a grid). */
     synchronized String listsState() {
-        return lists().toString();
+        return lists().toString() + choices().toString();
+    }
+
+    // ---- what each tile shows --------------------------------------------------------------------------
+
+    /** What the tiles are set to show, by key (those not on AUTO), as last read. */
+    private JSONObject choices;
+
+    private synchronized JSONObject choices() {
+        if (choices != null) return choices;
+        try {
+            choices = new JSONObject(prefs.getString("choices", "{}"));
+        } catch (JSONException e) {
+            choices = new JSONObject();   // unreadable: every tile on AUTO
+        }
+        return choices;
+    }
+
+    /**
+     * What this tile (an app's package, or a folder's key) is set to show: AUTO unless chosen (tile menu > Edit >
+     * Backdrops). Set to a list (its own, or Custom wallpapers') with nothing left on it, it's AUTO again.
+     */
+    synchronized int choice(String key) {
+        if (key == null) return AUTO;
+        int c = choices().optInt(key, AUTO);
+        if (c < AUTO || c > OWN) return AUTO;
+        if ((c == OWN && !hasList(key)) || (c == SYSTEM && !hasList(ROTATION))) return AUTO;
+        return c;
+    }
+
+    synchronized void setChoice(String key, int choice) {
+        if (key == null) return;
+        try {
+            if (choice == AUTO) choices().remove(key);
+            else choices().put(key, choice);
+        } catch (JSONException ignored) {
+        }
+        prefs.edit().putString("choices", choices().toString()).apply();
+    }
+
+    /**
+     * A Library with no choices kept yet (a device's own data may have lists and Custom wallpapers' switch
+     * instead: VibeSettings.wallpaperShowKept) gets them, to show what it showed: a tile with a list of its own
+     * shows it (OWN); a switch that's off unticks Custom wallpapers' list, so none show; one set to always sets
+     * the dock's tiles to SYSTEM once Home knows them (pendingAlways).
+     */
+    private synchronized void firstChoices() {
+        if (prefs.contains("choices")) return;
+        JSONObject made = new JSONObject();
+        JSONObject all = lists();
+        try {
+            for (java.util.Iterator<String> it = all.keys(); it.hasNext(); ) {
+                String key = it.next();
+                JSONArray a = all.optJSONArray(key);
+                if (!ROTATION.equals(key) && !SCREENSAVER.equals(key) && a != null && a.length() > 0) made.put(key, OWN);
+            }
+            int show = new VibeSettings(context).wallpaperShowKept();
+            boolean always = show == VibeSettings.SHOW_KEPT_ALWAYS && hasList(ROTATION);
+            if (show == VibeSettings.SHOW_KEPT_OFF) all.put(ROTATION, new JSONArray());
+            choices = made;
+            prefs.edit().putString("choices", made.toString()).putString("lists", all.toString())
+                    .putBoolean("always", always).apply();
+        } catch (JSONException ignored) {
+        }
+    }
+
+    /** Custom wallpapers' switch said always: the dock's tiles not set to anything are to be set to SYSTEM. */
+    boolean pendingAlways() {
+        return prefs.getBoolean("always", false);
+    }
+
+    void donePendingAlways() {
+        prefs.edit().remove("always").apply();
     }
 
     /** This visit's one from the list, picked the first time it's asked for after reshuffle; null when it's empty. */
@@ -380,7 +602,7 @@ final class Wallpapers {
         }
     }
 
-    /** A picture cut to the screen (centre-crop) and darkened like a backdrop; null when it isn't one. */
+    /** A picture cut to the screen (centre-crop), as it looks; null when it isn't one. */
     private static Bitmap render(File file, int w, int h) {
         BitmapFactory.Options o = new BitmapFactory.Options();
         o.inJustDecodeBounds = true;
@@ -398,7 +620,6 @@ final class Wallpapers {
         new Canvas(out).drawBitmap(src, new Rect(cx, cy, cx + cw, cy + ch), new Rect(0, 0, w, h),
                 new Paint(Paint.FILTER_BITMAP_FLAG));
         src.recycle();
-        Backdrops.darken(out);
         return out;
     }
 
