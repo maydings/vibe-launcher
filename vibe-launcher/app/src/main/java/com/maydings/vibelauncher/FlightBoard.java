@@ -146,7 +146,7 @@ public final class FlightBoard extends FrameLayout {
         }
         logoOf = n.icao;
         String icao = n.icao;
-        Flights.get(getContext()).logo(icao, n.iata, logo -> {
+        AirlineLogos.get(getContext()).logo(icao, n.iata, logo -> {
             if (!icao.equals(logoOf)) return;   // the screen has gone to another since
             plate.setVisibility(logo != null ? VISIBLE : GONE);
             if (logo != null) plate.setImageBitmap(logo.picture);

@@ -162,8 +162,11 @@ The full list, with what each is sent, is in the [privacy policy](docs/PRIVACY.m
 
 | File | What it does |
 |---|---|
-| `MainActivity` | Home screen, dock and grid focus, top bar menus, the Inputs menu with its HDMI-CEC devices |
+| `MainActivity` | Home screen: the dock and grid and their focus, the backdrops, the picture alone, the slideshow, the top bar, folders |
+| `TopBarMenus` | The menus under the top bar's pills: the network's, the system's with its meters and Free memory, and the Inputs menu with its HDMI-CEC devices |
+| `TileMenus` | The menus a tile opens: a long press's (move, hide, folders, app info), the hidden apps, Edit (a tile's picture, icon and name) and its backdrops' order |
 | `SettingsScreen`, `SettingsActivity` | Vibe Launcher settings: General (language, reload backdrops, picture format, Home at power-on, Back button, Restart…, software version), Appearance (tiles per row, inputs, auto-hide, screensaver clock, 12/24-hour clock) and API keys (the keys, their explanations, the QR code). Built once when Home starts and shown on a screen of its own, which fades in; its lists slide left as pages open, and Home is rebuilt behind it for a new grid or language |
+| `AdbSettingsPages` | Settings > Apps and what's under it: the TV's network debugging and pairing, the clean-up lists and the apps one by one, the default launcher and the Home button, ad blocking |
 | `Lang` | The 50 languages and applying the one chosen in settings (or the TV's own) |
 | `Updater`, `UpdateReceiver` | Checks the GitHub releases, downloads and verifies the APK, hands it to Android's installer |
 | `AppAdapter`, `TileAnimator`, `DockDecoration` | Tiles, their animations and the dock band |
@@ -185,6 +188,7 @@ The full list, with what each is sent, is in the [privacy policy](docs/PRIVACY.m
 | `NameDialog` | The TV's keyboard on a name (a tile, a folder, a Library item), in the launcher's own panel |
 | `Weather` | The weather line under the date (Open-Meteo, located by IP or a searched city) |
 | `Flights`, `FlightBoard`, `FlightMap` | Flights overhead: the aircraft near the weather's place from the OpenSky Network (every 30 seconds with an API client, every 4 minutes without, each moved along its heading in between), what each is and where it's going from adsbdb (kept in `flights.json`: an aircraft six months, a route one); a route adsbdb doesn't know or has wrong (the aircraft is nowhere near it) from Virtual Radar Server's standing data (an airline's list and the airports', a month in the cache's `routes`); the airline's logo (Jxck-S/airline-logos by its three letters, else Aviasales by its two-character code; kept in the cache's `airline-logos`); and the board that shows them one at a time in a frame, where the flights are what a tile shows, its foot at one height on every tile; under it the map (`FlightMap`): OpenStreetMap's tiles for the one view, kept in the cache's `map` and drawn dark, every aircraft heard of moved along its heading ten times a second and eased over to where the next answer puts it |
+| `VrsDatabase`, `AirlineLogos` | For the flights: Virtual Radar Server's lists (routes by callsign, airports, airlines), downloaded and kept for a month; and the airlines' logos, downloaded once, cut to what's drawn and kept in the cache |
 | `ShelfDial` | A dock folder's apps as a dial above it |
 | `Adb`, `AdbPairing`, `AdbMdns`, `Spake2`, `TvApps`, `CleanLists` | Reaching the TV's own ADB from the TV itself, and turning apps off and on (Settings → Advanced) |
 

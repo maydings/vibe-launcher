@@ -44,7 +44,7 @@ public final class SettingsActivity extends Activity {
     protected void onResume() {
         super.onResume();
         screen.showSmartTube();   // installed or signed in meanwhile
-        screen.showHomeButton();   // turned on or off in Accessibility meanwhile
+        screen.adbPages.showHomeButton();   // turned on or off in Accessibility meanwhile
         screen.showWallpapers();   // some picked in a browsing grid meanwhile
         if (screen.fontsChanged()) {   // the chosen font deleted in Fonts: Home and Settings in Outfit again
             MainActivity home = MainActivity.current();
