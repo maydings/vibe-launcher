@@ -26,6 +26,15 @@ final class DefaultHome {
     }
 
     /**
+     * Whether pressing Home brings up Android's own chooser: more than one launcher claims Home and none has
+     * been picked, as when another one is installed beside Vibe Launcher.
+     */
+    static boolean isChooser(Context context) {
+        ResolveInfo ri = context.getPackageManager().resolveActivity(home(), PackageManager.MATCH_DEFAULT_ONLY);
+        return ri != null && ri.activityInfo != null && "android".equals(ri.activityInfo.packageName);
+    }
+
+    /**
      * The Home button (HomeKeyService) is on under Settings > Accessibility: the way to Home for TVs whose software
      * keeps ADB shut, offered under Settings > Advanced > Default launcher.
      */

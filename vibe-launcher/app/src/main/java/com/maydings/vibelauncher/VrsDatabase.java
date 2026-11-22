@@ -103,6 +103,7 @@ final class VrsDatabase {
 
     /** The airports a callsign flies between, in order ("KLAX", "KEWR"), by the airline's list; null when not in it. */
     String[] stops(String code, String callsign) throws IOException {
+        if (code == null || code.isEmpty() || callsign == null) return null;   // no airline to have a list
         List<String> fields = line(list("routes/schema-01/" + code.charAt(0) + '/' + code + "-all.csv", code + ".csv"),
                 callsign);
         if (fields == null || fields.size() < 5) return null;

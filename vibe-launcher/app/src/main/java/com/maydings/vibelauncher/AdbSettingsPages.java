@@ -436,7 +436,11 @@ final class AdbSettingsPages {
     void makeHome(Page page, Runnable done) {
         List<String> stock = TvControl.stockOn(screen.ctx);
         runAdb(page, TvControl.makeHomeCommand(screen.ctx, stock), r -> {
-            boolean failed = r.output.contains("FAILED") || !DefaultHome.isHome(screen.ctx);
+            // Home goes to Android's chooser, though the TV said Vibe Launcher was set (Success): another
+            // launcher claims Home too, and the choice between them is Android's to ask. That's the switch
+            // made, not failed: putting the TV's own launchers back on would undo it.
+            boolean handedOver = r.output.contains("Success") && DefaultHome.isChooser(screen.ctx);
+            boolean failed = r.output.contains("FAILED") || !(DefaultHome.isHome(screen.ctx) || handedOver);
             if (failed && !r.output.contains("FAILED") && !stock.isEmpty()) {
                 // Set, but Home still goes elsewhere: the launchers back on, as they were.
                 adb().execute(() -> Adb.shell(TvControl.restoreHomeCommand(screen.ctx, stock), false));

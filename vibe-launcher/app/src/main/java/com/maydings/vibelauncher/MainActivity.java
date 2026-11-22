@@ -789,6 +789,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             updateWifiLabel();
             updateInputsButton();
             pillsShown = true;
+            // That first label is measured before the window is attached, when the pill's icon isn't counted in
+            // its padding yet (a VPN's mark after "Ethernet" was cut off): measured again once it's drawn.
+            refreshPillsAfterNextDraw(false);
         }
         if (homeToTop) {
             homeToTop = false;
