@@ -50,7 +50,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Picking custom wallpapers on the TV (Settings > Backdrops > Custom wallpapers), as a grid of thumbnails, more
+ * Picking custom wallpapers on the TV (Settings > Backdrops > System backdrop), as a grid of thumbnails, more
  * coming in as it's scrolled. OK on one downloads it into Wallpapers; a tick marks those already in. Each grid says
  * where its pictures come from, as the services ask, and the focused one's maker where there is one. The sources:
  * <ul>

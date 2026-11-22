@@ -22,7 +22,7 @@ final class VibeSettings {
      * app or folder selected, or its own list.
      */
     static final int SLIDES_ALL = 0, SLIDES_SELECTED = 1, SLIDES_OWN = 2;
-    /** wallpaperShowKept: Custom wallpapers' switch off, where an app has no picture, or always. */
+    /** wallpaperShowKept: The System backdrop's switch off, where an app has no picture, or always. */
     static final int SHOW_KEPT_OFF = 0, SHOW_KEPT_NO_PICTURE = 1, SHOW_KEPT_ALWAYS = 2;
     private static final String COLUMNS = "columns";
     private static final String LANGUAGE = "language";
@@ -156,7 +156,7 @@ final class VibeSettings {
     }
 
     /**
-     * Custom wallpapers' switch as a device's own data may keep it: 0 off (also when there's none), 1 where an app
+     * The System backdrop's switch as a device's own data may keep it: 0 off (also when there's none), 1 where an app
      * has no picture, 2 always. Read once, into what each tile shows (Wallpapers.firstChoices).
      */
     int wallpaperShowKept() {
@@ -403,9 +403,78 @@ final class VibeSettings {
         prefs.edit().putStringSet(ART_OFF, off).apply();
     }
 
-    void save(String tmdbKey, String youtubeKey, String plexToken, String pexelsKey, String pixabayKey) {
-        prefs.edit().putString(TMDB_KEY, tmdbKey.trim()).putString(YOUTUBE_KEY, youtubeKey.trim())
-                .putString(PLEX_TOKEN, plexToken.trim()).putString(PEXELS_KEY, pexelsKey.trim())
-                .putString(PIXABAY_KEY, pixabayKey.trim()).apply();
+    /** The keys, in KEY_NAMES' order. */
+    void save(String[] keys) {
+        SharedPreferences.Editor e = prefs.edit();
+        for (int i = 0; i < KEY_NAMES.length; i++) e.putString(KEY_NAMES[i], keys[i].trim());
+        e.apply();
+    }
+
+    /** The keys as saved, in KEY_NAMES' order ("" for one not set). */
+    String[] keys() {
+        String[] keys = new String[KEY_NAMES.length];
+        for (int i = 0; i < keys.length; i++) keys[i] = prefs.getString(KEY_NAMES[i], "");
+        return keys;
+    }
+
+    /**
+     * The keys typed in Settings > API keys or sent from the phone, by the names they're saved (and sent)
+     * under: TMDB, YouTube, Plex, Pexels, Pixabay, and the OpenSky API client's id and secret.
+     */
+    static final String[] KEY_NAMES = {TMDB_KEY, YOUTUBE_KEY, PLEX_TOKEN, PEXELS_KEY, PIXABAY_KEY,
+            "openSkyId", "openSkySecret"};
+    static final int KEY_OPENSKY_ID = 5, KEY_OPENSKY_SECRET = 6;
+
+    /** The OpenSky Network API client's id (Flights), or "" when not set. */
+    String openSkyId() {
+        return prefs.getString(KEY_NAMES[KEY_OPENSKY_ID], "");
+    }
+
+    String openSkySecret() {
+        return prefs.getString(KEY_NAMES[KEY_OPENSKY_SECRET], "");
+    }
+
+    // ---- flights overhead ------------------------------------------------------------------------------
+
+    /** How far from here an aircraft is shown: one of these, in kilometres, or in miles where the weather is in Fahrenheit. */
+    static final int[] FLIGHTS_KM = {10, 25, 50, 100}, FLIGHTS_MI = {5, 15, 30, 60};
+
+    /** A film or show's details from TMDB (rating, year, synopsis, genres) with its backdrop (off by default). */
+    boolean titleInfo() {
+        return prefs.getBoolean("titleInfo", false);
+    }
+
+    void setTitleInfo(boolean on) {
+        prefs.edit().putBoolean("titleInfo", on).apply();
+    }
+
+    /** The flights' card, without its map, over a tile that shows its colour alone (off by default). */
+    boolean flightsOverColour() {
+        return prefs.getBoolean("flightsOverColour", false);
+    }
+
+    void setFlightsOverColour(boolean on) {
+        prefs.edit().putBoolean("flightsOverColour", on).apply();
+    }
+
+    /** Which of FLIGHTS_KM (or FLIGHTS_MI) is the distance. */
+    int flightsReach() {
+        int i = prefs.getInt("flightsReach", 1);
+        return i < 0 || i >= FLIGHTS_KM.length ? 1 : i;
+    }
+
+    void setFlightsReach(int index) {
+        prefs.edit().putInt("flightsReach", index).apply();
+    }
+
+    /** Miles, feet and miles an hour, where the weather is in Fahrenheit; else kilometres and metres. */
+    boolean flightsImperial() {
+        return weatherFahrenheit();
+    }
+
+    /** The distance, in kilometres. */
+    double flightsKm() {
+        int i = flightsReach();
+        return flightsImperial() ? FLIGHTS_MI[i] * 1.609344 : FLIGHTS_KM[i];
     }
 }

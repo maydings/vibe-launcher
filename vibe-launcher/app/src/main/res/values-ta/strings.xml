@@ -112,7 +112,7 @@
     <string name="art_id_short">Nuvio போல, கார்டுகளில் தலைப்பின் IMDb ஐடியை வைக்கும் ஆப்ஸுக்கு: துல்லியமான பின்னணியும் லோகோவும், சாவி தேவையில்லை.</string>
     <string name="art_stremio_short">கார்டின் தலைப்பால் தேடிய Stremio-வின் இலவச திரைப்பட, நிகழ்ச்சித் தரவு. சாவி தேவையில்லை.</string>
     <string name="art_own_short">மேலே உள்ளவற்றில் படம் இல்லாதபோது, ஆப்ஸ் தன் கார்டில் வைத்த படம்.</string>
-    <string name="wp_custom">தனிப்பயன் வால்பேப்பர்கள்</string>
+    <string name="wp_custom">சிஸ்டம் பின்னணி</string>
     <string name="media_title">நூலகம்</string>
     <string name="media_short">நீங்கள் சேர்ப்பவை அனைத்தும், ஒவ்வொன்றும் ஒருமுறை: டைல் படங்கள், பின்னணிப் படங்களும் வீடியோக்களும், எழுத்துருக்களும்.</string>
     <string name="tile_pictures">டைல் படங்கள்</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">இந்த எழுத்துருவில் %1$s எழுத்துகள் இல்லை, எனவே கணினி எழுத்துரு காட்டப்படுகிறது.</string>
     <string name="font_credit">Google Fonts எழுத்துருக்கள், Fontsource பட்டியலில்; ஒவ்வொன்றும் தன் உரிமத்தில்</string>
     <string name="font_add">எழுத்துருக்களைச் சேர்</string>
-    <string name="wp_custom_short">நூலகத்தின் படங்களும் வீடியோக்களும், சொந்தப் படம் இல்லாத எந்த ஆப்ஸுக்கும் பின்னால் காட்டப்படும். எந்த டைலையும் அதன் மெனுவிலிருந்து இவற்றை மட்டும் காட்டும்படி அமைக்கலாம்.</string>
-    <string name="bd_content">ஆப்ஸின் சொந்தப் படங்கள்</string>
+    <string name="wp_custom_short">டைல்கள் தங்கள் பின்னணிகள் மெனுவிலிருந்து இதைப் பயன்படுத்தும். காட்ட ஏதேனும் உள்ள, இயக்கப்பட்ட முதல் ஒன்று மட்டுமே பயன்படுத்தப்படும்; மற்றொன்று மாற்று.</string>
+    <string name="bd_content">ஆப்ஸின் உள்ளடக்கம்</string>
     <string name="bd_colour">நிறம் மட்டும்</string>
     <string name="bd_own">சொந்தத் தேர்வு</string>
     <string name="lib_big_for_tile">பின்னணிக்காக உருவாக்கியது: டைலுக்குப் பரிந்துரைக்கப்படவில்லை</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">இரண்டு அனுமதிகள்</string>
     <string name="permissions_why">Vibe Launcher இப்போது இரண்டு அனுமதிகளைக் கேட்கும்.\n\nடிவி நிகழ்ச்சிப் பட்டியல்: உங்கள் ஆப்ஸ் முகப்புத் திரைக்கு வெளியிடும் கார்டுகளின் படங்களைக் காட்ட.\n\nஇருப்பிடம்: இந்த அனுமதி உள்ள ஆப்ஸுக்கு மட்டுமே Android வைஃபை நெட்வொர்க்கின் பெயரைக் காட்டும். Vibe Launcher அதை அந்தப் பெயருக்கு மட்டுமே பயன்படுத்தும், சாதனம் எங்கே இருக்கிறது என்று ஒருபோதும் தேடாது.\n\nஎதுவும் சாதனத்தை விட்டு வெளியேறாது.</string>
     <string name="continue_button">தொடர்க</string>
-    <string name="store_update">Vibe Launcher-ஐப் புதுப்பி</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">காப்புப் பிரதியும் மீட்டமைப்பும்</string>
     <string name="backup_short">அமைப்புகள், டைல்கள், கோப்புறைகள், டைல் படங்கள், API சாவிகள். காப்புப் பிரதியில் உங்கள் சாவிகள் இருப்பதால் அதைத் தனிப்பட்டதாக வைத்திருக்கவும்.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">நகரங்கள்</string>
     <string name="wp_apple_underwater">நீருக்கடியில்</string>
     <string name="wp_no_room">இந்த வீடியோ %1$s, காலியாக இருப்பது %2$s. சாதனம் 1 GB காலியாக வைக்கும்: முதலில் நூலகத்திலிருந்து எதையாவது நீக்கவும்.</string>
+    <string name="flights_title">மேலே செல்லும் விமானங்கள்</string>
+    <string name="flights_short">சொந்தப் படம் இல்லாத ஆப்ஸின் பின்னால் உங்கள் அருகில் செல்லும் விமானங்களைக் காட்டும். வானிலைக்கு அமைத்த இடத்தைப் பயன்படுத்தும். தரவு: OpenSky Network, adsbdb.</string>
+    <string name="title_info">திரைப்படம் மற்றும் நிகழ்ச்சி விவரங்கள்</string>
+    <string name="title_info_short">திரைப்படம் அல்லது நிகழ்ச்சியின் பின்னணியுடன் TMDB-இலிருந்து மதிப்பீடு, ஆண்டு, கதைச்சுருக்கம், வகைகளைக் காட்டும். TMDB விசை தேவை (API விசைகள்).</string>
+    <string name="flights_over_colour">விமான அட்டைகளைக் காட்டு</string>
+    <string name="flights_over_colour_short">பின்னணி நிறம் மட்டுமே உள்ள டைல்களில், வரைபடம் இல்லாமல், உங்கள் அருகே கடந்து செல்லும் விமானங்களின் அட்டைகளைக் காட்டும்.</string>
+    <string name="flights_distance">தூரம்</string>
+    <string name="flights_clear">சேமித்த விமான விவரங்களை அழி</string>
+    <string name="opensky_id">OpenSky கிளையன்ட் ஐடி</string>
+    <string name="opensky_secret">OpenSky கிளையன்ட் ரகசியம்</string>
+    <string name="opensky_short">விருப்பத்தேர்வு. உங்கள் OpenSky Network கணக்கின் API கிளையன்ட் இருந்தால், விமானங்கள் 4 நிமிடங்களுக்குப் பதிலாக 30 வினாடிகளுக்கு ஒருமுறை புதுப்பிக்கப்படும்.</string>
 </resources>

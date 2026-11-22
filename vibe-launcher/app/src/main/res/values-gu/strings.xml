@@ -112,7 +112,7 @@
     <string name="art_id_short">જે ઍપ તેમના કાર્ડ પર શીર્ષકનું IMDb ID મૂકે, જેમ કે Nuvio: ચોક્કસ બેકડ્રોપ અને લોગો, કી વગર.</string>
     <string name="art_stremio_short">કાર્ડના શીર્ષકથી શોધેલો Stremioનો મફત ફિલ્મ અને શોનો ડેટા. કી વગર.</string>
     <string name="art_own_short">ઉપરનામાંથી કોઈ પાસે ચિત્ર ન હોય ત્યારે, ઍપે પોતાના કાર્ડ પર મૂકેલું ચિત્ર.</string>
-    <string name="wp_custom">કસ્ટમ વૉલપેપર</string>
+    <string name="wp_custom">સિસ્ટમ બૅકડ્રૉપ</string>
     <string name="media_title">લાઇબ્રેરી</string>
     <string name="media_short">તમે ઉમેરો તે બધું, દરેક એક જ વાર રાખેલું: ટાઇલ ચિત્રો, બેકડ્રોપ ચિત્રો અને વિડિઓ, અને ફૉન્ટ.</string>
     <string name="tile_pictures">ટાઇલ ચિત્રો</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">આ ફૉન્ટમાં %1$s અક્ષરો નથી, તેથી સિસ્ટમ ફૉન્ટ દેખાય છે.</string>
     <string name="font_credit">Google Fonts ના ફૉન્ટ, Fontsource ની સૂચિમાં; દરેક પોતાના લાઇસન્સ હેઠળ</string>
     <string name="font_add">ફૉન્ટ ઉમેરો</string>
-    <string name="wp_custom_short">લાઇબ્રેરીનાં ચિત્રો અને વીડિયો, જે ઍપ પાસે પોતાનું ચિત્ર નથી તેની પાછળ દેખાય છે. કોઈ પણ ટાઇલને તેના મેનૂમાંથી માત્ર આ જ બતાવવા સેટ કરી શકાય.</string>
-    <string name="bd_content">ઍપનાં પોતાનાં ચિત્રો</string>
+    <string name="wp_custom_short">ટાઇલ્સ તેને તેમના બૅકડ્રૉપ્સ મેનૂમાંથી વાપરે છે. બતાવવા માટે કંઈક ધરાવતું પહેલું સક્ષમ જ વપરાય છે; બીજું વૈકલ્પિક છે.</string>
+    <string name="bd_content">ઍપનું કન્ટેન્ટ</string>
     <string name="bd_colour">માત્ર રંગ</string>
     <string name="bd_own">પોતાની પસંદગી</string>
     <string name="lib_big_for_tile">બેકડ્રોપ માટે બનાવેલું: ટાઇલ માટે ભલામણ નથી</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">બે પરવાનગીઓ</string>
     <string name="permissions_why">Vibe Launcher હવે બે પરવાનગી માગશે.\n\nટીવી લિસ્ટિંગ: તમારી ઍપ્સ હોમ સ્ક્રીન માટે જે કાર્ડ પ્રકાશિત કરે છે તેનાં ચિત્રો બતાવવા.\n\nસ્થાન: Android વાઇ-ફાઇ નેટવર્કનું નામ ફક્ત આ પરવાનગીવાળી ઍપ્સને બતાવે છે. Vibe Launcher તેનો ઉપયોગ ફક્ત તે નામ માટે કરે છે અને ઉપકરણ ક્યાં છે તે ક્યારેય શોધતું નથી.\n\nકંઈ પણ ઉપકરણની બહાર જતું નથી.</string>
     <string name="continue_button">ચાલુ રાખો</string>
-    <string name="store_update">Vibe Launcher અપડેટ કરો</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">બેકઅપ અને રિસ્ટોર</string>
     <string name="backup_short">સેટિંગ્સ, ટાઇલ, ફોલ્ડર, ટાઇલનાં ચિત્રો અને API કી. બેકઅપમાં તમારી કી હોય છે, તેથી તેને ખાનગી રાખો.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">શહેરો</string>
     <string name="wp_apple_underwater">પાણી નીચે</string>
     <string name="wp_no_room">આ વિડિયો %1$s છે અને %2$s ખાલી છે. ડિવાઇસ 1 GB ખાલી રાખે છે: પહેલાં લાઇબ્રેરીમાંથી કંઈક ડિલીટ કરો.</string>
+    <string name="flights_title">ઉપરથી પસાર થતી ફ્લાઇટ્સ</string>
+    <string name="flights_short">જે ઍપ્સ પાસે પોતાનું ચિત્ર નથી તેમની પાછળ તમારી નજીકથી પસાર થતાં વિમાનો બતાવે છે. હવામાન માટે સેટ કરેલું સ્થળ વાપરે છે. ડેટા: OpenSky Network, adsbdb.</string>
+    <string name="title_info">ફિલ્મ અને શોની વિગતો</string>
+    <string name="title_info_short">ફિલ્મ કે શોના બૅકડ્રૉપ સાથે TMDB પરથી રેટિંગ, વર્ષ, સારાંશ અને શૈલીઓ બતાવે છે. TMDB કી જરૂરી છે (API કી).</string>
+    <string name="flights_over_colour">ફ્લાઇટ કાર્ડ બતાવો</string>
+    <string name="flights_over_colour_short">જે ટાઇલનું બૅકડ્રૉપ માત્ર રંગ છે તેના પર, નકશા વગર, તમારી નજીકથી પસાર થતાં વિમાનોનાં કાર્ડ બતાવે છે.</string>
+    <string name="flights_distance">અંતર</string>
+    <string name="flights_clear">સાચવેલી ફ્લાઇટ વિગતો સાફ કરો</string>
+    <string name="opensky_id">OpenSky ક્લાયન્ટ ID</string>
+    <string name="opensky_secret">OpenSky ક્લાયન્ટ સિક્રેટ</string>
+    <string name="opensky_short">વૈકલ્પિક. તમારા OpenSky Network એકાઉન્ટના API ક્લાયન્ટ સાથે ફ્લાઇટ્સ દર 4 મિનિટને બદલે દર 30 સેકન્ડે અપડેટ થાય છે.</string>
 </resources>

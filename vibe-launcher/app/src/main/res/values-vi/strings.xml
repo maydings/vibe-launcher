@@ -112,7 +112,7 @@
     <string name="art_id_short">Cho các ứng dụng ghi ID IMDb của tựa trên thẻ, như Nuvio: đúng ảnh nền và logo, không cần khóa.</string>
     <string name="art_stremio_short">Dữ liệu phim và chương trình miễn phí của Stremio, tìm theo tựa trên thẻ. Không cần khóa.</string>
     <string name="art_own_short">Ảnh ứng dụng đặt trên thẻ của nó, khi các nguồn phía trên không có ảnh.</string>
-    <string name="wp_custom">Hình nền riêng</string>
+    <string name="wp_custom">Phông nền hệ thống</string>
     <string name="media_title">Thư viện</string>
     <string name="media_short">Mọi thứ bạn thêm đều được giữ một bản: hình ô, hình và video nền, và phông chữ.</string>
     <string name="tile_pictures">Hình ô</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Phông này không có chữ %1$s nên phông hệ thống được dùng.</string>
     <string name="font_credit">Phông chữ từ Google Fonts, do Fontsource liệt kê; mỗi phông theo giấy phép riêng</string>
     <string name="font_add">Thêm phông chữ</string>
-    <string name="wp_custom_short">Ảnh và video từ Thư viện, hiển thị sau mọi ứng dụng không có ảnh riêng. Có thể đặt một ô, từ menu của ô đó, để chỉ hiển thị những mục này.</string>
-    <string name="bd_content">Ảnh của chính ứng dụng</string>
+    <string name="wp_custom_short">Các ô dùng nó từ menu Phông nền của mình. Chỉ mục đầu tiên đang bật và có nội dung để hiển thị được dùng; mục còn lại là dự phòng.</string>
+    <string name="bd_content">Nội dung ứng dụng</string>
     <string name="bd_colour">Chỉ màu</string>
     <string name="bd_own">Lựa chọn riêng</string>
     <string name="lib_big_for_tile">Làm cho hình nền: không nên dùng cho ô</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Hai quyền</string>
     <string name="permissions_why">Vibe Launcher sẽ xin hai quyền.\n\nDanh sách TV: để hiện ảnh từ các thẻ mà ứng dụng của bạn đăng cho màn hình chính.\n\nVị trí: Android chỉ hiện tên mạng Wi-Fi cho ứng dụng có quyền này. Vibe Launcher chỉ dùng nó cho tên đó và không bao giờ tìm xem thiết bị ở đâu.\n\nKhông gì rời khỏi thiết bị.</string>
     <string name="continue_button">Tiếp tục</string>
-    <string name="store_update">Cập nhật Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sao lưu và khôi phục</string>
     <string name="backup_short">Cài đặt, ô, thư mục, ảnh của ô và khóa API. Bản sao lưu chứa khóa của bạn, nên hãy giữ kín.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Thành phố</string>
     <string name="wp_apple_underwater">Dưới nước</string>
     <string name="wp_no_room">Video này %1$s và còn trống %2$s. Thiết bị chừa trống 1 GB: hãy xóa bớt thứ gì đó trong Thư viện trước.</string>
+    <string name="flights_title">Chuyến bay trên đầu</string>
+    <string name="flights_short">Hiển thị máy bay đang bay ngang gần bạn phía sau những ứng dụng không có hình riêng. Dùng địa điểm đã đặt cho thời tiết. Dữ liệu: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Chi tiết phim và chương trình</string>
+    <string name="title_info_short">Hiển thị điểm đánh giá, năm, tóm tắt và thể loại từ TMDB cùng với phông nền của phim hoặc chương trình. Cần khóa TMDB (Khóa API).</string>
+    <string name="flights_over_colour">Hiện thẻ chuyến bay</string>
+    <string name="flights_over_colour_short">Hiện thẻ của các máy bay bay ngang gần bạn, không có bản đồ, trên các ô có phông nền chỉ là màu.</string>
+    <string name="flights_distance">Khoảng cách</string>
+    <string name="flights_clear">Xóa chi tiết chuyến bay đã lưu</string>
+    <string name="opensky_id">ID ứng dụng khách OpenSky</string>
+    <string name="opensky_secret">Mã bí mật ứng dụng khách OpenSky</string>
+    <string name="opensky_short">Không bắt buộc. Với một ứng dụng khách API từ tài khoản OpenSky Network của bạn, chuyến bay được cập nhật 30 giây một lần thay vì 4 phút một lần.</string>
 </resources>

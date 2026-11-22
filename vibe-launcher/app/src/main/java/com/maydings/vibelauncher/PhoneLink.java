@@ -614,6 +614,8 @@ final class PhoneLink {
                 + field("plexToken", "Plex token", settings.plexToken())
                 + field("pexelsKey", "Pexels API key", settings.pexelsKey())
                 + field("pixabayKey", "Pixabay API key", settings.pixabayKey())
+                + field("openSkyId", "OpenSky client ID", settings.openSkyId())
+                + field("openSkySecret", "OpenSky client secret", settings.openSkySecret())
                 + "<button>Send to device</button></form>";
     }
 

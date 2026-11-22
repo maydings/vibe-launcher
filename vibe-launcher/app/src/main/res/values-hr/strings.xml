@@ -112,7 +112,7 @@
     <string name="art_id_short">Za aplikacije koje na kartice stavljaju IMDb ID naslova, poput Nuvija: točna pozadina i logotip, bez ključa.</string>
     <string name="art_stremio_short">Besplatni podaci Stremija o filmovima i serijama, pronađeni prema naslovu kartice. Bez ključa.</string>
     <string name="art_own_short">Slika koju je aplikacija stavila na svoju karticu, kad nijedan izvor iznad nema sliku.</string>
-    <string name="wp_custom">Vlastite pozadinske slike</string>
+    <string name="wp_custom">Pozadina sustava</string>
     <string name="media_title">Zbirka</string>
     <string name="media_short">Sve što dodate, spremljeno jednom: slike pločica, slike i videozapisi pozadine te fontovi.</string>
     <string name="tile_pictures">Slike pločica</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Ovaj font nema slova za %1$s, pa se prikazuje font sustava.</string>
     <string name="font_credit">Fontovi s Google Fontsa, popis s Fontsourcea; svaki pod vlastitom licencom</string>
     <string name="font_add">Dodaj fontove</string>
-    <string name="wp_custom_short">Slike i videozapisi iz Zbirke, prikazani iza svake aplikacije koja nema vlastitu sliku. Pločica se u svom izborniku može postaviti da prikazuje samo njih.</string>
-    <string name="bd_content">Vlastite slike aplikacije</string>
+    <string name="wp_custom_short">Pločice ga koriste iz svog izbornika Pozadine. Koristi se samo prva omogućena stavka koja ima što prikazati; druga je rezerva.</string>
+    <string name="bd_content">Sadržaj aplikacije</string>
     <string name="bd_colour">Samo boja</string>
     <string name="bd_own">Vlastiti odabir</string>
     <string name="lib_big_for_tile">Napravljeno za pozadinu: ne preporučuje se za pločicu</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Dva dopuštenja</string>
     <string name="permissions_why">Vibe Launcher će sada zatražiti dva dopuštenja.\n\nTV program: za prikaz slika s kartica koje vaše aplikacije objavljuju za početni zaslon.\n\nLokacija: Android pokazuje naziv Wi-Fi mreže samo aplikacijama koje je imaju. Vibe Launcher je koristi samo za taj naziv i nikad ne traži gdje je uređaj.\n\nNijedno ne napušta uređaj.</string>
     <string name="continue_button">Nastavi</string>
-    <string name="store_update">Ažuriraj Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sigurnosna kopija i vraćanje</string>
     <string name="backup_short">Postavke, pločice, mape, slike pločica i API ključevi. Kopija sadrži vaše ključeve, zato je čuvajte za sebe.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Gradovi</string>
     <string name="wp_apple_underwater">Pod vodom</string>
     <string name="wp_no_room">Ovaj videozapis ima %1$s, a slobodno je %2$s. Uređaj čuva 1 GB slobodnim: najprije izbrišite nešto iz Zbirke.</string>
+    <string name="flights_title">Letovi iznad vas</string>
+    <string name="flights_short">Prikazuje zrakoplove koji prolaze u blizini iza aplikacija koje nemaju vlastitu sliku. Koristi mjesto postavljeno za vrijeme. Podaci: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Pojedinosti o filmovima i serijama</string>
+    <string name="title_info_short">Prikazuje ocjenu, godinu, sažetak i žanrove s TMDB-a uz pozadinu filma ili serije. Potreban je TMDB ključ (API ključevi).</string>
+    <string name="flights_over_colour">Prikaži kartice letova</string>
+    <string name="flights_over_colour_short">Prikazuje kartice zrakoplova koji prolaze u blizini, bez karte, na pločicama čija je pozadina samo boja.</string>
+    <string name="flights_distance">Udaljenost</string>
+    <string name="flights_clear">Izbriši spremljene podatke o letovima</string>
+    <string name="opensky_id">ID klijenta za OpenSky</string>
+    <string name="opensky_secret">Tajna klijenta za OpenSky</string>
+    <string name="opensky_short">Neobavezno. S API klijentom s vašeg računa OpenSky Network letovi se ažuriraju svakih 30 sekundi umjesto svake 4 minute.</string>
 </resources>

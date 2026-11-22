@@ -112,7 +112,7 @@
     <string name="art_id_short">Для приложений, которые пишут на карточках IMDb ID названия, как Nuvio: точный фон и логотип, без ключа.</string>
     <string name="art_stremio_short">Бесплатные данные Stremio о фильмах и сериалах, найденные по названию на карточке. Без ключа.</string>
     <string name="art_own_short">Картинка, которую приложение поставило на свою карточку, если у источников выше её нет.</string>
-    <string name="wp_custom">Свои обои</string>
+    <string name="wp_custom">Системный фон</string>
     <string name="media_title">Библиотека</string>
     <string name="media_short">Всё, что вы добавляете, хранится в одном экземпляре: изображения плиток, фоновые изображения и видео, шрифты.</string>
     <string name="tile_pictures">Изображения плиток</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">В этом шрифте нет букв для языка %1$s, поэтому показан системный шрифт.</string>
     <string name="font_credit">Шрифты из Google Fonts в списке Fontsource; у каждого своя лицензия</string>
     <string name="font_add">Добавить шрифты</string>
-    <string name="wp_custom_short">Фото и видео из Библиотеки, которые показываются за любым приложением без своей картинки. Любую плитку можно в её меню настроить так, чтобы она показывала только их.</string>
-    <string name="bd_content">Собственные изображения приложения</string>
+    <string name="wp_custom_short">Плитки используют его из своего меню «Фоны». Используется только первый включённый вариант, которому есть что показать; другой — запасной.</string>
+    <string name="bd_content">Содержимое приложения</string>
     <string name="bd_colour">Только цвет</string>
     <string name="bd_own">Свой выбор</string>
     <string name="lib_big_for_tile">Сделано для фона: для плитки не рекомендуется</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Два разрешения</string>
     <string name="permissions_why">Vibe Launcher сейчас попросит два разрешения.\n\nТелепрограмма: чтобы показывать картинки из карточек, которые ваши приложения публикуют для главного экрана.\n\nМестоположение: Android показывает имя сети Wi-Fi только приложениям с этим разрешением. Vibe Launcher использует его только для этого имени и никогда не определяет, где находится устройство.\n\nНичего не покидает устройство.</string>
     <string name="continue_button">Продолжить</string>
-    <string name="store_update">Обновить Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Резервная копия и восстановление</string>
     <string name="backup_short">Настройки, плитки, папки, картинки плиток и ключи API. В копии хранятся ваши ключи, поэтому никому её не передавайте.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Города</string>
     <string name="wp_apple_underwater">Под водой</string>
     <string name="wp_no_room">Это видео весит %1$s, а свободно %2$s. Устройство оставляет 1 ГБ свободным: сначала удалите что-нибудь из Библиотеки.</string>
+    <string name="flights_title">Рейсы над вами</string>
+    <string name="flights_short">Показывает самолёты, пролетающие рядом с вами, за приложениями без собственной картинки. Использует место, заданное для погоды. Данные: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Сведения о фильмах и сериалах</string>
+    <string name="title_info_short">Показывает оценку, год, описание и жанры из TMDB вместе с фоном фильма или сериала. Нужен ключ TMDB (Ключи API).</string>
+    <string name="flights_over_colour">Показывать карточки рейсов</string>
+    <string name="flights_over_colour_short">Показывает карточки самолётов, пролетающих рядом, без карты, на плитках, у которых фон — только цвет.</string>
+    <string name="flights_distance">Расстояние</string>
+    <string name="flights_clear">Очистить сохранённые данные о рейсах</string>
+    <string name="opensky_id">Идентификатор клиента OpenSky</string>
+    <string name="opensky_secret">Секрет клиента OpenSky</string>
+    <string name="opensky_short">Необязательно. С клиентом API из вашей учётной записи OpenSky Network рейсы обновляются каждые 30 секунд вместо каждых 4 минут.</string>
 </resources>

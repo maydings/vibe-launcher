@@ -112,7 +112,7 @@
     <string name="art_id_short">যে অ্যাপ কার্ডে শিরোনামের IMDb আইডি দেয়, যেমন Nuvio: সঠিক ব্যাকড্রপ ও লোগো, কী লাগে না।</string>
     <string name="art_stremio_short">কার্ডের শিরোনাম দিয়ে খোঁজা Stremio-র বিনামূল্যের সিনেমা ও শো-এর তথ্য। কী লাগে না।</string>
     <string name="art_own_short">উপরের কোনোটিতে ছবি না থাকলে, অ্যাপ নিজের কার্ডে যে ছবি দিয়েছে।</string>
-    <string name="wp_custom">নিজস্ব ওয়ালপেপার</string>
+    <string name="wp_custom">সিস্টেম ব্যাকড্রপ</string>
     <string name="media_title">লাইব্রেরি</string>
     <string name="media_short">আপনি যা যোগ করেন, প্রতিটি একবারই রাখা হয়: টাইলের ছবি, ব্যাকড্রপ ছবি ও ভিডিও, এবং ফন্ট।</string>
     <string name="tile_pictures">টাইলের ছবি</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">এই ফন্টে %1$s অক্ষর নেই, তাই সিস্টেম ফন্ট দেখানো হয়।</string>
     <string name="font_credit">Google Fonts-এর ফন্ট, Fontsource-এর তালিকায়; প্রতিটি নিজস্ব লাইসেন্সে</string>
     <string name="font_add">ফন্ট যোগ করুন</string>
-    <string name="wp_custom_short">লাইব্রেরির ছবি ও ভিডিও, যে অ্যাপের নিজের ছবি নেই তার পেছনে দেখায়। যেকোনো টাইলকে তার মেনু থেকে শুধু এগুলোই দেখাতে বলা যায়।</string>
-    <string name="bd_content">অ্যাপের নিজের ছবি</string>
+    <string name="wp_custom_short">টাইলগুলো তাদের ব্যাকড্রপ মেনু থেকে এটি ব্যবহার করে। দেখানোর কিছু আছে এমন প্রথম সক্রিয়টিই শুধু ব্যবহৃত হয়; অন্যটি বিকল্প।</string>
+    <string name="bd_content">অ্যাপের কনটেন্ট</string>
     <string name="bd_colour">শুধু রং</string>
     <string name="bd_own">নিজস্ব বাছাই</string>
     <string name="lib_big_for_tile">ব্যাকড্রপের জন্য তৈরি: টাইলে ব্যবহার না করাই ভালো</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">দুটি অনুমতি</string>
     <string name="permissions_why">Vibe Launcher এখন দুটি অনুমতি চাইবে।\n\nটিভি তালিকা: আপনার অ্যাপগুলো হোম স্ক্রিনের জন্য যে কার্ড প্রকাশ করে, সেগুলোর ছবি দেখাতে।\n\nলোকেশন: Android শুধু এই অনুমতি থাকা অ্যাপকে ওয়াই-ফাই নেটওয়ার্কের নাম দেখায়। Vibe Launcher এটি শুধু সেই নামের জন্য ব্যবহার করে এবং কখনো ডিভাইস কোথায় তা খোঁজে না।\n\nকোনোটিই ডিভাইস ছেড়ে যায় না।</string>
     <string name="continue_button">চালিয়ে যান</string>
-    <string name="store_update">Vibe Launcher আপডেট করুন</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ব্যাকআপ ও রিস্টোর</string>
     <string name="backup_short">সেটিংস, টাইল, ফোল্ডার, টাইলের ছবি এবং API কী। ব্যাকআপে আপনার কী থাকে, তাই এটি গোপন রাখুন।</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">শহর</string>
     <string name="wp_apple_underwater">জলের নিচে</string>
     <string name="wp_no_room">এই ভিডিওটি %1$s এবং খালি আছে %2$s। ডিভাইস 1 GB খালি রাখে: আগে লাইব্রেরি থেকে কিছু মুছুন।</string>
+    <string name="flights_title">মাথার উপরের ফ্লাইট</string>
+    <string name="flights_short">যেসব অ্যাপের নিজস্ব ছবি নেই সেগুলোর পেছনে আপনার কাছ দিয়ে যাওয়া বিমান দেখায়। আবহাওয়ার জন্য ঠিক করা জায়গাটি ব্যবহার করে। ডেটা: OpenSky Network, adsbdb.</string>
+    <string name="title_info">চলচ্চিত্র ও অনুষ্ঠানের বিবরণ</string>
+    <string name="title_info_short">চলচ্চিত্র বা অনুষ্ঠানের ব্যাকড্রপের সঙ্গে TMDB থেকে রেটিং, বছর, সারসংক্ষেপ ও ধরন দেখায়। একটি TMDB কী লাগবে (API কী)।</string>
+    <string name="flights_over_colour">ফ্লাইট কার্ড দেখান</string>
+    <string name="flights_over_colour_short">যেসব টাইলের ব্যাকড্রপ শুধু রং, সেগুলোতে মানচিত্র ছাড়া আপনার কাছ দিয়ে যাওয়া বিমানের কার্ড দেখায়।</string>
+    <string name="flights_distance">দূরত্ব</string>
+    <string name="flights_clear">সংরক্ষিত ফ্লাইটের বিবরণ মুছুন</string>
+    <string name="opensky_id">OpenSky ক্লায়েন্ট আইডি</string>
+    <string name="opensky_secret">OpenSky ক্লায়েন্ট সিক্রেট</string>
+    <string name="opensky_short">ঐচ্ছিক। আপনার OpenSky Network অ্যাকাউন্টের একটি API ক্লায়েন্ট থাকলে ফ্লাইট প্রতি 4 মিনিটের বদলে প্রতি 30 সেকেন্ডে আপডেট হয়।</string>
 </resources>

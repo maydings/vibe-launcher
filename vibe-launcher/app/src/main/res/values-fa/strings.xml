@@ -112,7 +112,7 @@
     <string name="art_id_short">برای برنامه‌هایی که شناسه IMDb عنوان را روی کارت‌هایشان می‌گذارند، مثل Nuvio: پس‌زمینه و لوگوی دقیق، بدون کلید.</string>
     <string name="art_stremio_short">داده‌های رایگان فیلم و سریال Stremio، پیداشده با عنوان کارت. بدون کلید.</string>
     <string name="art_own_short">تصویری که برنامه روی کارتش گذاشته، وقتی هیچ منبع بالاتر تصویری ندارد.</string>
-    <string name="wp_custom">والپیپرهای شخصی</string>
+    <string name="wp_custom">پس‌زمینهٔ سیستم</string>
     <string name="media_title">کتابخانه</string>
     <string name="media_short">هر چه اضافه می‌کنید، یک بار نگه داشته می‌شود: تصاویر کاشی، تصاویر و ویدیوهای پس‌زمینه، و قلم‌ها.</string>
     <string name="tile_pictures">تصاویر کاشی</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">این قلم حروف %1$s را ندارد، پس قلم سیستم نشان داده می‌شود.</string>
     <string name="font_credit">قلم‌ها از Google Fonts، فهرست‌شده توسط Fontsource؛ هر کدام با مجوز خود</string>
     <string name="font_add">افزودن قلم</string>
-    <string name="wp_custom_short">عکس‌ها و ویدیوهای کتابخانه که پشت هر برنامهٔ بدون تصویر نشان داده می‌شوند. هر کاشی را می‌توان از منوی خودش طوری تنظیم کرد که فقط این‌ها را نشان دهد.</string>
-    <string name="bd_content">تصاویر خودِ برنامه</string>
+    <string name="wp_custom_short">کاشی‌ها از منوی پس‌زمینه‌های خود از آن استفاده می‌کنند. فقط اولین مورد فعال که چیزی برای نمایش دارد استفاده می‌شود؛ دیگری پشتیبان است.</string>
+    <string name="bd_content">محتوای برنامه</string>
     <string name="bd_colour">فقط رنگ</string>
     <string name="bd_own">انتخاب خودم</string>
     <string name="lib_big_for_tile">برای پس‌زمینه ساخته شده: برای کاشی توصیه نمی‌شود</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">دو مجوز</string>
     <string name="permissions_why">Vibe Launcher اکنون دو مجوز می‌خواهد.\n\nفهرست برنامه‌های تلویزیون: برای نشان دادن تصاویر کارت‌هایی که برنامه‌هایتان برای صفحه اصلی منتشر می‌کنند.\n\nمکان: Android نام شبکه Wi-Fi را فقط به برنامه‌های دارای آن نشان می‌دهد. Vibe Launcher فقط برای همین نام از آن استفاده می‌کند و هرگز دنبال مکان دستگاه نمی‌گردد.\n\nهیچ‌کدام از دستگاه خارج نمی‌شود.</string>
     <string name="continue_button">ادامه</string>
-    <string name="store_update">به‌روزرسانی Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">پشتیبان‌گیری و بازیابی</string>
     <string name="backup_short">تنظیمات، کاشی‌ها، پوشه‌ها، تصویر کاشی‌ها و کلیدهای API. پشتیبان کلیدهای شما را دارد، پس آن را خصوصی نگه دارید.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">شهرها</string>
     <string name="wp_apple_underwater">زیر آب</string>
     <string name="wp_no_room">این ویدیو %1$s است و %2$s فضای خالی هست. دستگاه ۱ گیگابایت را خالی نگه می‌دارد: اول چیزی را از کتابخانه حذف کنید.</string>
+    <string name="flights_title">پروازهای بالای سر</string>
+    <string name="flights_short">هواپیماهایی را که از نزدیکی شما می‌گذرند پشت برنامه‌هایی که تصویر خودشان را ندارند نشان می‌دهد. از مکانی که برای آب‌وهوا تنظیم شده استفاده می‌کند. داده‌ها: OpenSky Network, adsbdb.</string>
+    <string name="title_info">جزئیات فیلم و سریال</string>
+    <string name="title_info_short">امتیاز، سال، خلاصهٔ داستان و ژانرها را از TMDB همراه با پس‌زمینهٔ فیلم یا سریال نشان می‌دهد. به کلید TMDB نیاز دارد (کلیدهای API).</string>
+    <string name="flights_over_colour">نمایش کارت‌های پرواز</string>
+    <string name="flights_over_colour_short">کارت هواپیماهایی را که از نزدیکی شما می‌گذرند، بدون نقشه، روی کاشی‌هایی نشان می‌دهد که پس‌زمینه‌شان فقط رنگ است.</string>
+    <string name="flights_distance">فاصله</string>
+    <string name="flights_clear">پاک کردن جزئیات ذخیره‌شدهٔ پروازها</string>
+    <string name="opensky_id">شناسهٔ کلاینت OpenSky</string>
+    <string name="opensky_secret">رمز کلاینت OpenSky</string>
+    <string name="opensky_short">اختیاری. با یک کلاینت API از حساب OpenSky Network شما، پروازها به‌جای هر ۴ دقیقه هر ۳۰ ثانیه به‌روز می‌شوند.</string>
 </resources>

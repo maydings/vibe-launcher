@@ -112,7 +112,7 @@
     <string name="art_id_short">适用于在卡片上写明片名 IMDb ID 的应用，如 Nuvio：准确的背景图和标志，无需密钥。</string>
     <string name="art_stremio_short">按卡片片名查找的 Stremio 免费影视数据。无需密钥。</string>
     <string name="art_own_short">以上来源都没有图片时，应用放在卡片上的图片。</string>
-    <string name="wp_custom">自定义壁纸</string>
+    <string name="wp_custom">系统背景</string>
     <string name="media_title">资源库</string>
     <string name="media_short">你添加的一切都只保存一份：磁贴图片、背景图片和背景视频，以及字体。</string>
     <string name="tile_pictures">磁贴图片</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">此字体没有%1$s文字，因此显示系统字体。</string>
     <string name="font_credit">来自 Google Fonts 的字体，由 Fontsource 列出；各自遵循自己的许可</string>
     <string name="font_add">添加字体</string>
-    <string name="wp_custom_short">资源库中的图片和视频，显示在没有自己图片的应用后面。也可以在磁贴自己的菜单中，将其设为只显示这些内容。</string>
-    <string name="bd_content">应用自己的图片</string>
+    <string name="wp_custom_short">磁贴通过各自的背景菜单使用它。只使用第一个已启用且有内容可显示的选项；另一个作为备用。</string>
+    <string name="bd_content">应用内容</string>
     <string name="bd_colour">仅颜色</string>
     <string name="bd_own">自选内容</string>
     <string name="lib_big_for_tile">为背景制作：不建议用于磁贴</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">两项权限</string>
     <string name="permissions_why">Vibe Launcher 接下来会申请两项权限。\n\n电视节目单：用于显示您的应用为主屏幕发布的卡片中的图片。\n\n位置信息：Android 只向拥有此权限的应用显示 Wi-Fi 网络名称。Vibe Launcher 只用它来显示这个名称，从不查询设备所在位置。\n\n两者都不会离开设备。</string>
     <string name="continue_button">继续</string>
-    <string name="store_update">更新 Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">备份和恢复</string>
     <string name="backup_short">设置、图块、文件夹、图块图片和 API 密钥。备份包含你的密钥，请妥善保管。</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">城市</string>
     <string name="wp_apple_underwater">水下</string>
     <string name="wp_no_room">此视频为 %1$s，可用空间为 %2$s。设备会保留 1 GB 可用空间：请先从资源库中删除一些内容。</string>
+    <string name="flights_title">头顶的航班</string>
+    <string name="flights_short">在没有自己图片的应用后面显示从您附近飞过的飞机。使用为天气设置的地点。数据：OpenSky Network, adsbdb.</string>
+    <string name="title_info">影视详情</string>
+    <string name="title_info_short">随电影或节目的背景显示来自 TMDB 的评分、年份、简介和类型。需要 TMDB 密钥（API 密钥）。</string>
+    <string name="flights_over_colour">显示航班卡片</string>
+    <string name="flights_over_colour_short">在背景仅为颜色的磁贴上显示附近飞过的航空器卡片，不显示地图。</string>
+    <string name="flights_distance">距离</string>
+    <string name="flights_clear">清除已保存的航班详情</string>
+    <string name="opensky_id">OpenSky 客户端 ID</string>
+    <string name="opensky_secret">OpenSky 客户端密钥</string>
+    <string name="opensky_short">可选。使用您 OpenSky Network 账户的 API 客户端后，航班每 30 秒更新一次，而不是每 4 分钟一次。</string>
 </resources>

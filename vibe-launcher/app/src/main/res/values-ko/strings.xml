@@ -112,7 +112,7 @@
     <string name="art_id_short">Nuvio처럼 카드에 제목의 IMDb ID를 넣는 앱: 정확한 배경과 로고, 키 필요 없음.</string>
     <string name="art_stremio_short">카드 제목으로 찾은 Stremio의 무료 영화 및 프로그램 데이터. 키 필요 없음.</string>
     <string name="art_own_short">위의 출처에 이미지가 없을 때, 앱이 카드에 넣은 이미지.</string>
-    <string name="wp_custom">맞춤 배경화면</string>
+    <string name="wp_custom">시스템 배경</string>
     <string name="media_title">라이브러리</string>
     <string name="media_short">추가한 모든 것은 한 번만 저장됩니다: 타일 사진, 배경 사진과 배경 동영상, 글꼴.</string>
     <string name="tile_pictures">타일 사진</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">이 글꼴에는 %1$s 문자가 없어 시스템 글꼴로 표시됩니다.</string>
     <string name="font_credit">Google Fonts의 글꼴, Fontsource 목록 제공. 각각 고유 라이선스</string>
     <string name="font_add">글꼴 추가</string>
-    <string name="wp_custom_short">라이브러리의 사진과 동영상을 자체 이미지가 없는 앱 뒤에 표시합니다. 타일 메뉴에서 이것만 표시하도록 설정할 수도 있습니다.</string>
-    <string name="bd_content">앱 자체 이미지</string>
+    <string name="wp_custom_short">타일은 각자의 배경 메뉴에서 이것을 사용합니다. 사용 설정되어 있고 표시할 것이 있는 첫 번째 항목만 사용되며, 다른 하나는 대체용입니다.</string>
+    <string name="bd_content">앱 콘텐츠</string>
     <string name="bd_colour">색상만</string>
     <string name="bd_own">직접 선택</string>
     <string name="lib_big_for_tile">배경용: 타일에는 권장하지 않음</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">두 가지 권한</string>
     <string name="permissions_why">Vibe Launcher가 이제 두 가지 권한을 요청합니다.\n\nTV 편성표: 앱이 홈 화면용으로 게시하는 카드의 이미지를 보여 주기 위해.\n\n위치: Android는 이 권한이 있는 앱에만 Wi-Fi 네트워크 이름을 보여 줍니다. Vibe Launcher는 그 이름에만 사용하며 기기가 어디에 있는지 절대 찾지 않습니다.\n\n어느 것도 기기 밖으로 나가지 않습니다.</string>
     <string name="continue_button">계속</string>
-    <string name="store_update">Vibe Launcher 업데이트</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">백업 및 복원</string>
     <string name="backup_short">설정, 타일, 폴더, 타일 사진, API 키. 백업에는 키가 들어 있으니 다른 사람과 공유하지 마세요.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">도시</string>
     <string name="wp_apple_underwater">수중</string>
     <string name="wp_no_room">이 동영상은 %1$s이고 여유 공간은 %2$s입니다. 기기는 1GB를 비워 두므로 먼저 라이브러리에서 항목을 삭제하세요.</string>
+    <string name="flights_title">머리 위 항공편</string>
+    <string name="flights_short">자체 사진이 없는 앱 뒤에 근처를 지나가는 항공기를 표시합니다. 날씨에 설정한 장소를 사용합니다. 데이터: OpenSky Network, adsbdb.</string>
+    <string name="title_info">영화 및 프로그램 상세 정보</string>
+    <string name="title_info_short">영화나 프로그램의 배경과 함께 TMDB의 평점, 연도, 줄거리, 장르를 표시합니다. TMDB 키가 필요합니다(API 키).</string>
+    <string name="flights_over_colour">항공편 카드 표시</string>
+    <string name="flights_over_colour_short">배경이 색상만인 타일에서 근처를 지나는 항공기의 카드를 지도 없이 표시합니다.</string>
+    <string name="flights_distance">거리</string>
+    <string name="flights_clear">저장된 항공편 정보 지우기</string>
+    <string name="opensky_id">OpenSky 클라이언트 ID</string>
+    <string name="opensky_secret">OpenSky 클라이언트 시크릿</string>
+    <string name="opensky_short">선택 사항입니다. OpenSky Network 계정의 API 클라이언트가 있으면 항공편이 4분마다가 아니라 30초마다 업데이트됩니다.</string>
 </resources>

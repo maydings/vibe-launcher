@@ -112,7 +112,7 @@
     <string name="art_id_short">За приложения, които слагат IMDb ID на заглавието в картите си, като Nuvio: точният фон и лого, без ключ.</string>
     <string name="art_stremio_short">Безплатните данни на Stremio за филми и сериали, намерени по заглавието на картата. Без ключ.</string>
     <string name="art_own_short">Снимката, която приложението е сложило на картата си, когато горните нямат.</string>
-    <string name="wp_custom">Собствени тапети</string>
+    <string name="wp_custom">Системен фон</string>
     <string name="media_title">Библиотека</string>
     <string name="media_short">Всичко, което добавите, пазено веднъж: снимки за плочки, фонови снимки и видеоклипове, и шрифтове.</string>
     <string name="tile_pictures">Снимки за плочки</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Този шрифт няма букви за %1$s, затова се показва системният шрифт.</string>
     <string name="font_credit">Шрифтове от Google Fonts, изброени от Fontsource; всеки със собствен лиценз</string>
     <string name="font_add">Добавяне на шрифтове</string>
-    <string name="wp_custom_short">Снимки и видеа от Библиотеката, показвани зад всяко приложение без собствена снимка. Всяка плочка може от менюто си да показва само тях.</string>
-    <string name="bd_content">Снимките на приложението</string>
+    <string name="wp_custom_short">Плочките го използват от менюто си „Фонове“. Използва се само първият включен, който има какво да покаже; другият е резервен.</string>
+    <string name="bd_content">Съдържание на приложението</string>
     <string name="bd_colour">Само цвят</string>
     <string name="bd_own">Собствен избор</string>
     <string name="lib_big_for_tile">Направено за фон: не се препоръчва за плочка</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Две разрешения</string>
     <string name="permissions_why">Vibe Launcher ще поиска две разрешения.\n\nТВ програма: за да показва снимки от картите, които приложенията ви публикуват за началния екран.\n\nМестоположение: Android показва името на Wi-Fi мрежата само на приложения с това разрешение. Vibe Launcher го използва само за това име и никога не търси къде е устройството.\n\nНищо не напуска устройството.</string>
     <string name="continue_button">Напред</string>
-    <string name="store_update">Актуализиране на Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Резервно копие и възстановяване</string>
     <string name="backup_short">Настройки, плочки, папки, картини на плочките и API ключове. Копието съдържа ключовете ви, затова го пазете лично.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Градове</string>
     <string name="wp_apple_underwater">Под водата</string>
     <string name="wp_no_room">Това видео е %1$s, а свободни са %2$s. Устройството пази 1 GB свободни: първо изтрийте нещо от Библиотеката.</string>
+    <string name="flights_title">Полети над вас</string>
+    <string name="flights_short">Показва самолетите, преминаващи близо до вас, зад приложенията без собствена картина. Използва мястото, зададено за времето. Данни: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Подробности за филми и сериали</string>
+    <string name="title_info_short">Показва оценката, годината, резюмето и жанровете от TMDB заедно с фона на филма или сериала. Нужен е ключ за TMDB (API ключове).</string>
+    <string name="flights_over_colour">Показване на карти на полети</string>
+    <string name="flights_over_colour_short">Показва картите на самолетите, минаващи близо до вас, без картата, върху плочки, чийто фон е само цвят.</string>
+    <string name="flights_distance">Разстояние</string>
+    <string name="flights_clear">Изчистване на запазените данни за полети</string>
+    <string name="opensky_id">Клиентски идентификатор за OpenSky</string>
+    <string name="opensky_secret">Клиентска тайна за OpenSky</string>
+    <string name="opensky_short">По избор. С API клиент от вашия профил в OpenSky Network полетите се обновяват на всеки 30 секунди вместо на всеки 4 минути.</string>
 </resources>

@@ -112,7 +112,7 @@
     <string name="art_id_short">Untuk apl yang meletakkan ID IMDb tajuk pada kadnya, seperti Nuvio: latar dan logo yang tepat, tanpa kunci.</string>
     <string name="art_stremio_short">Data filem dan rancangan percuma Stremio, dicari mengikut tajuk kad. Tanpa kunci.</string>
     <string name="art_own_short">Gambar yang diletakkan apl pada kadnya, apabila sumber di atas tiada gambar.</string>
-    <string name="wp_custom">Kertas dinding sendiri</string>
+    <string name="wp_custom">Latar sistem</string>
     <string name="media_title">Pustaka</string>
     <string name="media_short">Semua yang anda tambah, disimpan sekali: gambar jubin, gambar dan video latar, serta fon.</string>
     <string name="tile_pictures">Gambar jubin</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Fon ini tiada huruf %1$s, jadi fon sistem yang dipaparkan.</string>
     <string name="font_credit">Fon daripada Google Fonts, disenaraikan oleh Fontsource; setiap satu dengan lesennya</string>
     <string name="font_add">Tambah fon</string>
-    <string name="wp_custom_short">Foto dan video daripada Pustaka, ditunjukkan di belakang mana-mana apl yang tiada gambar sendiri. Mana-mana jubin boleh ditetapkan daripada menunya untuk menunjukkan ini sahaja.</string>
-    <string name="bd_content">Gambar milik apl</string>
+    <string name="wp_custom_short">Jubin menggunakannya daripada menu Latar masing-masing. Hanya yang pertama didayakan dan ada sesuatu untuk ditunjukkan digunakan; yang satu lagi ialah sandaran.</string>
+    <string name="bd_content">Kandungan apl</string>
     <string name="bd_colour">Warna sahaja</string>
     <string name="bd_own">Pilihan sendiri</string>
     <string name="lib_big_for_tile">Dibuat untuk latar: tidak disyorkan untuk jubin</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Dua kebenaran</string>
     <string name="permissions_why">Vibe Launcher akan meminta dua kebenaran.\n\nJadual TV: untuk menunjukkan gambar daripada kad yang diterbitkan oleh apl anda untuk skrin utama.\n\nLokasi: Android hanya menunjukkan nama rangkaian Wi-Fi kepada apl yang memilikinya. Vibe Launcher menggunakannya untuk nama itu sahaja dan tidak pernah mencari lokasi peranti.\n\nKedua-duanya tidak keluar dari peranti.</string>
     <string name="continue_button">Teruskan</string>
-    <string name="store_update">Kemas kini Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sandaran dan pemulihan</string>
     <string name="backup_short">Tetapan, jubin, folder, gambar jubin dan kunci API. Sandaran menyimpan kunci anda, jadi rahsiakannya.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Bandar</string>
     <string name="wp_apple_underwater">Bawah air</string>
     <string name="wp_no_room">Video ini %1$s dan yang kosong %2$s. Peranti mengekalkan 1 GB kosong: padam sesuatu daripada Pustaka dahulu.</string>
+    <string name="flights_title">Penerbangan di atas anda</string>
+    <string name="flights_short">Menunjukkan pesawat yang melintas berhampiran anda di belakang apl yang tiada gambar sendiri. Menggunakan tempat yang ditetapkan untuk cuaca. Data: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Butiran filem dan rancangan</string>
+    <string name="title_info_short">Menunjukkan penilaian, tahun, sinopsis dan genre daripada TMDB bersama latar filem atau rancangan. Memerlukan kunci TMDB (Kunci API).</string>
+    <string name="flights_over_colour">Tunjukkan kad penerbangan</string>
+    <string name="flights_over_colour_short">Menunjukkan kad pesawat yang melintas berhampiran anda, tanpa peta, pada jubin yang latarnya warna sahaja.</string>
+    <string name="flights_distance">Jarak</string>
+    <string name="flights_clear">Kosongkan butiran penerbangan yang disimpan</string>
+    <string name="opensky_id">ID klien OpenSky</string>
+    <string name="opensky_secret">Rahsia klien OpenSky</string>
+    <string name="opensky_short">Pilihan. Dengan klien API daripada akaun OpenSky Network anda, penerbangan dikemas kini setiap 30 saat dan bukan setiap 4 minit.</string>
 </resources>

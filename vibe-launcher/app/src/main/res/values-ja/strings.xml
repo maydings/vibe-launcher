@@ -112,7 +112,7 @@
     <string name="art_id_short">Nuvio のようにカードにタイトルの IMDb ID を載せるアプリ向け：正確な背景画像とロゴ。キー不要。</string>
     <string name="art_stremio_short">カードのタイトルで探す Stremio の無料の映画・番組データ。キー不要。</string>
     <string name="art_own_short">上のどれにも画像がないときに、アプリがカードに載せた画像。</string>
-    <string name="wp_custom">カスタム壁紙</string>
+    <string name="wp_custom">システム背景</string>
     <string name="media_title">ライブラリ</string>
     <string name="media_short">追加したものはすべて1つずつ保存されます：タイル画像、背景画像と背景動画、フォント。</string>
     <string name="tile_pictures">タイル画像</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">このフォントには%1$sの文字がないため、システムフォントで表示されます。</string>
     <string name="font_credit">Google Fonts のフォント（Fontsource による一覧）。それぞれ独自のライセンス</string>
     <string name="font_add">フォントを追加</string>
-    <string name="wp_custom_short">ライブラリの写真や動画を、独自の画像がないアプリの背景に表示します。タイルごとのメニューから、これだけを表示するようにも設定できます。</string>
-    <string name="bd_content">アプリ自身の画像</string>
+    <string name="wp_custom_short">タイルは各自の背景メニューからこれを使います。有効で表示できるものがある最初の1つだけが使われ、もう1つは予備です。</string>
+    <string name="bd_content">アプリのコンテンツ</string>
     <string name="bd_colour">色のみ</string>
     <string name="bd_own">自分で選択</string>
     <string name="lib_big_for_tile">背景用の画像：タイルにはおすすめしません</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">2 つの権限</string>
     <string name="permissions_why">Vibe Launcher はこのあと 2 つの権限を求めます。\n\n番組表：アプリがホーム画面用に公開するカードの画像を表示するため。\n\n位置情報：Android はこの権限を持つアプリにだけ Wi-Fi ネットワーク名を見せます。Vibe Launcher はその名前にだけ使い、デバイスの場所を調べることはありません。\n\nどちらもデバイスの外には出ません。</string>
     <string name="continue_button">続行</string>
-    <string name="store_update">Vibe Launcher を更新</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">バックアップと復元</string>
     <string name="backup_short">設定、タイル、フォルダ、タイルの画像、API キー。バックアップにはキーが含まれるため、他人と共有しないでください。</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">都市</string>
     <string name="wp_apple_underwater">水中</string>
     <string name="wp_no_room">この動画は%1$sで、空きは%2$sです。デバイスは1GBの空きを残すため、先にライブラリから何かを削除してください。</string>
+    <string name="flights_title">上空のフライト</string>
+    <string name="flights_short">独自の画像がないアプリの背景に、近くを通過する航空機を表示します。天気に設定した場所を使います。データ: OpenSky Network, adsbdb.</string>
+    <string name="title_info">映画・番組の詳細</string>
+    <string name="title_info_short">映画や番組の背景とともに、TMDBの評価、公開年、あらすじ、ジャンルを表示します。TMDBキーが必要です（APIキー）。</string>
+    <string name="flights_over_colour">フライトカードを表示</string>
+    <string name="flights_over_colour_short">背景が色のみのタイルで、近くを通過する航空機のカードを地図なしで表示します。</string>
+    <string name="flights_distance">距離</string>
+    <string name="flights_clear">保存したフライト情報を消去</string>
+    <string name="opensky_id">OpenSky クライアント ID</string>
+    <string name="opensky_secret">OpenSky クライアント シークレット</string>
+    <string name="opensky_short">任意。OpenSky Network アカウントの API クライアントがあると、フライトは 4 分ごとではなく 30 秒ごとに更新されます。</string>
 </resources>

@@ -3,7 +3,6 @@
 #
 #   ./build-and-install.sh <tv-ip>        (or TV_HOST=<tv-ip> ./build-and-install.sh)
 #
-# FLAVOR=store builds the Google Play version instead (no self-update, no Advanced tab).
 # Making it Home, debloating and the rest are done on the TV, in Vibe Launcher's own Settings.
 set -uo pipefail
 cd "$(dirname "$0")"
@@ -21,13 +20,9 @@ export ANDROID_HOME="${ANDROID_HOME:-/opt/homebrew/share/android-commandlinetool
 export PATH="$JAVA_HOME/bin:$PATH"
 [ -f local.properties ] || echo "sdk.dir=$ANDROID_HOME" > local.properties
 
-FLAVOR=${FLAVOR:-adb}
-case "$FLAVOR" in adb|store) ;; *) die "FLAVOR is adb or store, not '$FLAVOR'" ;; esac
-CAP=$(printf '%s' "${FLAVOR:0:1}" | tr a-z A-Z)${FLAVOR:1}
-
-say "Building ($FLAVOR)..."
-./gradlew "assemble${CAP}Debug" -q --console=plain || die "build failed"
-APK=app/build/outputs/apk/$FLAVOR/debug/app-$FLAVOR-debug.apk
+say "Building..."
+./gradlew assembleDebug -q --console=plain || die "build failed"
+APK=app/build/outputs/apk/debug/app-debug.apk
 
 say "Connecting to $TV..."
 adb connect "$TV" >/dev/null 2>&1

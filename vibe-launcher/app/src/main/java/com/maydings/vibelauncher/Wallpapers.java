@@ -30,7 +30,7 @@ import java.util.Random;
  * over it.
  * <p>
  * Lists say what shows where, by key, each naming Library items by id: an app's package or "folder:<id>" (tile
- * menu > Edit > Backdrops), the tile's own; ROTATION, Settings > Backdrops > Custom wallpapers' own, shown for
+ * menu > Edit > Backdrops), the tile's own; ROTATION, Settings > Backdrops > System backdrop's own, shown for
  * an app with no picture or for a tile set to them; and SCREENSAVER, the slideshow's own when it's set to show it
  * (VibeSettings.slideshowFrom). What a tile shows is its choice (AUTO, or one thing alone). A new item is on no
  * list until it's ticked for one. Which one of a list shows is picked at random on each visit to Home, never the
@@ -64,11 +64,16 @@ final class Wallpapers {
     /** The source of a tile picture (small): from the phone, framed there for a tile. */
     static final String TILE = "tile";
     /**
-     * What a tile shows behind Home (choice): AUTO, the app's own pictures, else Custom wallpapers' list, else its
-     * colour; or one of them alone, with nothing in its place when it has none: the app's pictures (CONTENT),
-     * Custom wallpapers (SYSTEM), its colour (COLOUR), or the tile's own list (OWN).
+     * What a tile can show behind Home, each a letter of its order (order): the app's own pictures (CONTENT), the
+     * tile's own list of the Library's (OWN), the system backdrop (SYSTEM), the flights overhead (FLIGHTS) and
+     * its colour (COLOUR). The system backdrop is itself one of two (systemOrder): its list of the Library's
+     * (GALLERY), or the flights. In an order a capital is enabled, a small letter disabled.
      */
-    static final int AUTO = 0, CONTENT = 1, SYSTEM = 2, COLOUR = 3, OWN = 4;
+    static final char CONTENT = 'c', OWN = 'o', SYSTEM = 's', FLIGHTS = 'f', COLOUR = 'k', GALLERY = 'g';
+    /** A tile's order left alone: flights disabled, its colour last. The system backdrop's: neither enabled. */
+    static final String TILE_ORDER = "COSfK", SYSTEM_ORDER = "gf";
+    /** What a device's own data may keep for a tile in place of an order: one thing alone (firstOrders). */
+    private static final int AUTO = 0, ONLY_CONTENT = 1, ONLY_SYSTEM = 2, ONLY_COLOUR = 3, ONLY_OWN = 4;
     /** The longest a title is kept. */
     static final int MAX_TITLE = 60;
     /** The biggest video taken (from the phone or a browsed source): about a few minutes of 1080p. */
@@ -76,7 +81,7 @@ final class Wallpapers {
     /** Free space kept on the TV beyond a new video, so apps aren't left short. */
     private static final long KEEP_FREE = 300L * 1024 * 1024;
 
-    /** The list of Settings > Backdrops > Custom wallpapers (not an app's or a folder's). */
+    /** The list of Settings > Backdrops > System backdrop (not an app's or a folder's). */
     static final String ROTATION = "*";
     /** The slideshow's own list (Settings > Appearance > Screensaver backdrops): no package, which has a dot. */
     static final String SCREENSAVER = "screensaver";
@@ -105,7 +110,7 @@ final class Wallpapers {
         dir.mkdirs();
         prefs = context.getSharedPreferences("wallpapers", Context.MODE_PRIVATE);
         lists();   // made now, the first time, with every one there is before any new one comes
-        firstChoices();
+        firstOrders();
     }
 
     /** How many times the tile pictures have changed: list() is read again when it has moved on. */
@@ -346,7 +351,7 @@ final class Wallpapers {
 
     // ---- lists ---------------------------------------------------------------------------------------
 
-    /** The lists by key; the first time, Custom wallpapers' holds every one there is. */
+    /** The lists by key; the first time, the System backdrop's holds every one there is. */
     private synchronized JSONObject lists() {
         if (lists != null) return lists;
         String saved = prefs.getString("lists", null);
@@ -420,10 +425,10 @@ final class Wallpapers {
         }
         if (!in && id.equals(current.get(key))) current.remove(key);
         saveLists();
-        // A tile's own list: ticking one for it is choosing the list; its last one unticked, the choice goes.
-        if (ROTATION.equals(key) || SCREENSAVER.equals(key)) return;
-        if (in) setChoice(key, OWN);
-        else if (choices().optInt(key, AUTO) == OWN && !hasList(key)) setChoice(key, AUTO);
+        // The first one ticked for a list enables it where it's used, if it was disabled.
+        if (!in || a.length() != 1) return;
+        if (ROTATION.equals(key)) setSystemOrder(enabled(systemOrder(), GALLERY, true));
+        else if (!SCREENSAVER.equals(key)) setOrder(key, enabled(order(key), OWN, true));
     }
 
     /** A folder gone: its list too, and what it was set to show. */
@@ -432,78 +437,201 @@ final class Wallpapers {
         current.remove(key);
         last.remove(key);
         saveLists();
-        setChoice(key, AUTO);
+        setOrder(key, TILE_ORDER);
     }
 
-    /** Every list and choice as it is now, to tell when one changed (Home, back from Settings or a grid). */
+    /** Every list and order as it is now, to tell when one changed (Home, back from Settings or a grid). */
     synchronized String listsState() {
-        return lists().toString() + choices().toString();
+        return lists().toString() + orders().toString() + systemOrder();
     }
 
     // ---- what each tile shows --------------------------------------------------------------------------
 
-    /** What the tiles are set to show, by key (those not on AUTO), as last read. */
-    private JSONObject choices;
+    /** The tiles' orders by key (those not left alone), as last read. */
+    private JSONObject orders;
 
-    private synchronized JSONObject choices() {
-        if (choices != null) return choices;
+    private synchronized JSONObject orders() {
+        if (orders != null) return orders;
         try {
-            choices = new JSONObject(prefs.getString("choices", "{}"));
+            orders = new JSONObject(prefs.getString("orders", "{}"));
         } catch (JSONException e) {
-            choices = new JSONObject();   // unreadable: every tile on AUTO
+            orders = new JSONObject();   // unreadable: every tile left alone
         }
-        return choices;
+        return orders;
+    }
+
+    /** An order with each of these letters once, in its own order first; any missing added as it is in these. */
+    private static String whole(String order, String all) {
+        StringBuilder made = new StringBuilder();
+        if (order != null) {
+            for (char c : order.toCharArray()) {
+                boolean known = all.toLowerCase(java.util.Locale.ROOT).indexOf(Character.toLowerCase(c)) >= 0;
+                if (known && at(made.toString(), c) < 0) made.append(c);
+            }
+        }
+        for (char c : all.toCharArray()) if (at(made.toString(), c) < 0) made.append(c);
+        return made.toString();
+    }
+
+    /** Where this thing is in an order (enabled or not), or -1. */
+    static int at(String order, char what) {
+        for (int i = 0; i < order.length(); i++) {
+            if (Character.toLowerCase(order.charAt(i)) == Character.toLowerCase(what)) return i;
+        }
+        return -1;
+    }
+
+    /** Whether this thing is enabled in an order. */
+    static boolean on(String order, char what) {
+        int i = at(order, what);
+        return i >= 0 && Character.isUpperCase(order.charAt(i));
+    }
+
+    /** The order with this thing enabled or disabled; a tile's colour stays enabled. */
+    static String enabled(String order, char what, boolean on) {
+        int i = at(order, what);
+        if (i < 0) return order;
+        char c = on || Character.toLowerCase(what) == COLOUR ? Character.toUpperCase(what) : Character.toLowerCase(what);
+        return order.substring(0, i) + c + order.substring(i + 1);
+    }
+
+    /** The order with the thing at this place moved one up (-1) or down. */
+    static String moved(String order, int from, int dir) {
+        int to = from + dir;
+        if (from < 0 || to < 0 || from >= order.length() || to >= order.length()) return order;
+        char[] c = order.toCharArray();
+        char t = c[from];
+        c[from] = c[to];
+        c[to] = t;
+        return new String(c);
     }
 
     /**
-     * What this tile (an app's package, or a folder's key) is set to show: AUTO unless chosen (tile menu > Edit >
-     * Backdrops). Set to a list (its own, or Custom wallpapers') with nothing left on it, it's AUTO again.
+     * What this tile (an app's package, or a folder's key) shows, first to last (tile menu > Edit > Backdrops):
+     * the first that's enabled and has something to show is what shows (pick). Left alone: TILE_ORDER.
      */
-    synchronized int choice(String key) {
-        if (key == null) return AUTO;
-        int c = choices().optInt(key, AUTO);
-        if (c < AUTO || c > OWN) return AUTO;
-        if ((c == OWN && !hasList(key)) || (c == SYSTEM && !hasList(ROTATION))) return AUTO;
-        return c;
+    synchronized String order(String key) {
+        if (key == null) return TILE_ORDER;
+        return enabled(whole(orders().optString(key, TILE_ORDER), TILE_ORDER), COLOUR, true);
     }
 
-    synchronized void setChoice(String key, int choice) {
+    /** Whether this tile's order is its own, not left alone. */
+    synchronized boolean hasOrder(String key) {
+        return key != null && orders().has(key);
+    }
+
+    synchronized void setOrder(String key, String order) {
         if (key == null) return;
         try {
-            if (choice == AUTO) choices().remove(key);
-            else choices().put(key, choice);
+            if (TILE_ORDER.equals(order)) orders().remove(key);
+            else orders().put(key, order);
         } catch (JSONException ignored) {
         }
-        prefs.edit().putString("choices", choices().toString()).apply();
+        prefs.edit().putString("orders", orders().toString()).apply();
     }
 
     /**
-     * A Library with no choices kept yet (a device's own data may have lists and Custom wallpapers' switch
-     * instead: VibeSettings.wallpaperShowKept) gets them, to show what it showed: a tile with a list of its own
-     * shows it (OWN); a switch that's off unticks Custom wallpapers' list, so none show; one set to always sets
-     * the dock's tiles to SYSTEM once Home knows them (pendingAlways).
+     * The system backdrop (Settings > Backdrops > System backdrop): its list of the Library's and the flights,
+     * first to last, neither enabled until chosen; the first enabled with something to show is it (systemPick).
      */
-    private synchronized void firstChoices() {
-        if (prefs.contains("choices")) return;
-        JSONObject made = new JSONObject();
-        JSONObject all = lists();
-        try {
-            for (java.util.Iterator<String> it = all.keys(); it.hasNext(); ) {
-                String key = it.next();
-                JSONArray a = all.optJSONArray(key);
-                if (!ROTATION.equals(key) && !SCREENSAVER.equals(key) && a != null && a.length() > 0) made.put(key, OWN);
-            }
-            int show = new VibeSettings(context).wallpaperShowKept();
-            boolean always = show == VibeSettings.SHOW_KEPT_ALWAYS && hasList(ROTATION);
-            if (show == VibeSettings.SHOW_KEPT_OFF) all.put(ROTATION, new JSONArray());
-            choices = made;
-            prefs.edit().putString("choices", made.toString()).putString("lists", all.toString())
-                    .putBoolean("always", always).apply();
-        } catch (JSONException ignored) {
-        }
+    synchronized String systemOrder() {
+        String kept = prefs.getString("systemOrder", null);
+        // None kept: a list with something ticked for it is what it shows.
+        if (kept == null) return hasList(ROTATION) ? enabled(SYSTEM_ORDER, GALLERY, true) : SYSTEM_ORDER;
+        return whole(kept, SYSTEM_ORDER);
     }
 
-    /** Custom wallpapers' switch said always: the dock's tiles not set to anything are to be set to SYSTEM. */
+    synchronized void setSystemOrder(String order) {
+        prefs.edit().putString("systemOrder", order).apply();
+    }
+
+    /** What the system backdrop is now: GALLERY, FLIGHTS (when they can show: flights), or 0 for nothing. */
+    synchronized char systemPick(boolean flights) {
+        for (char c : systemOrder().toCharArray()) {
+            if (c == Character.toUpperCase(GALLERY) && hasList(ROTATION)) return GALLERY;
+            if (c == Character.toUpperCase(FLIGHTS) && flights) return FLIGHTS;
+        }
+        return 0;
+    }
+
+    /**
+     * What this tile shows now: the first in its order that's enabled and has something. CONTENT (when its app
+     * may have pictures: content), OWN, GALLERY (the system backdrop's list), FLIGHTS (its own, or as the system
+     * backdrop; when they can show: flights) or COLOUR.
+     */
+    synchronized char pick(String key, boolean content, boolean flights) {
+        for (char c : order(key).toCharArray()) {
+            if (!Character.isUpperCase(c)) continue;
+            c = Character.toLowerCase(c);
+            if (c == CONTENT && content) return CONTENT;
+            if (c == OWN && key != null && hasList(key)) return OWN;
+            if (c == FLIGHTS && flights) return FLIGHTS;
+            if (c == SYSTEM) {
+                char system = systemPick(flights);
+                if (system != 0) return system;
+            }
+            if (c == COLOUR) return COLOUR;
+        }
+        return COLOUR;
+    }
+
+    /** Whether the flights are enabled anywhere: as the system backdrop's, or in a tile's own order. */
+    synchronized boolean flightsUsed() {
+        if (on(systemOrder(), FLIGHTS)) return true;
+        for (java.util.Iterator<String> it = orders().keys(); it.hasNext(); ) {
+            if (on(orders().optString(it.next(), ""), FLIGHTS)) return true;
+        }
+        return false;
+    }
+
+    /** The order of a tile set to show the system backdrop before anything else. */
+    static String systemFirst() {
+        return "SCOfK";
+    }
+
+    /**
+     * A Library with no orders kept yet gets them from what a device's own data may keep instead, to show what
+     * it showed. One thing chosen for a tile: that alone, then its colour. Or lists and the System backdrop's
+     * switch (VibeSettings.wallpaperShowKept): a tile with a list of its own shows that alone; a switch that's
+     * off unticks the System backdrop's list, so none show; one set to always puts the system backdrop first
+     * on the dock's tiles once Home knows them (pendingAlways).
+     */
+    private synchronized void firstOrders() {
+        if (prefs.contains("orders")) return;
+        JSONObject made = new JSONObject();
+        JSONObject all = lists();
+        android.content.SharedPreferences.Editor edit = prefs.edit();
+        try {
+            if (prefs.contains("choices")) {
+                JSONObject chosen = new JSONObject(prefs.getString("choices", "{}"));
+                for (java.util.Iterator<String> it = chosen.keys(); it.hasNext(); ) {
+                    String key = it.next();
+                    int c = chosen.optInt(key, AUTO);
+                    if (c == ONLY_CONTENT) made.put(key, "CosfK");
+                    else if (c == ONLY_SYSTEM && hasList(ROTATION)) made.put(key, "ScofK");
+                    else if (c == ONLY_COLOUR) made.put(key, "Kcosf");
+                    else if (c == ONLY_OWN && hasList(key)) made.put(key, "OcsfK");
+                }
+            } else {
+                for (java.util.Iterator<String> it = all.keys(); it.hasNext(); ) {
+                    String key = it.next();
+                    JSONArray a = all.optJSONArray(key);
+                    if (!ROTATION.equals(key) && !SCREENSAVER.equals(key) && a != null && a.length() > 0) {
+                        made.put(key, "OcsfK");
+                    }
+                }
+                int show = new VibeSettings(context).wallpaperShowKept();
+                edit.putBoolean("always", show == VibeSettings.SHOW_KEPT_ALWAYS && hasList(ROTATION));
+                if (show == VibeSettings.SHOW_KEPT_OFF) all.put(ROTATION, new JSONArray());
+                edit.putString("lists", all.toString());
+            }
+        } catch (JSONException ignored) {
+        }
+        orders = made;
+        edit.putString("orders", made.toString()).apply();
+    }
+
+    /** The System backdrop's switch said always: the dock's tiles left alone are to have it first (systemFirst). */
     boolean pendingAlways() {
         return prefs.getBoolean("always", false);
     }

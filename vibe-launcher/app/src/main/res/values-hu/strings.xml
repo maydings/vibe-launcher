@@ -112,7 +112,7 @@
     <string name="art_id_short">Olyan alkalmazásokhoz, amelyek a cím IMDb-azonosítóját a kártyáikra teszik, mint a Nuvio: a pontos háttérkép és logó, kulcs nélkül.</string>
     <string name="art_stremio_short">A Stremio ingyenes film- és sorozatadatai a kártya címe alapján. Kulcs nélkül.</string>
     <string name="art_own_short">A kép, amelyet az alkalmazás a kártyájára tett, ha a fentiek egyikének sincs.</string>
-    <string name="wp_custom">Saját háttérképek</string>
+    <string name="wp_custom">Rendszerháttér</string>
     <string name="media_title">Könyvtár</string>
     <string name="media_short">Minden, amit hozzáad, egyszer tárolva: csempeképek, háttérképek és -videók, valamint betűtípusok.</string>
     <string name="tile_pictures">Csempeképek</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Ebben a betűtípusban nincsenek %1$s betűk, ezért a rendszer betűtípusa látszik.</string>
     <string name="font_credit">Betűtípusok a Google Fontsból, a Fontsource listájából; mindegyik saját licenccel</string>
     <string name="font_add">Betűtípusok hozzáadása</string>
-    <string name="wp_custom_short">Képek és videók a Könyvtárból, minden olyan alkalmazás mögött, amelynek nincs saját képe. Egy csempe a saját menüjéből beállítható úgy, hogy csak ezeket mutassa.</string>
-    <string name="bd_content">Az alkalmazás saját képei</string>
+    <string name="wp_custom_short">A csempék a Hátterek menüjükből használják. Csak az első engedélyezett, megjeleníthető tartalommal rendelkező elem van használatban; a másik tartalék.</string>
+    <string name="bd_content">Az alkalmazás tartalma</string>
     <string name="bd_colour">Csak szín</string>
     <string name="bd_own">Saját válogatás</string>
     <string name="lib_big_for_tile">Háttérnek készült: csempére nem ajánlott</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Két engedély</string>
     <string name="permissions_why">A Vibe Launcher most két engedélyt kér.\n\nTV-műsorinformációk: hogy megjeleníthesse a képeket azokról a kártyákról, amelyeket az alkalmazások a kezdőképernyőre tesznek közzé.\n\nHely: az Android csak az ezzel rendelkező alkalmazásoknak mutatja meg a Wi-Fi-hálózat nevét. A Vibe Launcher csak erre a névre használja, és sosem nézi meg, hol van az eszköz.\n\nEgyik sem hagyja el az eszközt.</string>
     <string name="continue_button">Tovább</string>
-    <string name="store_update">A Vibe Launcher frissítése</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Biztonsági mentés és visszaállítás</string>
     <string name="backup_short">Beállítások, csempék, mappák, csempeképek és API-kulcsok. A mentés tartalmazza a kulcsaidat, ezért ne add ki senkinek.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Városok</string>
     <string name="wp_apple_underwater">Víz alatt</string>
     <string name="wp_no_room">Ez a videó %1$s, és %2$s szabad. Az eszköz 1 GB-ot szabadon hagy: előbb töröljön valamit a Könyvtárból.</string>
+    <string name="flights_title">Járatok a fejed felett</string>
+    <string name="flights_short">A közeledben elhaladó repülőgépeket mutatja azon alkalmazások mögött, amelyeknek nincs saját képük. Az időjáráshoz beállított helyet használja. Adatok: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Filmek és sorozatok adatai</string>
+    <string name="title_info_short">A film vagy sorozat háttere mellett megjeleníti a TMDB értékelését, az évet, az ismertetőt és a műfajokat. TMDB-kulcs szükséges (API-kulcsok).</string>
+    <string name="flights_over_colour">Járatkártyák megjelenítése</string>
+    <string name="flights_over_colour_short">A közelben elhaladó repülőgépek kártyáit mutatja térkép nélkül azokon a csempéken, amelyek háttere csak a szín.</string>
+    <string name="flights_distance">Távolság</string>
+    <string name="flights_clear">Mentett járatadatok törlése</string>
+    <string name="opensky_id">OpenSky kliensazonosító</string>
+    <string name="opensky_secret">OpenSky klienstitok</string>
+    <string name="opensky_short">Nem kötelező. Az OpenSky Network-fiókod API-kliensével a járatok 4 perc helyett 30 másodpercenként frissülnek.</string>
 </resources>

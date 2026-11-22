@@ -112,7 +112,7 @@
     <string name="art_id_short">Para apps que ponen el ID de IMDb del título en sus tarjetas, como Nuvio: el fondo y el logo exactos, sin clave.</string>
     <string name="art_stremio_short">Los datos gratuitos de Stremio sobre películas y series, buscados por el título de la tarjeta. Sin clave.</string>
     <string name="art_own_short">La imagen que la app puso en su tarjeta, cuando ninguna fuente de arriba tiene una.</string>
-    <string name="wp_custom">Fondos de pantalla propios</string>
+    <string name="wp_custom">Fondo del sistema</string>
     <string name="media_title">Biblioteca</string>
     <string name="media_short">Todo lo que añades, guardado una vez: imágenes de mosaico, imágenes y vídeos de fondo, y fuentes.</string>
     <string name="tile_pictures">Imágenes de mosaico</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Esta fuente no tiene letras de %1$s, así que se muestra la del sistema.</string>
     <string name="font_credit">Fuentes de Google Fonts, listadas por Fontsource; cada una con su licencia</string>
     <string name="font_add">Añadir fuentes</string>
-    <string name="wp_custom_short">Fotos y vídeos de la Biblioteca, detrás de cualquier app que no tenga imagen propia. Un mosaico puede, desde su menú, mostrar solo estos.</string>
-    <string name="bd_content">Imágenes propias de la app</string>
+    <string name="wp_custom_short">Los mosaicos lo usan desde su menú Fondos. Solo se usa el primero activado que tenga algo que mostrar; el otro es de reserva.</string>
+    <string name="bd_content">Contenido de la app</string>
     <string name="bd_colour">Solo color</string>
     <string name="bd_own">Selección propia</string>
     <string name="lib_big_for_tile">Hecha para fondo: no recomendada para un mosaico</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Dos permisos</string>
     <string name="permissions_why">Vibe Launcher te pedirá dos permisos.\n\nGuía de TV: para mostrar imágenes de las tarjetas que tus apps publican para la pantalla de inicio.\n\nUbicación: Android solo muestra el nombre de la red Wi-Fi a las apps que la tienen. Vibe Launcher la usa solo para ese nombre y nunca busca dónde está el dispositivo.\n\nNinguno de los dos sale del dispositivo.</string>
     <string name="continue_button">Continuar</string>
-    <string name="store_update">Actualizar Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Copia de seguridad y restauración</string>
     <string name="backup_short">Ajustes, mosaicos, carpetas, imágenes de mosaicos y claves de API. La copia incluye tus claves, así que guárdala en privado.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Ciudades</string>
     <string name="wp_apple_underwater">Bajo el agua</string>
     <string name="wp_no_room">Este vídeo ocupa %1$s y hay %2$s libres. El dispositivo deja 1 GB libre: borra antes algo de la Biblioteca.</string>
+    <string name="flights_title">Vuelos sobre ti</string>
+    <string name="flights_short">Muestra los aviones que pasan cerca detrás de las apps que no tienen imagen propia. Usa el lugar elegido para el tiempo. Datos: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Detalles de películas y series</string>
+    <string name="title_info_short">Muestra la puntuación, el año, la sinopsis y los géneros de TMDB junto al fondo de una película o serie. Necesita una clave de TMDB (Claves de API).</string>
+    <string name="flights_over_colour">Mostrar tarjetas de vuelos</string>
+    <string name="flights_over_colour_short">Muestra las tarjetas de los aviones que pasan cerca, sin el mapa, en los mosaicos cuyo fondo es solo el color.</string>
+    <string name="flights_distance">Distancia</string>
+    <string name="flights_clear">Borrar los datos de vuelos guardados</string>
+    <string name="opensky_id">ID de cliente de OpenSky</string>
+    <string name="opensky_secret">Secreto de cliente de OpenSky</string>
+    <string name="opensky_short">Opcional. Con un cliente de API de tu cuenta de OpenSky Network, los vuelos se actualizan cada 30 segundos en lugar de cada 4 minutos.</string>
 </resources>

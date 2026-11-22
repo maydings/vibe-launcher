@@ -112,7 +112,7 @@
     <string name="art_id_short">សម្រាប់កម្មវិធីដែលដាក់លេខសម្គាល់ IMDb នៃចំណងជើងលើកាតរបស់វា ដូចជា Nuvio៖ ផ្ទៃខាងក្រោយ និងស្លាកសញ្ញាត្រឹមត្រូវ គ្មានសោ។</string>
     <string name="art_stremio_short">ទិន្នន័យភាពយន្ត និងកម្មវិធីឥតគិតថ្លៃរបស់ Stremio រកតាមចំណងជើងកាត។ គ្មានសោ។</string>
     <string name="art_own_short">រូបភាពដែលកម្មវិធីដាក់លើកាតរបស់វា នៅពេលប្រភពខាងលើគ្មាន។</string>
-    <string name="wp_custom">ផ្ទាំងរូបភាពផ្ទាល់ខ្លួន</string>
+    <string name="wp_custom">ផ្ទៃខាងក្រោយប្រព័ន្ធ</string>
     <string name="media_title">បណ្ណាល័យ</string>
     <string name="media_short">អ្វីៗដែលអ្នកបន្ថែម រក្សាទុកតែម្តង៖ រូបភាពក្រឡា រូបភាព និងវីដេអូផ្ទៃខាងក្រោយ និងពុម្ពអក្សរ។</string>
     <string name="tile_pictures">រូបភាពក្រឡា</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">ពុម្ពអក្សរនេះគ្មានអក្សរ %1$s ទេ ដូច្នេះពុម្ពអក្សរប្រព័ន្ធត្រូវបានបង្ហាញ។</string>
     <string name="font_credit">ពុម្ពអក្សរពី Google Fonts ដែលរាយដោយ Fontsource; នីមួយៗមានអាជ្ញាប័ណ្ណផ្ទាល់</string>
     <string name="font_add">បន្ថែមពុម្ពអក្សរ</string>
-    <string name="wp_custom_short">រូបភាព និងវីដេអូពីបណ្ណាល័យ បង្ហាញនៅពីក្រោយកម្មវិធីដែលគ្មានរូបភាពផ្ទាល់។ ក្រឡានីមួយៗអាចកំណត់ពីម៉ឺនុយរបស់វា ឱ្យបង្ហាញតែរបស់ទាំងនេះ។</string>
-    <string name="bd_content">រូបភាពផ្ទាល់របស់កម្មវិធី</string>
+    <string name="wp_custom_short">ក្រឡាប្រើវាពីម៉ឺនុយផ្ទៃខាងក្រោយរបស់ពួកវា។ មានតែមួយដំបូងដែលបានបើក និងមានអ្វីបង្ហាញប៉ុណ្ណោះដែលត្រូវបានប្រើ ឯមួយទៀតជាជម្រើសបម្រុង។</string>
+    <string name="bd_content">មាតិការបស់កម្មវិធី</string>
     <string name="bd_colour">ពណ៌តែប៉ុណ្ណោះ</string>
     <string name="bd_own">ជម្រើសផ្ទាល់ខ្លួន</string>
     <string name="lib_big_for_tile">ធ្វើសម្រាប់ផ្ទៃខាងក្រោយ៖ មិនណែនាំសម្រាប់ក្រឡាទេ</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">ការអនុញ្ញាតពីរ</string>
     <string name="permissions_why">Vibe Launcher នឹងសុំការអនុញ្ញាតពីរ។\n\nបញ្ជីកម្មវិធីទូរទស្សន៍៖ ដើម្បីបង្ហាញរូបពីកាតដែលកម្មវិធីរបស់អ្នកផ្សាយសម្រាប់អេក្រង់ដើម។\n\nទីតាំង៖ Android បង្ហាញឈ្មោះបណ្ដាញ Wi-Fi តែចំពោះកម្មវិធីដែលមានការអនុញ្ញាតនេះ។ Vibe Launcher ប្រើវាសម្រាប់ឈ្មោះនោះប៉ុណ្ណោះ ហើយមិនដែលរកថាឧបករណ៍នៅឯណាទេ។\n\nគ្មានអ្វីចាកចេញពីឧបករណ៍ទេ។</string>
     <string name="continue_button">បន្ត</string>
-    <string name="store_update">ធ្វើបច្ចុប្បន្នភាព Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">បម្រុងទុក និងស្ដារ</string>
     <string name="backup_short">ការកំណត់ ប្រអប់ ថត រូបភាពប្រអប់ និងសោ API។ ការបម្រុងទុកមានសោរបស់អ្នក ដូច្នេះសូមរក្សាវាជាឯកជន។</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">ទីក្រុង</string>
     <string name="wp_apple_underwater">ក្រោមទឹក</string>
     <string name="wp_no_room">វីដេអូនេះមានទំហំ %1$s ហើយនៅទំនេរ %2$s។ ឧបករណ៍ទុក 1 GB ទំនេរ៖ សូមលុបអ្វីមួយពីបណ្ណាល័យជាមុនសិន។</string>
+    <string name="flights_title">ជើងហោះហើរពីលើ</string>
+    <string name="flights_short">បង្ហាញយន្តហោះដែលហោះកាត់ក្បែរអ្នក នៅខាងក្រោយកម្មវិធីដែលគ្មានរូបភាពផ្ទាល់ខ្លួន។ ប្រើទីកន្លែងដែលបានកំណត់សម្រាប់អាកាសធាតុ។ ទិន្នន័យ៖ OpenSky Network, adsbdb.</string>
+    <string name="title_info">ព័ត៌មានលម្អិតអំពីភាពយន្ត និងកម្មវិធី</string>
+    <string name="title_info_short">បង្ហាញពិន្ទុ ឆ្នាំ សេចក្ដីសង្ខេប និងប្រភេទពី TMDB ជាមួយផ្ទៃខាងក្រោយនៃភាពយន្ត ឬកម្មវិធី។ ត្រូវការសោ TMDB (សោ API)។</string>
+    <string name="flights_over_colour">បង្ហាញកាតជើងហោះហើរ</string>
+    <string name="flights_over_colour_short">បង្ហាញកាតរបស់យន្តហោះដែលហោះកាត់ក្បែរអ្នក ដោយគ្មានផែនទី លើក្រឡាដែលផ្ទៃខាងក្រោយមានតែពណ៌។</string>
+    <string name="flights_distance">ចម្ងាយ</string>
+    <string name="flights_clear">សម្អាតព័ត៌មានជើងហោះហើរដែលបានរក្សាទុក</string>
+    <string name="opensky_id">លេខសម្គាល់កម្មវិធីភ្ញៀវ OpenSky</string>
+    <string name="opensky_secret">ពាក្យសម្ងាត់កម្មវិធីភ្ញៀវ OpenSky</string>
+    <string name="opensky_short">ជាជម្រើស។ ជាមួយកម្មវិធីភ្ញៀវ API ពីគណនី OpenSky Network របស់អ្នក ជើងហោះហើរធ្វើបច្ចុប្បន្នភាពរៀងរាល់ 30 វិនាទី ជំនួសឱ្យរៀងរាល់ 4 នាទី។</string>
 </resources>

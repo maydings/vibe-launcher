@@ -16,6 +16,7 @@ import android.view.View;
  * follows the tile edge evenly; the view is 6dp larger on each side to leave room for the glow.
  * One instance floats over the grid and is moved with spring animations between tiles. Its sheen, rim
  * and glow take the highlight colour from Settings (white unless chosen); the top specular stays white.
+ * Round a tile that's being moved the rim is white and thicker, on the same line.
  */
 public class GlassView extends View {
 
@@ -29,6 +30,7 @@ public class GlassView extends View {
     private float radius;
     /** The highlight colour, RGB: white unless chosen (Settings > Appearance > Highlight colour). */
     private int tint = 0xFFFFFF;
+    private boolean moving;
 
     public GlassView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -59,8 +61,17 @@ public class GlassView extends View {
         return alpha << 24 | tint;
     }
 
+    /** Whether the tile it's round is being moved: the rim white and thicker, where the coloured one is. */
+    void setMoving(boolean moving) {
+        if (moving == this.moving) return;
+        this.moving = moving;
+        colours();
+        invalidate();
+    }
+
     private void colours() {
-        rim.setColor(tinted(0xCC));
+        rim.setColor(moving ? 0xFFFFFFFF : tinted(0xCC));
+        rim.setStrokeWidth((moving ? 3f : 1.5f) * density);
         // One soft shadow-blur glow instead of stacked strokes, which banded. Hardware-drawn on
         // Android 9+, unlike BlurMaskFilter (which needs a software layer).
         glow.setColor(tinted(0xFF));

@@ -112,7 +112,7 @@
     <string name="art_id_short">कार्डमा शीर्षकको IMDb आईडी राख्ने एपहरूका लागि, जस्तै Nuvio: ठ्याक्कै पृष्ठभूमि र लोगो, कुञ्जी चाहिँदैन।</string>
     <string name="art_stremio_short">कार्डको शीर्षकबाट खोजिएको Stremio को निःशुल्क चलचित्र र शो डेटा। कुञ्जी चाहिँदैन।</string>
     <string name="art_own_short">माथिका कुनैमा तस्बिर नभए, एपले आफ्नो कार्डमा राखेको तस्बिर।</string>
-    <string name="wp_custom">आफ्नै वालपेपर</string>
+    <string name="wp_custom">सिस्टम ब्याकड्रप</string>
     <string name="media_title">पुस्तकालय</string>
     <string name="media_short">तपाईंले थप्ने सबै, प्रत्येक एकपटक मात्र राखिन्छ: टाइल तस्बिर, ब्याकड्रप तस्बिर र भिडियो, र फन्टहरू।</string>
     <string name="tile_pictures">टाइल तस्बिर</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">यो फन्टमा %1$s अक्षरहरू छैनन्, त्यसैले प्रणालीको फन्ट देखिन्छ।</string>
     <string name="font_credit">Google Fonts का फन्टहरू, Fontsource को सूचीमा; प्रत्येक आफ्नै इजाजतपत्रमा</string>
     <string name="font_add">फन्टहरू थप्नुहोस्</string>
-    <string name="wp_custom_short">पुस्तकालयका तस्बिर र भिडियो, आफ्नै तस्बिर नभएको जुनसुकै एपको पछाडि देखिन्छन्। कुनै पनि टाइललाई यसको मेनुबाट यी मात्र देखाउने गरी सेट गर्न सकिन्छ।</string>
-    <string name="bd_content">एपका आफ्नै तस्बिर</string>
+    <string name="wp_custom_short">टाइलहरूले आफ्नो ब्याकड्रप मेनुबाट यो प्रयोग गर्छन्। देखाउने कुरा भएको पहिलो सक्षम विकल्प मात्र प्रयोग हुन्छ; अर्को वैकल्पिक हो।</string>
+    <string name="bd_content">एपको सामग्री</string>
     <string name="bd_colour">रङ मात्र</string>
     <string name="bd_own">आफ्नै छनोट</string>
     <string name="lib_big_for_tile">ब्याकड्रपका लागि बनाइएको: टाइलका लागि सिफारिस गरिँदैन</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">दुई अनुमति</string>
     <string name="permissions_why">Vibe Launcher ले अब दुई अनुमति माग्नेछ।\n\nटिभी तालिका: तपाईंका एपहरूले होम स्क्रिनका लागि प्रकाशित गर्ने कार्डका तस्बिरहरू देखाउन।\n\nस्थान: Android ले वाइ-फाइ नेटवर्कको नाम यो अनुमति भएका एपहरूलाई मात्र देखाउँछ। Vibe Launcher ले यसलाई त्यो नामका लागि मात्र प्रयोग गर्छ र यन्त्र कहाँ छ भनेर कहिल्यै खोज्दैन।\n\nकुनै कुरा यन्त्रबाट बाहिर जाँदैन।</string>
     <string name="continue_button">जारी राख्नुहोस्</string>
-    <string name="store_update">Vibe Launcher अद्यावधिक गर्नुहोस्</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ब्याकअप र पुनर्स्थापना</string>
     <string name="backup_short">सेटिङहरू, टाइल, फोल्डर, टाइलका तस्बिर र API कुञ्जीहरू। ब्याकअपमा तपाईंका कुञ्जीहरू हुन्छन्, त्यसैले यसलाई निजी राख्नुहोस्।</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">सहरहरू</string>
     <string name="wp_apple_underwater">पानीमुनि</string>
     <string name="wp_no_room">यो भिडियो %1$s को छ र %2$s खाली छ। उपकरणले 1 GB खाली राख्छ: पहिले पुस्तकालयबाट केही मेटाउनुहोस्।</string>
+    <string name="flights_title">माथिबाट जाने उडानहरू</string>
+    <string name="flights_short">आफ्नै तस्बिर नभएका एपहरूको पछाडि तपाईंको नजिकबाट जाने विमानहरू देखाउँछ। मौसमका लागि सेट गरिएको ठाउँ प्रयोग गर्छ। डेटा: OpenSky Network, adsbdb.</string>
+    <string name="title_info">चलचित्र र शोको विवरण</string>
+    <string name="title_info_short">चलचित्र वा शोको ब्याकड्रपसँगै TMDB बाट रेटिङ, वर्ष, सारांश र विधाहरू देखाउँछ। TMDB की चाहिन्छ (API कीहरू)।</string>
+    <string name="flights_over_colour">उडान कार्डहरू देखाउनुहोस्</string>
+    <string name="flights_over_colour_short">ब्याकड्रप रङ मात्र भएका टाइलहरूमा, नक्सा बिना, तपाईंको नजिकबाट जाने विमानहरूका कार्ड देखाउँछ।</string>
+    <string name="flights_distance">दूरी</string>
+    <string name="flights_clear">सुरक्षित उडान विवरणहरू मेटाउनुहोस्</string>
+    <string name="opensky_id">OpenSky क्लाइन्ट आईडी</string>
+    <string name="opensky_secret">OpenSky क्लाइन्ट सिक्रेट</string>
+    <string name="opensky_short">ऐच्छिक। तपाईंको OpenSky Network खाताको API क्लाइन्टसँग उडानहरू हरेक 4 मिनेटको सट्टा हरेक 30 सेकेन्डमा अपडेट हुन्छन्।</string>
 </resources>

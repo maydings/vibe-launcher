@@ -112,7 +112,7 @@
     <string name="art_id_short">Sovelluksille, jotka laittavat nimikkeen IMDb-tunnuksen kortteihinsa, kuten Nuvio: juuri oikea taustakuva ja logo, ilman avainta.</string>
     <string name="art_stremio_short">Stremion ilmaiset elokuva- ja sarjatiedot kortin nimen perusteella. Ei avainta.</string>
     <string name="art_own_short">Kuva, jonka sovellus laittoi korttiinsa, kun yllä olevilla ei ole kuvaa.</string>
-    <string name="wp_custom">Omat taustakuvat</string>
+    <string name="wp_custom">Järjestelmän tausta</string>
     <string name="media_title">Kirjasto</string>
     <string name="media_short">Kaikki lisäämäsi, kukin tallessa kerran: ruutukuvat, taustakuvat ja -videot sekä fontit.</string>
     <string name="tile_pictures">Ruutukuvat</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Tässä fontissa ei ole kielen %1$s kirjaimia, joten järjestelmän fontti näkyy.</string>
     <string name="font_credit">Fontit Google Fontsista, luettelo Fontsourcelta; kukin omalla lisenssillään</string>
     <string name="font_add">Lisää fontteja</string>
-    <string name="wp_custom_short">Kirjaston kuvat ja videot, jotka näkyvät jokaisen sellaisen sovelluksen taustalla, jolla ei ole omaa kuvaa. Ruudun voi sen omasta valikosta asettaa näyttämään vain nämä.</string>
-    <string name="bd_content">Sovelluksen omat kuvat</string>
+    <string name="wp_custom_short">Ruudut käyttävät sitä Taustat-valikostaan. Vain ensimmäistä käytössä olevaa, jolla on näytettävää, käytetään; toinen on varalla.</string>
+    <string name="bd_content">Sovelluksen sisältö</string>
     <string name="bd_colour">Vain väri</string>
     <string name="bd_own">Oma valinta</string>
     <string name="lib_big_for_tile">Tehty taustaksi: ei suositella ruutuun</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Kaksi lupaa</string>
     <string name="permissions_why">Vibe Launcher pyytää seuraavaksi kahta lupaa.\n\nTV-ohjelmatiedot: jotta voidaan näyttää kuvia korteista, joita sovelluksesi julkaisevat aloitusnäytölle.\n\nSijainti: Android näyttää Wi-Fi-verkon nimen vain sovelluksille, joilla se on. Vibe Launcher käyttää sitä vain tuohon nimeen eikä koskaan selvitä, missä laite on.\n\nKumpikaan ei lähde laitteesta.</string>
     <string name="continue_button">Jatka</string>
-    <string name="store_update">Päivitä Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Varmuuskopiointi ja palautus</string>
     <string name="backup_short">Asetukset, ruudut, kansiot, ruutujen kuvat ja API-avaimet. Varmuuskopio sisältää avaimesi, joten pidä se omana tietonasi.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Kaupungit</string>
     <string name="wp_apple_underwater">Veden alla</string>
     <string name="wp_no_room">Tämä video on %1$s ja vapaana on %2$s. Laite pitää 1 Gt vapaana: poista ensin jotain Kirjastosta.</string>
+    <string name="flights_title">Lennot yläpuolella</string>
+    <string name="flights_short">Näyttää lähelläsi lentävät lentokoneet niiden sovellusten takana, joilla ei ole omaa kuvaa. Käyttää säälle asetettua paikkaa. Tiedot: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Elokuvien ja sarjojen tiedot</string>
+    <string name="title_info_short">Näyttää TMDB:n arvosanan, vuoden, kuvauksen ja lajityypit elokuvan tai sarjan taustan yhteydessä. Vaatii TMDB-avaimen (API-avaimet).</string>
+    <string name="flights_over_colour">Näytä lentokortit</string>
+    <string name="flights_over_colour_short">Näyttää lähelläsi lentävien koneiden kortit ilman karttaa ruuduissa, joiden taustana on vain väri.</string>
+    <string name="flights_distance">Etäisyys</string>
+    <string name="flights_clear">Tyhjennä tallennetut lentotiedot</string>
+    <string name="opensky_id">OpenSky-asiakastunnus</string>
+    <string name="opensky_secret">OpenSky-asiakassalaisuus</string>
+    <string name="opensky_short">Valinnainen. OpenSky Network -tilisi API-asiakkaalla lennot päivittyvät 30 sekunnin välein 4 minuutin sijaan.</string>
 </resources>

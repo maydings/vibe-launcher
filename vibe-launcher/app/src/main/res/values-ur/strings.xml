@@ -112,7 +112,7 @@
     <string name="art_id_short">ان ایپس کے لیے جو اپنے کارڈز پر عنوان کی IMDb آئی ڈی ڈالتی ہیں، جیسے Nuvio: بالکل درست پس منظر اور لوگو، بغیر کلید۔</string>
     <string name="art_stremio_short">کارڈ کے عنوان سے ڈھونڈا گیا Stremio کا مفت فلم اور شو ڈیٹا۔ بغیر کلید۔</string>
     <string name="art_own_short">اوپر والوں میں تصویر نہ ہو تو، ایپ کی اپنے کارڈ پر لگائی تصویر۔</string>
-    <string name="wp_custom">اپنے وال پیپر</string>
+    <string name="wp_custom">سسٹم کا پس منظر</string>
     <string name="media_title">لائبریری</string>
     <string name="media_short">آپ جو بھی شامل کریں، ہر ایک ایک ہی بار رکھا جاتا ہے: ٹائل تصاویر، بیک ڈراپ تصاویر و ویڈیوز، اور فونٹس۔</string>
     <string name="tile_pictures">ٹائل تصاویر</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">اس فونٹ میں %1$s کے حروف نہیں، اس لیے سسٹم فونٹ دکھایا جاتا ہے۔</string>
     <string name="font_credit">Google Fonts کے فونٹس، Fontsource کی فہرست میں؛ ہر ایک اپنے لائسنس کے تحت</string>
     <string name="font_add">فونٹس شامل کریں</string>
-    <string name="wp_custom_short">لائبریری کی تصاویر اور ویڈیوز، جو ہر اس ایپ کے پیچھے دکھتی ہیں جس کی اپنی تصویر نہیں۔ کسی بھی ٹائل کو اس کے مینو سے صرف یہی دکھانے پر سیٹ کیا جا سکتا ہے۔</string>
-    <string name="bd_content">ایپ کی اپنی تصاویر</string>
+    <string name="wp_custom_short">ٹائلیں اسے اپنے پس منظر کے مینو سے استعمال کرتی ہیں۔ صرف پہلا فعال اختیار جس کے پاس دکھانے کو کچھ ہو استعمال ہوتا ہے؛ دوسرا متبادل ہے۔</string>
+    <string name="bd_content">ایپ کا مواد</string>
     <string name="bd_colour">صرف رنگ</string>
     <string name="bd_own">اپنا انتخاب</string>
     <string name="lib_big_for_tile">بیک ڈراپ کے لیے بنی ہے: ٹائل کے لیے تجویز نہیں</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">دو اجازتیں</string>
     <string name="permissions_why">Vibe Launcher اب دو اجازتیں مانگے گا۔\n\nٹی وی شیڈول: ان کارڈز کی تصاویر دکھانے کے لیے جو آپ کی ایپس ہوم اسکرین کے لیے شائع کرتی ہیں۔\n\nمقام: Android وائی فائی نیٹ ورک کا نام صرف اس اجازت والی ایپس کو دکھاتا ہے۔ Vibe Launcher اسے صرف اسی نام کے لیے استعمال کرتا ہے اور کبھی نہیں دیکھتا کہ ڈیوائس کہاں ہے۔\n\nکوئی چیز ڈیوائس سے باہر نہیں جاتی۔</string>
     <string name="continue_button">جاری رکھیں</string>
-    <string name="store_update">Vibe Launcher اپ ڈیٹ کریں</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">بیک اپ اور بحالی</string>
     <string name="backup_short">ترتیبات، ٹائلیں، فولڈرز، ٹائلوں کی تصاویر اور API کلیدیں۔ بیک اپ میں آپ کی کلیدیں ہوتی ہیں، اس لیے اسے نجی رکھیں۔</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">شہر</string>
     <string name="wp_apple_underwater">زیرِ آب</string>
     <string name="wp_no_room">یہ ویڈیو %1$s کی ہے اور %2$s خالی ہے۔ آلہ 1 GB خالی رکھتا ہے: پہلے لائبریری سے کچھ حذف کریں۔</string>
+    <string name="flights_title">اوپر سے گزرتی پروازیں</string>
+    <string name="flights_short">جن ایپس کی اپنی تصویر نہیں ہے ان کے پیچھے آپ کے قریب سے گزرتے طیارے دکھاتا ہے۔ موسم کے لیے مقرر کردہ جگہ استعمال کرتا ہے۔ ڈیٹا: OpenSky Network, adsbdb.</string>
+    <string name="title_info">فلم اور شو کی تفصیلات</string>
+    <string name="title_info_short">فلم یا شو کے پس منظر کے ساتھ TMDB سے درجہ بندی، سال، خلاصہ اور اصناف دکھاتا ہے۔ TMDB کلید درکار ہے (API کلیدیں)۔</string>
+    <string name="flights_over_colour">پرواز کارڈ دکھائیں</string>
+    <string name="flights_over_colour_short">جن ٹائلوں کا پس منظر صرف رنگ ہے، ان پر نقشے کے بغیر آپ کے قریب سے گزرنے والے طیاروں کے کارڈ دکھاتا ہے۔</string>
+    <string name="flights_distance">فاصلہ</string>
+    <string name="flights_clear">محفوظ کردہ پرواز کی تفصیلات صاف کریں</string>
+    <string name="opensky_id">OpenSky کلائنٹ آئی ڈی</string>
+    <string name="opensky_secret">OpenSky کلائنٹ سیکرٹ</string>
+    <string name="opensky_short">اختیاری۔ آپ کے OpenSky Network اکاؤنٹ کے API کلائنٹ کے ساتھ پروازیں ہر 4 منٹ کے بجائے ہر 30 سیکنڈ بعد اپ ڈیٹ ہوتی ہیں۔</string>
 </resources>

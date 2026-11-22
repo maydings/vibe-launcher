@@ -25,8 +25,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * The Home button, for a TV whose stock launcher stays on: installed without adb (from an app store, or a
- * release APK with a file manager) there's no turning it off, and Android TV has no setting for the Home
+ * The Home button, for a TV whose stock launcher stays on: installed without adb (a
+ * release APK with Downloader or a file manager) there's no turning it off, and Android TV has no setting for the Home
  * app, so Home keeps opening the stock one. The
  * user turns this on under Settings > Accessibility, and then:
  * - Home is kept from the stock launcher: a press opens Vibe Launcher, a hold the TV's Settings (Google TV's

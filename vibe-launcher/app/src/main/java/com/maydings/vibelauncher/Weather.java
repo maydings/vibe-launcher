@@ -70,6 +70,15 @@ final class Weather {
         return picked != null ? picked : autoPlace(c);
     }
 
+    /** Where the weather is for as last known, without going online: the city picked, else the TV's own; or null. */
+    static Place lastPlace(Context c, VibeSettings settings) {
+        Place picked = settings.weatherPlace();
+        if (picked != null) return picked;
+        SharedPreferences p = cache(c);
+        if (!p.contains("autoName")) return null;
+        return new Place(p.getString("autoName", ""), p.getFloat("autoLat", 0), p.getFloat("autoLon", 0));
+    }
+
     /** The city the TV's internet address is in, remembered for a day; null when it can't be found. */
     static Place autoPlace(Context c) {
         SharedPreferences p = cache(c);

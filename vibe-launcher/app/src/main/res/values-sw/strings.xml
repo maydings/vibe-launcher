@@ -112,7 +112,7 @@
     <string name="art_id_short">Kwa programu zinazoweka kitambulisho cha IMDb cha jina kwenye kadi zake, kama Nuvio: mandhari na nembo sahihi, bila ufunguo.</string>
     <string name="art_stremio_short">Data ya bure ya Stremio ya filamu na vipindi, inayopatikana kwa jina la kadi. Bila ufunguo.</string>
     <string name="art_own_short">Picha ambayo programu iliweka kwenye kadi yake, vyanzo vya juu visipokuwa na picha.</string>
-    <string name="wp_custom">Mandhari yako mwenyewe</string>
+    <string name="wp_custom">Mandhari ya mfumo</string>
     <string name="media_title">Maktaba</string>
     <string name="media_short">Kila unachoongeza, kimehifadhiwa mara moja: picha za vigae, picha na video za mandharinyuma, na fonti.</string>
     <string name="tile_pictures">Picha za vigae</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Fonti hii haina herufi za %1$s, kwa hivyo fonti ya mfumo inaonyeshwa.</string>
     <string name="font_credit">Fonti kutoka Google Fonts, zilizoorodheshwa na Fontsource; kila moja na leseni yake</string>
     <string name="font_add">Ongeza fonti</string>
-    <string name="wp_custom_short">Picha na video kutoka Maktaba, zinazoonyeshwa nyuma ya programu yoyote isiyo na picha yake. Kigae chochote kinaweza kuwekwa, kutoka kwenye menyu yake, kionyeshe hizi tu.</string>
-    <string name="bd_content">Picha za programu yenyewe</string>
+    <string name="wp_custom_short">Vigae huitumia kutoka kwenye menyu yake ya Mandhari. Ni ya kwanza tu iliyowashwa na yenye kitu cha kuonyesha ndiyo hutumika; nyingine ni ya akiba.</string>
+    <string name="bd_content">Maudhui ya programu</string>
     <string name="bd_colour">Rangi tu</string>
     <string name="bd_own">Chaguo langu</string>
     <string name="lib_big_for_tile">Imetengenezwa kwa mandharinyuma: haipendekezwi kwa kigae</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Ruhusa mbili</string>
     <string name="permissions_why">Vibe Launcher itaomba ruhusa mbili.\n\nOrodha za TV: kuonyesha picha kutoka kwa kadi ambazo programu zako huchapisha kwa skrini ya kwanza.\n\nMahali: Android huonyesha jina la mtandao wa Wi-Fi kwa programu zenye ruhusa hii pekee. Vibe Launcher huitumia kwa jina hilo tu na kamwe haitafuti kifaa kiko wapi.\n\nHakuna kinachotoka kwenye kifaa.</string>
     <string name="continue_button">Endelea</string>
-    <string name="store_update">Sasisha Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Hifadhi nakala na urejeshe</string>
     <string name="backup_short">Mipangilio, vigae, folda, picha za vigae na funguo za API. Nakala ina funguo zako, kwa hiyo iweke faragha.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Miji</string>
     <string name="wp_apple_underwater">Chini ya maji</string>
     <string name="wp_no_room">Video hii ni %1$s na nafasi wazi ni %2$s. Kifaa huacha GB 1 wazi: futa kitu kutoka Maktaba kwanza.</string>
+    <string name="flights_title">Ndege zinazopita juu</string>
+    <string name="flights_short">Huonyesha ndege zinazopita karibu nawe nyuma ya programu zisizo na picha yake. Hutumia mahali palipowekwa kwa hali ya hewa. Data: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Maelezo ya filamu na vipindi</string>
+    <string name="title_info_short">Huonyesha ukadiriaji, mwaka, muhtasari na aina kutoka TMDB pamoja na mandhari ya filamu au kipindi. Inahitaji ufunguo wa TMDB (Funguo za API).</string>
+    <string name="flights_over_colour">Onyesha kadi za ndege</string>
+    <string name="flights_over_colour_short">Huonyesha kadi za ndege zinazopita karibu nawe, bila ramani, kwenye vigae ambavyo mandhari yake ni rangi tu.</string>
+    <string name="flights_distance">Umbali</string>
+    <string name="flights_clear">Futa maelezo ya safari za ndege yaliyohifadhiwa</string>
+    <string name="opensky_id">Kitambulisho cha mteja wa OpenSky</string>
+    <string name="opensky_secret">Siri ya mteja wa OpenSky</string>
+    <string name="opensky_short">Si lazima. Ukiwa na mteja wa API kutoka akaunti yako ya OpenSky Network, safari husasishwa kila sekunde 30 badala ya kila dakika 4.</string>
 </resources>

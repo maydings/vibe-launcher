@@ -112,7 +112,7 @@
     <string name="art_id_short">Für Apps, die die IMDb-ID des Titels auf ihre Karten schreiben, wie Nuvio: genau der richtige Hintergrund und das Logo, ohne Schlüssel.</string>
     <string name="art_stremio_short">Die kostenlosen Film- und Seriendaten von Stremio, gefunden über den Titel der Karte. Ohne Schlüssel.</string>
     <string name="art_own_short">Das Bild, das die App auf ihre Karte gesetzt hat, wenn keine Quelle darüber eines hat.</string>
-    <string name="wp_custom">Eigene Hintergrundbilder</string>
+    <string name="wp_custom">Systemhintergrund</string>
     <string name="media_title">Bibliothek</string>
     <string name="media_short">Alles, was du hinzufügst, einmal gespeichert: Kachelbilder, Hintergrundbilder und -videos sowie Schriften.</string>
     <string name="tile_pictures">Kachelbilder</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Diese Schrift hat keine Buchstaben für %1$s, daher wird die Systemschrift gezeigt.</string>
     <string name="font_credit">Schriften von Google Fonts, gelistet von Fontsource; jede unter eigener Lizenz</string>
     <string name="font_add">Schriften hinzufügen</string>
-    <string name="wp_custom_short">Bilder und Videos aus der Bibliothek, hinter jeder App ohne eigenes Bild. Eine Kachel kann über ihr eigenes Menü so eingestellt werden, dass sie nur diese zeigt.</string>
-    <string name="bd_content">Eigene Bilder der App</string>
+    <string name="wp_custom_short">Kacheln nutzen ihn über ihr Menü „Hintergründe“. Nur der erste aktivierte Eintrag, der etwas zu zeigen hat, wird verwendet; der andere ist Ersatz.</string>
+    <string name="bd_content">App-Inhalte</string>
     <string name="bd_colour">Nur Farbe</string>
     <string name="bd_own">Eigene Auswahl</string>
     <string name="lib_big_for_tile">Für Hintergründe gemacht: für eine Kachel nicht empfohlen</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Zwei Berechtigungen</string>
     <string name="permissions_why">Vibe Launcher fragt gleich nach zwei Berechtigungen.\n\nTV-Programminfos: um Bilder aus den Karten zu zeigen, die deine Apps für den Startbildschirm veröffentlichen.\n\nStandort: Android zeigt den Namen des WLANs nur Apps mit dieser Berechtigung. Vibe Launcher nutzt sie nur für diesen Namen und schaut nie nach, wo das Gerät ist.\n\nBeides verlässt das Gerät nicht.</string>
     <string name="continue_button">Weiter</string>
-    <string name="store_update">Vibe Launcher aktualisieren</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sichern und wiederherstellen</string>
     <string name="backup_short">Einstellungen, Kacheln, Ordner, Kachelbilder und API-Schlüssel. Ein Backup enthält die Schlüssel, also nicht weitergeben.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Städte</string>
     <string name="wp_apple_underwater">Unter Wasser</string>
     <string name="wp_no_room">Dieses Video ist %1$s groß, frei sind %2$s. Das Gerät hält 1 GB frei: Lösche zuerst etwas aus der Bibliothek.</string>
+    <string name="flights_title">Flüge über dir</string>
+    <string name="flights_short">Zeigt die Flugzeuge, die in deiner Nähe vorbeifliegen, hinter Apps ohne eigenes Bild. Verwendet den fürs Wetter eingestellten Ort. Daten: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Details zu Filmen und Serien</string>
+    <string name="title_info_short">Zeigt Bewertung, Jahr, Inhaltsangabe und Genres von TMDB zum Hintergrund eines Films oder einer Serie. Benötigt einen TMDB-Schlüssel (API-Schlüssel).</string>
+    <string name="flights_over_colour">Flugkarten anzeigen</string>
+    <string name="flights_over_colour_short">Zeigt die Karten der Flugzeuge in deiner Nähe ohne die Landkarte, auf Kacheln, deren Hintergrund nur die Farbe ist.</string>
+    <string name="flights_distance">Entfernung</string>
+    <string name="flights_clear">Gespeicherte Flugdetails löschen</string>
+    <string name="opensky_id">OpenSky-Client-ID</string>
+    <string name="opensky_secret">OpenSky-Client-Secret</string>
+    <string name="opensky_short">Optional. Mit einem API-Client aus deinem OpenSky-Network-Konto werden Flüge alle 30 Sekunden statt alle 4 Minuten aktualisiert.</string>
 </resources>

@@ -112,7 +112,7 @@
     <string name="art_id_short">Για εφαρμογές που βάζουν το αναγνωριστικό IMDb του τίτλου στις κάρτες τους, όπως το Nuvio: το σωστό φόντο και λογότυπο, χωρίς κλειδί.</string>
     <string name="art_stremio_short">Τα δωρεάν δεδομένα ταινιών και σειρών του Stremio, με βάση τον τίτλο της κάρτας. Χωρίς κλειδί.</string>
     <string name="art_own_short">Η εικόνα που έβαλε η εφαρμογή στην κάρτα της, όταν καμία πηγή παραπάνω δεν έχει.</string>
-    <string name="wp_custom">Δικές σας ταπετσαρίες</string>
+    <string name="wp_custom">Φόντο συστήματος</string>
     <string name="media_title">Βιβλιοθήκη</string>
     <string name="media_short">Ό,τι προσθέτετε, αποθηκευμένο μία φορά: εικόνες πλακιδίων, εικόνες και βίντεο φόντου, και γραμματοσειρές.</string>
     <string name="tile_pictures">Εικόνες πλακιδίων</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Αυτή η γραμματοσειρά δεν έχει γράμματα για %1$s, οπότε εμφανίζεται η γραμματοσειρά του συστήματος.</string>
     <string name="font_credit">Γραμματοσειρές από το Google Fonts, στη λίστα του Fontsource· η καθεμία με τη δική της άδεια</string>
     <string name="font_add">Προσθήκη γραμματοσειρών</string>
-    <string name="wp_custom_short">Εικόνες και βίντεο από τη Βιβλιοθήκη, πίσω από κάθε εφαρμογή που δεν έχει δική της εικόνα. Ένα πλακίδιο μπορεί από το μενού του να οριστεί να δείχνει μόνο αυτά.</string>
-    <string name="bd_content">Εικόνες της ίδιας της εφαρμογής</string>
+    <string name="wp_custom_short">Τα πλακίδια το χρησιμοποιούν από το μενού Φόντα. Χρησιμοποιείται μόνο το πρώτο ενεργό που έχει κάτι να δείξει· το άλλο είναι εφεδρικό.</string>
+    <string name="bd_content">Περιεχόμενο εφαρμογής</string>
     <string name="bd_colour">Μόνο χρώμα</string>
     <string name="bd_own">Δική μου επιλογή</string>
     <string name="lib_big_for_tile">Φτιαγμένο για φόντο: δεν συνιστάται για πλακίδιο</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Δύο άδειες</string>
     <string name="permissions_why">Το Vibe Launcher θα ζητήσει δύο άδειες.\n\nΠρόγραμμα TV: για να δείχνει εικόνες από τις κάρτες που δημοσιεύουν οι εφαρμογές σας για την αρχική οθόνη.\n\nΤοποθεσία: το Android δείχνει το όνομα του δικτύου Wi-Fi μόνο σε εφαρμογές με αυτή την άδεια. Το Vibe Launcher τη χρησιμοποιεί μόνο για αυτό το όνομα και δεν ψάχνει ποτέ πού βρίσκεται η συσκευή.\n\nΤίποτα δεν φεύγει από τη συσκευή.</string>
     <string name="continue_button">Συνέχεια</string>
-    <string name="store_update">Ενημέρωση του Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Αντίγραφο ασφαλείας και επαναφορά</string>
     <string name="backup_short">Ρυθμίσεις, πλακίδια, φάκελοι, εικόνες πλακιδίων και κλειδιά API. Το αντίγραφο περιέχει τα κλειδιά σας, οπότε κρατήστε το ιδιωτικό.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Πόλεις</string>
     <string name="wp_apple_underwater">Κάτω από το νερό</string>
     <string name="wp_no_room">Αυτό το βίντεο είναι %1$s και ελεύθερα είναι %2$s. Η συσκευή κρατά 1 GB ελεύθερο: διαγράψτε πρώτα κάτι από τη Βιβλιοθήκη.</string>
+    <string name="flights_title">Πτήσεις από πάνω</string>
+    <string name="flights_short">Δείχνει τα αεροσκάφη που περνούν κοντά σας πίσω από εφαρμογές χωρίς δική τους εικόνα. Χρησιμοποιεί το μέρος που έχει οριστεί για τον καιρό. Δεδομένα: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Λεπτομέρειες ταινιών και σειρών</string>
+    <string name="title_info_short">Δείχνει τη βαθμολογία, το έτος, την περίληψη και τα είδη από το TMDB μαζί με το φόντο μιας ταινίας ή σειράς. Χρειάζεται κλειδί TMDB (Κλειδιά API).</string>
+    <string name="flights_over_colour">Εμφάνιση καρτών πτήσεων</string>
+    <string name="flights_over_colour_short">Εμφανίζει τις κάρτες των αεροσκαφών που περνούν κοντά σας, χωρίς τον χάρτη, στα πλακίδια που έχουν ως φόντο μόνο το χρώμα.</string>
+    <string name="flights_distance">Απόσταση</string>
+    <string name="flights_clear">Διαγραφή αποθηκευμένων στοιχείων πτήσεων</string>
+    <string name="opensky_id">Αναγνωριστικό πελάτη OpenSky</string>
+    <string name="opensky_secret">Μυστικό πελάτη OpenSky</string>
+    <string name="opensky_short">Προαιρετικό. Με έναν πελάτη API από τον λογαριασμό σας στο OpenSky Network, οι πτήσεις ενημερώνονται κάθε 30 δευτερόλεπτα αντί για κάθε 4 λεπτά.</string>
 </resources>

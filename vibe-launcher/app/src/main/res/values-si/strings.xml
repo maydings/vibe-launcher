@@ -112,7 +112,7 @@
     <string name="art_id_short">Nuvio වැනි, කාඩ්පත්වල මාතෘකාවේ IMDb හැඳුනුම දමන යෙදුම් සඳහා: නිවැරදි පසුබිම සහ ලාංඡනය, යතුරක් නැතිව.</string>
     <string name="art_stremio_short">කාඩ්පතේ මාතෘකාවෙන් සොයාගත් Stremio හි නොමිලේ චිත්‍රපට සහ වැඩසටහන් දත්ත. යතුරක් නැතිව.</string>
     <string name="art_own_short">ඉහත කිසිවක පින්තූරයක් නැති විට, යෙදුම තම කාඩ්පතේ දැමූ පින්තූරය.</string>
-    <string name="wp_custom">අභිරුචි බිතුපත්</string>
+    <string name="wp_custom">පද්ධති පසුබිම</string>
     <string name="media_title">පුස්තකාලය</string>
     <string name="media_short">ඔබ එක් කරන සියල්ල, එක් වරක් පමණක් තබා ඇත: ටයිල් පින්තූර, පසුබිම් පින්තූර සහ වීඩියෝ, සහ අකුරු.</string>
     <string name="tile_pictures">ටයිල් පින්තූර</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">මෙම අකුරු වර්ගයේ %1$s අකුරු නැත, එබැවින් පද්ධති අකුරු පෙන්වයි.</string>
     <string name="font_credit">Google Fonts අකුරු, Fontsource ලැයිස්තුවේ; එක් එක් තමන්ගේ බලපත්‍රය යටතේ</string>
     <string name="font_add">අකුරු එක් කරන්න</string>
-    <string name="wp_custom_short">පුස්තකාලයේ ඡායාරූප සහ වීඩියෝ, තමන්ගේම රූපයක් නැති ඕනෑම යෙදුමකට පිටුපසින් පෙන්වයි. ඕනෑම ටයිල් එකක් එහි මෙනුවෙන් මේවා පමණක් පෙන්වන ලෙස සැකසිය හැක.</string>
-    <string name="bd_content">යෙදුමේම පින්තූර</string>
+    <string name="wp_custom_short">ටයිල් ඒවායේ පසුබිම් මෙනුවෙන් මෙය භාවිත කරයි. පෙන්වීමට යමක් ඇති පළමු සක්‍රිය එක පමණක් භාවිත වේ; අනෙක විකල්පයකි.</string>
+    <string name="bd_content">යෙදුමේ අන්තර්ගතය</string>
     <string name="bd_colour">වර්ණය පමණි</string>
     <string name="bd_own">මගේම තේරීම</string>
     <string name="lib_big_for_tile">පසුබිම සඳහා සාදා ඇත: ටයිල් එකකට නිර්දේශ නොකෙරේ</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">අවසර දෙකක්</string>
     <string name="permissions_why">Vibe Launcher දැන් අවසර දෙකක් ඉල්ලයි.\n\nTV ලැයිස්තු: ඔබේ යෙදුම් මුල් තිරය සඳහා පළ කරන කාඩ්පත්වල පින්තූර පෙන්වීමට.\n\nස්ථානය: Android Wi-Fi ජාලයේ නම පෙන්වන්නේ මෙම අවසරය ඇති යෙදුම්වලට පමණි. Vibe Launcher එය එම නම සඳහා පමණක් භාවිත කරයි, උපාංගය කොහේදැයි කිසිදා සොයන්නේ නැත.\n\nකිසිවක් උපාංගයෙන් පිටතට නොයයි.</string>
     <string name="continue_button">ඉදිරියට</string>
-    <string name="store_update">Vibe Launcher යාවත්කාලීන කරන්න</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">උපස්ථය සහ ප්‍රතිසාධනය</string>
     <string name="backup_short">සැකසීම්, ටයිල්, ෆෝල්ඩර, ටයිල් පින්තූර සහ API යතුරු. උපස්ථයේ ඔබේ යතුරු ඇති නිසා එය පෞද්ගලිකව තබාගන්න.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">නගර</string>
     <string name="wp_apple_underwater">දිය යට</string>
     <string name="wp_no_room">මෙම වීඩියෝව %1$s වන අතර %2$s හිස්ව ඇත. උපාංගය 1 GB හිස්ව තබයි: පළමුව පුස්තකාලයෙන් යමක් මකන්න.</string>
+    <string name="flights_title">ඉහළින් යන ගුවන් ගමන්</string>
+    <string name="flights_short">තමන්ගේම පින්තූරයක් නැති යෙදුම් පිටුපස ඔබ අසලින් යන ගුවන් යානා පෙන්වයි. කාලගුණය සඳහා සකසා ඇති ස්ථානය භාවිත කරයි. දත්ත: OpenSky Network, adsbdb.</string>
+    <string name="title_info">චිත්‍රපට සහ වැඩසටහන් විස්තර</string>
+    <string name="title_info_short">චිත්‍රපටයක හෝ වැඩසටහනක පසුබිම සමඟ TMDB වෙතින් ශ්‍රේණිගත කිරීම, වර්ෂය, සාරාංශය සහ ප්‍රභේද පෙන්වයි. TMDB යතුරක් අවශ්‍යයි (API යතුරු).</string>
+    <string name="flights_over_colour">ගුවන් ගමන් කාඩ්පත් පෙන්වන්න</string>
+    <string name="flights_over_colour_short">පසුබිම වර්ණය පමණක් වන ටයිල් මත, සිතියම නොමැතිව, ඔබ අසලින් යන ගුවන් යානාවල කාඩ්පත් පෙන්වයි.</string>
+    <string name="flights_distance">දුර</string>
+    <string name="flights_clear">සුරැකි ගුවන් ගමන් විස්තර මකන්න</string>
+    <string name="opensky_id">OpenSky සේවාලාභී හැඳුනුම</string>
+    <string name="opensky_secret">OpenSky සේවාලාභී රහස</string>
+    <string name="opensky_short">විකල්පයකි. ඔබේ OpenSky Network ගිණුමේ API සේවාලාභියෙකු සමඟ ගුවන් ගමන් සෑම මිනිත්තු 4කට වරක් වෙනුවට සෑම තත්පර 30කට වරක් යාවත්කාලීන වේ.</string>
 </resources>

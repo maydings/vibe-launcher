@@ -112,7 +112,7 @@
     <string name="art_id_short">للتطبيقات التي تضع معرّف IMDb للعنوان على بطاقاتها، مثل Nuvio: الخلفية والشعار الصحيحان، دون مفتاح.</string>
     <string name="art_stremio_short">بيانات Stremio المجانية للأفلام والمسلسلات، بحسب عنوان البطاقة. دون مفتاح.</string>
     <string name="art_own_short">الصورة التي وضعها التطبيق على بطاقته، إن لم يكن لدى ما سبق صورة.</string>
-    <string name="wp_custom">خلفيات مخصّصة</string>
+    <string name="wp_custom">خلفية النظام</string>
     <string name="media_title">المكتبة</string>
     <string name="media_short">كل ما تضيفه، يُحفظ مرة واحدة: صور البلاطات، وصور وفيديوهات الخلفية، والخطوط.</string>
     <string name="tile_pictures">صور البلاطات</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">لا يحتوي هذا الخط على حروف %1$s، لذا يظهر خط النظام لها.</string>
     <string name="font_credit">خطوط من Google Fonts، مدرجة عبر Fontsource؛ لكل منها ترخيصه</string>
     <string name="font_add">إضافة خطوط</string>
-    <string name="wp_custom_short">صور ومقاطع فيديو من المكتبة تظهر خلف أي تطبيق ليست له صورة. ويمكن ضبط أي بلاطة من قائمتها لتعرض هذه فقط.</string>
-    <string name="bd_content">صور التطبيق نفسه</string>
+    <string name="wp_custom_short">تستخدمها المربعات من قائمة الخلفيات الخاصة بها. يُستخدم فقط أول خيار مفعّل لديه ما يعرضه، والآخر احتياطي.</string>
+    <string name="bd_content">محتوى التطبيق</string>
     <string name="bd_colour">اللون فقط</string>
     <string name="bd_own">اختياري الخاص</string>
     <string name="lib_big_for_tile">معدّة للخلفية: لا يُنصح بها للبلاطة</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">إذنان</string>
     <string name="permissions_why">سيطلب Vibe Launcher إذنين الآن.\n\nقوائم التلفزيون: لعرض صور من البطاقات التي تنشرها تطبيقاتك للشاشة الرئيسية.\n\nالموقع: لا يعرض Android اسم شبكة Wi-Fi إلا للتطبيقات التي تملكه. يستخدمه Vibe Launcher لهذا الاسم فقط ولا يبحث أبدًا عن مكان الجهاز.\n\nلا شيء منهما يغادر الجهاز.</string>
     <string name="continue_button">متابعة</string>
-    <string name="store_update">تحديث Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">النسخ الاحتياطي والاستعادة</string>
     <string name="backup_short">الإعدادات والمربعات والمجلدات وصور المربعات ومفاتيح API. تحتوي النسخة الاحتياطية على مفاتيحك، لذا احتفظ بها لنفسك.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">مدن</string>
     <string name="wp_apple_underwater">تحت الماء</string>
     <string name="wp_no_room">حجم هذا الفيديو %1$s والمساحة الفارغة %2$s. يُبقي الجهاز 1 غيغابايت فارغًا: احذف شيئًا من المكتبة أولًا.</string>
+    <string name="flights_title">الرحلات فوقك</string>
+    <string name="flights_short">يعرض الطائرات المارّة بالقرب منك خلف التطبيقات التي ليست لها صورة خاصة. يستخدم المكان المحدد للطقس. البيانات: OpenSky Network, adsbdb.</string>
+    <string name="title_info">تفاصيل الأفلام والمسلسلات</string>
+    <string name="title_info_short">يعرض التقييم والسنة والملخص والأنواع من TMDB مع خلفية الفيلم أو المسلسل. يتطلب مفتاح TMDB (مفاتيح API).</string>
+    <string name="flights_over_colour">إظهار بطاقات الرحلات</string>
+    <string name="flights_over_colour_short">يعرض بطاقات الطائرات المارّة بالقرب منك، دون الخريطة، على المربعات التي خلفيتها اللون فقط.</string>
+    <string name="flights_distance">المسافة</string>
+    <string name="flights_clear">مسح تفاصيل الرحلات المحفوظة</string>
+    <string name="opensky_id">معرّف عميل OpenSky</string>
+    <string name="opensky_secret">سرّ عميل OpenSky</string>
+    <string name="opensky_short">اختياري. مع عميل API من حسابك في OpenSky Network تُحدَّث الرحلات كل 30 ثانية بدل كل 4 دقائق.</string>
 </resources>

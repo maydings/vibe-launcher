@@ -112,7 +112,7 @@
     <string name="art_id_short">കാർഡുകളിൽ ശീർഷകത്തിന്റെ IMDb ഐഡി ഇടുന്ന ആപ്പുകൾക്ക്, Nuvio പോലെ: കൃത്യമായ പശ്ചാത്തലവും ലോഗോയും, കീ വേണ്ട.</string>
     <string name="art_stremio_short">കാർഡിന്റെ ശീർഷകം വഴി കണ്ടെത്തിയ Stremio-യുടെ സൗജന്യ സിനിമ, ഷോ വിവരങ്ങൾ. കീ വേണ്ട.</string>
     <string name="art_own_short">മുകളിലുള്ളവയ്ക്ക് ചിത്രമില്ലെങ്കിൽ, ആപ്പ് സ്വന്തം കാർഡിൽ ഇട്ട ചിത്രം.</string>
-    <string name="wp_custom">ഇഷ്‌ടാനുസൃത വാൾപേപ്പറുകൾ</string>
+    <string name="wp_custom">സിസ്റ്റം പശ്ചാത്തലം</string>
     <string name="media_title">ലൈബ്രറി</string>
     <string name="media_short">നിങ്ങൾ ചേർക്കുന്നതെല്ലാം, ഓരോന്നും ഒരിക്കൽ മാത്രം: ടൈൽ ചിത്രങ്ങൾ, പശ്ചാത്തല ചിത്രങ്ങളും വീഡിയോകളും, ഫോണ്ടുകളും.</string>
     <string name="tile_pictures">ടൈൽ ചിത്രങ്ങൾ</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">ഈ ഫോണ്ടിൽ %1$s അക്ഷരങ്ങളില്ല, അതിനാൽ സിസ്റ്റം ഫോണ്ട് കാണിക്കുന്നു.</string>
     <string name="font_credit">Google Fonts-ലെ ഫോണ്ടുകൾ, Fontsource പട്ടികയിൽ; ഓരോന്നും സ്വന്തം ലൈസൻസിൽ</string>
     <string name="font_add">ഫോണ്ടുകൾ ചേർക്കുക</string>
-    <string name="wp_custom_short">ലൈബ്രറിയിലെ ചിത്രങ്ങളും വീഡിയോകളും, സ്വന്തം ചിത്രമില്ലാത്ത ഏത് ആപ്പിനും പിന്നിൽ കാണിക്കുന്നു. ഏത് ടൈലും അതിന്റെ മെനുവിൽ നിന്ന് ഇവ മാത്രം കാണിക്കാൻ സജ്ജമാക്കാം.</string>
-    <string name="bd_content">ആപ്പിന്റെ സ്വന്തം ചിത്രങ്ങൾ</string>
+    <string name="wp_custom_short">ടൈലുകൾ അവയുടെ പശ്ചാത്തല മെനുവിൽ നിന്ന് ഇത് ഉപയോഗിക്കുന്നു. കാണിക്കാൻ എന്തെങ്കിലുമുള്ള, പ്രവർത്തനക്ഷമമായ ആദ്യത്തേത് മാത്രം ഉപയോഗിക്കും; മറ്റേത് പകരക്കാരനാണ്.</string>
+    <string name="bd_content">ആപ്പിന്റെ ഉള്ളടക്കം</string>
     <string name="bd_colour">നിറം മാത്രം</string>
     <string name="bd_own">സ്വന്തം തിരഞ്ഞെടുപ്പ്</string>
     <string name="lib_big_for_tile">പശ്ചാത്തലത്തിനായി ഉണ്ടാക്കിയത്: ടൈലിന് ശുപാർശ ചെയ്യുന്നില്ല</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">രണ്ട് അനുമതികൾ</string>
     <string name="permissions_why">Vibe Launcher ഇപ്പോൾ രണ്ട് അനുമതികൾ ചോദിക്കും.\n\nടിവി ലിസ്റ്റിംഗുകൾ: നിങ്ങളുടെ ആപ്പുകൾ ഹോം സ്ക്രീനിനായി പ്രസിദ്ധീകരിക്കുന്ന കാർഡുകളിലെ ചിത്രങ്ങൾ കാണിക്കാൻ.\n\nലൊക്കേഷൻ: ഈ അനുമതിയുള്ള ആപ്പുകൾക്ക് മാത്രമേ Android വൈ-ഫൈ നെറ്റ്‌വർക്കിന്റെ പേര് കാണിക്കൂ. Vibe Launcher അത് ആ പേരിന് മാത്രം ഉപയോഗിക്കുന്നു, ഉപകരണം എവിടെയാണെന്ന് ഒരിക്കലും തിരയുന്നില്ല.\n\nഒന്നും ഉപകരണത്തിൽ നിന്ന് പുറത്തുപോകുന്നില്ല.</string>
     <string name="continue_button">തുടരുക</string>
-    <string name="store_update">Vibe Launcher അപ്ഡേറ്റ് ചെയ്യുക</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ബാക്കപ്പും പുനഃസ്ഥാപനവും</string>
     <string name="backup_short">ക്രമീകരണം, ടൈലുകൾ, ഫോൾഡറുകൾ, ടൈൽ ചിത്രങ്ങൾ, API കീകൾ. ബാക്കപ്പിൽ നിങ്ങളുടെ കീകൾ ഉണ്ട്, അതിനാൽ അത് സ്വകാര്യമായി സൂക്ഷിക്കുക.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">നഗരങ്ങൾ</string>
     <string name="wp_apple_underwater">വെള്ളത്തിനടിയിൽ</string>
     <string name="wp_no_room">ഈ വീഡിയോ %1$s ആണ്, %2$s ഒഴിവുണ്ട്. ഉപകരണം 1 GB ഒഴിച്ചിടും: ആദ്യം ലൈബ്രറിയിൽ നിന്ന് എന്തെങ്കിലും ഇല്ലാതാക്കുക.</string>
+    <string name="flights_title">മുകളിലൂടെ പോകുന്ന വിമാനങ്ങൾ</string>
+    <string name="flights_short">സ്വന്തം ചിത്രമില്ലാത്ത ആപ്പുകൾക്ക് പിന്നിൽ നിങ്ങളുടെ അടുത്തുകൂടി പോകുന്ന വിമാനങ്ങൾ കാണിക്കുന്നു. കാലാവസ്ഥയ്ക്കായി സജ്ജമാക്കിയ സ്ഥലം ഉപയോഗിക്കുന്നു. ഡാറ്റ: OpenSky Network, adsbdb.</string>
+    <string name="title_info">സിനിമ, ഷോ വിശദാംശങ്ങൾ</string>
+    <string name="title_info_short">സിനിമയുടെയോ ഷോയുടെയോ പശ്ചാത്തലത്തോടൊപ്പം TMDB-യിൽ നിന്നുള്ള റേറ്റിംഗ്, വർഷം, സംഗ്രഹം, വിഭാഗങ്ങൾ എന്നിവ കാണിക്കുന്നു. TMDB കീ ആവശ്യമാണ് (API കീകൾ).</string>
+    <string name="flights_over_colour">ഫ്ലൈറ്റ് കാർഡുകൾ കാണിക്കുക</string>
+    <string name="flights_over_colour_short">പശ്ചാത്തലം നിറം മാത്രമായ ടൈലുകളിൽ, മാപ്പ് ഇല്ലാതെ, നിങ്ങളുടെ സമീപത്തുകൂടി പോകുന്ന വിമാനങ്ങളുടെ കാർഡുകൾ കാണിക്കുന്നു.</string>
+    <string name="flights_distance">ദൂരം</string>
+    <string name="flights_clear">സംരക്ഷിച്ച വിമാന വിവരങ്ങൾ മായ്ക്കുക</string>
+    <string name="opensky_id">OpenSky ക്ലയന്റ് ഐഡി</string>
+    <string name="opensky_secret">OpenSky ക്ലയന്റ് സീക്രട്ട്</string>
+    <string name="opensky_short">ഓപ്ഷണൽ. നിങ്ങളുടെ OpenSky Network അക്കൗണ്ടിലെ API ക്ലയന്റ് ഉണ്ടെങ്കിൽ വിമാനങ്ങൾ ഓരോ 4 മിനിറ്റിനു പകരം ഓരോ 30 സെക്കൻഡിലും പുതുക്കും.</string>
 </resources>

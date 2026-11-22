@@ -112,7 +112,7 @@
     <string name="art_id_short">Para sa mga app na naglalagay ng IMDb ID ng pamagat sa kanilang mga card, gaya ng Nuvio: ang eksaktong backdrop at logo, walang key.</string>
     <string name="art_stremio_short">Libreng data ng pelikula at palabas ng Stremio, hinanap ayon sa pamagat ng card. Walang key.</string>
     <string name="art_own_short">Ang larawang inilagay ng app sa card nito, kapag walang larawan ang mga nasa itaas.</string>
-    <string name="wp_custom">Sariling wallpaper</string>
+    <string name="wp_custom">Backdrop ng system</string>
     <string name="media_title">Aklatan</string>
     <string name="media_short">Lahat ng idinadagdag mo, isang beses itinatago: mga larawan ng tile, mga larawan at video ng backdrop, at mga font.</string>
     <string name="tile_pictures">Mga larawan ng tile</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Walang %1$s na titik ang font na ito, kaya ang font ng system ang lumalabas.</string>
     <string name="font_credit">Mga font mula sa Google Fonts, inilista ng Fontsource; bawat isa\'y may sariling lisensya</string>
     <string name="font_add">Magdagdag ng font</string>
-    <string name="wp_custom_short">Mga larawan at video mula sa Aklatan, ipinapakita sa likod ng anumang app na walang sariling larawan. Maaaring itakda ang isang tile, mula sa sarili nitong menu, na ito lang ang ipakita.</string>
-    <string name="bd_content">Sariling mga larawan ng app</string>
+    <string name="wp_custom_short">Ginagamit ito ng mga tile mula sa kanilang menu na Mga Backdrop. Ang unang naka-enable na may maipapakita lang ang ginagamit; ang isa pa ay panghalili.</string>
+    <string name="bd_content">Content ng app</string>
     <string name="bd_colour">Kulay lang</string>
     <string name="bd_own">Sariling pinili</string>
     <string name="lib_big_for_tile">Ginawa para sa backdrop: hindi inirerekomenda para sa tile</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Dalawang pahintulot</string>
     <string name="permissions_why">Hihingi ng dalawang pahintulot ang Vibe Launcher.\n\nTV listings: para ipakita ang mga larawan mula sa mga card na inilalathala ng iyong mga app para sa home screen.\n\nLokasyon: ipinapakita lang ng Android ang pangalan ng Wi-Fi network sa mga app na mayroon nito. Ginagamit ito ng Vibe Launcher para sa pangalang iyon lang at hindi kailanman inaalam kung nasaan ang device.\n\nWala sa mga ito ang lumalabas sa device.</string>
     <string name="continue_button">Magpatuloy</string>
-    <string name="store_update">I-update ang Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Backup at restore</string>
     <string name="backup_short">Mga setting, tile, folder, larawan ng tile at mga API key. Nasa backup ang mga key mo, kaya panatilihin itong pribado.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Lungsod</string>
     <string name="wp_apple_underwater">Ilalim ng tubig</string>
     <string name="wp_no_room">%1$s ang video na ito at %2$s ang libre. Nag-iiwan ang device ng 1 GB na libre: magbura muna ng isa sa Aklatan.</string>
+    <string name="flights_title">Mga flight sa itaas</string>
+    <string name="flights_short">Ipinapakita ang mga eroplanong dumadaan malapit sa iyo sa likod ng mga app na walang sariling larawan. Ginagamit ang lugar na itinakda para sa lagay ng panahon. Data: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Mga detalye ng pelikula at palabas</string>
+    <string name="title_info_short">Ipinapakita ang rating, taon, buod at mga genre mula sa TMDB kasama ng backdrop ng pelikula o palabas. Kailangan ng TMDB key (Mga API key).</string>
+    <string name="flights_over_colour">Ipakita ang mga flight card</string>
+    <string name="flights_over_colour_short">Ipinapakita ang mga card ng mga eroplanong dumadaan malapit sa iyo, nang walang mapa, sa mga tile na kulay lang ang backdrop.</string>
+    <string name="flights_distance">Layo</string>
+    <string name="flights_clear">I-clear ang mga naka-save na detalye ng flight</string>
+    <string name="opensky_id">OpenSky client ID</string>
+    <string name="opensky_secret">OpenSky client secret</string>
+    <string name="opensky_short">Opsyonal. Sa isang API client mula sa iyong OpenSky Network account, nag-a-update ang mga flight tuwing 30 segundo sa halip na tuwing 4 na minuto.</string>
 </resources>

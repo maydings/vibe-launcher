@@ -20,7 +20,9 @@ import java.util.Random;
  * Clean, full-resolution backdrops and title logos from TMDB for the titles apps put on their cards
  * (Netflix's own art is 853x480 with its logo and stickers baked in). Uses the key from Vibe Launcher
  * settings. Only exact title matches are used, and answers are remembered for a month so each title
- * costs two API calls at most.
+ * costs two API calls at most. A title's details (Settings > Backdrops: its year, score, synopsis and genres,
+ * shown over the backdrop) are apart from its pictures: asked for when the title is first shown, two calls,
+ * and kept as long.
  */
 final class Tmdb implements TitleArt {
 
@@ -73,18 +75,7 @@ final class Tmdb implements TitleArt {
 
     /** {comma-separated backdrop paths, logo path} for the best exact match; "" for none. */
     private String[] find(String title, String key) throws IOException, JSONException {
-        JSONArray results = get("/search/multi?include_adult=false&query=" + Uri.encode(title))
-                .optJSONArray("results");
-        JSONObject best = null;
-        for (int i = 0; results != null && i < results.length(); i++) {
-            JSONObject r = results.getJSONObject(i);
-            String type = r.optString("media_type");
-            if (!type.equals("movie") && !type.equals("tv")) continue;
-            boolean same = key.equals(TitleArt.normalize(r.optString(type.equals("tv") ? "name" : "title")))
-                    || key.equals(TitleArt.normalize(r.optString(type.equals("tv") ? "original_name" : "original_title")));
-            if (!same || r.optString("backdrop_path").isEmpty()) continue;
-            if (best == null || r.optDouble("popularity") > best.optDouble("popularity")) best = r;
-        }
+        JSONObject best = best(title, key, true);
         if (best == null) return new String[]{"", ""};
 
         String lang = Locale.getDefault().getLanguage();
@@ -101,6 +92,111 @@ final class Tmdb implements TitleArt {
         }
         if (paths.isEmpty()) paths.add(best.getString("backdrop_path"));
         return new String[]{String.join(",", paths), logo(images.optJSONArray("logos"), lang)};
+    }
+
+    /** The most popular film or show by exactly this name (with a backdrop, when one is needed), or null. */
+    private JSONObject best(String title, String key, boolean pictured) throws IOException, JSONException {
+        JSONArray results = get("/search/multi?include_adult=false&query=" + Uri.encode(title))
+                .optJSONArray("results");
+        JSONObject best = null;
+        for (int i = 0; results != null && i < results.length(); i++) {
+            JSONObject r = results.getJSONObject(i);
+            String type = r.optString("media_type");
+            if (!type.equals("movie") && !type.equals("tv")) continue;
+            boolean same = key.equals(TitleArt.normalize(r.optString(type.equals("tv") ? "name" : "title")))
+                    || key.equals(TitleArt.normalize(r.optString(type.equals("tv") ? "original_name" : "original_title")));
+            if (!same || (pictured && r.optString("backdrop_path").isEmpty())) continue;
+            if (best == null || r.optDouble("popularity") > best.optDouble("popularity")) best = r;
+        }
+        return best;
+    }
+
+    /** A film or show's details, as shown with its backdrop: what there is of them. */
+    static final class Info {
+        final String year, overview;
+        final List<String> genres = new ArrayList<>();
+        final double score;   // TMDB's users' (0 to 10), or 0 when too few have voted
+
+        Info(String year, String overview, double score) {
+            this.year = year;
+            this.overview = overview;
+            this.score = score;
+        }
+    }
+
+    private static final String INFO = "i|";
+
+    /**
+     * The details kept for this title, or null: none kept, or nothing in them to show. Reads what's kept
+     * only, so it can be asked on the main thread.
+     */
+    Info info(String title) {
+        JSONObject o = kept(title);
+        if (o == null) return null;
+        Info info = new Info(o.optString("y"), o.optString("o"), o.optDouble("s", 0));
+        JSONArray g = o.optJSONArray("g");
+        for (int i = 0; g != null && i < g.length(); i++) info.genres.add(g.optString(i));
+        boolean empty = info.overview.isEmpty() && info.genres.isEmpty() && info.score <= 0;
+        return empty ? null : info;
+    }
+
+    /** Whether this title's details are still to ask for: none kept, kept too long ago, or in another language. */
+    boolean infoWanted(String title) {
+        if (!enabled() || TitleArt.normalize(title).isEmpty()) return false;
+        JSONObject o = kept(title);
+        if (o == null || !language().equals(o.optString("l"))) return true;
+        return System.currentTimeMillis() - o.optLong("t") >= (o.has("o") ? FOUND_MS : MISSING_MS);
+    }
+
+    private JSONObject kept(String title) {
+        String kept = cache.getString(INFO + TitleArt.normalize(title), null);
+        if (kept == null) return null;
+        try {
+            return new JSONObject(kept);
+        } catch (JSONException e) {
+            return null;
+        }
+    }
+
+    private static String language() {
+        return Locale.getDefault().toLanguageTag();
+    }
+
+    /**
+     * Asks for this title's details and keeps them (that there are none, too): its year and score as the
+     * search gave them, its synopsis and genres in the TV's language, the synopsis as the search gave it
+     * where there's none in that language. False when it couldn't ask (offline, a bad key). Worker thread only.
+     */
+    boolean fetchInfo(String title) {
+        String key = TitleArt.normalize(title);
+        if (key.isEmpty() || !enabled()) return false;
+        try {
+            JSONObject o = new JSONObject();
+            o.put("t", System.currentTimeMillis());
+            o.put("l", language());
+            JSONObject best = best(title, key, false);
+            if (best != null) {
+                boolean tv = best.optString("media_type").equals("tv");
+                JSONObject details = get("/" + (tv ? "tv" : "movie") + "/" + best.getLong("id") + "?language="
+                        + Uri.encode(language()));
+                String date = best.optString(tv ? "first_air_date" : "release_date");
+                String overview = details.optString("overview").trim();
+                if (overview.isEmpty()) overview = best.optString("overview").trim();
+                JSONArray names = new JSONArray(), genres = details.optJSONArray("genres");
+                for (int i = 0; genres != null && i < genres.length() && names.length() < 3; i++) {
+                    String name = genres.getJSONObject(i).optString("name");
+                    if (!name.isEmpty()) names.put(name);
+                }
+                o.put("y", date.length() >= 4 ? date.substring(0, 4) : "");
+                o.put("o", overview);
+                o.put("s", best.optInt("vote_count") >= 20 ? best.optDouble("vote_average", 0) : 0);
+                o.put("g", names);
+            }
+            cache.edit().putString(INFO + key, o.toString()).apply();
+            return true;
+        } catch (IOException | JSONException | RuntimeException e) {
+            return false;   // asked again the next time it's shown
+        }
     }
 
     /** The best-rated PNG logo in the TV's language, else English, else language-free; "" if none. */

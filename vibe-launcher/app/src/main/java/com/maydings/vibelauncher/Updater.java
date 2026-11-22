@@ -243,8 +243,6 @@ final class Updater {
     }
 
     /** installApk on the calling (worker) thread: 0 once it's with the installer, else a message for the user. */
-    // The adb build declares the permission (src/adb); the store build never installs anything.
-    @SuppressLint("MissingPermission")
     static int installNow(Context app, String url, String sha, String pkg, int allowRes) {
         if (!app.getPackageManager().canRequestPackageInstalls()) {
             try {

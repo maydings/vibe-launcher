@@ -112,7 +112,7 @@
     <string name="art_id_short">Nuvio లాగా, కార్డ్‌లపై టైటిల్ IMDb ఐడీ పెట్టే యాప్‌లకు: సరైన బ్యాక్‌డ్రాప్, లోగో, కీ అక్కర్లేదు.</string>
     <string name="art_stremio_short">కార్డ్ టైటిల్‌తో కనుగొన్న Stremio ఉచిత సినిమా, షో డేటా. కీ అక్కర్లేదు.</string>
     <string name="art_own_short">పైవాటిలో దేనికీ చిత్రం లేనప్పుడు, యాప్ తన కార్డ్‌పై పెట్టిన చిత్రం.</string>
-    <string name="wp_custom">అనుకూల వాల్‌పేపర్‌లు</string>
+    <string name="wp_custom">సిస్టమ్ బ్యాక్‌డ్రాప్</string>
     <string name="media_title">లైబ్రరీ</string>
     <string name="media_short">మీరు జోడించేదంతా, ఒక్కొక్కటి ఒకసారే: టైల్ చిత్రాలు, బ్యాక్‌డ్రాప్ చిత్రాలు మరియు వీడియోలు, ఫాంట్‌లు.</string>
     <string name="tile_pictures">టైల్ చిత్రాలు</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">ఈ ఫాంట్‌లో %1$s అక్షరాలు లేవు, కాబట్టి సిస్టమ్ ఫాంట్ కనిపిస్తుంది.</string>
     <string name="font_credit">Google Fonts ఫాంట్‌లు, Fontsource జాబితాలో; ప్రతిదీ దాని సొంత లైసెన్స్‌తో</string>
     <string name="font_add">ఫాంట్‌లను జోడించండి</string>
-    <string name="wp_custom_short">లైబ్రరీలోని చిత్రాలు, వీడియోలు, సొంత చిత్రం లేని ఏ యాప్ వెనుకైనా కనిపిస్తాయి. ఏ టైల్‌నైనా దాని మెనూ నుండి వీటిని మాత్రమే చూపేలా సెట్ చేయవచ్చు.</string>
-    <string name="bd_content">యాప్ సొంత చిత్రాలు</string>
+    <string name="wp_custom_short">టైల్‌లు తమ బ్యాక్‌డ్రాప్‌ల మెనూ నుండి దీన్ని ఉపయోగిస్తాయి. చూపడానికి ఏదైనా ఉన్న మొదటి ప్రారంభించబడినది మాత్రమే ఉపయోగించబడుతుంది; మరొకటి ప్రత్యామ్నాయం.</string>
+    <string name="bd_content">యాప్ కంటెంట్</string>
     <string name="bd_colour">రంగు మాత్రమే</string>
     <string name="bd_own">సొంత ఎంపిక</string>
     <string name="lib_big_for_tile">బ్యాక్‌డ్రాప్ కోసం చేసినది: టైల్‌కు సిఫార్సు చేయబడదు</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">రెండు అనుమతులు</string>
     <string name="permissions_why">Vibe Launcher ఇప్పుడు రెండు అనుమతులు అడుగుతుంది.\n\nటీవీ జాబితాలు: మీ యాప్‌లు హోమ్ స్క్రీన్ కోసం ప్రచురించే కార్డ్‌ల చిత్రాలను చూపడానికి.\n\nలొకేషన్: ఈ అనుమతి ఉన్న యాప్‌లకు మాత్రమే Android వై-ఫై నెట్‌వర్క్ పేరు చూపుతుంది. Vibe Launcher దాన్ని ఆ పేరు కోసం మాత్రమే వాడుతుంది, పరికరం ఎక్కడ ఉందో ఎప్పుడూ వెతకదు.\n\nఏదీ పరికరం నుండి బయటకు వెళ్లదు.</string>
     <string name="continue_button">కొనసాగించండి</string>
-    <string name="store_update">Vibe Launcher‌ను అప్‌డేట్ చేయండి</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">బ్యాకప్ మరియు రీస్టోర్</string>
     <string name="backup_short">సెట్టింగ్‌లు, టైల్స్, ఫోల్డర్‌లు, టైల్ చిత్రాలు మరియు API కీలు. బ్యాకప్‌లో మీ కీలు ఉంటాయి, కాబట్టి దాన్ని గోప్యంగా ఉంచండి.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">నగరాలు</string>
     <string name="wp_apple_underwater">నీటి అడుగున</string>
     <string name="wp_no_room">ఈ వీడియో %1$s, ఖాళీ %2$s. పరికరం 1 GB ఖాళీగా ఉంచుతుంది: ముందుగా లైబ్రరీ నుండి ఏదైనా తొలగించండి.</string>
+    <string name="flights_title">పైనుంచి వెళ్లే విమానాలు</string>
+    <string name="flights_short">సొంత చిత్రం లేని యాప్‌ల వెనుక మీ దగ్గరగా వెళ్లే విమానాలను చూపుతుంది. వాతావరణం కోసం సెట్ చేసిన ప్రదేశాన్ని ఉపయోగిస్తుంది. డేటా: OpenSky Network, adsbdb.</string>
+    <string name="title_info">సినిమా మరియు షో వివరాలు</string>
+    <string name="title_info_short">సినిమా లేదా షో బ్యాక్‌డ్రాప్‌తో పాటు TMDB నుండి రేటింగ్, సంవత్సరం, సారాంశం, జానర్‌లను చూపుతుంది. TMDB కీ అవసరం (API కీలు).</string>
+    <string name="flights_over_colour">ఫ్లైట్ కార్డ్‌లను చూపు</string>
+    <string name="flights_over_colour_short">బ్యాక్‌డ్రాప్ రంగు మాత్రమే ఉన్న టైల్‌లపై, మ్యాప్ లేకుండా, మీ సమీపంలో వెళ్తున్న విమానాల కార్డ్‌లను చూపుతుంది.</string>
+    <string name="flights_distance">దూరం</string>
+    <string name="flights_clear">సేవ్ చేసిన విమాన వివరాలను తొలగించు</string>
+    <string name="opensky_id">OpenSky క్లయింట్ ID</string>
+    <string name="opensky_secret">OpenSky క్లయింట్ సీక్రెట్</string>
+    <string name="opensky_short">ఐచ్ఛికం. మీ OpenSky Network ఖాతాలోని API క్లయింట్‌తో విమానాలు ప్రతి 4 నిమిషాలకు బదులు ప్రతి 30 సెకన్లకు అప్‌డేట్ అవుతాయి.</string>
 </resources>

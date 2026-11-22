@@ -112,7 +112,7 @@
     <string name="art_id_short">Для застосунків, що пишуть на картках IMDb ID назви, як Nuvio: точний фон і логотип, без ключа.</string>
     <string name="art_stremio_short">Безкоштовні дані Stremio про фільми й серіали, знайдені за назвою на картці. Без ключа.</string>
     <string name="art_own_short">Картинка, яку застосунок поставив на свою картку, якщо в джерел вище її немає.</string>
-    <string name="wp_custom">Власні шпалери</string>
+    <string name="wp_custom">Системне тло</string>
     <string name="media_title">Бібліотека</string>
     <string name="media_short">Усе, що ви додаєте, зберігається один раз: зображення плиток, фонові зображення й відео, шрифти.</string>
     <string name="tile_pictures">Зображення плиток</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">У цьому шрифті немає літер для мови %1$s, тому показано системний шрифт.</string>
     <string name="font_credit">Шрифти з Google Fonts у списку Fontsource; кожен із власною ліцензією</string>
     <string name="font_add">Додати шрифти</string>
-    <string name="wp_custom_short">Фото й відео з Бібліотеки, що показуються за будь-яким застосунком без власної картинки. Будь-яку плитку можна в її меню налаштувати так, щоб вона показувала лише їх.</string>
-    <string name="bd_content">Власні зображення застосунку</string>
+    <string name="wp_custom_short">Плитки використовують його зі свого меню «Фони». Використовується лише перший увімкнений варіант, якому є що показати; інший — запасний.</string>
+    <string name="bd_content">Вміст застосунку</string>
     <string name="bd_colour">Лише колір</string>
     <string name="bd_own">Власний вибір</string>
     <string name="lib_big_for_tile">Зроблено для фону: для плитки не рекомендується</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Два дозволи</string>
     <string name="permissions_why">Vibe Launcher зараз попросить два дозволи.\n\nТелепрограма: щоб показувати зображення з карток, які ваші застосунки публікують для головного екрана.\n\nМісцезнаходження: Android показує назву мережі Wi-Fi лише застосункам із цим дозволом. Vibe Launcher використовує його лише для цієї назви й ніколи не визначає, де пристрій.\n\nНіщо не залишає пристрій.</string>
     <string name="continue_button">Продовжити</string>
-    <string name="store_update">Оновити Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Резервна копія та відновлення</string>
     <string name="backup_short">Налаштування, плитки, папки, зображення плиток і ключі API. Копія містить ваші ключі, тож нікому її не передавайте.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Міста</string>
     <string name="wp_apple_underwater">Під водою</string>
     <string name="wp_no_room">Це відео важить %1$s, а вільно %2$s. Пристрій залишає 1 ГБ вільним: спершу видаліть щось із Бібліотеки.</string>
+    <string name="flights_title">Рейси над вами</string>
+    <string name="flights_short">Показує літаки, що пролітають поруч, за застосунками без власного зображення. Використовує місце, задане для погоди. Дані: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Відомості про фільми й серіали</string>
+    <string name="title_info_short">Показує оцінку, рік, опис і жанри з TMDB разом із тлом фільму чи серіалу. Потрібен ключ TMDB (Ключі API).</string>
+    <string name="flights_over_colour">Показувати картки рейсів</string>
+    <string name="flights_over_colour_short">Показує картки літаків, що пролітають поруч, без карти, на плитках, у яких тло — лише колір.</string>
+    <string name="flights_distance">Відстань</string>
+    <string name="flights_clear">Очистити збережені дані про рейси</string>
+    <string name="opensky_id">Ідентифікатор клієнта OpenSky</string>
+    <string name="opensky_secret">Секрет клієнта OpenSky</string>
+    <string name="opensky_short">Необов\'язково. З клієнтом API з вашого облікового запису OpenSky Network рейси оновлюються кожні 30 секунд замість кожних 4 хвилин.</string>
 </resources>

@@ -43,20 +43,23 @@
             android:scaleType="centerCrop"
             android:contentDescription="@null" />
 
-        <!-- A film or show's title on its backdrop: the logo, or the name when there is none. Above the
-             tint so it stays bright; lined up with the app name by MainActivity. -->
-        <FrameLayout
+        <!-- A film or show's title on its backdrop: the logo, or the name when there is none; with its
+             details (Settings > Backdrops), those under it: rating and year, synopsis, genres. Above the
+             tint so it stays bright; placed by MainActivity (showBackdropTitle). -->
+        <LinearLayout
             android:id="@+id/backdropTitleBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|top"
-            android:layout_marginEnd="50dp">
+            android:layout_marginStart="62dp"
+            android:layout_marginEnd="50dp"
+            android:gravity="end"
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/backdropLogo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
                 android:maxWidth="340dp"
                 android:maxHeight="110dp"
                 android:adjustViewBounds="true"
@@ -68,7 +71,6 @@
                 android:id="@+id/backdropTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
                 android:gravity="end"
                 android:maxWidth="420dp"
                 android:maxLines="2"
@@ -80,7 +82,53 @@
                 android:includeFontPadding="false"
                 android:shadowColor="#99000000"
                 android:shadowRadius="14" />
-        </FrameLayout>
+
+            <TextView
+                android:id="@+id/backdropMeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:maxLines="1"
+                android:visibility="gone"
+                android:textColor="#FFFFFFFF"
+                android:textSize="17sp"
+                android:fontFamily="@string/font_regular"
+                android:includeFontPadding="false"
+                android:shadowColor="#CC000000"
+                android:shadowRadius="10" />
+
+            <TextView
+                android:id="@+id/backdropSynopsis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxWidth="440dp"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="1.15"
+                android:visibility="gone"
+                android:textColor="#F0FFFFFF"
+                android:textSize="15sp"
+                android:fontFamily="@string/font_regular"
+                android:shadowColor="#CC000000"
+                android:shadowRadius="10" />
+
+            <TextView
+                android:id="@+id/backdropGenres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:maxWidth="440dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:visibility="gone"
+                android:textColor="#CCFFFFFF"
+                android:textSize="14sp"
+                android:fontFamily="@string/font_regular"
+                android:includeFontPadding="false"
+                android:shadowColor="#CC000000"
+                android:shadowRadius="10" />
+        </LinearLayout>
     </FrameLayout>
 
     <!-- Ambient glow in the colour of the focused dock app (apps without a backdrop). -->
@@ -89,6 +137,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0" />
+
+    <!-- The aircraft passing near here, in place of the system backdrop (FlightBoard): over the backdrop
+         and the glow, gone while there's nothing to show. -->
+    <com.maydings.vibelauncher.FlightBoard
+        android:id="@+id/flightBoard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <!-- Top shelf: the focused dock app's name, positioned above the dock in code. -->
     <TextView

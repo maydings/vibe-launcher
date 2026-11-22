@@ -112,7 +112,7 @@
     <string name="art_id_short">Voor apps die de IMDb-id van de titel op hun kaarten zetten, zoals Nuvio: precies de juiste achtergrond en het logo, zonder sleutel.</string>
     <string name="art_stremio_short">De gratis film- en seriegegevens van Stremio, gezocht op de titel van de kaart. Zonder sleutel.</string>
     <string name="art_own_short">De afbeelding die de app op zijn kaart zette, als geen bron hierboven er een heeft.</string>
-    <string name="wp_custom">Eigen achtergronden</string>
+    <string name="wp_custom">Systeemachtergrond</string>
     <string name="media_title">Bibliotheek</string>
     <string name="media_short">Alles wat je toevoegt, één keer bewaard: tegelafbeeldingen, achtergrondafbeeldingen en -video\'s, en lettertypen.</string>
     <string name="tile_pictures">Tegelafbeeldingen</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Dit lettertype heeft geen letters voor %1$s, dus het systeemlettertype verschijnt.</string>
     <string name="font_credit">Lettertypen van Google Fonts, vermeld door Fontsource; elk onder een eigen licentie</string>
     <string name="font_add">Lettertypen toevoegen</string>
-    <string name="wp_custom_short">Foto\'s en video\'s uit de Bibliotheek, achter elke app zonder eigen afbeelding. Een tegel kan via zijn eigen menu zo worden ingesteld dat hij alleen deze toont.</string>
-    <string name="bd_content">Eigen afbeeldingen van de app</string>
+    <string name="wp_custom_short">Tegels gebruiken hem vanuit hun menu Achtergronden. Alleen de eerste ingeschakelde die iets te tonen heeft, wordt gebruikt; de andere is reserve.</string>
+    <string name="bd_content">App-inhoud</string>
     <string name="bd_colour">Alleen kleur</string>
     <string name="bd_own">Eigen selectie</string>
     <string name="lib_big_for_tile">Gemaakt als achtergrond: niet aanbevolen voor een tegel</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Twee machtigingen</string>
     <string name="permissions_why">Vibe Launcher vraagt zo om twee rechten.\n\nTv-programma\'s: om afbeeldingen te tonen van de kaarten die je apps voor het startscherm publiceren.\n\nLocatie: Android laat de naam van het wifinetwerk alleen zien aan apps met dit recht. Vibe Launcher gebruikt het alleen voor die naam en zoekt nooit op waar het apparaat is.\n\nGeen van beide verlaat het apparaat.</string>
     <string name="continue_button">Doorgaan</string>
-    <string name="store_update">Vibe Launcher updaten</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Back-up en herstel</string>
     <string name="backup_short">Instellingen, tegels, mappen, tegelafbeeldingen en API-sleutels. Een back-up bevat je sleutels, dus houd hem voor jezelf.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Steden</string>
     <string name="wp_apple_underwater">Onder water</string>
     <string name="wp_no_room">Deze video is %1$s en er is %2$s vrij. Het apparaat houdt 1 GB vrij: verwijder eerst iets uit de Bibliotheek.</string>
+    <string name="flights_title">Vluchten boven je</string>
+    <string name="flights_short">Toont de vliegtuigen die bij je in de buurt overkomen achter apps zonder eigen afbeelding. Gebruikt de plaats die voor het weer is ingesteld. Gegevens: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Details van films en series</string>
+    <string name="title_info_short">Toont de beoordeling, het jaar, de synopsis en de genres van TMDB bij de achtergrond van een film of serie. Vereist een TMDB-sleutel (API-sleutels).</string>
+    <string name="flights_over_colour">Vluchtkaarten tonen</string>
+    <string name="flights_over_colour_short">Toont de kaarten van de vliegtuigen die bij je in de buurt overvliegen, zonder de plattegrond, op tegels waarvan de achtergrond alleen de kleur is.</string>
+    <string name="flights_distance">Afstand</string>
+    <string name="flights_clear">Opgeslagen vluchtgegevens wissen</string>
+    <string name="opensky_id">OpenSky-client-ID</string>
+    <string name="opensky_secret">OpenSky-clientgeheim</string>
+    <string name="opensky_short">Optioneel. Met een API-client van je OpenSky Network-account worden vluchten elke 30 seconden bijgewerkt in plaats van elke 4 minuten.</string>
 </resources>

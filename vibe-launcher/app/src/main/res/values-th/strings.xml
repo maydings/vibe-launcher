@@ -112,7 +112,7 @@
     <string name="art_id_short">สำหรับแอปที่ใส่รหัส IMDb ของเรื่องไว้บนการ์ด เช่น Nuvio: ภาพพื้นหลังและโลโก้ที่ตรงเรื่อง ไม่ต้องใช้คีย์</string>
     <string name="art_stremio_short">ข้อมูลภาพยนตร์และรายการฟรีของ Stremio ค้นจากชื่อบนการ์ด ไม่ต้องใช้คีย์</string>
     <string name="art_own_short">ภาพที่แอปใส่ไว้บนการ์ด เมื่อแหล่งด้านบนไม่มีภาพ</string>
-    <string name="wp_custom">วอลเปเปอร์ของคุณเอง</string>
+    <string name="wp_custom">ฉากหลังของระบบ</string>
     <string name="media_title">คลัง</string>
     <string name="media_short">ทุกอย่างที่คุณเพิ่ม เก็บไว้ครั้งเดียว: รูปไทล์ รูปและวิดีโอฉากหลัง และแบบอักษร</string>
     <string name="tile_pictures">รูปไทล์</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">แบบอักษรนี้ไม่มีตัวอักษร%1$s จึงแสดงแบบอักษรของระบบแทน</string>
     <string name="font_credit">แบบอักษรจาก Google Fonts ในรายการของ Fontsource แต่ละแบบมีสัญญาอนุญาตของตัวเอง</string>
     <string name="font_add">เพิ่มแบบอักษร</string>
-    <string name="wp_custom_short">รูปและวิดีโอจากคลัง แสดงอยู่หลังแอปที่ไม่มีรูปของตัวเอง ตั้งค่าไทล์ใดก็ได้จากเมนูของไทล์นั้นให้แสดงเฉพาะสิ่งเหล่านี้</string>
-    <string name="bd_content">รูปของแอปเอง</string>
+    <string name="wp_custom_short">ไทล์ใช้สิ่งนี้จากเมนูฉากหลังของตัวเอง ใช้เฉพาะรายการแรกที่เปิดใช้และมีสิ่งที่จะแสดงเท่านั้น อีกรายการเป็นตัวสำรอง</string>
+    <string name="bd_content">เนื้อหาของแอป</string>
     <string name="bd_colour">สีเท่านั้น</string>
     <string name="bd_own">เลือกเอง</string>
     <string name="lib_big_for_tile">ทำมาสำหรับฉากหลัง: ไม่แนะนำสำหรับไทล์</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">สิทธิ์สองรายการ</string>
     <string name="permissions_why">Vibe Launcher จะขอสิทธิ์สองอย่าง\n\nรายการทีวี: เพื่อแสดงรูปจากการ์ดที่แอปของคุณเผยแพร่สำหรับหน้าจอหลัก\n\nตำแหน่ง: Android แสดงชื่อเครือข่าย Wi-Fi เฉพาะแอปที่มีสิทธิ์นี้ Vibe Launcher ใช้เพื่อชื่อนั้นเท่านั้น และไม่เคยค้นหาว่าอุปกรณ์อยู่ที่ไหน\n\nไม่มีอะไรออกจากอุปกรณ์</string>
     <string name="continue_button">ดำเนินการต่อ</string>
-    <string name="store_update">อัปเดต Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">สำรองและกู้คืน</string>
     <string name="backup_short">การตั้งค่า ไทล์ โฟลเดอร์ ภาพไทล์ และคีย์ API ข้อมูลสำรองมีคีย์ของคุณอยู่ จึงควรเก็บไว้เป็นส่วนตัว</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">เมือง</string>
     <string name="wp_apple_underwater">ใต้น้ำ</string>
     <string name="wp_no_room">วิดีโอนี้มีขนาด %1$s และมีที่ว่าง %2$s อุปกรณ์เว้นที่ว่างไว้ 1 GB: ลบบางอย่างออกจากคลังก่อน</string>
+    <string name="flights_title">เที่ยวบินเหนือศีรษะ</string>
+    <string name="flights_short">แสดงเครื่องบินที่บินผ่านใกล้คุณไว้ด้านหลังแอปที่ไม่มีรูปภาพของตัวเอง ใช้สถานที่ที่ตั้งไว้สำหรับสภาพอากาศ ข้อมูล: OpenSky Network, adsbdb.</string>
+    <string name="title_info">รายละเอียดภาพยนตร์และรายการ</string>
+    <string name="title_info_short">แสดงคะแนน ปี เรื่องย่อ และประเภทจาก TMDB พร้อมกับฉากหลังของภาพยนตร์หรือรายการ ต้องใช้คีย์ TMDB (คีย์ API)</string>
+    <string name="flights_over_colour">แสดงการ์ดเที่ยวบิน</string>
+    <string name="flights_over_colour_short">แสดงการ์ดของเครื่องบินที่บินผ่านใกล้คุณ โดยไม่มีแผนที่ บนไทล์ที่ฉากหลังเป็นสีเท่านั้น</string>
+    <string name="flights_distance">ระยะทาง</string>
+    <string name="flights_clear">ล้างรายละเอียดเที่ยวบินที่บันทึกไว้</string>
+    <string name="opensky_id">รหัสไคลเอ็นต์ OpenSky</string>
+    <string name="opensky_secret">รหัสลับไคลเอ็นต์ OpenSky</string>
+    <string name="opensky_short">ไม่บังคับ เมื่อมีไคลเอ็นต์ API จากบัญชี OpenSky Network ของคุณ เที่ยวบินจะอัปเดตทุก 30 วินาทีแทนทุก 4 นาที</string>
 </resources>

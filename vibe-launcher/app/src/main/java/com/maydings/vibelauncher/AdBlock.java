@@ -15,7 +15,7 @@ import java.net.InetAddress;
  * newer) pointed at a DNS service that filters ads and trackers, so every app's lookups go through it: one of three,
  * or one of the person's own, each with a name, added from the phone (PhoneLink). Written with
  * WRITE_SECURE_SETTINGS, which Settings > Advanced has ADB grant (TvControl). What the device had before is kept
- * and put back when it's turned off. Not in the store build: stores don't allow apps that block other apps' ads.
+ * and put back when it's turned off.
  *
  * Private DNS with a hostname is strict: when the service can't be reached, no name resolves at all. So each choice
  * is checked once made (check) and the device's own setting put back when it doesn't work.
@@ -36,9 +36,9 @@ final class AdBlock {
     private AdBlock() {
     }
 
-    /** Whether this device and this build can have it: Android 9 or newer, not the store build. */
+    /** Whether this device can have it: Android 9 or newer. */
     static boolean supported() {
-        return !BuildConfig.STORE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P;
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.P;
     }
 
     /** The hostname Private DNS uses now, or null when it isn't set to one (off, or Android's automatic mode). */

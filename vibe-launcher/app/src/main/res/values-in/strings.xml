@@ -112,7 +112,7 @@
     <string name="art_id_short">Untuk aplikasi yang menaruh ID IMDb judul di kartunya, seperti Nuvio: latar dan logo yang tepat, tanpa kunci.</string>
     <string name="art_stremio_short">Data film dan acara gratis dari Stremio, dicari dari judul kartu. Tanpa kunci.</string>
     <string name="art_own_short">Gambar yang dipasang aplikasi di kartunya, jika sumber di atas tidak punya.</string>
-    <string name="wp_custom">Wallpaper sendiri</string>
+    <string name="wp_custom">Latar sistem</string>
     <string name="media_title">Koleksi</string>
     <string name="media_short">Semua yang Anda tambahkan, disimpan sekali: gambar ubin, gambar dan video latar, serta font.</string>
     <string name="tile_pictures">Gambar ubin</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Font ini tidak punya huruf %1$s, jadi font sistem yang tampil.</string>
     <string name="font_credit">Font dari Google Fonts, didaftar oleh Fontsource; masing-masing dengan lisensinya</string>
     <string name="font_add">Tambah font</string>
-    <string name="wp_custom_short">Foto dan video dari Koleksi, tampil di belakang aplikasi yang tak punya gambar sendiri. Ubin mana pun bisa diatur dari menunya agar hanya menampilkan ini.</string>
-    <string name="bd_content">Gambar milik aplikasi</string>
+    <string name="wp_custom_short">Ubin memakainya dari menu Latar masing-masing. Hanya yang pertama aktif dan punya sesuatu untuk ditampilkan yang dipakai; yang lain cadangan.</string>
+    <string name="bd_content">Konten aplikasi</string>
     <string name="bd_colour">Warna saja</string>
     <string name="bd_own">Pilihan sendiri</string>
     <string name="lib_big_for_tile">Dibuat untuk latar: tidak disarankan untuk ubin</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Dua izin</string>
     <string name="permissions_why">Vibe Launcher akan meminta dua izin.\n\nDaftar acara TV: untuk menampilkan gambar dari kartu yang dipublikasikan aplikasi Anda untuk layar utama.\n\nLokasi: Android hanya menampilkan nama jaringan Wi-Fi kepada aplikasi yang memilikinya. Vibe Launcher memakainya hanya untuk nama itu dan tidak pernah mencari lokasi perangkat.\n\nKeduanya tidak keluar dari perangkat.</string>
     <string name="continue_button">Lanjutkan</string>
-    <string name="store_update">Perbarui Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Cadangkan dan pulihkan</string>
     <string name="backup_short">Setelan, ubin, folder, gambar ubin, dan kunci API. Cadangan menyimpan kunci Anda, jadi jaga kerahasiaannya.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Kota</string>
     <string name="wp_apple_underwater">Bawah air</string>
     <string name="wp_no_room">Video ini %1$s dan yang kosong %2$s. Perangkat menyisakan 1 GB kosong: hapus dulu sesuatu dari Koleksi.</string>
+    <string name="flights_title">Penerbangan di atas Anda</string>
+    <string name="flights_short">Menampilkan pesawat yang melintas di dekat Anda di belakang aplikasi yang tidak punya gambar sendiri. Memakai tempat yang disetel untuk cuaca. Data: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Detail film dan acara</string>
+    <string name="title_info_short">Menampilkan rating, tahun, sinopsis, dan genre dari TMDB bersama latar film atau acara. Memerlukan kunci TMDB (Kunci API).</string>
+    <string name="flights_over_colour">Tampilkan kartu penerbangan</string>
+    <string name="flights_over_colour_short">Menampilkan kartu pesawat yang melintas di dekat Anda, tanpa peta, pada ubin yang latarnya hanya warna.</string>
+    <string name="flights_distance">Jarak</string>
+    <string name="flights_clear">Hapus detail penerbangan tersimpan</string>
+    <string name="opensky_id">ID klien OpenSky</string>
+    <string name="opensky_secret">Rahasia klien OpenSky</string>
+    <string name="opensky_short">Opsional. Dengan klien API dari akun OpenSky Network Anda, penerbangan diperbarui setiap 30 detik, bukan setiap 4 menit.</string>
 </resources>

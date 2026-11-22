@@ -112,7 +112,7 @@
     <string name="art_id_short">Pro aplikace, které na karty dávají IMDb ID titulu, jako Nuvio: přesné pozadí a logo, bez klíče.</string>
     <string name="art_stremio_short">Bezplatná data Stremia o filmech a seriálech, hledaná podle názvu na kartě. Bez klíče.</string>
     <string name="art_own_short">Obrázek, který aplikace dala na svou kartu, když žádný zdroj výše žádný nemá.</string>
-    <string name="wp_custom">Vlastní tapety</string>
+    <string name="wp_custom">Systémové pozadí</string>
     <string name="media_title">Knihovna</string>
     <string name="media_short">Vše, co přidáte, uložené jednou: obrázky dlaždic, obrázky a videa pozadí a písma.</string>
     <string name="tile_pictures">Obrázky dlaždic</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Toto písmo nemá písmena pro %1$s, proto se zobrazí systémové písmo.</string>
     <string name="font_credit">Písma z Google Fonts, seznam z Fontsource; každé pod vlastní licencí</string>
     <string name="font_add">Přidat písma</string>
-    <string name="wp_custom_short">Obrázky a videa z Knihovny, která se zobrazují za každou aplikací bez vlastního obrázku. Každou dlaždici lze v její nabídce nastavit, aby zobrazovala jen tyto.</string>
-    <string name="bd_content">Vlastní obrázky aplikace</string>
+    <string name="wp_custom_short">Dlaždice ho používají ze své nabídky Pozadí. Použije se jen první povolená položka, která má co zobrazit; druhá je záložní.</string>
+    <string name="bd_content">Obsah aplikace</string>
     <string name="bd_colour">Jen barva</string>
     <string name="bd_own">Vlastní výběr</string>
     <string name="lib_big_for_tile">Určeno pro pozadí: pro dlaždici se nedoporučuje</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Dvě oprávnění</string>
     <string name="permissions_why">Vibe Launcher teď požádá o dvě oprávnění.\n\nTV program: aby mohl zobrazovat obrázky z karet, které vaše aplikace zveřejňují na domovskou obrazovku.\n\nPoloha: Android ukazuje název sítě Wi-Fi jen aplikacím s tímto oprávněním. Vibe Launcher ho používá jen pro tento název a nikdy nezjišťuje, kde zařízení je.\n\nNic z toho zařízení neopustí.</string>
     <string name="continue_button">Pokračovat</string>
-    <string name="store_update">Aktualizovat Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Záloha a obnovení</string>
     <string name="backup_short">Nastavení, dlaždice, složky, obrázky dlaždic a klíče API. Záloha obsahuje vaše klíče, proto ji nikomu nedávejte.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Města</string>
     <string name="wp_apple_underwater">Pod vodou</string>
     <string name="wp_no_room">Toto video má %1$s a volné je %2$s. Zařízení nechává 1 GB volný: nejdřív něco smažte z Knihovny.</string>
+    <string name="flights_title">Lety nad vámi</string>
+    <string name="flights_short">Zobrazuje letadla prolétající poblíž za aplikacemi, které nemají vlastní obrázek. Používá místo nastavené pro počasí. Data: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Podrobnosti o filmech a seriálech</string>
+    <string name="title_info_short">Zobrazí u pozadí filmu nebo seriálu hodnocení, rok, popis a žánry z TMDB. Vyžaduje klíč TMDB (Klíče API).</string>
+    <string name="flights_over_colour">Zobrazit karty letů</string>
+    <string name="flights_over_colour_short">Zobrazí karty letadel prolétajících poblíž, bez mapy, na dlaždicích, jejichž pozadím je jen barva.</string>
+    <string name="flights_distance">Vzdálenost</string>
+    <string name="flights_clear">Vymazat uložené údaje o letech</string>
+    <string name="opensky_id">ID klienta OpenSky</string>
+    <string name="opensky_secret">Tajný klíč klienta OpenSky</string>
+    <string name="opensky_short">Volitelné. S klientem API z vašeho účtu OpenSky Network se lety aktualizují každých 30 sekund místo každé 4 minuty.</string>
 </resources>

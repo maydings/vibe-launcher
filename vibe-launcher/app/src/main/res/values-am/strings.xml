@@ -112,7 +112,7 @@
     <string name="art_id_short">የርዕሱን IMDb መለያ በካርዶቻቸው ላይ ለሚያስቀምጡ መተግበሪያዎች፣ እንደ Nuvio፦ ትክክለኛው ዳራ እና አርማ፣ ቁልፍ አያስፈልግም።</string>
     <string name="art_stremio_short">የStremio ነፃ የፊልም እና የትዕይንት መረጃ፣ በካርዱ ርዕስ የተገኘ። ቁልፍ አያስፈልግም።</string>
     <string name="art_own_short">ከላይ ያሉት ምንም ሥዕል ከሌላቸው፣ መተግበሪያው በካርዱ ላይ ያስቀመጠው ሥዕል።</string>
-    <string name="wp_custom">የራስዎ ልጣፎች</string>
+    <string name="wp_custom">የስርዓት ዳራ</string>
     <string name="media_title">ቤተ መጻሕፍት</string>
     <string name="media_short">የሚያክሉት ሁሉ፣ እያንዳንዱ አንድ ጊዜ ይቀመጣል፦ የሰድር ሥዕሎች፣ የጀርባ ሥዕሎች እና ቪዲዮዎች፣ እና ቅርጸ-ቁምፊዎች።</string>
     <string name="tile_pictures">የሰድር ሥዕሎች</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">ይህ ቅርጸ-ቁምፊ የ%1$s ፊደላት የሉትም፣ ስለዚህ የሥርዓቱ ቅርጸ-ቁምፊ ይታያል።</string>
     <string name="font_credit">ቅርጸ-ቁምፊዎች ከGoogle Fonts፣ በFontsource የተዘረዘሩ፤ እያንዳንዱ በራሱ ፈቃድ</string>
     <string name="font_add">ቅርጸ-ቁምፊዎችን ያክሉ</string>
-    <string name="wp_custom_short">ከቤተ መጻሕፍት የተመረጡ ሥዕሎች እና ቪዲዮዎች፣ የራሱ ሥዕል በሌለው መተግበሪያ ጀርባ ይታያሉ። ሰድር ከራሱ ምናሌ እነዚህን ብቻ እንዲያሳይ ሊደረግ ይችላል።</string>
-    <string name="bd_content">የመተግበሪያው የራሱ ሥዕሎች</string>
+    <string name="wp_custom_short">ሰቆች ከዳራዎች ምናሌያቸው ይጠቀሙበታል። የሚያሳየው ነገር ያለው የመጀመሪያው የነቃ ብቻ ጥቅም ላይ ይውላል፤ ሌላው ተጠባባቂ ነው።</string>
+    <string name="bd_content">የመተግበሪያ ይዘት</string>
     <string name="bd_colour">ቀለም ብቻ</string>
     <string name="bd_own">የራስ ምርጫ</string>
     <string name="lib_big_for_tile">ለጀርባ የተሰራ፦ ለሰድር አይመከርም</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">ሁለት ፈቃዶች</string>
     <string name="permissions_why">Vibe Launcher አሁን ሁለት ፈቃዶችን ይጠይቃል።\n\nየቲቪ ዝርዝሮች፦ መተግበሪያዎችዎ ለመነሻ ማያ የሚያትሟቸውን ካርዶች ሥዕሎች ለማሳየት።\n\nአካባቢ፦ Android የWi-Fi አውታረ መረቡን ስም የሚያሳየው ይህ ፈቃድ ላላቸው መተግበሪያዎች ብቻ ነው። Vibe Launcher ለዚያ ስም ብቻ ይጠቀምበታል፣ መሣሪያው የት እንዳለ በጭራሽ አይፈልግም።\n\nአንዳቸውም ከመሣሪያው አይወጡም።</string>
     <string name="continue_button">ቀጥል</string>
-    <string name="store_update">Vibe Launcherን አዘምን</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ምትኬ እና መመለስ</string>
     <string name="backup_short">ቅንብሮች፣ ሰቆች፣ አቃፊዎች፣ የሰቅ ምስሎች እና የAPI ቁልፎች። ምትኬው ቁልፎችዎን ይይዛል፣ ስለዚህ በግል ያስቀምጡት።</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">ከተሞች</string>
     <string name="wp_apple_underwater">ከውሃ በታች</string>
     <string name="wp_no_room">ይህ ቪዲዮ %1$s ነው፣ %2$s ነጻ አለ። መሣሪያው 1 GB ነጻ ያስቀራል፦ መጀመሪያ ከቤተ መጻሕፍት የሆነ ነገር ይሰርዙ።</string>
+    <string name="flights_title">በላይ የሚያልፉ በረራዎች</string>
+    <string name="flights_short">የራሳቸው ምስል ከሌላቸው መተግበሪያዎች ጀርባ በአቅራቢያዎ የሚያልፉ አውሮፕላኖችን ያሳያል። ለአየር ሁኔታ የተቀመጠውን ቦታ ይጠቀማል። ውሂብ፦ OpenSky Network, adsbdb.</string>
+    <string name="title_info">የፊልም እና የትዕይንት ዝርዝሮች</string>
+    <string name="title_info_short">ከፊልም ወይም ከትዕይንት ዳራ ጋር ደረጃውን፣ ዓመቱን፣ ማጠቃለያውን እና ዘውጎቹን ከTMDB ያሳያል። የTMDB ቁልፍ ያስፈልጋል (የAPI ቁልፎች)።</string>
+    <string name="flights_over_colour">የበረራ ካርዶችን አሳይ</string>
+    <string name="flights_over_colour_short">ዳራቸው ቀለም ብቻ በሆኑ ሰቆች ላይ በአቅራቢያዎ የሚያልፉ አውሮፕላኖችን ካርዶች ያለ ካርታ ያሳያል።</string>
+    <string name="flights_distance">ርቀት</string>
+    <string name="flights_clear">የተቀመጡ የበረራ ዝርዝሮችን አጽዳ</string>
+    <string name="opensky_id">የOpenSky ደንበኛ መታወቂያ</string>
+    <string name="opensky_secret">የOpenSky ደንበኛ ሚስጥር</string>
+    <string name="opensky_short">አማራጭ። ከOpenSky Network መለያዎ በAPI ደንበኛ በረራዎች በየ4 ደቂቃ ሳይሆን በየ30 ሰከንድ ይዘምናሉ።</string>
 </resources>

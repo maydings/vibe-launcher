@@ -112,7 +112,7 @@
     <string name="art_id_short">जी अ‍ॅप्स कार्डवर शीर्षकाचा IMDb आयडी देतात, जसे Nuvio: अचूक पार्श्वभूमी आणि लोगो, की नको.</string>
     <string name="art_stremio_short">कार्डच्या शीर्षकावरून शोधलेला Stremio चा मोफत चित्रपट आणि शो डेटा. की नको.</string>
     <string name="art_own_short">वरच्यांपैकी कशातही चित्र नसल्यास, अ‍ॅपने आपल्या कार्डवर लावलेले चित्र.</string>
-    <string name="wp_custom">सानुकूल वॉलपेपर</string>
+    <string name="wp_custom">सिस्टम बॅकड्रॉप</string>
     <string name="media_title">लायब्ररी</string>
     <string name="media_short">तुम्ही जोडता ते सर्व, प्रत्येक एकदाच ठेवलेले: टाइल चित्रे, बॅकड्रॉप चित्रे व व्हिडिओ, आणि फॉन्ट.</string>
     <string name="tile_pictures">टाइल चित्रे</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">या फॉन्टमध्ये %1$s अक्षरे नाहीत, म्हणून सिस्टम फॉन्ट दिसतो.</string>
     <string name="font_credit">Google Fonts चे फॉन्ट, Fontsource च्या यादीत; प्रत्येक स्वतःच्या परवान्याखाली</string>
     <string name="font_add">फॉन्ट जोडा</string>
-    <string name="wp_custom_short">लायब्ररीतील फोटो आणि व्हिडिओ, स्वतःचे चित्र नसलेल्या कोणत्याही ॲपच्या मागे दिसतात. कोणतीही टाइल तिच्या मेनूमधून फक्त हेच दाखवण्यासाठी सेट करता येते.</string>
-    <string name="bd_content">ॲपची स्वतःची चित्रे</string>
+    <string name="wp_custom_short">टाइल्स त्यांच्या बॅकड्रॉप मेनूमधून हे वापरतात. दाखवण्यासारखे काही असलेला पहिला सक्षम पर्यायच वापरला जातो; दुसरा पर्यायी आहे.</string>
+    <string name="bd_content">ॲपचा आशय</string>
     <string name="bd_colour">फक्त रंग</string>
     <string name="bd_own">स्वतःची निवड</string>
     <string name="lib_big_for_tile">बॅकड्रॉपसाठी बनवलेले: टाइलसाठी शिफारस नाही</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">दोन परवानग्या</string>
     <string name="permissions_why">Vibe Launcher आता दोन परवानग्या मागेल.\n\nटीव्ही सूची: तुमची अ‍ॅप्स होम स्क्रीनसाठी प्रकाशित करत असलेल्या कार्डांमधील चित्रे दाखवण्यासाठी.\n\nस्थान: Android वाय-फाय नेटवर्कचे नाव फक्त ही परवानगी असलेल्या अ‍ॅप्सना दाखवते. Vibe Launcher ती फक्त त्या नावासाठी वापरते आणि डिव्हाइस कुठे आहे ते कधीच शोधत नाही.\n\nकाहीही डिव्हाइसबाहेर जात नाही.</string>
     <string name="continue_button">पुढे सुरू ठेवा</string>
-    <string name="store_update">Vibe Launcher अपडेट करा</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">बॅकअप आणि रिस्टोअर</string>
     <string name="backup_short">सेटिंग्ज, टाइल, फोल्डर, टाइलची चित्रे आणि API की. बॅकअपमध्ये तुमच्या की असतात, म्हणून तो खाजगी ठेवा.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">शहरे</string>
     <string name="wp_apple_underwater">पाण्याखाली</string>
     <string name="wp_no_room">हा व्हिडिओ %1$s चा आहे आणि %2$s रिकामे आहे. डिव्हाइस 1 GB रिकामे ठेवते: आधी लायब्ररीतून काहीतरी हटवा.</string>
+    <string name="flights_title">वरून जाणारी उड्डाणे</string>
+    <string name="flights_short">ज्या अ‍ॅप्सना स्वतःचे चित्र नाही त्यांच्या मागे तुमच्या जवळून जाणारी विमाने दाखवते. हवामानासाठी सेट केलेले ठिकाण वापरते. डेटा: OpenSky Network, adsbdb.</string>
+    <string name="title_info">चित्रपट आणि शोचे तपशील</string>
+    <string name="title_info_short">चित्रपट किंवा शोच्या बॅकड्रॉपसोबत TMDB वरील रेटिंग, वर्ष, सारांश आणि प्रकार दाखवते. TMDB की आवश्यक आहे (API की).</string>
+    <string name="flights_over_colour">फ्लाइट कार्ड दाखवा</string>
+    <string name="flights_over_colour_short">ज्या टाइलचा बॅकड्रॉप फक्त रंग आहे त्यांवर, नकाशाशिवाय, तुमच्या जवळून जाणाऱ्या विमानांची कार्डे दाखवते.</string>
+    <string name="flights_distance">अंतर</string>
+    <string name="flights_clear">सेव्ह केलेले उड्डाण तपशील साफ करा</string>
+    <string name="opensky_id">OpenSky क्लायंट आयडी</string>
+    <string name="opensky_secret">OpenSky क्लायंट सीक्रेट</string>
+    <string name="opensky_short">ऐच्छिक. तुमच्या OpenSky Network खात्यातील API क्लायंटसह उड्डाणे दर 4 मिनिटांऐवजी दर 30 सेकंदांनी अपडेट होतात.</string>
 </resources>

@@ -112,7 +112,7 @@
     <string name="art_id_short">Til apps, der sætter titlens IMDb-id på deres kort, som Nuvio: den præcise baggrund og logo, ingen nøgle.</string>
     <string name="art_stremio_short">Stremios gratis data om film og serier, fundet ud fra kortets titel. Ingen nøgle.</string>
     <string name="art_own_short">Billedet, appen har sat på sit kort, når ingen af kilderne ovenfor har et.</string>
-    <string name="wp_custom">Egne baggrundsbilleder</string>
+    <string name="wp_custom">Systembaggrund</string>
     <string name="media_title">Bibliotek</string>
     <string name="media_short">Alt, hvad du tilføjer, gemt én gang: flisebilleder, baggrundsbilleder og -videoer samt skrifttyper.</string>
     <string name="tile_pictures">Flisebilleder</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Denne skrifttype har ingen bogstaver til %1$s, så systemets skrifttype vises.</string>
     <string name="font_credit">Skrifttyper fra Google Fonts, listet af Fontsource; hver under sin egen licens</string>
     <string name="font_add">Tilføj skrifttyper</string>
-    <string name="wp_custom_short">Billeder og videoer fra Biblioteket, vist bag enhver app uden eget billede. En flise kan fra sin egen menu sættes til kun at vise disse.</string>
-    <string name="bd_content">Appens egne billeder</string>
+    <string name="wp_custom_short">Felter bruger den fra deres menu Baggrunde. Kun den første aktiverede, der har noget at vise, bruges; den anden er reserve.</string>
+    <string name="bd_content">Appindhold</string>
     <string name="bd_colour">Kun farve</string>
     <string name="bd_own">Eget valg</string>
     <string name="lib_big_for_tile">Lavet til baggrund: anbefales ikke til en flise</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">To tilladelser</string>
     <string name="permissions_why">Vibe Launcher beder om to tilladelser nu.\n\nTv-oversigter: for at vise billeder fra de kort, dine apps udgiver til startskærmen.\n\nPlacering: Android viser kun navnet på Wi-Fi-netværket til apps med den. Vibe Launcher bruger den kun til det navn og slår aldrig op, hvor enheden er.\n\nIngen af dem forlader enheden.</string>
     <string name="continue_button">Fortsæt</string>
-    <string name="store_update">Opdater Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sikkerhedskopi og gendannelse</string>
     <string name="backup_short">Indstillinger, felter, mapper, feltbilleder og API-nøgler. En sikkerhedskopi indeholder dine nøgler, så hold den privat.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Byer</string>
     <string name="wp_apple_underwater">Under vandet</string>
     <string name="wp_no_room">Denne video er %1$s, og %2$s er fri. Enheden holder 1 GB fri: slet først noget fra Biblioteket.</string>
+    <string name="flights_title">Fly over dig</string>
+    <string name="flights_short">Viser de fly, der passerer i nærheden, bag apps uden eget billede. Bruger det sted, der er valgt til vejret. Data: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Detaljer om film og serier</string>
+    <string name="title_info_short">Viser bedømmelse, år, resumé og genrer fra TMDB sammen med en films eller series baggrund. Kræver en TMDB-nøgle (API-nøgler).</string>
+    <string name="flights_over_colour">Vis flykort</string>
+    <string name="flights_over_colour_short">Viser kortene for de fly, der passerer i nærheden, uden kortet, på felter hvor baggrunden kun er farven.</string>
+    <string name="flights_distance">Afstand</string>
+    <string name="flights_clear">Ryd gemte flyoplysninger</string>
+    <string name="opensky_id">OpenSky-klient-id</string>
+    <string name="opensky_secret">OpenSky-klienthemmelighed</string>
+    <string name="opensky_short">Valgfrit. Med en API-klient fra din OpenSky Network-konto opdateres fly hvert 30. sekund i stedet for hvert 4. minut.</string>
 </resources>

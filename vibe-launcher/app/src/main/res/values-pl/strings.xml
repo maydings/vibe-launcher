@@ -112,7 +112,7 @@
     <string name="art_id_short">Dla aplikacji, które umieszczają na kartach identyfikator IMDb tytułu, jak Nuvio: dokładne tło i logo, bez klucza.</string>
     <string name="art_stremio_short">Darmowe dane Stremio o filmach i serialach, szukane po tytule na karcie. Bez klucza.</string>
     <string name="art_own_short">Obraz, który aplikacja umieściła na swojej karcie, gdy żadne źródło wyżej go nie ma.</string>
-    <string name="wp_custom">Własne tapety</string>
+    <string name="wp_custom">Tło systemowe</string>
     <string name="media_title">Biblioteka</string>
     <string name="media_short">Wszystko, co dodasz, zapisane raz: obrazy kafelków, obrazy i filmy tła oraz czcionki.</string>
     <string name="tile_pictures">Obrazy kafelków</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Ta czcionka nie ma liter dla: %1$s, więc widać czcionkę systemową.</string>
     <string name="font_credit">Czcionki z Google Fonts, wykaz z Fontsource; każda na własnej licencji</string>
     <string name="font_add">Dodaj czcionki</string>
-    <string name="wp_custom_short">Zdjęcia i filmy z Biblioteki, pokazywane za każdą aplikacją bez własnego obrazu. Kafelek można w jego menu ustawić tak, by pokazywał tylko je.</string>
-    <string name="bd_content">Własne obrazy aplikacji</string>
+    <string name="wp_custom_short">Kafelki używają go ze swojego menu Tła. Używana jest tylko pierwsza włączona pozycja, która ma co pokazać; druga jest zapasowa.</string>
+    <string name="bd_content">Zawartość aplikacji</string>
     <string name="bd_colour">Tylko kolor</string>
     <string name="bd_own">Własny wybór</string>
     <string name="lib_big_for_tile">Zrobione na tło: niezalecane dla kafelka</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Dwa uprawnienia</string>
     <string name="permissions_why">Vibe Launcher poprosi teraz o dwa uprawnienia.\n\nProgram TV: aby pokazywać obrazy z kart, które Twoje aplikacje publikują na ekran główny.\n\nLokalizacja: Android pokazuje nazwę sieci Wi-Fi tylko aplikacjom z tym uprawnieniem. Vibe Launcher używa go tylko do tej nazwy i nigdy nie sprawdza, gdzie jest urządzenie.\n\nŻadne z nich nie opuszcza urządzenia.</string>
     <string name="continue_button">Dalej</string>
-    <string name="store_update">Zaktualizuj Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Kopia zapasowa i przywracanie</string>
     <string name="backup_short">Ustawienia, kafelki, foldery, obrazy kafelków i klucze API. Kopia zawiera twoje klucze, więc nikomu jej nie udostępniaj.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Miasta</string>
     <string name="wp_apple_underwater">Pod wodą</string>
     <string name="wp_no_room">Ten film ma %1$s, a wolne jest %2$s. Urządzenie zostawia 1 GB wolnego: najpierw usuń coś z Biblioteki.</string>
+    <string name="flights_title">Loty nad tobą</string>
+    <string name="flights_short">Pokazuje samoloty przelatujące w pobliżu za aplikacjami, które nie mają własnego obrazu. Używa miejsca ustawionego dla pogody. Dane: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Szczegóły filmów i seriali</string>
+    <string name="title_info_short">Pokazuje ocenę, rok, opis i gatunki z TMDB razem z tłem filmu lub serialu. Wymaga klucza TMDB (Klucze API).</string>
+    <string name="flights_over_colour">Pokaż karty lotów</string>
+    <string name="flights_over_colour_short">Pokazuje karty samolotów przelatujących w pobliżu, bez mapy, na kafelkach, których tłem jest tylko kolor.</string>
+    <string name="flights_distance">Odległość</string>
+    <string name="flights_clear">Wyczyść zapisane dane lotów</string>
+    <string name="opensky_id">Identyfikator klienta OpenSky</string>
+    <string name="opensky_secret">Sekret klienta OpenSky</string>
+    <string name="opensky_short">Opcjonalne. Z klientem API z konta OpenSky Network loty są odświeżane co 30 sekund zamiast co 4 minuty.</string>
 </resources>

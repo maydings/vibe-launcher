@@ -112,7 +112,7 @@
     <string name="art_id_short">ಕಾರ್ಡ್‌ಗಳಲ್ಲಿ ಶೀರ್ಷಿಕೆಯ IMDb ಐಡಿ ಹಾಕುವ ಆ್ಯಪ್‌ಗಳಿಗೆ, Nuvio ಹಾಗೆ: ನಿಖರವಾದ ಹಿನ್ನೆಲೆ ಮತ್ತು ಲೋಗೋ, ಕೀ ಬೇಡ.</string>
     <string name="art_stremio_short">ಕಾರ್ಡ್‌ನ ಶೀರ್ಷಿಕೆಯಿಂದ ಹುಡುಕಿದ Stremio ನ ಉಚಿತ ಚಲನಚಿತ್ರ ಮತ್ತು ಶೋ ಮಾಹಿತಿ. ಕೀ ಬೇಡ.</string>
     <string name="art_own_short">ಮೇಲಿನ ಯಾವುದರಲ್ಲೂ ಚಿತ್ರ ಇಲ್ಲದಿದ್ದಾಗ, ಆ್ಯಪ್ ತನ್ನ ಕಾರ್ಡ್‌ನಲ್ಲಿ ಹಾಕಿದ ಚಿತ್ರ.</string>
-    <string name="wp_custom">ಕಸ್ಟಮ್ ವಾಲ್‌ಪೇಪರ್‌ಗಳು</string>
+    <string name="wp_custom">ಸಿಸ್ಟಂ ಹಿನ್ನೆಲೆ</string>
     <string name="media_title">ಲೈಬ್ರರಿ</string>
     <string name="media_short">ನೀವು ಸೇರಿಸುವುದೆಲ್ಲ, ಪ್ರತಿಯೊಂದೂ ಒಮ್ಮೆ ಮಾತ್ರ: ಟೈಲ್ ಚಿತ್ರಗಳು, ಹಿನ್ನೆಲೆ ಚಿತ್ರಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳು, ಮತ್ತು ಫಾಂಟ್‌ಗಳು.</string>
     <string name="tile_pictures">ಟೈಲ್ ಚಿತ್ರಗಳು</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">ಈ ಫಾಂಟ್‌ನಲ್ಲಿ %1$s ಅಕ್ಷರಗಳಿಲ್ಲ, ಆದ್ದರಿಂದ ಸಿಸ್ಟಮ್ ಫಾಂಟ್ ತೋರಿಸಲಾಗುತ್ತದೆ.</string>
     <string name="font_credit">Google Fonts ನ ಫಾಂಟ್‌ಗಳು, Fontsource ಪಟ್ಟಿಯಲ್ಲಿ; ಪ್ರತಿಯೊಂದೂ ತನ್ನ ಪರವಾನಗಿಯಲ್ಲಿ</string>
     <string name="font_add">ಫಾಂಟ್‌ಗಳನ್ನು ಸೇರಿಸಿ</string>
-    <string name="wp_custom_short">ಲೈಬ್ರರಿಯ ಚಿತ್ರಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳು, ಸ್ವಂತ ಚಿತ್ರವಿಲ್ಲದ ಯಾವುದೇ ಆ್ಯಪ್‌ನ ಹಿಂದೆ ಕಾಣುತ್ತವೆ. ಯಾವುದೇ ಟೈಲ್ ಅನ್ನು ಅದರ ಮೆನುವಿನಿಂದ ಇವುಗಳನ್ನು ಮಾತ್ರ ತೋರಿಸುವಂತೆ ಹೊಂದಿಸಬಹುದು.</string>
-    <string name="bd_content">ಆ್ಯಪ್‌ನ ಸ್ವಂತ ಚಿತ್ರಗಳು</string>
+    <string name="wp_custom_short">ಟೈಲ್‌ಗಳು ತಮ್ಮ ಹಿನ್ನೆಲೆಗಳ ಮೆನುವಿನಿಂದ ಇದನ್ನು ಬಳಸುತ್ತವೆ. ತೋರಿಸಲು ಏನಾದರೂ ಇರುವ ಮೊದಲ ಸಕ್ರಿಯ ಆಯ್ಕೆ ಮಾತ್ರ ಬಳಕೆಯಾಗುತ್ತದೆ; ಇನ್ನೊಂದು ಬದಲಿ.</string>
+    <string name="bd_content">ಆ್ಯಪ್‌ನ ವಿಷಯ</string>
     <string name="bd_colour">ಬಣ್ಣ ಮಾತ್ರ</string>
     <string name="bd_own">ಸ್ವಂತ ಆಯ್ಕೆ</string>
     <string name="lib_big_for_tile">ಹಿನ್ನೆಲೆಗಾಗಿ ಮಾಡಿದ್ದು: ಟೈಲ್‌ಗೆ ಶಿಫಾರಸು ಮಾಡುವುದಿಲ್ಲ</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">ಎರಡು ಅನುಮತಿಗಳು</string>
     <string name="permissions_why">Vibe Launcher ಈಗ ಎರಡು ಅನುಮತಿಗಳನ್ನು ಕೇಳುತ್ತದೆ.\n\nಟಿವಿ ಪಟ್ಟಿಗಳು: ನಿಮ್ಮ ಆ್ಯಪ್‌ಗಳು ಹೋಮ್ ಸ್ಕ್ರೀನ್‌ಗಾಗಿ ಪ್ರಕಟಿಸುವ ಕಾರ್ಡ್‌ಗಳ ಚಿತ್ರಗಳನ್ನು ತೋರಿಸಲು.\n\nಸ್ಥಳ: ಈ ಅನುಮತಿ ಇರುವ ಆ್ಯಪ್‌ಗಳಿಗೆ ಮಾತ್ರ Android ವೈ-ಫೈ ನೆಟ್‌ವರ್ಕ್ ಹೆಸರನ್ನು ತೋರಿಸುತ್ತದೆ. Vibe Launcher ಅದನ್ನು ಆ ಹೆಸರಿಗೆ ಮಾತ್ರ ಬಳಸುತ್ತದೆ, ಸಾಧನ ಎಲ್ಲಿದೆ ಎಂದು ಎಂದಿಗೂ ಹುಡುಕುವುದಿಲ್ಲ.\n\nಯಾವುದೂ ಸಾಧನದಿಂದ ಹೊರಹೋಗುವುದಿಲ್ಲ.</string>
     <string name="continue_button">ಮುಂದುವರಿಸಿ</string>
-    <string name="store_update">Vibe Launcher ಅಪ್‌ಡೇಟ್ ಮಾಡಿ</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ಬ್ಯಾಕಪ್ ಮತ್ತು ಮರುಸ್ಥಾಪನೆ</string>
     <string name="backup_short">ಸೆಟ್ಟಿಂಗ್‌ಗಳು, ಟೈಲ್‌ಗಳು, ಫೋಲ್ಡರ್‌ಗಳು, ಟೈಲ್ ಚಿತ್ರಗಳು ಮತ್ತು API ಕೀಗಳು. ಬ್ಯಾಕಪ್‌ನಲ್ಲಿ ನಿಮ್ಮ ಕೀಗಳು ಇರುತ್ತವೆ, ಹಾಗಾಗಿ ಅದನ್ನು ಖಾಸಗಿಯಾಗಿಡಿ.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">ನಗರಗಳು</string>
     <string name="wp_apple_underwater">ನೀರಿನೊಳಗೆ</string>
     <string name="wp_no_room">ಈ ವೀಡಿಯೊ %1$s ಮತ್ತು %2$s ಖಾಲಿ ಇದೆ. ಸಾಧನ 1 GB ಖಾಲಿ ಇಡುತ್ತದೆ: ಮೊದಲು ಲೈಬ್ರರಿಯಿಂದ ಏನನ್ನಾದರೂ ಅಳಿಸಿ.</string>
+    <string name="flights_title">ಮೇಲೆ ಹಾದುಹೋಗುವ ವಿಮಾನಗಳು</string>
+    <string name="flights_short">ತಮ್ಮದೇ ಚಿತ್ರವಿಲ್ಲದ ಆ್ಯಪ್‌ಗಳ ಹಿಂದೆ ನಿಮ್ಮ ಹತ್ತಿರ ಹಾದುಹೋಗುವ ವಿಮಾನಗಳನ್ನು ತೋರಿಸುತ್ತದೆ. ಹವಾಮಾನಕ್ಕೆ ಹೊಂದಿಸಿದ ಸ್ಥಳವನ್ನು ಬಳಸುತ್ತದೆ. ಡೇಟಾ: OpenSky Network, adsbdb.</string>
+    <string name="title_info">ಚಲನಚಿತ್ರ ಮತ್ತು ಶೋ ವಿವರಗಳು</string>
+    <string name="title_info_short">ಚಲನಚಿತ್ರ ಅಥವಾ ಶೋನ ಹಿನ್ನೆಲೆಯೊಂದಿಗೆ TMDB ಯಿಂದ ರೇಟಿಂಗ್, ವರ್ಷ, ಸಾರಾಂಶ ಮತ್ತು ಪ್ರಕಾರಗಳನ್ನು ತೋರಿಸುತ್ತದೆ. TMDB ಕೀ ಅಗತ್ಯ (API ಕೀಗಳು).</string>
+    <string name="flights_over_colour">ವಿಮಾನ ಕಾರ್ಡ್‌ಗಳನ್ನು ತೋರಿಸಿ</string>
+    <string name="flights_over_colour_short">ಹಿನ್ನೆಲೆ ಬಣ್ಣ ಮಾತ್ರ ಇರುವ ಟೈಲ್‌ಗಳಲ್ಲಿ, ನಕ್ಷೆ ಇಲ್ಲದೆ, ನಿಮ್ಮ ಹತ್ತಿರ ಹಾದುಹೋಗುವ ವಿಮಾನಗಳ ಕಾರ್ಡ್‌ಗಳನ್ನು ತೋರಿಸುತ್ತದೆ.</string>
+    <string name="flights_distance">ದೂರ</string>
+    <string name="flights_clear">ಉಳಿಸಿದ ವಿಮಾನ ವಿವರಗಳನ್ನು ಅಳಿಸಿ</string>
+    <string name="opensky_id">OpenSky ಕ್ಲೈಂಟ್ ಐಡಿ</string>
+    <string name="opensky_secret">OpenSky ಕ್ಲೈಂಟ್ ಸೀಕ್ರೆಟ್</string>
+    <string name="opensky_short">ಐಚ್ಛಿಕ. ನಿಮ್ಮ OpenSky Network ಖಾತೆಯ API ಕ್ಲೈಂಟ್‌ನೊಂದಿಗೆ ವಿಮಾನಗಳು ಪ್ರತಿ 4 ನಿಮಿಷದ ಬದಲು ಪ್ರತಿ 30 ಸೆಕೆಂಡಿಗೆ ನವೀಕರಣಗೊಳ್ಳುತ್ತವೆ.</string>
 </resources>

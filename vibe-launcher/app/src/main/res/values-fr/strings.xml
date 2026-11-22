@@ -112,7 +112,7 @@
     <string name="art_id_short">Pour les applis qui mettent l\'ID IMDb du titre sur leurs cartes, comme Nuvio : l\'arrière-plan et le logo exacts, sans clé.</string>
     <string name="art_stremio_short">Les données gratuites de Stremio sur les films et séries, trouvées d\'après le titre de la carte. Sans clé.</string>
     <string name="art_own_short">L\'image que l\'appli a mise sur sa carte, quand aucune source ci-dessus n\'en a.</string>
-    <string name="wp_custom">Fonds d\'écran perso</string>
+    <string name="wp_custom">Arrière-plan système</string>
     <string name="media_title">Bibliothèque</string>
     <string name="media_short">Tout ce que vous ajoutez, gardé une seule fois : images de vignettes, images et vidéos de fond, et polices.</string>
     <string name="tile_pictures">Images de vignettes</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Cette police n\'a pas les lettres de %1$s : la police du système s\'affiche à la place.</string>
     <string name="font_credit">Polices de Google Fonts, listées par Fontsource ; chacune sous sa propre licence</string>
     <string name="font_add">Ajouter des polices</string>
-    <string name="wp_custom_short">Photos et vidéos de la Bibliothèque, affichées derrière toute appli sans image à elle. Une vignette peut, depuis son menu, n\'afficher que celles-ci.</string>
-    <string name="bd_content">Images de l\'appli</string>
+    <string name="wp_custom_short">Les tuiles l\'utilisent depuis leur menu Fonds. Seul le premier activé ayant quelque chose à afficher est utilisé ; l\'autre sert de secours.</string>
+    <string name="bd_content">Contenu de l\'appli</string>
     <string name="bd_colour">Couleur seule</string>
     <string name="bd_own">Ma sélection</string>
     <string name="lib_big_for_tile">Faite pour le fond : déconseillée pour une vignette</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Deux autorisations</string>
     <string name="permissions_why">Vibe Launcher va demander deux autorisations.\n\nProgrammes TV : pour afficher les images des cartes que vos applis publient pour l\'écran d\'accueil.\n\nPosition : Android ne montre le nom du réseau Wi-Fi qu\'aux applis qui l\'ont. Vibe Launcher ne s\'en sert que pour ce nom et ne cherche jamais où se trouve l\'appareil.\n\nRien ne quitte l\'appareil.</string>
     <string name="continue_button">Continuer</string>
-    <string name="store_update">Mettre à jour Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Sauvegarde et restauration</string>
     <string name="backup_short">Réglages, vignettes, dossiers, images des vignettes et clés API. Une sauvegarde contient vos clés : gardez-la pour vous.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Villes</string>
     <string name="wp_apple_underwater">Sous l\'eau</string>
     <string name="wp_no_room">Cette vidéo fait %1$s et %2$s sont libres. L\'appareil garde 1 Go libre : supprimez d\'abord quelque chose de la Bibliothèque.</string>
+    <string name="flights_title">Vols au-dessus de vous</string>
+    <string name="flights_short">Affiche les avions qui passent près de chez vous derrière les applis sans image propre. Utilise le lieu défini pour la météo. Données : OpenSky Network, adsbdb.</string>
+    <string name="title_info">Détails des films et séries</string>
+    <string name="title_info_short">Affiche la note, l\'année, le synopsis et les genres de TMDB avec le fond d\'un film ou d\'une série. Nécessite une clé TMDB (Clés API).</string>
+    <string name="flights_over_colour">Afficher les cartes de vol</string>
+    <string name="flights_over_colour_short">Affiche les cartes des avions qui passent près de vous, sans le plan, sur les tuiles dont le fond est la couleur seule.</string>
+    <string name="flights_distance">Distance</string>
+    <string name="flights_clear">Effacer les détails de vols enregistrés</string>
+    <string name="opensky_id">ID client OpenSky</string>
+    <string name="opensky_secret">Secret client OpenSky</string>
+    <string name="opensky_short">Facultatif. Avec un client API de votre compte OpenSky Network, les vols sont actualisés toutes les 30 secondes au lieu de toutes les 4 minutes.</string>
 </resources>

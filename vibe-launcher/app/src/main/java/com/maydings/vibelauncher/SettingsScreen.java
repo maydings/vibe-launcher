@@ -397,7 +397,7 @@ final class SettingsScreen {
     /** The SettingsActivity it's on, while it is: what opens other screens, dialogs and the keyboard. */
     private Activity host;
     private String language;
-    private final String[] keys = new String[5];   // TMDB, YouTube, Plex, Pexels, Pixabay, as saved
+    private final String[] keys = new String[VibeSettings.KEY_NAMES.length];   // as saved, in that order
     private Row editing;
     private int editingKey;
 
@@ -460,11 +460,7 @@ final class SettingsScreen {
     View attach(Activity activity) {
         host = activity;
         language = settings.language();
-        keys[0] = settings.tmdbKey();
-        keys[1] = settings.youtubeKey();
-        keys[2] = settings.plexToken();
-        keys[3] = settings.pexelsKey();
-        keys[4] = settings.pixabayKey();
+        System.arraycopy(settings.keys(), 0, keys, 0, keys.length);
         pages.clear();
         pages.add(root);
         root.view.animate().cancel();
@@ -1140,9 +1136,19 @@ MainActivity.showError(host, R.string.anim_short);
         Page page = new Page(ctx.getString(R.string.tab_backdrops));
         Row sources = page.link(R.string.art_sources, this::artSummary, this::artSources);
         sources.about = R.string.art_sources_short;
-        Row custom = page.link(R.string.wp_custom,
-                () -> String.valueOf(Wallpapers.get(ctx).listOf(Wallpapers.ROTATION).size()), this::wallpapersPage);
+        // What it is now: the flights overhead, how many of the Library's are ticked for it, or nothing.
+        Row custom = page.link(R.string.wp_custom, () -> {
+            Wallpapers w = Wallpapers.get(ctx);
+            char pick = w.systemPick(true);
+            return pick == Wallpapers.FLIGHTS ? ctx.getString(R.string.flights_title)
+                    : pick == Wallpapers.GALLERY ? String.valueOf(w.listOf(Wallpapers.ROTATION).size())
+                    : ctx.getString(R.string.art_disabled);
+        }, this::wallpapersPage);
         custom.about = R.string.wp_custom_short;
+        Row flights = page.link(R.string.flights_title, null, this::flightsPage);
+        flights.about = R.string.flights_short;
+        Row details = page.toggle(R.string.title_info, settings::titleInfo, settings::setTitleInfo);
+        details.about = R.string.title_info_short;
         page.link(R.string.picture_format, () -> ctx.getString(settings.jpegStills() ? R.string.picture_jpeg
                 : R.string.picture_png), this::pictureFormat);
         page.add(R.string.reload_backdrops, null, () -> {
@@ -1150,6 +1156,49 @@ MainActivity.showError(host, R.string.anim_short);
             if (home != null) home.reloadBackdrops();
             Toast.makeText(host, R.string.backdrops_reloading, Toast.LENGTH_SHORT).show();
         });
+        return page;
+    }
+
+    // ---- flights overhead ------------------------------------------------------------------------------
+
+    /**
+     * Backdrops > Flights overhead: the aircraft passing near here on a map (Flights, FlightBoard), shown where
+     * they're enabled: as the system backdrop (wallpapersPage), or in a tile's own order (its menu > Edit >
+     * Backdrops). Here, whether their card shows, without the map, over a tile's colour; how far away one still counts, and what's kept of the answers about them, to clear.
+     * Home applies it as it comes back (MainActivity.applyFlights). The OpenSky client is with the other keys
+     * (API keys).
+     */
+    private Page flightsPage() {
+        Page page = new Page(ctx.getString(R.string.flights_title));
+        page.footnote = R.string.flights_short;
+        page.toggle(R.string.flights_over_colour, settings::flightsOverColour, settings::setFlightsOverColour)
+                .about = R.string.flights_over_colour_short;
+        page.link(R.string.flights_distance, () -> flightsDistance(settings.flightsReach()), this::flightsReach);
+        Flights flights = Flights.get(ctx);
+        Row clear = page.add(R.string.flights_clear, () -> String.valueOf(flights.kept()), null);
+        clear.action = () -> flights.clear(clear::refresh);
+        flights.load(clear::refresh);   // read from its file, if Home hasn't yet: the number kept
+        return page;
+    }
+
+    /** "25 km", or "15 mi" where the weather is in Fahrenheit. */
+    private String flightsDistance(int index) {
+        return settings.flightsImperial() ? VibeSettings.FLIGHTS_MI[index] + " mi"
+                : VibeSettings.FLIGHTS_KM[index] + " km";
+    }
+
+    private Page flightsReach() {
+        Page page = new Page(ctx.getString(R.string.flights_distance));
+        for (int i = 0; i < VibeSettings.FLIGHTS_KM.length; i++) {
+            int index = i;
+            // Picked, it's ticked and the list stays: Back or Left goes back.
+            Row row = page.add(flightsDistance(index), () -> index == settings.flightsReach() ? "\u2713" : "", () -> {
+                settings.setFlightsReach(index);
+                page.refresh();
+                for (Page open : pages) open.refresh();   // the list on the left: its value now
+            });
+            if (index == settings.flightsReach()) page.opened = row;
+        }
         return page;
     }
 
@@ -1205,13 +1254,19 @@ MainActivity.showError(host, R.string.anim_short);
     // ---- custom wallpapers ---------------------------------------------------------------------------
 
     /**
-     * Backdrops > Custom wallpapers: the list of the Library's pictures and videos that shows behind an app with
-     * no picture of its own, and behind any tile set to show them (its menu > Edit > Backdrops): ticked here, and
-     * the Library, where they're added.
+     * Backdrops > System backdrop: what a tile shows where the system backdrop comes in its order (its menu >
+     * Edit > Backdrops). One of two, first to last, neither enabled until chosen: a list of the Library's
+     * pictures and videos (ticked here, and the Library, where they're added), and the flights overhead
+     * (flightsPage). The first that's enabled and has something to show is it; the other only when that has
+     * nothing. OK on one goes from enabled to moving (Up and Down carry it) to disabled; Right enables or
+     * disables too.
      */
     private Page wallpapersPage() {
         Page page = new Page(ctx.getString(R.string.wp_custom));
         page.footnote = R.string.wp_custom_short;
+        movingSystem = 0;
+        for (char c : Wallpapers.get(ctx).systemOrder().toCharArray()) systemRow(page, Character.toLowerCase(c));
+        numberSystem(page);
         // Its own list, ticked from everything uploaded (Library, the one place they come in).
         String name = ctx.getString(R.string.wp_custom);
         Row pictures = page.add(R.string.backdrop_pictures,
@@ -1229,6 +1284,99 @@ MainActivity.showError(host, R.string.anim_short);
         Row add = page.link(R.string.media_title, null, this::media);
         add.about = R.string.media_short;
         return page;
+    }
+
+    /** The one of the system backdrop's two being moved (OK picked it up), or 0. */
+    private char movingSystem;
+
+    /** One of the system backdrop's two (its list of the Library's, the flights): a row of its page, in their order. */
+    private void systemRow(Page page, char what) {
+        Wallpapers w = Wallpapers.get(ctx);
+        Row row = page.add(what == Wallpapers.GALLERY ? R.string.media_title : R.string.flights_title, () -> {
+            if (what == movingSystem) return "\u2195";   // up-down arrow: Up and Down move it
+            return ctx.getString(Wallpapers.on(w.systemOrder(), what) ? R.string.art_enabled : R.string.art_disabled);
+        }, null);
+        row.view.setTag(what);
+        row.aboutText = ctx.getString(what == Wallpapers.GALLERY ? R.string.wp_custom_short : R.string.flights_short)
+                + "\n\n" + ctx.getString(R.string.art_sources_help);
+        // OK goes round: Enabled, then moving (Up and Down carry it), then Disabled, then Enabled again.
+        row.action = () -> {
+            String order = w.systemOrder();
+            if (what == movingSystem) {
+                movingSystem = 0;
+                w.setSystemOrder(Wallpapers.enabled(order, what, false));
+            } else if (!Wallpapers.on(order, what)) {
+                w.setSystemOrder(Wallpapers.enabled(order, what, true));
+            } else {
+                movingSystem = what;
+            }
+            for (Page open : pages) open.refresh();   // the list on the left too: what it is now
+        };
+        row.view.setOnKeyListener((v, keyCode, event) -> {
+            boolean down = event.getAction() == KeyEvent.ACTION_DOWN;
+            if (what == movingSystem) {
+                switch (keyCode) {
+                    case KeyEvent.KEYCODE_DPAD_UP:
+                    case KeyEvent.KEYCODE_DPAD_DOWN:
+                        if (down) moveSystem(page, row, keyCode == KeyEvent.KEYCODE_DPAD_UP ? -1 : 1);
+                        return true;
+                    case KeyEvent.KEYCODE_BACK:   // both its down and up: Settings doesn't go back as well
+                    case KeyEvent.KEYCODE_DPAD_LEFT:
+                    case KeyEvent.KEYCODE_DPAD_RIGHT:
+                        if (down) {
+                            movingSystem = 0;
+                            page.refresh();
+                        }
+                        return true;
+                    default:
+                        return false;   // OK: the click drops it
+                }
+            }
+            if (!down) return false;
+            if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+                String order = w.systemOrder();
+                w.setSystemOrder(Wallpapers.enabled(order, what, !Wallpapers.on(order, what)));
+                for (Page open : pages) open.refresh();
+                return true;
+            }
+            if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && pages.size() > 1) {
+                back();
+                return true;
+            }
+            return false;
+        });
+    }
+
+    /** The one being moved goes one place up (-1) or down; focus stays on it, the other goes round it. */
+    private void moveSystem(Page page, Row row, int dir) {
+        Wallpapers w = Wallpapers.get(ctx);
+        String order = w.systemOrder(), to = Wallpapers.moved(order, Wallpapers.at(order, (Character) row.view.getTag()), dir);
+        if (to.equals(order)) return;
+        int at = page.rows.indexOf(row);
+        Row other = page.rows.get(at + dir);
+        page.list.removeView(other.view);   // not the focused one: it keeps focus
+        int here = page.list.indexOfChild(row.view);
+        page.list.addView(other.view, dir < 0 ? here + 1 : here);
+        java.util.Collections.swap(page.rows, at, at + dir);
+        int sa = page.stops.indexOf(row.view), so = page.stops.indexOf(other.view);
+        if (sa >= 0 && so >= 0) java.util.Collections.swap(page.stops, sa, so);
+        w.setSystemOrder(to);
+        numberSystem(page);
+        for (Page open : pages) if (open != page) open.refresh();
+        row.view.playSoundEffect(dir < 0 ? android.view.SoundEffectConstants.NAVIGATION_UP
+                : android.view.SoundEffectConstants.NAVIGATION_DOWN);
+    }
+
+    /** Each of the two's place before its name: 1 is what shows, 2 only when 1 has nothing. */
+    private void numberSystem(Page page) {
+        int n = 0;
+        for (Row r : page.rows) {
+            if (!(r.view.getTag() instanceof Character)) continue;
+            char what = (Character) r.view.getTag();
+            String numbered = (++n) + "   " + ctx.getString(what == Wallpapers.GALLERY ? R.string.media_title
+                    : R.string.flights_title);
+            r.label.setText(numbered);
+        }
     }
 
     /** How many of these are videos (or pictures). */
@@ -1683,6 +1831,8 @@ MainActivity.showError(host, R.string.anim_short);
         key(page, R.string.plex_token, 2, R.string.plex_short);
         key(page, R.string.pexels_key, 3, R.string.pexels_short);
         key(page, R.string.pixabay_key, 4, R.string.pixabay_short);
+        key(page, R.string.opensky_id, VibeSettings.KEY_OPENSKY_ID, R.string.opensky_short);
+        key(page, R.string.opensky_secret, VibeSettings.KEY_OPENSKY_SECRET, R.string.opensky_short);
         if (phoneUrl != null) page.link(R.string.phone_paste, null,
                 () -> phone(R.string.phone_paste, phoneUrl, R.string.scan_to_paste));
         return page;
@@ -3150,7 +3300,7 @@ MainActivity.showError(host, R.string.anim_short);
         if (row == null) return;
         editing = null;
         keys[editingKey] = value(row.field, keys[editingKey]);
-        settings.save(keys[0], keys[1], keys[2], keys[3], keys[4]);
+        settings.save(keys);
         InputMethodManager imm = host != null ? (InputMethodManager) host.getSystemService(Context.INPUT_METHOD_SERVICE) : null;
         if (imm != null) imm.hideSoftInputFromWindow(row.field.getWindowToken(), 0);
         row.field.setVisibility(View.GONE);
@@ -3168,12 +3318,12 @@ MainActivity.showError(host, R.string.anim_short);
         if (link != null) link.stop();
         link = new PhoneLink(received -> {
             if (host == null) return;
-            String[] names = {"tmdbKey", "youtubeKey", "plexToken", "pexelsKey", "pixabayKey"};
+            String[] names = VibeSettings.KEY_NAMES;
             for (int i = 0; i < names.length; i++) {
                 String k = received.get(names[i]);
                 if (k != null) keys[i] = k.trim();
             }
-            settings.save(keys[0], keys[1], keys[2], keys[3], keys[4]);
+            settings.save(keys);
             for (Page page : pages) page.refresh();
             Toast.makeText(host, R.string.saved_from_phone, Toast.LENGTH_SHORT).show();
         }, settings, PhoneLink.savedCode(ctx.getApplicationContext()));
@@ -3275,19 +3425,11 @@ MainActivity.showError(host, R.string.anim_short);
     // ---- updates -----------------------------------------------------------------------------------
 
     /**
-     * The installed version and a row that checks for a newer one, then offers to install it. The store
-     * build leaves it to Play: the row is there only while Play has a newer version. A development build
-     * only says how it updates.
+     * The installed version and a row that checks for a newer one, then offers to install it. A development
+     * build only says how it updates.
      */
     private void showUpdates(Row status, Row button) {
         String version = Updater.installedVersion(ctx);
-        if (BuildConfig.STORE) {
-            status.value.setText(ctx.getString(R.string.version_current, version));
-            button.view.setVisibility(StoreUpdates.available() ? View.VISIBLE : View.GONE);
-            button.label.setText(R.string.store_update);
-            button.action = () -> StoreUpdates.open(host);
-            return;
-        }
         if (Updater.isDevelopmentBuild(ctx)) {
             status.value.setText(ctx.getString(R.string.version_current, version));
             status.about = R.string.update_development;

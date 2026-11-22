@@ -16,6 +16,11 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- Lets the tile menu open the system uninstall confirmation. -->
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+    <!-- Updates from the project's releases (Updater); Android still asks before installing. -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- Closes the TV's Settings while it's in the background before opening its Install unknown apps
+         switch, so it lists Vibe Launcher by name (Updater). -->
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <!-- A settings backup in the Download folder (Backup), asked for when one is first saved or restored. Only
          up to Android 10: from 11 on it goes through MediaStore, which needs no permission. -->
     <uses-permission
@@ -173,5 +178,14 @@
                 <data android:scheme="market" android:host="launch" />
             </intent-filter>
         </activity>
+        <!-- The installer's answer about an update: its confirmation screen, or why it didn't install;
+             and the new version being in, to bring Home back. -->
+        <receiver
+            android:name=".UpdateReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

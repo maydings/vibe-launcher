@@ -43,8 +43,6 @@ import javax.net.ssl.SSLSocket;
  * (found by AdbMdns, remembered while it answers), where adbd asks for TLS (STLS) right after CNXN and lets in a
  * certificate whose key it was given by pairing (AdbTlsKey), with no question on the TV. After that the same
  * messages run inside TLS.
- * <p>
- * The adb build only (Settings > Apps isn't in the store build): Play wouldn't take an app that drives ADB.
  */
 final class Adb {
 

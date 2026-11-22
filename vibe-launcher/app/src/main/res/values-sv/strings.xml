@@ -112,7 +112,7 @@
     <string name="art_id_short">För appar som sätter titelns IMDb-id på sina kort, som Nuvio: exakt rätt bakgrund och logotyp, ingen nyckel.</string>
     <string name="art_stremio_short">Stremios gratis film- och seriedata, hittade via kortets titel. Ingen nyckel.</string>
     <string name="art_own_short">Bilden appen satte på sitt kort, när ingen källa ovanför har någon.</string>
-    <string name="wp_custom">Egna bakgrundsbilder</string>
+    <string name="wp_custom">Systembakgrund</string>
     <string name="media_title">Bibliotek</string>
     <string name="media_short">Allt du lägger till, sparat en gång: rutbilder, bakgrundsbilder och -videor samt typsnitt.</string>
     <string name="tile_pictures">Rutbilder</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Det här typsnittet saknar bokstäver för %1$s, så systemets typsnitt visas.</string>
     <string name="font_credit">Typsnitt från Google Fonts, listade av Fontsource; vart och ett med egen licens</string>
     <string name="font_add">Lägg till typsnitt</string>
-    <string name="wp_custom_short">Bilder och videor från Biblioteket, som visas bakom varje app utan egen bild. En ruta kan från sin egen meny ställas in på att bara visa dessa.</string>
-    <string name="bd_content">Appens egna bilder</string>
+    <string name="wp_custom_short">Rutor använder den från sin meny Bakgrunder. Bara den första aktiverade som har något att visa används; den andra är reserv.</string>
+    <string name="bd_content">Appinnehåll</string>
     <string name="bd_colour">Bara färg</string>
     <string name="bd_own">Eget urval</string>
     <string name="lib_big_for_tile">Gjord för bakgrund: rekommenderas inte för en ruta</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Två behörigheter</string>
     <string name="permissions_why">Vibe Launcher kommer att be om två behörigheter.\n\nTv-tablåer: för att visa bilder från korten som dina appar publicerar för startskärmen.\n\nPlats: Android visar bara wifinätverkets namn för appar som har den. Vibe Launcher använder den bara för det namnet och tar aldrig reda på var enheten är.\n\nIngen av dem lämnar enheten.</string>
     <string name="continue_button">Fortsätt</string>
-    <string name="store_update">Uppdatera Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Säkerhetskopiering och återställning</string>
     <string name="backup_short">Inställningar, rutor, mappar, rutbilder och API-nycklar. En säkerhetskopia innehåller dina nycklar, så håll den för dig själv.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Städer</string>
     <string name="wp_apple_underwater">Under vatten</string>
     <string name="wp_no_room">Videon är %1$s och %2$s är ledigt. Enheten håller 1 GB ledigt: radera något från Biblioteket först.</string>
+    <string name="flights_title">Flyg ovanför dig</string>
+    <string name="flights_short">Visar flygplanen som passerar i närheten bakom appar utan egen bild. Använder platsen som är vald för vädret. Data: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Detaljer om filmer och serier</string>
+    <string name="title_info_short">Visar betyg, år, handling och genrer från TMDB tillsammans med bakgrunden för en film eller serie. Kräver en TMDB-nyckel (API-nycklar).</string>
+    <string name="flights_over_colour">Visa flygkort</string>
+    <string name="flights_over_colour_short">Visar korten för flygplanen som passerar i närheten, utan kartan, på rutor där bakgrunden bara är färgen.</string>
+    <string name="flights_distance">Avstånd</string>
+    <string name="flights_clear">Rensa sparade flygdetaljer</string>
+    <string name="opensky_id">OpenSky-klient-ID</string>
+    <string name="opensky_secret">OpenSky-klienthemlighet</string>
+    <string name="opensky_short">Valfritt. Med en API-klient från ditt OpenSky Network-konto uppdateras flygen var 30:e sekund i stället för var 4:e minut.</string>
 </resources>

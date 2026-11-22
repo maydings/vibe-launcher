@@ -23,26 +23,6 @@ android {
         buildConfig true
     }
 
-    // Two ways onto a TV, built from the same code:
-    // adb: the GitHub releases' vibe-launcher.apk (or build-and-install.sh). Updates itself from the releases
-    //   and can install SmartTube. Where the stock launcher is turned off over adb, Home comes here by itself;
-    //   where it stays on, the Home button service (HomeKeyService) brings the Home button here instead.
-    // store: for an app store (bundleStoreRelease). Stores don't allow apps that install apps, so no
-    //   self-update or SmartTube install, and none of their permissions (src/adb/AndroidManifest.xml): Play
-    //   updates it (StoreUpdates). No Home button service either (HOME_BUTTON; src/store/AndroidManifest.xml):
-    //   Play reviews any accessibility service that isn't an accessibility tool, so it's left for later.
-    flavorDimensions = ['channel']
-    productFlavors {
-        adb {
-            dimension 'channel'
-            buildConfigField 'boolean', 'STORE', 'false'
-        }
-        store {
-            dimension 'channel'
-            buildConfigField 'boolean', 'STORE', 'true'
-        }
-    }
-
     packagingOptions {
         resources {
             // Kotlin metadata that AndroidX's dependencies bring in. This launcher is plain Java and never
@@ -87,6 +67,4 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.4.0'
     implementation 'androidx.dynamicanimation:dynamicanimation:1.1.0'
     implementation 'com.google.zxing:core:3.5.4'   // QR code for pasting keys from a phone
-    // The store build: whether Play has a newer version, and Play's own update screen (StoreUpdates).
-    storeImplementation 'com.google.android.play:app-update:2.1.0'
 }

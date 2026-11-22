@@ -35,6 +35,8 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
     private Surface surface;
     private File playing, wanted;
     private boolean paused;
+    /** Something covers it whole (the flights' board): held still as when paused, whatever pause and resume say. */
+    private boolean covered;
     private boolean once;   // to its end and no further (the slideshow's), instead of round and round
     /**
      * The player has the video loaded: only then may it be started or paused (before, Android calls it an error,
@@ -74,7 +76,7 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
         if (player == null || !prepared) return;   // not loaded yet: start() sets it
         try {
             player.setLooping(!once);
-            if (!once && !paused && !player.isPlaying()) player.start();
+            if (!once && !paused && !covered && !player.isPlaying()) player.start();
         } catch (RuntimeException ignored) {
             // a player in no state for it: the next one is set as it starts
         }
@@ -108,7 +110,23 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
 
     void resume() {
         paused = false;
-        if (player != null && prepared && !player.isPlaying()) player.start();
+        if (!covered && player != null && prepared && !player.isPlaying()) player.start();
+    }
+
+    /**
+     * Covered whole by something over it, or in sight again: nothing is decoded for a video nobody sees, and it
+     * goes on from where it stood once it's uncovered (unless it's paused as well).
+     */
+    void setCovered(boolean covered) {
+        if (this.covered == covered) return;
+        this.covered = covered;
+        if (player == null || !prepared) return;   // not loaded yet: it starts, or doesn't, as it's ready
+        try {
+            if (covered && player.isPlaying()) player.pause();
+            else if (!covered && !paused && !player.isPlaying()) player.start();
+        } catch (RuntimeException ignored) {
+            // a player in no state for it: the next one starts by what's so then
+        }
     }
 
     private void start() {
@@ -124,7 +142,7 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
             p.setOnCompletionListener(mp -> {
                 if (player != mp) return;
                 if (once) listener.onEnded();
-                else if (!paused) mp.start();   // set to go round as it ended
+                else if (!paused && !covered) mp.start();   // set to go round as it ended
             });
             p.setVolume(0f, 0f);
             p.setOnVideoSizeChangedListener((mp, w, h) -> fill(w, h));
@@ -134,7 +152,7 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
                 playing = file;
                 mp.setLooping(!once);   // as asked for while it loaded
                 fill(mp.getVideoWidth(), mp.getVideoHeight());
-                if (!paused) mp.start();
+                if (!paused && !covered) mp.start();
             });
             p.setOnInfoListener((mp, what, extra) -> {
                 if (what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START && player == mp) listener.onShowing();

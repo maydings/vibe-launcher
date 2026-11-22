@@ -13,7 +13,7 @@ import android.graphics.Shader;
 import android.view.View;
 
 /**
- * The opacity pages' sample (SettingsScreen.opacity): over a picture (one of Custom wallpapers' own when there's
+ * The opacity pages' sample (SettingsScreen.opacity): over a picture (one of the System backdrop's own when there's
  * one, else a dusk gradient), either a small dock, its band as Home draws it (DockDecoration), or a top bar, its
  * dark tint as Home draws it (FrostView) with a clock and three round buttons, at the chosen opacity, so how much
  * shows through can be seen while the slider moves.
@@ -68,7 +68,7 @@ final class DockSampleView extends View {
         super.onAttachedToWindow();
         attached = true;
         if (picture != null) return;
-        // A picture of the person's own behind it, small: a wallpaper of Custom wallpapers' list, as Home shows them.
+        // A picture of the person's own behind it, small: a wallpaper of the System backdrop's list, as Home shows them.
         Context app = getContext().getApplicationContext();
         new Thread(() -> {
             Bitmap found = null;

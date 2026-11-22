@@ -112,7 +112,7 @@
     <string name="art_id_short">Pentru aplicațiile care pun ID-ul IMDb al titlului pe carduri, ca Nuvio: fundalul și sigla exacte, fără cheie.</string>
     <string name="art_stremio_short">Datele gratuite Stremio despre filme și seriale, găsite după titlul cardului. Fără cheie.</string>
     <string name="art_own_short">Imaginea pusă de aplicație pe cardul ei, când nicio sursă de mai sus nu are una.</string>
-    <string name="wp_custom">Imagini de fundal proprii</string>
+    <string name="wp_custom">Fundal de sistem</string>
     <string name="media_title">Bibliotecă</string>
     <string name="media_short">Tot ce adăugați, păstrat o dată: imagini pentru plăci, imagini și videoclipuri de fundal, și fonturi.</string>
     <string name="tile_pictures">Imagini pentru plăci</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Acest font nu are litere pentru %1$s, așa că se afișează fontul sistemului.</string>
     <string name="font_credit">Fonturi din Google Fonts, listate de Fontsource; fiecare sub licența sa</string>
     <string name="font_add">Adăugați fonturi</string>
-    <string name="wp_custom_short">Poze și videoclipuri din Bibliotecă, afișate în spatele oricărei aplicații fără imagine proprie. O placă poate fi setată, din meniul ei, să le arate doar pe acestea.</string>
-    <string name="bd_content">Imaginile proprii ale aplicației</string>
+    <string name="wp_custom_short">Dalele îl folosesc din meniul lor Fundaluri. Se folosește doar primul activat care are ceva de arătat; celălalt este de rezervă.</string>
+    <string name="bd_content">Conținutul aplicației</string>
     <string name="bd_colour">Doar culoare</string>
     <string name="bd_own">Selecție proprie</string>
     <string name="lib_big_for_tile">Făcută pentru fundal: nerecomandată pentru o placă</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Două permisiuni</string>
     <string name="permissions_why">Vibe Launcher îți va cere două permisiuni.\n\nProgram TV: ca să arate imagini din cardurile pe care aplicațiile tale le publică pentru ecranul de pornire.\n\nLocație: Android arată numele rețelei Wi-Fi doar aplicațiilor care o au. Vibe Launcher o folosește doar pentru acel nume și nu caută niciodată unde se află dispozitivul.\n\nNiciuna nu părăsește dispozitivul.</string>
     <string name="continue_button">Continuați</string>
-    <string name="store_update">Actualizați Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Backup și restabilire</string>
     <string name="backup_short">Setări, plăci, dosare, imaginile plăcilor și chei API. Un backup conține cheile tale, așa că păstrează-l doar pentru tine.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Orașe</string>
     <string name="wp_apple_underwater">Sub apă</string>
     <string name="wp_no_room">Acest videoclip are %1$s și sunt liberi %2$s. Dispozitivul păstrează 1 GB liber: ștergeți mai întâi ceva din Bibliotecă.</string>
+    <string name="flights_title">Zboruri deasupra ta</string>
+    <string name="flights_short">Arată aeronavele care trec prin apropiere în spatele aplicațiilor fără imagine proprie. Folosește locul setat pentru vreme. Date: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Detalii despre filme și seriale</string>
+    <string name="title_info_short">Afișează nota, anul, rezumatul și genurile de la TMDB împreună cu fundalul unui film sau serial. Necesită o cheie TMDB (Chei API).</string>
+    <string name="flights_over_colour">Afișează cardurile zborurilor</string>
+    <string name="flights_over_colour_short">Afișează cardurile aeronavelor care trec prin apropiere, fără hartă, pe dalele al căror fundal este doar culoarea.</string>
+    <string name="flights_distance">Distanță</string>
+    <string name="flights_clear">Șterge detaliile de zbor salvate</string>
+    <string name="opensky_id">ID client OpenSky</string>
+    <string name="opensky_secret">Secret client OpenSky</string>
+    <string name="opensky_short">Opțional. Cu un client API din contul tău OpenSky Network, zborurile se actualizează la fiecare 30 de secunde în loc de la fiecare 4 minute.</string>
 </resources>

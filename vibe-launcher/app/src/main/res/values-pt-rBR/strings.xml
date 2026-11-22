@@ -112,7 +112,7 @@
     <string name="art_id_short">Para apps que colocam o ID do IMDb do título nos cards, como o Nuvio: o fundo e o logo exatos, sem chave.</string>
     <string name="art_stremio_short">Os dados gratuitos de filmes e séries do Stremio, encontrados pelo título do card. Sem chave.</string>
     <string name="art_own_short">A imagem que o app colocou no card, quando nenhuma fonte acima tem uma.</string>
-    <string name="wp_custom">Papéis de parede próprios</string>
+    <string name="wp_custom">Plano de fundo do sistema</string>
     <string name="media_title">Biblioteca</string>
     <string name="media_short">Tudo o que você adiciona, guardado uma vez: imagens de bloco, imagens e vídeos de fundo, e fontes.</string>
     <string name="tile_pictures">Imagens de bloco</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Esta fonte não tem letras de %1$s, então aparece a fonte do sistema.</string>
     <string name="font_credit">Fontes do Google Fonts, listadas pelo Fontsource; cada uma com sua licença</string>
     <string name="font_add">Adicionar fontes</string>
-    <string name="wp_custom_short">Fotos e vídeos da Biblioteca, mostrados atrás de qualquer app sem imagem própria. Um bloco pode, pelo menu dele, mostrar só estes.</string>
-    <string name="bd_content">Imagens do próprio app</string>
+    <string name="wp_custom_short">Os blocos o usam pelo menu Planos de fundo. Só o primeiro ativado que tiver algo para mostrar é usado; o outro fica de reserva.</string>
+    <string name="bd_content">Conteúdo do app</string>
     <string name="bd_colour">Só a cor</string>
     <string name="bd_own">Seleção própria</string>
     <string name="lib_big_for_tile">Feita para fundo: não recomendada para um bloco</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">Duas permissões</string>
     <string name="permissions_why">O Vibe Launcher vai pedir duas permissões.\n\nProgramação de TV: para mostrar imagens dos cards que seus apps publicam para a tela inicial.\n\nLocalização: o Android só mostra o nome da rede Wi-Fi para apps com ela. O Vibe Launcher usa só para esse nome e nunca procura onde o dispositivo está.\n\nNada sai do dispositivo.</string>
     <string name="continue_button">Continuar</string>
-    <string name="store_update">Atualizar o Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Backup e restauração</string>
     <string name="backup_short">Configurações, blocos, pastas, imagens dos blocos e chaves de API. O backup contém suas chaves, então mantenha-o em sigilo.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Cidades</string>
     <string name="wp_apple_underwater">Debaixo d\'água</string>
     <string name="wp_no_room">Este vídeo tem %1$s e há %2$s livres. O dispositivo mantém 1 GB livre: exclua algo da Biblioteca primeiro.</string>
+    <string name="flights_title">Voos sobre você</string>
+    <string name="flights_short">Mostra as aeronaves que passam perto de você atrás dos apps que não têm imagem própria. Usa o lugar definido para o clima. Dados: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Detalhes de filmes e séries</string>
+    <string name="title_info_short">Mostra a nota, o ano, a sinopse e os gêneros do TMDB junto com o plano de fundo de um filme ou série. Requer uma chave do TMDB (Chaves de API).</string>
+    <string name="flights_over_colour">Mostrar cartões de voos</string>
+    <string name="flights_over_colour_short">Mostra os cartões das aeronaves que passam perto de você, sem o mapa, nos blocos cujo fundo é só a cor.</string>
+    <string name="flights_distance">Distância</string>
+    <string name="flights_clear">Limpar detalhes de voos salvos</string>
+    <string name="opensky_id">ID do cliente OpenSky</string>
+    <string name="opensky_secret">Segredo do cliente OpenSky</string>
+    <string name="opensky_short">Opcional. Com um cliente de API da sua conta OpenSky Network, os voos são atualizados a cada 30 segundos em vez de a cada 4 minutos.</string>
 </resources>

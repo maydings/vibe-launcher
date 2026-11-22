@@ -60,14 +60,25 @@ Out of the box it reads the cards your apps already publish (Netflix, Prime Vide
 others) and finds clean artwork for each title. You choose the order it looks: Nuvio, Stremio, TMDB or the
 app's own picture. Plex, YouTube (through SmartTube) and an HDHomeRun tuner each get their own pictures too.
 
+With a TMDB key you can also turn on **Film and show details** (Settings → Backdrops): the title's logo moves to
+the left with its TMDB rating, year, synopsis and genres under it. The details are looked up by title when it is first shown, whichever source the backdrop came from.
+
 You can also use your own pictures and videos, all added in one place (Settings → Library): sent
 from your phone, or picked on the TV from Wallhaven, Pixabay, NASA, Wikimedia Commons, Pexels or Apple TV's
 aerial screensaver videos. Each is kept once, under its own name, and can be used anywhere:
 
-- **Each app and folder** chooses what shows behind it (tile menu → Edit → Backdrops). Left on Automatic, that's
-  the app's own pictures, then Custom wallpapers where it has none, then its color. Or set it to one thing only:
-  the app's pictures, Custom wallpapers, its color, or your own selection from the Library.
-- **Custom wallpapers** (Settings → Backdrops) is the list that shows behind any app with no picture of its own.
+- **Each app and folder** has its own ordered list of what shows behind it (tile menu → Edit → Backdrops): App
+  content (the app's own pictures), its own selection from the Library, the System backdrop, Flights overhead, and
+  its color. The first one that's enabled and has something to show is used; the rest are only fallbacks. Reorder
+  them or turn any off (the color always stays on). Flights overhead starts turned off.
+- **System backdrop** (Settings → Backdrops) is one more ordered list of two: pictures and videos you tick in the
+  Library, and the flights overhead. Neither is on until you choose it, and only the first one with something to
+  show is used.
+- **Flights overhead** shows the aircraft near you moving over a map of your area, and a board for each in turn:
+  airline logo, flight, route, aircraft, altitude, speed and distance. With no aircraft nearby, the map shows on
+  its own. The board alone, without the map, can also show over a tile's color (Settings → Backdrops → Flights
+  overhead → Show flight cards). Aircraft are only asked for while the map or the board is on screen. It works with no account (updated every 4 minutes), or every 30 seconds with a free OpenSky Network API
+  client (Settings → API keys).
 - **Any picture** can go on an app or folder tile (tile menu → Edit → Change icon, beside the app’s own banner and icon). Those cropped for a tile
   on your phone are listed first; the bigger ones made for backdrops follow.
 
@@ -129,8 +140,8 @@ Also in there:
 
 ## Privacy
 
-Nothing is collected and nothing is sent to me. It goes online only for artwork, the weather, the
-wallpapers you browse, the clean-up lists and its own updates. Your keys stay on the TV. The details are
+Nothing is collected and nothing is sent to me. It goes online only for artwork, the weather, the flights overhead (if
+you turn them on), the wallpapers you browse, the clean-up lists and its own updates. Your keys stay on the TV. The details are
 in the [privacy policy](vibe-launcher/docs/PRIVACY.md).
 
 ## Tested on
@@ -156,4 +167,6 @@ MIT, see [`LICENSE`](LICENSE). The Outfit typeface is under the SIL Open Font Li
 icons are from [Feather](https://feathericons.com) (MIT). Wireless debugging's SPAKE2 (`Spake2.java`) is a
 Java port of BoringSSL's `spake25519.cc` (Copyright 2016 The BoringSSL Authors, Apache License 2.0:
 `vibe-launcher/LICENSE-APACHE-2.0.txt`). Backdrops use the TMDB API but aren't endorsed or certified by
-TMDB. Weather by [Open-Meteo](https://open-meteo.com).
+TMDB. Weather by [Open-Meteo](https://open-meteo.com). Aircraft positions by [The OpenSky Network](https://opensky-network.org);
+aircraft and route details by [adsbdb](https://www.adsbdb.com), routes it lacks from [Virtual Radar Server's standing data](https://github.com/vradarserver/standing-data). Map © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors. Airline logos belong to their airlines; they're fetched from
+Aviasales and from [Jxck-S/airline-logos](https://github.com/Jxck-S/airline-logos) to say whose aircraft it is.

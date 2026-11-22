@@ -29,7 +29,7 @@ final class HomeButtonLink {
 
     /**
      * Says what the Home button service sees, and that nothing leaves the TV, before the user is sent to turn
-     * it on: app stores ask for this up front for any accessibility service that isn't an accessibility tool.
+     * it on: an accessibility service owes its user that.
      */
     static void offer(Activity activity) {
         offer(activity, null, null);

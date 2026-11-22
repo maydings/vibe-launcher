@@ -112,7 +112,7 @@
     <string name="art_id_short">Nuvio ကဲ့သို့ ကတ်ပေါ်တွင် ခေါင်းစဉ်၏ IMDb ID ထည့်သော အက်ပ်များအတွက်- တိကျသော နောက်ခံပုံနှင့် လိုဂို၊ ကီးမလို။</string>
     <string name="art_stremio_short">ကတ်ခေါင်းစဉ်ဖြင့် ရှာသော Stremio ၏ အခမဲ့ ရုပ်ရှင်နှင့် ရှိုး ဒေတာ။ ကီးမလို။</string>
     <string name="art_own_short">အထက်ပါတို့တွင် ပုံမရှိလျှင် အက်ပ်က ၎င်း၏ကတ်ပေါ် ထည့်ထားသောပုံ။</string>
-    <string name="wp_custom">စိတ်ကြိုက် နောက်ခံပုံများ</string>
+    <string name="wp_custom">စနစ်နောက်ခံ</string>
     <string name="media_title">စုစည်းမှု</string>
     <string name="media_short">သင်ထည့်သမျှ တစ်ခုချင်း တစ်ကြိမ်သာ သိမ်းသည်- အကွက်ပုံများ၊ နောက်ခံပုံနှင့် ဗီဒီယိုများ၊ ဖောင့်များ။</string>
     <string name="tile_pictures">အကွက်ပုံများ</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">ဤဖောင့်တွင် %1$s စာလုံးများ မပါသဖြင့် စနစ်ဖောင့် ပြပါသည်။</string>
     <string name="font_credit">Google Fonts မှ ဖောင့်များ၊ Fontsource စာရင်း၊ တစ်ခုချင်း ကိုယ်ပိုင်လိုင်စင်ဖြင့်</string>
     <string name="font_add">ဖောင့်များ ထည့်ရန်</string>
-    <string name="wp_custom_short">စုစည်းမှုမှ ဓာတ်ပုံနှင့် ဗီဒီယိုများကို ကိုယ်ပိုင်ပုံမရှိသည့် အက်ပ်တိုင်း၏နောက်တွင် ပြသသည်။ အကွက်တစ်ခုကို ၎င်း၏မီနူးမှ ဤအရာများသာ ပြသရန် သတ်မှတ်နိုင်သည်။</string>
-    <string name="bd_content">အက်ပ်၏ကိုယ်ပိုင်ပုံများ</string>
+    <string name="wp_custom_short">အကွက်များသည် ၎င်းတို့၏ နောက်ခံမီနူးမှ ၎င်းကို အသုံးပြုသည်။ ပြသစရာရှိပြီး ဖွင့်ထားသော ပထမတစ်ခုကိုသာ အသုံးပြုသည်။ ကျန်တစ်ခုမှာ အရန်ဖြစ်သည်။</string>
+    <string name="bd_content">အက်ပ်၏ အကြောင်းအရာ</string>
     <string name="bd_colour">အရောင်သာ</string>
     <string name="bd_own">ကိုယ်ပိုင်ရွေးချယ်မှု</string>
     <string name="lib_big_for_tile">နောက်ခံအတွက် ပြုလုပ်ထားသည်- အကွက်အတွက် မသင့်တော်ပါ</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">ခွင့်ပြုချက် နှစ်ခု</string>
     <string name="permissions_why">Vibe Launcher သည် ယခု ခွင့်ပြုချက် နှစ်ခု တောင်းမည်။\n\nTV အစီအစဉ်များ- သင့်အက်ပ်များက ပင်မမျက်နှာပြင်အတွက် ထုတ်ဝေသော ကတ်များမှ ပုံများကို ပြရန်။\n\nတည်နေရာ- Android သည် ဤခွင့်ပြုချက်ရှိသော အက်ပ်များကိုသာ Wi-Fi ကွန်ရက်အမည်ကို ပြသည်။ Vibe Launcher သည် ထိုအမည်အတွက်သာ သုံးပြီး စက် ဘယ်မှာရှိသည်ကို ဘယ်တော့မှ မရှာပါ။\n\nမည်သည့်အရာမျှ စက်မှ ထွက်မသွားပါ။</string>
     <string name="continue_button">ဆက်လုပ်ရန်</string>
-    <string name="store_update">Vibe Launcher ကို အပ်ဒိတ်လုပ်ရန်</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">အရန်သိမ်းခြင်းနှင့် ပြန်ယူခြင်း</string>
     <string name="backup_short">ဆက်တင်များ၊ အကွက်များ၊ ဖိုင်တွဲများ၊ အကွက်ပုံများနှင့် API ကီးများ။ အရန်တွင် သင့်ကီးများ ပါသဖြင့် လျှို့ဝှက်ထားပါ။</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">မြို့များ</string>
     <string name="wp_apple_underwater">ရေအောက်</string>
     <string name="wp_no_room">ဤဗီဒီယိုသည် %1$s ဖြစ်ပြီး %2$s လွတ်သည်။ စက်ပစ္စည်းက 1 GB လွတ်ထားသည်- စုစည်းမှုမှ တစ်ခုခုကို အရင်ဖျက်ပါ။</string>
+    <string name="flights_title">အပေါ်မှဖြတ်သန်းသော လေယာဉ်ခရီးစဉ်များ</string>
+    <string name="flights_short">ကိုယ်ပိုင်ပုံမရှိသော အက်ပ်များ၏နောက်ကွယ်တွင် သင့်အနီးမှ ဖြတ်သန်းသွားသော လေယာဉ်များကို ပြသသည်။ မိုးလေဝသအတွက် သတ်မှတ်ထားသော နေရာကို အသုံးပြုသည်။ ဒေတာ- OpenSky Network, adsbdb.</string>
+    <string name="title_info">ရုပ်ရှင်နှင့် ရှိုးအသေးစိတ်များ</string>
+    <string name="title_info_short">ရုပ်ရှင် သို့မဟုတ် ရှိုး၏ နောက်ခံနှင့်အတူ TMDB မှ အဆင့်သတ်မှတ်ချက်၊ နှစ်၊ အကျဉ်းချုပ်နှင့် အမျိုးအစားများကို ပြသသည်။ TMDB ကီး လိုအပ်သည် (API ကီးများ)။</string>
+    <string name="flights_over_colour">လေယာဉ်ခရီးစဉ်ကတ်များ ပြရန်</string>
+    <string name="flights_over_colour_short">နောက်ခံသည် အရောင်သာဖြစ်သော အကွက်များတွင် သင့်အနီးမှ ဖြတ်သန်းသော လေယာဉ်များ၏ ကတ်များကို မြေပုံမပါဘဲ ပြသည်။</string>
+    <string name="flights_distance">အကွာအဝေး</string>
+    <string name="flights_clear">သိမ်းထားသော ခရီးစဉ်အသေးစိတ်များကို ရှင်းရန်</string>
+    <string name="opensky_id">OpenSky ကလိုင်းယင့် ID</string>
+    <string name="opensky_secret">OpenSky ကလိုင်းယင့် လျှို့ဝှက်ကုဒ်</string>
+    <string name="opensky_short">မဖြစ်မနေမလိုပါ။ သင့် OpenSky Network အကောင့်မှ API ကလိုင်းယင့်ဖြင့် ခရီးစဉ်များကို 4 မိနစ်တစ်ကြိမ်အစား 30 စက္ကန့်တစ်ကြိမ် အပ်ဒိတ်လုပ်သည်။</string>
 </resources>

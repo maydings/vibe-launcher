@@ -112,7 +112,7 @@
     <string name="art_id_short">לאפליקציות ששמות את מזהה ה-IMDb של הכותר בכרטיסים שלהן, כמו Nuvio: תמונת הרקע והלוגו המדויקים, בלי מפתח.</string>
     <string name="art_stremio_short">הנתונים החינמיים של Stremio על סרטים וסדרות, לפי שם הכותר בכרטיס. בלי מפתח.</string>
     <string name="art_own_short">התמונה שהאפליקציה שמה בכרטיס שלה, כשלאף מקור מעל אין תמונה.</string>
-    <string name="wp_custom">טפטים משלך</string>
+    <string name="wp_custom">רקע המערכת</string>
     <string name="media_title">ספרייה</string>
     <string name="media_short">כל מה שמוסיפים, נשמר פעם אחת: תמונות אריחים, תמונות וסרטוני רקע, וגופנים.</string>
     <string name="tile_pictures">תמונות אריחים</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">בגופן הזה אין אותיות של %1$s, ולכן מוצג גופן המערכת.</string>
     <string name="font_credit">גופנים מ-Google Fonts, ברשימה של Fontsource; כל אחד ברישיון שלו</string>
     <string name="font_add">הוספת גופנים</string>
-    <string name="wp_custom_short">תמונות וסרטונים מהספרייה, שמוצגים מאחורי כל אפליקציה שאין לה תמונה משלה. אפשר להגדיר אריח, מהתפריט שלו, להציג רק אותם.</string>
-    <string name="bd_content">התמונות של האפליקציה</string>
+    <string name="wp_custom_short">האריחים משתמשים בו מתפריט הרקעים שלהם. רק הראשון שמופעל ויש לו מה להציג נמצא בשימוש; השני משמש כגיבוי.</string>
+    <string name="bd_content">תוכן האפליקציה</string>
     <string name="bd_colour">צבע בלבד</string>
     <string name="bd_own">בחירה משלי</string>
     <string name="lib_big_for_tile">נועדה לרקע: לא מומלצת לאריח</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">שתי הרשאות</string>
     <string name="permissions_why">Vibe Launcher יבקש עכשיו שתי הרשאות.\n\nלוח שידורים: כדי להציג תמונות מהכרטיסים שהאפליקציות שלכם מפרסמות למסך הבית.\n\nמיקום: Android מציג את שם רשת ה-Wi-Fi רק לאפליקציות שיש להן אותו. Vibe Launcher משתמש בו רק בשביל השם הזה ואף פעם לא מחפש איפה המכשיר.\n\nשום דבר מהם לא יוצא מהמכשיר.</string>
     <string name="continue_button">המשך</string>
-    <string name="store_update">עדכון Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">גיבוי ושחזור</string>
     <string name="backup_short">הגדרות, אריחים, תיקיות, תמונות אריחים ומפתחות API. הגיבוי מכיל את המפתחות, לכן שמרו עליו בפרטיות.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">ערים</string>
     <string name="wp_apple_underwater">מתחת למים</string>
     <string name="wp_no_room">הסרטון שוקל %1$s ופנויים %2$s. המכשיר משאיר 1 GB פנוי: מחקו קודם משהו מהספרייה.</string>
+    <string name="flights_title">טיסות מעליך</string>
+    <string name="flights_short">מציג את המטוסים שחולפים בקרבתך מאחורי אפליקציות שאין להן תמונה משלהן. משתמש במקום שהוגדר למזג האוויר. נתונים: OpenSky Network, adsbdb.</string>
+    <string name="title_info">פרטי סרטים וסדרות</string>
+    <string name="title_info_short">מציג את הדירוג, השנה, התקציר והז\'אנרים מ-TMDB יחד עם הרקע של סרט או סדרה. נדרש מפתח TMDB (מפתחות API).</string>
+    <string name="flights_over_colour">הצגת כרטיסי טיסות</string>
+    <string name="flights_over_colour_short">מציג את כרטיסי המטוסים שחולפים בקרבתך, בלי המפה, באריחים שהרקע שלהם הוא צבע בלבד.</string>
+    <string name="flights_distance">מרחק</string>
+    <string name="flights_clear">ניקוי פרטי הטיסות השמורים</string>
+    <string name="opensky_id">מזהה לקוח של OpenSky</string>
+    <string name="opensky_secret">סוד לקוח של OpenSky</string>
+    <string name="opensky_short">אופציונלי. עם לקוח API מחשבון OpenSky Network שלך, הטיסות מתעדכנות כל 30 שניות במקום כל 4 דקות.</string>
 </resources>

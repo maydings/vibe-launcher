@@ -112,7 +112,7 @@
     <string name="art_id_short">ਜੋ ਐਪਾਂ ਆਪਣੇ ਕਾਰਡਾਂ \'ਤੇ ਸਿਰਲੇਖ ਦੀ IMDb ਆਈਡੀ ਪਾਉਂਦੀਆਂ ਹਨ, ਜਿਵੇਂ Nuvio: ਸਹੀ ਪਿਛੋਕੜ ਅਤੇ ਲੋਗੋ, ਕੁੰਜੀ ਨਹੀਂ ਚਾਹੀਦੀ।</string>
     <string name="art_stremio_short">ਕਾਰਡ ਦੇ ਸਿਰਲੇਖ ਨਾਲ ਲੱਭਿਆ Stremio ਦਾ ਮੁਫ਼ਤ ਫ਼ਿਲਮ ਅਤੇ ਸ਼ੋਅ ਡੇਟਾ। ਕੁੰਜੀ ਨਹੀਂ ਚਾਹੀਦੀ।</string>
     <string name="art_own_short">ਉੱਪਰਲਿਆਂ ਵਿੱਚ ਤਸਵੀਰ ਨਾ ਹੋਵੇ ਤਾਂ, ਐਪ ਨੇ ਆਪਣੇ ਕਾਰਡ \'ਤੇ ਲਾਈ ਤਸਵੀਰ।</string>
-    <string name="wp_custom">ਆਪਣੇ ਵਾਲਪੇਪਰ</string>
+    <string name="wp_custom">ਸਿਸਟਮ ਬੈਕਡ੍ਰੌਪ</string>
     <string name="media_title">ਲਾਇਬ੍ਰੇਰੀ</string>
     <string name="media_short">ਤੁਸੀਂ ਜੋ ਵੀ ਜੋੜਦੇ ਹੋ, ਹਰ ਇੱਕ ਇੱਕੋ ਵਾਰ ਰੱਖਿਆ ਜਾਂਦਾ ਹੈ: ਟਾਈਲ ਤਸਵੀਰਾਂ, ਬੈਕਡ੍ਰੌਪ ਤਸਵੀਰਾਂ ਤੇ ਵੀਡੀਓ, ਅਤੇ ਫ਼ੌਂਟ।</string>
     <string name="tile_pictures">ਟਾਈਲ ਤਸਵੀਰਾਂ</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">ਇਸ ਫ਼ੌਂਟ ਵਿੱਚ %1$s ਅੱਖਰ ਨਹੀਂ ਹਨ, ਇਸ ਲਈ ਸਿਸਟਮ ਫ਼ੌਂਟ ਦਿਖਾਈ ਦਿੰਦਾ ਹੈ।</string>
     <string name="font_credit">Google Fonts ਦੇ ਫ਼ੌਂਟ, Fontsource ਦੀ ਸੂਚੀ ਵਿੱਚ; ਹਰ ਇੱਕ ਆਪਣੇ ਲਾਇਸੰਸ ਹੇਠ</string>
     <string name="font_add">ਫ਼ੌਂਟ ਜੋੜੋ</string>
-    <string name="wp_custom_short">ਲਾਇਬ੍ਰੇਰੀ ਦੀਆਂ ਤਸਵੀਰਾਂ ਅਤੇ ਵੀਡੀਓ, ਜੋ ਹਰ ਉਸ ਐਪ ਦੇ ਪਿੱਛੇ ਦਿਖਦੀਆਂ ਹਨ ਜਿਸ ਦੀ ਆਪਣੀ ਤਸਵੀਰ ਨਹੀਂ। ਕਿਸੇ ਵੀ ਟਾਈਲ ਨੂੰ ਉਸ ਦੇ ਮੀਨੂ ਤੋਂ ਸਿਰਫ਼ ਇਹੀ ਦਿਖਾਉਣ ਲਈ ਸੈੱਟ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।</string>
-    <string name="bd_content">ਐਪ ਦੀਆਂ ਆਪਣੀਆਂ ਤਸਵੀਰਾਂ</string>
+    <string name="wp_custom_short">ਟਾਈਲਾਂ ਇਸਨੂੰ ਆਪਣੇ ਬੈਕਡ੍ਰੌਪ ਮੀਨੂ ਤੋਂ ਵਰਤਦੀਆਂ ਹਨ। ਸਿਰਫ਼ ਪਹਿਲਾ ਚਾਲੂ ਵਿਕਲਪ ਜਿਸ ਕੋਲ ਦਿਖਾਉਣ ਲਈ ਕੁਝ ਹੈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ; ਦੂਜਾ ਬਦਲ ਵਜੋਂ ਹੈ।</string>
+    <string name="bd_content">ਐਪ ਦੀ ਸਮੱਗਰੀ</string>
     <string name="bd_colour">ਸਿਰਫ਼ ਰੰਗ</string>
     <string name="bd_own">ਆਪਣੀ ਚੋਣ</string>
     <string name="lib_big_for_tile">ਬੈਕਡ੍ਰੌਪ ਲਈ ਬਣੀ: ਟਾਈਲ ਲਈ ਸਿਫ਼ਾਰਸ਼ ਨਹੀਂ</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">ਦੋ ਇਜਾਜ਼ਤਾਂ</string>
     <string name="permissions_why">Vibe Launcher ਹੁਣ ਦੋ ਇਜਾਜ਼ਤਾਂ ਮੰਗੇਗਾ।\n\nਟੀਵੀ ਸੂਚੀਆਂ: ਉਨ੍ਹਾਂ ਕਾਰਡਾਂ ਦੀਆਂ ਤਸਵੀਰਾਂ ਦਿਖਾਉਣ ਲਈ ਜੋ ਤੁਹਾਡੀਆਂ ਐਪਾਂ ਹੋਮ ਸਕ੍ਰੀਨ ਲਈ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰਦੀਆਂ ਹਨ।\n\nਟਿਕਾਣਾ: Android ਵਾਈ-ਫ਼ਾਈ ਨੈੱਟਵਰਕ ਦਾ ਨਾਮ ਸਿਰਫ਼ ਇਸ ਇਜਾਜ਼ਤ ਵਾਲੀਆਂ ਐਪਾਂ ਨੂੰ ਦਿਖਾਉਂਦਾ ਹੈ। Vibe Launcher ਇਸਨੂੰ ਸਿਰਫ਼ ਉਸੇ ਨਾਮ ਲਈ ਵਰਤਦਾ ਹੈ ਅਤੇ ਕਦੇ ਨਹੀਂ ਦੇਖਦਾ ਕਿ ਡਿਵਾਈਸ ਕਿੱਥੇ ਹੈ।\n\nਕੁਝ ਵੀ ਡਿਵਾਈਸ ਤੋਂ ਬਾਹਰ ਨਹੀਂ ਜਾਂਦਾ।</string>
     <string name="continue_button">ਜਾਰੀ ਰੱਖੋ</string>
-    <string name="store_update">Vibe Launcher ਅੱਪਡੇਟ ਕਰੋ</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">ਬੈਕਅੱਪ ਅਤੇ ਰੀਸਟੋਰ</string>
     <string name="backup_short">ਸੈਟਿੰਗਾਂ, ਟਾਈਲਾਂ, ਫੋਲਡਰ, ਟਾਈਲਾਂ ਦੀਆਂ ਤਸਵੀਰਾਂ ਅਤੇ API ਕੁੰਜੀਆਂ। ਬੈਕਅੱਪ ਵਿੱਚ ਤੁਹਾਡੀਆਂ ਕੁੰਜੀਆਂ ਹੁੰਦੀਆਂ ਹਨ, ਇਸ ਲਈ ਇਸਨੂੰ ਨਿੱਜੀ ਰੱਖੋ।</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">ਸ਼ਹਿਰ</string>
     <string name="wp_apple_underwater">ਪਾਣੀ ਹੇਠਾਂ</string>
     <string name="wp_no_room">ਇਹ ਵੀਡੀਓ %1$s ਦਾ ਹੈ ਅਤੇ %2$s ਖਾਲੀ ਹੈ। ਡਿਵਾਈਸ 1 GB ਖਾਲੀ ਰੱਖਦਾ ਹੈ: ਪਹਿਲਾਂ ਲਾਇਬ੍ਰੇਰੀ ਵਿੱਚੋਂ ਕੁਝ ਮਿਟਾਓ।</string>
+    <string name="flights_title">ਉੱਪਰੋਂ ਲੰਘਦੀਆਂ ਉਡਾਣਾਂ</string>
+    <string name="flights_short">ਜਿਨ੍ਹਾਂ ਐਪਾਂ ਦੀ ਆਪਣੀ ਤਸਵੀਰ ਨਹੀਂ ਹੈ ਉਨ੍ਹਾਂ ਦੇ ਪਿੱਛੇ ਤੁਹਾਡੇ ਨੇੜਿਓਂ ਲੰਘਦੇ ਜਹਾਜ਼ ਦਿਖਾਉਂਦਾ ਹੈ। ਮੌਸਮ ਲਈ ਸੈੱਟ ਕੀਤੀ ਥਾਂ ਵਰਤਦਾ ਹੈ। ਡਾਟਾ: OpenSky Network, adsbdb.</string>
+    <string name="title_info">ਫ਼ਿਲਮ ਅਤੇ ਸ਼ੋਅ ਦੇ ਵੇਰਵੇ</string>
+    <string name="title_info_short">ਫ਼ਿਲਮ ਜਾਂ ਸ਼ੋਅ ਦੇ ਬੈਕਡ੍ਰੌਪ ਨਾਲ TMDB ਤੋਂ ਰੇਟਿੰਗ, ਸਾਲ, ਸਾਰ ਅਤੇ ਸ਼ੈਲੀਆਂ ਦਿਖਾਉਂਦਾ ਹੈ। TMDB ਕੁੰਜੀ ਚਾਹੀਦੀ ਹੈ (API ਕੁੰਜੀਆਂ)।</string>
+    <string name="flights_over_colour">ਫਲਾਈਟ ਕਾਰਡ ਦਿਖਾਓ</string>
+    <string name="flights_over_colour_short">ਜਿਨ੍ਹਾਂ ਟਾਈਲਾਂ ਦਾ ਬੈਕਡ੍ਰੌਪ ਸਿਰਫ਼ ਰੰਗ ਹੈ, ਉਨ੍ਹਾਂ ਉੱਤੇ ਨਕਸ਼ੇ ਤੋਂ ਬਿਨਾਂ ਤੁਹਾਡੇ ਨੇੜਿਓਂ ਲੰਘਦੇ ਜਹਾਜ਼ਾਂ ਦੇ ਕਾਰਡ ਦਿਖਾਉਂਦਾ ਹੈ।</string>
+    <string name="flights_distance">ਦੂਰੀ</string>
+    <string name="flights_clear">ਸੰਭਾਲੇ ਉਡਾਣ ਵੇਰਵੇ ਸਾਫ਼ ਕਰੋ</string>
+    <string name="opensky_id">OpenSky ਕਲਾਇੰਟ ਆਈਡੀ</string>
+    <string name="opensky_secret">OpenSky ਕਲਾਇੰਟ ਸੀਕ੍ਰੇਟ</string>
+    <string name="opensky_short">ਵਿਕਲਪਿਕ। ਤੁਹਾਡੇ OpenSky Network ਖਾਤੇ ਦੇ API ਕਲਾਇੰਟ ਨਾਲ ਉਡਾਣਾਂ ਹਰ 4 ਮਿੰਟ ਦੀ ਥਾਂ ਹਰ 30 ਸਕਿੰਟ ਬਾਅਦ ਅੱਪਡੇਟ ਹੁੰਦੀਆਂ ਹਨ।</string>
 </resources>

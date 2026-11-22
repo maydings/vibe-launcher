@@ -23,7 +23,7 @@ import java.util.Map;
 final class Http {
 
     private static final int MAX_TEXT_BYTES = 4 * 1024 * 1024;
-    /** Who's asking, as Wikimedia asks of apps; sent to Wikimedia only, the rest get Android's own as before. */
+    /** Who's asking, as Wikimedia asks of apps; sent to Wikimedia and OpenStreetMap only, the rest get Android's own as before. */
     private static final String USER_AGENT = "VibeLauncher/" + BuildConfig.VERSION_NAME
             + " (https://github.com/maydings/vibe-launcher)";
 
@@ -32,7 +32,8 @@ final class Http {
 
     private static boolean wikimedia(String url) {
         String host = Uri.parse(url).getHost();
-        return host != null && (host.equals("wikimedia.org") || host.endsWith(".wikimedia.org"));
+        return host != null && (host.equals("wikimedia.org") || host.endsWith(".wikimedia.org")
+                || host.equals("tile.openstreetmap.org"));   // which asks the same of apps
     }
 
     /** The body of a 200 reply, at most maxBytes long; anything else is an IOException. */

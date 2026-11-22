@@ -35,22 +35,16 @@ Build, install on a TV over adb and start it:
 ./build-and-install.sh 192.168.1.50
 ```
 
-Or by hand: `./gradlew assembleAdbDebug`, then `adb install -r -g app/build/outputs/apk/adb/debug/app-adb-debug.apk`.
+Or by hand: `./gradlew assembleDebug`, then `adb install -r -g app/build/outputs/apk/debug/app-debug.apk`.
 That's the only script here. Making it Home, debloating and the rest are done on the TV, in Vibe
 Launcher's own Settings.
 
-**Two builds** come from the same code (`app/build.gradle`). They work the same way, the TV's own ADB included
-(Settings → Advanced: clean-up lists, Default launcher, Restart, animation speed); only how they update differs:
+**One build**, from the GitHub releases: installed with Downloader or a file manager (`build-and-install.sh` for
+development). It checks the releases for updates (daily, on waking, in the gear menu) and installs them, which is what
+`REQUEST_INSTALL_PACKAGES` and `KILL_BACKGROUND_PROCESSES` are for. It isn't in an app store: it drives the TV's own
+ADB (Settings → Advanced: clean-up lists, Default launcher, Restart, animation speed), which stores don't take.
 
-| | `adb` (the GitHub releases, `build-and-install.sh`) | `store` (Google Play) |
-|---|---|---|
-| Installed with | the release APK with Downloader or a file manager (`build-and-install.sh` for development) | the store |
-| Updates | checks the GitHub releases (daily, on waking, in the gear menu) and installs them | Play installs them; while Play has a newer version, the gear shows the green dot and its row (and Settings) opens Play's update screen |
-| Install permissions | `REQUEST_INSTALL_PACKAGES`, `KILL_BACKGROUND_PROCESSES` (for its own updates) | none |
-| Listing | phones and TVs | TVs only (`android.software.leanback` required) |
-| Code of its own | `app/src/adb` (manifest, `StoreUpdates` that does nothing) | `app/src/store` (manifest: TV only; `StoreUpdates` asking Play) |
-
-Becoming Home goes through the device's ADB in both: the first start, and the gear menu's *Make Vibe Launcher your
+Becoming Home goes through the device's ADB: the first start, and the gear menu's *Make Vibe Launcher your
 Home* until it is, open Settings → Advanced → Default launcher, which walks through turning ADB on. For devices whose
 software won't let ADB be turned on, Settings → Advanced → Home button (accessibility), right under it, offers
 `HomeKeyService` instead: an accessibility service that answers the Home button. It's offered only after a live ADB
@@ -62,9 +56,6 @@ setting is turned on, and once on Home's start. SmartTube,
 when it's not on the TV, is installed by Downloader: the row opens Downloader on its code (28544), or says to
 get Downloader first.
 
-To try the store build: `FLAVOR=store ./build-and-install.sh 192.168.1.50`. For
-a store upload, `./gradlew bundleStoreRelease` makes `app/build/outputs/bundle/storeRelease/app-store-release.aab`.
-
 **Release builds** are signed with a key that never enters the repo. Put its location in
 `local.properties` (ignored by git):
 
@@ -75,10 +66,10 @@ releaseKeyAlias=vibe-launcher
 releaseKeyPassword=…
 ```
 
-then `./gradlew assembleAdbRelease` (`app/build/outputs/apk/adb/release/app-adb-release.apk`). Without
+then `./gradlew assembleRelease` (`app/build/outputs/apk/release/app-release.apk`). Without
 these the release APK is built unsigned. Release builds are shrunk with R8 (rules in
 `app/proguard-rules.pro`); the name map for reading their stack traces is
-`app/build/outputs/mapping/adbRelease/mapping.txt`, attached to each GitHub release as `mapping-vX.txt`.
+`app/build/outputs/mapping/release/mapping.txt`, attached to each GitHub release as `mapping-vX.txt`.
 
 Keep the key backed up: APKs signed with a different key can't update an existing install. With the key
 set, debug builds are signed with it too, so a TV can move between your debug builds and the releases (and take in-app
@@ -188,11 +179,12 @@ The full list, with what each is sent, is in the [privacy policy](docs/PRIVACY.m
 | `CpuInfo` | CPU use where the device allows it |
 | `PowerOnHome` | Home at power-on: Home shortly after the screen turns on |
 | `CrashGuard` | Falls back to the stock launcher's App info after repeated crashes |
-| `Wallpapers`, `WallpaperVideo`, `WallpaperBrowserActivity` | The Library: pictures and videos, each stored once with its name, the lists that name them by id (each tile's own, Custom wallpapers', the slideshow's) and what each tile is set to show (Automatic: the app's pictures, else Custom wallpapers, else its colour; or one of them alone, or its own list); video playback on Home; the grids that pick for a list or a tile and the Wallhaven/Pexels/Pixabay/NASA/Commons/Apple browser |
+| `Wallpapers`, `WallpaperVideo`, `WallpaperBrowserActivity` | The Library: pictures and videos, each stored once with its name, the lists that name them by id (each tile's own, the System backdrop's, the slideshow's) and each tile's order of what it shows (the app's pictures, its own list, the System backdrop, the flights, its colour: the first enabled with something to show), with the System backdrop's own order of two (its list, the flights); video playback on Home; the grids that pick for a list or a tile and the Wallhaven/Pexels/Pixabay/NASA/Commons/Apple browser |
 | `Fonts`, `FontFile`, `UiFont`, `FontInflater`, `FontBrowserActivity` | Fonts, each stored once (Google Fonts, listed by Fontsource, or the phone); which characters a font file has; the chosen font and the clock's, or the system font where a language isn't covered; applying it to layouts as they're made; the font browser |
 | `TilePictures`, `TileCustom` | The Library's tile-sized pictures, each stored once, and what each app or folder tile shows (any Library picture, its icon or a name) |
 | `NameDialog` | The TV's keyboard on a name (a tile, a folder, a Library item), in the launcher's own panel |
 | `Weather` | The weather line under the date (Open-Meteo, located by IP or a searched city) |
+| `Flights`, `FlightBoard`, `FlightMap` | Flights overhead: the aircraft near the weather's place from the OpenSky Network (every 30 seconds with an API client, every 4 minutes without, each moved along its heading in between), what each is and where it's going from adsbdb (kept in `flights.json`: an aircraft six months, a route one); a route adsbdb doesn't know or has wrong (the aircraft is nowhere near it) from Virtual Radar Server's standing data (an airline's list and the airports', a month in the cache's `routes`); the airline's logo (Jxck-S/airline-logos by its three letters, else Aviasales by its two-character code; kept in the cache's `airline-logos`); and the board that shows them one at a time in a frame, where the flights are what a tile shows, its foot at one height on every tile; under it the map (`FlightMap`): OpenStreetMap's tiles for the one view, kept in the cache's `map` and drawn dark, every aircraft heard of moved along its heading ten times a second and eased over to where the next answer puts it |
 | `ShelfDial` | A dock folder's apps as a dial above it |
 | `Adb`, `AdbPairing`, `AdbMdns`, `Spake2`, `TvApps`, `CleanLists` | Reaching the TV's own ADB from the TV itself, and turning apps off and on (Settings → Advanced) |
 

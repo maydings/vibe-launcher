@@ -57,6 +57,10 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         /** A tile in move mode changed position; it keeps focus. */
         void onTileMoved(int position);
 
+        /** A tile's move has begun or ended. */
+        default void onMoving(boolean moving) {
+        }
+
         /** OK on a folder's tile. */
         default void onFolderOpen(String folderId, View card) {
         }
@@ -366,6 +370,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
     /** Lets go of every tile and its artwork (Home is in the background and memory is short). */
     @SuppressLint("NotifyDataSetChanged")   // everything goes
     void clear() {
+        if (moving >= 0) listener.onMoving(false);
         moving = -1;
         items.clear();
         notifyDataSetChanged();
@@ -463,10 +468,16 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         return moving >= 0;
     }
 
+    /** Where the tile being moved is now, or -1. */
+    int movingPosition() {
+        return moving;
+    }
+
     void startMove(int position) {
         if (!isApp(position) && !isFolder(position)) return;
         moving = position;
         notifyItemChanged(position, PAYLOAD_STATE);
+        listener.onMoving(true);
     }
 
     void stopMove() {
@@ -474,6 +485,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         int pos = moving;
         moving = -1;
         notifyItemChanged(pos, PAYLOAD_STATE);
+        listener.onMoving(false);
         if (openFolder != null) {   // an open folder keeps its own order
             List<String> apps = new ArrayList<>();
             for (Entry e : items) apps.add(e.pkg);
@@ -678,10 +690,14 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         }
     }
 
-    /** The parts that change while moving: dock label visibility and the move outline. */
+    /**
+     * The parts that change while moving: dock label visibility and the move outline. The outline is an open
+     * folder's: on Home the highlight round the tile turns white instead (GlassView.setMoving).
+     */
     private void bindState(Holder h, int position) {
         h.name.setVisibility(inDock(position) ? View.INVISIBLE : View.VISIBLE);   // the dock has no labels
-        h.card.setForeground(position == moving ? ctx.getDrawable(R.drawable.move_outline) : null);
+        h.card.setForeground(position == moving && openFolder != null
+                ? ctx.getDrawable(R.drawable.move_outline) : null);
     }
 
     @Override

@@ -112,7 +112,7 @@
     <string name="art_id_short">Kartlarına başlığın IMDb kimliğini koyan uygulamalar için, Nuvio gibi: tam doğru arka plan ve logo, anahtarsız.</string>
     <string name="art_stremio_short">Kartın başlığıyla bulunan Stremio\'nun ücretsiz film ve dizi verileri. Anahtarsız.</string>
     <string name="art_own_short">Yukarıdakilerin hiçbirinde resim yoksa, uygulamanın kartına koyduğu resim.</string>
-    <string name="wp_custom">Özel duvar kâğıtları</string>
+    <string name="wp_custom">Sistem arka planı</string>
     <string name="media_title">Kitaplık</string>
     <string name="media_short">Eklediğiniz her şey bir kez saklanır: kutucuk resimleri, arka plan resimleri ve videoları, ve yazı tipleri.</string>
     <string name="tile_pictures">Kutucuk resimleri</string>
@@ -144,8 +144,8 @@
     <string name="font_not_covered">Bu yazı tipinde %1$s harfleri yok, bu yüzden sistem yazı tipi görünür.</string>
     <string name="font_credit">Google Fonts yazı tipleri, Fontsource listesinden; her biri kendi lisansıyla</string>
     <string name="font_add">Yazı tipi ekle</string>
-    <string name="wp_custom_short">Kitaplık\'taki fotoğraf ve videolar, kendi resmi olmayan her uygulamanın arkasında gösterilir. Bir kutucuk, kendi menüsünden yalnızca bunları gösterecek şekilde ayarlanabilir.</string>
-    <string name="bd_content">Uygulamanın kendi resimleri</string>
+    <string name="wp_custom_short">Kutucuklar bunu kendi Arka planlar menülerinden kullanır. Yalnızca gösterecek bir şeyi olan ilk etkin seçenek kullanılır; diğeri yedektir.</string>
+    <string name="bd_content">Uygulama içeriği</string>
     <string name="bd_colour">Yalnızca renk</string>
     <string name="bd_own">Kendi seçimim</string>
     <string name="lib_big_for_tile">Arka plan için yapılmış: kutucuk için önerilmez</string>
@@ -290,7 +290,6 @@
     <string name="permissions_title">İki izin</string>
     <string name="permissions_why">Vibe Launcher şimdi iki izin isteyecek.\n\nTV yayın akışı: uygulamalarınızın ana ekran için yayınladığı kartlardaki görselleri göstermek için.\n\nKonum: Android, Wi-Fi ağının adını yalnızca bu izne sahip uygulamalara gösterir. Vibe Launcher bunu yalnızca bu ad için kullanır ve cihazın nerede olduğuna asla bakmaz.\n\nHiçbiri cihazdan dışarı çıkmaz.</string>
     <string name="continue_button">Devam</string>
-    <string name="store_update">Vibe Launcher\'ı güncelle</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Yedekleme ve geri yükleme</string>
     <string name="backup_short">Ayarlar, kutular, klasörler, kutu resimleri ve API anahtarları. Yedek, anahtarlarınızı içerir, bu yüzden kimseyle paylaşmayın.</string>
@@ -406,4 +405,15 @@
     <string name="wp_apple_cities">Şehirler</string>
     <string name="wp_apple_underwater">Su altı</string>
     <string name="wp_no_room">Bu video %1$s ve %2$s boş alan var. Cihaz 1 GB boş bırakır: önce Kitaplık\'tan bir şey silin.</string>
+    <string name="flights_title">Üzerinizdeki uçuşlar</string>
+    <string name="flights_short">Kendi resmi olmayan uygulamaların arkasında yakınınızdan geçen uçakları gösterir. Hava durumu için ayarlanan yeri kullanır. Veriler: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Film ve dizi ayrıntıları</string>
+    <string name="title_info_short">Bir filmin veya dizinin arka planıyla birlikte TMDB\'den puanı, yılı, özeti ve türleri gösterir. TMDB anahtarı gerekir (API anahtarları).</string>
+    <string name="flights_over_colour">Uçuş kartlarını göster</string>
+    <string name="flights_over_colour_short">Yakınınızdan geçen uçakların kartlarını, harita olmadan, arka planı yalnızca renk olan kutucuklarda gösterir.</string>
+    <string name="flights_distance">Mesafe</string>
+    <string name="flights_clear">Kayıtlı uçuş ayrıntılarını temizle</string>
+    <string name="opensky_id">OpenSky istemci kimliği</string>
+    <string name="opensky_secret">OpenSky istemci gizli anahtarı</string>
+    <string name="opensky_short">İsteğe bağlı. OpenSky Network hesabınızdan bir API istemcisiyle uçuşlar 4 dakikada bir yerine 30 saniyede bir güncellenir.</string>
 </resources>

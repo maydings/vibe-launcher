@@ -116,7 +116,7 @@
     <string name="art_id_short">For apps that put the title\'s IMDb id on their cards, like Nuvio: the exact backdrop and logo, no key needed.</string>
     <string name="art_stremio_short">Stremio\'s free film and show data, found by the card\'s title. No key needed.</string>
     <string name="art_own_short">The picture the app put on its card, when nothing above has one.</string>
-    <string name="wp_custom">Custom wallpapers</string>
+    <string name="wp_custom">System backdrop</string>
     <string name="media_title">Library</string>
     <string name="media_short">Everything you add, each kept once: tile pictures, backdrop pictures and videos, and fonts.</string>
     <string name="tile_pictures">Tile pictures</string>
@@ -148,8 +148,8 @@
     <string name="font_not_covered">This font has no %1$s letters, so the system font shows for it.</string>
     <string name="font_credit">Fonts from Google Fonts, listed by Fontsource; each under its own licence</string>
     <string name="font_add">Add fonts</string>
-    <string name="wp_custom_short">Pictures and videos from the Library, shown behind any app that has no picture of its own. A tile can also be set to show only these, from its own menu.</string>
-    <string name="bd_content">App\'s own pictures</string>
+    <string name="wp_custom_short">Tiles use it from their Backdrops menu. Only the first enabled one with something to show is used; the other is a fallback.</string>
+    <string name="bd_content">App content</string>
     <string name="bd_colour">Color only</string>
     <string name="bd_own">Own selection</string>
     <string name="lib_big_for_tile">Made for backdrops: not recommended for a tile</string>
@@ -167,7 +167,7 @@
     <string name="wp_delete_short">OK: Rename, Delete</string>
     <string name="wp_delete">Delete</string>
     <string name="pexels_key">Pexels API key</string>
-    <string name="pexels_short">Free from pexels.com/api: lets you pick Pexels videos as custom wallpapers (Backdrops).</string>
+    <string name="pexels_short">Free from pexels.com/api: lets you pick Pexels videos as backdrops (Library).</string>
     <string name="wp_pexels_no_key">Pexels needs a free API key first: get one at pexels.com/api and add it in Settings &gt; API keys.</string>
     <string name="wp_credit_wallhaven">Pictures from wallhaven.cc, safe for work only.</string>
     <string name="wp_wallhaven_title">Wallhaven pictures</string>
@@ -199,7 +199,7 @@
     <string name="wp_item_picture_from">%s picture</string>
     <string name="wp_item_video_from">%s video</string>
     <string name="pixabay_key">Pixabay API key</string>
-    <string name="pixabay_short">Free at pixabay.com/api/docs once you sign up: lets you pick Pixabay pictures and videos as custom wallpapers (Backdrops).</string>
+    <string name="pixabay_short">Free at pixabay.com/api/docs once you sign up: lets you pick Pixabay pictures and videos as backdrops (Library).</string>
     <string name="wp_pixabay_no_key">Pixabay needs a free API key first: sign up at pixabay.com, copy your key from pixabay.com/api/docs and add it in Settings &gt; API keys.</string>
     <string name="tab_weather">Weather</string>
     <string name="weather_show">Show weather</string>
@@ -294,7 +294,6 @@
     <string name="permissions_title">Two permissions</string>
     <string name="permissions_why">Vibe Launcher will ask for two permissions next.\n\nTV listings: to show pictures from the cards your apps publish for the home screen.\n\nLocation: Android only shows the Wi-Fi network\'s name to apps with it. Vibe Launcher uses it for that name alone and never looks up where the device is.\n\nNeither leaves the device.</string>
     <string name="continue_button">Continue</string>
-    <string name="store_update">Update Vibe Launcher</string>
     <!-- Settings backup and restore (Backup, SettingsScreen). -->
     <string name="backup_restore">Backup and restore</string>
     <string name="backup_short">Settings, tiles, folders, tile pictures and API keys. A backup holds your keys, so keep it private.</string>
@@ -411,4 +410,15 @@
     <string name="wp_apple_cities">Cities</string>
     <string name="wp_apple_underwater">Underwater</string>
     <string name="wp_no_room">This video is %1$s and %2$s is free. The device keeps 1 GB free: delete something from the Library first.</string>
+    <string name="flights_title">Flights overhead</string>
+    <string name="flights_short">Shows the aircraft passing near you behind apps that have no picture of their own. Uses the place set for the weather. Data: OpenSky Network, adsbdb.</string>
+    <string name="title_info">Film and show details</string>
+    <string name="title_info_short">Shows the rating, year, synopsis and genres from TMDB with a film or show\'s backdrop. Needs a TMDB key (API keys).</string>
+    <string name="flights_over_colour">Show flight cards</string>
+    <string name="flights_over_colour_short">Shows the cards of the aircraft passing near you, without the map, on tiles whose backdrop is the color only.</string>
+    <string name="flights_distance">Distance</string>
+    <string name="flights_clear">Clear saved flight details</string>
+    <string name="opensky_id">OpenSky client ID</string>
+    <string name="opensky_secret">OpenSky client secret</string>
+    <string name="opensky_short">Optional. With an API client from your OpenSky Network account, flights update every 30 seconds instead of every 4 minutes.</string>
 </resources>
