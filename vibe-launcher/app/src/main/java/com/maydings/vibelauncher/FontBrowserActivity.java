@@ -225,6 +225,7 @@ public final class FontBrowserActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        main.removeCallbacksAndMessages(null);   // a preview waiting its turn would ask the worker that's gone
         work.shutdownNow();
     }
 
@@ -431,6 +432,7 @@ public final class FontBrowserActivity extends Activity {
     /** The focused font's name in its own font: its regular file, kept in the cache (small fonts only). */
     private void loadPreview(Font f) {
         if (mine || f.large() || previews.get(f.id) != null || fetching.contains("p:" + f.id)) return;
+        if (work.isShutdown()) return;
         fetching.add("p:" + f.id);
         work.execute(() -> {
             Typeface t = null;

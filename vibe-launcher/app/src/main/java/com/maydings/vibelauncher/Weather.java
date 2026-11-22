@@ -161,7 +161,7 @@ final class Weather {
 
     /** Fahrenheit where people use it (the US and a few others), Celsius elsewhere. */
     static boolean fahrenheitHere() {
-        switch (Locale.getDefault().getCountry()) {
+        switch (Lang.country()) {
             case "US": case "PR": case "GU": case "VI": case "AS": case "MP": case "UM":
             case "LR": case "BS": case "BZ": case "KY": case "PW": case "FM": case "MH":
                 return true;

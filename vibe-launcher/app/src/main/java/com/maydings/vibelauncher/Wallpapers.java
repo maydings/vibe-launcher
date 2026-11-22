@@ -231,9 +231,17 @@ final class Wallpapers {
         return dir.getUsableSpace();
     }
 
+    private static long lastStamp;
+
+    /** The time now, for a new file's name: never the same twice, though two be made in one millisecond. */
+    private static synchronized long stamp() {
+        lastStamp = Math.max(System.currentTimeMillis(), lastStamp + 1);
+        return lastStamp;
+    }
+
     /** A new file's place while it arrives, for a download or an upload to write to, then add. */
     File incoming() {
-        return new File(dir, System.currentTimeMillis() + ".part");
+        return new File(dir, stamp() + ".part");
     }
 
     /** Whether there's room for a video this big, with some space left over for the TV. */
@@ -252,7 +260,7 @@ final class Wallpapers {
      * gone afterwards. Null when it couldn't be used. Worker thread.
      */
     Item add(File arrived, boolean video, String source, String name, String title, int screenW, int screenH) {
-        String id = String.valueOf(System.currentTimeMillis());
+        String id = String.valueOf(stamp());
         String called = title == null ? "" : title.replaceAll("\\s+", " ").trim();
         if (called.length() > MAX_TITLE) called = called.substring(0, MAX_TITLE).trim();
         Item item = new Item(id, video, source, name, called, false, false);

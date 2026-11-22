@@ -40,6 +40,15 @@ final class Lang {
         return Resources.getSystem().getConfiguration().getLocales().get(0);
     }
 
+    /**
+     * The country the TV is set to: the default locale's, or, when that's a language picked here with no
+     * country of its own ("en"), the TV's own.
+     */
+    static String country() {
+        String country = Locale.getDefault().getCountry();
+        return country.isEmpty() ? system().getCountry() : country;
+    }
+
     /** A context in the chosen language (unchanged for the TV's own), with the default locale to match. */
     static Context wrap(Context base) {
         String tag = new VibeSettings(base).language();

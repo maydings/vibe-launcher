@@ -1872,8 +1872,24 @@ MainActivity.showError(host, R.string.anim_short);
             if (Backup.savedOnTv(ctx) == 0) Toast.makeText(host, R.string.backup_none, Toast.LENGTH_SHORT).show();
             else open(restorePage(), restore);
         });
-        if (phoneUrl != null) page.link(R.string.backup_phone, null,
-                () -> phone(R.string.backup_phone, link.backupUrl(), R.string.scan_to_backup));
+        // The phone's backup page answers only while this code is on the screen: a backup has the keys in full.
+        if (phoneUrl != null) page.link(R.string.backup_phone, null, () -> {
+            Page code = phone(R.string.backup_phone, link.backupUrl(), R.string.scan_to_backup);
+            code.footnote = 0;
+            code.about.setText("");
+            code.view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+                @Override
+                public void onViewAttachedToWindow(View v) {
+                    if (link != null) link.backupsOpen = true;
+                }
+
+                @Override
+                public void onViewDetachedFromWindow(View v) {
+                    if (link != null) link.backupsOpen = false;
+                }
+            });
+            return code;
+        });
         return page;
     }
 
@@ -3107,7 +3123,7 @@ MainActivity.showError(host, R.string.anim_short);
      * for what can't be undone or wasn't asked for here. The window, or null when Settings isn't showing.
      */
     private Dialog confirm(CharSequence title, CharSequence message, int button, boolean cancelFirst, Runnable then) {
-        if (host == null) return null;
+        if (MainActivity.gone(host)) return null;
         Activity activity = host;
         View panel = LayoutInflater.from(ctx).inflate(R.layout.dialog_update,
                 activity.findViewById(android.R.id.content), false);
@@ -3486,6 +3502,7 @@ MainActivity.showError(host, R.string.anim_short);
      * to confirm. Shared with the gear menu.
      */
     static void startUpdate(Activity activity, Updater.Release release) {
+        if (MainActivity.gone(activity)) return;
         View panel = activity.getLayoutInflater().inflate(R.layout.dialog_update,
                 activity.findViewById(android.R.id.content), false);
         ((TextView) panel.findViewById(R.id.updateTitle)).setText(activity.getString(R.string.update_to, release.version));

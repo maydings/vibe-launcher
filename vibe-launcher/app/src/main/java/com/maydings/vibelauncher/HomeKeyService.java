@@ -81,6 +81,10 @@ public final class HomeKeyService extends AccessibilityService implements InputM
         screenOnReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+                // Still locked after starting up (this service runs before the unlock): the settings can't be
+                // read yet, and Home can't open.
+                UserManager um = getSystemService(UserManager.class);
+                if (um != null && !um.isUserUnlocked()) return;
                 if (!new VibeSettings(context).powerOnHome()) return;
                 long on = SystemClock.uptimeMillis();
                 handler.postDelayed(() -> {

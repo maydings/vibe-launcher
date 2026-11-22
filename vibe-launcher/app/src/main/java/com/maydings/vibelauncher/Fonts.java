@@ -101,12 +101,20 @@ final class Fonts {
         return new File(dir, id + (medium ? "-m.ttf" : "-r.ttf"));
     }
 
+    private static long lastStamp;
+
+    /** The time now, for a new file's name: never the same twice, though two be made in one millisecond. */
+    private static synchronized long stamp() {
+        lastStamp = Math.max(System.currentTimeMillis(), lastStamp + 1);
+        return lastStamp;
+    }
+
     /**
      * Takes a font in: its regular file, and a medium one or null. Both are moved here; null (and both gone) when
      * the regular one isn't a font Android can use. Worker thread.
      */
     Item add(File regular, File medium, String family, String source) {
-        String id = Long.toString(System.currentTimeMillis(), 36);
+        String id = Long.toString(stamp(), 36);
         File r = file(id, false), m = file(id, true);
         try {
             if (FontFile.ranges(regular) == null || !regular.renameTo(r) || load(r) == null) return null;

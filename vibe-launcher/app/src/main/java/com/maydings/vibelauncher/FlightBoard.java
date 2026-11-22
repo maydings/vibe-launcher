@@ -39,7 +39,7 @@ public final class FlightBoard extends FrameLayout {
     /** The airline whose logo is wanted on the plate. */
     private String logoOf;
     private List<Flights.Near> near = Collections.emptyList();
-    private boolean wanted, imperial;
+    private boolean wanted, imperial, paused;
     /** With its map under the card (the flights are the backdrop), or the card alone over what's there. */
     private boolean mapped = true;
     /** The one showing, by its transponder address: kept on the screen as the list changes under it. */
@@ -227,7 +227,7 @@ public final class FlightBoard extends FrameLayout {
             one = near.get(0);
             showing = one.hex;
             removeCallbacks(next);
-            postDelayed(next, EACH_MS);
+            if (!paused) postDelayed(next, EACH_MS);
         }
         if (one != null) say(one);
         if (getVisibility() != VISIBLE || getAlpha() < 1f) {
@@ -237,12 +237,19 @@ public final class FlightBoard extends FrameLayout {
         }
     }
 
+    /** Home is behind another app (or back): the aircraft don't take their turns for nobody. */
+    void setPaused(boolean paused) {
+        this.paused = paused;
+        removeCallbacks(next);
+        if (!paused && wanted && !near.isEmpty()) postDelayed(next, EACH_MS);
+    }
+
     /** The next one's turn: what's said fades out, changes and comes back. Alone, it stays. */
     private final Runnable next = new Runnable() {
         @Override
         public void run() {
             removeCallbacks(this);
-            if (!wanted || near.isEmpty()) return;
+            if (!wanted || paused || near.isEmpty()) return;
             postDelayed(this, EACH_MS);
             if (near.size() < 2) return;
             int at = 0;

@@ -142,7 +142,20 @@ final class FlightMap extends View {
         this.lon = lon;
         this.reachKm = reachKm;
         look();
+        forget();
         make();
+    }
+
+    /**
+     * The view has changed (the place, the distance, the size): the map that's up is of the old one, and the
+     * aircraft and the ring are drawn by the new. It goes, the plain ground showing until the new map is made;
+     * and a wait that was for the old view's map isn't kept for this one's.
+     */
+    private void forget() {
+        map = null;
+        mapOf = null;
+        againAt = 0;
+        invalidate();
     }
 
     void setSpots(List<Flights.Spot> spots) {
@@ -170,6 +183,7 @@ final class FlightMap extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldW, int oldH) {
         look();
+        if (w != oldW || h != oldH) forget();
         make();
     }
 
@@ -220,7 +234,10 @@ final class FlightMap extends View {
             }
             Bitmap got = made;
             post(() -> {
-                if (!of.equals(making)) return;   // the place or the distance changed meanwhile
+                if (!of.equals(making)) {   // the place or the distance changed meanwhile: never shown
+                    if (got != null) got.recycle();
+                    return;
+                }
                 making = null;
                 if (got == null) {
                     againAt = SystemClock.elapsedRealtime() + 5 * 60_000;

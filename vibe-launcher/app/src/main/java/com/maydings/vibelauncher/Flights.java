@@ -67,6 +67,11 @@ final class Flights {
     private static final double WITH_CLIENT_KM = 20, WITHOUT_KM = 90;
     /** An aircraft is moved along for this long past the time between answers, then dropped as not heard. */
     private static final long STALE_MS = 90_000;
+    /**
+     * How long OpenSky is left between two asks, as it is now (with a client or without, slower when it's
+     * said to wait or the day's credits run low): an aircraft is stale once it's unheard for this and more.
+     */
+    private volatile long askEvery = WITHOUT_MS;
     /** OpenSky's price of one credit holds up to this many square degrees. */
     private static final double MAX_AREA = 24;
     /** Credits left under this: asked half as often, so the day's allowance lasts. */
@@ -313,7 +318,10 @@ final class Flights {
     private void ask(int mine) {
         long early = nextAskAt - SystemClock.elapsedRealtime();
         long wait = early > 1000 ? early : answer();
-        if (early <= 1000) nextAskAt = SystemClock.elapsedRealtime() + wait;
+        if (early <= 1000) {
+            nextAskAt = SystemClock.elapsedRealtime() + wait;
+            askEvery = wait;
+        }
         main.post(() -> {
             if (running && mine == chain) poll = worker.schedule(() -> ask(mine), wait, TimeUnit.MILLISECONDS);
         });
@@ -436,7 +444,7 @@ final class Flights {
     private List<Spot> all() {
         List<Spot> out = new ArrayList<>();
         long now = SystemClock.elapsedRealtime();
-        long stale = (settings.openSkyId().isEmpty() ? WITHOUT_MS : WITH_CLIENT_MS) + STALE_MS;
+        long stale = Math.min(askEvery, 600_000) + STALE_MS;
         for (Heard h : heard) {
             if (now - h.at > stale) continue;
             JSONObject known = fresh(aircraft, h.hex);
@@ -452,7 +460,7 @@ final class Flights {
         if (place == null) return out;
         double reach = settings.flightsKm();
         long now = SystemClock.elapsedRealtime();
-        long stale = (settings.openSkyId().isEmpty() ? WITHOUT_MS : WITH_CLIENT_MS) + STALE_MS;
+        long stale = Math.min(askEvery, 600_000) + STALE_MS;
         for (Heard h : heard) {
             long since = now - h.at;
             if (since > stale) continue;
@@ -541,6 +549,9 @@ final class Flights {
         if (SystemClock.elapsedRealtime() < adsbdbQuietUntil || !asking.add(hex + '/' + callsign)) return;
         worker.execute(() -> {
             try {
+                // One before it found the servers not answering: not this one's turn to wait them out as well
+                // (they share the thread that asks OpenSky, which would wait behind them all).
+                if (SystemClock.elapsedRealtime() < adsbdbQuietUntil) return;
                 if (plane) keepAircraft(hex);
                 if (route) keepRoute(callsign);
                 if (route || second) {
@@ -629,7 +640,9 @@ final class Flights {
         try {
             bytes = Http.get(VRS + path, 8 * 1024 * 1024);
         } catch (IOException e) {
-            if (String.valueOf(e.getMessage()).startsWith("HTTP 4")) bytes = new byte[0];   // no such list: an empty one
+            // No such list (an airline with no routes kept): an empty one. Refused for another reason (too
+            // many requests, say), it's as if it hadn't answered.
+            if ("HTTP 404".equals(e.getMessage())) bytes = new byte[0];
             else if (file.isFile()) return file;
             else throw e;
         }
@@ -934,7 +947,13 @@ final class Flights {
                 if (again) logosQuietUntil = SystemClock.elapsedRealtime() + 60_000;
                 else logosAsked.add(asked);
                 if (got != null) {
-                    if (logos.size() >= 40) logos.clear();
+                    // No more than 40 held: the rest go, and are read again from the TV's cache when next
+                    // asked for (so what's been asked goes with them: else they'd be answered with none).
+                    if (logos.size() >= 40) {
+                        logos.clear();
+                        logosAsked.clear();
+                        logosAsked.add(asked);
+                    }
                     logos.put(icao, got);
                 }
                 List<LogoListener> all = logosWaited.remove(asked);
@@ -961,14 +980,19 @@ final class Flights {
         return logo;
     }
 
-    /** Downloads one; where there's none (a 404) that's noted, and not asked again for a week. */
+    /**
+     * Downloads one; where there's none (a 404) that's noted, and not asked again for a week. Refused for
+     * another reason (too many requests, say), there's none for now, and nothing's noted.
+     */
     private static Logo fetchLogo(String url, File to, File none) throws IOException {
         if (none.exists() && System.currentTimeMillis() - none.lastModified() < NO_LOGO_MS) return null;
         byte[] bytes;
         try {
             bytes = Http.get(url, 1024 * 1024);
         } catch (IOException e) {
-            if (!String.valueOf(e.getMessage()).startsWith("HTTP 4")) throw e;
+            String why = String.valueOf(e.getMessage());
+            if (!why.startsWith("HTTP 4")) throw e;
+            if (!why.equals("HTTP 404")) return null;
             bytes = null;
         }
         if (bytes != null) {

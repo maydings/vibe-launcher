@@ -112,8 +112,13 @@ final class PhoneLink {
     private static final int MAX_BACKUP = 32 * 1024 * 1024;
 
     private final Listener listener;
-    /** Set by Settings: the backup page is there while it is. */
+    /** Set by Settings: the backup page is there while it is, and while its screen is open on the TV. */
     Backups backups;
+    /**
+     * Whether the TV is showing the backup's own screen (its QR code). A backup holds the keys in full, and
+     * restoring one changes every setting: neither is for whoever has the link at any other time.
+     */
+    volatile boolean backupsOpen;
     /** Set by Settings on Android 11 and up: the pairing page is there while it is. */
     Pairing pairing;
     /** Set by Settings: the wallpaper page is there while it is. */
@@ -186,7 +191,7 @@ final class PhoneLink {
             case "/font": return fonts != null;
             case "/tile": return tilePictures != null;
             case "/dns": return customDns != null;
-            case "/backup": return backups != null;
+            case "/backup": return backups != null && backupsOpen;
             case "/pair": return pairing != null;
             default: return true;
         }
@@ -221,15 +226,36 @@ final class PhoneLink {
             if (server != null) server.close();
         } catch (IOException ignored) {
         }
+        connections.shutdownNow();
     }
+
+    /**
+     * A few at once: a phone's browser opens connections ahead of need and leaves them idle, and one of
+     * those, taken first, would keep the page it's really asking for waiting until it timed out.
+     */
+    private final java.util.concurrent.ExecutorService connections =
+            java.util.concurrent.Executors.newFixedThreadPool(4, r -> {
+                Thread t = new Thread(r, "PhoneLink connection");
+                t.setDaemon(true);
+                return t;
+            });
+    /** One request answered at a time, as when there was one thread: only the waiting for them is shared. */
+    private final Object turn = new Object();
 
     private void serve() {
         while (!server.isClosed()) {
-            try (Socket s = server.accept()) {
-                s.setSoTimeout(5000);
-                handle(s);
+            try {
+                Socket s = server.accept();
+                connections.execute(() -> {
+                    try (Socket mine = s) {
+                        mine.setSoTimeout(5000);
+                        handle(mine);
+                    } catch (IOException | RuntimeException e) {
+                        // a dropped connection
+                    }
+                });
             } catch (IOException | RuntimeException e) {
-                // A dropped connection or the server closing: carry on, or the loop ends.
+                // The server closing (the loop ends), or no thread to take it: carry on.
             }
         }
     }
@@ -238,9 +264,21 @@ final class PhoneLink {
         InputStream in = s.getInputStream();
         String head = readHead(in);
         if (head == null) return;
+        synchronized (turn) {
+            answer(s, in, head);
+        }
+    }
+
+    private void answer(Socket s, InputStream in, String head) throws IOException {
         String[] request = head.split("\r\n", 2)[0].split(" ");
         Backups b = backups;
         if (b != null && request.length >= 2 && request[1].startsWith("/" + code + "/backup")) {
+            if (!backupsOpen) {
+                respond(s, "403 Forbidden", page("Backups are sent and restored only while the device shows"
+                        + " the code for it: Settings, Backup and restore, Back up or restore with your phone."
+                        + " Open it there, then load this page again."));
+                return;
+            }
             handleBackup(s, in, head, request[0], request[1].substring(code.length() + 1), b);
             return;
         }
@@ -258,7 +296,7 @@ final class PhoneLink {
         if (tp != null && request.length >= 2 && (request[1].equals("/" + code + "/tile")
                 || request[1].startsWith("/" + code + "/tile?"))) {
             if (request[0].equals("POST")) {
-                boolean added = tp.received(readBody(in, contentLength(head, MAX_PICTURE)), nameIn(request[1]));
+                boolean added = tp.received(readBody(in, (int) contentLength(head, MAX_PICTURE)), nameIn(request[1]));
                 respondText(s, added ? "200 OK" : "400 Bad Request", added
                         ? "Sent. The picture is in the Library on the device, for any tile."
                         : "That picture couldn't be used. Try another.");
@@ -270,7 +308,7 @@ final class PhoneLink {
         CustomDns cd = customDns;
         if (cd != null && request.length >= 2 && request[1].equals("/" + code + "/dns")) {
             if (request[0].equals("POST")) {
-                Map<String, String> fields = parseForm(readBody(in, contentLength(head, MAX_BODY)));
+                Map<String, String> fields = parseForm(readBody(in, (int) contentLength(head, MAX_BODY)));
                 String typed = fields.get("host");
                 String host = typed == null ? "" : AdBlock.clean(typed);
                 if (host.isEmpty()) {
@@ -288,7 +326,7 @@ final class PhoneLink {
         Pairing p = pairing;
         if (p != null && request.length >= 2 && request[1].equals("/" + code + "/pair")) {
             if (request[0].equals("POST")) {
-                Map<String, String> fields = parseForm(readBody(in, contentLength(head, MAX_BODY)));
+                Map<String, String> fields = parseForm(readBody(in, (int) contentLength(head, MAX_BODY)));
                 String digits = fields.get("code"), port = fields.get("port");
                 if (digits == null || !digits.matches("\\d{6}")) {
                     respondText(s, "400 Bad Request", "Type the 6-digit code the device shows.");
@@ -314,7 +352,7 @@ final class PhoneLink {
             return;
         }
         if (request[0].equals("POST")) {
-            Map<String, String> fields = parseForm(readBody(in, contentLength(head, MAX_BODY)));
+            Map<String, String> fields = parseForm(readBody(in, (int) contentLength(head, MAX_BODY)));
             main.post(() -> listener.onReceived(fields));
             respond(s, "200 OK", page("Sent. The keys are saved on your device."));
         } else {
@@ -331,9 +369,9 @@ final class PhoneLink {
         if (method.equals("POST") && path.equals("/backup")) {
             // The phone's backup can take a while to arrive over Wi-Fi: more time than a form's few bytes.
             s.setSoTimeout(30000);
-            int length = contentLength(head, MAX_BACKUP + 1);
+            int length = (int) contentLength(head, MAX_BACKUP + 1);
             if (length > MAX_BACKUP) {
-                respondText(s, "413 Payload Too Large", "Too large for a Vibe Launcher backup.");
+                refuse(s, "413 Payload Too Large", "Too large for a Vibe Launcher backup.");
                 return;
             }
             if (b.restore(readBody(in, length))) {
@@ -375,13 +413,13 @@ final class PhoneLink {
         }
         boolean video = path.contains("kind=video");
         s.setSoTimeout(60000);   // a big video over Wi-Fi: pauses are normal
-        long length = contentLength(head, Integer.MAX_VALUE);
+        long length = contentLength(head, Long.MAX_VALUE);
         if (length <= 0) {
             respondText(s, "400 Bad Request", "Nothing arrived. Try again.");
             return;
         }
         if (video ? !w.roomFor(length) : length > MAX_WALLPAPER_PICTURE) {
-            respondText(s, "413 Payload Too Large", video
+            refuse(s, "413 Payload Too Large", video
                     ? "Too big: videos can be up to 500 MB, and the device needs room for them."
                     : "That picture is too big.");
             return;
@@ -452,13 +490,13 @@ final class PhoneLink {
             return;
         }
         s.setSoTimeout(60000);
-        long length = contentLength(head, Integer.MAX_VALUE);
+        long length = contentLength(head, Long.MAX_VALUE);
         if (length <= 0) {
             respondText(s, "400 Bad Request", "Nothing arrived. Try again.");
             return;
         }
         if (length > Fonts.MAX_FILE) {
-            respondText(s, "413 Payload Too Large", "That font is too big: up to 25 MB.");
+            refuse(s, "413 Payload Too Large", "That font is too big: up to 25 MB.");
             return;
         }
         String name = nameIn(path);
@@ -523,6 +561,27 @@ final class PhoneLink {
         return url != null ? url + "/wallpaper" : null;
     }
 
+    /**
+     * Says no to what's still being sent: the answer, then a little of what's coming is read and dropped, for
+     * a moment. Closed at once with more on its way, the connection is reset and the phone shows that it
+     * failed, not what was said.
+     */
+    private static void refuse(Socket s, String status, String text) throws IOException {
+        respondText(s, status, text);
+        s.shutdownOutput();
+        s.setSoTimeout(1000);
+        try {
+            InputStream in = s.getInputStream();
+            byte[] drop = new byte[16 * 1024];
+            long until = System.currentTimeMillis() + 1000;
+            while (System.currentTimeMillis() < until && in.read(drop) >= 0) {
+                // dropped
+            }
+        } catch (IOException ignored) {
+            // it stopped sending, or took too long
+        }
+    }
+
     private static void respondText(Socket s, String status, String text) throws IOException {
         byte[] body = text.getBytes(StandardCharsets.UTF_8);
         OutputStream out = s.getOutputStream();
@@ -554,11 +613,11 @@ final class PhoneLink {
         return null;
     }
 
-    private static int contentLength(String head, int max) {
+    private static long contentLength(String head, long max) {
         for (String line : head.split("\r\n")) {
             if (line.toLowerCase(Locale.ROOT).startsWith("content-length:")) {
                 try {
-                    return Math.max(0, Math.min(max, Integer.parseInt(line.substring(15).trim())));
+                    return Math.max(0, Math.min(max, Long.parseLong(line.substring(15).trim())));
                 } catch (NumberFormatException e) {
                     return 0;
                 }

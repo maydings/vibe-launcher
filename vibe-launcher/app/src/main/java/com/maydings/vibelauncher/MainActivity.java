@@ -764,6 +764,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         refreshWeather();   // its settings may have changed meanwhile too
         applyWallpaperChange();   // and the custom wallpapers
         inFront = true;
+        flightBoard.setPaused(false);
         applyFlights();   // and the flights overhead, asked for while Home is in front
         applyTopBarStyle();   // and the top bar's look
         // A video wallpaper paused with Home (onPause) plays again: Home pressed on Home pauses and resumes it
@@ -862,6 +863,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         wallpaperVideo.pause();
         inFront = false;
         flights.stop();
+        flightBoard.setPaused(true);
         handler.removeCallbacks(weatherTick);
         handler.removeCallbacks(refreshPools);
         cancelPictureSoon();
@@ -895,6 +897,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     @Override
     protected void onDestroy() {
         if (current.get() == this) current.clear();
+        if (openMenu != null && openMenu.isShowing()) openMenu.dismiss();   // its window would outlive Home
         unregisterReceiver(screenReceiver);
         unregisterReceiver(packageReceiver);
         // The pools go on filling for the next Home; only this one's handlers go.
@@ -1703,6 +1706,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (!pictureOnly || !pkg.equals(backdropPkg)) return;
             if (bitmap != null) {
                 backdropLink = link;
+                backdropKind = Wallpapers.CONTENT;   // whatever stood in for it till now (the flights): its own
                 fadeBackdrop(bitmap, logo, title, backdropColor);
             }
             updatePlayInfo();
@@ -2172,13 +2176,14 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     /**
-     * The dock positions holding an app: not the All apps tile, which has no pictures. Its own list, as the
+     * The dock positions holding an app, or a folder showing one: not the All apps tile, which has no pictures. Its own list, as the
      * dock's positions and dockApps' indexes differ once All apps is in the dock.
      */
     private List<Integer> dockAppPositions() {
         List<Integer> positions = new ArrayList<>();
         for (int i = 0; i < adapter.dockCount(); i++) {
-            if (adapter.packageAt(i) != null) positions.add(i);
+            // An app's tile, or a folder's with an app to show (the one picked on its row).
+            if (adapter.isFolder(i) ? folderApp(i) != null : adapter.packageAt(i) != null) positions.add(i);
         }
         return positions;
     }
@@ -2478,7 +2483,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (dock.size() < 2) return;
         int at = Math.max(0, dock.indexOf(adapter.dockTileFor(lastFocused)));
         int next = dock.get(((at + direction) % dock.size() + dock.size()) % dock.size());   // a dock position
-        String pkg = adapter.packageAt(next);
+        String pkg = adapter.isFolder(next) ? folderApp(next) : adapter.packageAt(next);
         cancelHold();
         backdropPkg = pkg;   // set first: focusing its tile then doesn't load a picture of its own
         String key = listKeyAt(next);
@@ -2524,6 +2529,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (!pictureOnly || !loaded.equals(backdropPkg)) return;   // back to the rows meanwhile
             cancelHold();
             backdropLink = link;
+            if (bitmap != null) backdropKind = Wallpapers.CONTENT;
             fadeBackdrop(bitmap, logo, title, backdropColor);
             updatePlayInfo();
             updateCarets();
@@ -2794,11 +2800,19 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     /** A note with OK (named okLabel) and Cancel, in the update dialog's glass. Back counts as Cancel. */
     /**
+     * Whether this screen can't show a window any more: closing, or closed (work that took a while can end
+     * after it has, and a window opened on it then fails).
+     */
+    static boolean gone(Activity activity) {
+        return activity == null || activity.isFinishing() || activity.isDestroyed();
+    }
+
+    /**
      * Something that went wrong, in a window that stays until OK: a message at the bottom of the screen went before
      * it could be read, or acted on. Progress and hints stay at the bottom.
      */
     static void showError(Activity activity, CharSequence text) {
-        if (activity == null || activity.isFinishing()) return;
+        if (gone(activity)) return;
         View panel = activity.getLayoutInflater().inflate(R.layout.dialog_update,
                 activity.findViewById(android.R.id.content), false);
         ((TextView) panel.findViewById(R.id.updateTitle)).setText(R.string.app_name);
@@ -2825,6 +2839,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     static void showNotice(Activity activity, int title, CharSequence text, int okLabel, Runnable ok,
             Runnable cancel) {
+        if (gone(activity)) return;
         View panel = activity.getLayoutInflater().inflate(R.layout.dialog_update,
                 activity.findViewById(android.R.id.content), false);
         ((TextView) panel.findViewById(R.id.updateTitle)).setText(title);

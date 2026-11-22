@@ -6,3 +6,5 @@ vibe-launcher/local.properties
 backup/
 .DS_Store
 debloat/
+# local test tools and their results
+vibe-launcher/tools/

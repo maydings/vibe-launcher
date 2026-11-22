@@ -77,6 +77,8 @@ final class Tmdb implements TitleArt {
     private String[] find(String title, String key) throws IOException, JSONException {
         JSONObject best = best(title, key, true);
         if (best == null) return new String[]{"", ""};
+        // Which one its pictures are of: its details are that one's too (fetchInfo), not asked for by name again.
+        cache.edit().putString(MATCHED + key, best.getString("media_type") + "/" + best.getLong("id")).apply();
 
         String lang = Locale.getDefault().getLanguage();
         JSONObject images = get("/" + best.getString("media_type") + "/" + best.getLong("id")
@@ -162,7 +164,7 @@ final class Tmdb implements TitleArt {
         return Locale.getDefault().toLanguageTag();
     }
 
-    private static final String KNOWN = "k|";
+    private static final String KNOWN = "k|", MATCHED = "m|";
 
     /**
      * This title is known to be this film (or show) on TMDB: said by the app whose card it is (Plex's server
@@ -180,7 +182,8 @@ final class Tmdb implements TitleArt {
     /**
      * Asks for this title's details and keeps them (that there are none, too): its year, score, synopsis and
      * genres, in the TV's language; the synopsis in English where there's none in that language. The title
-     * is the one an app said it is (known), else the most popular by exactly this name. False when it
+     * is the one an app said it is (known), else the one its backdrop here is of, else the most popular by
+     * exactly this name. False when it
      * couldn't ask (offline, a bad key). Worker thread only.
      */
     boolean fetchInfo(String title) {
@@ -190,7 +193,7 @@ final class Tmdb implements TitleArt {
             JSONObject o = new JSONObject();
             o.put("t", System.currentTimeMillis());
             o.put("l", language());
-            String which = cache.getString(KNOWN + key, null);
+            String which = cache.getString(KNOWN + key, cache.getString(MATCHED + key, null));
             JSONObject best = null;
             if (which == null) {
                 best = best(title, key, false);

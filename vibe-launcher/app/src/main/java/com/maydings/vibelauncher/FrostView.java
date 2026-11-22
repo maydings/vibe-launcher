@@ -249,7 +249,7 @@ public class FrostView extends View {
         for (int i = 0; i < source.getChildCount(); i++) {
             View child = source.getChildAt(i);
             child.getLocationInWindow(sourceLoc);
-            int top = sourceLoc[1] + (int) child.getTranslationY();
+            int top = sourceLoc[1];   // where it's drawn: its own shift up or down is in that already
             int bottom = top + child.getHeight();
             if (bottom > barTop && top < barBottom) reach = Math.max(reach, barBottom - top);
         }

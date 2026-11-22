@@ -81,7 +81,7 @@ final class YouTubePopular {
 
     /** The TV's country (e.g. "US"), which YouTube's chart is per. */
     private static String region() {
-        String country = Locale.getDefault().getCountry();
+        String country = Lang.country();
         return country.length() == 2 ? country.toUpperCase(Locale.ROOT) : "US";
     }
 }
