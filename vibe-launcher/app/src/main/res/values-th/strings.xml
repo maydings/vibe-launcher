@@ -375,6 +375,8 @@
     <string name="anim_normal">ปกติ</string>
     <string name="anim_fast">เร็วขึ้น</string>
     <string name="anim_short">ภาพเคลื่อนไหวของอุปกรณ์เองเมื่อเปิดแอปและเมนู: ที่เร็วกว่าทำให้อุปกรณ์รุ่นเก่ารู้สึกว่องไวขึ้น ต้องเคยอนุญาตการตั้งค่า &gt; ขั้นสูงหนึ่งครั้ง</string>
+    <string name="system_screensaver">ภาพพักหน้าจอของระบบ</string>
+    <string name="system_screensaver_short">ภาพพักหน้าจอของอุปกรณ์เอง ในทุกแอป: เมื่อปิด จะไม่แสดงขึ้นเลย ต้องเคยอนุญาตการตั้งค่า &gt; ขั้นสูงหนึ่งครั้ง</string>
     <string name="free_memory">ล้างหน่วยความจำ</string>
     <string name="memory_freed">คืนหน่วยความจำ %1$s แล้ว</string>
     <string name="debloat">ทำความสะอาดแอป</string>

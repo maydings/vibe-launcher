@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * What Settings > Apps does to the TV beyond turning apps off (the adb build only), through its ADB (Adb) or
+ * What Settings > Apps does to the TV beyond turning apps off, through its ADB (Adb) or
  * through WRITE_SECURE_SETTINGS, which ADB hands to Vibe Launcher once, the first time it connects.
  * <p>
  * WRITE_SECURE_SETTINGS lets an app change Android's Secure and Global settings, which no app can be given any
@@ -21,8 +21,11 @@ import java.util.Locale;
  * and on Android 11 and up adb_wifi_enabled, Wireless debugging, once paired: off when Settings closes if "Turn
  * debugging off when done" is on, and back on by itself when it next needs ADB), and the animation speeds
  * (Appearance), and turning on Vibe Launcher's own Home button service (HomeKeyService), after the window saying
- * what it does and only when OK is pressed there (HomeButtonLink.offer). Nothing else: no other accessibility
- * service, never turning one off, and not the keyboard.
+ * what it does and only when OK is pressed there (HomeButtonLink.offer), and the TV's own screensaver on or off
+ * (Appearance > System screensaver: screensaver_enabled). Ad blocking (AdBlock) uses the same
+ * permission for one more: Android's Private DNS (private_dns_mode and private_dns_specifier), set to the
+ * service picked there and back when it's turned off. Nothing else: no other accessibility service, never
+ * turning one off, and not the keyboard.
  * <p>
  * Home: the TV's own launchers turned off and Vibe Launcher set as Home in one shell command, which turns them
  * back on if any step fails; then SettingsScreen checks Android really sends Home here. Back to the TV's own home
@@ -49,6 +52,22 @@ final class TvControl {
     /** The shell command that gives it, run once over ADB. */
     static String grantCommand(Context context) {
         return "pm grant " + context.getPackageName() + " " + Manifest.permission.WRITE_SECURE_SETTINGS;
+    }
+
+    /** Debugging is to go off when Vibe Launcher next starts (the TV was restarted through it): Wireless debugging too. */
+    static void leaveOffForStart(Context context, boolean wireless) {
+        context.getSharedPreferences("tvcontrol", Context.MODE_PRIVATE).edit()
+                .putBoolean("offAtStart", true).putBoolean("offAtStartWireless", wireless).apply();
+    }
+
+    /** What leaveOffForStart left to do, done: once, as Vibe Launcher starts. Worker thread. */
+    static void offIfLeftOn(Context context) {
+        android.content.SharedPreferences p = context.getSharedPreferences("tvcontrol", Context.MODE_PRIVATE);
+        if (!p.getBoolean("offAtStart", false)) return;
+        boolean wireless = p.getBoolean("offAtStartWireless", false);
+        p.edit().remove("offAtStart").remove("offAtStartWireless").apply();
+        setDebugging(context, false);
+        if (wireless) setWirelessDebugging(context, false);
     }
 
     /** Debugging on or off (USB/ADB debugging, which opens port 5555 too on most TVs); false without the permission. */
@@ -173,6 +192,24 @@ final class TvControl {
         }
         return r;
     }
+
+    /** Whether the TV's own screensaver is on (Android's, which comes up in any app; on unless turned off). */
+    static boolean systemScreensaver(Context context) {
+        return Settings.Secure.getInt(context.getContentResolver(), SCREENSAVER_ENABLED, 1) != 0;
+    }
+
+    /** The TV's own screensaver on or off, as its Settings would set it; false without the permission. */
+    static boolean setSystemScreensaver(Context context, boolean on) {
+        if (!canWrite(context)) return false;
+        try {
+            return Settings.Secure.putInt(context.getContentResolver(), SCREENSAVER_ENABLED, on ? 1 : 0);
+        } catch (SecurityException e) {
+            return false;
+        }
+    }
+
+    /** Settings.Secure's name for it (not among the names Android gives apps). */
+    private static final String SCREENSAVER_ENABLED = "screensaver_enabled";
 
     /** The animation speed the TV uses now: 1 normal, 0.5 faster, 0 off (the window animations' scale stands for all three). */
     static float animationScale(Context context) {

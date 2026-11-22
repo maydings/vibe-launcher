@@ -81,8 +81,10 @@ final class AdbTlsKey {
                 X509Certificate c = (X509Certificate) CertificateFactory.getInstance("X.509")
                         .generateCertificate(new ByteArrayInputStream(Base64.decode(cert, Base64.NO_WRAP)));
                 return cached = new AdbTlsKey(priv, c);
-            } catch (GeneralSecurityException | IllegalArgumentException | IOException e) {
-                // the Keystore lost its AES key (a restore, a reset Keystore): a new key, paired anew
+            } catch (GeneralSecurityException | RuntimeException | IOException e) {
+                // The Keystore lost its AES key, or has one it can't use any more (a restore, a reset Keystore):
+                // that one goes, so the new key below gets a new one to be kept under; paired anew.
+                forgetWrapKey();
             }
         }
         KeyPairGenerator g = KeyPairGenerator.getInstance("RSA");
@@ -92,7 +94,7 @@ final class AdbTlsKey {
         byte[] wrapped;
         try {
             wrapped = wrap(pair.getPrivate().getEncoded());
-        } catch (IOException e) {
+        } catch (IOException | RuntimeException e) {
             throw new GeneralSecurityException(e);
         }
         prefs.edit()
@@ -230,6 +232,17 @@ final class AdbTlsKey {
     }
 
     // ---- the private key, kept encrypted -----------------------------------------------------------
+
+    /** Takes the Keystore's key away, if it has one: the next wrapKey makes another. */
+    private static void forgetWrapKey() {
+        try {
+            KeyStore ks = KeyStore.getInstance("AndroidKeyStore");
+            ks.load(null);
+            if (ks.containsAlias(WRAP_ALIAS)) ks.deleteEntry(WRAP_ALIAS);
+        } catch (GeneralSecurityException | IOException | RuntimeException e) {
+            // none to take away, or it can't be: wrapKey says so
+        }
+    }
 
     private static SecretKey wrapKey() throws GeneralSecurityException, IOException {
         KeyStore ks = KeyStore.getInstance("AndroidKeyStore");

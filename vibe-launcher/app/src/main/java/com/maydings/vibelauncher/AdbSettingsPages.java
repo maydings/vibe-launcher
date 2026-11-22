@@ -26,6 +26,64 @@ final class AdbSettingsPages {
         this.screen = screen;
     }
 
+    /** Settings is opened: a new visit. */
+    void onAttach() {
+        switchOffered = false;   // ADB found working may offer the switch again
+    }
+
+    /** Settings is closed. */
+    void onDetach() {
+        offWhenDone();
+        homeButtonRow = null;
+    }
+
+    /** Debugging turned on from here (runAdb) for something to be done through it, whether or not it got in. */
+    private volatile boolean turnedOnUsb, turnedOnWireless;
+
+    /**
+     * Turn debugging off when done: the port closes with Settings, once nothing more is queued for it. What was
+     * used, and what was turned on here to be used though the connection never got in (not allowed on the TV,
+     * say): left on, it would stay on unseen.
+     */
+    private void offWhenDone() {
+        boolean used = usedAdb || turnedOnUsb || turnedOnWireless;
+        if (used && screen.settings.adbOffWhenDone() && TvControl.canWrite(screen.ctx)) {
+            Context app = screen.ctx.getApplicationContext();
+            boolean wireless = Adb.usedWireless() || turnedOnWireless;
+            adb().execute(() -> {
+                TvControl.setDebugging(app, false);
+                if (wireless) TvControl.setWirelessDebugging(app, false);
+            });
+            adbStatus = Adb.OFF;
+        }
+        usedAdb = false;
+        turnedOnUsb = false;
+        turnedOnWireless = false;
+    }
+
+    /**
+     * The TV is about to restart through its ADB: Settings never closes, so Turn debugging off when done is
+     * left for when Vibe Launcher next starts (TvControl.offIfLeftOn).
+     */
+    void offAfterRestart() {
+        if (screen.settings.adbOffWhenDone() && TvControl.canWrite(screen.ctx)) {
+            TvControl.leaveOffForStart(screen.ctx, Adb.usedWireless() || turnedOnWireless);
+        }
+    }
+
+    /** The connection as the status row says it: a dot in its colour and a word. */
+    CharSequence adbStatusText() {
+        if (adbConnecting) {   // OK pressed on it: yellow until there's an answer
+            return dot(0xFFFFD60A, screen.ctx.getString(R.string.adb_connecting));
+        }
+        if (adbStatus == -1) return screen.ctx.getString(R.string.adb_checking);
+        if (adbStatus == Adb.OK) {
+            return dot(0xFF34C759, screen.ctx.getString(Adb.usedWireless() ? R.string.adb_connected_wireless
+                    : R.string.adb_connected_port));
+        }
+        return dot(0xFFFF453A, screen.ctx.getString(R.string.adb_not_connected));
+    }
+
     /** ADB was used while Settings was open: what Turn debugging off when done turns off as it closes. */
     boolean usedAdb;
     /** A look at the connection running now (pollAdb), so they don't pile up. */
@@ -51,7 +109,7 @@ final class AdbSettingsPages {
         Page page = screen.new Page(screen.ctx.getString(R.string.tab_apps));
         appsPage = page;
         page.footnote = R.string.apps_short;
-        Row connection = page.link(R.string.adb_connection, screen::adbStatusText, this::adbConnection);
+        Row connection = page.link(R.string.adb_connection, this::adbStatusText, this::adbConnection);
         connection.about = R.string.adb_connection_short;
         // Whether it's allowed already, without making the TV ask.
         adbStatus = -1;
@@ -234,7 +292,7 @@ final class AdbSettingsPages {
         for (Page page : screen.pages) page.refresh();
         showHomeButton();
         if (statusRow != null) {
-            statusRow.label.setText(screen.adbStatusText());
+            statusRow.label.setText(adbStatusText());
             statusNote.setText(adbStatus == Adb.OK ? R.string.adb_ready_note : R.string.adb_connect_short);
         }
         if (wirelessRow != null) {
@@ -781,7 +839,8 @@ final class AdbSettingsPages {
                 else MainActivity.showError(screen.host, R.string.adb_failed);
                 page.refresh();
                 showTurnOffAgain();   // gone from Apps once there's nothing left
-                if (all) screen.back();
+                // Back from this page, if it's still the one up (Back may have been pressed while it ran).
+                if (all && screen.pages.get(screen.pages.size() - 1) == page) screen.back();
             });
         });
         for (TvApps.App a : list) {
@@ -800,7 +859,9 @@ final class AdbSettingsPages {
             // The record keeps only what's still off (anything turned on by other means is forgotten too).
             android.content.pm.PackageManager pm = screen.ctx.getPackageManager();
             java.util.Set<String> still = new java.util.HashSet<>();
-            for (String pkg : screen.settings.appsOff()) if (!TvApps.isOn(pm, pkg)) still.add(pkg);
+            for (String pkg : screen.settings.appsOff()) {
+                if (TvApps.installed(pm, pkg) && !TvApps.isOn(pm, pkg)) still.add(pkg);
+            }
             screen.settings.setAppsOff(still);
             for (TvApps.App a : shownApps) a.on = TvApps.isOn(pm, a.pkg);
             if (still.isEmpty()) Toast.makeText(screen.host, R.string.apps_all_on, Toast.LENGTH_SHORT).show();
@@ -864,6 +925,7 @@ final class AdbSettingsPages {
             // Nothing answered with USB debugging off: on now, given WRITE_SECURE_SETTINGS before (TvControl), with
             // no trip to Developer options. adbd takes a moment to open its port: up to ten seconds.
             if (first.status == Adb.OFF && usbOff && TvControl.setDebugging(app, true)) {
+                turnedOnUsb = true;
                 for (int i = 0; i < 20 && System.currentTimeMillis() < deadline - 5000
                         && Adb.check(false).status == Adb.OFF; i++) {
                     try {
@@ -876,6 +938,7 @@ final class AdbSettingsPages {
             }
             // Port 5555 shut, paired for Wireless debugging and that's off: on again (with the permission), and again.
             if (first.status == Adb.OFF && TvControl.bringUpWireless(app)) {
+                turnedOnWireless = true;
                 first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
             }
             Adb.Result r = first;
@@ -886,7 +949,10 @@ final class AdbSettingsPages {
                 adbConnecting = false;
                 adbStatus = r.status;
                 if (r.status == Adb.OK) usedAdb = true;
-                if (screen.host == null) return;
+                if (screen.host == null) {   // Settings closed while this ran: what closing does, now
+                    offWhenDone();
+                    return;
+                }
                 int net = TvControl.networkDebugging(screen.ctx);
                 boolean stillOff = net != -1 ? net != 1
                         : adbSetting(android.provider.Settings.Global.ADB_ENABLED) != 1;
@@ -973,16 +1039,20 @@ final class AdbSettingsPages {
      * by itself from now on), and Settings told. What to tell the phone, in English like the rest of its pages.
      */
     String pairFromPhone(String code, String typedPort) {
-        try {
-            return pairWith(code, typedPort);
-        } finally {
-            screen.handler.post(() -> {   // answered, whatever the answer: the page has done its job unless Settings is open
+        String said = pairWith(code, typedPort);
+        // Paired: the page has done its job, unless Settings is open. Not paired, it's kept for the next code
+        // (most answers ask for one), as long as it was to be.
+        if (PAIRED.equals(said)) {
+            screen.handler.post(() -> {
                 screen.keepLinkUntil = 0;
                 screen.handler.removeCallbacks(screen.stopKeptLink);
                 if (screen.host == null) screen.link.stop();
             });
         }
+        return said;
     }
+
+    private static final String PAIRED = "Paired. On the device, press Back until Vibe Launcher's settings show again.";
 
     String pairWith(String code, String typedPort) {
         Context app = screen.ctx.getApplicationContext();
@@ -1003,7 +1073,7 @@ final class AdbSettingsPages {
         switch (result) {
             case AdbPairing.OK:
                 screen.handler.post(this::afterPairing);
-                return "Paired. On the device, press Back until Vibe Launcher's settings show again.";
+                return PAIRED;
             case AdbPairing.WRONG_CODE:
                 return "The device turned the code down. Check it, or choose Pair device with pairing code again for a "
                         + "new one.";
@@ -1028,6 +1098,10 @@ final class AdbSettingsPages {
             screen.handler.post(() -> {
                 adbStatus = r.status;
                 if (r.status == Adb.OK) usedAdb = true;
+                if (screen.host == null) {   // Settings closed meanwhile (paired from the phone): as closing does
+                    offWhenDone();
+                    return;
+                }
                 for (Page page : screen.pages) page.refresh();
                 if (r.status == Adb.OK) adbWorks();
             });

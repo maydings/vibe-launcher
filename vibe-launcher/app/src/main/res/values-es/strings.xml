@@ -375,6 +375,8 @@
     <string name="anim_normal">Normal</string>
     <string name="anim_fast">Más rápida</string>
     <string name="anim_short">Las animaciones del dispositivo al abrir apps y menús: si son más rápidas, un dispositivo antiguo parece más ágil. Requiere haber permitido Ajustes &gt; Avanzado una vez.</string>
+    <string name="system_screensaver">Salvapantallas del sistema</string>
+    <string name="system_screensaver_short">El salvapantallas propio del dispositivo, en todas las apps: desactivado, nunca aparece. Requiere haber permitido Ajustes &gt; Avanzado una vez.</string>
     <string name="free_memory">Liberar memoria</string>
     <string name="memory_freed">%1$s liberados</string>
     <string name="debloat">Limpieza de apps</string>

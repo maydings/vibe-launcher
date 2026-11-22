@@ -56,6 +56,18 @@ final class Fonts {
     Fonts(Context context) {
         dir = new File(context.getFilesDir(), "fonts");
         prefs = context.getSharedPreferences("fonts", Context.MODE_PRIVATE);
+        sweep(dir);
+    }
+
+    private static boolean swept;
+
+    /** Once, when the launcher starts: what was still arriving when it last stopped, never finished. */
+    private static synchronized void sweep(File dir) {
+        if (swept) return;
+        swept = true;
+        File[] unfinished = dir.listFiles((d, name) -> name.endsWith(".part"));
+        if (unfinished != null) for (File f : unfinished) //noinspection ResultOfMethodCallIgnored
+            f.delete();
     }
 
     File dir() {
@@ -70,20 +82,22 @@ final class Fonts {
     }
 
     /** All of them, in the order they were added, those whose file is there. */
-    synchronized List<Item> list() {
-        List<Item> out = new ArrayList<>();
-        try {
-            JSONArray a = new JSONArray(prefs.getString("items", "[]"));
-            for (int i = 0; i < a.length(); i++) {
-                JSONObject o = a.getJSONObject(i);
-                Item item = new Item(o.getString("id"), o.optString("family"), o.optString("source"),
-                        o.optBoolean("medium"));
-                if (file(item.id, false).exists()) out.add(item);
+    List<Item> list() {
+        synchronized (Fonts.class) {
+            List<Item> out = new ArrayList<>();
+            try {
+                JSONArray a = new JSONArray(prefs.getString("items", "[]"));
+                for (int i = 0; i < a.length(); i++) {
+                    JSONObject o = a.getJSONObject(i);
+                    Item item = new Item(o.getString("id"), o.optString("family"), o.optString("source"),
+                            o.optBoolean("medium"));
+                    if (file(item.id, false).exists()) out.add(item);
+                }
+            } catch (JSONException e) {
+                // unreadable: none
             }
-        } catch (JSONException e) {
-            // unreadable: none
+            return out;
         }
-        return out;
     }
 
     Item get(String id) {
@@ -117,11 +131,16 @@ final class Fonts {
         String id = Long.toString(stamp(), 36);
         File r = file(id, false), m = file(id, true);
         try {
-            if (FontFile.ranges(regular) == null || !regular.renameTo(r) || load(r) == null) return null;
+            if (FontFile.ranges(regular) == null || !regular.renameTo(r)) return null;
+            if (load(r) == null) {   // a font this Android can't use: not kept
+                //noinspection ResultOfMethodCallIgnored
+                r.delete();
+                return null;
+            }
             boolean hasMedium = medium != null && FontFile.ranges(medium) != null && medium.renameTo(m) && load(m) != null;
             if (!hasMedium) //noinspection ResultOfMethodCallIgnored
                 m.delete();
-            synchronized (this) {
+            synchronized (Fonts.class) {   // not this: one is made for each use
                 JSONArray a = new JSONArray(prefs.getString("items", "[]"));
                 a.put(new JSONObject().put("id", id).put("family", family).put("source", source).put("medium", hasMedium));
                 prefs.edit().putString("items", a.toString()).apply();
@@ -142,23 +161,25 @@ final class Fonts {
     }
 
     /** Takes it out, files and all; a choice that was it goes back to Outfit. */
-    synchronized void delete(Context context, String id) {
-        try {
-            JSONArray a = new JSONArray(prefs.getString("items", "[]")), kept = new JSONArray();
-            for (int i = 0; i < a.length(); i++) {
-                if (!a.getJSONObject(i).optString("id").equals(id)) kept.put(a.getJSONObject(i));
+    void delete(Context context, String id) {
+        synchronized (Fonts.class) {
+            try {
+                JSONArray a = new JSONArray(prefs.getString("items", "[]")), kept = new JSONArray();
+                for (int i = 0; i < a.length(); i++) {
+                    if (!a.getJSONObject(i).optString("id").equals(id)) kept.put(a.getJSONObject(i));
+                }
+                prefs.edit().putString("items", kept.toString()).apply();
+            } catch (JSONException ignored) {
             }
-            prefs.edit().putString("items", kept.toString()).apply();
-        } catch (JSONException ignored) {
+            //noinspection ResultOfMethodCallIgnored
+            file(id, false).delete();
+            //noinspection ResultOfMethodCallIgnored
+            file(id, true).delete();
+            VibeSettings settings = new VibeSettings(context);
+            if (id.equals(settings.uiFont())) settings.setUiFont(OUTFIT);
+            if (id.equals(settings.clockFont())) settings.setClockFont(OUTFIT);
+            changed();
         }
-        //noinspection ResultOfMethodCallIgnored
-        file(id, false).delete();
-        //noinspection ResultOfMethodCallIgnored
-        file(id, true).delete();
-        VibeSettings settings = new VibeSettings(context);
-        if (id.equals(settings.uiFont())) settings.setUiFont(OUTFIT);
-        if (id.equals(settings.clockFont())) settings.setClockFont(OUTFIT);
-        changed();
     }
 
     // ---- choices -----------------------------------------------------------------------------------

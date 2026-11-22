@@ -375,6 +375,8 @@
     <string name="anim_normal">Normalna</string>
     <string name="anim_fast">Brža</string>
     <string name="anim_short">Animacije uređaja pri otvaranju aplikacija i izbornika: brže čine da stariji uređaj djeluje žustrije. Zahtijeva da su Postavke &gt; Napredno jednom dopuštene.</string>
+    <string name="system_screensaver">Čuvar zaslona sustava</string>
+    <string name="system_screensaver_short">Vlastiti čuvar zaslona uređaja, u svakoj aplikaciji: isključen se nikad ne pojavljuje. Zahtijeva da su Postavke &gt; Napredno jednom dopuštene.</string>
     <string name="free_memory">Oslobodi memoriju</string>
     <string name="memory_freed">Oslobođeno: %1$s</string>
     <string name="debloat">Čišćenje aplikacija</string>

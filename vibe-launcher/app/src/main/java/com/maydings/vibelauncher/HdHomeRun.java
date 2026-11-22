@@ -58,7 +58,9 @@ final class HdHomeRun {
 
     private static final String DISCOVER = "https://api.hdhomerun.com/discover";
     private static final String GUIDE = "https://api.hdhomerun.com/api/guide.php?DeviceAuth=";
-    private static final long GUIDE_MS = 30L * 60 * 1000;
+    // Under the half hour its backdrops are made again after (Backdrops.ON_NOW_MS): made anew, they're of a
+    // guide asked for anew, not of the one before by a few seconds' difference.
+    private static final long GUIDE_MS = 25L * 60 * 1000;
     /** Guide fillers with nothing worth showing. */
     private static final Set<String> SKIPPED = new HashSet<>(Arrays.asList(
             "paid programming", "to be announced", "sign off", "off air"));

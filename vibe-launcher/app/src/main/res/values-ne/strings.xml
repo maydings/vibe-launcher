@@ -375,6 +375,8 @@
     <string name="anim_normal">सामान्य</string>
     <string name="anim_fast">अझ छिटो</string>
     <string name="anim_short">एप र मेनु खुल्दा यन्त्रका आफ्नै एनिमेसन: छिटा एनिमेसनले पुरानो यन्त्रलाई फुर्तिलो बनाउँछन्। यसका लागि सेटिङ &gt; उन्नतलाई एक पटक अनुमति दिइएको हुनुपर्छ।</string>
+    <string name="system_screensaver">सिस्टम स्क्रिनसेभर</string>
+    <string name="system_screensaver_short">डिभाइसको आफ्नै स्क्रिनसेभर, हरेक एपमा: बन्द हुँदा यो कहिल्यै आउँदैन। यसका लागि सेटिङ &gt; उन्नतलाई एक पटक अनुमति दिइएको हुनुपर्छ।</string>
     <string name="free_memory">मेमोरी खाली गर्नुहोस्</string>
     <string name="memory_freed">%1$s खाली भयो</string>
     <string name="debloat">एपहरूको सफाइ</string>

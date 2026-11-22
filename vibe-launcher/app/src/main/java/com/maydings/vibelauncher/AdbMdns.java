@@ -39,6 +39,8 @@ final class AdbMdns {
         Queue<NsdServiceInfo> toResolve = new ArrayDeque<>();
         boolean[] resolving = {false};
         Object lock = new Object();
+        java.util.Map<String, Integer> failed = new java.util.HashMap<>();   // how often each failed to resolve
+        android.os.Handler retry = new android.os.Handler(android.os.Looper.getMainLooper());
         Runnable[] next = new Runnable[1];
         next[0] = () -> {
             NsdServiceInfo s;
@@ -52,7 +54,21 @@ final class AdbMdns {
                 nsd.resolveService(s, new NsdManager.ResolveListener() {
                     @Override
                     public void onResolveFailed(NsdServiceInfo info, int error) {
-                        done();
+                        // Often only that another was being resolved (one that outlived the last look): it may
+                        // be this TV's own, so it's asked again in a moment, a few times, not dropped.
+                        boolean again;
+                        synchronized (lock) {
+                            String name = String.valueOf(s.getServiceName());
+                            Integer tried = failed.get(name);
+                            again = found.getCount() > 0 && (tried == null || tried < 2);
+                            if (again) {
+                                failed.put(name, tried == null ? 1 : tried + 1);
+                                toResolve.add(s);
+                            }
+                            resolving[0] = false;
+                        }
+                        if (again) retry.postDelayed(next[0], 300);
+                        else next[0].run();
                     }
 
                     @Override
@@ -78,6 +94,7 @@ final class AdbMdns {
                 synchronized (lock) {
                     resolving[0] = false;
                 }
+                next[0].run();   // not this one: the next in the queue
             }
         };
         NsdManager.DiscoveryListener discovery = new NsdManager.DiscoveryListener() {

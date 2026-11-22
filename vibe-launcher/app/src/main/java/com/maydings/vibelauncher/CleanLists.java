@@ -224,13 +224,13 @@ final class CleanLists {
         return s;
     }
 
-    private static int mentions(String text, String name, int weight) {
+    static int mentions(String text, String name, int weight) {
         if (name == null || name.length() < 3 || name.equalsIgnoreCase("unknown")) return 0;
         return text.contains(name.toLowerCase(Locale.ROOT)) ? weight : 0;
     }
 
     /** "Sony" as the lists' folders begin: lower case, words joined by "-". */
-    private static String slug(String s) {
+    static String slug(String s) {
         return s == null ? "" : s.trim().toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]+", "-");
     }
 

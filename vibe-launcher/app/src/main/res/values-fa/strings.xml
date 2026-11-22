@@ -375,6 +375,8 @@
     <string name="anim_normal">عادی</string>
     <string name="anim_fast">سریع‌تر</string>
     <string name="anim_short">انیمیشن‌های خود دستگاه هنگام باز شدن برنامه‌ها و منوها: سریع‌ترها دستگاه قدیمی را چابک‌تر نشان می‌دهند. لازم است تنظیمات &gt; پیشرفته یک بار اجازه داده شده باشد.</string>
+    <string name="system_screensaver">محافظ صفحهٔ سیستم</string>
+    <string name="system_screensaver_short">محافظ صفحهٔ خود دستگاه، در همهٔ برنامه‌ها: خاموش که باشد هرگز نمی‌آید. لازم است تنظیمات &gt; پیشرفته یک بار اجازه داده شده باشد.</string>
     <string name="free_memory">آزاد کردن حافظه</string>
     <string name="memory_freed">%1$s آزاد شد</string>
     <string name="debloat">پاک‌سازی برنامه‌ها</string>

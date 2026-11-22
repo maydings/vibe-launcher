@@ -88,7 +88,9 @@ Outfit, the TV's own, or any of Google's 2,000 fonts (browsed on the TV, those f
 shows in two fonts at once.
 
 Leave Home alone for a minute and it turns into a slideshow of all of it; or of just the app or folder you were on,
-or of a list of its own that you tick in the Library (Settings → Appearance → Screensaver backdrops).
+or of a list of its own that you tick in the Library (Settings → Appearance → Screensaver backdrops). The TV's own
+screensaver, which is Android's and comes up in any app, is separate: Settings → Appearance → System screensaver turns
+it off or on (once Settings → Advanced has been allowed).
 
 ## Cleaning up your TV
 

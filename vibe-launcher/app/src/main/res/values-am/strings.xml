@@ -375,6 +375,8 @@
     <string name="anim_normal">መደበኛ</string>
     <string name="anim_fast">ፈጣን</string>
     <string name="anim_short">መተግበሪያዎችና ምናሌዎች ሲከፈቱ የመሣሪያው የራሱ እነማዎች፦ ፈጣኖቹ የቆየ መሣሪያን ቀልጣፋ ያስመስላሉ። ቅንብሮች &gt; የላቀ አንድ ጊዜ መፈቀድ አለበት።</string>
+    <string name="system_screensaver">የሥርዓቱ ስክሪን ቆጣቢ</string>
+    <string name="system_screensaver_short">የመሣሪያው የራሱ ስክሪን ቆጣቢ፣ በሁሉም መተግበሪያ ውስጥ፦ ሲጠፋ ፈጽሞ አይመጣም። ቅንብሮች &gt; የላቀ አንድ ጊዜ መፈቀድ አለበት።</string>
     <string name="free_memory">ማህደረ ትውስታ አስለቅቅ</string>
     <string name="memory_freed">%1$s ተለቅቋል</string>
     <string name="debloat">መተግበሪያዎችን ማጽዳት</string>

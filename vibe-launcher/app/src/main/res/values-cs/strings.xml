@@ -375,6 +375,8 @@
     <string name="anim_normal">Normální</string>
     <string name="anim_fast">Rychlejší</string>
     <string name="anim_short">Animace zařízení při otevírání aplikací a nabídek: rychlejší působí na starším zařízení svižněji. Vyžaduje, aby bylo Nastavení &gt; Pokročilé jednou povoleno.</string>
+    <string name="system_screensaver">Systémový spořič</string>
+    <string name="system_screensaver_short">Vlastní spořič zařízení, v každé aplikaci: je-li vypnutý, nikdy se nespustí. Vyžaduje, aby bylo Nastavení &gt; Pokročilé jednou povoleno.</string>
     <string name="free_memory">Uvolnit paměť</string>
     <string name="memory_freed">Uvolněno: %1$s</string>
     <string name="debloat">Vyčištění aplikací</string>

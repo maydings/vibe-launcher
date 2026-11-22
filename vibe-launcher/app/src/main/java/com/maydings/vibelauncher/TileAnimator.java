@@ -43,6 +43,10 @@ class TileAnimator extends DefaultItemAnimator {
         cancel(holder);
         int dx = toX - fromX, dy = toY - fromY;
         if (dx == 0 && dy == 0) {
+            // Laid out where it's drawn now (sent back before its spring was through): that's its place, and
+            // what the spring left it shifted by goes, or it would stay drawn that far off it.
+            v.setTranslationX(0f);
+            v.setTranslationY(0f);
             dispatchMoveFinished(holder);
             return false;
         }

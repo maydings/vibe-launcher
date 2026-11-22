@@ -127,18 +127,27 @@ final class FolderView extends FrameLayout {
     }
 
     /** Focuses the tile at position (kept in range), once it's laid out. */
+    private OnLayoutChangeListener waitingToFocus;
+
     void focus(int position) {
         if (adapter.getItemCount() == 0) return;
         int pos = Math.max(0, Math.min(position, adapter.getItemCount() - 1));
         grid.scrollToPosition(pos);
         grid.post(() -> {
+            // One waiting from before is for a tile asked for earlier: it goes, or it would take the focus
+            // there whenever the grid is next laid out.
+            if (waitingToFocus != null) grid.removeOnLayoutChangeListener(waitingToFocus);
+            waitingToFocus = null;
             if (!focusTile(pos)) {   // not laid out yet (just opened): once it is
-                grid.addOnLayoutChangeListener(new OnLayoutChangeListener() {
+                waitingToFocus = new OnLayoutChangeListener() {
                     @Override
                     public void onLayoutChange(View v, int l, int t, int r, int b, int ol, int ot, int or, int ob) {
-                        if (focusTile(pos)) grid.removeOnLayoutChangeListener(this);
+                        if (!focusTile(pos)) return;
+                        grid.removeOnLayoutChangeListener(this);
+                        if (waitingToFocus == this) waitingToFocus = null;
                     }
-                });
+                };
+                grid.addOnLayoutChangeListener(waitingToFocus);
             }
         });
     }

@@ -12,7 +12,7 @@ final class CpuInfo {
 
     private long lastTotal = -1, lastIdle;
 
-    /** Busy share since the previous call, 0..1; -1 when /proc/stat can't be read (or on the first call). */
+    /** Busy share since the previous call, 0..1 (0 on the first, with none before it); -1 when /proc/stat can't be read. */
     float usage() {
         long[] t;
         try (BufferedReader r = new BufferedReader(new FileReader("/proc/stat"))) {

@@ -375,6 +375,8 @@
     <string name="anim_normal">ပုံမှန်</string>
     <string name="anim_fast">ပိုမြန်</string>
     <string name="anim_short">အက်ပ်များနှင့် မီနူးများ ဖွင့်ချိန် စက်၏ ကိုယ်ပိုင် လှုပ်ရှားပုံများ- ပိုမြန်သည်များက စက်ဟောင်းကို ပိုသွက်သည်ဟု ခံစားရစေသည်။ ဆက်တင်များ &gt; အဆင့်မြင့် ကို တစ်ကြိမ် ခွင့်ပြုထားရန် လိုသည်။</string>
+    <string name="system_screensaver">စနစ်၏ မျက်နှာပြင်ထိန်း</string>
+    <string name="system_screensaver_short">စက်၏ကိုယ်ပိုင် မျက်နှာပြင်ထိန်း၊ အက်ပ်တိုင်းတွင်။ ပိတ်ထားလျှင် ဘယ်တော့မှ မပေါ်ပါ။ ဆက်တင်များ &gt; အဆင့်မြင့် ကို တစ်ကြိမ် ခွင့်ပြုထားရန် လိုသည်။</string>
     <string name="free_memory">မှတ်ဉာဏ် ရှင်းရန်</string>
     <string name="memory_freed">%1$s ရှင်းပြီး</string>
     <string name="debloat">အက်ပ်များ ရှင်းလင်းရန်</string>

@@ -375,6 +375,8 @@
     <string name="anim_normal">عادية</string>
     <string name="anim_fast">أسرع</string>
     <string name="anim_short">الرسوم المتحركة في الجهاز عند فتح التطبيقات والقوائم: الأسرع منها تجعل الجهاز القديم يبدو أسرع. يتطلّب أن يكون قد سُمح بالإعدادات &gt; متقدم مرة واحدة.</string>
+    <string name="system_screensaver">شاشة توقف النظام</string>
+    <string name="system_screensaver_short">شاشة التوقف الخاصة بالجهاز، في كل التطبيقات: عند إيقافها لا تظهر أبدًا. يتطلّب أن يكون قد سُمح بالإعدادات &gt; متقدم مرة واحدة.</string>
     <string name="free_memory">تحرير الذاكرة</string>
     <string name="memory_freed">تم تحرير %1$s</string>
     <string name="debloat">تنظيف التطبيقات</string>

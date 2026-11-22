@@ -375,6 +375,8 @@
     <string name="anim_normal">இயல்பு</string>
     <string name="anim_fast">வேகமாக</string>
     <string name="anim_short">ஆப்ஸும் மெனுக்களும் திறக்கும்போது சாதனத்தின் சொந்த அனிமேஷன்கள்: வேகமானவை பழைய சாதனத்தைச் சுறுசுறுப்பாக உணரவைக்கும். இதற்கு அமைப்புகள் &gt; மேம்பட்டவை ஒருமுறை அனுமதிக்கப்பட்டிருக்க வேண்டும்.</string>
+    <string name="system_screensaver">சிஸ்டம் ஸ்கிரீன்சேவர்</string>
+    <string name="system_screensaver_short">சாதனத்தின் சொந்த ஸ்கிரீன்சேவர், எல்லா ஆப்ஸிலும்: முடக்கப்பட்டால் அது ஒருபோதும் வராது. இதற்கு அமைப்புகள் &gt; மேம்பட்டவை ஒருமுறை அனுமதிக்கப்பட்டிருக்க வேண்டும்.</string>
     <string name="free_memory">நினைவகத்தைக் காலியாக்கு</string>
     <string name="memory_freed">%1$s காலியாக்கப்பட்டது</string>
     <string name="debloat">ஆப்ஸைச் சுத்தம் செய்தல்</string>

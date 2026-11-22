@@ -27,15 +27,17 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="29" />
 
-    <!-- Android 11+ hides other apps unless declared: the launcher lists everything with a launcher icon. -->
-    <!-- Settings > Apps lists every app on the TV, system parts with no tile too, to turn them off (TvApps):
-         Android 11+ hides those without this. -->
-    <!-- Granted by the TV's own ADB the first time Settings > Apps connects (pm grant), never by installing:
-         debugging on and off, and the animation speeds, and nothing else (TvControl). -->
+    <!-- Granted by the TV's own ADB the first time Settings > Apps connects (pm grant), never by installing.
+         Used for debugging on and off, the animation speeds, the TV's own screensaver on or off, turning on
+         Vibe Launcher's own Home button service, and ad blocking's Private DNS; nothing else (TvControl,
+         AdBlock). -->
     <uses-permission
         android:name="android.permission.WRITE_SECURE_SETTINGS"
         xmlns:tools="http://schemas.android.com/tools"
         tools:ignore="ProtectedPermissions" />
+    <!-- Android 11+ hides other apps unless declared: the launcher lists everything with a launcher icon. -->
+    <!-- Settings > Apps lists every app on the TV, system parts with no tile too, to turn them off (TvApps):
+         Android 11+ hides those without this. -->
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         xmlns:tools="http://schemas.android.com/tools"
@@ -114,9 +116,6 @@
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- market://launch?id=<package>: how the TV's phone-remote service opens an app by its package name.
-             The stock launcher serves it; with that off (adb) this does. Where it's still on (no
-             adb), Android lets the user pick between the two. -->
         <!-- Vibe Launcher settings, over Home in its task (SettingsActivity). -->
         <activity
             android:name=".SettingsActivity"
@@ -165,6 +164,9 @@
             android:noHistory="true"
             android:taskAffinity=""
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- market://launch?id=<package>: how the TV's phone-remote service opens an app by its package name.
+             The stock launcher serves it; with that off (adb) this does. Where it's still on (no
+             adb), Android lets the user pick between the two. -->
         <activity
             android:name=".AppLaunchActivity"
             android:exported="true"

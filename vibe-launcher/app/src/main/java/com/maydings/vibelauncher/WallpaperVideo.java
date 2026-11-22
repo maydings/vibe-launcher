@@ -64,6 +64,7 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
             listener.onShowing();
             return;
         }
+        paused = false;   // asked to play: a pause from before (off the dock) was for the one before
         start();
     }
 

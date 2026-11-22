@@ -375,6 +375,8 @@
     <string name="anim_normal">Обычная</string>
     <string name="anim_fast">Быстрее</string>
     <string name="anim_short">Анимации устройства при открытии приложений и меню: с более быстрыми старое устройство кажется шустрее. Нужно, чтобы раздел «Настройки &gt; Дополнительно» был разрешён хотя бы раз.</string>
+    <string name="system_screensaver">Системная заставка</string>
+    <string name="system_screensaver_short">Собственная заставка устройства, в любом приложении: выключенная, она не появляется. Нужно, чтобы раздел «Настройки &gt; Дополнительно» был разрешён хотя бы раз.</string>
     <string name="free_memory">Освободить память</string>
     <string name="memory_freed">Освобождено: %1$s</string>
     <string name="debloat">Очистка приложений</string>

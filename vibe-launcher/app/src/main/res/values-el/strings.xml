@@ -375,6 +375,8 @@
     <string name="anim_normal">Κανονική</string>
     <string name="anim_fast">Ταχύτερη</string>
     <string name="anim_short">Τα κινούμενα εφέ της συσκευής όταν ανοίγουν εφαρμογές και μενού: τα πιο γρήγορα κάνουν μια παλιότερη συσκευή να φαίνεται πιο ζωηρή. Χρειάζεται να έχει επιτραπεί μία φορά το Ρυθμίσεις &gt; Για προχωρημένους.</string>
+    <string name="system_screensaver">Προφύλαξη οθόνης συστήματος</string>
+    <string name="system_screensaver_short">Η προφύλαξη οθόνης της ίδιας της συσκευής, σε κάθε εφαρμογή: απενεργοποιημένη, δεν εμφανίζεται ποτέ. Χρειάζεται να έχει επιτραπεί μία φορά το Ρυθμίσεις &gt; Για προχωρημένους.</string>
     <string name="free_memory">Απελευθέρωση μνήμης</string>
     <string name="memory_freed">Ελευθερώθηκαν %1$s</string>
     <string name="debloat">Καθαρισμός εφαρμογών</string>

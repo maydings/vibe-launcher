@@ -60,6 +60,9 @@ final class Weather {
     private Weather() {
     }
 
+    /** When the TV's own place may be asked for again, after neither service answered. */
+    private static volatile long autoAgainAt;
+
     private static SharedPreferences cache(Context c) {
         return c.getSharedPreferences("weather_cache", Context.MODE_PRIVATE);
     }
@@ -86,11 +89,13 @@ final class Weather {
         if (now - p.getLong("autoAt", 0) < PLACE_MS && p.contains("autoName")) {
             return new Place(p.getString("autoName", ""), p.getFloat("autoLat", 0), p.getFloat("autoLon", 0));
         }
-        for (String url : IP_LOCATION) {
+        boolean wait = now < autoAgainAt;   // neither answered a moment ago: not asked with every look
+        for (String url : wait ? new String[0] : IP_LOCATION) {
             try {
                 JSONObject o = new JSONObject(Http.getText(url, Collections.emptyMap()));
                 if (!o.has("latitude") || !o.has("longitude")) continue;
-                Place place = new Place(o.optString("city", ""), o.getDouble("latitude"), o.getDouble("longitude"));
+                Place place = new Place(o.isNull("city") ? "" : o.optString("city", ""), o.getDouble("latitude"),
+                        o.getDouble("longitude"));
                 p.edit().putLong("autoAt", now).putString("autoName", place.name)
                         .putFloat("autoLat", (float) place.lat).putFloat("autoLon", (float) place.lon).apply();
                 return place;
@@ -98,7 +103,10 @@ final class Weather {
                 // the next one
             }
         }
-        return null;
+        // Neither answered (offline, or both turned away): where it last was, which is most likely still right.
+        if (!wait) autoAgainAt = now + 10 * 60_000;
+        if (!p.contains("autoName")) return null;
+        return new Place(p.getString("autoName", ""), p.getFloat("autoLat", 0), p.getFloat("autoLon", 0));
     }
 
     /** The automatic city as last found, without going online (for Settings to show); null when not known. */

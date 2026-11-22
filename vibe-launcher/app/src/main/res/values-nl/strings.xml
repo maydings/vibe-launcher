@@ -375,6 +375,8 @@
     <string name="anim_normal">Normaal</string>
     <string name="anim_fast">Sneller</string>
     <string name="anim_short">De animaties van het apparaat bij het openen van apps en menu\'s: snellere laten een ouder apparaat vlotter aanvoelen. Vereist dat Instellingen &gt; Geavanceerd een keer is toegestaan.</string>
+    <string name="system_screensaver">Screensaver van het systeem</string>
+    <string name="system_screensaver_short">De eigen screensaver van het apparaat, in elke app: uitgeschakeld verschijnt hij nooit. Vereist dat Instellingen &gt; Geavanceerd een keer is toegestaan.</string>
     <string name="free_memory">Geheugen vrijmaken</string>
     <string name="memory_freed">%1$s vrijgemaakt</string>
     <string name="debloat">Apps opruimen</string>

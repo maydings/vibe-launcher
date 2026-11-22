@@ -375,6 +375,8 @@
     <string name="anim_normal">सामान्य</string>
     <string name="anim_fast">तेज़</string>
     <string name="anim_short">ऐप्स और मेन्यू खुलते समय डिवाइस के अपने एनिमेशन: तेज़ एनिमेशन पुराने डिवाइस को फुर्तीला महसूस कराते हैं। इसके लिए सेटिंग्स &gt; उन्नत को एक बार अनुमति मिली होनी चाहिए।</string>
+    <string name="system_screensaver">सिस्टम स्क्रीनसेवर</string>
+    <string name="system_screensaver_short">डिवाइस का अपना स्क्रीनसेवर, हर ऐप में: बंद होने पर यह कभी नहीं आता। इसके लिए सेटिंग्स &gt; उन्नत को एक बार अनुमति मिली होनी चाहिए।</string>
     <string name="free_memory">मेमोरी खाली करें</string>
     <string name="memory_freed">%1$s खाली हुई</string>
     <string name="debloat">ऐप्स की सफ़ाई</string>

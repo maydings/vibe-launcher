@@ -375,6 +375,8 @@
     <string name="anim_normal">ធម្មតា</string>
     <string name="anim_fast">លឿនជាង</string>
     <string name="anim_short">ចលនារបស់ឧបករណ៍ផ្ទាល់ ពេលបើកកម្មវិធី និងម៉ឺនុយ៖ ចលនាលឿនជាងធ្វើឱ្យឧបករណ៍ចាស់មានអារម្មណ៍រហ័សជាង។ ត្រូវការឱ្យ ការកំណត់ &gt; កម្រិតខ្ពស់ ត្រូវបានអនុញ្ញាតម្ដង។</string>
+    <string name="system_screensaver">ធាតុរក្សាអេក្រង់របស់ប្រព័ន្ធ</string>
+    <string name="system_screensaver_short">ធាតុរក្សាអេក្រង់របស់ឧបករណ៍ផ្ទាល់ ក្នុងគ្រប់កម្មវិធី៖ ពេលបិទ វាមិនលេចឡើងឡើយ។ ត្រូវការឱ្យ ការកំណត់ &gt; កម្រិតខ្ពស់ ត្រូវបានអនុញ្ញាតម្ដង។</string>
     <string name="free_memory">សម្អាតអង្គចងចាំ</string>
     <string name="memory_freed">បានសម្អាត %1$s</string>
     <string name="debloat">សម្អាតកម្មវិធី</string>

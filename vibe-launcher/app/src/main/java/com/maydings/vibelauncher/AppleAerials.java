@@ -127,10 +127,14 @@ final class AppleAerials {
     private static volatile boolean keptRead;
 
     /** Apple's list, from the copy kept here when it's under a week old, else from Apple (then kept). */
-    private static String listText(Context context) throws IOException {
+    private static synchronized String listText(Context context) throws IOException {
         File kept = new File(context.getCacheDir(), "apple-aerials.json");
+        long now = System.currentTimeMillis();
+        // As read before, while the kept copy is the same one and still does: it's asked for with every video.
+        boolean does = now - kept.lastModified() < LIST_KEEP_MS || now < askAgainAt;
+        if (heldText != null && kept.lastModified() == heldOf && does) return heldText;
         String old = keptText(kept);
-        if (old != null && System.currentTimeMillis() - kept.lastModified() < LIST_KEEP_MS) return old;
+        if (old != null && does) return hold(old, kept);
         try {
             String text = fromTar(Http.get(LIST, 16 * 1024 * 1024), "entries.json");
             new JSONObject(text);   // only a whole list is kept
@@ -144,12 +148,24 @@ final class AppleAerials {
                 part.delete();
             }
             keptRead = true;
-            return text;
+            return hold(text, kept);
         } catch (IOException | JSONException e) {
-            // Apple didn't answer (or not with a list): an older copy beats none.
-            if (old != null) return old;
+            // Apple didn't answer (or not with a list): an older copy beats none, and it's not asked again
+            // with the next video but in ten minutes.
+            askAgainAt = now + 10 * 60_000;
+            if (old != null) return hold(old, kept);
             throw e instanceof IOException ? (IOException) e : new IOException(e);
         }
+    }
+
+    /** The list as last read, the kept copy it's of (by its time), and when Apple may be asked again after not answering. */
+    private static String heldText;
+    private static long heldOf, askAgainAt;
+
+    private static String hold(String text, File kept) {
+        heldText = text;
+        heldOf = kept.lastModified();
+        return text;
     }
 
     /** The kept copy's text, or null when there's none or it isn't a whole list (then it's deleted). */

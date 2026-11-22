@@ -375,6 +375,8 @@
     <string name="anim_normal">Normal</string>
     <string name="anim_fast">Raskere</string>
     <string name="anim_short">Enhetens egne animasjoner når apper og menyer åpnes: raskere får en eldre enhet til å føles kvikkere. Krever at Innstillinger &gt; Avansert er tillatt én gang.</string>
+    <string name="system_screensaver">Systemets skjermsparer</string>
+    <string name="system_screensaver_short">Enhetens egen skjermsparer, i alle apper: slått av kommer den aldri frem. Krever at Innstillinger &gt; Avansert er tillatt én gang.</string>
     <string name="free_memory">Frigjør minne</string>
     <string name="memory_freed">%1$s frigjort</string>
     <string name="debloat">Opprydding i apper</string>

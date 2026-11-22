@@ -115,7 +115,6 @@ final class TopBarMenus {
         home.showMenu(popup, panel, rows, home.btnWifi, Gravity.END);
     }
 
-    /** Dropdown under the gear: the launcher's own settings, or the system's. */
     /**
      * The Settings menu's Free memory: "am kill-all" (the background apps closed, as Android does when it runs short)
      * over the TV's ADB, without asking it; then how much memory came back, or that it didn't take.
@@ -141,6 +140,7 @@ final class TopBarMenus {
         }, "FreeMemory").start();
     }
 
+    /** Dropdown under the gear: the launcher's own settings, or the system's. */
     void showSettingsMenu(View anchor) {
         View panel = home.getLayoutInflater().inflate(R.layout.popup_inputs, home.root, false);
         LinearLayout rows = panel.findViewById(R.id.rows);
@@ -228,7 +228,7 @@ final class TopBarMenus {
                 // Every digit as the font's widest: its digits aren't all one width ("13" is wider than "16").
                 TextView value = row.findViewById(R.id.value);
                 values = Math.max(values, value.getPaint().measureText(
-                        ((String) row.getTag()).replaceAll("\\d", widestDigit(value))));
+                        MainActivity.widestDigits((String) row.getTag(), value.getPaint())));
             }
         }
         float dp = home.getResources().getDisplayMetrics().density;
@@ -245,7 +245,9 @@ final class TopBarMenus {
     /** A figure in GB with at least two significant digits: "8.5" under 10, else whole ("11", "128"). */
     static String gb(float value) {
         float tenths = Math.round(value * 10) / 10f;
-        return tenths < 10 ? String.format(Locale.getDefault(), "%.1f", tenths) : String.valueOf(Math.round(value));
+        // Both in the language's own digits: one written its way and the other not read as two numbers' worth.
+        return tenths < 10 ? String.format(Locale.getDefault(), "%.1f", tenths)
+                : String.format(Locale.getDefault(), "%d", Math.round(value));
     }
 
     /**
@@ -254,14 +256,6 @@ final class TopBarMenus {
      */
     String widestFigures(float total) {
         return total < 99.5f ? home.getString(R.string.ram_value, gb(8.5f), gb(16)) : home.getString(R.string.ram_value, gb(100), gb(128));
-    }
-
-    static String widestDigit(TextView text) {
-        String widest = "0";
-        for (char d = '1'; d <= '9'; d++) {
-            if (text.getPaint().measureText(String.valueOf(d)) > text.getPaint().measureText(widest)) widest = String.valueOf(d);
-        }
-        return widest;
     }
 
     void updateCpu(View row, float usage) {

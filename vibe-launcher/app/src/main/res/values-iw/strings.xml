@@ -375,6 +375,8 @@
     <string name="anim_normal">רגילה</string>
     <string name="anim_fast">מהירה יותר</string>
     <string name="anim_short">האנימציות של המכשיר כשנפתחות אפליקציות ותפריטים: מהירות יותר גורמות למכשיר ישן להרגיש זריז יותר. דורש שההגדרות &gt; מתקדם אושרו פעם אחת.</string>
+    <string name="system_screensaver">שומר המסך של המערכת</string>
+    <string name="system_screensaver_short">שומר המסך של המכשיר עצמו, בכל אפליקציה: כשהוא כבוי הוא לא מופיע אף פעם. דורש שההגדרות &gt; מתקדם אושרו פעם אחת.</string>
     <string name="free_memory">פינוי זיכרון</string>
     <string name="memory_freed">פונו %1$s</string>
     <string name="debloat">ניקוי אפליקציות</string>

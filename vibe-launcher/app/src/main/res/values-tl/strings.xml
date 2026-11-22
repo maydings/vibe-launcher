@@ -375,6 +375,8 @@
     <string name="anim_normal">Normal</string>
     <string name="anim_fast">Mas mabilis</string>
     <string name="anim_short">Ang sariling mga animation ng device habang nagbubukas ang mga app at menu: pinapabilis ng mas mabibilis ang pakiramdam ng lumang device. Kailangang napayagan na nang isang beses ang Settings &gt; Advanced.</string>
+    <string name="system_screensaver">Screensaver ng system</string>
+    <string name="system_screensaver_short">Ang sariling screensaver ng device, sa bawat app: kapag naka-off, hindi ito lumalabas. Kailangang napayagan na nang isang beses ang Settings &gt; Advanced.</string>
     <string name="free_memory">Magbakante ng memory</string>
     <string name="memory_freed">Nabakante ang %1$s</string>
     <string name="debloat">Paglilinis ng mga app</string>

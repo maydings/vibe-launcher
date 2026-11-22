@@ -375,6 +375,8 @@
     <string name="anim_normal">正常</string>
     <string name="anim_fast">更快</string>
     <string name="anim_short">開啟應用程式和選單時裝置本身的動畫：調快後舊裝置會顯得更靈敏。需要曾經允許過一次「設定 &gt; 進階」。</string>
+    <string name="system_screensaver">系統螢幕保護程式</string>
+    <string name="system_screensaver_short">裝置本身的螢幕保護程式，適用於所有應用程式：關閉後不再出現。需要曾經允許過一次「設定 &gt; 進階」。</string>
     <string name="free_memory">釋放記憶體</string>
     <string name="memory_freed">已釋放 %1$s</string>
     <string name="debloat">清理應用程式</string>

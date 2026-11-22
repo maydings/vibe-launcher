@@ -207,7 +207,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private View backdropTitleBox;
     private ImageView backdropLogo;
     private TextView backdropTitle, backdropMeta, backdropSynopsis, backdropGenres;
-    /** A film or show's details as TMDB gave them with its backdrop (Tmdb.info): read from what's kept. */
     /** The menus the top bar's pills open: the network's, the system's, the inputs'. */
     final TopBarMenus topBarMenus = new TopBarMenus(this);
     /** The menus a tile opens: a long press's, Edit's, Backdrops'. */
@@ -216,6 +215,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private DockDecoration dockDecoration;
     /** The top bar's frost and tint; its opacity follows Appearance > Top bar opacity. */
     private FrostView frost;
+    /** A film or show's details as TMDB gave them with its backdrop (Tmdb.info): read from what's kept. */
     private Tmdb titleDetails;
     private String titleShown;   // the title the backdrop's logo and details are for now, or null
     private Bitmap logoShown;
@@ -410,6 +410,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         backdropSynopsis = findViewById(R.id.backdropSynopsis);
         backdropGenres = findViewById(R.id.backdropGenres);
         titleDetails = new Tmdb(this);
+        Context app = getApplicationContext();
+        new Thread(() -> TvControl.offIfLeftOn(app), "DebuggingOff").start();   // after a restart from Settings
         wallpapers = Wallpapers.get(this);
         flightBoard = findViewById(R.id.flightBoard);
         // A video backdrop under the board isn't played for nobody: held still while it's covered.
@@ -1120,6 +1122,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 heroName.animate().alpha(1f).translationX(0f).setDuration(200).start();
             }).start();
         } else {
+            // Back on the tile whose name it has, perhaps while a change to another's was fading out: that
+            // change is called off, or it would put the other's name here when it ended.
+            heroName.animate().cancel();
+            heroName.setAlpha(1f);
+            heroName.setTranslationX(0f);
             heroName.setY(y);
         }
         showBackdrop(listKeyAt(position), pkg, color);
@@ -1139,7 +1146,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         char kind = pick(key, pkg != null);
         boolean same = java.util.Objects.equals(key, backdropKey) && java.util.Objects.equals(pkg, backdropPkg);
         if (kind != Wallpapers.CONTENT) {
-            if (same && kind == backdropKind && wallpaperShown) return;   // its list's one, showing already
+            // Its list's one, showing already. Not when the backdrop's been taken down meanwhile (Home made
+            // again, memory given back): a tile with no app and no list of its own matches nothing-showing too.
+            if (same && kind == backdropKind && wallpaperShown && backdrop.getAlpha() > 0f) return;
             backdropPkg = pkg;
             backdropKey = key;
             backdropColor = color;
@@ -1187,10 +1196,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         return pick(key, true) == Wallpapers.CONTENT;
     }
 
-    /** Shows a still (cross-fading from the one before, if any), or the glow in this colour. */
     /** reportFullyDrawn sent: Home's first picture is up (fadeBackdrop). */
     private boolean reportedDrawn;
 
+    /** Shows a still (cross-fading from the one before, if any), or the glow in this colour. */
     private void fadeBackdrop(Bitmap bitmap, Bitmap logo, String title, int color) {
         stillShown = bitmap != null;
         // A custom wallpaper's picture comes through here too (showWallpaperItem); anything else ends one.
@@ -1363,13 +1372,15 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             showFlights();
             return;
         }
+        if (isDestroyed()) return;   // a late answer for a Home that's gone: its thread is shut down
         if (wallpaperThread == null) wallpaperThread = java.util.concurrent.Executors.newSingleThreadExecutor();
         String pkg = backdropPkg;
         wallpaperThread.execute(() -> {
             Bitmap bitmap = wallpapers.backdrop(item);   // darkened as backdrops are
             handler.post(() -> {
                 if (!heroShown && !slideshow) return;
-                if (!slideshow && pkg != null && !pkg.equals(backdropPkg)) return;   // moved on meanwhile
+                // Moved on meanwhile (the All apps tile has no app: none is as good a match as one).
+                if (!slideshow && !java.util.Objects.equals(pkg, backdropPkg)) return;
                 if (bitmap == null) {
                     fadeBackdrop(null, null, null, color);
                     return;
@@ -1834,17 +1845,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         showPictureOnly(SoundEffectConstants.NAVIGATION_DOWN);
     }
 
-    /** Up from the dock straight to the top bar: the pill above the tile, or the first. */
-    private void focusTopBar() {
-        View card = getCurrentFocus();
-        View above = card != null ? card.focusSearch(View.FOCUS_UP) : null;
-        View[] bar = topBarPills();
-        if (!isPill(above) && bar.length > 0) above = bar[0];
-        if (above == null) return;
-        above.requestFocus();
-        grid.playSoundEffect(SoundEffectConstants.NAVIGATION_UP);
-    }
-
     private void cancelPictureSoon() {
         pictureSoon = false;
         handler.removeCallbacks(showPictureSoon);
@@ -2080,15 +2080,13 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     /**
-     * How much of the Play pill shows its focused look, from 0 to 1: revealed from the side the
-     * language reads from (the right for Arabic, Hebrew, Persian and Urdu).
+     * How much of the Play pill shows its focused look, from 0 to 1: revealed from the side the screen is
+     * laid out from, as everything else on it is (the left, in every language: Vibe Launcher isn't mirrored).
      */
     private void setHoldFill(float fill) {
         int w = holdPlayFill.getWidth(), h = holdPlayFill.getHeight();
         int filled = Math.round(w * Math.max(0f, Math.min(1f, fill)));
-        Locale locale = getResources().getConfiguration().getLocales().get(0);
-        boolean rtl = TextUtils.getLayoutDirectionFromLocale(locale) == View.LAYOUT_DIRECTION_RTL;
-        holdPlayFill.setClipBounds(rtl ? new Rect(w - filled, 0, w, h) : new Rect(0, 0, filled, h));
+        holdPlayFill.setClipBounds(new Rect(0, 0, filled, h));
     }
 
     /** OK let go before the button is full: it drains, and nothing opens. */
@@ -2144,7 +2142,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (i.resolveActivity(getPackageManager()) == null) throw new ActivityNotFoundException();
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
-        } catch (URISyntaxException | ActivityNotFoundException | SecurityException e) {
+        } catch (URISyntaxException | RuntimeException e) {   // any way another app's link can't be opened
             Intent app = pkg == null ? null : getPackageManager().getLeanbackLaunchIntentForPackage(pkg);
             if (app == null && pkg != null) app = getPackageManager().getLaunchIntentForPackage(pkg);
             if (app != null) open(app);
@@ -2668,7 +2666,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      * The text with each digit as the widest of its script's ten (the digits differ in width). Any script:
      * the time can come in Arabic-Indic or Devanagari digits, which a plain [0-9] would miss.
      */
-    private static String widestDigits(String text, Paint paint) {
+    static String widestDigits(String text, Paint paint) {
         StringBuilder out = new StringBuilder(text.length());
         char zero = 0, widest = 0;
         for (int i = 0; i < text.length(); i++) {
@@ -2796,7 +2794,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         overridePendingTransition(R.anim.settings_in, R.anim.settings_hold);
     }
 
-    /** A note with OK (named okLabel) and Cancel, in the update dialog's glass. Back counts as Cancel. */
     /**
      * Whether this screen can't show a window any more: closing, or closed (work that took a while can end
      * after it has, and a window opened on it then fails).
@@ -2835,6 +2832,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (activity != null) showError(activity, activity.getString(text));
     }
 
+    /** A note with OK (named okLabel) and Cancel, in the update dialog's glass. Back counts as Cancel. */
     static void showNotice(Activity activity, int title, CharSequence text, int okLabel, Runnable ok,
             Runnable cancel) {
         if (gone(activity)) return;
@@ -3132,6 +3130,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             showWeather(null);
             return;
         }
+        if (isDestroyed()) return;
         if (weatherThread == null) weatherThread = java.util.concurrent.Executors.newSingleThreadExecutor();
         Context app = getApplicationContext();
         VibeSettings s = settings;
@@ -3179,12 +3178,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     /** The top bar's look as last applied (style, clock, date): changed in Settings, applied as Home comes back. */
     private String topBarApplied = "";
 
-    /**
-     * The full top bar (a frosted strip: the big clock, the date, the weather, the pills with their names), or the
-     * minimal one (Appearance > Top bar): no strip, a small clock and the weather's icon and number at the top left,
-     * and the three buttons as small round icons at the top right, over the background, always up. The same views
-     * either way, so the buttons open the same menus; their names stay as what's spoken for them.
-     */
     /**
      * The minimal bar's time and weather on a plate like its round buttons' while the flights' map is behind them
      * (they're lost in its lines and names otherwise); bare over a picture, as ever. Drawn around them, past the
@@ -3241,6 +3234,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         clockPlate();
     }
 
+    /**
+     * The full top bar (a frosted strip: the big clock, the date, the weather, the pills with their names), or the
+     * minimal one (Appearance > Top bar): no strip, a small clock and the weather's icon and number at the top left,
+     * and the three buttons as small round icons at the top right, over the background, always up. The same views
+     * either way, so the buttons open the same menus; their names stay as what's spoken for them.
+     */
     void applyTopBarStyle() {
         boolean minimal = settings.topBarMinimal();
         String state = minimal + "|" + settings.showClock() + "|" + settings.showDate();
@@ -3531,6 +3530,18 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         }
 
         @Override
+        public void onMoving(boolean moving) {
+            if (moving) return;
+            // A move in the folder has ended, and its order is kept (after this is told): Home's tile for it,
+            // its row over the dock and the app it shows first are made again from the new order.
+            handler.post(() -> {
+                adapter.folders.reread();
+                adapter.reload();
+                shelfContents = null;
+            });
+        }
+
+        @Override
         public boolean onTileVerticalKey(int position, int keyCode) {
             return folderView != null && folderView.verticalKey(position, keyCode == KeyEvent.KEYCODE_DPAD_UP);
         }
@@ -3598,9 +3609,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             Folders.Folder f = adapter.folders.get(folderView.folderId);
             folderView.adapter.reload();
             if (f != null && folderView.adapter.getItemCount() == 0 && emptiedByHand) {
-                List<String> keys = adapter.orderKeys();
-                keys.remove(Folders.KEY_PREFIX + f.id);
-                adapter.saveOrder(keys);
+                adapter.forgetInOrder(Folders.KEY_PREFIX + f.id);
                 adapter.folders.delete(f.id);
             }
             if (f == null || folderView.adapter.getItemCount() == 0) {
@@ -3698,11 +3707,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         String key = data.getStringExtra(WallpaperBrowserActivity.LIST);
         // A tile picture deleted there may have been on any tile: all of them drawn again. The backdrops follow in
         // onResume (applyWallpaperChange sees the lists changed).
-        // The changed tile marked first, then one rebuild for both.
-        if (key != null && !key.startsWith(Folders.KEY_PREFIX)) {
-            adapter.markUpdated(key);
-            if (folderView != null) folderView.adapter.markUpdated(key);
-        }
+        adapter.markAllUpdated();
+        if (folderView != null) folderView.adapter.markAllUpdated();
         adapter.reload();
         if (folderView != null) folderView.adapter.reload();
         shelfContents = null;

@@ -71,6 +71,12 @@ final class AirlineLogos {
     private final Set<String> logosAsked = new java.util.HashSet<>();
     private final Map<String, List<Listener>> logosWaited = new java.util.HashMap<>();
     private long logosQuietUntil;
+    /** Those a server turned away for now (too many requests, say), and when each may be asked for again. */
+    private final Map<String, Long> logosRefused = new java.util.HashMap<>();
+
+    /** A server said no to this one for a reason other than having none. */
+    private static final class Refused extends IOException {
+    }
 
     /**
      * The airline's logo, from the TV's cache or downloaded once (kept there until Android clears it). Answered at
@@ -84,7 +90,9 @@ final class AirlineLogos {
         }
         String asked = iata != null ? icao + '/' + iata : icao;
         Logo held = logos.get(icao);
-        if (logosAsked.contains(asked) || SystemClock.elapsedRealtime() < logosQuietUntil) {
+        Long retryAt = logosRefused.get(asked);
+        boolean refusedLately = retryAt != null && SystemClock.elapsedRealtime() < retryAt;
+        if (logosAsked.contains(asked) || refusedLately || SystemClock.elapsedRealtime() < logosQuietUntil) {
             to.onLogo(held);
             return;
         }
@@ -99,16 +107,19 @@ final class AirlineLogos {
         logosWaited.put(asked, waiting);
         painter.execute(() -> {
             Logo logo = null;
-            boolean failed = false;
+            boolean failed = false, turnedAway = false;
             try {
                 logo = loadLogo(icao, iata);
+            } catch (Refused e) {
+                turnedAway = true;   // this one only, and for now: asked again in ten minutes
             } catch (IOException | RuntimeException e) {
                 failed = true;   // offline, or the server's down: asked again in a minute
             }
             Logo got = logo;
-            boolean again = failed;
+            boolean again = failed, refused = turnedAway;
             main.post(() -> {
                 if (again) logosQuietUntil = SystemClock.elapsedRealtime() + 60_000;
+                else if (refused) logosRefused.put(asked, SystemClock.elapsedRealtime() + 10 * 60_000);
                 else logosAsked.add(asked);
                 if (got != null) {
                     // No more than 40 held: the rest go, and are read again from the TV's cache when next
@@ -136,17 +147,29 @@ final class AirlineLogos {
         if (!dir.isDirectory() && !dir.mkdirs()) throw new IOException("no cache");
         File own = new File(dir, icao + ".png"), shared = new File(dir, icao + ".2.png");
         Logo logo = readLogo(own);
-        if (logo == null) logo = fetchLogo(LOGO_SMALL + icao + ".png", own, new File(dir, icao + ".no"));
+        boolean refused = false;
+        if (logo == null) {
+            try {
+                logo = fetchLogo(LOGO_SMALL + icao + ".png", own, new File(dir, icao + ".no"));
+            } catch (Refused e) {
+                refused = true;   // the other source meanwhile
+            }
+        }
         if (logo == null) logo = readLogo(shared);
         if (logo == null && iata != null) {
-            logo = fetchLogo(LOGO_SHARP + iata + "@2x.png", shared, new File(dir, icao + ".2.no"));
+            try {
+                logo = fetchLogo(LOGO_SHARP + iata + "@2x.png", shared, new File(dir, icao + ".2.no"));
+            } catch (Refused e) {
+                refused = true;
+            }
         }
+        if (logo == null && refused) throw new Refused();
         return logo;
     }
 
     /**
      * Downloads one; where there's none (a 404) that's noted, and not asked again for a week. Refused for
-     * another reason (too many requests, say), there's none for now, and nothing's noted.
+     * another reason (too many requests, say), that's said (Refused) and nothing's noted: asked again later.
      */
     private static Logo fetchLogo(String url, File to, File none) throws IOException {
         if (none.exists() && System.currentTimeMillis() - none.lastModified() < NO_LOGO_MS) return null;
@@ -156,7 +179,7 @@ final class AirlineLogos {
         } catch (IOException e) {
             String why = String.valueOf(e.getMessage());
             if (!why.startsWith("HTTP 4")) throw e;
-            if (!why.equals("HTTP 404")) return null;
+            if (!why.equals("HTTP 404")) throw new Refused();
             bytes = null;
         }
         if (bytes != null) {

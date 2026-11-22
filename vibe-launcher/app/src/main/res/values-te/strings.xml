@@ -375,6 +375,8 @@
     <string name="anim_normal">సాధారణం</string>
     <string name="anim_fast">వేగంగా</string>
     <string name="anim_short">యాప్‌లు, మెనూలు తెరుచుకునేటప్పుడు పరికరం సొంత యానిమేషన్‌లు: వేగవంతమైనవి పాత పరికరాన్ని చురుగ్గా అనిపింపజేస్తాయి. దీనికి సెట్టింగ్‌లు &gt; అధునాతనం ఒకసారి అనుమతించబడి ఉండాలి.</string>
+    <string name="system_screensaver">సిస్టమ్ స్క్రీన్‌సేవర్</string>
+    <string name="system_screensaver_short">పరికరం యొక్క సొంత స్క్రీన్‌సేవర్, ప్రతి యాప్‌లో: ఆఫ్‌లో ఉంటే అది ఎప్పుడూ రాదు. దీనికి సెట్టింగ్‌లు &gt; అధునాతనం ఒకసారి అనుమతించబడి ఉండాలి.</string>
     <string name="free_memory">మెమరీని ఖాళీ చేయండి</string>
     <string name="memory_freed">%1$s ఖాళీ అయింది</string>
     <string name="debloat">యాప్‌ల శుభ్రత</string>

@@ -137,7 +137,7 @@ final class Flights {
         static String text(JSONObject o, String key) {
             if (o == null) return null;
             String s = o.optString(key, "");
-            return s.isEmpty() ? null : s;
+            return s.isEmpty() || s.equals("null") ? null : s;   // "null": kept so before nothing-said was read as none
         }
     }
 
@@ -162,7 +162,7 @@ final class Flights {
                         + "|mcdonnell douglas heli|\\bmd heli|enstrom|schweizer|guimbal|kaman|kamov|\\bmil\\b");
         private static final java.util.regex.Pattern PROP = java.util.regex.Pattern.compile(
                 "(?i)cessna(?!.*citation)|piper|cirrus|mooney|diamond|beech(?!.*(jet|premier|hawker))|grumman american"
-                        + "|aviat|\\bvans?\\b|van's|maule|champion|socata|tecnam|\\brobin\\b|glasair|lancair|cubcrafters"
+                        + "|\\baviat\\b|\\bvans?\\b|van's|maule|champion|socata|tecnam|\\brobin\\b|glasair|lancair|cubcrafters"
                         + "|cub crafters|pilatus pc-?(6|12)|de havilland.*(beaver|otter)|aeronca|taylorcraft|luscombe");
 
         /**
@@ -194,7 +194,7 @@ final class Flights {
     }
 
     /** An aircraft as OpenSky last said: where, and how it was moving. */
-    private static final class Heard {
+    static final class Heard {
         final String hex, callsign;
         final double lat, lon, altitude, speed, track, climb;
         final long at;   // SystemClock.elapsedRealtime() of that position
@@ -358,7 +358,7 @@ final class Flights {
     }
 
     /** The area asked for: this far each way from here, narrowed where that would cost a second credit. */
-    private static String box(Weather.Place place, double km) {
+    static String box(Weather.Place place, double km) {
         double dLat = km / 110.57;
         double dLon = km / (111.32 * Math.max(0.2, Math.cos(Math.toRadians(place.lat))));
         if (4 * dLat * dLon > MAX_AREA) dLon = MAX_AREA / (4 * dLat);
@@ -367,7 +367,7 @@ final class Flights {
     }
 
     /** The aircraft in an answer that are in the air and say where they are. */
-    private static List<Heard> parse(String body) throws JSONException {
+    static List<Heard> parse(String body) throws JSONException {
         JSONObject root = new JSONObject(body);
         long time = root.optLong("time", 0);
         JSONArray states = root.optJSONArray("states");
@@ -487,27 +487,27 @@ final class Flights {
         return out;
     }
 
-    private static double km(double lat1, double lon1, double lat2, double lon2) {
+    static double km(double lat1, double lon1, double lat2, double lon2) {
         double x = (lon2 - lon1) * 111.32 * Math.cos(Math.toRadians((lat1 + lat2) / 2));
         double y = (lat2 - lat1) * 110.57;
         return Math.hypot(x, y);
     }
 
-    private static double bearing(double lat1, double lon1, double lat2, double lon2) {
+    static double bearing(double lat1, double lon1, double lat2, double lon2) {
         double x = (lon2 - lon1) * Math.cos(Math.toRadians((lat1 + lat2) / 2));
         double y = lat2 - lat1;
         return (Math.toDegrees(Math.atan2(x, y)) + 360) % 360;
     }
 
     /** Along a great circle, properly: routes cross oceans, where the flat sums above are far out. */
-    private static double far(double lat1, double lon1, double lat2, double lon2) {
+    static double far(double lat1, double lon1, double lat2, double lon2) {
         double a = Math.toRadians(lat1), b = Math.toRadians(lat2), d = Math.toRadians(lon2 - lon1);
         double h = Math.pow(Math.sin((b - a) / 2), 2) + Math.cos(a) * Math.cos(b) * Math.pow(Math.sin(d / 2), 2);
         return 2 * 6371 * Math.asin(Math.min(1, Math.sqrt(h)));
     }
 
     /** Whether an aircraft here can be flying this route: not far off the way between its two airports. */
-    private static boolean between(JSONObject route, double lat, double lon) {
+    static boolean between(JSONObject route, double lat, double lon) {
         if (!route.has("ola") || !route.has("dla")) return true;   // not known where they are: taken as said
         double ola = route.optDouble("ola"), olo = route.optDouble("olo");
         double dla = route.optDouble("dla"), dlo = route.optDouble("dlo");
@@ -516,7 +516,7 @@ final class Flights {
     }
 
     /** The airline's code a callsign starts with ("UAL" of UAL510); null for a registration and the like. */
-    private static String airlineOf(String callsign) {
+    static String airlineOf(String callsign) {
         if (callsign.length() < 4) return null;
         for (int i = 0; i < 3; i++) {
             char c = callsign.charAt(i);
@@ -625,8 +625,8 @@ final class Flights {
             if (a == null) {
                 keep.put("m", true).put("e", System.currentTimeMillis() + AIRCRAFT_MISS_MS);
             } else {
-                String maker = a.optString("manufacturer", "").trim(), type = a.optString("type", "").trim();
-                keep.put("y", (maker + ' ' + type).trim()).put("r", a.optString("registration", "").trim())
+                String maker = said(a, "manufacturer").trim(), type = said(a, "type").trim();
+                keep.put("y", (maker + ' ' + type).trim()).put("r", said(a, "registration").trim())
                         .put("e", System.currentTimeMillis() + AIRCRAFT_MS);
             }
         } catch (JSONException e) {
@@ -647,10 +647,10 @@ final class Flights {
                 keep.put("m", true).put("e", System.currentTimeMillis() + ROUTE_MISS_MS);
             } else {
                 JSONObject airline = r.optJSONObject("airline");
-                keep.put("a", airline != null ? airline.optString("name", "") : "")
-                        .put("f", r.optString("callsign_iata", ""))
-                        .put("oc", airportCode(from)).put("on", from.optString("municipality", ""))
-                        .put("dc", airportCode(to)).put("dn", to.optString("municipality", ""))
+                keep.put("a", airline != null ? said(airline, "name") : "")
+                        .put("f", said(r, "callsign_iata"))
+                        .put("oc", airportCode(from)).put("on", said(from, "municipality"))
+                        .put("dc", airportCode(to)).put("dn", said(to, "municipality"))
                         .put("e", System.currentTimeMillis() + ROUTE_MS);
                 if (from.has("latitude") && from.has("longitude") && to.has("latitude") && to.has("longitude")) {
                     keep.put("ola", from.optDouble("latitude")).put("olo", from.optDouble("longitude"))
@@ -665,8 +665,8 @@ final class Flights {
 
     /** An airport as people know it ("EWR"), else by its four letters. */
     private static String airportCode(JSONObject airport) {
-        String iata = airport.optString("iata_code", "").trim();
-        return iata.isEmpty() ? airport.optString("icao_code", "").trim() : iata;
+        String iata = said(airport, "iata_code").trim();
+        return iata.isEmpty() ? said(airport, "icao_code").trim() : iata;
     }
 
     /**
@@ -688,6 +688,11 @@ final class Flights {
     }
 
     /** adsbdb's {"response": {name: {...}}}, or null when that's not what came. */
+    /** What a server said for this, "" where it said nothing (null, which otherwise reads as the word). */
+    static String said(JSONObject o, String key) {
+        return o.isNull(key) ? "" : o.optString(key, "");
+    }
+
     private static JSONObject object(String body, String name) {
         try {
             JSONObject response = new JSONObject(body).optJSONObject("response");

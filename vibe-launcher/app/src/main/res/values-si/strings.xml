@@ -375,6 +375,8 @@
     <string name="anim_normal">සාමාන්‍ය</string>
     <string name="anim_fast">වේගවත්</string>
     <string name="anim_short">යෙදුම් සහ මෙනු විවෘත වන විට උපාංගයේම සජීවිකරණ: වේගවත් ඒවා පැරණි උපාංගයක් වඩා චතුර ලෙස දැනෙන්නට සලස්වයි. සැකසීම් &gt; උසස් එක් වරක් ඉඩ දී තිබිය යුතුය.</string>
+    <string name="system_screensaver">පද්ධති තිර සුරැකුම</string>
+    <string name="system_screensaver_short">උපාංගයේම තිර සුරැකුම, සෑම යෙදුමකම: අක්‍රිය විට එය කිසිවිටෙක නොපැමිණේ. සැකසීම් &gt; උසස් එක් වරක් ඉඩ දී තිබිය යුතුය.</string>
     <string name="free_memory">මතකය නිදහස් කරන්න</string>
     <string name="memory_freed">%1$s නිදහස් කළා</string>
     <string name="debloat">යෙදුම් පිරිසිදු කිරීම</string>

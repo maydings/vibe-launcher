@@ -245,11 +245,15 @@ public final class FontBrowserActivity extends Activity {
             } else {
                 byte[] bytes = Http.get(CATALOGUE, 8 * 1024 * 1024);
                 json = new String(bytes, StandardCharsets.UTF_8);
+                // Kept only if it's the list (a network's sign-in page comes with a 200 as well): kept as it
+                // came, something else would be all there is for a day.
+                if (new JSONArray(json).length() == 0) throw new IOException("not the list");
                 try (FileOutputStream out = new FileOutputStream(cache)) {
                     out.write(bytes);
                 }
             }
-        } catch (IOException | RuntimeException e) {
+        } catch (IOException | RuntimeException | JSONException e) {
+            json = null;
             if (cache.exists()) {   // stale, but better than nothing offline
                 try {
                     json = new String(java.nio.file.Files.readAllBytes(cache.toPath()), StandardCharsets.UTF_8);
@@ -275,6 +279,8 @@ public final class FontBrowserActivity extends Activity {
                 out.add(new Font(o.getString("id"), o.getString("family"), o.optString("category"), subsets, weights));
             }
         } catch (JSONException e) {
+            //noinspection ResultOfMethodCallIgnored
+            cache.delete();   // a kept one that can't be read: asked for anew the next time, not kept for its day
             return null;
         }
         return out;

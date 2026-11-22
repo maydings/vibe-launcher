@@ -48,8 +48,10 @@ final class ChannelSetup {
                 continue;
             }
             if (sent.getLong(pkg, 0) == updated) continue;
-            // Explicit: Android 8+ doesn't deliver implicit broadcasts to receivers in manifests.
-            context.sendBroadcast(new Intent(TvContract.ACTION_INITIALIZE_PROGRAMS).setPackage(pkg));
+            // Explicit: Android 8+ doesn't deliver implicit broadcasts to receivers in manifests. And to an app
+            // not opened yet (just installed, which is when it's for): Android leaves those out otherwise.
+            context.sendBroadcast(new Intent(TvContract.ACTION_INITIALIZE_PROGRAMS).setPackage(pkg)
+                    .addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES));
             edit.putLong(pkg, updated);
         }
         // Forget removed apps, so a reinstall gets it again.

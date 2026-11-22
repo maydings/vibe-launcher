@@ -41,12 +41,12 @@ final class Lang {
     }
 
     /**
-     * The country the TV is set to: the default locale's, or, when that's a language picked here with no
-     * country of its own ("en"), the TV's own.
+     * The country the TV is set to: its own, whatever language is picked here (a language's region, "CN" in
+     * zh-CN, says how it's written, not where the TV is).
      */
     static String country() {
-        String country = Locale.getDefault().getCountry();
-        return country.isEmpty() ? system().getCountry() : country;
+        String country = system().getCountry();
+        return country.isEmpty() ? Locale.getDefault().getCountry() : country;
     }
 
     /** A context in the chosen language (unchanged for the TV's own), with the default locale to match. */

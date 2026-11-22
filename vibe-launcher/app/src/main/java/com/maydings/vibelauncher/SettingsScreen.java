@@ -47,7 +47,7 @@ import java.util.function.Supplier;
  * on), backup and restore (Backup, on the TV or through the phone) and updates (Updater). Appearance: tiles per row, inputs, the top bar and the slideshow's clock and backdrops. API
  * keys: the TMDB, YouTube and Plex keys, edited in place and explained under the list, SmartTube to install
  * or sign in to (the key-free way to YouTube backdrops), and a QR code for pasting the keys from a phone
- * (PhoneLink). Apps (adb build only): turning the TV's apps off and on through its own network debugging
+ * (PhoneLink). Apps: turning the TV's apps off and on through its own network debugging
  * (Adb, TvApps).
  */
 final class SettingsScreen {
@@ -473,7 +473,7 @@ final class SettingsScreen {
         title.setText(root.title);
         startPhoneLink();
         watchSmartTube();
-        adbPages.switchOffered = false;   // a new visit: ADB found working may offer the switch again
+        adbPages.onAttach();
         ViewGroup parent = (ViewGroup) screen.getParent();
         if (parent != null) parent.removeView(screen);
         return screen;
@@ -491,10 +491,6 @@ final class SettingsScreen {
      * allowed): choosing Vibe Launcher there switches Home through it.
      */
     void showDefaultLauncher() {
-        if (appsRootRow == null) {
-            first().requestFocus();
-            return;
-        }
         Page apps = adbPages.apps();
         open(apps, appsRootRow);
         Page launcher = adbPages.defaultLauncher();
@@ -546,20 +542,9 @@ final class SettingsScreen {
         } else {
             link.stop();
         }
-        // Turn debugging off when done: the port closes with Settings, once nothing more is queued for it.
-        if (adbPages.usedAdb && settings.adbOffWhenDone() && TvControl.canWrite(ctx)) {
-            Context app = ctx.getApplicationContext();
-            boolean wireless = Adb.usedWireless();
-            adbPages.adb().execute(() -> {
-                TvControl.setDebugging(app, false);
-                if (wireless) TvControl.setWirelessDebugging(app, false);
-            });
-            adbPages.adbStatus = Adb.OFF;
-        }
-        adbPages.usedAdb = false;
+        adbPages.onDetach();
         host.unregisterReceiver(packages);
         smartTubeRow = null;
-        adbPages.homeButtonRow = null;
         for (Page page : pages) {
             if (page != root && page != languagePage) stage.removeView(page.view);
         }
@@ -609,7 +594,10 @@ final class SettingsScreen {
         // which would never come (the connection drops) and read as a failure.
         // No way in over ADB, with the Home button service on: the TV's power menu, which only it can open.
         page.add(R.string.restart, null, () -> explainThenDo(R.string.restart, R.string.restart_confirm,
-                () -> adbPages.runAdb(page, null, r -> adbPages.adb().execute(() -> Adb.shell("reboot", false)),
+                () -> adbPages.runAdb(page, null, r -> {
+                            adbPages.offAfterRestart();
+                            adbPages.adb().execute(() -> Adb.shell("reboot", false));
+                        },
                         HomeButtonLink.bound() ? () -> {
                             Runnable powerMenu = HomeButtonLink.powerMenu;
                             if (powerMenu != null) powerMenu.run();
@@ -761,6 +749,12 @@ final class SettingsScreen {
         page.toggle(R.string.slideshow_clock, settings::slideshowClock, settings::setSlideshowClock);
         Row idle = page.link(R.string.idle_backdrops, null, this::idleBackdrops);
         idle.about = R.string.idle_backdrops_short;
+        // The TV's own screensaver (Android's), apart from what Home shows when it's left alone: on or off, with
+        // WRITE_SECURE_SETTINGS, which the TV's ADB grants (TvControl). The row says how the TV has it now.
+        Row saver = page.toggle(R.string.system_screensaver, () -> TvControl.systemScreensaver(ctx), on -> {
+            if (!TvControl.setSystemScreensaver(ctx, on)) MainActivity.showError(host, R.string.system_screensaver_short);
+        });
+        saver.about = R.string.system_screensaver_short;
         page.link(R.string.clock, () -> clockName(settings.clockHours()), this::clockHours);
         page.toggle(R.string.carets, settings::carets, settings::setCarets);
         page.link(R.string.glass_color, this::swatch, this::glassColour);
@@ -2147,18 +2141,6 @@ MainActivity.showError(host, R.string.anim_short);
         Screens.open(host, open);
     }
 
-    CharSequence adbStatusText() {
-        if (adbPages.adbConnecting) {   // OK pressed on it: yellow until there's an answer
-            return adbPages.dot(0xFFFFD60A, ctx.getString(R.string.adb_connecting));
-        }
-        if (adbPages.adbStatus == -1) return ctx.getString(R.string.adb_checking);
-        if (adbPages.adbStatus == Adb.OK) {
-            return adbPages.dot(0xFF34C759, ctx.getString(Adb.usedWireless() ? R.string.adb_connected_wireless
-                    : R.string.adb_connected_port));
-        }
-        return adbPages.dot(0xFFFF453A, ctx.getString(R.string.adb_not_connected));
-    }
-
     // ---- sliding between pages ---------------------------------------------------------------------
 
     /** Puts a page's list in the right column (offset 0) or the left one (offset leftX - rightX). */
@@ -2312,13 +2294,25 @@ MainActivity.showError(host, R.string.anim_short);
         }
         if (link != null) link.stop();
         link = new PhoneLink(received -> {
-            if (host == null) return;
+            // Settings may be closed (the link kept a while for a pairing): the phone is told they're saved, so
+            // they are, over what's saved now; only showing them waits for Settings.
+            boolean open = host != null;
+            String[] saved = open ? keys : settings.keys();
             String[] names = VibeSettings.KEY_NAMES;
             for (int i = 0; i < names.length; i++) {
                 String k = received.get(names[i]);
-                if (k != null) keys[i] = k.trim();
+                if (k == null) continue;
+                saved[i] = k.trim();
+                if (!open) continue;
+                // Its row is open for typing here: the field shows the new one (as kept ones are shown), or
+                // closing it would put what it showed before in the new one's place.
+                if (editing != null && i == editingKey) {
+                    editing.field.setText(mask(keys[i]));
+                    editing.field.selectAll();   // as when it's opened: what's typed next takes its place
+                }
             }
-            settings.save(keys);
+            settings.save(saved);
+            if (!open) return;
             for (Page page : pages) page.refresh();
             Toast.makeText(host, R.string.saved_from_phone, Toast.LENGTH_SHORT).show();
         }, settings, PhoneLink.savedCode(ctx.getApplicationContext()));
@@ -2466,7 +2460,7 @@ MainActivity.showError(host, R.string.anim_short);
     }
 
     /** A saved key as shown: bullets and the last four characters; "" when not set. */
-    private static String mask(String key) {
+    static String mask(String key) {
         return key.isEmpty() ? "" : "••••••••" + key.substring(Math.max(0, key.length() - 4));
     }
 

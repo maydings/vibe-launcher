@@ -76,6 +76,20 @@ set, debug builds are signed with it too, so a TV can move between your debug bu
 updates) without uninstalling. Without it, debug builds use Android's debug key: switching to a release
 means uninstalling first, and the in-app updater says to update from a computer.
 
+## Tests
+
+`./gradlew testDebugUnitTest` runs the unit tests on the computer, with no TV (`app/src/test`). They are of what
+can be worked out apart from a screen: how titles are compared (`TitleArtTest`), a backdrop order's rules
+(`WallpapersOrderTest`), the grid's sums under a shorter dock (`DockGridTest`), the flights' distances, the area
+asked of OpenSky and what's read from its answer (`FlightsTest`), the lists' lines (`VrsDatabaseTest`), what the
+phone's page sends (`PhoneLinkTest`), Apple's archive (`AppleAerialsTest`), what's picked from TMDB's and Plex's
+answers (`TmdbPlexTest`), and the small sums and wordings (`HelpersTest`). The screens themselves, focus and the
+backdrops' fades have none: those are tried on a TV.
+
+Off the device Android's own `org.json` is only a shell, so the tests bring the library of the same name. The two
+differ in one way that matters here: for a value that is `null`, Android's `optString` gives the word "null" and
+the library gives nothing. Code that reads what a server may have left out asks `isNull` first for that reason.
+
 ## Backdrops
 
 Each dock app has a pool of up to twelve backdrops, prepared in the background and stored already cut
@@ -163,6 +177,7 @@ The full list, with what each is sent, is in the [privacy policy](docs/PRIVACY.m
 | File | What it does |
 |---|---|
 | `MainActivity` | Home screen: the dock and grid and their focus, the backdrops, the picture alone, the slideshow, the top bar, folders |
+| `DockGrid` | Where tiles are in Home's grid: the dock (centred when it's shorter than a row) and the rows under it, as sums apart from any screen |
 | `TopBarMenus` | The menus under the top bar's pills: the network's, the system's with its meters and Free memory, and the Inputs menu with its HDMI-CEC devices |
 | `TileMenus` | The menus a tile opens: a long press's (move, hide, folders, app info), the hidden apps, Edit (a tile's picture, icon and name) and its backdrops' order |
 | `SettingsScreen`, `SettingsActivity` | Vibe Launcher settings: General (language, reload backdrops, picture format, Home at power-on, Back button, Restart…, software version), Appearance (tiles per row, inputs, auto-hide, screensaver clock, 12/24-hour clock) and API keys (the keys, their explanations, the QR code). Built once when Home starts and shown on a screen of its own, which fades in; its lists slide left as pages open, and Home is rebuilt behind it for a new grid or language |

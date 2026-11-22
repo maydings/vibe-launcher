@@ -57,6 +57,11 @@ android {
         }
     }
 
+    testOptions {
+        // The tests are of plain sums and parsing (src/test): where one passes through Android (a log line,
+        // the clock) it gets nothing back instead of failing.
+        unitTests.returnDefaultValues = true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -67,4 +72,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.4.0'
     implementation 'androidx.dynamicanimation:dynamicanimation:1.1.0'
     implementation 'com.google.zxing:core:3.5.4'   // QR code for pasting keys from a phone
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20240303'   // off the device, Android's own org.json is only a shell
 }

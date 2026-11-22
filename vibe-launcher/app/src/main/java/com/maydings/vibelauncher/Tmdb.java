@@ -53,7 +53,7 @@ final class Tmdb implements TitleArt {
         // Remembered as "time|backdrop paths|logo path"; entries from before logos are looked up again.
         String[] cached = cache.getString(key, "").split("\\|", -1);
         long now = System.currentTimeMillis();
-        if (cached.length == 3) {
+        if (cached.length == 3 && !cached[1].equals("null")) {   // "null": kept so once, no picture's address
             long age = now - Long.parseLong(cached[0]);
             if (age < (cached[1].isEmpty() ? MISSING_MS : FOUND_MS)) return art(cached[1], cached[2]);
         }
@@ -107,7 +107,7 @@ final class Tmdb implements TitleArt {
             if (!type.equals("movie") && !type.equals("tv")) continue;
             boolean same = key.equals(TitleArt.normalize(r.optString(type.equals("tv") ? "name" : "title")))
                     || key.equals(TitleArt.normalize(r.optString(type.equals("tv") ? "original_name" : "original_title")));
-            if (!same || (pictured && r.optString("backdrop_path").isEmpty())) continue;
+            if (!same || (pictured && text(r, "backdrop_path").isEmpty())) continue;
             if (best == null || r.optDouble("popularity") > best.optDouble("popularity")) best = r;
         }
         return best;
@@ -135,7 +135,10 @@ final class Tmdb implements TitleArt {
     Info info(String title) {
         JSONObject o = kept(title);
         if (o == null) return null;
-        Info info = new Info(o.optString("y"), o.optString("o"), o.optDouble("s", 0));
+        // "null": kept so before what TMDB hadn't got was read as nothing.
+        String year = o.optString("y"), overview = o.optString("o");
+        Info info = new Info(year.equals("null") ? "" : year, overview.equals("null") ? "" : overview,
+                o.optDouble("s", 0));
         JSONArray g = o.optJSONArray("g");
         for (int i = 0; g != null && i < g.length(); i++) info.genres.add(g.optString(i));
         boolean empty = info.overview.isEmpty() && info.genres.isEmpty() && info.score <= 0;
@@ -202,14 +205,12 @@ final class Tmdb implements TitleArt {
             if (which != null) {
                 boolean tv = which.startsWith("tv/");
                 JSONObject details = get("/" + which + "?language=" + Uri.encode(language()));
-                String date = details.optString(tv ? "first_air_date" : "release_date");
-                String overview = details.optString("overview").trim();
-                if (overview.isEmpty()) {
-                    overview = (best != null ? best : get("/" + which)).optString("overview").trim();
-                }
+                String date = text(details, tv ? "first_air_date" : "release_date");
+                String overview = text(details, "overview").trim();
+                if (overview.isEmpty()) overview = text(best != null ? best : get("/" + which), "overview").trim();
                 JSONArray names = new JSONArray(), genres = details.optJSONArray("genres");
                 for (int i = 0; genres != null && i < genres.length() && names.length() < 3; i++) {
-                    String name = genres.getJSONObject(i).optString("name");
+                    String name = text(genres.getJSONObject(i), "name");
                     if (!name.isEmpty()) names.put(name);
                 }
                 o.put("y", date.length() >= 4 ? date.substring(0, 4) : "");
@@ -224,8 +225,13 @@ final class Tmdb implements TitleArt {
         }
     }
 
+    /** A value as text, "" where there's none: TMDB says null for what it hasn't got, which reads as "null". */
+    static String text(JSONObject o, String key) {
+        return o.isNull(key) ? "" : o.optString(key);
+    }
+
     /** The best-rated PNG logo in the TV's language, else English, else language-free; "" if none. */
-    private static String logo(JSONArray logos, String lang) throws JSONException {
+    static String logo(JSONArray logos, String lang) throws JSONException {
         for (String want : new String[]{lang, "en", "null"}) {
             for (int i = 0; logos != null && i < logos.length(); i++) {
                 JSONObject l = logos.getJSONObject(i);

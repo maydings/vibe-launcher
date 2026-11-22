@@ -2,7 +2,6 @@ package com.maydings.vibelauncher;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,8 +27,8 @@ public class AppLaunchActivity extends Activity {
                 if (launch == null) launch = getPackageManager().getLaunchIntentForPackage(pkg);
                 if (launch != null) startActivity(launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
-        } catch (ActivityNotFoundException | SecurityException ignored) {
-            // Gone, or not ours to open: nothing to show.
+        } catch (RuntimeException ignored) {
+            // Gone, not ours to open, or an address that isn't one of these (any app can send one): nothing to show.
         } finally {
             finish();
         }

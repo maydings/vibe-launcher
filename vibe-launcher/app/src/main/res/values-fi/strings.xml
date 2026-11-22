@@ -375,6 +375,8 @@
     <string name="anim_normal">Normaali</string>
     <string name="anim_fast">Nopeampi</string>
     <string name="anim_short">Laitteen omat animaatiot sovellusten ja valikkojen avautuessa: nopeammat saavat vanhemman laitteen tuntumaan sutjakammalta. Edellyttää, että Asetukset &gt; Lisäasetukset on sallittu kerran.</string>
+    <string name="system_screensaver">Järjestelmän näytönsäästäjä</string>
+    <string name="system_screensaver_short">Laitteen oma näytönsäästäjä kaikissa sovelluksissa: pois päältä se ei käynnisty koskaan. Edellyttää, että Asetukset &gt; Lisäasetukset on sallittu kerran.</string>
     <string name="free_memory">Vapauta muistia</string>
     <string name="memory_freed">%1$s vapautettu</string>
     <string name="debloat">Sovellusten siivous</string>

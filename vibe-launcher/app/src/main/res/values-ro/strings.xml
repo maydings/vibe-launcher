@@ -375,6 +375,8 @@
     <string name="anim_normal">Normală</string>
     <string name="anim_fast">Mai rapidă</string>
     <string name="anim_short">Animațiile dispozitivului la deschiderea aplicațiilor și meniurilor: mai rapide fac un dispozitiv mai vechi să pară mai vioi. Necesită ca Setări &gt; Avansat să fi fost permis o dată.</string>
+    <string name="system_screensaver">Screensaverul sistemului</string>
+    <string name="system_screensaver_short">Screensaverul propriu al dispozitivului, în orice aplicație: dezactivat, nu mai apare. Necesită ca Setări &gt; Avansat să fi fost permis o dată.</string>
     <string name="free_memory">Eliberează memorie</string>
     <string name="memory_freed">Eliberat: %1$s</string>
     <string name="debloat">Curățarea aplicațiilor</string>

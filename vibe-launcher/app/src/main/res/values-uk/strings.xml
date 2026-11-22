@@ -375,6 +375,8 @@
     <string name="anim_normal">Звичайна</string>
     <string name="anim_fast">Швидша</string>
     <string name="anim_short">Анімації пристрою під час відкриття застосунків і меню: зі швидшими старий пристрій здається жвавішим. Потрібно, щоб розділ «Налаштування &gt; Додатково» було дозволено хоча б раз.</string>
+    <string name="system_screensaver">Системна заставка</string>
+    <string name="system_screensaver_short">Власна заставка пристрою, у будь-якій програмі: вимкнена, вона не з’являється. Потрібно, щоб розділ «Налаштування &gt; Додатково» було дозволено хоча б раз.</string>
     <string name="free_memory">Звільнити пам’ять</string>
     <string name="memory_freed">Звільнено: %1$s</string>
     <string name="debloat">Очищення застосунків</string>

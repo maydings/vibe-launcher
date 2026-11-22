@@ -17,9 +17,9 @@ import android.provider.Settings;
  */
 final class CrashGuard {
 
-    /** Google's TV launchers, newest first: Google TV, then Android TV and its older version. */
+    /** The TV's own launchers, newest first: Google TV, Android TV and its older version, and the plain one. */
     private static final String[] STOCK_LAUNCHERS = {"com.google.android.apps.tv.launcherx",
-            "com.google.android.tvlauncher", "com.google.android.leanbacklauncher"};
+            "com.google.android.tvlauncher", "com.google.android.leanbacklauncher", "com.android.tv.launcher"};
     private static final long WINDOW_MS = 2 * 60 * 1000;
     /**
      * Once per process. Home is recreated (a new tiles-per-row choice, a language change) without the
@@ -56,15 +56,19 @@ final class CrashGuard {
      * deferred for minutes.)
      */
     private static void openFallbackInfo(Context app) {
-        String stock = STOCK_LAUNCHERS[1];
+        // The one that was turned off for Vibe Launcher, which Enable brings back; else the first there is.
+        String stock = null;
+        java.util.List<String> off = TvControl.stockOff(app);
+        if (!off.isEmpty()) stock = off.get(0);
         for (String pkg : STOCK_LAUNCHERS) {
+            if (stock != null) break;
             try {
                 app.getPackageManager().getApplicationInfo(pkg, 0);   // also finds disabled apps
                 stock = pkg;
-                break;
             } catch (PackageManager.NameNotFoundException ignored) {
             }
         }
+        if (stock == null) stock = STOCK_LAUNCHERS[1];
         app.startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + stock))
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
     }

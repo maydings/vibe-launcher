@@ -375,6 +375,8 @@
     <string name="anim_normal">સામાન્ય</string>
     <string name="anim_fast">વધુ ઝડપી</string>
     <string name="anim_short">ઍપ્સ અને મેનૂ ખૂલે ત્યારે ઉપકરણનાં પોતાનાં એનિમેશન: ઝડપી એનિમેશન જૂના ઉપકરણને ચપળ લગાડે છે. તે માટે સેટિંગ્સ &gt; વિગતવારને એક વાર મંજૂરી મળેલી હોવી જોઈએ.</string>
+    <string name="system_screensaver">સિસ્ટમ સ્ક્રીનસેવર</string>
+    <string name="system_screensaver_short">ડિવાઇસનું પોતાનું સ્ક્રીનસેવર, દરેક ઍપમાં: બંધ હોય ત્યારે તે ક્યારેય આવતું નથી. તે માટે સેટિંગ્સ &gt; વિગતવારને એક વાર મંજૂરી મળેલી હોવી જોઈએ.</string>
     <string name="free_memory">મેમરી ખાલી કરો</string>
     <string name="memory_freed">%1$s ખાલી થઈ</string>
     <string name="debloat">ઍપની સફાઈ</string>

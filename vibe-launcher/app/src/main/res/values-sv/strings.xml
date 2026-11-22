@@ -375,6 +375,8 @@
     <string name="anim_normal">Normal</string>
     <string name="anim_fast">Snabbare</string>
     <string name="anim_short">Enhetens egna animationer när appar och menyer öppnas: snabbare får en äldre enhet att kännas kvickare. Kräver att Inställningar &gt; Avancerat har tillåtits en gång.</string>
+    <string name="system_screensaver">Systemets skärmsläckare</string>
+    <string name="system_screensaver_short">Enhetens egen skärmsläckare, i alla appar: avstängd visas den aldrig. Kräver att Inställningar &gt; Avancerat har tillåtits en gång.</string>
     <string name="free_memory">Frigör minne</string>
     <string name="memory_freed">%1$s frigjort</string>
     <string name="debloat">Rensa appar</string>

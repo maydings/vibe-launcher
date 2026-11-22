@@ -375,6 +375,8 @@
     <string name="anim_normal">सामान्य</string>
     <string name="anim_fast">अधिक वेगवान</string>
     <string name="anim_short">अ‍ॅप्स आणि मेनू उघडताना डिव्हाइसचे स्वतःचे अ‍ॅनिमेशन: वेगवान अ‍ॅनिमेशनमुळे जुने डिव्हाइस चपळ वाटते. यासाठी सेटिंग्ज &gt; प्रगत ला एकदा परवानगी दिलेली असणे आवश्यक आहे.</string>
+    <string name="system_screensaver">सिस्टम स्क्रीनसेव्हर</string>
+    <string name="system_screensaver_short">डिव्हाइसचा स्वतःचा स्क्रीनसेव्हर, प्रत्येक अ‍ॅपमध्ये: बंद असताना तो कधीच येत नाही. यासाठी सेटिंग्ज &gt; प्रगत ला एकदा परवानगी दिलेली असणे आवश्यक आहे.</string>
     <string name="free_memory">मेमरी मोकळी करा</string>
     <string name="memory_freed">%1$s मोकळी झाली</string>
     <string name="debloat">अ‍ॅप्सची साफसफाई</string>

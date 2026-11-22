@@ -186,6 +186,8 @@ public final class WallpaperBrowserActivity extends Activity {
     private File apiCache;
     /** What's listed: FIRST, SECOND or SEARCH. */
     private int tab;
+    /** The tab the grid's list is of: the one picked, once its list is asked for (reload). */
+    private int listTab;
     /** Each tab's own (FIRST, SECOND, SEARCH), in the order they show. */
     private int[] tabIds = new int[0];
     private String query = "";
@@ -426,6 +428,7 @@ public final class WallpaperBrowserActivity extends Activity {
         generation++;
         results.clear();
         adapter.notifyDataSetChanged();
+        listTab = tab;
         page = 0;
         emptyPages = 0;
         ended = false;
@@ -442,7 +445,8 @@ public final class WallpaperBrowserActivity extends Activity {
     private void more() {
         if (loading || ended) return;
         loading = true;
-        int gen = generation, next = page + 1, t = tab;
+        // Of the list that's showing, which isn't the tab picked while Search is open and nothing's searched yet.
+        int gen = generation, next = page + 1, t = listTab;
         String q = query;
         boolean pictures = !picturesEnded, videos = !videosEnded;
         pages.execute(() -> {
@@ -656,6 +660,13 @@ public final class WallpaperBrowserActivity extends Activity {
             }
         }
         String text = Http.getText(url, Collections.emptyMap());
+        // Kept only if it's an answer (a network's sign-in page comes with a 200 as well): kept as it came,
+        // something else would be this page's answer for as long as answers are kept.
+        try {
+            if (!new JSONObject(text).has("hits")) throw new IOException("not an answer");
+        } catch (JSONException e) {
+            throw new IOException(e);
+        }
         //noinspection ResultOfMethodCallIgnored
         apiCache.mkdirs();
         try (FileOutputStream out = new FileOutputStream(file)) {
@@ -1054,6 +1065,7 @@ public final class WallpaperBrowserActivity extends Activity {
         go.setOnClickListener(v -> {
             dialog.dismiss();
             wallpapers.delete(item);   // off every list and tile that showed it
+            tileCustom = null;   // the tiles' pictures were changed behind this copy: read again when next asked
             items.remove(r.id);
             changed();
             int at = results.indexOf(r);

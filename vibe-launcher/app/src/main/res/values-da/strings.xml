@@ -375,6 +375,8 @@
     <string name="anim_normal">Normal</string>
     <string name="anim_fast">Hurtigere</string>
     <string name="anim_short">Enhedens egne animationer, når apps og menuer åbner: hurtigere får en ældre enhed til at føles hurtigere. Kræver, at Indstillinger &gt; Avanceret er tilladt én gang.</string>
+    <string name="system_screensaver">Systemets pauseskærm</string>
+    <string name="system_screensaver_short">Enhedens egen pauseskærm, i alle apps: slået fra kommer den aldrig frem. Kræver, at Indstillinger &gt; Avanceret er tilladt én gang.</string>
     <string name="free_memory">Frigør hukommelse</string>
     <string name="memory_freed">%1$s frigjort</string>
     <string name="debloat">Oprydning i apps</string>

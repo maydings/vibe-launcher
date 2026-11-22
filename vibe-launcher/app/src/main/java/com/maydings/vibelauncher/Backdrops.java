@@ -610,6 +610,9 @@ final class Backdrops {
                 }
             }
         }
+        // Listed, but its picture's gone (Android clears the cache when it's short of room): not that one.
+        options.removeIf(o -> !o.still.exists());
+        if (options.isEmpty()) return null;
         e = options.get(random.nextInt(options.size()));
         shown.put(pkg, e);
         return e;
@@ -691,7 +694,7 @@ final class Backdrops {
         return new Pool(built, head[1], entries);
     }
 
-    private static String oneLine(String s) {
+    static String oneLine(String s) {
         return s == null ? "" : s.replace('\t', ' ').replace('\n', ' ').replace('\r', ' ');
     }
 
@@ -745,6 +748,9 @@ final class Backdrops {
             }
             boolean more = collector.step();
             for (Choice c : collector.take(!more)) if (put(this, c)) taken++;
+            // Done with nothing kept, though sharp ones were found (none could be made a still of): what
+            // would have done without them does now.
+            if (!more && taken == 0) for (Choice c : collector.fallback()) if (put(this, c)) taken++;
             return more;
         }
     }
@@ -1183,6 +1189,17 @@ final class Backdrops {
         private int given() {
             return sharpTaken + wallsTaken;
         }
+
+        /** What's left to fall back on when none of what was taken could be used: the walls, else the lone card. */
+        List<Choice> fallback() {
+            List<Choice> out = new ArrayList<>();
+            while (wallsTaken < walls.size() && out.size() < max) out.add(walls.get(wallsTaken++));
+            if (out.isEmpty() && !pkg.equals(HDHOMERUN) && plain != null) {
+                out.add(new Choice(Collections.singletonList(plain), null, null, plainLink));
+                plain = null;
+            }
+            return out;
+        }
     }
 
     /**
@@ -1321,7 +1338,7 @@ final class Backdrops {
      * YouTube thumbnails come in several sizes under one video ID; the largest, maxresdefault, is
      * 1280x720 when the uploader provided one (a 404 otherwise, and the card's own size is used).
      */
-    private static String youtubeMaxRes(String url) {
+    static String youtubeMaxRes(String url) {
         if (!url.startsWith("https://i.ytimg.com/vi/")) return null;
         int end = url.indexOf('/', "https://i.ytimg.com/vi/".length());
         return end < 0 ? null : url.substring(0, end) + "/maxresdefault.jpg";
@@ -1331,7 +1348,7 @@ final class Backdrops {
      * Netflix bakes stickers such as "Recently Added" and "Top 10" into the artwork of some cards, and
      * names them in the card's link (badges=B:recently.added). Those don't work as a full-screen still.
      */
-    private static boolean badged(String intentUri) {
+    static boolean badged(String intentUri) {
         return intentUri != null && (intentUri.contains("badges%3D") || intentUri.contains("badges="));
     }
 
@@ -1352,7 +1369,10 @@ final class Backdrops {
             return file;
         }
         byte[] data = read(url);
-        if (data == null || !(backdrop ? suitable(data, minWidth) : decodable(data))) {
+        // Not had this time (offline, no answer): asked for again with the next round. Only one that came and
+        // is no use as a backdrop is never asked for again.
+        if (data == null) return null;
+        if (!(backdrop ? suitable(data, minWidth) : decodable(data))) {
             unsuitable.add(url);
             return null;
         }

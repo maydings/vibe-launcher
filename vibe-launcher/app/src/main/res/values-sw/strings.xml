@@ -375,6 +375,8 @@
     <string name="anim_normal">Kawaida</string>
     <string name="anim_fast">Haraka zaidi</string>
     <string name="anim_short">Uhuishaji wa kifaa chenyewe programu na menyu zinapofunguka: wa haraka zaidi hufanya kifaa cha zamani kihisi chepesi zaidi. Inahitaji Mipangilio &gt; Mipangilio ya kina iwe imeruhusiwa mara moja.</string>
+    <string name="system_screensaver">Skrini ya kupumzisha ya mfumo</string>
+    <string name="system_screensaver_short">Skrini ya kupumzisha ya kifaa chenyewe, katika kila programu: ikizimwa, haitokei kamwe. Inahitaji Mipangilio &gt; Mipangilio ya kina iwe imeruhusiwa mara moja.</string>
     <string name="free_memory">Achilia kumbukumbu</string>
     <string name="memory_freed">Imeachilia %1$s</string>
     <string name="debloat">Usafishaji wa programu</string>

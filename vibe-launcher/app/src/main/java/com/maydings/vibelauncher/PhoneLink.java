@@ -250,8 +250,9 @@ final class PhoneLink {
                     try (Socket mine = s) {
                         mine.setSoTimeout(5000);
                         handle(mine);
-                    } catch (IOException | RuntimeException e) {
-                        // a dropped connection
+                    } catch (IOException | RuntimeException | OutOfMemoryError e) {
+                        // A dropped connection; or something sent too big to be held (a backup that isn't
+                        // one): this connection's alone to fail, not all of Vibe Launcher.
                     }
                 });
             } catch (IOException | RuntimeException e) {
@@ -463,7 +464,7 @@ final class PhoneLink {
     }
 
     /** The name sent with an upload (the address's name=...), or "" when there's none. */
-    private static String nameIn(String path) {
+    static String nameIn(String path) {
         int q = path.indexOf("name=");
         if (q < 0) return "";
         String raw = path.substring(q + 5);
@@ -613,7 +614,7 @@ final class PhoneLink {
         return null;
     }
 
-    private static long contentLength(String head, long max) {
+    static long contentLength(String head, long max) {
         for (String line : head.split("\r\n")) {
             if (line.toLowerCase(Locale.ROOT).startsWith("content-length:")) {
                 try {
@@ -633,7 +634,7 @@ final class PhoneLink {
         return new String(buf, 0, n, StandardCharsets.UTF_8);
     }
 
-    private static Map<String, String> parseForm(String body) {
+    static Map<String, String> parseForm(String body) {
         Map<String, String> fields = new HashMap<>();
         for (String pair : body.split("&")) {
             int eq = pair.indexOf('=');

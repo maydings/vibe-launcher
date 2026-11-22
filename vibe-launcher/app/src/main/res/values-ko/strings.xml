@@ -375,6 +375,8 @@
     <string name="anim_normal">보통</string>
     <string name="anim_fast">빠르게</string>
     <string name="anim_short">앱과 메뉴가 열릴 때 기기 자체의 애니메이션: 빠르게 하면 오래된 기기도 더 민첩하게 느껴집니다. 설정 &gt; 고급을 한 번 허용해야 합니다.</string>
+    <string name="system_screensaver">시스템 화면 보호기</string>
+    <string name="system_screensaver_short">모든 앱에서 작동하는 기기 자체의 화면 보호기입니다. 끄면 나타나지 않습니다. 설정 &gt; 고급을 한 번 허용해야 합니다.</string>
     <string name="free_memory">메모리 확보</string>
     <string name="memory_freed">%1$s 확보됨</string>
     <string name="debloat">앱 정리</string>

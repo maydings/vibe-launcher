@@ -375,6 +375,8 @@
     <string name="anim_normal">Normale</string>
     <string name="anim_fast">Più veloce</string>
     <string name="anim_short">Le animazioni del dispositivo all\'apertura di app e menu: più veloci rendono un dispositivo più vecchio più reattivo. Richiede di aver consentito Impostazioni &gt; Avanzate una volta.</string>
+    <string name="system_screensaver">Salvaschermo di sistema</string>
+    <string name="system_screensaver_short">Il salvaschermo del dispositivo, in ogni app: disattivato, non compare mai. Richiede di aver consentito Impostazioni &gt; Avanzate una volta.</string>
     <string name="free_memory">Libera memoria</string>
     <string name="memory_freed">%1$s liberati</string>
     <string name="debloat">Pulizia app</string>

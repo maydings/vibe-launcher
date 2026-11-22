@@ -375,6 +375,8 @@
     <string name="anim_normal">標準</string>
     <string name="anim_fast">高速</string>
     <string name="anim_short">アプリやメニューを開くときのデバイス自身のアニメーション：速くすると古いデバイスもきびきび感じられます。設定 &gt; 詳細設定 を一度許可している必要があります。</string>
+    <string name="system_screensaver">システムのスクリーンセーバー</string>
+    <string name="system_screensaver_short">デバイス自体のスクリーンセーバー（すべてのアプリで）。オフにすると表示されません。設定 &gt; 詳細設定 を一度許可している必要があります。</string>
     <string name="free_memory">メモリを解放</string>
     <string name="memory_freed">%1$s 解放しました</string>
     <string name="debloat">アプリのクリーンアップ</string>

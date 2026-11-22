@@ -375,6 +375,8 @@
     <string name="anim_normal">ಸಾಮಾನ್ಯ</string>
     <string name="anim_fast">ಹೆಚ್ಚು ವೇಗ</string>
     <string name="anim_short">ಆ್ಯಪ್‌ಗಳು ಮತ್ತು ಮೆನುಗಳು ತೆರೆಯುವಾಗ ಸಾಧನದ ಸ್ವಂತ ಅನಿಮೇಷನ್‌ಗಳು: ವೇಗದವು ಹಳೆಯ ಸಾಧನವನ್ನು ಚುರುಕಾಗಿ ಕಾಣಿಸುತ್ತವೆ. ಇದಕ್ಕೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು &gt; ಸುಧಾರಿತವನ್ನು ಒಮ್ಮೆ ಅನುಮತಿಸಿರಬೇಕು.</string>
+    <string name="system_screensaver">ಸಿಸ್ಟಂ ಸ್ಕ್ರೀನ್‌ಸೇವರ್</string>
+    <string name="system_screensaver_short">ಸಾಧನದ ಸ್ವಂತ ಸ್ಕ್ರೀನ್‌ಸೇವರ್, ಎಲ್ಲ ಆ್ಯಪ್‌ಗಳಲ್ಲಿ: ಆಫ್ ಆಗಿದ್ದರೆ ಅದು ಎಂದಿಗೂ ಬರುವುದಿಲ್ಲ. ಇದಕ್ಕೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು &gt; ಸುಧಾರಿತವನ್ನು ಒಮ್ಮೆ ಅನುಮತಿಸಿರಬೇಕು.</string>
     <string name="free_memory">ಮೆಮೊರಿ ಖಾಲಿ ಮಾಡಿ</string>
     <string name="memory_freed">%1$s ಖಾಲಿ ಮಾಡಲಾಗಿದೆ</string>
     <string name="debloat">ಆ್ಯಪ್ ಸ್ವಚ್ಛತೆ</string>

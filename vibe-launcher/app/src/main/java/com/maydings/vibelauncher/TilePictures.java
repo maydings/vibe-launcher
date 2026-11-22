@@ -37,10 +37,12 @@ final class TilePictures {
     }
 
     /** All of them, oldest first, those whose file is there. */
-    synchronized List<String> list() {
-        List<String> out = new ArrayList<>();
-        for (String id : ids()) if (file(id).exists()) out.add(id);
-        return out;
+    List<String> list() {
+        synchronized (TilePictures.class) {
+            List<String> out = new ArrayList<>();
+            for (String id : ids()) if (file(id).exists()) out.add(id);
+            return out;
+        }
     }
 
     private List<String> ids() {
@@ -63,22 +65,26 @@ final class TilePictures {
     }
 
     /** What it's called (typed on the phone), or "" for nothing. */
-    synchronized String title(String id) {
-        return names().optString(id, "");
+    String title(String id) {
+        synchronized (TilePictures.class) {
+            return names().optString(id, "");
+        }
     }
 
-    synchronized void setTitle(String id, String title) {
-        org.json.JSONObject names = names();
-        String called = title == null ? "" : title.replaceAll("\\s+", " ").trim();
-        if (called.length() > Wallpapers.MAX_TITLE) called = called.substring(0, Wallpapers.MAX_TITLE).trim();
-        try {
-            if (called.isEmpty()) names.remove(id);
-            else names.put(id, called);
-        } catch (JSONException e) {
-            return;
+    void setTitle(String id, String title) {
+        synchronized (TilePictures.class) {
+            org.json.JSONObject names = names();
+            String called = title == null ? "" : title.replaceAll("\\s+", " ").trim();
+            if (called.length() > Wallpapers.MAX_TITLE) called = called.substring(0, Wallpapers.MAX_TITLE).trim();
+            try {
+                if (called.isEmpty()) names.remove(id);
+                else names.put(id, called);
+            } catch (JSONException e) {
+                return;
+            }
+            prefs.edit().putString(NAMES, names.toString()).apply();
+            Wallpapers.tilePicturesChanged();
         }
-        prefs.edit().putString(NAMES, names.toString()).apply();
-        Wallpapers.tilePicturesChanged();
     }
 
     private org.json.JSONObject names() {
@@ -93,7 +99,26 @@ final class TilePictures {
      * A picture for a tile, from its file: a tile picture as it is, or one of the Library's cut to the screen,
      * read small and brought to the tile's size. Null when it can't be read.
      */
+    /** Tile pictures as last made, by their file and its time: the tiles are made again often, the files seldom. */
+    private static final java.util.Map<String, Object[]> made = new java.util.HashMap<>();
+
     static Bitmap forTile(File file) {
+        String path = file.getPath();
+        long time = file.lastModified();
+        synchronized (made) {
+            Object[] kept = made.get(path);
+            if (kept != null && (Long) kept[0] == time && !((Bitmap) kept[1]).isRecycled()) return (Bitmap) kept[1];
+        }
+        Bitmap picture = decodeForTile(file);
+        synchronized (made) {
+            if (made.size() >= 32) made.clear();   // more than any Home has: begun again
+            if (picture != null) made.put(path, new Object[]{time, picture});
+            else made.remove(path);
+        }
+        return picture;
+    }
+
+    private static Bitmap decodeForTile(File file) {
         android.graphics.BitmapFactory.Options o = new android.graphics.BitmapFactory.Options();
         o.inJustDecodeBounds = true;
         android.graphics.BitmapFactory.decodeFile(file.getPath(), o);
@@ -121,48 +146,54 @@ final class TilePictures {
     }
 
     /** Keeps the picture, scaled to the tile's size: its id, or null when it couldn't be saved. */
-    synchronized String add(Bitmap picture) {
-        if (!dir.isDirectory() && !dir.mkdirs()) return null;
-        String id = newId();
-        Bitmap sized = picture.getWidth() == PICTURE_W && picture.getHeight() == PICTURE_H ? picture
-                : Bitmap.createScaledBitmap(picture, PICTURE_W, PICTURE_H, true);
-        File f = file(id);
-        try (FileOutputStream out = new FileOutputStream(f)) {
-            if (!sized.compress(Bitmap.CompressFormat.PNG, 100, out)) throw new IOException("not written");
-        } catch (IOException e) {
-            //noinspection ResultOfMethodCallIgnored
-            f.delete();
-            return null;
+    String add(Bitmap picture) {
+        synchronized (TilePictures.class) {
+            if (!dir.isDirectory() && !dir.mkdirs()) return null;
+            String id = newId();
+            Bitmap sized = picture.getWidth() == PICTURE_W && picture.getHeight() == PICTURE_H ? picture
+                    : Bitmap.createScaledBitmap(picture, PICTURE_W, PICTURE_H, true);
+            File f = file(id);
+            try (FileOutputStream out = new FileOutputStream(f)) {
+                if (!sized.compress(Bitmap.CompressFormat.PNG, 100, out)) throw new IOException("not written");
+            } catch (IOException e) {
+                //noinspection ResultOfMethodCallIgnored
+                f.delete();
+                return null;
+            }
+            List<String> ids = ids();
+            ids.add(id);
+            save(ids);
+            Wallpapers.tilePicturesChanged();
+            return id;
         }
-        List<String> ids = ids();
-        ids.add(id);
-        save(ids);
-        Wallpapers.tilePicturesChanged();
-        return id;
     }
 
     /** An existing file taken in as it is (TileCustom's older per-app pictures): its id, or null. */
-    synchronized String adopt(File picture) {
-        if (!picture.isFile()) return null;
-        String id = newId();
-        if (!picture.renameTo(file(id))) return null;
-        List<String> ids = ids();
-        ids.add(id);
-        save(ids);
-        Wallpapers.tilePicturesChanged();
-        return id;
+    String adopt(File picture) {
+        synchronized (TilePictures.class) {
+            if (!picture.isFile()) return null;
+            String id = newId();
+            if (!picture.renameTo(file(id))) return null;
+            List<String> ids = ids();
+            ids.add(id);
+            save(ids);
+            Wallpapers.tilePicturesChanged();
+            return id;
+        }
     }
 
     /** Takes it out, file and all, and off every tile that showed it (those show their own again). */
-    synchronized void delete(String id) {
-        List<String> ids = ids();
-        ids.remove(id);
-        save(ids);
-        //noinspection ResultOfMethodCallIgnored
-        file(id).delete();
-        setTitle(id, null);
-        new TileCustom(context).forgetPicture(id);
-        Wallpapers.tilePicturesChanged();
+    void delete(String id) {
+        synchronized (TilePictures.class) {
+            List<String> ids = ids();
+            ids.remove(id);
+            save(ids);
+            //noinspection ResultOfMethodCallIgnored
+            file(id).delete();
+            setTitle(id, null);
+            new TileCustom(context).forgetPicture(id);
+            Wallpapers.tilePicturesChanged();
+        }
     }
 
     /** The phone's "data:image/...;base64,..." picture, or null when it isn't one (or is unreasonably large). */

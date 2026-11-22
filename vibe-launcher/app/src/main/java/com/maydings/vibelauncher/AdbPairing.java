@@ -107,6 +107,10 @@ final class AdbPairing {
         } catch (EOFException e) {
             // Closed on us after the codes were compared: the TV's side didn't decrypt ours, a wrong code.
             return exchanged ? WRONG_CODE : FAILED;
+        } catch (java.net.SocketTimeoutException e) {
+            // No answer in time: not a word on the code, which may well have been right.
+            android.util.Log.i("VibeAdb", "pairing: no answer in time", e);
+            return FAILED;
         } catch (IOException | GeneralSecurityException | RuntimeException e) {
             android.util.Log.i("VibeAdb", "pairing: " + (exchanged ? "after" : "before") + " the code exchange", e);
             return exchanged ? WRONG_CODE : FAILED;

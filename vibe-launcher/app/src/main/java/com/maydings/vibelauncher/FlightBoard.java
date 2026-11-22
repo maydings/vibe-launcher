@@ -274,7 +274,11 @@ public final class FlightBoard extends FrameLayout {
 
     private void say(Flights.Near n) {
         if (n == null) return;
-        boolean first = showingNow != n;
+        // Another aircraft, or its airline now known: not just the same one told of again (each look brings
+        // them anew), which would ask for its logo every few seconds.
+        boolean first = showingNow == null || !showingNow.hex.equals(n.hex)
+                || !java.util.Objects.equals(showingNow.icao, n.icao)
+                || !java.util.Objects.equals(showingNow.iata, n.iata);
         showingNow = n;
         if (first) wear(n);   // which says it again, once the logo's known
         String name = !n.callsign.isEmpty() ? n.callsign : n.registration != null ? n.registration
@@ -328,17 +332,17 @@ public final class FlightBoard extends FrameLayout {
         if (text != null && !text.contentEquals(view.getText())) view.setText(text);
     }
 
-    private static String join(String with, String a, String b) {
+    static String join(String with, String a, String b) {
         return a == null ? b : b == null ? a : a + with + b;
     }
 
     /** "5X2182" as "5X 2182": the airline's two characters, then the number. */
-    private static String spaced(String flight) {
+    static String spaced(String flight) {
         return flight.length() > 2 ? flight.substring(0, 2) + ' ' + flight.substring(2) : flight;
     }
 
     /** A number to the nearest step, with the language's thousands mark: 9,600. */
-    private static String whole(double value, int step) {
+    static String whole(double value, int step) {
         return String.format(Locale.getDefault(), "%,d", Math.round(value / step) * step);
     }
 }

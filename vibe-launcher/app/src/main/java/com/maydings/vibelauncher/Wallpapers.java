@@ -108,6 +108,11 @@ final class Wallpapers {
         dir = new File(context.getFilesDir(), "wallpapers");
         //noinspection ResultOfMethodCallIgnored
         dir.mkdirs();
+        // What was still arriving when the launcher last stopped (a power cut, an update): never finished, and
+        // in nobody's Library to be deleted from. Now, before anything new starts to arrive.
+        File[] unfinished = dir.listFiles((d, name) -> name.endsWith(".part"));
+        if (unfinished != null) for (File f : unfinished) //noinspection ResultOfMethodCallIgnored
+            f.delete();
         prefs = context.getSharedPreferences("wallpapers", Context.MODE_PRIVATE);
         lists();   // made now, the first time, with every one there is before any new one comes
         firstOrders();
@@ -277,7 +282,7 @@ final class Wallpapers {
                     still.recycle();
                 }
             }
-        } catch (IOException | RuntimeException e) {
+        } catch (IOException | RuntimeException | OutOfMemoryError e) {   // a picture too big to open, too
             //noinspection ResultOfMethodCallIgnored
             to.delete();
             return null;
@@ -469,7 +474,7 @@ final class Wallpapers {
     }
 
     /** An order with each of these letters once, in its own order first; any missing added as it is in these. */
-    private static String whole(String order, String all) {
+    static String whole(String order, String all) {
         StringBuilder made = new StringBuilder();
         if (order != null) {
             for (char c : order.toCharArray()) {

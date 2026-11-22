@@ -375,6 +375,8 @@
     <string name="anim_normal">স্বাভাবিক</string>
     <string name="anim_fast">দ্রুততর</string>
     <string name="anim_short">অ্যাপ ও মেনু খোলার সময় ডিভাইসের নিজস্ব অ্যানিমেশন: দ্রুততরগুলো পুরোনো ডিভাইসকে চটপটে মনে করায়। এর জন্য সেটিংস &gt; উন্নত একবার অনুমোদিত হতে হবে।</string>
+    <string name="system_screensaver">সিস্টেম স্ক্রিনসেভার</string>
+    <string name="system_screensaver_short">ডিভাইসের নিজস্ব স্ক্রিনসেভার, সব অ্যাপে: বন্ধ থাকলে এটি কখনও আসে না। এর জন্য সেটিংস &gt; উন্নত একবার অনুমোদিত হতে হবে।</string>
     <string name="free_memory">মেমরি খালি করুন</string>
     <string name="memory_freed">%1$s খালি হয়েছে</string>
     <string name="debloat">অ্যাপ পরিষ্কার</string>

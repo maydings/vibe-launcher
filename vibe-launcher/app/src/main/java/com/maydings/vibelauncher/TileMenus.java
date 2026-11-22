@@ -150,6 +150,9 @@ final class TileMenus {
                 () -> pickBackdrops(pkg, e.label, anchor));
         home.addInputRow(rows, popup, R.drawable.ic_edit, home.getString(R.string.rename_folder), -1,
                 () -> home.askText(R.string.tile_name, e.label, typed -> {
+                    // Left as it was: nothing to keep (kept, the app's own name would stay this one whatever
+                    // the app or the language called it later).
+                    if (typed != null && typed.trim().equals(e.label)) return;
                     new TileCustom(home).setName(pkg, typed);   // empty: the app's own name again
                     tileChanged(pkg);
                 }));

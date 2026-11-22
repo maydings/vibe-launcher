@@ -375,6 +375,8 @@
     <string name="anim_normal">Normalna</string>
     <string name="anim_fast">Szybsza</string>
     <string name="anim_short">Animacje urządzenia przy otwieraniu aplikacji i menu: szybsze sprawiają, że starsze urządzenie działa żwawiej. Wymaga jednorazowego zezwolenia w Ustawienia &gt; Zaawansowane.</string>
+    <string name="system_screensaver">Wygaszacz systemowy</string>
+    <string name="system_screensaver_short">Własny wygaszacz urządzenia, w każdej aplikacji: wyłączony nigdy się nie pojawia. Wymaga jednorazowego zezwolenia w Ustawienia &gt; Zaawansowane.</string>
     <string name="free_memory">Zwolnij pamięć</string>
     <string name="memory_freed">Zwolniono %1$s</string>
     <string name="debloat">Porządkowanie aplikacji</string>

@@ -375,6 +375,8 @@
     <string name="anim_normal">സാധാരണ</string>
     <string name="anim_fast">കൂടുതൽ വേഗത്തിൽ</string>
     <string name="anim_short">ആപ്പുകളും മെനുകളും തുറക്കുമ്പോൾ ഉപകരണത്തിന്റെ സ്വന്തം ആനിമേഷനുകൾ: വേഗമേറിയവ പഴയ ഉപകരണത്തെ ചുറുചുറുക്കുള്ളതായി തോന്നിപ്പിക്കും. ഇതിന് ക്രമീകരണം &gt; വിപുലമായത് ഒരിക്കൽ അനുവദിച്ചിരിക്കണം.</string>
+    <string name="system_screensaver">സിസ്റ്റം സ്ക്രീൻസേവർ</string>
+    <string name="system_screensaver_short">ഉപകരണത്തിന്റെ സ്വന്തം സ്ക്രീൻസേവർ, എല്ലാ ആപ്പിലും: ഓഫാണെങ്കിൽ അത് ഒരിക്കലും വരില്ല. ഇതിന് ക്രമീകരണം &gt; വിപുലമായത് ഒരിക്കൽ അനുവദിച്ചിരിക്കണം.</string>
     <string name="free_memory">മെമ്മറി സ്വതന്ത്രമാക്കുക</string>
     <string name="memory_freed">%1$s സ്വതന്ത്രമാക്കി</string>
     <string name="debloat">ആപ്പ് വൃത്തിയാക്കൽ</string>

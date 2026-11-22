@@ -106,6 +106,16 @@ final class TvApps {
         }
     }
 
+    /** Whether the app is on the TV at all, on or off. */
+    static boolean installed(PackageManager pm, String pkg) {
+        try {
+            pm.getApplicationInfo(pkg, 0);   // also finds apps turned off
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
     private static boolean kept(ApplicationInfo ai, Set<String> keep) {
         String p = ai.packageName;
         return KEEP.contains(p) || keep.contains(p) || KEEP_LIKE.matcher(p).find()
@@ -207,7 +217,7 @@ final class TvApps {
         PackageManager pm = context.getPackageManager();
         List<String> off = new ArrayList<>();
         for (String pkg : new VibeSettings(context).appsOff()) {
-            if (!isOn(pm, pkg)) off.add(pkg);
+            if (installed(pm, pkg) && !isOn(pm, pkg)) off.add(pkg);   // one that's gone isn't off: there's none
         }
         Collections.sort(off);
         return off;

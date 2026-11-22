@@ -19,6 +19,8 @@ import java.util.concurrent.ConcurrentHashMap;
 final class VrsDatabase {
 
     private final Context context;
+    /** Lists whose refresh failed, and when each may be asked for again. */
+    private final Map<String, Long> retryAt = new ConcurrentHashMap<>();
 
     VrsDatabase(Context context) {
         this.context = context;
@@ -45,6 +47,9 @@ final class VrsDatabase {
         if (!dir.isDirectory() && !dir.mkdirs()) throw new IOException("no cache");
         File file = new File(dir, name);
         if (file.isFile() && System.currentTimeMillis() - file.lastModified() < LIST_MS) return file;
+        // An old one that couldn't be had anew just now: the old one for ten minutes, not asked for with each look.
+        Long again = retryAt.get(name);
+        if (file.isFile() && again != null && System.currentTimeMillis() < again) return file;
         byte[] bytes;
         try {
             bytes = Http.get(VRS + path, 8 * 1024 * 1024);
@@ -52,7 +57,10 @@ final class VrsDatabase {
             // No such list (an airline with no routes kept): an empty one. Refused for another reason (too
             // many requests, say), it's as if it hadn't answered.
             if ("HTTP 404".equals(e.getMessage())) bytes = new byte[0];
-            else if (file.isFile()) return file;
+            else if (file.isFile()) {
+                retryAt.put(name, System.currentTimeMillis() + 10 * 60_000);
+                return file;
+            }
             else throw e;
         }
         File part = new File(file.getPath() + ".part");
@@ -64,7 +72,7 @@ final class VrsDatabase {
     }
 
     /** The line of a list that starts with this key and a comma, in its fields; null when there's none. */
-    private static List<String> line(File list, String key) throws IOException {
+    static List<String> line(File list, String key) throws IOException {
         String start = key + ',';
         try (java.io.BufferedReader in = new java.io.BufferedReader(new java.io.InputStreamReader(
                 new java.io.FileInputStream(list), StandardCharsets.UTF_8))) {

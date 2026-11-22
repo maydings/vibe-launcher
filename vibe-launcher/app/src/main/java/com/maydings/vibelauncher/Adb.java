@@ -4,13 +4,11 @@ import android.content.Context;
 import android.os.Build;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
-import android.util.Base64;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.math.BigInteger;
 import java.net.ConnectException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -194,7 +192,6 @@ final class Adb {
         private DataInputStream in;
         private OutputStream out;
         int status;
-        private int maxData = 4096;
 
         /** Connected, or (socket null) nothing listening. */
         private Link(Socket socket) throws IOException {
@@ -249,7 +246,12 @@ final class Adb {
                     || !AdbTlsKey.paired(c)) return null;
             int port = wirelessPort;
             if (port > 0) {
-                Link link = openTls(c, port);
+                Link link;
+                try {
+                    link = openTls(c, port);
+                } catch (IOException e) {
+                    link = null;   // whatever answers there now isn't the TV's debugging: its new port, below
+                }
                 if (link != null && link.status != FAILED) return link;
                 if (link != null) link.close();   // something else has that port now: the TV's new one
             }
@@ -260,6 +262,9 @@ final class Adb {
             wirelessPort = port;
             return openTls(c, port);
         }
+
+        /** How many times running the TV has turned the key down (openTls). */
+        private static int turnedDown;
 
         /** CNXN, the TV's STLS, ours back, then TLS 1.3 and its CNXN inside it. Null when nothing listens there. */
         private static Link openTls(Context c, int port) throws IOException {
@@ -297,9 +302,9 @@ final class Adb {
                     while (true) {
                         Message cnxn = link.read();
                         if (cnxn.command == CNXN) {
-                            link.maxData = Math.max(1024, Math.min(cnxn.arg1, MAX_DATA));
                             link.status = OK;
                             viaWireless = true;
+                            turnedDown = 0;
                             worked();
                             return link;
                         }
@@ -307,8 +312,9 @@ final class Adb {
                 } catch (SSLException | java.io.EOFException e) {
                     android.util.Log.i("VibeAdb", "wireless: TLS turned down", e);
                     // Our certificate turned down (TLS 1.3 says so after the handshake): the TV doesn't know this
-                    // key, or forgot it (Revoke). Paired anew from Settings > Apps.
-                    AdbTlsKey.setPaired(c, false);
+                    // key, or forgot it (Revoke). Paired anew from Settings > Apps. A connection that only dropped
+                    // here looks the same, so the pairing is forgotten when it's turned down twice running.
+                    if (++turnedDown >= 2) AdbTlsKey.setPaired(c, false);
                     link.status = NOT_PAIRED;
                     return link;
                 }
@@ -337,7 +343,6 @@ final class Adb {
                 while (true) {
                     Message m = read();
                     if (m.command == CNXN) {
-                        maxData = Math.max(1024, Math.min(m.arg1, MAX_DATA));
                         return OK;
                     }
                     if (m.command != AUTH || m.arg0 != AUTH_TOKEN) continue;
@@ -473,22 +478,6 @@ final class Adb {
         } catch (IOException e) {
             throw new GeneralSecurityException(e);
         }
-        BigInteger n = pub.getModulus();
-        int words = 2048 / 32;
-        BigInteger r32 = BigInteger.ONE.shiftLeft(32);
-        BigInteger n0inv = r32.subtract(n.mod(r32).modInverse(r32));
-        BigInteger rr = BigInteger.ONE.shiftLeft(2 * 2048).mod(n);
-        ByteBuffer b = ByteBuffer.allocate(4 + 4 + words * 4 * 2 + 4).order(ByteOrder.LITTLE_ENDIAN);
-        b.putInt(words).putInt(n0inv.intValue());
-        putWords(b, n, words);
-        putWords(b, rr, words);
-        b.putInt(pub.getPublicExponent().intValue());
-        String text = Base64.encodeToString(b.array(), Base64.NO_WRAP) + " Vibe Launcher\0";
-        return text.getBytes(StandardCharsets.UTF_8);
-    }
-
-    private static void putWords(ByteBuffer b, BigInteger v, int words) {
-        BigInteger mask = BigInteger.ONE.shiftLeft(32).subtract(BigInteger.ONE);
-        for (int i = 0; i < words; i++) b.putInt(v.shiftRight(32 * i).and(mask).intValue());
+        return AdbTlsKey.adbPublicKey(pub);   // the same key, the same way, as for Wireless debugging
     }
 }

@@ -375,6 +375,8 @@
     <string name="anim_normal">Нормална</string>
     <string name="anim_fast">По-бърза</string>
     <string name="anim_short">Анимациите на устройството при отваряне на приложения и менюта: по-бързите правят по-старо устройство да изглежда по-пъргаво. Изисква Настройки &gt; Разширени да е разрешено веднъж.</string>
+    <string name="system_screensaver">Системен скрийнсейвър</string>
+    <string name="system_screensaver_short">Собственият скрийнсейвър на устройството, във всяко приложение: изключен, той не се появява. Изисква Настройки &gt; Разширени да е разрешено веднъж.</string>
     <string name="free_memory">Освобождаване на памет</string>
     <string name="memory_freed">Освободени: %1$s</string>
     <string name="debloat">Почистване на приложения</string>

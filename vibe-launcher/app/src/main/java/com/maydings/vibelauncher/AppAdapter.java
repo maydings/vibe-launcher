@@ -296,6 +296,11 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         updated.add(pkg);
     }
 
+    /** Every tile is drawn again with the next reload (a picture any of them may have had is gone). */
+    void markAllUpdated() {
+        for (Entry e : items) if (e.pkg != null) updated.add(e.pkg);
+    }
+
     /**
      * Home's tiles with each folder's apps taken in under its tile. A folder none of whose apps is here shows
      * no tile, but is kept: an app missing for a moment (being updated, on storage not mounted yet) mustn't
@@ -327,6 +332,17 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
         List<String> keys = new ArrayList<>();
         for (Entry e : items) if (!e.allApps) keys.add(e.key());
         return keys;
+    }
+
+    /**
+     * Takes one tile out of the order as it's kept. Not orderKeys without it: that's the tiles showing now, which
+     * may not have one that was just given its place in what's kept (an app moved out of a folder).
+     */
+    void forgetInOrder(String key) {
+        String saved = prefs.getString(KEY_ORDER, "");
+        if (saved.isEmpty()) return;
+        List<String> keys = new ArrayList<>(Arrays.asList(saved.split(",")));
+        if (keys.remove(key)) saveOrder(keys);
     }
 
     void saveOrder(List<String> keys) {
@@ -533,19 +549,17 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
 
     /** The first position of position's row. */
     int rowStart(int position) {
-        int dock = dockCount();
-        return position < dock ? 0 : dock + (position - dock) / columns * columns;
+        return DockGrid.rowStart(position, dockCount(), columns);
     }
 
     /** The last position of position's row. */
     int rowEnd(int position) {
-        int dock = dockCount();
-        return position < dock ? dock - 1 : Math.min(rowStart(position) + columns - 1, items.size() - 1);
+        return DockGrid.rowEnd(position, dockCount(), columns, items.size());
     }
 
     /** The empty space before the dock's first tile, and after its last, in tiles (halves when odd). */
     float dockInset() {
-        return (columns - dockCount()) / 2f;
+        return DockGrid.inset(dockCount(), columns);
     }
 
     /**
@@ -553,48 +567,17 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
      * may be shorter); -1 from the dock.
      */
     int above(int position) {
-        int dock = dockCount();
-        if (position < dock) return -1;
-        int col = position - dock;
-        if (col >= columns) return position - columns;
-        if (dock == 0) return -1;   // an open folder's first row: nothing above
-        return dockOver(col);
+        return DockGrid.above(position, dockCount(), columns);
     }
 
     /** The tile below, the nearest under a dock tile; the same position on the last row (nowhere to go). */
     int below(int position) {
-        int dock = dockCount(), count = items.size();
-        if (position < dock) {
-            if (count <= dock) return position;
-            return Math.min(count - 1, dock + columnUnder(position));
-        }
-        if (rowStart(position) + columns >= count) return position;   // the last row
-        return Math.min(position + columns, count - 1);
+        return DockGrid.below(position, dockCount(), columns, items.size());
     }
 
     /** The dock tile a position belongs under: itself in the dock, else the nearest above its column. */
     int dockTileFor(int position) {
-        int dock = dockCount();
-        if (dock == 0) return 0;
-        if (position < dock) return position;
-        return dockOver((position - dock) % columns);
-    }
-
-    /*
-     * A shorter dock is centred, so with an odd difference (4 apps over 5 columns) each dock tile sits half
-     * over two columns. Down takes the left one, and Up from a column takes the dock tile over its middle,
-     * which is the one Down came from: rounding both ways (half up) moved one column right on every Down
-     * and Up, all the way to the end of the row.
-     */
-
-    /** The column under dock tile i: the left one of the two it half covers. */
-    private int columnUnder(int i) {
-        return Math.max(0, Math.min(columns - 1, (int) Math.floor(i + dockInset())));
-    }
-
-    /** The dock tile over the middle of column col. */
-    private int dockOver(int col) {
-        return Math.max(0, Math.min(dockCount() - 1, (int) Math.floor(col + 0.5f - dockInset())));
+        return DockGrid.dockTileFor(position, dockCount(), columns);
     }
 
     /**
@@ -603,12 +586,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
      * shorter dock is centred and the next row starts on a line of its own.
      */
     int spanSize(int position) {
-        int dock = dockCount(), extra = columns - dock;   // the empty half tiles on each side
-        if (position >= dock) return 2;
-        int span = 2;
-        if (position == 0) span += extra;
-        if (position == dock - 1) span += extra;
-        return span;
+        return DockGrid.spanSize(position, dockCount(), columns);
     }
 
     /** The TV's App info page for pkg, or null where the firmware has none. */

@@ -153,17 +153,28 @@ final class Plex {
             }
             if (best == null) return null;
             JSONArray connections = best.getJSONArray("connections");
-            String uri = null;
-            for (int pass = 0; pass < 2 && uri == null; pass++) {   // local first, then remote
+            List<String> uris = new ArrayList<>();
+            for (int pass = 0; pass < 2; pass++) {   // local first, then remote
                 for (int i = 0; i < connections.length(); i++) {
                     JSONObject c = connections.getJSONObject(i);
                     if (c.optBoolean("relay") || c.optBoolean("local") != (pass == 0)) continue;
-                    uri = c.getString("uri");
-                    break;
+                    uris.add(c.getString("uri"));
                 }
             }
-            if (uri == null) return null;
+            if (uris.isEmpty()) return null;
             String access = best.optString("accessToken", token);
+            String uri = uris.get(0);
+            // Looked up again because the one kept didn't answer: the first that does (a server with several
+            // addresses lists some this TV can't reach), not the same first one.
+            for (int i = 0; refresh && i < uris.size(); i++) {
+                try {
+                    get(uris.get(i) + "/identity", access);
+                    uri = uris.get(i);
+                    break;
+                } catch (IOException | RuntimeException e) {
+                    // not this one
+                }
+            }
             cache.edit().putString("uri", uri).putString("access", access).putString("forToken", token)
                     .putLong("time", now).apply();
             return new String[]{uri, access};
@@ -208,7 +219,7 @@ final class Plex {
     }
 
     /** The title's id on TMDB from its Guid list ("tmdb://603"), or 0 when the server gives none. */
-    private static long tmdbId(JSONArray guids) {
+    static long tmdbId(JSONArray guids) {
         for (int i = 0; guids != null && i < guids.length(); i++) {
             JSONObject g = guids.optJSONObject(i);
             String id = g == null ? "" : g.optString("id");

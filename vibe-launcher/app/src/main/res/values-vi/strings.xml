@@ -375,6 +375,8 @@
     <string name="anim_normal">Bình thường</string>
     <string name="anim_fast">Nhanh hơn</string>
     <string name="anim_short">Hiệu ứng của chính thiết bị khi mở ứng dụng và menu: nhanh hơn giúp thiết bị cũ có cảm giác nhanh nhạy hơn. Cần cho phép Cài đặt &gt; Nâng cao một lần.</string>
+    <string name="system_screensaver">Trình bảo vệ màn hình hệ thống</string>
+    <string name="system_screensaver_short">Trình bảo vệ màn hình của chính thiết bị, trong mọi ứng dụng: khi tắt, nó không bao giờ hiện. Cần cho phép Cài đặt &gt; Nâng cao một lần.</string>
     <string name="free_memory">Giải phóng bộ nhớ</string>
     <string name="memory_freed">Đã giải phóng %1$s</string>
     <string name="debloat">Dọn dẹp ứng dụng</string>

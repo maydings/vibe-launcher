@@ -379,6 +379,8 @@
     <string name="anim_normal">Normal</string>
     <string name="anim_fast">Faster</string>
     <string name="anim_short">The device\'s own animations, as apps and menus open: faster ones make an older device feel quicker. Needs Settings &gt; Advanced to have been allowed once.</string>
+    <string name="system_screensaver">System screensaver</string>
+    <string name="system_screensaver_short">The device\'s own screensaver, in every app: off, it never comes up. Needs Settings &gt; Advanced to have been allowed once.</string>
     <string name="free_memory">Free memory</string>
     <string name="memory_freed">%1$s freed</string>
     <string name="debloat">Debloat</string>

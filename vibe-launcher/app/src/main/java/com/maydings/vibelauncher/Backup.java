@@ -310,8 +310,11 @@ final class Backup {
     private static Cursor query(Context context, String column) {
         return context.getContentResolver().query(MediaStore.Downloads.EXTERNAL_CONTENT_URI,
                 new String[]{MediaStore.MediaColumns._ID, column},
-                MediaStore.MediaColumns.DISPLAY_NAME + "=? AND " + MediaStore.MediaColumns.RELATIVE_PATH + "=?",
-                new String[]{FILE_NAME, Environment.DIRECTORY_DOWNLOADS + "/"},
+                // By its name, or as Android names it beside one of that name it can't write over (another
+                // install's, or one copied in): "vibe-launcher-backup (1).json". Only this install's own are
+                // seen here, the newest first.
+                MediaStore.MediaColumns.DISPLAY_NAME + " LIKE ? AND " + MediaStore.MediaColumns.RELATIVE_PATH + "=?",
+                new String[]{FILE_NAME.replace(".json", "") + "%.json", Environment.DIRECTORY_DOWNLOADS + "/"},
                 MediaStore.MediaColumns.DATE_MODIFIED + " DESC");
     }
 

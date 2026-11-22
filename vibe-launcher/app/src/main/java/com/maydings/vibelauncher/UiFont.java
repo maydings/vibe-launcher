@@ -51,9 +51,36 @@ final class UiFont {
         return context.getResources().getFont(v.resourceId);
     }
 
-    /** The current language's name in itself, and digits: what a font must have to be used for it. */
-    static String sample(Context context) {
-        return languageName(context) + "0123456789";
+    private static String sampleOf, sample;
+
+    /**
+     * What a font must have to be used for the current language: the language's name in itself, digits, and
+     * the letters of a few of Vibe Launcher's own longer texts in it. Its name alone hasn't all its letters
+     * ("Türkçe" has no ğ, ş or ı), and a font without some would have those drawn in another.
+     */
+    static synchronized String sample(Context context) {
+        String tag = new VibeSettings(context).language() + '/' + Lang.system().toLanguageTag();
+        if (tag.equals(sampleOf)) return sample;
+        StringBuilder letters = new StringBuilder(languageName(context)).append("0123456789");
+        try {
+            Context in = Lang.wrap(context);
+            for (int text : new int[]{R.string.flights_short, R.string.title_info_short, R.string.wp_custom_short,
+                    R.string.backup_short}) {
+                String words = in.getString(text);
+                for (int i = 0; i < words.length(); ) {
+                    int c = words.codePointAt(i);
+                    i += Character.charCount(c);
+                    if (Character.isLetter(c) && letters.indexOf(new String(Character.toChars(c))) < 0) {
+                        letters.appendCodePoint(c);
+                    }
+                }
+            }
+        } catch (RuntimeException e) {
+            // its name and the digits, then
+        }
+        sampleOf = tag;
+        sample = letters.toString();
+        return sample;
     }
 
     /** The language Vibe Launcher shows now, by its own name ("Tiếng Việt", "العربية"). */

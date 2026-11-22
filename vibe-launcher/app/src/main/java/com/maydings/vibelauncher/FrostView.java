@@ -220,8 +220,8 @@ public class FrostView extends View {
         wrapper.getLocationInWindow(sourceLoc);
         getLocationInWindow(myLoc);
         int top = Math.max(0, myLoc[1] + getHeight() - sourceLoc[1]);
-        Rect clip = wrapper.getClipBounds();
-        if (clip != null && clip.top == top && clip.right == wrapper.getWidth()
+        Rect clip = clipNow;   // asked for into this one: on every frame, none made for it
+        if (wrapper.getClipBounds(clip) && clip.top == top && clip.right == wrapper.getWidth()
                 && clip.bottom == wrapper.getHeight()) return;
         wrapper.setClipBounds(new Rect(0, top, wrapper.getWidth(), wrapper.getHeight()));
     }
@@ -241,6 +241,8 @@ public class FrostView extends View {
         }
         return reach();
     }
+
+    private final Rect clipNow = new Rect();
 
     private float reach() {
         getLocationInWindow(myLoc);
