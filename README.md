@@ -145,7 +145,7 @@ a card is on screen.
 
 If you want the cards without the map, **Show flight cards** puts them over an app's plain color backdrop.
 
-| ![Aircraft over Los Angeles, and a card for a Delta flight to New Orleans](vibe-launcher/docs/flights.jpg) | ![The map on its own, filling the screen during the slideshow](vibe-launcher/docs/flights-fullscreen.jpg) |
+| ![Aircraft over Los Angeles, and a card for a Delta flight to New Orleans](vibe-launcher/docs/flights.jpg) | ![The same on Home with the minimal top bar: a Delta flight from Raleigh/Durham to Boston](vibe-launcher/docs/flights-home.jpg) |
 |---|---|
 
 ### When you leave it alone
