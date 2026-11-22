@@ -29,6 +29,7 @@ import java.util.Locale;
 public final class FlightBoard extends FrameLayout {
 
     private static final long EACH_MS = 8_000, FADE_MS = 400;
+    private static final int WIDTH_DP = 340;   // the board's, frame and all
     private static final String[] COMPASS = {"N", "NE", "E", "SE", "S", "SW", "W", "NW"};
 
     private final LinearLayout box;
@@ -57,7 +58,7 @@ public final class FlightBoard extends FrameLayout {
         setVisibility(GONE);
         box = new LinearLayout(context);
         box.setOrientation(LinearLayout.VERTICAL);
-        box.setGravity(Gravity.END);
+        box.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
         // In a frame of its own, as a board on the wall is: dark inside, so it reads over any part of the map.
         GradientDrawable frame = new GradientDrawable();
         frame.setColor(0xEB070B12);
@@ -66,16 +67,15 @@ public final class FlightBoard extends FrameLayout {
         box.setBackground(frame);
         int pad = Math.round(18 * getResources().getDisplayMetrics().density);
         box.setPadding(pad + pad / 4, pad, pad + pad / 4, pad);
-        box.setMinimumWidth(Math.round(300 * getResources().getDisplayMetrics().density));
         float d = getResources().getDisplayMetrics().density;
         // The flight's number, and the airline's logo after it (its name instead, where there's no logo).
         LinearLayout top = new LinearLayout(context);
         top.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
-        box.addView(top, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
+        // As tall as the logo's plate, with one or without, so the board is.
+        box.addView(top, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (int) (48 * d)));
         flight = line(22, 0xD9FFFFFF, R.string.font_regular);
         box.removeView(flight);
-        top.addView(flight);
+        top.addView(flight, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
         plate = new ImageView(context);
         GradientDrawable white = new GradientDrawable();
         white.setColor(0xFFFFFFFF);
@@ -83,7 +83,7 @@ public final class FlightBoard extends FrameLayout {
         plate.setBackground(white);
         plate.setPadding((int) (12 * d), (int) (8 * d), (int) (12 * d), (int) (8 * d));
         plate.setAdjustViewBounds(true);
-        plate.setMaxWidth((int) (200 * d));
+        plate.setMaxWidth((int) (170 * d));
         plate.setScaleType(ImageView.ScaleType.FIT_CENTER);
         plate.setVisibility(GONE);
         LinearLayout.LayoutParams plateAt = new LinearLayout.LayoutParams(
@@ -107,11 +107,15 @@ public final class FlightBoard extends FrameLayout {
         ((LinearLayout.LayoutParams) headline.getLayoutParams()).topMargin = (int) (6 * d);
         ((LinearLayout.LayoutParams) aircraft.getLayoutParams()).topMargin = (int) (10 * d);
         ((LinearLayout.LayoutParams) count.getLayoutParams()).topMargin = (int) (8 * d);
-        LayoutParams at = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT,
-                Gravity.END | Gravity.CENTER_VERTICAL);
+        // One size, whatever it says: as wide as this, a line with nothing to say keeps its place (set), and
+        // as tall as its lines with one more, for the one that's too long for the width (wrap).
+        int tall = box.getPaddingTop() + box.getPaddingBottom() + (int) ((48 + 6 + 10 + 8 + 2) * d)
+                + headline.getLineHeight() + 2 * cities.getLineHeight() + aircraft.getLineHeight()
+                + numbers.getLineHeight() + count.getLineHeight();
+        LayoutParams at = new LayoutParams((int) (WIDTH_DP * d), tall, Gravity.END | Gravity.CENTER_VERTICAL);
         at.setMarginEnd((int) (50 * d));
         addView(box, at);
-        // Its height changes with what it says: its foot stays where it was put.
+        // Its foot stays where it was put.
         box.addOnLayoutChangeListener((v, l, t, r, b, ol, ot, or, ob) -> settle());
     }
 
@@ -122,8 +126,9 @@ public final class FlightBoard extends FrameLayout {
         text.setTypeface(UiFont.get(getContext(), font));
         text.setIncludeFontPadding(false);
         text.setSingleLine(true);
+        text.setEllipsize(android.text.TextUtils.TruncateAt.END);
         text.setGravity(Gravity.END);
-        box.addView(text, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+        box.addView(text, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         return text;
     }
@@ -285,13 +290,34 @@ public final class FlightBoard extends FrameLayout {
         String where = (away < 10 ? String.format(Locale.getDefault(), "%.1f", away) : whole(away, 1))
                 + (imperial ? " mi " : " km ") + COMPASS[(int) Math.round(n.bearing / 45) % 8];
         set(numbers, join(" · ", join(" · ", high, fast), where));
+        wrap();
         int at = near.indexOf(n) + 1;
         set(count, near.size() > 1 ? at + " / " + near.size() : null);
         map.setChosen(n.hex);
     }
 
+    /**
+     * A second line for the first of these that's too long for the board: the cities, the aircraft, the
+     * numbers. The board has room for one; another too long is cut short.
+     */
+    private void wrap() {
+        float room = box.getLayoutParams().width - box.getPaddingLeft() - box.getPaddingRight();
+        boolean given = false;
+        for (TextView line : new TextView[]{cities, aircraft, numbers}) {
+            boolean two = !given && line.getVisibility() == VISIBLE
+                    && line.getPaint().measureText(line.getText().toString()) > room;
+            given |= two;
+            if (line.getMaxLines() != (two ? 2 : 1)) {
+                line.setSingleLine(!two);
+                line.setMaxLines(two ? 2 : 1);
+                line.setEllipsize(android.text.TextUtils.TruncateAt.END);
+            }
+        }
+    }
+
+    /** A line's text; with none it's empty but keeps its place, so the board is one size. */
     private static void set(TextView view, String text) {
-        view.setVisibility(text == null ? GONE : VISIBLE);
+        view.setVisibility(text == null ? INVISIBLE : VISIBLE);
         if (text != null && !text.contentEquals(view.getText())) view.setText(text);
     }
 

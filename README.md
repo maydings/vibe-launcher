@@ -61,7 +61,7 @@ others) and finds clean artwork for each title. You choose the order it looks: N
 app's own picture. Plex, YouTube (through SmartTube) and an HDHomeRun tuner each get their own pictures too.
 
 With a TMDB key you can also turn on **Film and show details** (Settings → Backdrops): the title's logo moves to
-the left with its TMDB rating, year, synopsis and genres under it. The details are looked up by title when it is first shown, whichever source the backdrop came from.
+the left with its TMDB rating, year, synopsis and genres under it. The details are looked up when a title is first shown, whichever source the backdrop came from: by its name, or for a film or show from your Plex server, by the TMDB id the server has for it.
 
 You can also use your own pictures and videos, all added in one place (Settings → Library): sent
 from your phone, or picked on the TV from Wallhaven, Pixabay, NASA, Wikimedia Commons, Pexels or Apple TV's

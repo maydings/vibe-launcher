@@ -50,6 +50,7 @@ final class Plex {
         }
     }
 
+    private final Context context;
     private final VibeSettings settings;
     private final SharedPreferences cache;
     private final int width, height;
@@ -67,6 +68,7 @@ final class Plex {
     }, "PlexOnDeck"));
 
     Plex(Context context, int width, int height) {
+        this.context = context.getApplicationContext();
         settings = new VibeSettings(context);
         cache = context.getSharedPreferences("plex", Context.MODE_PRIVATE);
         this.width = width;
@@ -176,7 +178,8 @@ final class Plex {
      */
     private List<Item> fetch(String base, String token, String path, boolean deck) throws IOException, JSONException {
         List<Item> items = new ArrayList<>();
-        JSONArray found = new JSONObject(get(base + path, token)).getJSONObject("MediaContainer")
+        // With each title's ids on other sites (its Guid list): TMDB's says whose details to show with it.
+        JSONArray found = new JSONObject(get(base + path + "?includeGuids=1", token)).getJSONObject("MediaContainer")
                 .optJSONArray("Metadata");
         for (int i = 0; found != null && i < found.length(); i++) {
             JSONObject m = found.getJSONObject(i);
@@ -184,6 +187,11 @@ final class Plex {
             String a = episode ? m.optString("grandparentArt", m.optString("art")) : m.optString("art");
             if (a.isEmpty()) continue;
             String title = episode ? m.optString("grandparentTitle") : m.optString("title");
+            String type = m.optString("type");
+            if (!title.isEmpty() && (type.equals("movie") || type.equals("show"))) {
+                long id = tmdbId(m.optJSONArray("Guid"));
+                if (id > 0) Tmdb.known(context, title, type.equals("show"), id);
+            }
             String link = null;
             String slug = episode ? m.optString("grandparentSlug") : m.optString("slug");
             if (!slug.isEmpty() && "movie".equals(m.optString("type"))) {
@@ -197,6 +205,21 @@ final class Plex {
                     m.optLong("duration"), m.optLong("viewOffset")));
         }
         return items;
+    }
+
+    /** The title's id on TMDB from its Guid list ("tmdb://603"), or 0 when the server gives none. */
+    private static long tmdbId(JSONArray guids) {
+        for (int i = 0; guids != null && i < guids.length(); i++) {
+            JSONObject g = guids.optJSONObject(i);
+            String id = g == null ? "" : g.optString("id");
+            if (!id.startsWith("tmdb://")) continue;
+            try {
+                return Long.parseLong(id.substring(7));
+            } catch (NumberFormatException e) {
+                return 0;
+            }
+        }
+        return 0;
     }
 
     /** The title's clear logo (newer servers list one; for an episode, its show's), or null. */

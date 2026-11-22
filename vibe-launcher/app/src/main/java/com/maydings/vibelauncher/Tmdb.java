@@ -162,10 +162,26 @@ final class Tmdb implements TitleArt {
         return Locale.getDefault().toLanguageTag();
     }
 
+    private static final String KNOWN = "k|";
+
     /**
-     * Asks for this title's details and keeps them (that there are none, too): its year and score as the
-     * search gave them, its synopsis and genres in the TV's language, the synopsis as the search gave it
-     * where there's none in that language. False when it couldn't ask (offline, a bad key). Worker thread only.
+     * This title is known to be this film (or show) on TMDB: said by the app whose card it is (Plex's server
+     * lists each title's id). Its details are then asked for by the id, not by its name; a title newly known
+     * is asked for again, whatever was kept for its name.
+     */
+    static void known(Context context, String title, boolean tv, long id) {
+        String key = TitleArt.normalize(title), which = (tv ? "tv/" : "movie/") + id;
+        if (key.isEmpty()) return;
+        SharedPreferences cache = context.getSharedPreferences("tmdb_cache", Context.MODE_PRIVATE);
+        if (which.equals(cache.getString(KNOWN + key, null))) return;
+        cache.edit().putString(KNOWN + key, which).remove(INFO + key).apply();
+    }
+
+    /**
+     * Asks for this title's details and keeps them (that there are none, too): its year, score, synopsis and
+     * genres, in the TV's language; the synopsis in English where there's none in that language. The title
+     * is the one an app said it is (known), else the most popular by exactly this name. False when it
+     * couldn't ask (offline, a bad key). Worker thread only.
      */
     boolean fetchInfo(String title) {
         String key = TitleArt.normalize(title);
@@ -174,14 +190,20 @@ final class Tmdb implements TitleArt {
             JSONObject o = new JSONObject();
             o.put("t", System.currentTimeMillis());
             o.put("l", language());
-            JSONObject best = best(title, key, false);
-            if (best != null) {
-                boolean tv = best.optString("media_type").equals("tv");
-                JSONObject details = get("/" + (tv ? "tv" : "movie") + "/" + best.getLong("id") + "?language="
-                        + Uri.encode(language()));
-                String date = best.optString(tv ? "first_air_date" : "release_date");
+            String which = cache.getString(KNOWN + key, null);
+            JSONObject best = null;
+            if (which == null) {
+                best = best(title, key, false);
+                if (best != null) which = best.optString("media_type") + "/" + best.getLong("id");
+            }
+            if (which != null) {
+                boolean tv = which.startsWith("tv/");
+                JSONObject details = get("/" + which + "?language=" + Uri.encode(language()));
+                String date = details.optString(tv ? "first_air_date" : "release_date");
                 String overview = details.optString("overview").trim();
-                if (overview.isEmpty()) overview = best.optString("overview").trim();
+                if (overview.isEmpty()) {
+                    overview = (best != null ? best : get("/" + which)).optString("overview").trim();
+                }
                 JSONArray names = new JSONArray(), genres = details.optJSONArray("genres");
                 for (int i = 0; genres != null && i < genres.length() && names.length() < 3; i++) {
                     String name = genres.getJSONObject(i).optString("name");
@@ -189,13 +211,13 @@ final class Tmdb implements TitleArt {
                 }
                 o.put("y", date.length() >= 4 ? date.substring(0, 4) : "");
                 o.put("o", overview);
-                o.put("s", best.optInt("vote_count") >= 20 ? best.optDouble("vote_average", 0) : 0);
+                o.put("s", details.optInt("vote_count") >= 20 ? details.optDouble("vote_average", 0) : 0);
                 o.put("g", names);
             }
             cache.edit().putString(INFO + key, o.toString()).apply();
             return true;
         } catch (IOException | JSONException | RuntimeException e) {
-            return false;   // asked again the next time it's shown
+            return false;   // asked again when it's next shown
         }
     }
 

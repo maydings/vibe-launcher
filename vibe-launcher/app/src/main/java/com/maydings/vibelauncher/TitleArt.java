@@ -22,9 +22,12 @@ interface TitleArt {
     /** Art for an exact title match, or null. Network: worker thread only. */
     Art lookup(String title);
 
-    /** "The Office (U.S.)" and "the office u s" compare equal: lower case, letters and digits only. */
+    /**
+     * "The Office (U.S.)" and "the office u s" compare equal: lower case, letters and digits only. So do
+     * "Fast & Furious" and "Fast and Furious": an ampersand is read as the word.
+     */
     static String normalize(String s) {
         if (s == null) return "";
-        return s.toLowerCase(Locale.ROOT).replaceAll("[^\\p{L}\\p{N}]+", " ").trim();
+        return s.toLowerCase(Locale.ROOT).replace("&", " and ").replaceAll("[^\\p{L}\\p{N}]+", " ").trim();
     }
 }
