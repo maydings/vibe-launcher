@@ -148,6 +148,7 @@
     <string name="bd_content">應用程式內容</string>
     <string name="bd_colour">僅顏色</string>
     <string name="bd_own">自選內容</string>
+    <string name="bd_system">系統</string>
     <string name="lib_big_for_tile">為背景製作：不建議用於圖塊</string>
     <string name="lib_small_for_backdrop">為圖塊製作：用作背景會模糊</string>
     <string name="wp_use">顯示</string>

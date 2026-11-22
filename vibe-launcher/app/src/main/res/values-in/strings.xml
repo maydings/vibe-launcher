@@ -148,6 +148,7 @@
     <string name="bd_content">Konten aplikasi</string>
     <string name="bd_colour">Warna saja</string>
     <string name="bd_own">Pilihan sendiri</string>
+    <string name="bd_system">Sistem</string>
     <string name="lib_big_for_tile">Dibuat untuk latar: tidak disarankan untuk ubin</string>
     <string name="lib_small_for_backdrop">Dibuat untuk ubin: akan tampak buram sebagai latar</string>
     <string name="wp_use">Tampilkan</string>

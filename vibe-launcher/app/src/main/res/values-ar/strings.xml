@@ -148,6 +148,7 @@
     <string name="bd_content">محتوى التطبيق</string>
     <string name="bd_colour">اللون فقط</string>
     <string name="bd_own">اختياري الخاص</string>
+    <string name="bd_system">النظام</string>
     <string name="lib_big_for_tile">معدّة للخلفية: لا يُنصح بها للبلاطة</string>
     <string name="lib_small_for_backdrop">معدّة للبلاطات: ستبدو ضبابية كخلفية</string>
     <string name="wp_use">العرض</string>

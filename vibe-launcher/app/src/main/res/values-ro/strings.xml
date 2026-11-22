@@ -148,6 +148,7 @@
     <string name="bd_content">Conținutul aplicației</string>
     <string name="bd_colour">Doar culoare</string>
     <string name="bd_own">Selecție proprie</string>
+    <string name="bd_system">Sistem</string>
     <string name="lib_big_for_tile">Făcută pentru fundal: nerecomandată pentru o placă</string>
     <string name="lib_small_for_backdrop">Făcută pentru plăci: va arăta neclar ca fundal</string>
     <string name="wp_use">Afișare</string>

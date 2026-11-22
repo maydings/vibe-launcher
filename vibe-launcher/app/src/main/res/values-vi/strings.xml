@@ -148,6 +148,7 @@
     <string name="bd_content">Nội dung ứng dụng</string>
     <string name="bd_colour">Chỉ màu</string>
     <string name="bd_own">Lựa chọn riêng</string>
+    <string name="bd_system">Hệ thống</string>
     <string name="lib_big_for_tile">Làm cho hình nền: không nên dùng cho ô</string>
     <string name="lib_small_for_backdrop">Làm cho ô: sẽ bị mờ khi làm hình nền</string>
     <string name="wp_use">Hiển thị</string>

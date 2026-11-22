@@ -148,6 +148,7 @@
     <string name="bd_content">ஆப்ஸின் உள்ளடக்கம்</string>
     <string name="bd_colour">நிறம் மட்டும்</string>
     <string name="bd_own">சொந்தத் தேர்வு</string>
+    <string name="bd_system">சிஸ்டம்</string>
     <string name="lib_big_for_tile">பின்னணிக்காக உருவாக்கியது: டைலுக்குப் பரிந்துரைக்கப்படவில்லை</string>
     <string name="lib_small_for_backdrop">டைலுக்காக உருவாக்கியது: பின்னணியாக மங்கலாகத் தெரியும்</string>
     <string name="wp_use">காட்டு</string>

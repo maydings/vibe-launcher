@@ -148,6 +148,7 @@
     <string name="bd_content">תוכן האפליקציה</string>
     <string name="bd_colour">צבע בלבד</string>
     <string name="bd_own">בחירה משלי</string>
+    <string name="bd_system">מערכת</string>
     <string name="lib_big_for_tile">נועדה לרקע: לא מומלצת לאריח</string>
     <string name="lib_small_for_backdrop">נועדה לאריחים: תיראה מטושטשת כרקע</string>
     <string name="wp_use">הצגה</string>

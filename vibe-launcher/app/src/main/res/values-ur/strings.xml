@@ -148,6 +148,7 @@
     <string name="bd_content">ایپ کا مواد</string>
     <string name="bd_colour">صرف رنگ</string>
     <string name="bd_own">اپنا انتخاب</string>
+    <string name="bd_system">سسٹم</string>
     <string name="lib_big_for_tile">بیک ڈراپ کے لیے بنی ہے: ٹائل کے لیے تجویز نہیں</string>
     <string name="lib_small_for_backdrop">ٹائل کے لیے بنی ہے: بیک ڈراپ میں دھندلی دکھے گی</string>
     <string name="wp_use">دکھائیں</string>

@@ -148,6 +148,7 @@
     <string name="bd_content">Περιεχόμενο εφαρμογής</string>
     <string name="bd_colour">Μόνο χρώμα</string>
     <string name="bd_own">Δική μου επιλογή</string>
+    <string name="bd_system">Σύστημα</string>
     <string name="lib_big_for_tile">Φτιαγμένο για φόντο: δεν συνιστάται για πλακίδιο</string>
     <string name="lib_small_for_backdrop">Φτιαγμένο για πλακίδια: ως φόντο θα φαίνεται θολό</string>
     <string name="wp_use">Εμφάνιση</string>

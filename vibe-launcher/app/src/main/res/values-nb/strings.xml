@@ -148,6 +148,7 @@
     <string name="bd_content">Appinnhold</string>
     <string name="bd_colour">Bare farge</string>
     <string name="bd_own">Eget utvalg</string>
+    <string name="bd_system">System</string>
     <string name="lib_big_for_tile">Laget for bakgrunn: anbefales ikke for en flis</string>
     <string name="lib_small_for_backdrop">Laget for fliser: blir uskarpt som bakgrunn</string>
     <string name="wp_use">Vis</string>

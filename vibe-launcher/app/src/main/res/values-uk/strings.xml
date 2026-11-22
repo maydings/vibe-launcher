@@ -148,6 +148,7 @@
     <string name="bd_content">Вміст застосунку</string>
     <string name="bd_colour">Лише колір</string>
     <string name="bd_own">Власний вибір</string>
+    <string name="bd_system">Система</string>
     <string name="lib_big_for_tile">Зроблено для фону: для плитки не рекомендується</string>
     <string name="lib_small_for_backdrop">Зроблено для плиток: як фон буде розмитим</string>
     <string name="wp_use">Показувати</string>

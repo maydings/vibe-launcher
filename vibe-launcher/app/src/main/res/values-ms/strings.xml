@@ -148,6 +148,7 @@
     <string name="bd_content">Kandungan apl</string>
     <string name="bd_colour">Warna sahaja</string>
     <string name="bd_own">Pilihan sendiri</string>
+    <string name="bd_system">Sistem</string>
     <string name="lib_big_for_tile">Dibuat untuk latar: tidak disyorkan untuk jubin</string>
     <string name="lib_small_for_backdrop">Dibuat untuk jubin: akan kelihatan kabur sebagai latar</string>
     <string name="wp_use">Tunjukkan</string>

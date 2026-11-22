@@ -148,6 +148,7 @@
     <string name="bd_content">Uygulama içeriği</string>
     <string name="bd_colour">Yalnızca renk</string>
     <string name="bd_own">Kendi seçimim</string>
+    <string name="bd_system">Sistem</string>
     <string name="lib_big_for_tile">Arka plan için yapılmış: kutucuk için önerilmez</string>
     <string name="lib_small_for_backdrop">Kutucuk için yapılmış: arka plan olarak bulanık görünür</string>
     <string name="wp_use">Göster</string>

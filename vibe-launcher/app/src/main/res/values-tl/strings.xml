@@ -148,6 +148,7 @@
     <string name="bd_content">Content ng app</string>
     <string name="bd_colour">Kulay lang</string>
     <string name="bd_own">Sariling pinili</string>
+    <string name="bd_system">System</string>
     <string name="lib_big_for_tile">Ginawa para sa backdrop: hindi inirerekomenda para sa tile</string>
     <string name="lib_small_for_backdrop">Ginawa para sa tile: magiging malabo bilang backdrop</string>
     <string name="wp_use">Ipakita</string>

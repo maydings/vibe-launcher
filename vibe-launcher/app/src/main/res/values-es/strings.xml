@@ -148,6 +148,7 @@
     <string name="bd_content">Contenido de la app</string>
     <string name="bd_colour">Solo color</string>
     <string name="bd_own">Selección propia</string>
+    <string name="bd_system">Sistema</string>
     <string name="lib_big_for_tile">Hecha para fondo: no recomendada para un mosaico</string>
     <string name="lib_small_for_backdrop">Hecha para mosaicos: se verá borrosa como fondo</string>
     <string name="wp_use">Mostrar</string>

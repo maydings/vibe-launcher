@@ -148,6 +148,7 @@
     <string name="bd_content">محتوای برنامه</string>
     <string name="bd_colour">فقط رنگ</string>
     <string name="bd_own">انتخاب خودم</string>
+    <string name="bd_system">سیستم</string>
     <string name="lib_big_for_tile">برای پس‌زمینه ساخته شده: برای کاشی توصیه نمی‌شود</string>
     <string name="lib_small_for_backdrop">برای کاشی ساخته شده: به‌عنوان پس‌زمینه تار دیده می‌شود</string>
     <string name="wp_use">نمایش</string>

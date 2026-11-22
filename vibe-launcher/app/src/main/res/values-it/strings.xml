@@ -148,6 +148,7 @@
     <string name="bd_content">Contenuti dell\'app</string>
     <string name="bd_colour">Solo colore</string>
     <string name="bd_own">Selezione personale</string>
+    <string name="bd_system">Sistema</string>
     <string name="lib_big_for_tile">Fatta per lo sfondo: sconsigliata per un riquadro</string>
     <string name="lib_small_for_backdrop">Fatta per i riquadri: come sfondo apparirà sfocata</string>
     <string name="wp_use">Mostra</string>

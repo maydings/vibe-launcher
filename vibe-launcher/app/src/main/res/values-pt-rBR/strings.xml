@@ -148,6 +148,7 @@
     <string name="bd_content">Conteúdo do app</string>
     <string name="bd_colour">Só a cor</string>
     <string name="bd_own">Seleção própria</string>
+    <string name="bd_system">Sistema</string>
     <string name="lib_big_for_tile">Feita para fundo: não recomendada para um bloco</string>
     <string name="lib_small_for_backdrop">Feita para blocos: vai ficar borrada como fundo</string>
     <string name="wp_use">Mostrar</string>

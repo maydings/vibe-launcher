@@ -202,6 +202,8 @@ final class Plex {
             if (!title.isEmpty() && (type.equals("movie") || type.equals("show"))) {
                 long id = tmdbId(m.optJSONArray("Guid"));
                 if (id > 0) Tmdb.known(context, title, type.equals("show"), id);
+            } else if (!title.isEmpty() && episode) {
+                knowShow(base, token, m.optString("grandparentRatingKey"), title);
             }
             String link = null;
             String slug = episode ? m.optString("grandparentSlug") : m.optString("slug");
@@ -216,6 +218,26 @@ final class Plex {
                     m.optLong("duration"), m.optLong("viewOffset")));
         }
         return items;
+    }
+
+    /** Shows asked about since Vibe Launcher started: each once. */
+    private final java.util.Set<String> showsAsked = java.util.concurrent.ConcurrentHashMap.newKeySet();
+
+    /**
+     * An episode's show, known by its id on TMDB. The episode's own Guid list is the episode's, so the show's
+     * is asked for, once, unless it's known already: a show the server names its own way ("PLUR1BUS") is then
+     * still found, by what it is and not what it's called.
+     */
+    private void knowShow(String base, String token, String show, String title) {
+        if (show.isEmpty() || Tmdb.isKnown(context, title) || !showsAsked.add(show)) return;
+        try {
+            JSONArray one = new JSONObject(get(base + "/library/metadata/" + Uri.encode(show) + "?includeGuids=1", token))
+                    .getJSONObject("MediaContainer").optJSONArray("Metadata");
+            long id = one != null && one.length() > 0 ? tmdbId(one.getJSONObject(0).optJSONArray("Guid")) : 0;
+            if (id > 0) Tmdb.known(context, title, true, id);
+        } catch (IOException | JSONException | RuntimeException e) {
+            showsAsked.remove(show);   // not answered: asked again with the next list
+        }
     }
 
     /** The title's id on TMDB from its Guid list ("tmdb://603"), or 0 when the server gives none. */

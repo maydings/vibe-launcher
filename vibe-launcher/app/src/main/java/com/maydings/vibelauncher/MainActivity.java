@@ -219,7 +219,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private Tmdb titleDetails;
     private String titleShown;   // the title the backdrop's logo and details are for now, or null
     private Bitmap logoShown;
-    private final java.util.Set<String> detailsAsked = new java.util.HashSet<>();
     private final java.util.Set<String> detailsPending = new java.util.HashSet<>();   // being asked for now
     private long detailsRetryAt;   // after one couldn't be asked for: none are, until then
     private Backdrops backdrops;
@@ -1442,18 +1441,16 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         Tmdb.Info info = detailed ? titleDetails.info(title) : null;
         titleShown = title;
         logoShown = logo;
-        // Its details aren't kept yet: asked for now (once while Home is up, unless it couldn't ask). Nothing
-        // of the title shows meanwhile: it comes up whole when they're in (or, when they can't be had, as it
-        // is without them).
+        // Its details aren't kept yet (or what was kept no longer holds: its id on TMDB is known now): asked
+        // for, unless they're being asked for already. Nothing of the title shows meanwhile: it comes up
+        // whole when they're in (or, when they can't be had, as it is without them).
         if (detailed && titleDetails.infoWanted(title) && SystemClock.uptimeMillis() >= detailsRetryAt
-                && detailsAsked.add(title)) {
-            detailsPending.add(title);
+                && detailsPending.add(title)) {
             new Thread(() -> {
                 boolean asked = titleDetails.fetchInfo(title);
                 handler.post(() -> {
                     detailsPending.remove(title);
                     if (!asked) {   // offline, say: asked again when it's next shown, though not at once
-                        detailsAsked.remove(title);
                         detailsRetryAt = SystemClock.uptimeMillis() + 60_000;
                     }
                     if (!title.equals(titleShown) || isFinishing()) return;

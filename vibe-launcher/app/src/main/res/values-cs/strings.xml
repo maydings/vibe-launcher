@@ -148,6 +148,7 @@
     <string name="bd_content">Obsah aplikace</string>
     <string name="bd_colour">Jen barva</string>
     <string name="bd_own">Vlastní výběr</string>
+    <string name="bd_system">Systém</string>
     <string name="lib_big_for_tile">Určeno pro pozadí: pro dlaždici se nedoporučuje</string>
     <string name="lib_small_for_backdrop">Určeno pro dlaždice: jako pozadí bude rozmazané</string>
     <string name="wp_use">Zobrazit</string>

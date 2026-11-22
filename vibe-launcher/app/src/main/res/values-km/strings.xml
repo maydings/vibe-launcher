@@ -148,6 +148,7 @@
     <string name="bd_content">មាតិការបស់កម្មវិធី</string>
     <string name="bd_colour">ពណ៌តែប៉ុណ្ណោះ</string>
     <string name="bd_own">ជម្រើសផ្ទាល់ខ្លួន</string>
+    <string name="bd_system">ប្រព័ន្ធ</string>
     <string name="lib_big_for_tile">ធ្វើសម្រាប់ផ្ទៃខាងក្រោយ៖ មិនណែនាំសម្រាប់ក្រឡាទេ</string>
     <string name="lib_small_for_backdrop">ធ្វើសម្រាប់ក្រឡា៖ នឹងមើលទៅព្រិលពេលជាផ្ទៃខាងក្រោយ</string>
     <string name="wp_use">បង្ហាញ</string>

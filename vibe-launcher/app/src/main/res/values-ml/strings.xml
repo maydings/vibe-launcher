@@ -148,6 +148,7 @@
     <string name="bd_content">ആപ്പിന്റെ ഉള്ളടക്കം</string>
     <string name="bd_colour">നിറം മാത്രം</string>
     <string name="bd_own">സ്വന്തം തിരഞ്ഞെടുപ്പ്</string>
+    <string name="bd_system">സിസ്റ്റം</string>
     <string name="lib_big_for_tile">പശ്ചാത്തലത്തിനായി ഉണ്ടാക്കിയത്: ടൈലിന് ശുപാർശ ചെയ്യുന്നില്ല</string>
     <string name="lib_small_for_backdrop">ടൈലിനായി ഉണ്ടാക്കിയത്: പശ്ചാത്തലമായി മങ്ങി കാണും</string>
     <string name="wp_use">കാണിക്കുക</string>

@@ -148,6 +148,7 @@
     <string name="bd_content">အက်ပ်၏ အကြောင်းအရာ</string>
     <string name="bd_colour">အရောင်သာ</string>
     <string name="bd_own">ကိုယ်ပိုင်ရွေးချယ်မှု</string>
+    <string name="bd_system">စနစ်</string>
     <string name="lib_big_for_tile">နောက်ခံအတွက် ပြုလုပ်ထားသည်- အကွက်အတွက် မသင့်တော်ပါ</string>
     <string name="lib_small_for_backdrop">အကွက်အတွက် ပြုလုပ်ထားသည်- နောက်ခံအဖြစ် ဝါးနေပါမည်</string>
     <string name="wp_use">ပြသရန်</string>

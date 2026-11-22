@@ -148,6 +148,7 @@
     <string name="bd_content">Съдържание на приложението</string>
     <string name="bd_colour">Само цвят</string>
     <string name="bd_own">Собствен избор</string>
+    <string name="bd_system">Система</string>
     <string name="lib_big_for_tile">Направено за фон: не се препоръчва за плочка</string>
     <string name="lib_small_for_backdrop">Направено за плочка: като фон ще е размазано</string>
     <string name="wp_use">Показване</string>

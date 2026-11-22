@@ -148,6 +148,7 @@
     <string name="bd_content">Appinnehåll</string>
     <string name="bd_colour">Bara färg</string>
     <string name="bd_own">Eget urval</string>
+    <string name="bd_system">System</string>
     <string name="lib_big_for_tile">Gjord för bakgrund: rekommenderas inte för en ruta</string>
     <string name="lib_small_for_backdrop">Gjord för rutor: blir suddig som bakgrund</string>
     <string name="wp_use">Visa</string>

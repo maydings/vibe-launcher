@@ -148,6 +148,7 @@
     <string name="bd_content">앱 콘텐츠</string>
     <string name="bd_colour">색상만</string>
     <string name="bd_own">직접 선택</string>
+    <string name="bd_system">시스템</string>
     <string name="lib_big_for_tile">배경용: 타일에는 권장하지 않음</string>
     <string name="lib_small_for_backdrop">타일용: 배경으로 쓰면 흐릿하게 보임</string>
     <string name="wp_use">표시</string>

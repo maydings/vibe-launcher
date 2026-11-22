@@ -148,6 +148,7 @@
     <string name="bd_content">ઍપનું કન્ટેન્ટ</string>
     <string name="bd_colour">માત્ર રંગ</string>
     <string name="bd_own">પોતાની પસંદગી</string>
+    <string name="bd_system">સિસ્ટમ</string>
     <string name="lib_big_for_tile">બેકડ્રોપ માટે બનાવેલું: ટાઇલ માટે ભલામણ નથી</string>
     <string name="lib_small_for_backdrop">ટાઇલ માટે બનાવેલું: બેકડ્રોપ તરીકે ઝાંખું દેખાશે</string>
     <string name="wp_use">બતાવો</string>

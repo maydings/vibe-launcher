@@ -148,6 +148,7 @@
     <string name="bd_content">App-Inhalte</string>
     <string name="bd_colour">Nur Farbe</string>
     <string name="bd_own">Eigene Auswahl</string>
+    <string name="bd_system">System</string>
     <string name="lib_big_for_tile">Für Hintergründe gemacht: für eine Kachel nicht empfohlen</string>
     <string name="lib_small_for_backdrop">Für Kacheln gemacht: wirkt als Hintergrund unscharf</string>
     <string name="wp_use">Anzeigen</string>

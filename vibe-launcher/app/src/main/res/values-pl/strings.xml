@@ -148,6 +148,7 @@
     <string name="bd_content">Zawartość aplikacji</string>
     <string name="bd_colour">Tylko kolor</string>
     <string name="bd_own">Własny wybór</string>
+    <string name="bd_system">System</string>
     <string name="lib_big_for_tile">Zrobione na tło: niezalecane dla kafelka</string>
     <string name="lib_small_for_backdrop">Zrobione dla kafelków: jako tło będzie rozmyte</string>
     <string name="wp_use">Pokazuj</string>

@@ -148,6 +148,7 @@
     <string name="bd_content">የመተግበሪያ ይዘት</string>
     <string name="bd_colour">ቀለም ብቻ</string>
     <string name="bd_own">የራስ ምርጫ</string>
+    <string name="bd_system">ሥርዓት</string>
     <string name="lib_big_for_tile">ለጀርባ የተሰራ፦ ለሰድር አይመከርም</string>
     <string name="lib_small_for_backdrop">ለሰድር የተሰራ፦ እንደ ጀርባ ደብዛዛ ይመስላል</string>
     <string name="wp_use">አሳይ</string>

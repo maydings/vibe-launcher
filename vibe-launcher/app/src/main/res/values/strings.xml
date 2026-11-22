@@ -152,6 +152,7 @@
     <string name="bd_content">App content</string>
     <string name="bd_colour">Color only</string>
     <string name="bd_own">Own selection</string>
+    <string name="bd_system">System</string>
     <string name="lib_big_for_tile">Made for backdrops: not recommended for a tile</string>
     <string name="lib_small_for_backdrop">Made for tiles: will look blurred as a backdrop</string>
     <string name="wp_use">Show</string>

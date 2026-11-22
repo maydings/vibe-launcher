@@ -148,6 +148,7 @@
     <string name="bd_content">เนื้อหาของแอป</string>
     <string name="bd_colour">สีเท่านั้น</string>
     <string name="bd_own">เลือกเอง</string>
+    <string name="bd_system">ระบบ</string>
     <string name="lib_big_for_tile">ทำมาสำหรับฉากหลัง: ไม่แนะนำสำหรับไทล์</string>
     <string name="lib_small_for_backdrop">ทำมาสำหรับไทล์: จะดูเบลอเมื่อเป็นฉากหลัง</string>
     <string name="wp_use">แสดง</string>

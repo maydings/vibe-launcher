@@ -148,6 +148,7 @@
     <string name="bd_content">Sovelluksen sisältö</string>
     <string name="bd_colour">Vain väri</string>
     <string name="bd_own">Oma valinta</string>
+    <string name="bd_system">Järjestelmä</string>
     <string name="lib_big_for_tile">Tehty taustaksi: ei suositella ruutuun</string>
     <string name="lib_small_for_backdrop">Tehty ruutuun: näyttää taustana sumealta</string>
     <string name="wp_use">Näytä</string>

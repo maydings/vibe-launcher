@@ -148,6 +148,7 @@
     <string name="bd_content">アプリのコンテンツ</string>
     <string name="bd_colour">色のみ</string>
     <string name="bd_own">自分で選択</string>
+    <string name="bd_system">システム</string>
     <string name="lib_big_for_tile">背景用の画像：タイルにはおすすめしません</string>
     <string name="lib_small_for_backdrop">タイル用の画像：背景にするとぼやけます</string>
     <string name="wp_use">表示</string>

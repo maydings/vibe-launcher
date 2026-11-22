@@ -148,6 +148,7 @@
     <string name="bd_content">Contenu de l\'appli</string>
     <string name="bd_colour">Couleur seule</string>
     <string name="bd_own">Ma sélection</string>
+    <string name="bd_system">Système</string>
     <string name="lib_big_for_tile">Faite pour le fond : déconseillée pour une vignette</string>
     <string name="lib_small_for_backdrop">Faite pour les vignettes : sera floue en fond</string>
     <string name="wp_use">Afficher</string>

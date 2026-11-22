@@ -148,6 +148,7 @@
     <string name="bd_content">යෙදුමේ අන්තර්ගතය</string>
     <string name="bd_colour">වර්ණය පමණි</string>
     <string name="bd_own">මගේම තේරීම</string>
+    <string name="bd_system">පද්ධතිය</string>
     <string name="lib_big_for_tile">පසුබිම සඳහා සාදා ඇත: ටයිල් එකකට නිර්දේශ නොකෙරේ</string>
     <string name="lib_small_for_backdrop">ටයිල් සඳහා සාදා ඇත: පසුබිමක් ලෙස බොඳ වී පෙනේ</string>
     <string name="wp_use">පෙන්වන්න</string>

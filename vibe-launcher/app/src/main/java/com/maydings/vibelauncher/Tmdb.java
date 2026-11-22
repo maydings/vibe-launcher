@@ -174,6 +174,13 @@ final class Tmdb implements TitleArt {
      * lists each title's id). Its details are then asked for by the id, not by its name; a title newly known
      * is asked for again, whatever was kept for its name.
      */
+    /** Whether this title has been said to be a film or show on TMDB (known). */
+    static boolean isKnown(Context context, String title) {
+        String key = TitleArt.normalize(title);
+        return !key.isEmpty()
+                && context.getSharedPreferences("tmdb_cache", Context.MODE_PRIVATE).contains(KNOWN + key);
+    }
+
     static void known(Context context, String title, boolean tv, long id) {
         String key = TitleArt.normalize(title), which = (tv ? "tv/" : "movie/") + id;
         if (key.isEmpty()) return;

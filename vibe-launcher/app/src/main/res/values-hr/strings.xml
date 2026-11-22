@@ -148,6 +148,7 @@
     <string name="bd_content">Sadržaj aplikacije</string>
     <string name="bd_colour">Samo boja</string>
     <string name="bd_own">Vlastiti odabir</string>
+    <string name="bd_system">Sustav</string>
     <string name="lib_big_for_tile">Napravljeno za pozadinu: ne preporučuje se za pločicu</string>
     <string name="lib_small_for_backdrop">Napravljeno za pločice: kao pozadina bit će mutno</string>
     <string name="wp_use">Prikaz</string>

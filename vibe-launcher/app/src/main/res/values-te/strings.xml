@@ -148,6 +148,7 @@
     <string name="bd_content">యాప్ కంటెంట్</string>
     <string name="bd_colour">రంగు మాత్రమే</string>
     <string name="bd_own">సొంత ఎంపిక</string>
+    <string name="bd_system">సిస్టమ్</string>
     <string name="lib_big_for_tile">బ్యాక్‌డ్రాప్ కోసం చేసినది: టైల్‌కు సిఫార్సు చేయబడదు</string>
     <string name="lib_small_for_backdrop">టైల్ కోసం చేసినది: బ్యాక్‌డ్రాప్‌గా మసకగా కనిపిస్తుంది</string>
     <string name="wp_use">చూపు</string>

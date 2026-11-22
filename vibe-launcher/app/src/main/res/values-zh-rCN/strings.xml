@@ -148,6 +148,7 @@
     <string name="bd_content">应用内容</string>
     <string name="bd_colour">仅颜色</string>
     <string name="bd_own">自选内容</string>
+    <string name="bd_system">系统</string>
     <string name="lib_big_for_tile">为背景制作：不建议用于磁贴</string>
     <string name="lib_small_for_backdrop">为磁贴制作：用作背景会模糊</string>
     <string name="wp_use">显示</string>

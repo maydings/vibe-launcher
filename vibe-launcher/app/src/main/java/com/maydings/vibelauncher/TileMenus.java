@@ -273,7 +273,7 @@ final class TileMenus {
             if (!(row.getTag() instanceof Character)) continue;
             char what = (Character) row.getTag();
             int name = what == Wallpapers.CONTENT ? R.string.bd_content : what == Wallpapers.OWN ? R.string.bd_own
-                    : what == Wallpapers.SYSTEM ? R.string.wp_custom : what == Wallpapers.FLIGHTS
+                    : what == Wallpapers.SYSTEM ? R.string.bd_system : what == Wallpapers.FLIGHTS
                     ? R.string.flights_title : R.string.bd_colour;
             boolean on = Wallpapers.on(order, what);
             TextView title = row.findViewById(R.id.title);

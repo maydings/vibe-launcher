@@ -148,6 +148,7 @@
     <string name="bd_content">Maudhui ya programu</string>
     <string name="bd_colour">Rangi tu</string>
     <string name="bd_own">Chaguo langu</string>
+    <string name="bd_system">Mfumo</string>
     <string name="lib_big_for_tile">Imetengenezwa kwa mandharinyuma: haipendekezwi kwa kigae</string>
     <string name="lib_small_for_backdrop">Imetengenezwa kwa vigae: itaonekana na ukungu kama mandharinyuma</string>
     <string name="wp_use">Onyesha</string>

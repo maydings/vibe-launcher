@@ -148,6 +148,7 @@
     <string name="bd_content">Appindhold</string>
     <string name="bd_colour">Kun farve</string>
     <string name="bd_own">Eget valg</string>
+    <string name="bd_system">System</string>
     <string name="lib_big_for_tile">Lavet til baggrund: anbefales ikke til en flise</string>
     <string name="lib_small_for_backdrop">Lavet til fliser: bliver uskarpt som baggrund</string>
     <string name="wp_use">Vis</string>

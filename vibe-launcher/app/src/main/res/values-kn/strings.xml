@@ -148,6 +148,7 @@
     <string name="bd_content">ಆ್ಯಪ್‌ನ ವಿಷಯ</string>
     <string name="bd_colour">ಬಣ್ಣ ಮಾತ್ರ</string>
     <string name="bd_own">ಸ್ವಂತ ಆಯ್ಕೆ</string>
+    <string name="bd_system">ಸಿಸ್ಟಂ</string>
     <string name="lib_big_for_tile">ಹಿನ್ನೆಲೆಗಾಗಿ ಮಾಡಿದ್ದು: ಟೈಲ್‌ಗೆ ಶಿಫಾರಸು ಮಾಡುವುದಿಲ್ಲ</string>
     <string name="lib_small_for_backdrop">ಟೈಲ್‌ಗಾಗಿ ಮಾಡಿದ್ದು: ಹಿನ್ನೆಲೆಯಾಗಿ ಮಸುಕಾಗಿ ಕಾಣುತ್ತದೆ</string>
     <string name="wp_use">ತೋರಿಸಿ</string>

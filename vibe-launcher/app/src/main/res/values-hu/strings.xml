@@ -148,6 +148,7 @@
     <string name="bd_content">Az alkalmazás tartalma</string>
     <string name="bd_colour">Csak szín</string>
     <string name="bd_own">Saját válogatás</string>
+    <string name="bd_system">Rendszer</string>
     <string name="lib_big_for_tile">Háttérnek készült: csempére nem ajánlott</string>
     <string name="lib_small_for_backdrop">Csempére készült: háttérként elmosódott lesz</string>
     <string name="wp_use">Megjelenítés</string>

@@ -148,6 +148,7 @@
     <string name="bd_content">ऐप का कॉन्टेंट</string>
     <string name="bd_colour">सिर्फ़ रंग</string>
     <string name="bd_own">अपना चयन</string>
+    <string name="bd_system">सिस्टम</string>
     <string name="lib_big_for_tile">बैकड्रॉप के लिए बनी: टाइल के लिए ठीक नहीं</string>
     <string name="lib_small_for_backdrop">टाइल के लिए बनी: बैकड्रॉप में धुंधली दिखेगी</string>
     <string name="wp_use">दिखाएं</string>

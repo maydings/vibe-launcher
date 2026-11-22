@@ -148,6 +148,7 @@
     <string name="bd_content">App-inhoud</string>
     <string name="bd_colour">Alleen kleur</string>
     <string name="bd_own">Eigen selectie</string>
+    <string name="bd_system">Systeem</string>
     <string name="lib_big_for_tile">Gemaakt als achtergrond: niet aanbevolen voor een tegel</string>
     <string name="lib_small_for_backdrop">Gemaakt voor tegels: wordt wazig als achtergrond</string>
     <string name="wp_use">Tonen</string>
