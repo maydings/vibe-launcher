@@ -1,0 +1,13 @@
+* Flights overhead: a live map of the aircraft near you as a backdrop, with a card for each flight (airline, route, aircraft, altitude and speed). No account needed; a free OpenSky client makes it update faster (Settings → API keys).
+* Film and show details (Settings → Backdrops): the title's rating, year, synopsis and genres under its logo. Needs a TMDB key.
+* Each tile's backdrops are now an ordered list (tile menu → Edit → Backdrops): App content, Own selection, System, Flights overhead, Color only. The first one that's on and has something to show is used. Earlier choices are carried over.
+* System backdrop (Settings → Backdrops) is a list too: Library pictures and videos, or the flights.
+* Show flight cards: the flight cards without the map, over a tile's color.
+* System screensaver (Settings → Appearance): turns the TV's own screensaver off or on.
+* Titles from a Plex server are matched by the server's own TMDB id, so an unusual spelling still finds the right film or show.
+* The phone's backup page answers only while the TV shows the backup's QR code.
+* Debugging that Settings turned on is turned off again when Settings closes, even if the connection never got in.
+* Default launcher: the switch is kept when another launcher is installed beside Vibe Launcher.
+* An app moved out of a folder takes the folder's place. Reordering inside a folder shows on its tile at once.
+* The highlight follows a moved tile to the right place, and turns white while the tile is being moved.
+* Many fixes from a full review of the code, including several crashes.
