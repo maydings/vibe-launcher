@@ -303,7 +303,7 @@ final class VibeSettings {
 
     /** The apps turned off in Settings > Apps (TvApps), by package: what Turn all back on turns on. */
     java.util.Set<String> appsOff() {
-        return prefs.getStringSet(APPS_OFF, java.util.Collections.emptySet());
+        return new java.util.HashSet<>(prefs.getStringSet(APPS_OFF, java.util.Collections.emptySet()));
     }
 
     void setAppsOff(java.util.Set<String> pkgs) {

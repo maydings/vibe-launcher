@@ -302,6 +302,12 @@
     <string name="scan_to_backup">휴대폰으로 스캔해 백업을 휴대폰에 저장하거나 백업을 다시 보내세요</string>
     <string name="backup_saved">백업이 저장되었습니다</string>
     <string name="backup_failed">백업을 저장할 수 없습니다</string>
+    <string name="backup_passphrase_set">이 백업의 암호</string>
+    <string name="backup_passphrase_enter">백업 암호</string>
+    <string name="backup_passphrase_empty">백업을 암호화할 암호를 입력하세요</string>
+    <string name="backup_passphrase_again">다시 입력</string>
+    <string name="backup_passphrase_mismatch">두 입력이 일치하지 않습니다</string>
+    <string name="restore_wrong_passphrase">백업 암호가 올바르지 않습니다</string>
     <string name="restore_now">지금 복원</string>
     <string name="restore_warning">설정, 타일, 폴더, 키가 모두 백업의 내용으로 바뀐 뒤 홈이 다시 시작됩니다.</string>
     <string name="restore_failed">그 백업을 읽을 수 없습니다</string>

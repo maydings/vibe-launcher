@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Сканирайте с телефона, за да запазите копие там или да изпратите едно обратно</string>
     <string name="backup_saved">Копието е запазено</string>
     <string name="backup_failed">Копието не може да бъде запазено</string>
+    <string name="backup_passphrase_set">Парола за това резервно копие</string>
+    <string name="backup_passphrase_enter">Парола за резервно копие</string>
+    <string name="backup_passphrase_empty">Въведете парола за шифроване на резервното копие</string>
+    <string name="backup_passphrase_again">Въведете я отново</string>
+    <string name="backup_passphrase_mismatch">Двете не съвпадат</string>
+    <string name="restore_wrong_passphrase">Грешна парола за резервното копие</string>
     <string name="restore_now">Възстановяване сега</string>
     <string name="restore_warning">Настройките, плочките, папките и ключовете се заменят с тези от копието, след което началният екран се стартира отново.</string>
     <string name="restore_failed">Това копие не може да бъде прочетено</string>

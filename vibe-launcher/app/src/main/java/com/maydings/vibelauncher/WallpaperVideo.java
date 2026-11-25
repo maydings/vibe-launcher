@@ -106,12 +106,18 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
     /** Held still (Home behind something), and on again. */
     void pause() {
         paused = true;
-        if (player != null && prepared && player.isPlaying()) player.pause();
+        try {
+            if (player != null && prepared && player.isPlaying()) player.pause();
+        } catch (RuntimeException ignored) {
+        }
     }
 
     void resume() {
         paused = false;
-        if (!covered && player != null && prepared && !player.isPlaying()) player.start();
+        try {
+            if (!covered && player != null && prepared && !player.isPlaying()) player.start();
+        } catch (RuntimeException ignored) {
+        }
     }
 
     /**
@@ -143,10 +149,17 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
             p.setOnCompletionListener(mp -> {
                 if (player != mp) return;
                 if (once) listener.onEnded();
-                else if (!paused && !covered) mp.start();   // set to go round as it ended
+                else if (!paused && !covered) {
+                    try {
+                        mp.start();   // set to go round as it ended
+                    } catch (RuntimeException ignored) {
+                    }
+                }
             });
             p.setVolume(0f, 0f);
-            p.setOnVideoSizeChangedListener((mp, w, h) -> fill(w, h));
+            p.setOnVideoSizeChangedListener((mp, w, h) -> {
+                if (player == mp) fill(w, h);
+            });
             p.setOnPreparedListener(mp -> {
                 if (player != mp) return;
                 prepared = true;
@@ -204,7 +217,12 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
 
     @Override
     public void onSurfaceTextureSizeChanged(SurfaceTexture texture, int width, int height) {
-        if (player != null) fill(player.getVideoWidth(), player.getVideoHeight());
+        if (player != null && prepared) {
+            try {
+                fill(player.getVideoWidth(), player.getVideoHeight());
+            } catch (RuntimeException ignored) {
+            }
+        }
     }
 
     @Override

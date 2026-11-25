@@ -302,6 +302,12 @@
     <string name="scan_to_backup">用手機掃描，將備份儲存到手機，或傳回一個備份</string>
     <string name="backup_saved">備份已儲存</string>
     <string name="backup_failed">無法儲存備份</string>
+    <string name="backup_passphrase_set">此備份的密碼片語</string>
+    <string name="backup_passphrase_enter">備份密碼片語</string>
+    <string name="backup_passphrase_empty">輸入密碼片語以加密備份</string>
+    <string name="backup_passphrase_again">再輸入一次</string>
+    <string name="backup_passphrase_mismatch">兩次輸入不一致</string>
+    <string name="restore_wrong_passphrase">備份密碼片語錯誤</string>
     <string name="restore_now">立即還原</string>
     <string name="restore_warning">設定、圖塊、資料夾和金鑰都會被備份中的內容取代，接著主畫面會重新啟動。</string>
     <string name="restore_failed">無法讀取該備份</string>

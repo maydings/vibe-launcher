@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Skann med mobilen for å lagre en sikkerhetskopi der eller sende en tilbake</string>
     <string name="backup_saved">Sikkerhetskopi lagret</string>
     <string name="backup_failed">Sikkerhetskopien kunne ikke lagres</string>
+    <string name="backup_passphrase_set">Passordfrase for denne sikkerhetskopien</string>
+    <string name="backup_passphrase_enter">Passordfrase for sikkerhetskopi</string>
+    <string name="backup_passphrase_empty">Skriv inn en passordfrase for å kryptere sikkerhetskopien</string>
+    <string name="backup_passphrase_again">Skriv den igjen</string>
+    <string name="backup_passphrase_mismatch">De to er ikke like</string>
+    <string name="restore_wrong_passphrase">Feil passordfrase for sikkerhetskopi</string>
     <string name="restore_now">Gjenopprett nå</string>
     <string name="restore_warning">Innstillinger, ruter, mapper og nøkler erstattes alle av sikkerhetskopiens, og så starter Hjem på nytt.</string>
     <string name="restore_failed">Sikkerhetskopien kunne ikke leses</string>

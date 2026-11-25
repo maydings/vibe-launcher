@@ -121,12 +121,14 @@ final class TopBarMenus {
      */
     void freeMemory() {
         android.app.ActivityManager am = home.getSystemService(android.app.ActivityManager.class);
+        if (am == null) return;
         android.app.ActivityManager.MemoryInfo before = new android.app.ActivityManager.MemoryInfo();
         am.getMemoryInfo(before);
         Context app = home.getApplicationContext();
         new Thread(() -> {
             Adb.Result r = TvControl.shellQuietly(app, "am kill-all");
             home.handler.postDelayed(() -> {   // a moment for the memory to come back
+                if (MainActivity.gone(home)) return;
                 if (r.status != Adb.OK) {
                     MainActivity.showError(home, R.string.adb_failed);
                     return;
@@ -134,8 +136,8 @@ final class TopBarMenus {
                 android.app.ActivityManager.MemoryInfo after = new android.app.ActivityManager.MemoryInfo();
                 am.getMemoryInfo(after);
                 long freed = Math.max(0, after.availMem - before.availMem);
-                Toast.makeText(home, home.getString(R.string.memory_freed,
-                        android.text.format.Formatter.formatShortFileSize(home, freed)), Toast.LENGTH_SHORT).show();
+                Toast.makeText(app, Lang.wrap(app).getString(R.string.memory_freed,
+                        android.text.format.Formatter.formatShortFileSize(app, freed)), Toast.LENGTH_SHORT).show();
             }, 800);
         }, "FreeMemory").start();
     }
@@ -170,6 +172,7 @@ final class TopBarMenus {
             // At most every few minutes: GitHub allows 60 unsigned API calls an hour per address, shared by every
             // TV in the house, and this menu is opened often (it shows the memory meter).
             Updater.checkIfOlderThan(home, 5 * 60 * 1000L, (newer, failed) -> {
+                if (MainActivity.gone(home)) return;
                 home.showUpdateReady();
                 if (newer == null || !popup.isShowing()) return;
                 update[0] = newer;
@@ -188,19 +191,24 @@ final class TopBarMenus {
         // Advanced has been allowed), and how much memory that gave back.
         home.addInputRow(rows, popup, R.drawable.ic_memory, home.getString(R.string.free_memory), -1, this::freeMemory);
         // Live while the menu is open.
+        Runnable updateMeters = () -> {
+            if (cpuLive) updateCpu(cpu, cpuInfo.usage());
+            updateRam(ram);
+            updateDisk(disk);
+        };
+        updateMeters.run();
+        alignMeters(cpu, ram, disk);
         Runnable tick = new Runnable() {
             @Override
             public void run() {
-                if (cpuLive) updateCpu(cpu, cpuInfo.usage());
-                updateRam(ram);
-                updateDisk(disk);
+                if (!popup.isShowing() || MainActivity.gone(home)) return;
+                updateMeters.run();
                 home.handler.postDelayed(this, 1000);
             }
         };
-        tick.run();
-        alignMeters(cpu, ram, disk);
         popup.setOnDismissListener(() -> home.handler.removeCallbacks(tick));
         home.showMenu(popup, panel, rows, anchor, Gravity.END);
+        if (popup.isShowing()) home.handler.postDelayed(tick, 1000);
     }
 
     /** A read-only row with a usage bar; fill it with the returned view. */
@@ -321,7 +329,8 @@ final class TopBarMenus {
         String tuner = null;
         if (tim == null) return null;
         for (TvInputInfo info : tim.getTvInputList()) {
-            if (info.getType() == TvInputInfo.TYPE_TUNER
+            if (info != null && info.getType() == TvInputInfo.TYPE_TUNER
+                    && info.getServiceInfo() != null && info.getServiceInfo().applicationInfo != null
                     && (info.getServiceInfo().applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0
                     && (tuner == null || info.getId().compareTo(tuner) < 0)) {
                 tuner = info.getId();

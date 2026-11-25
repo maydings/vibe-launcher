@@ -83,4 +83,14 @@ public class AppleAerialsTest {
         Arrays.fill(page, (byte) 'a');   // a web page where the archive should be
         assertThrows(IOException.class, () -> AppleAerials.fromTar(page, "entries.json"));
     }
+
+    @Test
+    public void negativeSizeDoesNotLoopOrCrash() {
+        byte[] bad = new byte[1024];
+        byte[] name = "other.txt".getBytes(StandardCharsets.US_ASCII);
+        System.arraycopy(name, 0, bad, 0, name.length);
+        byte[] neg = "-0000001000".getBytes(StandardCharsets.US_ASCII);
+        System.arraycopy(neg, 0, bad, 124, neg.length);
+        assertThrows(IOException.class, () -> AppleAerials.fromTar(bad, "entries.json"));
+    }
 }

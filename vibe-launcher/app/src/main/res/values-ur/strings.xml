@@ -302,6 +302,12 @@
     <string name="scan_to_backup">فون پر بیک اپ محفوظ کرنے یا ایک واپس بھیجنے کے لیے فون سے اسکین کریں</string>
     <string name="backup_saved">بیک اپ محفوظ ہو گیا</string>
     <string name="backup_failed">بیک اپ محفوظ نہیں ہو سکا</string>
+    <string name="backup_passphrase_set">اس بیک اپ کے لیے پاس فریز</string>
+    <string name="backup_passphrase_enter">بیک اپ پاس فریز</string>
+    <string name="backup_passphrase_empty">بیک اپ کو خفیہ کرنے کے لیے پاس فریز درج کریں</string>
+    <string name="backup_passphrase_again">دوبارہ ٹائپ کریں</string>
+    <string name="backup_passphrase_mismatch">دونوں ایک جیسے نہیں ہیں</string>
+    <string name="restore_wrong_passphrase">غلط بیک اپ پاس فریز</string>
     <string name="restore_now">ابھی بحال کریں</string>
     <string name="restore_warning">ترتیبات، ٹائلیں، فولڈرز اور کلیدیں سب بیک اپ والی سے بدل دی جائیں گی، پھر ہوم دوبارہ شروع ہوگا۔</string>
     <string name="restore_failed">وہ بیک اپ پڑھا نہیں جا سکا</string>

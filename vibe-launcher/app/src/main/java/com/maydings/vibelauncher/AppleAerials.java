@@ -199,11 +199,13 @@ final class AppleAerials {
                 throw new IOException("not a tar archive", e);
             }
             int data = at + 512;
+            if (size < 0 || size > tar.length - data) throw new IOException("bad tar size");
             if (entry.equals(name) || entry.endsWith("/" + name)) {
-                if (data + size > tar.length) throw new IOException("cut short");
                 return new String(tar, data, (int) size, StandardCharsets.UTF_8);
             }
-            at = data + (int) ((size + 511) / 512 * 512);
+            long next = data + ((size + 511L) / 512L) * 512L;
+            if (next <= at || next > tar.length) break;
+            at = (int) next;
         }
         throw new IOException(name + " not in the list");
     }
@@ -248,28 +250,42 @@ final class AppleAerials {
     static Bitmap thumbnail(Context context, String id, String url) {
         size(url);
         File dir = new File(context.getCacheDir(), "apple-aerials");
-        File kept = new File(dir, id.replaceAll("[^A-Za-z0-9-]", "") + ".jpg");
+        String safe = id == null ? "" : id.replaceAll("[^A-Za-z0-9-]", "");
+        if (safe.isEmpty()) safe = Integer.toHexString(url.hashCode());
+        File kept = new File(dir, safe + ".jpg");
         if (kept.length() > 0) {
-            Bitmap b = BitmapFactory.decodeFile(kept.getPath());
-            if (b != null) return b;
+            try {
+                Bitmap b = BitmapFactory.decodeFile(kept.getPath());
+                if (b != null) return b;
+            } catch (OutOfMemoryError ignored) {
+                return null;
+            }
         }
         android.media.MediaMetadataRetriever r = new android.media.MediaMetadataRetriever();
         try {
             r.setDataSource(url, new java.util.HashMap<>());
-            Bitmap frame = r.getFrameAtTime(4_000_000, android.media.MediaMetadataRetriever.OPTION_CLOSEST_SYNC);
+            Bitmap frame = android.os.Build.VERSION.SDK_INT >= 27
+                    ? r.getScaledFrameAtTime(4_000_000, android.media.MediaMetadataRetriever.OPTION_CLOSEST_SYNC, 480, 270)
+                    : r.getFrameAtTime(4_000_000, android.media.MediaMetadataRetriever.OPTION_CLOSEST_SYNC);
             if (frame == null) return null;
             int w = 480, h = Math.max(1, frame.getHeight() * w / Math.max(1, frame.getWidth()));
-            Bitmap small = Bitmap.createScaledBitmap(frame, w, h, true);
+            Bitmap small = frame.getWidth() <= w ? frame : Bitmap.createScaledBitmap(frame, w, h, true);
             if (small != frame) frame.recycle();
             //noinspection ResultOfMethodCallIgnored
             dir.mkdirs();
-            try (FileOutputStream out = new FileOutputStream(kept)) {
-                small.compress(Bitmap.CompressFormat.JPEG, 85, out);
+            File tmp = new File(dir, safe + "." + Thread.currentThread().getId() + ".part");
+            boolean ok = false;
+            try (FileOutputStream out = new FileOutputStream(tmp)) {
+                ok = small.compress(Bitmap.CompressFormat.JPEG, 85, out);
             } catch (IOException ignored) {
                 // shown anyway, made again next time
             }
+            if (!ok || !tmp.renameTo(kept)) {
+                //noinspection ResultOfMethodCallIgnored
+                tmp.delete();
+            }
             return small;
-        } catch (RuntimeException e) {
+        } catch (RuntimeException | OutOfMemoryError e) {
             return null;
         } finally {
             try {

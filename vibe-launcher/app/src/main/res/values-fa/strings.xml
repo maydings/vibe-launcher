@@ -302,6 +302,12 @@
     <string name="scan_to_backup">با گوشی اسکن کنید تا پشتیبانی آنجا ذخیره کنید یا یکی را برگردانید</string>
     <string name="backup_saved">پشتیبان ذخیره شد</string>
     <string name="backup_failed">پشتیبان ذخیره نشد</string>
+    <string name="backup_passphrase_set">عبارت عبور برای این نسخه پشتیبان</string>
+    <string name="backup_passphrase_enter">عبارت عبور نسخه پشتیبان</string>
+    <string name="backup_passphrase_empty">برای رمزگذاری نسخه پشتیبان یک عبارت عبور وارد کنید</string>
+    <string name="backup_passphrase_again">دوباره وارد کنید</string>
+    <string name="backup_passphrase_mismatch">این دو یکسان نیستند</string>
+    <string name="restore_wrong_passphrase">عبارت عبور نسخه پشتیبان نادرست است</string>
     <string name="restore_now">اکنون بازیابی کن</string>
     <string name="restore_warning">تنظیمات، کاشی‌ها، پوشه‌ها و کلیدها همه با موارد پشتیبان جایگزین می‌شوند، سپس صفحه اصلی دوباره شروع می‌شود.</string>
     <string name="restore_failed">آن پشتیبان خوانده نشد</string>

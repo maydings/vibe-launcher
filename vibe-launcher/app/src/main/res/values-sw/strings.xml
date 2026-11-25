@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Changanua kwa simu ili kuhifadhi nakala humo au kutuma moja kurudi</string>
     <string name="backup_saved">Nakala imehifadhiwa</string>
     <string name="backup_failed">Nakala haikuweza kuhifadhiwa</string>
+    <string name="backup_passphrase_set">Nenosiri la nakala hii rudufu</string>
+    <string name="backup_passphrase_enter">Nenosiri la nakala rudufu</string>
+    <string name="backup_passphrase_empty">Weka nenosiri ili kusimba nakala rudufu</string>
+    <string name="backup_passphrase_again">Iandike tena</string>
+    <string name="backup_passphrase_mismatch">Hizo mbili hazilingani</string>
+    <string name="restore_wrong_passphrase">Nenosiri la nakala rudufu si sahihi</string>
     <string name="restore_now">Rejesha sasa</string>
     <string name="restore_warning">Mipangilio, vigae, folda na funguo zote hubadilishwa na zile za nakala, kisha Mwanzo huanza upya.</string>
     <string name="restore_failed">Nakala hiyo haikuweza kusomwa</string>

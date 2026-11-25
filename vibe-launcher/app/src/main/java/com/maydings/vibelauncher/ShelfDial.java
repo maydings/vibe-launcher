@@ -259,6 +259,13 @@ final class ShelfDial extends FrameLayout {
         return x;
     }
 
+    @Override
+    protected void onDetachedFromWindow() {
+        if (turning != null) turning.cancel();
+        if (zooming != null) zooming.cancel();
+        super.onDetachedFromWindow();
+    }
+
     /** The value this far out, between the places' own. */
     private static float at(float[] v, float a) {
         int i = (int) Math.floor(a);

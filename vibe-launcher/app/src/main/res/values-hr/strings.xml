@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Skenirajte telefonom da biste ondje spremili kopiju ili poslali jednu natrag</string>
     <string name="backup_saved">Kopija je spremljena</string>
     <string name="backup_failed">Kopija se nije mogla spremiti</string>
+    <string name="backup_passphrase_set">Lozinka za ovu sigurnosnu kopiju</string>
+    <string name="backup_passphrase_enter">Lozinka sigurnosne kopije</string>
+    <string name="backup_passphrase_empty">Unesite lozinku za šifriranje sigurnosne kopije</string>
+    <string name="backup_passphrase_again">Upišite je ponovno</string>
+    <string name="backup_passphrase_mismatch">Dvije se ne podudaraju</string>
+    <string name="restore_wrong_passphrase">Pogrešna lozinka sigurnosne kopije</string>
     <string name="restore_now">Vrati sada</string>
     <string name="restore_warning">Postavke, pločice, mape i ključevi zamjenjuju se onima iz kopije, a zatim se početni zaslon ponovno pokreće.</string>
     <string name="restore_failed">Ta se kopija nije mogla pročitati</string>

@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Skanna med mobilen för att spara en säkerhetskopia där eller skicka tillbaka en</string>
     <string name="backup_saved">Säkerhetskopian sparades</string>
     <string name="backup_failed">Säkerhetskopian kunde inte sparas</string>
+    <string name="backup_passphrase_set">Lösenfras för denna säkerhetskopia</string>
+    <string name="backup_passphrase_enter">Lösenfras för säkerhetskopia</string>
+    <string name="backup_passphrase_empty">Ange en lösenfras för att kryptera säkerhetskopian</string>
+    <string name="backup_passphrase_again">Skriv den igen</string>
+    <string name="backup_passphrase_mismatch">De två stämmer inte överens</string>
+    <string name="restore_wrong_passphrase">Fel lösenfras för säkerhetskopia</string>
     <string name="restore_now">Återställ nu</string>
     <string name="restore_warning">Inställningar, rutor, mappar och nycklar ersätts alla av säkerhetskopians, och sedan startar Hem om.</string>
     <string name="restore_failed">Säkerhetskopian kunde inte läsas</string>

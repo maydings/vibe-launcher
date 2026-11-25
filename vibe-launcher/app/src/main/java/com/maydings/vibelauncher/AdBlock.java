@@ -43,10 +43,14 @@ final class AdBlock {
 
     /** The hostname Private DNS uses now, or null when it isn't set to one (off, or Android's automatic mode). */
     static String active(Context context) {
-        android.content.ContentResolver cr = context.getContentResolver();
-        if (!MODE_HOSTNAME.equals(Settings.Global.getString(cr, MODE))) return null;
-        String host = Settings.Global.getString(cr, SPECIFIER);
-        return host == null || host.isEmpty() ? null : host;
+        try {
+            android.content.ContentResolver cr = context.getContentResolver();
+            if (!MODE_HOSTNAME.equals(Settings.Global.getString(cr, MODE))) return null;
+            String host = Settings.Global.getString(cr, SPECIFIER);
+            return host == null || host.isEmpty() ? null : host;
+        } catch (SecurityException e) {
+            return null;
+        }
     }
 
     /** The name for a hostname: one of NAMES or of the person's own, else the hostname itself. */
@@ -68,17 +72,20 @@ final class AdBlock {
 
     /** One of the person's own added, or renamed when its hostname is there already. Name blank: the hostname. */
     static void addCustom(Context context, String name, String host) {
+        String cleanHost = clean(host);
+        if (cleanHost.isEmpty()) return;
+        for (String builtIn : HOSTS) if (builtIn.equalsIgnoreCase(cleanHost)) return;
         String label = name == null ? "" : name.replaceAll("[\\t\\n\\r]+", " ").trim();
-        if (label.isEmpty()) label = host;
+        if (label.isEmpty()) label = cleanHost;
         java.util.List<String[]> all = customs(context);
         boolean found = false;
         for (String[] c : all) {
-            if (c[1].equalsIgnoreCase(host)) {
+            if (c[1].equalsIgnoreCase(cleanHost)) {
                 c[0] = label;
                 found = true;
             }
         }
-        if (!found) all.add(new String[]{label, host});
+        if (!found) all.add(new String[]{label, cleanHost});
         saveCustoms(context, all);
     }
 
@@ -110,7 +117,8 @@ final class AdBlock {
         }
         host = host.substring(0, end);
         while (host.endsWith(".")) host = host.substring(0, host.length() - 1);
-        return host.matches("([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z0-9-]{2,63}") ? host : "";
+        if (host.length() > 253) return "";
+        return host.matches("([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\\.)+([a-z]{2,63}|xn--[a-z0-9-]{1,59}[a-z0-9])") ? host : "";
     }
 
     /**
@@ -174,6 +182,7 @@ final class AdBlock {
     static boolean check(Context context, String host) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) return false;
         ConnectivityManager cm = context.getApplicationContext().getSystemService(ConnectivityManager.class);
+        if (cm == null) return false;
         long until = System.currentTimeMillis() + CHECK_MS;
         while (System.currentTimeMillis() < until) {
             Network net = cm.getActiveNetwork();

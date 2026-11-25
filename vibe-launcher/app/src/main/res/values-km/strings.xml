@@ -302,6 +302,12 @@
     <string name="scan_to_backup">ស្កេនដោយទូរសព្ទដើម្បីរក្សាទុកការបម្រុងទុកនៅទីនោះ ឬផ្ញើមួយមកវិញ</string>
     <string name="backup_saved">បានរក្សាទុកការបម្រុងទុក</string>
     <string name="backup_failed">មិនអាចរក្សាទុកការបម្រុងទុកបានទេ</string>
+    <string name="backup_passphrase_set">ឃ្លាសម្ងាត់សម្រាប់ការបម្រុងទុកនេះ</string>
+    <string name="backup_passphrase_enter">ឃ្លាសម្ងាត់បម្រុងទុក</string>
+    <string name="backup_passphrase_empty">បញ្ចូលឃ្លាសម្ងាត់ដើម្បីអ៊ិនគ្រីបការបម្រុងទុក</string>
+    <string name="backup_passphrase_again">វាយម្ដងទៀត</string>
+    <string name="backup_passphrase_mismatch">ទាំងពីរមិនដូចគ្នាទេ</string>
+    <string name="restore_wrong_passphrase">ឃ្លាសម្ងាត់បម្រុងទុកមិនត្រឹមត្រូវ</string>
     <string name="restore_now">ស្ដារឥឡូវនេះ</string>
     <string name="restore_warning">ការកំណត់ ប្រអប់ ថត និងសោ ទាំងអស់នឹងត្រូវជំនួសដោយរបស់ក្នុងការបម្រុងទុក បន្ទាប់មកទំព័រដើមចាប់ផ្ដើមម្ដងទៀត។</string>
     <string name="restore_failed">មិនអាចអានការបម្រុងទុកនោះបានទេ</string>

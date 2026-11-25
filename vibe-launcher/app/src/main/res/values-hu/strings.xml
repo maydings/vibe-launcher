@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Olvasd be telefonnal, hogy oda ments, vagy visszaküldj egy mentést</string>
     <string name="backup_saved">Mentés kész</string>
     <string name="backup_failed">Nem sikerült menteni</string>
+    <string name="backup_passphrase_set">Jelszó ehhez a biztonsági mentéshez</string>
+    <string name="backup_passphrase_enter">Biztonsági mentés jelszava</string>
+    <string name="backup_passphrase_empty">Adjon meg egy jelszót a biztonsági mentés titkosításához</string>
+    <string name="backup_passphrase_again">Írja be újra</string>
+    <string name="backup_passphrase_mismatch">A kettő nem egyezik</string>
+    <string name="restore_wrong_passphrase">Hibás biztonsági mentési jelszó</string>
     <string name="restore_now">Visszaállítás most</string>
     <string name="restore_warning">A beállítások, csempék, mappák és kulcsok mind a mentésben lévőkre cserélődnek, majd a kezdőképernyő újraindul.</string>
     <string name="restore_failed">Ezt a mentést nem lehetett beolvasni</string>

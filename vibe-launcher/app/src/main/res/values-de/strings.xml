@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Mit dem Handy scannen, um dort ein Backup zu speichern oder eins zurückzuschicken</string>
     <string name="backup_saved">Backup gespeichert</string>
     <string name="backup_failed">Das Backup konnte nicht gespeichert werden</string>
+    <string name="backup_passphrase_set">Passphrase für dieses Backup</string>
+    <string name="backup_passphrase_enter">Backup-Passphrase</string>
+    <string name="backup_passphrase_empty">Passphrase zum Verschlüsseln des Backups eingeben</string>
+    <string name="backup_passphrase_again">Noch einmal eingeben</string>
+    <string name="backup_passphrase_mismatch">Die beiden stimmen nicht überein</string>
+    <string name="restore_wrong_passphrase">Falsche Backup-Passphrase</string>
     <string name="restore_now">Jetzt wiederherstellen</string>
     <string name="restore_warning">Einstellungen, Kacheln, Ordner und Schlüssel werden alle durch die aus dem Backup ersetzt, dann startet der Startbildschirm neu.</string>
     <string name="restore_failed">Dieses Backup konnte nicht gelesen werden</string>

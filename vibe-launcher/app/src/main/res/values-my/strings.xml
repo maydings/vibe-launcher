@@ -302,6 +302,12 @@
     <string name="scan_to_backup">ဖုန်းတွင် အရန်သိမ်းရန် သို့မဟုတ် တစ်ခု ပြန်ပို့ရန် ဖုန်းဖြင့် စကင်ဖတ်ပါ</string>
     <string name="backup_saved">အရန် သိမ်းပြီး</string>
     <string name="backup_failed">အရန်ကို သိမ်း၍ မရပါ</string>
+    <string name="backup_passphrase_set">ဤအရန်သိမ်းဆည်းမှုအတွက် စကားဝှက်</string>
+    <string name="backup_passphrase_enter">အရန်သိမ်းဆည်းမှု စကားဝှက်</string>
+    <string name="backup_passphrase_empty">အရန်သိမ်းဆည်းမှုကို ကုဒ်ဝှက်ရန် စကားဝှက်ထည့်ပါ</string>
+    <string name="backup_passphrase_again">ထပ်မံရိုက်ထည့်ပါ</string>
+    <string name="backup_passphrase_mismatch">နှစ်ခု မတူညီပါ</string>
+    <string name="restore_wrong_passphrase">အရန်သိမ်းဆည်းမှု စကားဝှက် မှားယွင်းနေပါသည်</string>
     <string name="restore_now">ယခု ပြန်ယူရန်</string>
     <string name="restore_warning">ဆက်တင်များ၊ အကွက်များ၊ ဖိုင်တွဲများနှင့် ကီးများ အားလုံးကို အရန်ထဲမှ အရာများဖြင့် အစားထိုးပြီး ပင်မ ပြန်စမည်။</string>
     <string name="restore_failed">ထိုအရန်ကို ဖတ်၍ မရပါ</string>

@@ -92,8 +92,13 @@ final class AdbSettingsPages {
     /** Apps, and Apps > ADB connection: the pages the connection is looked at for. */
     Page appsPage, adbPage;
 
-    /** ADB calls one at a time, in order, off the main thread (Adb). */
-    java.util.concurrent.ExecutorService adbThread;
+    /** ADB calls one at a time, in order, off the main thread (Adb). Shared daemon across Settings rebuilds. */
+    private static final java.util.concurrent.ExecutorService ADB_THREAD =
+            java.util.concurrent.Executors.newSingleThreadExecutor(r -> {
+                Thread t = new Thread(r, "VibeAdb");
+                t.setDaemon(true);
+                return t;
+            });
     /** The last Adb answer (Adb.OK, OFF, …), or -1 while the first check runs. */
     int adbStatus = -1;
     boolean adbBusy;
@@ -634,9 +639,13 @@ final class AdbSettingsPages {
         adChecking = hostname;
         refreshAdBlock();
         Context app = screen.ctx.getApplicationContext();
+        String prev = now;
         new Thread(() -> {
             boolean ok = AdBlock.use(app, hostname) && AdBlock.check(app, hostname);
-            if (!ok) AdBlock.off(app);   // never left with names that don't resolve
+            if (!ok) {
+                if (prev != null) AdBlock.use(app, prev);
+                else AdBlock.off(app);   // never left with names that don't resolve
+            }
             screen.handler.post(() -> {
                 adChecking = null;
                 refreshAdBlock();
@@ -653,8 +662,7 @@ final class AdbSettingsPages {
     }
 
     java.util.concurrent.ExecutorService adb() {
-        if (adbThread == null) adbThread = java.util.concurrent.Executors.newSingleThreadExecutor();
-        return adbThread;
+        return ADB_THREAD;
     }
 
     /** A dozen more rows a frame, while the page is still open. */
@@ -844,7 +852,7 @@ final class AdbSettingsPages {
                 page.refresh();
                 showTurnOffAgain();   // gone from Apps once there's nothing left
                 // Back from this page, if it's still the one up (Back may have been pressed while it ran).
-                if (all && screen.pages.get(screen.pages.size() - 1) == page) screen.back();
+                if (all && !screen.pages.isEmpty() && screen.pages.get(screen.pages.size() - 1) == page) screen.back();
             });
         });
         for (TvApps.App a : list) {
@@ -925,63 +933,79 @@ final class AdbSettingsPages {
         // never left on Connecting.
         long deadline = System.currentTimeMillis() + 15000;
         adb().execute(() -> {
-            Adb.Result first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
-            // Nothing answered with USB debugging off: on now, given WRITE_SECURE_SETTINGS before (TvControl), with
-            // no trip to Developer options. adbd takes a moment to open its port: up to ten seconds.
-            if (first.status == Adb.OFF && usbOff && TvControl.setDebugging(app, true)) {
-                turnedOnUsb = true;
-                for (int i = 0; i < 20 && System.currentTimeMillis() < deadline - 5000
-                        && Adb.check(false).status == Adb.OFF; i++) {
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
+            Adb.Result r = new Adb.Result(Adb.FAILED, "");
+            boolean cancelled = false;
+            try {
+                Adb.Result first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
+                // Nothing answered with USB debugging off: on now, given WRITE_SECURE_SETTINGS before (TvControl), with
+                // no trip to Developer options. adbd takes a moment to open its port: up to ten seconds.
+                if (first.status == Adb.OFF && usbOff && TvControl.setDebugging(app, true)) {
+                    turnedOnUsb = true;
+                    for (int i = 0; i < 20 && System.currentTimeMillis() < deadline - 5000
+                            && Adb.check(false).status == Adb.OFF; i++) {
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            cancelled = true;
+                            return;
+                        }
+                    }
+                    first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
+                }
+                // Port 5555 shut, paired for Wireless debugging and that's off: on again (with the permission), and again.
+                if (first.status == Adb.OFF && TvControl.bringUpWireless(app)) {
+                    turnedOnWireless = true;
+                    first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
+                }
+                r = first;
+                // In, and not given WRITE_SECURE_SETTINGS yet: given now, once (what it's used for: TvControl).
+                if (r.status == Adb.OK && !TvControl.canWrite(app)) Adb.shell(TvControl.grantCommand(app), false);
+            } catch (RuntimeException ignored) {
+                r = new Adb.Result(Adb.FAILED, "");
+            } finally {
+                Adb.Result result = r;
+                boolean wasCancelled = cancelled;
+                screen.handler.post(() -> {
+                    adbBusy = false;
+                    adbConnecting = false;
+                    if (wasCancelled) {
+                        if (screen.host == null) offWhenDone();
+                        else refreshAdbPages();
                         return;
                     }
-                }
-                first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
+                    adbStatus = result.status;
+                    if (result.status == Adb.OK) usedAdb = true;
+                    if (screen.host == null) {   // Settings closed while this ran: what closing does, now
+                        offWhenDone();
+                        return;
+                    }
+                    int net = TvControl.networkDebugging(screen.ctx);
+                    boolean stillOff = net != -1 ? net != 1
+                            : adbSetting(android.provider.Settings.Global.ADB_ENABLED) != 1;
+                    if (result.status == Adb.OK) {
+                        then.accept(result);
+                        adbWorks();
+                    } else if (otherwise != null) {
+                        otherwise.run();
+                    } else if (result.status == Adb.OFF && stillOff && !Adb.wirelessOn(screen.ctx)) {
+                        // Nothing open at all: the player's Network debugging, else USB debugging (or the TV's name for it).
+                        if (net != -1) screen.explainThenOpen(R.string.adb_network_turn_on, this::openDeveloperOptionsNow);
+                        else openDeveloperOptions();
+                    } else if (result.status == Adb.OFF && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        offerWireless();
+                    } else if (result.status == Adb.OFF) {
+                        // Debugging on, but nothing on port 5555: this TV keeps it to USB; a switch of its own may open
+                        // it to the network.
+                        screen.explainThenOpen(R.string.adb_network_closed, this::openDeveloperOptionsNow);
+                    } else if (result.status == Adb.NOT_PAIRED) {
+                        offerWireless();   // Wireless debugging turned our key down: forgotten (Revoke), pair again
+                    } else {
+                        MainActivity.showError(screen.host, result.status == Adb.NO_KEY ? R.string.adb_no_key : R.string.adb_failed);
+                    }
+                    page.refresh();
+                });
             }
-            // Port 5555 shut, paired for Wireless debugging and that's off: on again (with the permission), and again.
-            if (first.status == Adb.OFF && TvControl.bringUpWireless(app)) {
-                turnedOnWireless = true;
-                first = command != null ? Adb.shell(command, true) : Adb.check(true, deadline);
-            }
-            Adb.Result r = first;
-            // In, and not given WRITE_SECURE_SETTINGS yet: given now, once (what it's used for: TvControl).
-            if (r.status == Adb.OK && !TvControl.canWrite(app)) Adb.shell(TvControl.grantCommand(app), false);
-            screen.handler.post(() -> {
-                adbBusy = false;
-                adbConnecting = false;
-                adbStatus = r.status;
-                if (r.status == Adb.OK) usedAdb = true;
-                if (screen.host == null) {   // Settings closed while this ran: what closing does, now
-                    offWhenDone();
-                    return;
-                }
-                int net = TvControl.networkDebugging(screen.ctx);
-                boolean stillOff = net != -1 ? net != 1
-                        : adbSetting(android.provider.Settings.Global.ADB_ENABLED) != 1;
-                if (r.status == Adb.OK) {
-                    then.accept(r);
-                    adbWorks();
-                } else if (otherwise != null) {
-                    otherwise.run();
-                } else if (r.status == Adb.OFF && stillOff && !Adb.wirelessOn(screen.ctx)) {
-                    // Nothing open at all: the player's Network debugging, else USB debugging (or the TV's name for it).
-                    if (net != -1) screen.explainThenOpen(R.string.adb_network_turn_on, this::openDeveloperOptionsNow);
-                    else openDeveloperOptions();
-                } else if (r.status == Adb.OFF && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    offerWireless();
-                } else if (r.status == Adb.OFF) {
-                    // Debugging on, but nothing on port 5555: this TV keeps it to USB; a switch of its own may open
-                    // it to the network.
-                    screen.explainThenOpen(R.string.adb_network_closed, this::openDeveloperOptionsNow);
-                } else if (r.status == Adb.NOT_PAIRED) {
-                    offerWireless();   // Wireless debugging turned our key down: forgotten (Revoke), pair again
-                } else {
-                    MainActivity.showError(screen.host, r.status == Adb.NO_KEY ? R.string.adb_no_key : R.string.adb_failed);
-                }
-                page.refresh();
-            });
         });
         };
         if (!asks) {

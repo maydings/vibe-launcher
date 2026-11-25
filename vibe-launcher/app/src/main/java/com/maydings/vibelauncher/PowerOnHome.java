@@ -32,14 +32,24 @@ final class PowerOnHome {
         registered = true;
         Context app = context.getApplicationContext();
         Handler handler = new Handler(Looper.getMainLooper());
-        app.registerReceiver(new BroadcastReceiver() {
+        Runnable launch = () -> {
+            android.os.PowerManager pm = app.getSystemService(android.os.PowerManager.class);
+            if (pm == null || pm.isInteractive()) open(app);
+        };
+        BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context c, Intent i) {
                 // The Home button service does it itself, with its key check.
                 if (HomeButtonLink.bound() || !new VibeSettings(app).powerOnHome()) return;
-                handler.postDelayed(() -> open(app), DELAY_MS);
+                handler.removeCallbacks(launch);
+                handler.postDelayed(launch, DELAY_MS);
             }
-        }, new IntentFilter(Intent.ACTION_SCREEN_ON));
+        };
+        if (android.os.Build.VERSION.SDK_INT >= 33) {
+            app.registerReceiver(receiver, new IntentFilter(Intent.ACTION_SCREEN_ON), Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            app.registerReceiver(receiver, new IntentFilter(Intent.ACTION_SCREEN_ON));
+        }
     }
 
     static Intent intent(Context context) {

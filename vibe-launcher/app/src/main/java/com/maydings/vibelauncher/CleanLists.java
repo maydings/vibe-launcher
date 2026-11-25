@@ -144,8 +144,15 @@ final class CleanLists {
         return out;
     }
 
+    private static final Pattern FOLDER = Pattern.compile("[A-Za-z0-9][A-Za-z0-9._-]{0,120}");
+
+    private static boolean validFolder(String folder) {
+        return folder != null && FOLDER.matcher(folder).matches() && !folder.contains("..");
+    }
+
     /** A list's lines, in its order. */
     static List<Item> items(Context context, String folder) throws IOException {
+        if (!validFolder(folder)) throw new IOException("bad folder: " + folder);
         String text = cached(context, "list-" + folder + ".txt", RAW + folder + "/debloat.txt");
         List<Item> items = new ArrayList<>();
         String section = "";
@@ -175,7 +182,8 @@ final class CleanLists {
             JSONArray a = new JSONArray(json);
             for (int i = 0; i < a.length(); i++) {
                 JSONObject o = a.getJSONObject(i);
-                if ("dir".equals(o.optString("type"))) out.add(o.getString("name"));
+                String name = o.optString("name");
+                if ("dir".equals(o.optString("type")) && validFolder(name)) out.add(name);
             }
         } catch (JSONException e) {
             throw new IOException(e);
@@ -195,7 +203,10 @@ final class CleanLists {
             }
             for (Map.Entry<String, Future<String>> e : got.entrySet()) {
                 try {
-                    out.put(e.getKey(), new JSONObject(e.getValue().get()));
+                    out.put(e.getKey(), new JSONObject(e.getValue().get(20, java.util.concurrent.TimeUnit.SECONDS)));
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    break;
                 } catch (Exception ignored) {
                     // that one is named from its folder
                 }
@@ -238,17 +249,27 @@ final class CleanLists {
     private static String cached(Context context, String name, String url) throws IOException {
         File dir = new File(context.getCacheDir(), "cleanlists");
         File f = new File(dir, name.replaceAll("[^A-Za-z0-9._-]", "_"));
+        String text;
         try {
-            String text = Http.getText(url, HEADERS);
-            if (dir.isDirectory() || dir.mkdirs()) {
-                try (OutputStream out = new FileOutputStream(f)) {
-                    out.write(text.getBytes(StandardCharsets.UTF_8));
-                }
-            }
-            return text;
+            text = Http.getText(url, HEADERS);
         } catch (IOException e) {
             if (!f.isFile()) throw e;
             return new String(Files.readAllBytes(f.toPath()), StandardCharsets.UTF_8);
         }
+        if (dir.isDirectory() || dir.mkdirs()) {
+            File tmp = new File(dir, f.getName() + "." + Thread.currentThread().getId() + ".part");
+            try (OutputStream out = new FileOutputStream(tmp)) {
+                out.write(text.getBytes(StandardCharsets.UTF_8));
+            } catch (IOException ignored) {
+                //noinspection ResultOfMethodCallIgnored
+                tmp.delete();
+                return text;
+            }
+            if (!tmp.renameTo(f)) {
+                //noinspection ResultOfMethodCallIgnored
+                tmp.delete();
+            }
+        }
+        return text;
     }
 }

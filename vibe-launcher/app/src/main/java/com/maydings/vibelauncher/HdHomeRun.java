@@ -83,11 +83,8 @@ final class HdHomeRun {
     void restore(android.content.ContentResolver resolver) {
         if (numberOfLink.isEmpty()) channelLinks(resolver);
         if (!schedule.isEmpty() || !savedGuide.exists()) return;
-        try {
-            byte[] bytes = new byte[(int) savedGuide.length()];
-            try (java.io.DataInputStream in = new java.io.DataInputStream(new java.io.FileInputStream(savedGuide))) {
-                in.readFully(bytes);
-            }
+        try (java.io.InputStream in = new java.io.FileInputStream(savedGuide)) {
+            byte[] bytes = Http.readAll(in, 4 * 1024 * 1024);
             java.util.Map<String, List<Show>> all = new java.util.HashMap<>();
             parse(new String(bytes, java.nio.charset.StandardCharsets.UTF_8), System.currentTimeMillis() / 1000, all);
             synchronized (this) {
@@ -101,17 +98,25 @@ final class HdHomeRun {
     /** The shows on now across the tuner's channels; empty without a tuner or offline. Worker thread. */
     synchronized List<Show> onNow() {
         long now = System.currentTimeMillis();
-        if (now - showsTime < GUIDE_MS && !shows.isEmpty()) return shows;
+        long age = now - showsTime;
+        if (age >= 0 && age < GUIDE_MS && !shows.isEmpty()) return shows;
         try {
             String auth = deviceAuth();
             if (auth == null) return shows;
             String text = Http.getText(GUIDE + Uri.encode(auth), Collections.emptyMap());
             java.util.Map<String, List<Show>> all = new java.util.HashMap<>();
             List<Show> found = parse(text, now / 1000, all);
-            try (java.io.FileOutputStream out = new java.io.FileOutputStream(savedGuide)) {
+            java.io.File tmp = new java.io.File(savedGuide.getParentFile(), savedGuide.getName() + ".part");
+            try (java.io.FileOutputStream out = new java.io.FileOutputStream(tmp)) {
                 out.write(text.getBytes(java.nio.charset.StandardCharsets.UTF_8));
             } catch (IOException e) {
-                // Not kept: only the pill's channel after a restart is lost.
+                //noinspection ResultOfMethodCallIgnored
+                tmp.delete();
+                tmp = null;
+            }
+            if (tmp != null && !tmp.renameTo(savedGuide)) {
+                //noinspection ResultOfMethodCallIgnored
+                tmp.delete();
             }
             schedule = all;
             shows = found;
@@ -221,6 +226,7 @@ final class HdHomeRun {
                 cache.edit().putString("ip", found).apply();
                 return auth;
             }
+            if (!ip.isEmpty()) cache.edit().remove("ip").apply();
         } catch (IOException | JSONException | RuntimeException e) {
             // Offline.
         }

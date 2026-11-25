@@ -302,6 +302,12 @@
     <string name="scan_to_backup">スマホでスキャンして、バックアップをスマホに保存するか、スマホから送り返します</string>
     <string name="backup_saved">バックアップを保存しました</string>
     <string name="backup_failed">バックアップを保存できませんでした</string>
+    <string name="backup_passphrase_set">このバックアップのパスフレーズ</string>
+    <string name="backup_passphrase_enter">バックアップのパスフレーズ</string>
+    <string name="backup_passphrase_empty">バックアップを暗号化するパスフレーズを入力してください</string>
+    <string name="backup_passphrase_again">もう一度入力</string>
+    <string name="backup_passphrase_mismatch">2 つが一致しません</string>
+    <string name="restore_wrong_passphrase">バックアップのパスフレーズが違います</string>
     <string name="restore_now">今すぐ復元</string>
     <string name="restore_warning">設定、タイル、フォルダ、キーはすべてバックアップの内容に置き換えられ、その後ホームが再起動します。</string>
     <string name="restore_failed">このバックアップを読み込めませんでした</string>

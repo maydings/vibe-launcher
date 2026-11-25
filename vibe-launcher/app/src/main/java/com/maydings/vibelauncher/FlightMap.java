@@ -151,10 +151,16 @@ final class FlightMap extends View {
      * aircraft and the ring are drawn by the new. It goes, the plain ground showing until the new map is made;
      * and a wait that was for the old view's map isn't kept for this one's.
      */
+    Runnable onDrawn;
+    private final android.os.Handler mainHandler = new android.os.Handler(android.os.Looper.getMainLooper());
+    private final Runnable nextFrame = this::invalidate;
+
     private void forget() {
         map = null;
         mapOf = null;
         againAt = 0;
+        drawnAt.clear();
+        easing.clear();
         invalidate();
     }
 
@@ -162,6 +168,7 @@ final class FlightMap extends View {
         this.spots = spots;
         drawnAt.keySet().retainAll(hexes(spots));
         easing.keySet().retainAll(drawnAt.keySet());
+        if (isShown()) invalidate();
     }
 
     private static java.util.Set<String> hexes(List<Flights.Spot> spots) {
@@ -208,7 +215,11 @@ final class FlightMap extends View {
     }
 
     private float screenX(double lon) {
-        return (float) (HERE_X * getWidth() + (worldX(lon, zoom) - hereX) * scale);
+        double worldW = TILE * Math.pow(2, zoom);
+        double dx = worldX(lon, zoom) - hereX;
+        if (dx > worldW / 2) dx -= worldW;
+        else if (dx < -worldW / 2) dx += worldW;
+        return (float) (HERE_X * getWidth() + dx * scale);
     }
 
     private float screenY(double lat) {
@@ -224,7 +235,8 @@ final class FlightMap extends View {
         making = of;
         int z = zoom;
         double left = hereX - HERE_X * w / scale, top = hereY - HERE_Y * h / scale, s = scale;
-        File dir = new File(getContext().getCacheDir(), "map");
+        File dir = new File(getContext().getApplicationContext().getCacheDir(), "map");
+        java.lang.ref.WeakReference<FlightMap> ref = new java.lang.ref.WeakReference<>(this);
         painter.execute(() -> {
             Bitmap made = null;
             try {
@@ -233,19 +245,21 @@ final class FlightMap extends View {
                 // Offline, or OpenStreetMap isn't answering: the plain ground meanwhile
             }
             Bitmap got = made;
-            post(() -> {
-                if (!of.equals(making)) {   // the place or the distance changed meanwhile: never shown
+            mainHandler.post(() -> {
+                FlightMap view = ref.get();
+                if (view == null || !view.isAttachedToWindow() || !of.equals(view.making)) {
                     if (got != null) got.recycle();
                     return;
                 }
-                making = null;
+                view.making = null;
                 if (got == null) {
-                    againAt = SystemClock.elapsedRealtime() + 5 * 60_000;
+                    view.againAt = SystemClock.elapsedRealtime() + 5 * 60_000;
                     return;
                 }
-                map = got;
-                mapOf = of;
-                invalidate();
+                view.map = got;
+                view.mapOf = of;
+                view.invalidate();
+                if (view.onDrawn != null) view.onDrawn.run();
             });
         });
     }
@@ -274,6 +288,10 @@ final class FlightMap extends View {
                     File part = new File(file.getPath() + ".part");
                     try (FileOutputStream f = new FileOutputStream(part)) {
                         f.write(bytes);
+                    } catch (IOException e) {
+                        //noinspection ResultOfMethodCallIgnored
+                        part.delete();
+                        throw e;
                     }
                     if (!part.renameTo(file)) part.delete();
                 }
@@ -307,7 +325,7 @@ final class FlightMap extends View {
             if (moving) {
                 double m = s.speed * (now - s.at) / 1000.0, t = Math.toRadians(s.track);
                 la += m * Math.cos(t) / 110_570;
-                lo += m * Math.sin(t) / (111_320 * Math.max(0.2, Math.cos(Math.toRadians(la))));
+                lo = Flights.wrapLon(lo + m * Math.sin(t) / (111_320 * Math.max(0.2, Math.cos(Math.toRadians(la)))));
             }
             float x = screenX(lo), y = screenY(la);
             // Heard of again somewhere else than it was drawn (it turned, or sped up): eased over, not jumped.
@@ -357,18 +375,27 @@ final class FlightMap extends View {
                 canvas.drawText(s.callsign, x + size + 5 * density, y + 4 * density, name);
             }
         }
-        if (isShown()) postInvalidateDelayed(FRAME_MS);   // on they go
+        removeCallbacks(nextFrame);
+        if (isShown() && !spots.isEmpty()) postDelayed(nextFrame, FRAME_MS);   // single deduplicated loop
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        removeCallbacks(nextFrame);
+        super.onDetachedFromWindow();
     }
 
     @Override
     protected void onWindowVisibilityChanged(int visibility) {
         super.onWindowVisibilityChanged(visibility);
+        removeCallbacks(nextFrame);
         if (visibility == VISIBLE) invalidate();   // Home's back in front
     }
 
     @Override
     protected void onVisibilityChanged(View changed, int visibility) {
         super.onVisibilityChanged(changed, visibility);
+        removeCallbacks(nextFrame);
         if (visibility == VISIBLE) invalidate();   // the frames stopped while it was out of sight
     }
 }

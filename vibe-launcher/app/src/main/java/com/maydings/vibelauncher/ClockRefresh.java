@@ -35,18 +35,20 @@ final class ClockRefresh implements Runnable, DisplayManager.DisplayListener {
         displays = (DisplayManager) root.getContext().getSystemService(Context.DISPLAY_SERVICE);
     }
 
-    /** Redraws at the next minute change, then every minute and when the display comes on (Home on screen). */
+    /** Redraws now and at each minute change and when the display comes on (Home on screen). */
     void start() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) return;
-        on = true;
-        displays.registerDisplayListener(this, null);   // twice is the same as once
+        Display d = root.getDisplay();
+        on = d == null || d.getState() == Display.STATE_ON;
+        if (displays != null) displays.registerDisplayListener(this, null);   // twice is the same as once
+        redraw(root);
         schedule();
     }
 
     /** Safe when never started. */
     void stop() {
         root.removeCallbacks(this);
-        displays.unregisterDisplayListener(this);
+        if (displays != null) displays.unregisterDisplayListener(this);
     }
 
     @Override

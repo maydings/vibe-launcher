@@ -302,6 +302,12 @@
     <string name="scan_to_backup">දුරකථනයේ උපස්ථයක් සුරැකීමට හෝ එකක් ආපසු යැවීමට දුරකථනයෙන් ස්කෑන් කරන්න</string>
     <string name="backup_saved">උපස්ථය සුරැකිණි</string>
     <string name="backup_failed">උපස්ථය සුරැකිය නොහැකි විය</string>
+    <string name="backup_passphrase_set">මෙම උපස්ථය සඳහා මුරපදය</string>
+    <string name="backup_passphrase_enter">උපස්ථ මුරපදය</string>
+    <string name="backup_passphrase_empty">උපස්ථය සංකේතනය කිරීමට මුරපදයක් ඇතුළත් කරන්න</string>
+    <string name="backup_passphrase_again">නැවත ටයිප් කරන්න</string>
+    <string name="backup_passphrase_mismatch">දෙක නොගැළපේ</string>
+    <string name="restore_wrong_passphrase">වැරදි උපස්ථ මුරපදය</string>
     <string name="restore_now">දැන් ප්‍රතිසාධනය කරන්න</string>
     <string name="restore_warning">සැකසීම්, ටයිල්, ෆෝල්ඩර සහ යතුරු සියල්ල උපස්ථයේ ඒවායින් ප්‍රතිස්ථාපනය වේ, ඉන්පසු මුල් පිටුව නැවත ආරම්භ වේ.</string>
     <string name="restore_failed">එම උපස්ථය කියවිය නොහැකි විය</string>

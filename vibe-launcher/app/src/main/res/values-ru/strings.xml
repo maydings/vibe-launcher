@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Отсканируйте телефоном, чтобы сохранить на нём копию или отправить её обратно</string>
     <string name="backup_saved">Копия сохранена</string>
     <string name="backup_failed">Не удалось сохранить копию</string>
+    <string name="backup_passphrase_set">Пароль для этой резервной копии</string>
+    <string name="backup_passphrase_enter">Пароль резервной копии</string>
+    <string name="backup_passphrase_empty">Введите пароль для шифрования резервной копии</string>
+    <string name="backup_passphrase_again">Введите ещё раз</string>
+    <string name="backup_passphrase_mismatch">Они не совпадают</string>
+    <string name="restore_wrong_passphrase">Неверный пароль резервной копии</string>
     <string name="restore_now">Восстановить сейчас</string>
     <string name="restore_warning">Настройки, плитки, папки и ключи полностью заменяются данными из копии, затем главный экран перезапускается.</string>
     <string name="restore_failed">Не удалось прочитать эту копию</string>

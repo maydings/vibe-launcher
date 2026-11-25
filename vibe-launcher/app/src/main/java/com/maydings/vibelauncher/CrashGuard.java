@@ -27,6 +27,8 @@ final class CrashGuard {
      * straight to the stock launcher's App info.
      */
     private static boolean installed;
+    private static final java.util.concurrent.atomic.AtomicBoolean crashed =
+            new java.util.concurrent.atomic.AtomicBoolean();
 
     private CrashGuard() {
     }
@@ -38,13 +40,16 @@ final class CrashGuard {
         Context app = context.getApplicationContext();
         Thread.UncaughtExceptionHandler previous = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler((thread, error) -> {
-            try {
-                SharedPreferences prefs = app.getSharedPreferences("crashes", Context.MODE_PRIVATE);
-                long now = System.currentTimeMillis();
-                int count = now - prefs.getLong("last", 0) < WINDOW_MS ? prefs.getInt("count", 0) + 1 : 1;
-                prefs.edit().putLong("last", now).putInt("count", count).commit();   // the process is dying
-                if (count >= 2) openFallbackInfo(app);
-            } catch (Throwable ignored) {
+            if (crashed.compareAndSet(false, true)) {
+                try {
+                    SharedPreferences prefs = app.getSharedPreferences("crashes", Context.MODE_PRIVATE);
+                    long now = System.currentTimeMillis();
+                    long elapsed = now - prefs.getLong("last", 0);
+                    int count = elapsed >= 0 && elapsed < WINDOW_MS ? prefs.getInt("count", 0) + 1 : 1;
+                    prefs.edit().putLong("last", now).putInt("count", count).commit();   // the process is dying
+                    if (count >= 2) openFallbackInfo(app);
+                } catch (Throwable ignored) {
+                }
             }
             if (previous != null) previous.uncaughtException(thread, error);
         });

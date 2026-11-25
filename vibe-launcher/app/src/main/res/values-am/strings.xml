@@ -302,6 +302,12 @@
     <string name="scan_to_backup">እዚያ ምትኬ ለማስቀመጥ ወይም አንዱን መልሰው ለመላክ በስልክዎ ይቃኙ</string>
     <string name="backup_saved">ምትኬ ተቀምጧል</string>
     <string name="backup_failed">ምትኬውን ማስቀመጥ አልተቻለም</string>
+    <string name="backup_passphrase_set">ለዚህ ምትኬ የይለፍ ሐረግ</string>
+    <string name="backup_passphrase_enter">የምትኬ የይለፍ ሐረግ</string>
+    <string name="backup_passphrase_empty">ምትኬውን ለማመስጠር የይለፍ ሐረግ ያስገቡ</string>
+    <string name="backup_passphrase_again">እንደገና ይተይቡ</string>
+    <string name="backup_passphrase_mismatch">ሁለቱ አይመሳሰሉም</string>
+    <string name="restore_wrong_passphrase">የተሳሳተ የምትኬ የይለፍ ሐረግ</string>
     <string name="restore_now">አሁን መልስ</string>
     <string name="restore_warning">ቅንብሮች፣ ሰቆች፣ አቃፊዎች እና ቁልፎች ሁሉም በምትኬው ይተካሉ፣ ከዚያ መነሻ እንደገና ይጀምራል።</string>
     <string name="restore_failed">ያንን ምትኬ ማንበብ አልተቻለም</string>

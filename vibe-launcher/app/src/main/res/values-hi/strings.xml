@@ -302,6 +302,12 @@
     <string name="scan_to_backup">फ़ोन पर बैकअप सहेजने या कोई वापस भेजने के लिए फ़ोन से स्कैन करें</string>
     <string name="backup_saved">बैकअप सहेजा गया</string>
     <string name="backup_failed">बैकअप सहेजा नहीं जा सका</string>
+    <string name="backup_passphrase_set">इस बैकअप के लिए पासफ़्रेज़</string>
+    <string name="backup_passphrase_enter">बैकअप पासफ़्रेज़</string>
+    <string name="backup_passphrase_empty">बैकअप को एन्क्रिप्ट करने के लिए पासफ़्रेज़ दर्ज करें</string>
+    <string name="backup_passphrase_again">फिर से लिखें</string>
+    <string name="backup_passphrase_mismatch">दोनों मेल नहीं खाते</string>
+    <string name="restore_wrong_passphrase">ग़लत बैकअप पासफ़्रेज़</string>
     <string name="restore_now">अभी रीस्टोर करें</string>
     <string name="restore_warning">सेटिंग्स, टाइलें, फ़ोल्डर और कुंजियाँ सब बैकअप वाली से बदल दी जाएँगी, फिर होम दोबारा शुरू होगा।</string>
     <string name="restore_failed">वह बैकअप पढ़ा नहीं जा सका</string>

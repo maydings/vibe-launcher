@@ -179,7 +179,7 @@ final class Adb {
      * Off the main thread.
      */
     static Result checkWireless() {
-        try (Link link = Link.openWireless()) {
+        try (Link link = Link.openWireless(true)) {
             return new Result(link == null ? OFF : link.status, "");
         } catch (IOException e) {
             return new Result(FAILED, "");
@@ -188,6 +188,7 @@ final class Adb {
 
     /** One connection to the TV's adbd. */
     private static final class Link implements AutoCloseable {
+        private static final int MAX_SHELL_OUTPUT = 1024 * 1024;
         private Socket socket;
         private DataInputStream in;
         private OutputStream out;
@@ -205,12 +206,15 @@ final class Adb {
             try {
                 s.connect(new InetSocketAddress(HOST, PORT), 2000);
             } catch (ConnectException | SocketTimeoutException e) {
-                s.close();
-                Link wireless = openWireless();
+                closeQuietly(s);
+                Link wireless = openWireless(false);
                 if (wireless != null) return wireless;
                 Link off = new Link(null);
                 off.status = OFF;   // nothing listening: debugging is off
                 return off;
+            } catch (IOException | RuntimeException e) {
+                closeQuietly(s);
+                throw e;
             }
             Link link;
             try {
@@ -220,11 +224,7 @@ final class Adb {
                 link.status = link.connect(ask, deadline);
             } catch (IOException | RuntimeException e) {
                 // Accepted then reset (adbd restarting): the socket closed here, the reset the error reported.
-                try {
-                    s.close();
-                } catch (IOException closing) {
-                    e.addSuppressed(closing);
-                }
+                closeQuietly(s);
                 throw e;
             }
             if (link.status == OK) {
@@ -238,7 +238,7 @@ final class Adb {
          * Through Wireless debugging, when it's on and Vibe Launcher was paired: at the port last found, else at
          * the one the TV announces now. Null when there's none to try.
          */
-        private static Link openWireless() throws IOException {
+        private static Link openWireless(boolean probeOnly) throws IOException {
             Context c = app;
             if (c != null) android.util.Log.i("VibeAdb", "wireless: setting=" + wirelessSetting(c) + " paired="
                     + AdbTlsKey.paired(c) + " port=" + wirelessPort);
@@ -248,7 +248,7 @@ final class Adb {
             if (port > 0) {
                 Link link;
                 try {
-                    link = openTls(c, port);
+                    link = openTls(c, port, probeOnly, true);
                 } catch (IOException e) {
                     link = null;   // whatever answers there now isn't the TV's debugging: its new port, below
                 }
@@ -260,24 +260,31 @@ final class Adb {
             wirelessSilent = port <= 0 && wirelessOn(c);
             if (port <= 0) return null;
             wirelessPort = port;
-            return openTls(c, port);
+            return openTls(c, port, probeOnly, false);
         }
 
         /** How many times running the TV has turned the key down (openTls). */
-        private static int turnedDown;
+        private static final java.util.concurrent.atomic.AtomicInteger turnedDown =
+                new java.util.concurrent.atomic.AtomicInteger();
 
         /** CNXN, the TV's STLS, ours back, then TLS 1.3 and its CNXN inside it. Null when nothing listens there. */
-        private static Link openTls(Context c, int port) throws IOException {
+        private static Link openTls(Context c, int port, boolean probeOnly, boolean cachedPort) throws IOException {
             Socket s = new Socket();
             try {
                 s.connect(new InetSocketAddress(HOST, port), 2000);
             } catch (IOException e) {
-                s.close();
+                closeQuietly(s);
                 return null;
             }
-            s.setTcpNoDelay(true);
-            s.setSoTimeout(ANSWER_MS);
-            Link link = new Link(s);
+            Link link;
+            try {
+                s.setTcpNoDelay(true);
+                s.setSoTimeout(ANSWER_MS);
+                link = new Link(s);
+            } catch (IOException | RuntimeException e) {
+                closeQuietly(s);
+                throw e;
+            }
             try {
                 link.send(CNXN, VERSION, MAX_DATA, "host::\0".getBytes(StandardCharsets.UTF_8));
                 Message m = link.read();
@@ -303,28 +310,40 @@ final class Adb {
                         Message cnxn = link.read();
                         if (cnxn.command == CNXN) {
                             link.status = OK;
-                            viaWireless = true;
-                            turnedDown = 0;
+                            if (!probeOnly) viaWireless = true;
+                            turnedDown.set(0);
                             worked();
                             return link;
                         }
                     }
                 } catch (SSLException | java.io.EOFException e) {
                     android.util.Log.i("VibeAdb", "wireless: TLS turned down", e);
+                    if (cachedPort) {
+                        link.status = FAILED;
+                        return link;
+                    }
                     // Our certificate turned down (TLS 1.3 says so after the handshake): the TV doesn't know this
                     // key, or forgot it (Revoke). Paired anew from Settings > Apps. A connection that only dropped
                     // here looks the same, so the pairing is forgotten when it's turned down twice running.
-                    if (++turnedDown >= 2) AdbTlsKey.setPaired(c, false);
+                    if (turnedDown.incrementAndGet() >= 2) AdbTlsKey.setPaired(c, false);
                     link.status = NOT_PAIRED;
                     return link;
                 }
             } catch (GeneralSecurityException e) {
                 link.status = FAILED;
                 return link;
-            } catch (IOException e) {
+            } catch (IOException | RuntimeException e) {
                 android.util.Log.i("VibeAdb", "wireless: failed", e);
-                link.close();
+                closeQuietly(link.socket);
                 throw e;
+            }
+        }
+
+        private static void closeQuietly(Socket s) {
+            if (s == null) return;
+            try {
+                s.close();
+            } catch (IOException ignored) {
             }
         }
 
@@ -342,9 +361,7 @@ final class Adb {
             try {
                 while (true) {
                     Message m = read();
-                    if (m.command == CNXN) {
-                        return OK;
-                    }
+                    if (m.command == CNXN) return OK;
                     if (m.command != AUTH || m.arg0 != AUTH_TOKEN) continue;
                     if (!signed) {   // a key it may already know
                         byte[] signature;
@@ -379,9 +396,11 @@ final class Adb {
             }
         }
 
-        /** One shell command's output, until the TV closes it. */
+        private int nextLocal = 1;
+
+        /** One shell command's output, until closed. */
         String shell(String command) throws IOException {
-            int local = 1, remote = 0;
+            int local = nextLocal++, remote = 0;
             send(OPEN, local, 0, ("shell:" + command + "\0").getBytes(StandardCharsets.UTF_8));
             ByteArrayOutputStream output = new ByteArrayOutputStream();
             socket.setSoTimeout(60000);   // a long list of commands (Turn all back on) takes a while
@@ -392,10 +411,13 @@ final class Adb {
                     remote = m.arg0;
                 } else if (m.command == WRTE) {
                     remote = m.arg0;
-                    output.write(m.data);
+                    if (output.size() < MAX_SHELL_OUTPUT) {
+                        output.write(m.data, 0, Math.min(m.data.length, MAX_SHELL_OUTPUT - output.size()));
+                    }
                     send(OKAY, local, remote, new byte[0]);
                 } else if (m.command == CLSE) {
-                    if (remote != 0) send(CLSE, local, remote, new byte[0]);
+                    if (remote == 0) throw new IOException("shell rejected");
+                    send(CLSE, local, remote, new byte[0]);
                     return output.toString("UTF-8");
                 }
             }
@@ -440,7 +462,7 @@ final class Adb {
     // ---- the key -----------------------------------------------------------------------------------
 
     /** Vibe Launcher's key, made the first time, in the Keystore. */
-    private static KeyStore keys() throws GeneralSecurityException, IOException {
+    private static synchronized KeyStore keys() throws GeneralSecurityException, IOException {
         KeyStore ks = KeyStore.getInstance("AndroidKeyStore");
         ks.load(null);
         if (!ks.containsAlias(KEY_ALIAS)) {
@@ -456,6 +478,7 @@ final class Adb {
     }
 
     private static byte[] sign(byte[] token) throws GeneralSecurityException {
+        if (token == null || token.length != 20) throw new GeneralSecurityException("bad token length");
         try {
             Signature s = Signature.getInstance("NONEwithRSA");
             s.initSign((PrivateKey) keys().getKey(KEY_ALIAS, null));

@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Orada bir yedek kaydetmek ya da birini geri göndermek için telefonla tarayın</string>
     <string name="backup_saved">Yedek kaydedildi</string>
     <string name="backup_failed">Yedek kaydedilemedi</string>
+    <string name="backup_passphrase_set">Bu yedek için parola</string>
+    <string name="backup_passphrase_enter">Yedek parolası</string>
+    <string name="backup_passphrase_empty">Yedeği şifrelemek için bir parola girin</string>
+    <string name="backup_passphrase_again">Tekrar yazın</string>
+    <string name="backup_passphrase_mismatch">İkisi eşleşmiyor</string>
+    <string name="restore_wrong_passphrase">Yanlış yedek parolası</string>
     <string name="restore_now">Şimdi geri yükle</string>
     <string name="restore_warning">Ayarlar, kutular, klasörler ve anahtarların hepsi yedektekilerle değiştirilir, ardından ana ekran yeniden başlar.</string>
     <string name="restore_failed">Bu yedek okunamadı</string>

@@ -302,6 +302,12 @@
     <string name="scan_to_backup">I-scan gamit ang phone para mag-save ng backup doon o magpadala ng isa pabalik</string>
     <string name="backup_saved">Na-save ang backup</string>
     <string name="backup_failed">Hindi ma-save ang backup</string>
+    <string name="backup_passphrase_set">Passphrase para sa backup na ito</string>
+    <string name="backup_passphrase_enter">Passphrase ng backup</string>
+    <string name="backup_passphrase_empty">Maglagay ng passphrase upang i-encrypt ang backup</string>
+    <string name="backup_passphrase_again">I-type ulit</string>
+    <string name="backup_passphrase_mismatch">Hindi magkatugma ang dalawa</string>
+    <string name="restore_wrong_passphrase">Maling passphrase ng backup</string>
     <string name="restore_now">I-restore ngayon</string>
     <string name="restore_warning">Papalitan ng mula sa backup ang lahat ng setting, tile, folder at key, saka magsisimula ulit ang Home.</string>
     <string name="restore_failed">Hindi mabasa ang backup na iyon</string>

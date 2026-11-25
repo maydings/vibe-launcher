@@ -40,7 +40,9 @@ class TileAnimator extends DefaultItemAnimator {
         // Continue from wherever an interrupted spring left the tile.
         fromX += (int) v.getTranslationX();
         fromY += (int) v.getTranslationY();
+        if (pendingMoves.remove(holder)) dispatchMoveFinished(holder);
         cancel(holder);
+        super.endAnimation(holder);
         int dx = toX - fromX, dy = toY - fromY;
         if (dx == 0 && dy == 0) {
             // Laid out where it's drawn now (sent back before its spring was through): that's its place, and
@@ -59,8 +61,12 @@ class TileAnimator extends DefaultItemAnimator {
     @Override
     public void runPendingAnimations() {
         super.runPendingAnimations();
-        for (RecyclerView.ViewHolder holder : pendingMoves) {
+        if (pendingMoves.isEmpty()) return;
+        List<RecyclerView.ViewHolder> moves = new ArrayList<>(pendingMoves);
+        pendingMoves.clear();
+        for (RecyclerView.ViewHolder holder : moves) {
             View v = holder.itemView;
+            dispatchMoveStarting(holder);
             SpringAnimation x = spring(v, DynamicAnimation.TRANSLATION_X);
             SpringAnimation y = spring(v, DynamicAnimation.TRANSLATION_Y);
             SpringAnimation[] pair = {x, y};
@@ -76,7 +82,6 @@ class TileAnimator extends DefaultItemAnimator {
             x.animateToFinalPosition(0f);
             y.animateToFinalPosition(0f);
         }
-        pendingMoves.clear();
     }
 
     private static SpringAnimation spring(View v, DynamicAnimation.ViewProperty property) {

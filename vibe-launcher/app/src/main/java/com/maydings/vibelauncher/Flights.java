@@ -231,12 +231,19 @@ final class Flights {
         t.setDaemon(true);
         return t;
     });
+    /** Separate executor for adsbdb/VRS enrichment so slow lookups never starve OpenSky polling. */
+    private final java.util.concurrent.ExecutorService enricher = Executors.newFixedThreadPool(2, r -> {
+        Thread t = new Thread(r, "FlightsLookup");
+        t.setDaemon(true);
+        return t;
+    });
 
     /** What's kept from adsbdb, by transponder address, callsign and airline code; each with "e", when it runs out. */
     private final Map<String, JSONObject> aircraft = new ConcurrentHashMap<>(), routes = new ConcurrentHashMap<>(),
             airlines = new ConcurrentHashMap<>();
     private final Set<String> asking = ConcurrentHashMap.newKeySet();
     private boolean loaded, saveDue;   // worker thread only
+    private ScheduledFuture<?> saveTask;   // worker thread only
 
     private volatile List<Heard> heard = Collections.emptyList();
     private volatile Weather.Place here;
@@ -303,6 +310,10 @@ final class Flights {
             airlines.clear();
             //noinspection ResultOfMethodCallIgnored
             new File(context.getFilesDir(), FILE).delete();
+            if (saveTask != null) {
+                saveTask.cancel(false);
+                saveTask = null;
+            }
             saveDue = false;
             main.post(then);
         });
@@ -344,6 +355,8 @@ final class Flights {
             if (reply.code == 401 && bearer != null) {   // the token ran out early: a new one, once
                 token = null;
                 bearer = token(id, secret);
+                wait = bearer != null ? WITH_CLIENT_MS : WITHOUT_MS;
+                reach = settings.flightsKm() + (bearer != null ? WITH_CLIENT_KM : WITHOUT_KM);
                 reply = request(box(place, reach), bearer, null);
             }
             // The day's allowance is spent: when it says to come back.
@@ -362,8 +375,8 @@ final class Flights {
         double dLat = km / 110.57;
         double dLon = km / (111.32 * Math.max(0.2, Math.cos(Math.toRadians(place.lat))));
         if (4 * dLat * dLon > MAX_AREA) dLon = MAX_AREA / (4 * dLat);
-        return String.format(Locale.ROOT, STATES, Math.max(-90, place.lat - dLat), place.lon - dLon,
-                Math.min(90, place.lat + dLat), place.lon + dLon);
+        return String.format(Locale.ROOT, STATES, Math.max(-90, place.lat - dLat), Math.max(-180, place.lon - dLon),
+                Math.min(90, place.lat + dLat), Math.min(180, place.lon + dLon));
     }
 
     /** The aircraft in an answer that are in the air and say where they are. */
@@ -468,7 +481,7 @@ final class Flights {
             if (!Double.isNaN(h.speed) && !Double.isNaN(h.track)) {
                 double m = h.speed * since / 1000.0, t = Math.toRadians(h.track);
                 lat += m * Math.cos(t) / 110_570;
-                lon += m * Math.sin(t) / (111_320 * Math.max(0.2, Math.cos(Math.toRadians(lat))));
+                lon = wrapLon(lon + m * Math.sin(t) / (111_320 * Math.max(0.2, Math.cos(Math.toRadians(lat)))));
             }
             double km = km(place.lat, place.lon, lat, lon);
             if (km > reach) continue;
@@ -487,21 +500,29 @@ final class Flights {
         return out;
     }
 
+    static double wrapLon(double lon) {
+        return ((lon + 180.0) % 360.0 + 360.0) % 360.0 - 180.0;
+    }
+
+    static double deltaLon(double lon1, double lon2) {
+        return ((lon2 - lon1 + 540.0) % 360.0 + 360.0) % 360.0 - 180.0;
+    }
+
     static double km(double lat1, double lon1, double lat2, double lon2) {
-        double x = (lon2 - lon1) * 111.32 * Math.cos(Math.toRadians((lat1 + lat2) / 2));
+        double x = deltaLon(lon1, lon2) * 111.32 * Math.cos(Math.toRadians((lat1 + lat2) / 2));
         double y = (lat2 - lat1) * 110.57;
         return Math.hypot(x, y);
     }
 
     static double bearing(double lat1, double lon1, double lat2, double lon2) {
-        double x = (lon2 - lon1) * Math.cos(Math.toRadians((lat1 + lat2) / 2));
+        double x = deltaLon(lon1, lon2) * Math.cos(Math.toRadians((lat1 + lat2) / 2));
         double y = lat2 - lat1;
         return (Math.toDegrees(Math.atan2(x, y)) + 360) % 360;
     }
 
     /** Along a great circle, properly: routes cross oceans, where the flat sums above are far out. */
     static double far(double lat1, double lon1, double lat2, double lon2) {
-        double a = Math.toRadians(lat1), b = Math.toRadians(lat2), d = Math.toRadians(lon2 - lon1);
+        double a = Math.toRadians(lat1), b = Math.toRadians(lat2), d = Math.toRadians(deltaLon(lon1, lon2));
         double h = Math.pow(Math.sin((b - a) / 2), 2) + Math.cos(a) * Math.cos(b) * Math.pow(Math.sin(d / 2), 2);
         return 2 * 6371 * Math.asin(Math.min(1, Math.sqrt(h)));
     }
@@ -511,6 +532,9 @@ final class Flights {
         if (!route.has("ola") || !route.has("dla")) return true;   // not known where they are: taken as said
         double ola = route.optDouble("ola"), olo = route.optDouble("olo");
         double dla = route.optDouble("dla"), dlo = route.optDouble("dlo");
+        if (!Double.isFinite(ola) || !Double.isFinite(olo) || !Double.isFinite(dla) || !Double.isFinite(dlo)) {
+            return true;
+        }
         double direct = far(ola, olo, dla, dlo);
         return far(ola, olo, lat, lon) + far(lat, lon, dla, dlo) <= direct * 1.3 + 150;
     }
@@ -547,18 +571,15 @@ final class Flights {
         boolean whose = code != null && fresh(airlines, code) == null;
         if (!plane && !route && !second && !whose) return;
         if (SystemClock.elapsedRealtime() < adsbdbQuietUntil || !asking.add(hex + '/' + callsign)) return;
-        worker.execute(() -> {
+        enricher.execute(() -> {
             try {
-                // One before it found the servers not answering: not this one's turn to wait them out as well
-                // (they share the thread that asks OpenSky, which would wait behind them all).
                 if (SystemClock.elapsedRealtime() < adsbdbQuietUntil) return;
-                if (plane) keepAircraft(hex);
-                if (route) keepRoute(callsign);
+                if (plane && fresh(aircraft, hex) == null) keepAircraft(hex);
+                if (route && fresh(routes, callsign) == null) keepRoute(callsign);
                 if (route || second) {
                     JSONObject r = fresh(routes, callsign);
                     if (r != null && r.optBoolean("m") && !r.optBoolean("t")) {
                         keepSecondRoute(callsign, code, lat, lon, r.optLong("e"));
-                        r = fresh(routes, callsign);
                     }
                 }
                 if (code != null && fresh(airlines, code) == null) keepAirline(code);
@@ -652,9 +673,12 @@ final class Flights {
                         .put("oc", airportCode(from)).put("on", said(from, "municipality"))
                         .put("dc", airportCode(to)).put("dn", said(to, "municipality"))
                         .put("e", System.currentTimeMillis() + ROUTE_MS);
-                if (from.has("latitude") && from.has("longitude") && to.has("latitude") && to.has("longitude")) {
-                    keep.put("ola", from.optDouble("latitude")).put("olo", from.optDouble("longitude"))
-                            .put("dla", to.optDouble("latitude")).put("dlo", to.optDouble("longitude"));
+                double ola = from.optDouble("latitude", Double.NaN);
+                double olo = from.optDouble("longitude", Double.NaN);
+                double dla = to.optDouble("latitude", Double.NaN);
+                double dlo = to.optDouble("longitude", Double.NaN);
+                if (Double.isFinite(ola) && Double.isFinite(olo) && Double.isFinite(dla) && Double.isFinite(dlo)) {
+                    keep.put("ola", ola).put("olo", olo).put("dla", dla).put("dlo", dlo);
                 }
             }
         } catch (JSONException e) {
@@ -717,7 +741,7 @@ final class Flights {
         worker.execute(() -> {
             if (saveDue) return;
             saveDue = true;
-            worker.schedule(this::write, 30, TimeUnit.SECONDS);
+            saveTask = worker.schedule(this::write, 30, TimeUnit.SECONDS);
         });
     }
 

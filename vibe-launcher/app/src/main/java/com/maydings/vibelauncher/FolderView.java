@@ -122,7 +122,16 @@ final class FolderView extends FrameLayout {
         focus(0);
     }
 
+    private boolean closed;
+
     void close(Runnable gone) {
+        closed = true;
+        adapter.stopMove();
+        setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
+        if (waitingToFocus != null) {
+            grid.removeOnLayoutChangeListener(waitingToFocus);
+            waitingToFocus = null;
+        }
         animate().alpha(0f).setDuration(160).withEndAction(gone).start();
     }
 
@@ -130,10 +139,11 @@ final class FolderView extends FrameLayout {
     private OnLayoutChangeListener waitingToFocus;
 
     void focus(int position) {
-        if (adapter.getItemCount() == 0) return;
+        if (closed || adapter.getItemCount() == 0) return;
         int pos = Math.max(0, Math.min(position, adapter.getItemCount() - 1));
         grid.scrollToPosition(pos);
         grid.post(() -> {
+            if (closed) return;
             // One waiting from before is for a tile asked for earlier: it goes, or it would take the focus
             // there whenever the grid is next laid out.
             if (waitingToFocus != null) grid.removeOnLayoutChangeListener(waitingToFocus);
@@ -142,9 +152,10 @@ final class FolderView extends FrameLayout {
                 waitingToFocus = new OnLayoutChangeListener() {
                     @Override
                     public void onLayoutChange(View v, int l, int t, int r, int b, int ol, int ot, int or, int ob) {
-                        if (!focusTile(pos)) return;
-                        grid.removeOnLayoutChangeListener(this);
-                        if (waitingToFocus == this) waitingToFocus = null;
+                        if (closed || pos >= adapter.getItemCount() || focusTile(pos)) {
+                            grid.removeOnLayoutChangeListener(this);
+                            if (waitingToFocus == this) waitingToFocus = null;
+                        }
                     }
                 };
                 grid.addOnLayoutChangeListener(waitingToFocus);

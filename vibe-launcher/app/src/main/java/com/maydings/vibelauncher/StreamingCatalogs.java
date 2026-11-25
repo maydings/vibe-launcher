@@ -69,7 +69,8 @@ final class StreamingCatalogs {
         long now = System.currentTimeMillis();
         // Saved as "id<TAB>name" lines.
         String saved = cache.getString(service, "");
-        if (now - cache.getLong(service + ".time", 0) >= REFRESH_MS) {
+        long age = now - cache.getLong(service + ".time", 0);
+        if (age < 0 || age >= REFRESH_MS) {
             try {
                 saved = fetch(service);
                 cache.edit().putString(service, saved).putLong(service + ".time", now).apply();
@@ -93,8 +94,13 @@ final class StreamingCatalogs {
             List<String> lines = new ArrayList<>();
             for (int i = 0; metas != null && i < metas.length(); i++) {
                 JSONObject m = metas.getJSONObject(i);
-                String id = m.optString("id"), name = m.optString("name").replace('\t', ' ').replace('\n', ' ');
-                if (id.matches("tt\\d+") && !name.isEmpty() && !m.optString("background").isEmpty()) lines.add(id + "\t" + name);
+                String id = m.optString("id");
+                String name = (m.isNull("name") ? "" : m.optString("name"))
+                        .replace('\t', ' ').replace('\n', ' ').replace('\r', ' ');
+                if (id.matches("tt\\d{5,10}") && !name.isEmpty()
+                        && !m.isNull("background") && !m.optString("background").isEmpty()) {
+                    lines.add(id + "\t" + name);
+                }
             }
             lists.add(lines);
         }

@@ -39,11 +39,9 @@ public class GlassView extends View {
         rim.setStyle(Paint.Style.STROKE);
         rim.setStrokeWidth(1.5f * density);
         colours();
-        // Drawn once into a cached GPU image and only moved and faded after that: the glow and the
-        // curved clips were otherwise redrawn on every frame while the glass springs between tiles,
-        // the biggest single GPU cost on TV chips (on the XBR-940E, frames on time went from about
-        // 80% to 100% while moving along the dock). Redrawn only when its size or corners change.
-        setLayerType(LAYER_TYPE_HARDWARE, null);
+        // Drawn once into a cached layer and only moved and faded after that: hardware shadow-blur on shapes
+        // requires API 28+, so API 26-27 uses a cached software layer instead (still rasterized only on resize).
+        setLayerType(android.os.Build.VERSION.SDK_INT >= 28 ? LAYER_TYPE_HARDWARE : LAYER_TYPE_SOFTWARE, null);
     }
 
     /** The highlight colour (RGB; the alpha is ignored). */
@@ -84,6 +82,7 @@ public class GlassView extends View {
 
     /** Corner radius of the slab: the focused tile's radius at its focused scale. */
     void setRadius(float px) {
+        if (px == radius) return;
         radius = px;
         invalidate();
     }
@@ -98,6 +97,7 @@ public class GlassView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         float inset = 6f * density;   // room for the glow
+        if (getWidth() <= 2 * inset || getHeight() <= 2 * inset) return;
         rect.set(inset, inset, getWidth() - inset, getHeight() - inset);
 
         clip.reset();

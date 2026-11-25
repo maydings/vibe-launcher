@@ -5,6 +5,7 @@
   else keeps Android's defaults.
 -->
 <network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
     <domain-config>
         <domain includeSubdomains="false">sylvan.apple.com</domain>
         <trust-anchors>

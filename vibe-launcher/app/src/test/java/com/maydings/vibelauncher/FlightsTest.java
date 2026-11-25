@@ -134,4 +134,21 @@ public class FlightsTest {
         assertEquals("5X", Flights.said(o, "b"));
         assertEquals("", Flights.said(o, "c"));
     }
+
+    @Test
+    public void antimeridianDistancesBearingsAndBox() {
+        assertEquals(22.264, Flights.km(0, 179.9, 0, -179.9), 0.1);
+        assertEquals(90.0, Flights.bearing(0, 179.9, 0, -179.9), 1e-6);
+        assertEquals(270.0, Flights.bearing(0, -179.9, 0, 179.9), 1e-6);
+        assertEquals(-179.5, Flights.wrapLon(180.5), 1e-9);
+        assertEquals(179.5, Flights.wrapLon(-180.5), 1e-9);
+        String url = Flights.box(new Weather.Place("Fiji", -18.0, 179.5), 200);
+        assertTrue(url, url.contains("lomax=180.0000"));
+    }
+
+    @Test
+    public void betweenHandlesNullOrNanCoords() throws Exception {
+        JSONObject route = new JSONObject("{\"ola\":null,\"olo\":null,\"dla\":null,\"dlo\":null}");
+        assertTrue(Flights.between(route, 40.0, -74.0));
+    }
 }

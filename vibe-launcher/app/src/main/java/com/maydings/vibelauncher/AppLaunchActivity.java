@@ -20,12 +20,16 @@ public class AppLaunchActivity extends Activity {
     protected void onCreate(Bundle state) {
         super.onCreate(state);
         try {
-            Uri data = getIntent().getData();
-            String pkg = data == null ? null : data.getQueryParameter("id");
-            if (pkg != null) {
-                Intent launch = getPackageManager().getLeanbackLaunchIntentForPackage(pkg);
-                if (launch == null) launch = getPackageManager().getLaunchIntentForPackage(pkg);
-                if (launch != null) startActivity(launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            Intent intent = getIntent();
+            Uri data = intent != null ? intent.getData() : null;
+            if (intent != null && Intent.ACTION_VIEW.equals(intent.getAction())
+                    && data != null && "market".equals(data.getScheme()) && "launch".equals(data.getHost())) {
+                String pkg = data.getQueryParameter("id");
+                if (pkg != null && !pkg.isEmpty() && !pkg.equals(getPackageName())) {
+                    Intent launch = getPackageManager().getLeanbackLaunchIntentForPackage(pkg);
+                    if (launch == null) launch = getPackageManager().getLaunchIntentForPackage(pkg);
+                    if (launch != null) startActivity(launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                }
             }
         } catch (RuntimeException ignored) {
             // Gone, not ours to open, or an address that isn't one of these (any app can send one): nothing to show.

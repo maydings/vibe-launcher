@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Zeskanuj telefonem, aby zapisać na nim kopię lub odesłać ją z powrotem</string>
     <string name="backup_saved">Kopia zapisana</string>
     <string name="backup_failed">Nie udało się zapisać kopii</string>
+    <string name="backup_passphrase_set">Hasło do tej kopii zapasowej</string>
+    <string name="backup_passphrase_enter">Hasło kopii zapasowej</string>
+    <string name="backup_passphrase_empty">Wpisz hasło, aby zaszyfrować kopię zapasową</string>
+    <string name="backup_passphrase_again">Wpisz je ponownie</string>
+    <string name="backup_passphrase_mismatch">Oba się nie zgadzają</string>
+    <string name="restore_wrong_passphrase">Nieprawidłowe hasło kopii zapasowej</string>
     <string name="restore_now">Przywróć teraz</string>
     <string name="restore_warning">Ustawienia, kafelki, foldery i klucze zostaną w całości zastąpione tymi z kopii, a potem ekran główny uruchomi się ponownie.</string>
     <string name="restore_failed">Nie udało się odczytać tej kopii</string>

@@ -41,15 +41,19 @@ final class VrsDatabase {
         }
     }
 
-    /** A list from the cache, downloaded when it's not there or a month old (an old one does if that fails). */
-    private File list(String path, String name) throws IOException {
+    /**
+     * A list from the cache, downloaded when it's not there or a month old (an old one does if that fails). One
+     * at a time: two lookups wanting the same list would both write its .part file.
+     */
+    private synchronized File list(String path, String name) throws IOException {
         File dir = new File(context.getCacheDir(), "routes");
         if (!dir.isDirectory() && !dir.mkdirs()) throw new IOException("no cache");
         File file = new File(dir, name);
-        if (file.isFile() && System.currentTimeMillis() - file.lastModified() < LIST_MS) return file;
+        long age = System.currentTimeMillis() - file.lastModified();
+        if (file.isFile() && age >= 0 && age < LIST_MS) return file;
         // An old one that couldn't be had anew just now: the old one for ten minutes, not asked for with each look.
         Long again = retryAt.get(name);
-        if (file.isFile() && again != null && System.currentTimeMillis() < again) return file;
+        if (file.isFile() && again != null && android.os.SystemClock.elapsedRealtime() < again) return file;
         byte[] bytes;
         try {
             bytes = Http.get(VRS + path, 8 * 1024 * 1024);
@@ -58,7 +62,7 @@ final class VrsDatabase {
             // many requests, say), it's as if it hadn't answered.
             if ("HTTP 404".equals(e.getMessage())) bytes = new byte[0];
             else if (file.isFile()) {
-                retryAt.put(name, System.currentTimeMillis() + 10 * 60_000);
+                retryAt.put(name, android.os.SystemClock.elapsedRealtime() + 10 * 60_000);
                 return file;
             }
             else throw e;
@@ -66,8 +70,17 @@ final class VrsDatabase {
         File part = new File(file.getPath() + ".part");
         try (FileOutputStream out = new FileOutputStream(part)) {
             out.write(bytes);
+        } catch (IOException e) {
+            //noinspection ResultOfMethodCallIgnored
+            part.delete();
+            throw e;
         }
-        if (!part.renameTo(file)) throw new IOException("not kept");
+        if (!part.renameTo(file)) {
+            //noinspection ResultOfMethodCallIgnored
+            part.delete();
+            throw new IOException("not kept");
+        }
+        if (name.startsWith("airports-")) airports.clear();
         return file;
     }
 

@@ -60,7 +60,9 @@ final class Plex {
     /** What's On Deck, as last fetched (by items() or refreshOnDeck): read without waiting. */
     private volatile List<Item> onDeck = Collections.emptyList();
     private volatile long onDeckTime;
+    private volatile String onDeckToken = "";
     private final Object deckLock = new Object();
+    private final Object serverLock = new Object();
     /** Asks the server for On Deck away from the threads that show and build pictures. */
     private final ExecutorService refresher = Executors.newSingleThreadExecutor(r -> new Thread(() -> {
         android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);   // see Backdrops.builder
@@ -84,16 +86,38 @@ final class Plex {
      */
     synchronized List<Item> items() {
         String token = settings.plexToken();
-        if (token.isEmpty()) return Collections.emptyList();
+        if (token.isEmpty()) {
+            art = Collections.emptyList();
+            artToken = "";
+            synchronized (deckLock) {
+                onDeck = Collections.emptyList();
+                onDeckToken = "";
+                onDeckTime = 0;
+            }
+            return Collections.emptyList();
+        }
+        if (!token.equals(artToken)) {
+            art = Collections.emptyList();
+            artTime = 0;
+            synchronized (deckLock) {
+                onDeck = Collections.emptyList();
+                onDeckToken = "";
+                onDeckTime = 0;
+            }
+        }
         long now = System.currentTimeMillis();
-        if (token.equals(artToken) && now - artTime < ART_MS && !art.isEmpty()) return art;
+        long age = now - artTime;
+        if (token.equals(artToken) && age >= 0 && age < ART_MS && !art.isEmpty()) return art;
         for (int attempt = 0; attempt < 2; attempt++) {
             String[] server = server(token, attempt > 0);
             if (server == null) break;
             try {
                 List<Item> found = fetch(server[0], server[1], "/library/onDeck", true);
-                onDeck = new ArrayList<>(found);
-                onDeckTime = now;
+                synchronized (deckLock) {
+                    onDeck = new ArrayList<>(found);
+                    onDeckTime = now;
+                    onDeckToken = token;
+                }
                 found.addAll(fetch(server[0], server[1], "/library/recentlyAdded", false));
                 art = found;
                 artTime = now;
@@ -103,12 +127,13 @@ final class Plex {
                 // The cached address may be stale (new IP, server moved): look it up again once.
             }
         }
-        return art;   // the last good list, if any
+        return token.equals(artToken) ? art : Collections.emptyList();
     }
 
     /** What's On Deck as last fetched, at once: the screen never waits on the server. */
     List<Item> onDeck() {
-        return settings.plexToken().isEmpty() ? Collections.emptyList() : onDeck;
+        String token = settings.plexToken();
+        return token.isEmpty() || !token.equals(onDeckToken) ? Collections.emptyList() : onDeck;
     }
 
     /**
@@ -117,16 +142,19 @@ final class Plex {
      */
     void refreshOnDeck(Runnable done) {
         String token = settings.plexToken();
-        if (token.isEmpty() || System.currentTimeMillis() - onDeckTime < ON_DECK_MS) return;
+        long age = System.currentTimeMillis() - onDeckTime;
+        if (token.isEmpty() || (token.equals(onDeckToken) && age >= 0 && age < ON_DECK_MS)) return;
         refresher.execute(() -> {
             synchronized (deckLock) {
                 long now = System.currentTimeMillis();
-                if (now - onDeckTime < ON_DECK_MS) return;   // another request just did it
+                long freshAge = now - onDeckTime;
+                if (token.equals(onDeckToken) && freshAge >= 0 && freshAge < ON_DECK_MS) return;
                 String[] server = server(token, false);
                 if (server == null) return;
                 try {
                     onDeck = fetch(server[0], server[1], "/library/onDeck", true);
                     onDeckTime = now;
+                    onDeckToken = token;
                 } catch (IOException | JSONException | RuntimeException e) {
                     onDeckTime = now;   // offline or moved: the last list for another minute; items() looks again
                     return;
@@ -138,48 +166,58 @@ final class Plex {
 
     /** {base URI, server access token} for the first owned (else any) online server, cached for a day. */
     private String[] server(String token, boolean refresh) {
-        long now = System.currentTimeMillis();
-        if (!refresh && token.equals(cache.getString("forToken", "")) && now - cache.getLong("time", 0) < SERVER_MS) {
-            String uri = cache.getString("uri", null), access = cache.getString("access", null);
-            if (uri != null && access != null) return new String[]{uri, access};
-        }
-        try {
-            JSONArray resources = new JSONArray(get("https://plex.tv/api/v2/resources?includeHttps=1&includeRelay=0", token));
-            JSONObject best = null;
-            for (int i = 0; i < resources.length(); i++) {
-                JSONObject r = resources.getJSONObject(i);
-                if (!r.optString("provides").contains("server") || r.optJSONArray("connections") == null) continue;
-                if (best == null || (r.optBoolean("owned") && !best.optBoolean("owned"))) best = r;
+        synchronized (serverLock) {
+            long now = System.currentTimeMillis();
+            long age = now - cache.getLong("time", 0);
+            if (!refresh && token.equals(cache.getString("forToken", "")) && age >= 0 && age < SERVER_MS) {
+                String uri = cache.getString("uri", null), access = cache.getString("access", null);
+                if (uri != null && uri.startsWith("https://") && access != null) return new String[]{uri, access};
             }
-            if (best == null) return null;
-            JSONArray connections = best.getJSONArray("connections");
-            List<String> uris = new ArrayList<>();
-            for (int pass = 0; pass < 2; pass++) {   // local first, then remote
-                for (int i = 0; i < connections.length(); i++) {
-                    JSONObject c = connections.getJSONObject(i);
-                    if (c.optBoolean("relay") || c.optBoolean("local") != (pass == 0)) continue;
-                    uris.add(c.getString("uri"));
+            try {
+                JSONArray resources = new JSONArray(get("https://plex.tv/api/v2/resources?includeHttps=1&includeRelay=0", token));
+                JSONObject best = null;
+                for (int i = 0; i < resources.length(); i++) {
+                    JSONObject r = resources.getJSONObject(i);
+                    if (!r.optString("provides").contains("server") || r.optJSONArray("connections") == null) continue;
+                    boolean rOnline = r.optBoolean("presence", true);
+                    boolean bOnline = best != null && best.optBoolean("presence", true);
+                    if (best == null
+                            || (rOnline && !bOnline)
+                            || (rOnline == bOnline && r.optBoolean("owned") && !best.optBoolean("owned"))) {
+                        best = r;
+                    }
                 }
-            }
-            if (uris.isEmpty()) return null;
-            String access = best.optString("accessToken", token);
-            String uri = uris.get(0);
-            // Looked up again because the one kept didn't answer: the first that does (a server with several
-            // addresses lists some this TV can't reach), not the same first one.
-            for (int i = 0; refresh && i < uris.size(); i++) {
-                try {
-                    get(uris.get(i) + "/identity", access);
-                    uri = uris.get(i);
-                    break;
-                } catch (IOException | RuntimeException e) {
-                    // not this one
+                if (best == null) return null;
+                JSONArray connections = best.getJSONArray("connections");
+                List<String> uris = new ArrayList<>();
+                for (int pass = 0; pass < 2; pass++) {   // local first, then remote
+                    for (int i = 0; i < connections.length(); i++) {
+                        JSONObject c = connections.getJSONObject(i);
+                        if (c.optBoolean("relay") || c.optBoolean("local") != (pass == 0)) continue;
+                        String u = c.optString("uri");
+                        if (u.startsWith("https://")) uris.add(u);
+                    }
                 }
+                if (uris.isEmpty()) return null;
+                String rawAccess = best.isNull("accessToken") ? "" : best.optString("accessToken");
+                String access = rawAccess.isEmpty() ? token : rawAccess;
+                String uri = null;
+                for (String candidate : uris) {
+                    try {
+                        get(candidate + "/identity", access);
+                        uri = candidate;
+                        break;
+                    } catch (IOException | RuntimeException e) {
+                        // not reachable from this TV
+                    }
+                }
+                if (uri == null) return null;
+                cache.edit().putString("uri", uri).putString("access", access).putString("forToken", token)
+                        .putLong("time", now).apply();
+                return new String[]{uri, access};
+            } catch (IOException | JSONException | RuntimeException e) {
+                return null;
             }
-            cache.edit().putString("uri", uri).putString("access", access).putString("forToken", token)
-                    .putLong("time", now).apply();
-            return new String[]{uri, access};
-        } catch (IOException | JSONException | RuntimeException e) {
-            return null;
         }
     }
 
@@ -195,7 +233,9 @@ final class Plex {
         for (int i = 0; found != null && i < found.length(); i++) {
             JSONObject m = found.getJSONObject(i);
             boolean episode = "episode".equals(m.optString("type"));
-            String a = episode ? m.optString("grandparentArt", m.optString("art")) : m.optString("art");
+            String gpArt = m.isNull("grandparentArt") ? "" : m.optString("grandparentArt");
+            String ownArt = m.isNull("art") ? "" : m.optString("art");
+            String a = episode && !gpArt.isEmpty() ? gpArt : ownArt;
             if (a.isEmpty()) continue;
             String title = episode ? m.optString("grandparentTitle") : m.optString("title");
             String type = m.optString("type");
@@ -229,6 +269,7 @@ final class Plex {
      * still found, by what it is and not what it's called.
      */
     private void knowShow(String base, String token, String show, String title) {
+        if (showsAsked.size() > 500) showsAsked.clear();
         if (show.isEmpty() || Tmdb.isKnown(context, title) || !showsAsked.add(show)) return;
         try {
             JSONArray one = new JSONObject(get(base + "/library/metadata/" + Uri.encode(show) + "?includeGuids=1", token))

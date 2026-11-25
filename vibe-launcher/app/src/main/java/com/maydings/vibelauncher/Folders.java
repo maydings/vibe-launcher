@@ -49,11 +49,18 @@ final class Folders {
         try {
             JSONArray all = new JSONArray(prefs.getString(KEY, "[]"));
             for (int i = 0; i < all.length(); i++) {
-                JSONObject f = all.getJSONObject(i);
-                Folder folder = new Folder(f.getString("id"), f.optString("name"));
-                JSONArray apps = f.optJSONArray("apps");
-                for (int j = 0; apps != null && j < apps.length(); j++) folder.apps.add(apps.getString(j));
-                folders.put(folder.id, folder);
+                try {
+                    JSONObject f = all.getJSONObject(i);
+                    Folder folder = new Folder(f.getString("id"), f.optString("name"));
+                    JSONArray apps = f.optJSONArray("apps");
+                    for (int j = 0; apps != null && j < apps.length(); j++) {
+                        String pkg = apps.getString(j);
+                        if (!folder.apps.contains(pkg)) folder.apps.add(pkg);
+                    }
+                    folders.put(folder.id, folder);
+                } catch (JSONException ignored) {
+                    // skip one malformed folder without wiping the rest
+                }
             }
         } catch (JSONException e) {
             folders.clear();   // unreadable: no folders rather than a crash on every start
@@ -104,13 +111,13 @@ final class Folders {
 
     private boolean removeApp(String pkg) {
         boolean found = false;
-        for (Folder f : folders.values()) found |= f.apps.remove(pkg);
+        for (Folder f : folders.values()) found |= f.apps.removeIf(p -> p.equals(pkg));
         return found;
     }
 
     void rename(String id, String name) {
         Folder f = folders.get(id);
-        if (f == null || name.trim().isEmpty()) return;
+        if (f == null || name == null || name.trim().isEmpty()) return;
         f.name = name.trim();
         save();
     }

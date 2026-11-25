@@ -302,6 +302,12 @@
     <string name="scan_to_backup">סרקו בטלפון כדי לשמור בו גיבוי או לשלוח גיבוי בחזרה</string>
     <string name="backup_saved">הגיבוי נשמר</string>
     <string name="backup_failed">לא ניתן היה לשמור את הגיבוי</string>
+    <string name="backup_passphrase_set">סיסמה לגיבוי זה</string>
+    <string name="backup_passphrase_enter">סיסמת גיבוי</string>
+    <string name="backup_passphrase_empty">הזן סיסמה להצפנת הגיבוי</string>
+    <string name="backup_passphrase_again">הקלידו אותה שוב</string>
+    <string name="backup_passphrase_mismatch">השתיים אינן תואמות</string>
+    <string name="restore_wrong_passphrase">סיסמת גיבוי שגויה</string>
     <string name="restore_now">שחזור עכשיו</string>
     <string name="restore_warning">ההגדרות, האריחים, התיקיות והמפתחות יוחלפו כולם באלה שבגיבוי, ואז מסך הבית יופעל מחדש.</string>
     <string name="restore_failed">לא ניתן היה לקרוא את הגיבוי הזה</string>

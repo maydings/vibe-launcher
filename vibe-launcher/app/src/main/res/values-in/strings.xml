@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Pindai dengan ponsel untuk menyimpan cadangan di sana atau mengirim satu kembali</string>
     <string name="backup_saved">Cadangan disimpan</string>
     <string name="backup_failed">Cadangan tidak dapat disimpan</string>
+    <string name="backup_passphrase_set">Frasa sandi untuk cadangan ini</string>
+    <string name="backup_passphrase_enter">Frasa sandi cadangan</string>
+    <string name="backup_passphrase_empty">Masukkan frasa sandi untuk mengenkripsi cadangan</string>
+    <string name="backup_passphrase_again">Ketik sekali lagi</string>
+    <string name="backup_passphrase_mismatch">Keduanya tidak cocok</string>
+    <string name="restore_wrong_passphrase">Frasa sandi cadangan salah</string>
     <string name="restore_now">Pulihkan sekarang</string>
     <string name="restore_warning">Setelan, ubin, folder, dan kunci semuanya diganti dengan yang ada di cadangan, lalu Beranda dimulai ulang.</string>
     <string name="restore_failed">Cadangan itu tidak dapat dibaca</string>

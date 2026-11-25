@@ -302,6 +302,12 @@
     <string name="scan_to_backup">สแกนด้วยโทรศัพท์เพื่อบันทึกข้อมูลสำรองไว้ที่โทรศัพท์หรือส่งกลับมา</string>
     <string name="backup_saved">บันทึกข้อมูลสำรองแล้ว</string>
     <string name="backup_failed">บันทึกข้อมูลสำรองไม่ได้</string>
+    <string name="backup_passphrase_set">รหัสผ่านสำหรับข้อมูลสำรองนี้</string>
+    <string name="backup_passphrase_enter">รหัสผ่านข้อมูลสำรอง</string>
+    <string name="backup_passphrase_empty">ป้อนรหัสผ่านเพื่อเข้ารหัสข้อมูลสำรอง</string>
+    <string name="backup_passphrase_again">พิมพ์อีกครั้ง</string>
+    <string name="backup_passphrase_mismatch">ทั้งสองไม่ตรงกัน</string>
+    <string name="restore_wrong_passphrase">รหัสผ่านข้อมูลสำรองไม่ถูกต้อง</string>
     <string name="restore_now">กู้คืนเลย</string>
     <string name="restore_warning">การตั้งค่า ไทล์ โฟลเดอร์ และคีย์ทั้งหมดจะถูกแทนที่ด้วยข้อมูลสำรอง แล้วหน้าหลักจะเริ่มใหม่</string>
     <string name="restore_failed">อ่านข้อมูลสำรองนั้นไม่ได้</string>

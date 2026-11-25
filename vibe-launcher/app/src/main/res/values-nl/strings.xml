@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Scan met je telefoon om daar een back-up op te slaan of er een terug te sturen</string>
     <string name="backup_saved">Back-up opgeslagen</string>
     <string name="backup_failed">De back-up kon niet worden opgeslagen</string>
+    <string name="backup_passphrase_set">Wachtwoordzin voor deze back-up</string>
+    <string name="backup_passphrase_enter">Back-upwachtwoordzin</string>
+    <string name="backup_passphrase_empty">Voer een wachtwoordzin in om de back-up te versleutelen</string>
+    <string name="backup_passphrase_again">Typ het nog een keer</string>
+    <string name="backup_passphrase_mismatch">De twee komen niet overeen</string>
+    <string name="restore_wrong_passphrase">Onjuiste back-upwachtwoordzin</string>
     <string name="restore_now">Nu herstellen</string>
     <string name="restore_warning">Instellingen, tegels, mappen en sleutels worden allemaal vervangen door die van de back-up, daarna start het beginscherm opnieuw.</string>
     <string name="restore_failed">Die back-up kon niet worden gelezen</string>

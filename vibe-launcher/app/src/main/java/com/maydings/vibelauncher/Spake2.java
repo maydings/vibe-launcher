@@ -80,7 +80,9 @@ final class Spake2 {
 
     /** The 64-byte shared key from the peer's message; null when it isn't a point. */
     byte[] processMessage(byte[] theirMsg) {
-        if (myMsg == null || theirMsg.length != 32) return null;
+        if (myMsg == null || theirMsg == null || theirMsg.length != 32 || privateKey == null || passwordScalar == null) {
+            return null;
+        }
         Point qStar = decode(theirMsg);
         if (qStar == null) return null;
         Point peersMask = (role == ALICE ? N : M).multiply(passwordScalar);
@@ -100,7 +102,9 @@ final class Spake2 {
         }
         update(sha, shared);
         update(sha, passwordHash);
-        return sha.digest();
+        byte[] out = sha.digest();
+        destroy();   // one-shot exchange
+        return out;
     }
 
     /** update_with_length_prefix: the length as eight bytes, little-endian, then the bytes. */
@@ -185,7 +189,8 @@ final class Spake2 {
         byte[] b = s.clone();
         boolean sign = (b[31] & 0x80) != 0;
         b[31] &= 0x7F;
-        BigInteger y = littleEndian(b).mod(P);
+        BigInteger y = littleEndian(b);
+        if (y.compareTo(P) >= 0) return null;
         BigInteger y2 = y.multiply(y).mod(P);
         BigInteger u = y2.subtract(BigInteger.ONE).mod(P);
         BigInteger v = D.multiply(y2).add(BigInteger.ONE).mod(P);
@@ -198,6 +203,7 @@ final class Spake2 {
             if (!vx2.equals(P.subtract(u).mod(P))) return null;
             x = x.multiply(SQRT_M1).mod(P);
         }
+        if (x.signum() == 0 && sign) return null;
         if (x.testBit(0) != sign) x = P.subtract(x).mod(P);
         return Point.affine(x, y);
     }

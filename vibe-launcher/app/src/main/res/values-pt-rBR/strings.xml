@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Escaneie com o celular para salvar um backup nele ou enviar um de volta</string>
     <string name="backup_saved">Backup salvo</string>
     <string name="backup_failed">Não foi possível salvar o backup</string>
+    <string name="backup_passphrase_set">Senha para este backup</string>
+    <string name="backup_passphrase_enter">Senha do backup</string>
+    <string name="backup_passphrase_empty">Digite uma senha para criptografar o backup</string>
+    <string name="backup_passphrase_again">Digite de novo</string>
+    <string name="backup_passphrase_mismatch">As duas não coincidem</string>
+    <string name="restore_wrong_passphrase">Senha do backup incorreta</string>
     <string name="restore_now">Restaurar agora</string>
     <string name="restore_warning">Configurações, blocos, pastas e chaves são todos substituídos pelos do backup, e então o Início reinicia.</string>
     <string name="restore_failed">Não foi possível ler esse backup</string>

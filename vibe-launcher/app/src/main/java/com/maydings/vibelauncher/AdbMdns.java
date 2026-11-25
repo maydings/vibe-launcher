@@ -138,6 +138,11 @@ final class AdbMdns {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         } finally {
+            found.countDown();
+            retry.removeCallbacksAndMessages(null);
+            synchronized (lock) {
+                toResolve.clear();
+            }
             try {
                 nsd.stopServiceDiscovery(discovery);
             } catch (RuntimeException ignored) {

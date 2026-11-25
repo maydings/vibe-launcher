@@ -302,6 +302,12 @@
     <string name="scan_to_backup">用手机扫码，把备份保存到手机上，或发回一个备份</string>
     <string name="backup_saved">备份已保存</string>
     <string name="backup_failed">无法保存备份</string>
+    <string name="backup_passphrase_set">此备份的密码短语</string>
+    <string name="backup_passphrase_enter">备份密码短语</string>
+    <string name="backup_passphrase_empty">输入密码短语以加密备份</string>
+    <string name="backup_passphrase_again">再输入一次</string>
+    <string name="backup_passphrase_mismatch">两次输入不一致</string>
+    <string name="restore_wrong_passphrase">备份密码短语错误</string>
     <string name="restore_now">立即恢复</string>
     <string name="restore_warning">设置、图块、文件夹和密钥都将被备份中的内容替换，随后主屏幕会重新启动。</string>
     <string name="restore_failed">无法读取该备份</string>

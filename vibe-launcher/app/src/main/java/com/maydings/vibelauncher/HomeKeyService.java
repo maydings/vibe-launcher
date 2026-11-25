@@ -55,9 +55,12 @@ public final class HomeKeyService extends AccessibilityService implements InputM
     /** When the last key came by (uptime), for Home at power-on. */
     private long lastKeyAt;
 
+    private Runnable pendingPowerOn;
+
     @Override
     protected void onServiceConnected() {
         super.onServiceConnected();
+        cleanup();   // in case Android reconnects without calling onDestroy()
         Set<String> packages = findStockHome();
         AccessibilityServiceInfo info = getServiceInfo();
         if (info != null) {
@@ -87,12 +90,19 @@ public final class HomeKeyService extends AccessibilityService implements InputM
                 if (um != null && !um.isUserUnlocked()) return;
                 if (!new VibeSettings(context).powerOnHome()) return;
                 long on = SystemClock.uptimeMillis();
-                handler.postDelayed(() -> {
-                    if (lastKeyAt < on) open(PowerOnHome.intent(HomeKeyService.this));
-                }, PowerOnHome.DELAY_MS);
+                if (pendingPowerOn != null) handler.removeCallbacks(pendingPowerOn);
+                pendingPowerOn = () -> {
+                    PowerManager pm = getSystemService(PowerManager.class);
+                    if (lastKeyAt < on && (pm == null || pm.isInteractive())) open(PowerOnHome.intent(HomeKeyService.this));
+                };
+                handler.postDelayed(pendingPowerOn, PowerOnHome.DELAY_MS);
             }
         };
-        registerReceiver(screenOnReceiver, new IntentFilter(Intent.ACTION_SCREEN_ON));
+        if (android.os.Build.VERSION.SDK_INT >= 33) {
+            registerReceiver(screenOnReceiver, new IntentFilter(Intent.ACTION_SCREEN_ON), RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(screenOnReceiver, new IntentFilter(Intent.ACTION_SCREEN_ON));
+        }
         // Direct-boot aware: Android 11 skips a service that isn't while the user is still locked at boot, and
         // some firmware (TCL, upstream) then turns it off for good. Home itself can only open after the unlock.
         UserManager users = getSystemService(UserManager.class);
@@ -107,7 +117,11 @@ public final class HomeKeyService extends AccessibilityService implements InputM
                 probe();
             }
         };
-        registerReceiver(unlockReceiver, new IntentFilter(Intent.ACTION_USER_UNLOCKED));
+        if (android.os.Build.VERSION.SDK_INT >= 33) {
+            registerReceiver(unlockReceiver, new IntentFilter(Intent.ACTION_USER_UNLOCKED), RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(unlockReceiver, new IntentFilter(Intent.ACTION_USER_UNLOCKED));
+        }
         if (users.isUserUnlocked()) {   // it may have happened between the check and the registration
             stopWaitingForUnlock();
             probe();
@@ -144,9 +158,14 @@ public final class HomeKeyService extends AccessibilityService implements InputM
         if (!isPowerKey(event.getKeyCode())) lastKeyAt = SystemClock.uptimeMillis();   // the one that woke it doesn't count
         if (event.getKeyCode() != KeyEvent.KEYCODE_HOME) return false;   // every other key goes on as usual
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            // Only where Home doesn't come here anyway, and with the TV awake (asleep, Home wakes it).
-            PowerManager power = getSystemService(PowerManager.class);
-            homeKept = !DefaultHome.isHome(this) && (power == null || power.isInteractive());
+            // Decide once on initial key-down (avoids Binder IPC per key repeat and mid-press state flips).
+            if (event.getRepeatCount() == 0) {
+                UserManager um = getSystemService(UserManager.class);
+                PowerManager power = getSystemService(PowerManager.class);
+                homeKept = (um == null || um.isUserUnlocked())
+                        && !DefaultHome.isHome(this)
+                        && (power == null || power.isInteractive());
+            }
             return homeKept;
         }
         if (!homeKept) return false;
@@ -229,18 +248,42 @@ public final class HomeKeyService extends AccessibilityService implements InputM
 
     private void stopWaitingForUnlock() {
         if (unlockReceiver == null) return;
-        unregisterReceiver(unlockReceiver);
+        try {
+            unregisterReceiver(unlockReceiver);
+        } catch (IllegalArgumentException ignored) {
+        }
         unlockReceiver = null;
+    }
+
+    private void cleanup() {
+        HomeButtonLink.powerMenu = null;
+        HomeButtonLink.turnOff = null;
+        handler.removeCallbacksAndMessages(null);
+        pendingPowerOn = null;
+        if (screenOnReceiver != null) {
+            try {
+                unregisterReceiver(screenOnReceiver);
+            } catch (IllegalArgumentException ignored) {
+            }
+            screenOnReceiver = null;
+        }
+        stopWaitingForUnlock();
+        if (input != null) {
+            input.unregisterInputDeviceListener(this);
+            input = null;
+        }
+        homeKept = false;
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        cleanup();
+        return super.onUnbind(intent);
     }
 
     @Override
     public void onDestroy() {
-        HomeButtonLink.powerMenu = null;
-        HomeButtonLink.turnOff = null;
-        handler.removeCallbacksAndMessages(null);
-        if (screenOnReceiver != null) unregisterReceiver(screenOnReceiver);
-        stopWaitingForUnlock();
-        if (input != null) input.unregisterInputDeviceListener(this);
+        cleanup();
         super.onDestroy();
     }
 

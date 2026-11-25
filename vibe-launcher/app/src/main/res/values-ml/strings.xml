@@ -302,6 +302,12 @@
     <string name="scan_to_backup">ഫോണിൽ ബാക്കപ്പ് സംരക്ഷിക്കാനോ ഒന്ന് തിരികെ അയയ്ക്കാനോ ഫോൺ ഉപയോഗിച്ച് സ്കാൻ ചെയ്യുക</string>
     <string name="backup_saved">ബാക്കപ്പ് സംരക്ഷിച്ചു</string>
     <string name="backup_failed">ബാക്കപ്പ് സംരക്ഷിക്കാനായില്ല</string>
+    <string name="backup_passphrase_set">ഈ ബാക്കപ്പിനുള്ള പാസ്‌ഫ്രെയ്‌സ്</string>
+    <string name="backup_passphrase_enter">ബാക്കപ്പ് പാസ്‌ഫ്രെയ്‌സ്</string>
+    <string name="backup_passphrase_empty">ബാക്കപ്പ് എൻക്രിപ്റ്റ് ചെയ്യാൻ ഒരു പാസ്‌ഫ്രെയ്‌സ് നൽകുക</string>
+    <string name="backup_passphrase_again">വീണ്ടും ടൈപ്പ് ചെയ്യുക</string>
+    <string name="backup_passphrase_mismatch">രണ്ടും പൊരുത്തപ്പെടുന്നില്ല</string>
+    <string name="restore_wrong_passphrase">തെറ്റായ ബാക്കപ്പ് പാസ്‌ഫ്രെയ്‌സ്</string>
     <string name="restore_now">ഇപ്പോൾ പുനഃസ്ഥാപിക്കുക</string>
     <string name="restore_warning">ക്രമീകരണം, ടൈലുകൾ, ഫോൾഡറുകൾ, കീകൾ എല്ലാം ബാക്കപ്പിലുള്ളവ കൊണ്ട് മാറ്റിസ്ഥാപിക്കും, തുടർന്ന് ഹോം വീണ്ടും ആരംഭിക്കും.</string>
     <string name="restore_failed">ആ ബാക്കപ്പ് വായിക്കാനായില്ല</string>

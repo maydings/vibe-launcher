@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Σαρώστε με το κινητό για να αποθηκεύσετε εκεί ένα αντίγραφο ή να στείλετε ένα πίσω</string>
     <string name="backup_saved">Το αντίγραφο αποθηκεύτηκε</string>
     <string name="backup_failed">Το αντίγραφο δεν μπόρεσε να αποθηκευτεί</string>
+    <string name="backup_passphrase_set">Κωδικός για αυτό το αντίγραφο ασφαλείας</string>
+    <string name="backup_passphrase_enter">Κωδικός αντιγράφου ασφαλείας</string>
+    <string name="backup_passphrase_empty">Εισαγάγετε έναν κωδικό για κρυπτογράφηση του αντιγράφου</string>
+    <string name="backup_passphrase_again">Πληκτρολογήστε τη ξανά</string>
+    <string name="backup_passphrase_mismatch">Οι δύο δεν ταιριάζουν</string>
+    <string name="restore_wrong_passphrase">Λάθος κωδικός αντιγράφου ασφαλείας</string>
     <string name="restore_now">Επαναφορά τώρα</string>
     <string name="restore_warning">Οι ρυθμίσεις, τα πλακίδια, οι φάκελοι και τα κλειδιά αντικαθίστανται όλα από του αντιγράφου και μετά η αρχική οθόνη ξεκινά ξανά.</string>
     <string name="restore_failed">Αυτό το αντίγραφο δεν μπόρεσε να διαβαστεί</string>

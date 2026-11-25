@@ -69,9 +69,24 @@ final class Http {
      * instead, and only addresses on the home network (192.168.x.x and the like).
      */
     static String getLan(String ip, String path) throws IOException {
-        // A plain IPv4 address only: a name would be looked up first, and could point anywhere.
-        if (!ip.matches("\\d{1,3}(\\.\\d{1,3}){3}")) throw new IOException("not an address: " + ip);
-        InetAddress address = InetAddress.getByName(ip);   // a literal address: no lookup
+        if (ip == null || path == null || !path.startsWith("/") || path.matches(".*[\\r\\n\\s].*")) {
+            throw new IOException("bad LAN request");
+        }
+        // A plain IPv4 address only: parsed into four bytes so InetAddress.getByAddress never triggers DNS.
+        String[] parts = ip.split("\\.", -1);
+        if (parts.length != 4) throw new IOException("not an address: " + ip);
+        byte[] octets = new byte[4];
+        try {
+            for (int i = 0; i < 4; i++) {
+                if (parts[i].isEmpty() || parts[i].length() > 3) throw new IOException("not an address: " + ip);
+                int v = Integer.parseInt(parts[i]);
+                if (v < 0 || v > 255) throw new IOException("not an address: " + ip);
+                octets[i] = (byte) v;
+            }
+        } catch (NumberFormatException e) {
+            throw new IOException("not an address: " + ip, e);
+        }
+        InetAddress address = InetAddress.getByAddress(octets);   // literal bytes: guaranteed no DNS lookup
         if (!address.isSiteLocalAddress()) throw new IOException("not on the home network: " + ip);
         try (Socket socket = new Socket()) {
             socket.connect(new InetSocketAddress(address, 80), 5000);
@@ -119,6 +134,10 @@ final class Http {
                     sha.update(buf, 0, n);
                     out.write(buf, 0, n);
                 }
+            } catch (IOException | RuntimeException e) {
+                //noinspection ResultOfMethodCallIgnored
+                to.delete();
+                throw e;
             }
         } finally {
             c.disconnect();

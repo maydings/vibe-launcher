@@ -69,23 +69,26 @@ final class AdbPairing {
             return UNREACHABLE;
         }
         boolean exchanged = false;
-        try (SSLSocket tls = (SSLSocket) key.tls().getSocketFactory().createSocket(plain, host, port, true)) {
+        byte[] digits = null, exported = null, password = null, secret = null;
+        Spake2 spake = null;
+        SSLSocket tls = null;
+        try {
+            tls = (SSLSocket) key.tls().getSocketFactory().createSocket(plain, host, port, true);
             tls.setSoTimeout(15000);
             tls.setEnabledProtocols(new String[]{"TLSv1.3"});
             tls.startHandshake();
-            byte[] exported = SSLSockets.exportKeyingMaterial(tls, "adb-label\0", null, 64);
+            exported = exportKeyingMaterial(tls, "adb-label\0", null, 64);
             if (exported == null) return FAILED;
-            byte[] digits = code.getBytes(StandardCharsets.UTF_8);
-            byte[] password = Arrays.copyOf(digits, digits.length + exported.length);
+            digits = code.getBytes(StandardCharsets.UTF_8);
+            password = Arrays.copyOf(digits, digits.length + exported.length);
             System.arraycopy(exported, 0, password, digits.length, exported.length);
 
             DataInputStream in = new DataInputStream(tls.getInputStream());
             OutputStream out = tls.getOutputStream();
-            Spake2 spake = new Spake2(Spake2.ALICE, CLIENT, SERVER);
+            spake = new Spake2(Spake2.ALICE, CLIENT, SERVER);
             write(out, SPAKE2_MSG, spake.generateMessage(password));
             byte[] theirs = read(in, SPAKE2_MSG);
-            byte[] secret = spake.processMessage(theirs);
-            spake.destroy();
+            secret = spake.processMessage(theirs);
             if (secret == null) return WRONG_CODE;
             exchanged = true;
             Gcm gcm = new Gcm(hkdf(secret, 16));
@@ -111,9 +114,41 @@ final class AdbPairing {
             // No answer in time: not a word on the code, which may well have been right.
             android.util.Log.i("VibeAdb", "pairing: no answer in time", e);
             return FAILED;
-        } catch (IOException | GeneralSecurityException | RuntimeException e) {
+        } catch (IOException | GeneralSecurityException | RuntimeException | LinkageError e) {
             android.util.Log.i("VibeAdb", "pairing: " + (exchanged ? "after" : "before") + " the code exchange", e);
             return exchanged ? WRONG_CODE : FAILED;
+        } finally {
+            if (spake != null) spake.destroy();
+            if (digits != null) Arrays.fill(digits, (byte) 0);
+            if (exported != null) Arrays.fill(exported, (byte) 0);
+            if (password != null) Arrays.fill(password, (byte) 0);
+            if (secret != null) Arrays.fill(secret, (byte) 0);
+            closeQuietly(tls != null ? tls : plain);
+        }
+    }
+
+    /**
+     * TLS keying material (RFC 5705): SSLSockets on Android 12+, platform Conscrypt via reflection on Android 11
+     * (where Wireless debugging already exists, before SSLSockets.exportKeyingMaterial became public API).
+     */
+    private static byte[] exportKeyingMaterial(SSLSocket tls, String label, byte[] context, int length)
+            throws IOException {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            return SSLSockets.exportKeyingMaterial(tls, label, context, length);
+        }
+        try {
+            Class<?> conscrypt = Class.forName("com.android.org.conscrypt.Conscrypt");
+            return (byte[]) conscrypt.getMethod("exportKeyingMaterial",
+                    SSLSocket.class, String.class, byte[].class, int.class)
+                    .invoke(null, tls, label, context, length);
+        } catch (ReflectiveOperationException e) {
+            try {
+                return (byte[]) tls.getClass().getMethod("exportKeyingMaterial",
+                        String.class, byte[].class, int.class)
+                        .invoke(tls, label, context, length);
+            } catch (ReflectiveOperationException e2) {
+                throw new IOException("TLS keying material unavailable on API " + Build.VERSION.SDK_INT, e2);
+            }
         }
     }
 

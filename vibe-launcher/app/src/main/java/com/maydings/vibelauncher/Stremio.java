@@ -22,6 +22,7 @@ final class Stremio implements TitleArt {
     private static final String IMAGES = "https://images.metahub.space/";
     private static final long FOUND_MS = 30L * 24 * 60 * 60 * 1000;
     private static final long MISSING_MS = 3L * 24 * 60 * 60 * 1000;
+    private static final int MAX_CACHE_ENTRIES = 600;
 
     private final SharedPreferences cache;
 
@@ -45,20 +46,61 @@ final class Stremio implements TitleArt {
         // Remembered as "time|IMDb id" ("" when there was no match).
         String[] cached = cache.getString(key, "").split("\\|", -1);
         long now = System.currentTimeMillis();
-        String id;
-        if (cached.length == 2 && now - Long.parseLong(cached[0]) < (cached[1].isEmpty() ? MISSING_MS : FOUND_MS)) {
-            id = cached[1];
-        } else {
+        String id = null;
+        if (cached.length == 2) {
+            try {
+                long age = now - Long.parseLong(cached[0]);
+                if (age >= 0 && age < (cached[1].isEmpty() ? MISSING_MS : FOUND_MS)) id = cached[1];
+            } catch (NumberFormatException ignored) {
+            }
+        }
+        if (id == null) {
             try {
                 id = find(title, key);
             } catch (IOException | JSONException | RuntimeException e) {
                 return null;   // offline or the service changed: try again next time
             }
             cache.edit().putString(key, now + "|" + id).apply();
+            pruneIfNeeded(now);
         }
         // The logo address is the same for every title; a title without one answers 404 and gets none.
-        return id.isEmpty() ? null : new Art(IMAGES + "background/large/" + id + "/img",
+        return id.isEmpty() || !id.matches("tt\\d{5,10}") ? null : new Art(IMAGES + "background/large/" + id + "/img",
                 IMAGES + "logo/large/" + id + "/img");
+    }
+
+    private void pruneIfNeeded(long now) {
+        java.util.Map<String, ?> all = cache.getAll();
+        if (all.size() <= MAX_CACHE_ENTRIES) return;
+        SharedPreferences.Editor e = cache.edit();
+        int removed = 0;
+        for (java.util.Map.Entry<String, ?> entry : all.entrySet()) {
+            if (!(entry.getValue() instanceof String)) continue;
+            String[] parts = ((String) entry.getValue()).split("\\|", -1);
+            if (parts.length != 2) {
+                e.remove(entry.getKey());
+                removed++;
+                continue;
+            }
+            try {
+                long age = now - Long.parseLong(parts[0]);
+                if (age < 0 || age >= (parts[1].isEmpty() ? MISSING_MS : FOUND_MS)) {
+                    e.remove(entry.getKey());
+                    removed++;
+                }
+            } catch (NumberFormatException ignored) {
+                e.remove(entry.getKey());
+                removed++;
+            }
+        }
+        if (all.size() - removed > MAX_CACHE_ENTRIES) {
+            int drop = (all.size() - removed) - (MAX_CACHE_ENTRIES * 3 / 4);
+            for (String k : all.keySet()) {
+                if (drop <= 0) break;
+                e.remove(k);
+                drop--;
+            }
+        }
+        e.apply();
     }
 
     /** IMDb id of the most popular exact match among films, then shows; "" for none. */
@@ -69,8 +111,8 @@ final class Stremio implements TitleArt {
             for (int i = 0; metas != null && i < metas.length(); i++) {   // listed most popular first
                 JSONObject m = metas.getJSONObject(i);
                 String id = m.optString("id");
-                if (id.startsWith("tt") && key.equals(TitleArt.normalize(m.optString("name")))
-                        && !m.optString("background").isEmpty()) {
+                if (id.matches("tt\\d{5,10}") && key.equals(TitleArt.normalize(m.optString("name")))
+                        && !m.isNull("background") && !m.optString("background").isEmpty()) {
                     return id;
                 }
             }

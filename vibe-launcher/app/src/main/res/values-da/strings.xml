@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Scan med telefonen for at gemme en sikkerhedskopi der eller sende en tilbage</string>
     <string name="backup_saved">Sikkerhedskopi gemt</string>
     <string name="backup_failed">Sikkerhedskopien kunne ikke gemmes</string>
+    <string name="backup_passphrase_set">Adgangssætning til denne sikkerhedskopi</string>
+    <string name="backup_passphrase_enter">Adgangssætning til sikkerhedskopi</string>
+    <string name="backup_passphrase_empty">Indtast en adgangssætning for at kryptere sikkerhedskopien</string>
+    <string name="backup_passphrase_again">Skriv den igen</string>
+    <string name="backup_passphrase_mismatch">De to er ikke ens</string>
+    <string name="restore_wrong_passphrase">Forkert adgangssætning til sikkerhedskopi</string>
     <string name="restore_now">Gendan nu</string>
     <string name="restore_warning">Indstillinger, felter, mapper og nøgler erstattes alle af sikkerhedskopiens, og derefter starter Hjem igen.</string>
     <string name="restore_failed">Sikkerhedskopien kunne ikke læses</string>

@@ -306,6 +306,12 @@
     <string name="scan_to_backup">Scan with your phone to save a backup there or send one back</string>
     <string name="backup_saved">Backup saved</string>
     <string name="backup_failed">The backup couldn\'t be saved</string>
+    <string name="backup_passphrase_set">Passphrase for this backup</string>
+    <string name="backup_passphrase_enter">Backup passphrase</string>
+    <string name="backup_passphrase_empty">Enter a passphrase to encrypt the backup</string>
+    <string name="backup_passphrase_again">Type it again</string>
+    <string name="backup_passphrase_mismatch">The two don\'t match</string>
+    <string name="restore_wrong_passphrase">Wrong backup passphrase</string>
     <string name="restore_now">Restore now</string>
     <string name="restore_warning">Settings, tiles, folders and keys are all replaced by the backup\'s, then Home starts again.</string>
     <string name="restore_failed">That backup couldn\'t be read</string>

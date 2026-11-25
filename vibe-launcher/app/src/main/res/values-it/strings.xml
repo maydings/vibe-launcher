@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Inquadra con il telefono per salvarci un backup o inviarne uno indietro</string>
     <string name="backup_saved">Backup salvato</string>
     <string name="backup_failed">Impossibile salvare il backup</string>
+    <string name="backup_passphrase_set">Password per questo backup</string>
+    <string name="backup_passphrase_enter">Password del backup</string>
+    <string name="backup_passphrase_empty">Inserisci una password per crittografare il backup</string>
+    <string name="backup_passphrase_again">Scrivila di nuovo</string>
+    <string name="backup_passphrase_mismatch">Le due non corrispondono</string>
+    <string name="restore_wrong_passphrase">Password del backup errata</string>
     <string name="restore_now">Ripristina ora</string>
     <string name="restore_warning">Impostazioni, riquadri, cartelle e chiavi vengono tutti sostituiti da quelli del backup, poi la Home si riavvia.</string>
     <string name="restore_failed">Impossibile leggere quel backup</string>

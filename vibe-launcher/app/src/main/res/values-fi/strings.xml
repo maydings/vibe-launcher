@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Skannaa puhelimella tallentaaksesi varmuuskopion sinne tai lähettääksesi sellaisen takaisin</string>
     <string name="backup_saved">Varmuuskopio tallennettu</string>
     <string name="backup_failed">Varmuuskopiota ei voitu tallentaa</string>
+    <string name="backup_passphrase_set">Salasana tälle varmuuskopiolle</string>
+    <string name="backup_passphrase_enter">Varmuuskopion salasana</string>
+    <string name="backup_passphrase_empty">Anna salasana varmuuskopion salaamiseen</string>
+    <string name="backup_passphrase_again">Kirjoita se uudelleen</string>
+    <string name="backup_passphrase_mismatch">Ne eivät täsmää</string>
+    <string name="restore_wrong_passphrase">Väärä varmuuskopion salasana</string>
     <string name="restore_now">Palauta nyt</string>
     <string name="restore_warning">Asetukset, ruudut, kansiot ja avaimet korvataan kaikki varmuuskopion omilla, minkä jälkeen aloitusnäyttö käynnistyy uudelleen.</string>
     <string name="restore_failed">Varmuuskopiota ei voitu lukea</string>

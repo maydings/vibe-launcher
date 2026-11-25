@@ -248,8 +248,17 @@ public final class FontBrowserActivity extends Activity {
                 // Kept only if it's the list (a network's sign-in page comes with a 200 as well): kept as it
                 // came, something else would be all there is for a day.
                 if (new JSONArray(json).length() == 0) throw new IOException("not the list");
-                try (FileOutputStream out = new FileOutputStream(cache)) {
+                File part = new File(cache.getPath() + ".part");
+                try (FileOutputStream out = new FileOutputStream(part)) {
                     out.write(bytes);
+                } catch (IOException e) {
+                    //noinspection ResultOfMethodCallIgnored
+                    part.delete();
+                    throw e;
+                }
+                if (!part.renameTo(cache)) {
+                    //noinspection ResultOfMethodCallIgnored
+                    part.delete();
                 }
             }
         } catch (IOException | RuntimeException | JSONException e) {
@@ -268,6 +277,8 @@ public final class FontBrowserActivity extends Activity {
             for (int i = 0; i < a.length(); i++) {
                 JSONObject o = a.getJSONObject(i);
                 if (!"google".equals(o.optString("type"))) continue;   // only those Google serves whole
+                String id = o.getString("id");
+                if (!id.matches("[a-z0-9-]+")) continue;
                 List<String> subsets = new ArrayList<>();
                 JSONArray s = o.optJSONArray("subsets");
                 for (int j = 0; s != null && j < s.length(); j++) subsets.add(s.getString(j));
@@ -276,7 +287,7 @@ public final class FontBrowserActivity extends Activity {
                 for (int j = 0; w != null && j < w.length(); j++) weights.add(w.getInt(j));
                 JSONArray styles = o.optJSONArray("styles");
                 if (weights.isEmpty() || (styles != null && !styles.toString().contains("normal"))) continue;
-                out.add(new Font(o.getString("id"), o.getString("family"), o.optString("category"), subsets, weights));
+                out.add(new Font(id, o.getString("family"), o.optString("category"), subsets, weights));
             }
         } catch (JSONException e) {
             //noinspection ResultOfMethodCallIgnored
@@ -376,7 +387,7 @@ public final class FontBrowserActivity extends Activity {
         StringBuilder w = new StringBuilder();
         for (int x : weights) w.append(w.length() > 0 ? ";" : "").append(x);
         // A plain client's name: Google then gives whole TTF files, not a browser's split WOFF2 ones.
-        String css = new String(Http.get(String.format(Locale.ROOT, CSS, f.family.replace(' ', '+'), w),
+        String css = new String(Http.get(String.format(Locale.ROOT, CSS, android.net.Uri.encode(f.family), w),
                 Collections.singletonMap("User-Agent", "VibeLauncher"), 64 * 1024), StandardCharsets.UTF_8);
         List<String> out = new ArrayList<>();
         Matcher m = Pattern.compile("url\\((https://[^)]+\\.ttf)\\)").matcher(css);
@@ -385,10 +396,18 @@ public final class FontBrowserActivity extends Activity {
     }
 
     private static boolean download(String url, File to, long max) {
-        try (FileOutputStream out = new FileOutputStream(to)) {
-            out.write(Http.get(url, (int) Math.min(Integer.MAX_VALUE, max)));
+        File part = new File(to.getPath() + ".part");
+        try {
+            Http.download(url, part, (int) Math.min(Integer.MAX_VALUE, max));
+            if (!part.renameTo(to)) {
+                //noinspection ResultOfMethodCallIgnored
+                part.delete();
+                return false;
+            }
             return true;
         } catch (IOException | RuntimeException | OutOfMemoryError e) {
+            //noinspection ResultOfMethodCallIgnored
+            part.delete();
             //noinspection ResultOfMethodCallIgnored
             to.delete();
             return false;
@@ -426,7 +445,7 @@ public final class FontBrowserActivity extends Activity {
             Fonts.Item added = item;
             main.post(() -> {
                 fetching.remove(f.id);
-                if (isFinishing()) return;
+                if (isFinishing() || isDestroyed()) return;
                 Toast.makeText(this, added != null ? R.string.font_added : R.string.font_failed,
                         Toast.LENGTH_SHORT).show();
                 int at = shown.indexOf(f);
@@ -438,7 +457,7 @@ public final class FontBrowserActivity extends Activity {
     /** The focused font's name in its own font: its regular file, kept in the cache (small fonts only). */
     private void loadPreview(Font f) {
         if (mine || f.large() || previews.get(f.id) != null || fetching.contains("p:" + f.id)) return;
-        if (work.isShutdown()) return;
+        if (work.isShutdown() || !f.id.matches("[a-z0-9-]+")) return;
         fetching.add("p:" + f.id);
         work.execute(() -> {
             Typeface t = null;
@@ -451,14 +470,20 @@ public final class FontBrowserActivity extends Activity {
                     List<String> urls = urls(f, new int[]{weights(f)[0]});
                     if (urls != null) download(urls.get(0), file, 2L * 1024 * 1024);
                 }
-                if (file.exists()) t = Typeface.createFromFile(file);
+                if (file.exists()) {
+                    t = Typeface.createFromFile(file);
+                    if (t == null) //noinspection ResultOfMethodCallIgnored
+                        file.delete();
+                }
             } catch (IOException | RuntimeException e) {
+                //noinspection ResultOfMethodCallIgnored
+                file.delete();
                 t = null;
             }
             Typeface loaded = t;
             main.post(() -> {
                 fetching.remove("p:" + f.id);
-                if (loaded == null || isFinishing()) return;
+                if (loaded == null || isFinishing() || isDestroyed()) return;
                 previews.put(f.id, loaded);
                 int at = shown.indexOf(f);
                 if (at >= 0) adapter.notifyItemChanged(at);
@@ -486,6 +511,7 @@ public final class FontBrowserActivity extends Activity {
         go.setOnClickListener(v -> {
             dialog.dismiss();
             fonts.delete(this, f.id);
+            adapter.mineFaces.remove(f.id);
             setResult(RESULT_OK);
             int at = shown.indexOf(f);
             if (at < 0) return;

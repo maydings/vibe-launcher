@@ -302,6 +302,12 @@
     <string name="scan_to_backup">ফোনে ব্যাকআপ সংরক্ষণ করতে বা একটি ফেরত পাঠাতে ফোন দিয়ে স্ক্যান করুন</string>
     <string name="backup_saved">ব্যাকআপ সংরক্ষিত</string>
     <string name="backup_failed">ব্যাকআপ সংরক্ষণ করা যায়নি</string>
+    <string name="backup_passphrase_set">এই ব্যাকআপের পাসফ্রেজ</string>
+    <string name="backup_passphrase_enter">ব্যাকআপ পাসফ্রেজ</string>
+    <string name="backup_passphrase_empty">ব্যাকআপ এনক্রিপ্ট করতে একটি পাসফ্রেজ লিখুন</string>
+    <string name="backup_passphrase_again">আবার লিখুন</string>
+    <string name="backup_passphrase_mismatch">দুটি মিলছে না</string>
+    <string name="restore_wrong_passphrase">ভুল ব্যাকআপ পাসফ্রেজ</string>
     <string name="restore_now">এখনই রিস্টোর করুন</string>
     <string name="restore_warning">সেটিংস, টাইল, ফোল্ডার ও কী সবই ব্যাকআপেরগুলো দিয়ে বদলে যাবে, তারপর হোম আবার চালু হবে।</string>
     <string name="restore_failed">ব্যাকআপটি পড়া যায়নি</string>

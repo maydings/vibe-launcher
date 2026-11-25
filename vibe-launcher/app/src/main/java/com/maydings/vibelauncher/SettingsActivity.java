@@ -35,9 +35,13 @@ public final class SettingsActivity extends Activity {
         if (getIntent().getBooleanExtra(ON_APPEARANCE, false)) {
             getIntent().removeExtra(ON_APPEARANCE);   // once: opened again later, it starts at the top
             screen.showAppearance();
-        } else if (getIntent().getBooleanExtra(ON_GENERAL, false)) screen.showGeneral();
-        else if (getIntent().getBooleanExtra(ON_DEFAULT_LAUNCHER, false)) screen.showDefaultLauncher();
-        else screen.first().requestFocus();
+        } else if (getIntent().getBooleanExtra(ON_GENERAL, false)) {
+            getIntent().removeExtra(ON_GENERAL);
+            screen.showGeneral();
+        } else if (getIntent().getBooleanExtra(ON_DEFAULT_LAUNCHER, false)) {
+            getIntent().removeExtra(ON_DEFAULT_LAUNCHER);
+            screen.showDefaultLauncher();
+        } else screen.first().requestFocus();
     }
 
     @Override

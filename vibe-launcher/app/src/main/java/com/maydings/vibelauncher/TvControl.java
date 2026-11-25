@@ -134,7 +134,11 @@ final class TvControl {
      * -1 when the TV has no such switch.
      */
     static int networkDebugging(Context context) {
-        return Settings.Global.getInt(context.getContentResolver(), "adb_tcp_enabled", -1);
+        try {
+            return Settings.Global.getInt(context.getContentResolver(), "adb_tcp_enabled", -1);
+        } catch (SecurityException e) {
+            return -1;
+        }
     }
 
     /** Waits for adbd to answer, once debugging has been turned on, up to ms; whether it did. Worker thread. */
@@ -145,6 +149,7 @@ final class TvControl {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 return false;
             }
         }
@@ -195,7 +200,11 @@ final class TvControl {
 
     /** Whether the TV's own screensaver is on (Android's, which comes up in any app; on unless turned off). */
     static boolean systemScreensaver(Context context) {
-        return Settings.Secure.getInt(context.getContentResolver(), SCREENSAVER_ENABLED, 1) != 0;
+        try {
+            return Settings.Secure.getInt(context.getContentResolver(), SCREENSAVER_ENABLED, 1) != 0;
+        } catch (SecurityException e) {
+            return true;
+        }
     }
 
     /** The TV's own screensaver on or off, as its Settings would set it; false without the permission. */

@@ -290,13 +290,19 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private final ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
         @Override
         public void onAvailable(@NonNull Network network) {
-            handler.post(MainActivity.this::updateWifiLabel);
-            handler.post(MainActivity.this::wakeUpdateCheck);   // waiting for the network after waking
+            handler.post(() -> {
+                if (gone(MainActivity.this)) return;
+                updateWifiLabel();
+                wakeUpdateCheck();   // waiting for the network after waking
+            });
         }
 
         @Override
         public void onLost(@NonNull Network network) {
-            handler.post(MainActivity.this::updateWifiLabel);
+            handler.post(() -> {
+                if (gone(MainActivity.this)) return;
+                updateWifiLabel();
+            });
         }
     };
     /**
@@ -773,7 +779,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         armIdle();
         showUpdateReady();
         if (wakeCheck) wakeUpdateCheck();
-        else Updater.checkIfDue(this, (newer, failed) -> showUpdateReady());   // at most once a day
+        else Updater.checkIfDue(this, (newer, failed) -> {
+            if (!gone(this)) showUpdateReady();
+        });   // at most once a day
         applyClockHours();   // the 12/24-hour setting (the TV's or ours) may have changed meanwhile
         sizeTimeBox();
         // The pills keep their state while Home is away, and the network callback updates the network one, so
@@ -889,6 +897,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void wakeUpdateCheck() {
         if (!wakeCheck || wakeChecking) return;
         wakeChecking = Updater.checkIfOlderThan(this, 5 * 60 * 1000L, (newer, failed) -> {
+            if (gone(this)) return;
             wakeChecking = false;
             if (!failed) wakeCheck = false;
             showUpdateReady();
@@ -900,8 +909,16 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     protected void onDestroy() {
         if (current.get() == this) current.clear();
         if (openMenu != null && openMenu.isShowing()) openMenu.dismiss();   // its window would outlive Home
-        unregisterReceiver(screenReceiver);
-        unregisterReceiver(packageReceiver);
+        openMenu = null;
+        cancelHold();
+        try {
+            unregisterReceiver(screenReceiver);
+        } catch (IllegalArgumentException ignored) {
+        }
+        try {
+            unregisterReceiver(packageReceiver);
+        } catch (IllegalArgumentException ignored) {
+        }
         // The pools go on filling for the next Home; only this one's handlers go.
         backdrops.detach(firstStill, watchingChanged);
         handler.removeCallbacksAndMessages(null);
@@ -1012,10 +1029,14 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         // shrink to its padding. Fit it once the tile is laid out.
         if (card.getWidth() == 0) {
             card.post(() -> {
-                if (card.isFocused() && card.getWidth() > 0) onTileFocused(position, card);
+                if (gone(this) || !card.isFocused() || !card.isAttachedToWindow() || card.getWidth() <= 0) return;
+                RecyclerView.ViewHolder vh = grid.findContainingViewHolder(card);
+                int live = vh != null ? vh.getBindingAdapterPosition() : RecyclerView.NO_POSITION;
+                if (live >= 0) onTileFocused(live, card);
             });
             return;
         }
+        if (!card.isAttachedToWindow() || !(card.getParent() instanceof View)) return;
         glassCardW = card.getWidth();
         // Tile rect in root coordinates, using layout positions (ignores the scale animation).
         Rect r = new Rect(0, 0, card.getWidth(), card.getHeight());
@@ -1380,7 +1401,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         wallpaperThread.execute(() -> {
             Bitmap bitmap = wallpapers.backdrop(item);   // darkened as backdrops are
             handler.post(() -> {
-                if (!heroShown && !slideshow) return;
+                if (gone(this) || (!heroShown && !slideshow)) return;
                 // Moved on meanwhile (the All apps tile has no app: none is as good a match as one).
                 if (!slideshow && !java.util.Objects.equals(pkg, backdropPkg)) return;
                 if (bitmap == null) {
@@ -1456,7 +1477,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                     if (!asked) {   // offline, say: asked again when it's next shown, though not at once
                         detailsRetryAt = SystemClock.uptimeMillis() + 60_000;
                     }
-                    if (!title.equals(titleShown) || isFinishing()) return;
+                    if (!title.equals(titleShown) || gone(this)) return;
                     showBackdropTitle(logoShown, title);
                     if (backdropTitleBox.getAlpha() >= 1f) {   // not while it's faded away or fading
                         backdropTitleBox.setAlpha(0f);
@@ -1878,7 +1899,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      */
     private long slide(View v, float to) {
         float speed = rowsDistance() / PICTURE_SLIDE_MS;   // px per ms
-        long ms = Math.max(150, (long) (Math.abs(to - v.getTranslationY()) / speed));
+        long ms = speed <= 0f ? PICTURE_SLIDE_MS
+                : Math.max(150, (long) (Math.abs(to - v.getTranslationY()) / speed));
         v.animate().translationY(to).setDuration(ms).setInterpolator(new AccelerateDecelerateInterpolator())
                 .withLayer().start();
         return ms;
@@ -2045,7 +2067,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
      * long, the long press opens the title (see openHeldTitle); let go sooner, it drains.
      */
     private void startHold() {
-        if (holdFill != null) return;
+        if (holdFill != null) {
+            holdFill.cancel();
+            holdFill = null;
+        }
         holdOpened = false;
         holdFill = ValueAnimator.ofFloat(0f, 1f);
         holdFill.setDuration(ViewConfiguration.getLongPressTimeout());
@@ -2068,12 +2093,21 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         }
         String link = backdropLink, pkg = backdropPkg;
         ValueAnimator finish = ValueAnimator.ofFloat(at, 1f);
+        holdFill = finish;
         finish.setDuration((long) (HOLD_FINISH_MS * (1f - at)));
         finish.addUpdateListener(a -> setHoldFill((float) a.getAnimatedValue()));
         finish.addListener(new AnimatorListenerAdapter() {
+            private boolean cancelled;
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                cancelled = true;
+            }
+
             @Override
             public void onAnimationEnd(Animator animation) {
-                if (pictureOnly) openTitle(link, pkg);   // still there: not left with Home meanwhile
+                if (holdFill == finish) holdFill = null;
+                if (!cancelled && !gone(MainActivity.this) && pictureOnly) openTitle(link, pkg);
             }
         });
         finish.start();
@@ -2091,13 +2125,19 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     /** OK let go before the button is full: it drains, and nothing opens. */
     private void releaseHold() {
-        if (holdFill == null) return;
+        if (holdFill == null || holdOpened) return;
         float at = (float) holdFill.getAnimatedValue();
         holdFill.cancel();
-        holdFill = null;
         ValueAnimator drain = ValueAnimator.ofFloat(at, 0f);
+        holdFill = drain;
         drain.setDuration((long) (250 * at));
         drain.addUpdateListener(a -> setHoldFill((float) a.getAnimatedValue()));
+        drain.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if (holdFill == drain) holdFill = null;
+            }
+        });
         drain.start();
     }
 
@@ -2128,18 +2168,23 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 startActivity(tune);
                 return;
             }
+            if (pkg == null || pkg.equals(getPackageName())) throw new ActivityNotFoundException();
             Intent i = Intent.parseUri(link, Intent.URI_INTENT_SCHEME);
-            if (pkg != null) {
-                ComponentName target = i.getComponent();
-                String to = target != null ? target.getPackageName() : i.getPackage();
-                if (!pkg.equals(to)) {
-                    i.setComponent(null);
-                    i.setSelector(null);
-                    i.setPackage(pkg);
-                    if (i.getAction() == null) i.setAction(Intent.ACTION_VIEW);
-                }
+            // Never allow selector/clipData/URI permission grant redirection from untrusted preview links.
+            i.setSelector(null);
+            i.setClipData(null);
+            i.setFlags(i.getFlags() & ~(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                    | Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION | Intent.FLAG_GRANT_PREFIX_URI_PERMISSION));
+            ComponentName target = i.getComponent();
+            String to = target != null ? target.getPackageName() : i.getPackage();
+            if (!pkg.equals(to)) {
+                i.setComponent(null);
+                i.setPackage(pkg);
+                if (i.getAction() == null) i.setAction(Intent.ACTION_VIEW);
             }
-            if (i.resolveActivity(getPackageManager()) == null) throw new ActivityNotFoundException();
+            android.content.pm.ResolveInfo ri = getPackageManager().resolveActivity(i, 0);
+            if (ri == null || ri.activityInfo == null || !ri.activityInfo.exported
+                    || !pkg.equals(ri.activityInfo.packageName)) throw new ActivityNotFoundException();
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
         } catch (URISyntaxException | RuntimeException e) {   // any way another app's link can't be opened
@@ -2326,7 +2371,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 Weather.Place found = Weather.place(app, settings);
                 handler.post(() -> {
                     placeAsked = false;
-                    if (found == null || !heroShown || lastFocused < 0 || !adapter.inDock(lastFocused)) return;
+                    if (gone(this) || found == null || !heroShown || lastFocused < 0 || !adapter.inDock(lastFocused)) return;
                     backdropPkg = null;
                     backdropKey = null;
                     showBackdropAt(lastFocused);
@@ -3022,7 +3067,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         TvInputManager tim = (TvInputManager) getSystemService(TV_INPUT_SERVICE);
         if (!any && tim != null) {
             for (TvInputInfo info : tim.getTvInputList()) {
-                if (info.isPassthroughInput() && !info.isHidden(this)) {   // what the menu would list
+                if (info != null && info.isPassthroughInput() && !info.isHidden(this)) {   // what the menu would list
                     any = true;
                     break;
                 }
@@ -3043,6 +3088,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     void showMenu(PopupWindow popup, View panel, LinearLayout rows, View anchor, int gravity) {
+        if (gone(this) || anchor == null || !anchor.isAttachedToWindow()) return;
+        if (openMenu != null && openMenu != popup && openMenu.isShowing()) openMenu.dismiss();
         // Fit the widest row (TVs label inputs with long names like "HDMI 4/ARC" or the connected
         // device), at least as wide as the anchor and capped so the menu stays compact.
         int minWidth = Math.max(anchor.getWidth(), (int) (150 * density));
@@ -3138,7 +3185,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         weatherThread.execute(() -> {
             Weather.Place place = Weather.place(app, s);
             Weather.Now now = place == null ? null : Weather.now(app, place, fahrenheit);
-            handler.post(() -> showWeather(settings.weatherOn() ? now : null));
+            handler.post(() -> {
+                if (!gone(this)) showWeather(settings.weatherOn() ? now : null);
+            });
         });
         handler.postDelayed(weatherTick, 20L * 60 * 1000);
     }
@@ -3580,10 +3629,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (folderView == null) return;
         FolderView closing = folderView;
         folderView = null;
+        closing.close(() -> root.removeView(closing));
         setHomeFocusable(true);
         int at = adapter.positionOfKey(Folders.KEY_PREFIX + closing.folderId);
         focusTile(at >= 0 ? at : lastFocused);
-        closing.close(() -> root.removeView(closing));
         armIdle();
     }
 
@@ -3609,8 +3658,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             Folders.Folder f = adapter.folders.get(folderView.folderId);
             folderView.adapter.reload();
             if (f != null && folderView.adapter.getItemCount() == 0 && emptiedByHand) {
-                adapter.forgetInOrder(Folders.KEY_PREFIX + f.id);
+                String key = Folders.KEY_PREFIX + f.id;
+                adapter.forgetInOrder(key);
                 adapter.folders.delete(f.id);
+                new TileCustom(this).reset(key);
+                wallpapers.forgetList(key);
             }
             if (f == null || folderView.adapter.getItemCount() == 0) {
                 adapter.reload();

@@ -302,6 +302,12 @@
     <string name="scan_to_backup">امسح بهاتفك لحفظ نسخة احتياطية عليه أو لإرسال نسخة إلى هنا</string>
     <string name="backup_saved">تم حفظ النسخة الاحتياطية</string>
     <string name="backup_failed">تعذّر حفظ النسخة الاحتياطية</string>
+    <string name="backup_passphrase_set">عبارة المرور لهذه النسخة الاحتياطية</string>
+    <string name="backup_passphrase_enter">عبارة مرور النسخة الاحتياطية</string>
+    <string name="backup_passphrase_empty">أدخل عبارة مرور لتشفير النسخة الاحتياطية</string>
+    <string name="backup_passphrase_again">اكتبها مرة أخرى</string>
+    <string name="backup_passphrase_mismatch">العبارتان غير متطابقتين</string>
+    <string name="restore_wrong_passphrase">عبارة مرور النسخة الاحتياطية غير صحيحة</string>
     <string name="restore_now">الاستعادة الآن</string>
     <string name="restore_warning">ستُستبدل الإعدادات والمربعات والمجلدات والمفاتيح كلها بما في النسخة الاحتياطية، ثم تبدأ الشاشة الرئيسية من جديد.</string>
     <string name="restore_failed">تعذّرت قراءة تلك النسخة الاحتياطية</string>

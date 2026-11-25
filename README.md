@@ -210,7 +210,7 @@ back.
 **Weather** sits under the clock. It works out your city by itself, or you can pick one.
 
 **Backup and restore** saves your whole setup to your phone or to the TV: your layout and pictures along with
-your settings and keys. Use it to move to another TV. What you switched off stays with each TV.
+your settings and keys, encrypted with a passphrase you choose. Use it to move to another TV. What you switched off stays with each TV.
 
 **Updates** arrive on their own. The launcher shows what changed and installs after one confirmation.
 

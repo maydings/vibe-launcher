@@ -43,11 +43,12 @@ final class YouTubePopular {
         String region = key.isEmpty() ? "" : region();
         long now = System.currentTimeMillis();
         String ids = cache.getString("ids", "");
-        boolean fresh = now - cache.getLong("time", 0) < REFRESH_MS
+        long age = now - cache.getLong("time", 0);
+        boolean fresh = age >= 0 && age < REFRESH_MS
                 && region.equals(cache.getString("region", "")) && key.equals(cache.getString("key", ""));
         if (!fresh) {
             try {
-                ids = key.isEmpty() ? trailers() : fetch(key, region);
+                ids = key.isEmpty() ? trailers() : fetchWithFallback(key, region);
                 cache.edit().putString("ids", ids).putLong("time", now).putString("region", region)
                         .putString("key", key).apply();
             } catch (IOException | JSONException | RuntimeException e) {
@@ -57,12 +58,25 @@ final class YouTubePopular {
         return ids.isEmpty() ? Collections.emptyList() : new ArrayList<>(Arrays.asList(ids.split(",")));
     }
 
+    private static String fetchWithFallback(String key, String region) throws IOException, JSONException {
+        try {
+            return fetch(key, region);
+        } catch (IOException | JSONException e) {
+            if ("US".equals(region)) throw e;
+            return fetch(key, "US");
+        }
+    }
+
     private static String fetch(String key, String region) throws IOException, JSONException {
         String url = "https://www.googleapis.com/youtube/v3/videos?part=id&chart=mostPopular&maxResults=30"
                 + "&regionCode=" + region + "&key=" + Uri.encode(key);
         JSONArray items = new JSONObject(Http.getText(url, Collections.emptyMap())).optJSONArray("items");
         List<String> ids = new ArrayList<>();
-        for (int i = 0; items != null && i < items.length(); i++) ids.add(items.getJSONObject(i).getString("id"));
+        for (int i = 0; items != null && i < items.length(); i++) {
+            String id = items.getJSONObject(i).optString("id");
+            if (id.matches("[A-Za-z0-9_-]{11}")) ids.add(id);
+        }
+        if (ids.isEmpty()) throw new IOException("empty popular list");
         return String.join(",", ids);
     }
 

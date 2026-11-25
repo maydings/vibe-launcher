@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Scanează cu telefonul ca să salvezi acolo un backup sau să trimiți unul înapoi</string>
     <string name="backup_saved">Backup salvat</string>
     <string name="backup_failed">Backupul nu a putut fi salvat</string>
+    <string name="backup_passphrase_set">Parolă pentru această copie de rezervă</string>
+    <string name="backup_passphrase_enter">Parolă copie de rezervă</string>
+    <string name="backup_passphrase_empty">Introduceți o parolă pentru a cripta copia de rezervă</string>
+    <string name="backup_passphrase_again">Introduceți-o din nou</string>
+    <string name="backup_passphrase_mismatch">Cele două nu se potrivesc</string>
+    <string name="restore_wrong_passphrase">Parolă incorectă pentru copia de rezervă</string>
     <string name="restore_now">Restabilește acum</string>
     <string name="restore_warning">Setările, plăcile, dosarele și cheile sunt toate înlocuite cu cele din backup, apoi ecranul principal pornește din nou.</string>
     <string name="restore_failed">Acel backup nu a putut fi citit</string>

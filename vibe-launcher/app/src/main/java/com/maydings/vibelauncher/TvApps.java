@@ -134,7 +134,9 @@ final class TvApps {
         TvInputManager tv = (TvInputManager) context.getSystemService(Context.TV_INPUT_SERVICE);
         if (tv != null) {
             try {
-                for (TvInputInfo input : tv.getTvInputList()) keep.add(input.getServiceInfo().packageName);
+                for (TvInputInfo input : tv.getTvInputList()) {
+                    if (input != null && input.getServiceInfo() != null) keep.add(input.getServiceInfo().packageName);
+                }
             } catch (RuntimeException ignored) {
                 // no TV input service on this box
             }

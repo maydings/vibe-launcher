@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Escanea con el móvil para guardar ahí una copia o enviar una de vuelta</string>
     <string name="backup_saved">Copia guardada</string>
     <string name="backup_failed">No se pudo guardar la copia</string>
+    <string name="backup_passphrase_set">Contraseña para esta copia de seguridad</string>
+    <string name="backup_passphrase_enter">Contraseña de la copia de seguridad</string>
+    <string name="backup_passphrase_empty">Introduce una contraseña para cifrar la copia de seguridad</string>
+    <string name="backup_passphrase_again">Escríbela otra vez</string>
+    <string name="backup_passphrase_mismatch">Las dos no coinciden</string>
+    <string name="restore_wrong_passphrase">Contraseña de copia de seguridad incorrecta</string>
     <string name="restore_now">Restaurar ahora</string>
     <string name="restore_warning">Los ajustes, mosaicos, carpetas y claves se sustituyen todos por los de la copia, y después Inicio se reinicia.</string>
     <string name="restore_failed">No se pudo leer esa copia</string>

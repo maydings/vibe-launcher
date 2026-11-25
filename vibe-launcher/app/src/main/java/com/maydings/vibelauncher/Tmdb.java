@@ -32,6 +32,7 @@ final class Tmdb implements TitleArt {
     private static final int CHOICES = 4;   // best few textless backdrops per title, picked at random
     private static final long FOUND_MS = 30L * 24 * 60 * 60 * 1000;
     private static final long MISSING_MS = 3L * 24 * 60 * 60 * 1000;   // retry unmatched titles sooner
+    private static final int MAX_CACHE_ENTRIES = 600;
 
     private final VibeSettings settings;
     private final SharedPreferences cache;
@@ -40,6 +41,56 @@ final class Tmdb implements TitleArt {
     Tmdb(Context context) {
         settings = new VibeSettings(context);
         cache = context.getSharedPreferences("tmdb_cache", Context.MODE_PRIVATE);
+    }
+
+    private void pruneIfNeeded(long now) {
+        Map<String, ?> all = cache.getAll();
+        if (all.size() <= MAX_CACHE_ENTRIES) return;
+        SharedPreferences.Editor e = cache.edit();
+        int removed = 0;
+        for (Map.Entry<String, ?> entry : all.entrySet()) {
+            String k = entry.getKey();
+            if (!(entry.getValue() instanceof String)) continue;
+            String v = (String) entry.getValue();
+            if (k.startsWith(INFO)) {
+                try {
+                    JSONObject o = new JSONObject(v);
+                    long age = now - o.optLong("t");
+                    if (age < 0 || age >= (o.has("o") ? FOUND_MS : MISSING_MS)) {
+                        e.remove(k);
+                        removed++;
+                    }
+                } catch (JSONException ignored) {
+                    e.remove(k);
+                    removed++;
+                }
+            } else if (!k.startsWith(KNOWN) && !k.startsWith(MATCHED)) {
+                String[] parts = v.split("\\|", -1);
+                if (parts.length == 3) {
+                    try {
+                        long age = now - Long.parseLong(parts[0]);
+                        if (age < 0 || age >= (parts[1].isEmpty() ? MISSING_MS : FOUND_MS)) {
+                            e.remove(k);
+                            removed++;
+                        }
+                    } catch (NumberFormatException ignored) {
+                        e.remove(k);
+                        removed++;
+                    }
+                }
+            }
+        }
+        if (all.size() - removed > MAX_CACHE_ENTRIES) {
+            int drop = (all.size() - removed) - (MAX_CACHE_ENTRIES * 3 / 4);
+            for (String k : all.keySet()) {
+                if (drop <= 0) break;
+                if (!k.startsWith(KNOWN)) {
+                    e.remove(k);
+                    drop--;
+                }
+            }
+        }
+        e.apply();
     }
 
     boolean enabled() {
@@ -54,8 +105,11 @@ final class Tmdb implements TitleArt {
         String[] cached = cache.getString(key, "").split("\\|", -1);
         long now = System.currentTimeMillis();
         if (cached.length == 3 && !cached[1].equals("null")) {   // "null": kept so once, no picture's address
-            long age = now - Long.parseLong(cached[0]);
-            if (age < (cached[1].isEmpty() ? MISSING_MS : FOUND_MS)) return art(cached[1], cached[2]);
+            try {
+                long age = now - Long.parseLong(cached[0]);
+                if (age >= 0 && age < (cached[1].isEmpty() ? MISSING_MS : FOUND_MS)) return art(cached[1], cached[2]);
+            } catch (NumberFormatException ignored) {
+            }
         }
         String[] found;
         try {
@@ -64,6 +118,7 @@ final class Tmdb implements TitleArt {
             return null;   // offline or a bad key: don't remember, try again next time
         }
         cache.edit().putString(key, now + "|" + found[0] + "|" + found[1]).apply();
+        pruneIfNeeded(now);
         return art(found[0], found[1]);
     }
 
@@ -80,7 +135,7 @@ final class Tmdb implements TitleArt {
         // Which one its pictures are of: its details are that one's too (fetchInfo), not asked for by name again.
         cache.edit().putString(MATCHED + key, best.getString("media_type") + "/" + best.getLong("id")).apply();
 
-        String lang = Locale.getDefault().getLanguage();
+        String lang = isoLang(Locale.getDefault().getLanguage());
         JSONObject images = get("/" + best.getString("media_type") + "/" + best.getLong("id")
                 + "/images?include_image_language=null,en," + lang);
         // Backdrops tagged with no language have no text on them: no title, no logo.
@@ -150,7 +205,8 @@ final class Tmdb implements TitleArt {
         if (!enabled() || TitleArt.normalize(title).isEmpty()) return false;
         JSONObject o = kept(title);
         if (o == null || !language().equals(o.optString("l"))) return true;
-        return System.currentTimeMillis() - o.optLong("t") >= (o.has("o") ? FOUND_MS : MISSING_MS);
+        long age = System.currentTimeMillis() - o.optLong("t");
+        return age < 0 || age >= (o.has("o") ? FOUND_MS : MISSING_MS);
     }
 
     private JSONObject kept(String title) {
@@ -161,6 +217,13 @@ final class Tmdb implements TitleArt {
         } catch (JSONException e) {
             return null;
         }
+    }
+
+    private static String isoLang(String code) {
+        if ("iw".equals(code)) return "he";
+        if ("in".equals(code)) return "id";
+        if ("ji".equals(code)) return "yi";
+        return code;
     }
 
     private static String language() {
@@ -226,8 +289,12 @@ final class Tmdb implements TitleArt {
                 o.put("g", names);
             }
             cache.edit().putString(INFO + key, o.toString()).apply();
+            pruneIfNeeded(System.currentTimeMillis());
             return true;
         } catch (IOException | JSONException | RuntimeException e) {
+            if (e instanceof IOException && "HTTP 404".equals(e.getMessage())) {
+                cache.edit().remove(MATCHED + key).apply();
+            }
             return false;   // asked again when it's next shown
         }
     }

@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Scannez avec votre téléphone pour y enregistrer une sauvegarde ou en renvoyer une</string>
     <string name="backup_saved">Sauvegarde enregistrée</string>
     <string name="backup_failed">Impossible d\'enregistrer la sauvegarde</string>
+    <string name="backup_passphrase_set">Mot de passe pour cette sauvegarde</string>
+    <string name="backup_passphrase_enter">Mot de passe de la sauvegarde</string>
+    <string name="backup_passphrase_empty">Saisissez un mot de passe pour chiffrer la sauvegarde</string>
+    <string name="backup_passphrase_again">Saisissez-le à nouveau</string>
+    <string name="backup_passphrase_mismatch">Les deux ne correspondent pas</string>
+    <string name="restore_wrong_passphrase">Mot de passe de sauvegarde incorrect</string>
     <string name="restore_now">Restaurer maintenant</string>
     <string name="restore_warning">Réglages, vignettes, dossiers et clés sont tous remplacés par ceux de la sauvegarde, puis l\'accueil redémarre.</string>
     <string name="restore_failed">Impossible de lire cette sauvegarde</string>

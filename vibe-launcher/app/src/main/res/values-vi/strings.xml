@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Quét bằng điện thoại để lưu bản sao lưu ở đó hoặc gửi một bản trở lại</string>
     <string name="backup_saved">Đã lưu bản sao lưu</string>
     <string name="backup_failed">Không lưu được bản sao lưu</string>
+    <string name="backup_passphrase_set">Cụm mật khẩu cho bản sao lưu này</string>
+    <string name="backup_passphrase_enter">Cụm mật khẩu sao lưu</string>
+    <string name="backup_passphrase_empty">Nhập cụm mật khẩu để mã hóa bản sao lưu</string>
+    <string name="backup_passphrase_again">Nhập lại lần nữa</string>
+    <string name="backup_passphrase_mismatch">Hai lần nhập không khớp</string>
+    <string name="restore_wrong_passphrase">Sai cụm mật khẩu sao lưu</string>
     <string name="restore_now">Khôi phục ngay</string>
     <string name="restore_warning">Cài đặt, ô, thư mục và khóa đều được thay bằng nội dung trong bản sao lưu, sau đó Màn hình chính khởi động lại.</string>
     <string name="restore_failed">Không đọc được bản sao lưu đó</string>

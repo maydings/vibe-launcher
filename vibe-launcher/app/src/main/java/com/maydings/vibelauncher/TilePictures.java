@@ -125,7 +125,9 @@ final class TilePictures {
         if (o.outWidth <= 0 || o.outHeight <= 0) return null;
         o.inJustDecodeBounds = false;
         o.inSampleSize = 1;
-        while (o.outWidth / (o.inSampleSize * 2) >= PICTURE_W && o.outHeight / (o.inSampleSize * 2) >= PICTURE_H) {
+        long maxPixels = 4L * PICTURE_W * PICTURE_H;
+        while ((o.outWidth / (o.inSampleSize * 2) >= PICTURE_W && o.outHeight / (o.inSampleSize * 2) >= PICTURE_H)
+                || ((long) (o.outWidth / o.inSampleSize) * (o.outHeight / o.inSampleSize) > maxPixels)) {
             o.inSampleSize *= 2;
         }
         try {
@@ -153,12 +155,18 @@ final class TilePictures {
             Bitmap sized = picture.getWidth() == PICTURE_W && picture.getHeight() == PICTURE_H ? picture
                     : Bitmap.createScaledBitmap(picture, PICTURE_W, PICTURE_H, true);
             File f = file(id);
-            try (FileOutputStream out = new FileOutputStream(f)) {
-                if (!sized.compress(Bitmap.CompressFormat.PNG, 100, out)) throw new IOException("not written");
+            File tmp = new File(dir, f.getName() + ".part");
+            try {
+                try (FileOutputStream out = new FileOutputStream(tmp)) {
+                    if (!sized.compress(Bitmap.CompressFormat.PNG, 100, out)) throw new IOException("not written");
+                }
+                if (!tmp.renameTo(f)) throw new IOException("not moved");
             } catch (IOException e) {
                 //noinspection ResultOfMethodCallIgnored
-                f.delete();
+                tmp.delete();
                 return null;
+            } finally {
+                if (sized != picture) sized.recycle();
             }
             List<String> ids = ids();
             ids.add(id);
@@ -188,8 +196,12 @@ final class TilePictures {
             List<String> ids = ids();
             ids.remove(id);
             save(ids);
+            File f = file(id);
             //noinspection ResultOfMethodCallIgnored
-            file(id).delete();
+            f.delete();
+            synchronized (made) {
+                made.remove(f.getPath());
+            }
             setTitle(id, null);
             new TileCustom(context).forgetPicture(id);
             Wallpapers.tilePicturesChanged();
@@ -207,7 +219,12 @@ final class TilePictures {
             o.inJustDecodeBounds = true;
             android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.length, o);
             if (o.outWidth <= 0 || o.outHeight <= 0 || o.outWidth > 4096 || o.outHeight > 4096) return null;
-            return android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            o.inJustDecodeBounds = false;
+            o.inSampleSize = 1;
+            while (o.outWidth / (o.inSampleSize * 2) >= PICTURE_W && o.outHeight / (o.inSampleSize * 2) >= PICTURE_H) {
+                o.inSampleSize *= 2;
+            }
+            return android.graphics.BitmapFactory.decodeByteArray(bytes, 0, bytes.length, o);
         } catch (IllegalArgumentException | OutOfMemoryError e) {
             return null;
         }

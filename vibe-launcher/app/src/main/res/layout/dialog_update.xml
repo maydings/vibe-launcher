@@ -48,6 +48,23 @@
         android:fontFamily="@string/font_regular"
         android:hint="@null" />
 
+    <!-- A new passphrase typed a second time (NameDialog.askNewSecret): both must match. -->
+    <EditText
+        android:id="@+id/fieldAgain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:imeOptions="actionDone|flagNoExtractUi"
+        android:maxLines="1"
+        android:textColor="#FFFFFFFF"
+        android:textColorHint="#99FFFFFF"
+        android:textSize="18sp"
+        android:fontFamily="@string/font_regular"
+        android:hint="@string/backup_passphrase_again" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

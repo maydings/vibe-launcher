@@ -200,11 +200,16 @@ final class Wallpapers {
     /** Keeps a video's thumbnail (cell-sized), for the grids to show without reading the video. */
     void keepThumb(Item item, Bitmap thumb) {
         File kept = thumbFile(item);
-        try (FileOutputStream out = new FileOutputStream(kept)) {
-            thumb.compress(Bitmap.CompressFormat.JPEG, 85, out);
+        File tmp = new File(dir, item.id + "." + Thread.currentThread().getId() + ".thumb.part");
+        boolean ok = false;
+        try (FileOutputStream out = new FileOutputStream(tmp)) {
+            ok = thumb.compress(Bitmap.CompressFormat.JPEG, 85, out);
         } catch (IOException | RuntimeException e) {
+            ok = false;
+        }
+        if (!ok || !tmp.renameTo(kept)) {
             //noinspection ResultOfMethodCallIgnored
-            kept.delete();   // made again next time
+            tmp.delete();
         }
     }
 
@@ -276,10 +281,17 @@ final class Wallpapers {
             } else {
                 Bitmap still = render(arrived, screenW, screenH);
                 if (still == null) return null;
-                try (FileOutputStream out = new FileOutputStream(to)) {
-                    still.compress(Bitmap.CompressFormat.JPEG, 92, out);
+                File tmp = new File(dir, id + ".part");
+                boolean ok;
+                try (FileOutputStream out = new FileOutputStream(tmp)) {
+                    ok = still.compress(Bitmap.CompressFormat.JPEG, 92, out);
                 } finally {
                     still.recycle();
+                }
+                if (!ok || !tmp.renameTo(to)) {
+                    //noinspection ResultOfMethodCallIgnored
+                    tmp.delete();
+                    return null;
                 }
             }
         } catch (IOException | RuntimeException | OutOfMemoryError e) {   // a picture too big to open, too
@@ -298,6 +310,8 @@ final class Wallpapers {
                 prefs.edit().putString("items", a.toString()).apply();
                 listed = null;
             } catch (JSONException e) {
+                //noinspection ResultOfMethodCallIgnored
+                to.delete();
                 return null;
             }
         }
@@ -751,7 +765,11 @@ final class Wallpapers {
         if (o.outWidth <= 0 || o.outHeight <= 0) return null;
         o.inJustDecodeBounds = false;
         o.inSampleSize = 1;
-        while (o.outWidth / (o.inSampleSize * 2) >= w && o.outHeight / (o.inSampleSize * 2) >= h) o.inSampleSize *= 2;
+        long maxPixels = 4L * w * h;
+        while ((o.outWidth / (o.inSampleSize * 2) >= w && o.outHeight / (o.inSampleSize * 2) >= h)
+                || ((long) (o.outWidth / o.inSampleSize) * (o.outHeight / o.inSampleSize) > maxPixels)) {
+            o.inSampleSize *= 2;
+        }
         Bitmap src = BitmapFactory.decodeFile(file.getPath(), o);
         if (src == null) return null;
         Bitmap out = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);

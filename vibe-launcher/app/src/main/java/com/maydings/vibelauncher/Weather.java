@@ -23,7 +23,7 @@ import java.util.Locale;
  */
 final class Weather {
 
-    private static final String FORECAST = "https://api.open-meteo.com/v1/forecast?latitude=%s&longitude=%s"
+    private static final String FORECAST = "https://api.open-meteo.com/v1/forecast?latitude=%.4f&longitude=%.4f"
             + "&current=temperature_2m,weather_code,is_day&daily=temperature_2m_max,temperature_2m_min"
             + "&timezone=auto&forecast_days=1&temperature_unit=%s";
     private static final String GEOCODE = "https://geocoding-api.open-meteo.com/v1/search?name=%s&count=8&language=%s";
@@ -86,7 +86,8 @@ final class Weather {
     static Place autoPlace(Context c) {
         SharedPreferences p = cache(c);
         long now = System.currentTimeMillis();
-        if (now - p.getLong("autoAt", 0) < PLACE_MS && p.contains("autoName")) {
+        long placeAge = now - p.getLong("autoAt", 0);
+        if (placeAge >= 0 && placeAge < PLACE_MS && p.contains("autoName")) {
             return new Place(p.getString("autoName", ""), p.getFloat("autoLat", 0), p.getFloat("autoLon", 0));
         }
         boolean wait = now < autoAgainAt;   // neither answered a moment ago: not asked with every look
@@ -123,11 +124,13 @@ final class Weather {
             JSONArray results = new JSONObject(Http.getText(url, Collections.emptyMap())).optJSONArray("results");
             for (int i = 0; results != null && i < results.length(); i++) {
                 JSONObject r = results.getJSONObject(i);
-                StringBuilder label = new StringBuilder(r.optString("name"));
-                for (String part : new String[]{r.optString("admin1"), r.optString("country")}) {
-                    if (!part.isEmpty() && label.indexOf(part) < 0) label.append(", ").append(part);
+                java.util.LinkedHashSet<String> parts = new java.util.LinkedHashSet<>();
+                for (String field : new String[]{"name", "admin1", "country"}) {
+                    String part = r.isNull(field) ? "" : r.optString(field).trim();
+                    if (!part.isEmpty()) parts.add(part);
                 }
-                out.add(new Place(label.toString(), r.getDouble("latitude"), r.getDouble("longitude")));
+                if (parts.isEmpty()) continue;
+                out.add(new Place(String.join(", ", parts), r.getDouble("latitude"), r.getDouble("longitude")));
             }
         } catch (JSONException e) {
             throw new IOException(e);
@@ -141,7 +144,8 @@ final class Weather {
         String key = String.format(Locale.ROOT, "%.3f,%.3f,%s", place.lat, place.lon, fahrenheit ? "f" : "c");
         long at = p.getLong("nowAt", 0);
         boolean same = key.equals(p.getString("nowKey", ""));
-        if (same && System.currentTimeMillis() - at < WEATHER_MS) return parse(p.getString("now", null));
+        long age = System.currentTimeMillis() - at;
+        if (same && age >= 0 && age < WEATHER_MS) return parse(p.getString("now", null));
         try {
             String url = String.format(Locale.ROOT, FORECAST, place.lat, place.lon, fahrenheit ? "fahrenheit" : "celsius");
             String json = Http.getText(url, Collections.emptyMap());
@@ -169,7 +173,7 @@ final class Weather {
 
     /** Fahrenheit where people use it (the US and a few others), Celsius elsewhere. */
     static boolean fahrenheitHere() {
-        switch (Lang.country()) {
+        switch (Lang.country().toUpperCase(Locale.ROOT)) {
             case "US": case "PR": case "GU": case "VI": case "AS": case "MP": case "UM":
             case "LR": case "BS": case "BZ": case "KY": case "PW": case "FM": case "MH":
                 return true;

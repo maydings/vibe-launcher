@@ -302,6 +302,12 @@
     <string name="scan_to_backup">ಫೋನ್‌ನಲ್ಲಿ ಬ್ಯಾಕಪ್ ಉಳಿಸಲು ಅಥವಾ ಒಂದನ್ನು ಮರಳಿ ಕಳುಹಿಸಲು ಫೋನ್‌ನಿಂದ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</string>
     <string name="backup_saved">ಬ್ಯಾಕಪ್ ಉಳಿಸಲಾಗಿದೆ</string>
     <string name="backup_failed">ಬ್ಯಾಕಪ್ ಉಳಿಸಲಾಗಲಿಲ್ಲ</string>
+    <string name="backup_passphrase_set">ಈ ಬ್ಯಾಕಪ್‌ಗಾಗಿ ಪಾಸ್‌ಫ್ರೇಸ್</string>
+    <string name="backup_passphrase_enter">ಬ್ಯಾಕಪ್ ಪಾಸ್‌ಫ್ರೇಸ್</string>
+    <string name="backup_passphrase_empty">ಬ್ಯಾಕಪ್ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಮಾಡಲು ಪಾಸ್‌ಫ್ರೇಸ್ ನಮೂದಿಸಿ</string>
+    <string name="backup_passphrase_again">ಮತ್ತೊಮ್ಮೆ ಟೈಪ್ ಮಾಡಿ</string>
+    <string name="backup_passphrase_mismatch">ಎರಡೂ ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ</string>
+    <string name="restore_wrong_passphrase">ತಪ್ಪಾದ ಬ್ಯಾಕಪ್ ಪಾಸ್‌ಫ್ರೇಸ್</string>
     <string name="restore_now">ಈಗ ಮರುಸ್ಥಾಪಿಸಿ</string>
     <string name="restore_warning">ಸೆಟ್ಟಿಂಗ್‌ಗಳು, ಟೈಲ್‌ಗಳು, ಫೋಲ್ಡರ್‌ಗಳು ಮತ್ತು ಕೀಗಳು ಎಲ್ಲವೂ ಬ್ಯಾಕಪ್‌ನಲ್ಲಿರುವವುಗಳಿಂದ ಬದಲಾಗುತ್ತವೆ, ನಂತರ ಹೋಮ್ ಮತ್ತೆ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ.</string>
     <string name="restore_failed">ಆ ಬ್ಯಾಕಪ್ ಓದಲಾಗಲಿಲ್ಲ</string>

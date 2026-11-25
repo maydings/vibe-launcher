@@ -32,18 +32,24 @@ final class TileCustom {
 
     TileCustom(Context context) {
         this.context = context.getApplicationContext();
-        prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
-        dir = new File(context.getFilesDir(), "tiles");
+        prefs = this.context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+        dir = new File(this.context.getFilesDir(), "tiles");
+        synchronized (TileCustom.class) {
+            reloadLocked();
+            adoptOwnPicturesLocked();
+        }
+    }
+
+    private void reloadLocked() {
         try {
             all = new JSONObject(prefs.getString(KEY, "{}"));
         } catch (JSONException e) {
             all = new JSONObject();   // unreadable: every tile as its app made it
         }
-        adoptOwnPictures();
     }
 
     /** Pictures kept as <package>.png, one per app: into the tile pictures, each tile still showing its own. */
-    private void adoptOwnPictures() {
+    private void adoptOwnPicturesLocked() {
         List<String> keys = new ArrayList<>();
         for (Iterator<String> it = all.keys(); it.hasNext(); ) {
             String key = it.next();
@@ -63,12 +69,15 @@ final class TileCustom {
             } catch (JSONException ignored) {
             }
         }
-        save();
+        saveLocked();
     }
 
     private JSONObject of(String key) {
-        JSONObject o = all.optJSONObject(key);
-        return o != null ? o : new JSONObject();
+        synchronized (TileCustom.class) {
+            reloadLocked();
+            JSONObject o = all.optJSONObject(key);
+            return o != null ? o : new JSONObject();
+        }
     }
 
     /** The name given to the tile, or null for its own. */
@@ -107,7 +116,10 @@ final class TileCustom {
 
     /** Anything changed on this tile (for Reset). */
     boolean changed(String key) {
-        return all.has(key);
+        synchronized (TileCustom.class) {
+            reloadLocked();
+            return all.has(key);
+        }
     }
 
     void setName(String key, String name) {
@@ -120,45 +132,57 @@ final class TileCustom {
 
     /** One of the Library's pictures (by id) as the tile's; null for none (its own banner, or a folder's preview). */
     void setPicture(String key, String id) {
-        if (id != null) put(key, "icon", null);   // a picture of its own replaces either
-        put(key, "pic", id);
+        synchronized (TileCustom.class) {
+            if (id != null) put(key, "icon", null);   // a picture of its own replaces either
+            put(key, "pic", id);
+        }
     }
 
     /** A picture deleted from the Library: off every tile that showed it. */
     void forgetPicture(String id) {
-        boolean changed = false;
-        List<String> keys = new ArrayList<>();
-        for (Iterator<String> it = all.keys(); it.hasNext(); ) keys.add(it.next());
-        for (String key : keys) {
-            JSONObject o = all.optJSONObject(key);
-            if (o == null || !id.equals(o.optString("pic"))) continue;
-            o.remove("pic");
-            if (o.length() == 0) all.remove(key);
-            changed = true;
+        synchronized (TileCustom.class) {
+            reloadLocked();
+            boolean changed = false;
+            List<String> keys = new ArrayList<>();
+            for (Iterator<String> it = all.keys(); it.hasNext(); ) keys.add(it.next());
+            for (String key : keys) {
+                JSONObject o = all.optJSONObject(key);
+                if (o == null || !id.equals(o.optString("pic"))) continue;
+                o.remove("pic");
+                if (o.length() == 0) all.remove(key);
+                changed = true;
+            }
+            if (changed) saveLocked();
         }
-        if (changed) save();
     }
 
     /** The tile as it was made: its own name and banner (the picture stays in the Library). */
     void reset(String key) {
-        all.remove(key);
-        save();
+        synchronized (TileCustom.class) {
+            reloadLocked();
+            all.remove(key);
+            saveLocked();
+        }
     }
 
     private void put(String key, String field, Object value) {
-        try {
-            JSONObject o = of(key);
-            if (value == null) o.remove(field);
-            else o.put(field, value);
-            if (o.length() == 0) all.remove(key);
-            else all.put(key, o);
-        } catch (JSONException e) {
-            return;
+        synchronized (TileCustom.class) {
+            reloadLocked();
+            try {
+                JSONObject o = all.optJSONObject(key);
+                if (o == null) o = new JSONObject();
+                if (value == null) o.remove(field);
+                else o.put(field, value);
+                if (o.length() == 0) all.remove(key);
+                else all.put(key, o);
+            } catch (JSONException e) {
+                return;
+            }
+            saveLocked();
         }
-        save();
     }
 
-    private void save() {
+    private void saveLocked() {
         prefs.edit().putString(KEY, all.toString()).apply();
     }
 }

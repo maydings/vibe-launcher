@@ -462,25 +462,32 @@ final class Backdrops {
      * the watching info is in. With switched (another app picked in the picture alone), always delivers the
      * picture to show: the first watched, else this visit's still, else null for the app's glow.
      */
+    private final AtomicInteger carouselSession = new AtomicInteger();
+
     void openCarousel(String pkg, boolean jump, boolean switched, Callback callback) {
+        int session = carouselSession.incrementAndGet();
         queue.offerFirst(() -> {
             Entry first = orderCarousel(pkg, jump, switched);
             Bitmap bitmap = null, logo = null;
             if (first != null) {
                 try {
                     bitmap = BitmapFactory.decodeFile(first.still.getPath());
-                    logo = first.logo != null ? decodeLogo(first.logo) : null;
+                    if (bitmap != null && first.logo != null) logo = decodeLogo(first.logo);
                 } catch (RuntimeException | OutOfMemoryError x) {
+                    if (bitmap != null) bitmap.recycle();
                     bitmap = null;
+                    logo = null;
                 }
             }
             Bitmap b = bitmap, l = logo;
-            Entry e = first;
-            main.post(() -> callback.onBackdrop(pkg, b, l, e != null ? e.title : null, e != null ? e.link : null));
+            String title = b != null && first != null ? first.title : null;
+            String link = b != null && first != null ? first.link : null;
+            main.post(() -> callback.onBackdrop(pkg, b, l, title, link));
             if (pkg.equals(PLEX)) {
                 // Plex's progress is the server's: asked again in the background, and the order and time left
                 // follow once it's in (the picture showing stays).
                 plex.refreshOnDeck(() -> queue.offerFirst(() -> {
+                    if (carouselSession.get() != session || !PLEX.equals(carouselPkg)) return;
                     orderCarousel(pkg, false, false);
                     Runnable listener = watchingChanged;   // read once: Home may go meanwhile
                     if (listener != null) main.post(listener);
@@ -865,6 +872,7 @@ final class Backdrops {
         String pkg = b.pkg;
         File dir = poolDir(pkg);
         synchronized (this) {
+            if (b.generation != generation.get()) return;   // re-checked under lock across reload()
             Pool p = pool(pkg);
             if (b.taken == 0) {
                 if (p != null && !p.entries.isEmpty()) {
@@ -877,6 +885,7 @@ final class Backdrops {
                 writeIndex(dir, p);
                 return;
             }
+            if (p == null) return;
             if (!p.fingerprint.equals(b.fingerprint)) {
                 Entry on = shown.get(pkg);
                 for (int i = p.entries.size() - 1; i >= 0; i--) {
@@ -1366,13 +1375,15 @@ final class Backdrops {
         File file = new File(root, sha1(url) + ".img");
         if (file.exists()) {
             file.setLastModified(System.currentTimeMillis());
-            return file;
+            if (!backdrop || width(file) >= minWidth) return file;
+            return null;
         }
         byte[] data = read(url);
         // Not had this time (offline, no answer): asked for again with the next round. Only one that came and
         // is no use as a backdrop is never asked for again.
         if (data == null) return null;
         if (!(backdrop ? suitable(data, minWidth) : decodable(data))) {
+            if (unsuitable.size() > 500) unsuitable.clear();
             unsuitable.add(url);
             return null;
         }
@@ -1387,7 +1398,10 @@ final class Backdrops {
             if (tmp != null) tmp.delete();
             return null;
         }
-        return tmp.renameTo(file) || file.exists() ? file : null;
+        if (tmp.renameTo(file)) return file;
+        //noinspection ResultOfMethodCallIgnored
+        tmp.delete();
+        return file.exists() ? file : null;
     }
 
     /** A file name for a URL: a 32-bit hash could give two images the same name and show the wrong one. */
@@ -1485,7 +1499,16 @@ final class Backdrops {
         Paint paint = new Paint(Paint.FILTER_BITMAP_FLAG);
         int cellW = (targetWidth - WALL_GAP) / 2, cellH = (targetHeight - WALL_GAP) / 2;
         for (int i = 0; i < files.size(); i++) {
-            Bitmap card = BitmapFactory.decodeFile(files.get(i).getPath());
+            String path = files.get(i).getPath();
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            o.inJustDecodeBounds = true;
+            BitmapFactory.decodeFile(path, o);
+            o.inJustDecodeBounds = false;
+            o.inSampleSize = 1;
+            while (o.outWidth / (o.inSampleSize * 2) >= cellW && o.outHeight / (o.inSampleSize * 2) >= cellH) {
+                o.inSampleSize *= 2;
+            }
+            Bitmap card = BitmapFactory.decodeFile(path, o);
             if (card == null) continue;
             int left = (i % 2) * (cellW + WALL_GAP), top = (i / 2) * (cellH + WALL_GAP);
             canvas.drawBitmap(card, centreCrop(card.getWidth(), card.getHeight(), cellW, cellH),

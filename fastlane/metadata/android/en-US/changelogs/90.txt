@@ -1,0 +1,5 @@
+* Backups are encrypted with a passphrase you choose. You type it twice when making a backup, on the TV or on your phone, and once when restoring. Backups made before still restore.
+* The phone pages (keys, pictures, backup) answer only on your home network, and only to a page the TV handed out.
+* A folder emptied by hand takes its own picture and backdrops with it.
+* Wireless debugging that can't pair now says so and stops, where it could crash before.
+* Many fixes from a second full review of the code: crashes, stuck states and memory use in flights, backdrops, fonts, tiles and the debugging connection.

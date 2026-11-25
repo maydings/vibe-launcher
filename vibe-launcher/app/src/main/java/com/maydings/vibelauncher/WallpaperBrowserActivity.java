@@ -124,7 +124,8 @@ public final class WallpaperBrowserActivity extends Activity {
      * picture not made for what's being picked, a tile's for a backdrop or the other way round.
      */
     private static final class Result {
-        final String id, thumb, full, label, credit;
+        final String id, thumb, full, credit;
+        String label;
         final boolean video;
         String title;
         boolean odd;
@@ -652,11 +653,16 @@ public final class WallpaperBrowserActivity extends Activity {
     /** A reply as Pixabay gave it within the last day, else asked for again (and kept). Worker thread. */
     private String keptReply(String url) throws IOException {
         File file = new File(apiCache, sha1(url) + ".json");
-        if (file.exists() && System.currentTimeMillis() - file.lastModified() < PIXABAY_KEEP_MS) {
+        long age = System.currentTimeMillis() - file.lastModified();
+        if (file.exists() && age >= 0 && age < PIXABAY_KEEP_MS) {
             try {
-                return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
-            } catch (IOException e) {
-                // unreadable: asked for again
+                String cached = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
+                if (new JSONObject(cached).has("hits")) return cached;
+                //noinspection ResultOfMethodCallIgnored
+                file.delete();
+            } catch (IOException | JSONException e) {
+                //noinspection ResultOfMethodCallIgnored
+                file.delete();   // corrupt/truncated: refetch
             }
         }
         String text = Http.getText(url, Collections.emptyMap());
@@ -669,10 +675,17 @@ public final class WallpaperBrowserActivity extends Activity {
         }
         //noinspection ResultOfMethodCallIgnored
         apiCache.mkdirs();
-        try (FileOutputStream out = new FileOutputStream(file)) {
+        File tmp = new File(apiCache, file.getName() + "." + Thread.currentThread().getId() + ".part");
+        try (FileOutputStream out = new FileOutputStream(tmp)) {
             out.write(text.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
-            // not kept: asked for again next time
+            //noinspection ResultOfMethodCallIgnored
+            tmp.delete();
+            return text;
+        }
+        if (!tmp.renameTo(file)) {
+            //noinspection ResultOfMethodCallIgnored
+            tmp.delete();
         }
         return text;
     }
@@ -794,7 +807,8 @@ public final class WallpaperBrowserActivity extends Activity {
             JSONObject ii = infos.getJSONObject(0);
             int w = ii.optInt("width"), h = ii.optInt("height");
             if (w < 1920 || w < h * 1.2) continue;
-            String full = ii.optString("thumburl", ii.optString("url"));
+            String full = !ii.isNull("thumburl") && !ii.optString("thumburl").isEmpty()
+                    ? ii.optString("thumburl") : (!ii.isNull("url") ? ii.optString("url") : "");
             int at = full.indexOf('?');
             if (at > 0) full = full.substring(0, at);
             if (full.isEmpty()) continue;
@@ -931,16 +945,17 @@ public final class WallpaperBrowserActivity extends Activity {
 
     /** The ids of the two cards before the Library's when picking for an app's tile: its banner and its icon. */
     private static final String OWN_BANNER = "@banner", OWN_ICON = "@icon";
-    /** The app's banner (null without one, or with one too square to fill a tile) and icon, for those cards. */
-    private android.graphics.drawable.Drawable ownBanner, ownIcon;
+    /** Pre-rendered bitmaps for the app's own banner and icon (rendered on the main thread; Drawables aren't thread-safe). */
+    private Bitmap ownBannerBmp, ownIconBmp;
 
     /** Picking for an app's tile: its own banner (when it has one) and icon, first in the grid. */
     private void addOwn() {
         android.content.pm.PackageManager pm = getPackageManager();
         Intent launch = pm.getLeanbackLaunchIntentForPackage(listKey);
         if (launch == null) launch = pm.getLaunchIntentForPackage(listKey);
-        ownBanner = null;
-        ownIcon = null;
+        android.graphics.drawable.Drawable ownBanner = null, ownIcon = null;
+        ownBannerBmp = null;
+        ownIconBmp = null;
         try {
             if (launch != null && launch.getComponent() != null) {
                 ownBanner = pm.getActivityBanner(launch);
@@ -957,9 +972,13 @@ public final class WallpaperBrowserActivity extends Activity {
             ownBanner = null;   // as on its tile (AppAdapter)
         }
         if (ownBanner != null) {
+            ownBannerBmp = drawn(ownBanner, true);
+            if (ownBannerBmp != null) cache.put("own:banner", ownBannerBmp);
             results.add(new Result(OWN_BANNER, "own:banner", "", getString(R.string.use_banner), null, false));
         }
         if (ownIcon != null) {
+            ownIconBmp = drawn(ownIcon, false);
+            if (ownIconBmp != null) cache.put("own:icon", ownIconBmp);
             results.add(new Result(OWN_ICON, "own:icon", "", getString(R.string.use_icon), null, false));
         }
     }
@@ -1027,7 +1046,19 @@ public final class WallpaperBrowserActivity extends Activity {
                 named = true;
             }
             if (named) main.post(() -> {
-                if (!isDestroyed()) showMine();
+                if (isDestroyed()) return;
+                // Update renamed items in place so scrolling and open dialogs stay intact.
+                for (int i = 0; i < results.size(); i++) {
+                    Result r = results.get(i);
+                    Wallpapers.Item updated = wallpapers.item(r.id);
+                    if (updated == null) continue;
+                    items.put(r.id, updated);
+                    String nextLabel = nameOf(updated);
+                    if (!nextLabel.equals(r.label)) {
+                        r.label = nextLabel;
+                        adapter.notifyItemChanged(i);
+                    }
+                }
             });
         });
     }
@@ -1120,7 +1151,7 @@ public final class WallpaperBrowserActivity extends Activity {
             String picture = custom.pictureId(listKey);
             // Without a picture of the Library's, the app's own: its icon when chosen (or it has no banner).
             if (OWN_BANNER.equals(r.id)) return picture == null && !custom.useIcon(listKey);
-            if (OWN_ICON.equals(r.id)) return picture == null && (custom.useIcon(listKey) || ownBanner == null);
+            if (OWN_ICON.equals(r.id)) return picture == null && (custom.useIcon(listKey) || ownBannerBmp == null);
             return r.id.equals(picture);
         }
         return wallpapers.inList(listKey, r.id);
@@ -1140,7 +1171,7 @@ public final class WallpaperBrowserActivity extends Activity {
             TileCustom custom = tileCustom();
             if (OWN_BANNER.equals(r.id) || OWN_ICON.equals(r.id)) {
                 custom.setPicture(listKey, null);
-                custom.setUseIcon(listKey, OWN_ICON.equals(r.id) && ownBanner != null);
+                custom.setUseIcon(listKey, OWN_ICON.equals(r.id) && ownBannerBmp != null);
             } else {
                 custom.setPicture(listKey, r.id.equals(custom.pictureId(listKey)) ? null : r.id);
             }
@@ -1257,6 +1288,9 @@ public final class WallpaperBrowserActivity extends Activity {
         pages.shutdownNow();
         thumbs.shutdownNow();
         downloads.shutdown();   // one being saved finishes
+        cache.evictAll();
+        ownBannerBmp = null;
+        ownIconBmp = null;
     }
 
     @Override
@@ -1381,6 +1415,7 @@ public final class WallpaperBrowserActivity extends Activity {
                 Bitmap b = thumb(r.thumb);
                 if (b == null) return;
                 main.post(() -> {
+                    if (isDestroyed()) return;
                     cache.put(r.thumb, b);
                     if (gen == generation && r.thumb.equals(h.image.getTag())) {
                         h.image.setImageBitmap(b);
@@ -1410,8 +1445,8 @@ public final class WallpaperBrowserActivity extends Activity {
             int bar = url.indexOf('|');
             return AppleAerials.thumbnail(this, url.substring(7, bar), url.substring(bar + 1));
         }
-        if (url.equals("own:banner")) return drawn(ownBanner, true);
-        if (url.equals("own:icon")) return drawn(ownIcon, false);
+        if (url.equals("own:banner")) return ownBannerBmp;
+        if (url.equals("own:icon")) return ownIconBmp;
         if (url.startsWith("video:")) return videoThumb(url.substring(6));
         return thumbOf(url);
     }
@@ -1432,13 +1467,13 @@ public final class WallpaperBrowserActivity extends Activity {
     }
 
     private static Bitmap thumbOf(String url) {
-        if (url.startsWith("tile:")) return BitmapFactory.decodeFile(url.substring(5));   // 640 x 360 already
-        if (url.startsWith("file:")) {
-            BitmapFactory.Options o = new BitmapFactory.Options();
-            o.inSampleSize = 4;   // a 1920 x 1080 wallpaper, down to a cell's 480 x 270
-            return BitmapFactory.decodeFile(url.substring(5), o);
-        }
         try {
+            if (url.startsWith("tile:")) return BitmapFactory.decodeFile(url.substring(5));   // 640 x 360 already
+            if (url.startsWith("file:")) {
+                BitmapFactory.Options o = new BitmapFactory.Options();
+                o.inSampleSize = 4;   // a 1920 x 1080 wallpaper, down to a cell's 480 x 270
+                return BitmapFactory.decodeFile(url.substring(5), o);
+            }
             byte[] bytes = Http.get(url, 4 * 1024 * 1024);
             BitmapFactory.Options o = new BitmapFactory.Options();
             o.inJustDecodeBounds = true;
@@ -1447,7 +1482,7 @@ public final class WallpaperBrowserActivity extends Activity {
             o.inSampleSize = 1;
             while (o.outWidth / (o.inSampleSize * 2) >= 400) o.inSampleSize *= 2;
             return BitmapFactory.decodeByteArray(bytes, 0, bytes.length, o);
-        } catch (IOException | RuntimeException e) {
+        } catch (IOException | RuntimeException | OutOfMemoryError e) {
             return null;
         }
     }
@@ -1457,13 +1492,15 @@ public final class WallpaperBrowserActivity extends Activity {
         android.media.MediaMetadataRetriever r = new android.media.MediaMetadataRetriever();
         try {
             r.setDataSource(path);
-            Bitmap frame = r.getFrameAtTime(1_000_000, android.media.MediaMetadataRetriever.OPTION_CLOSEST_SYNC);
+            Bitmap frame = android.os.Build.VERSION.SDK_INT >= 27
+                    ? r.getScaledFrameAtTime(1_000_000, android.media.MediaMetadataRetriever.OPTION_CLOSEST_SYNC, 480, 270)
+                    : r.getFrameAtTime(1_000_000, android.media.MediaMetadataRetriever.OPTION_CLOSEST_SYNC);
             if (frame == null) return null;
             int w = 480, h = Math.max(1, frame.getHeight() * w / Math.max(1, frame.getWidth()));
-            Bitmap small = Bitmap.createScaledBitmap(frame, w, h, true);
+            Bitmap small = frame.getWidth() <= w ? frame : Bitmap.createScaledBitmap(frame, w, h, true);
             if (small != frame) frame.recycle();
             return small;
-        } catch (RuntimeException e) {
+        } catch (RuntimeException | OutOfMemoryError e) {
             return null;
         } finally {
             try {

@@ -777,7 +777,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.Holder> {
     /** Where this app's tile is now, or -1 when it's gone. */
     int positionOf(String pkg) {
         for (int i = 0; i < items.size(); i++) {
-            if (!items.get(i).allApps && items.get(i).pkg.equals(pkg)) return i;
+            Entry e = items.get(i);
+            if (!e.allApps && e.folderId == null && e.pkg.equals(pkg)) return i;
         }
         return -1;
     }

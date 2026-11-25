@@ -151,6 +151,8 @@ final class SettingsScreen {
         Row opened;     // the row whose page is open, while this list is on the left
         /** Keeps what the page changed and holds back for a moment (the opacity's), however it's left; or null. */
         Runnable save;
+        /** Optional rebuild hook when returning to a page whose dynamic items may have changed (e.g. fonts). */
+        Runnable rebuild;
         /** Its window trimmed to a whole number of rows when it scrolls: not for a page of other things (the wheel). */
         boolean wholeRows = true;
 
@@ -192,6 +194,7 @@ final class SettingsScreen {
                     if (row == null) return;
                     ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) row.getLayoutParams();
                     int gap = lp.topMargin + lp.bottomMargin, pitch = row.getMeasuredHeight() + gap;
+                    if (pitch <= 0) return;
                     int whole = (inner + gap) / pitch;
                     if (whole < 1) return;
                     setMeasuredDimension(getMeasuredWidth(), whole * pitch - gap + getPaddingTop() + getPaddingBottom());
@@ -458,6 +461,7 @@ final class SettingsScreen {
 
     /** SettingsActivity showing it: back to the first list, with the values as they are now. */
     View attach(Activity activity) {
+        if (host != null && host != activity) detach(host);
         host = activity;
         language = settings.language();
         System.arraycopy(settings.keys(), 0, keys, 0, keys.length);
@@ -472,6 +476,7 @@ final class SettingsScreen {
         logo.setTranslationX(0f);
         title.setText(root.title);
         startPhoneLink();
+        if (link != null) link.pairOnly = false;
         watchSmartTube();
         adbPages.onAttach();
         ViewGroup parent = (ViewGroup) screen.getParent();
@@ -537,14 +542,27 @@ final class SettingsScreen {
         save();
         if (editing != null) endEdit();
         if (System.currentTimeMillis() < keepLinkUntil) {
+            if (link != null) link.pairOnly = true;
             handler.removeCallbacks(stopKeptLink);
             handler.postDelayed(stopKeptLink, keepLinkUntil - System.currentTimeMillis());
         } else {
-            link.stop();
+            if (link != null) link.stop();
         }
         adbPages.onDetach();
-        host.unregisterReceiver(packages);
+        try {
+            if (packages != null) host.unregisterReceiver(packages);
+        } catch (IllegalArgumentException ignored) {
+        }
+        packages = null;
         smartTubeRow = null;
+        topBarPage = null;
+        topBarStyleRow = null;
+        cityRows.clear();
+        citySearchId++;
+        afterStorage = null;
+        movingArt = null;
+        orderWhenPicked = null;
+        movingSystem = 0;
         for (Page page : pages) {
             if (page != root && page != languagePage) stage.removeView(page.view);
         }
@@ -1020,6 +1038,7 @@ MainActivity.showError(host, R.string.anim_short);
 
     /** Matches for the city typed on Weather > Location, under the search row; picked, one is the weather's. */
     private final List<Row> cityRows = new ArrayList<>();
+    private int citySearchId;
 
     /**
      * Weather > Location: Automatic (the TV's city, from its internet address), the city picked if there is one,
@@ -1085,6 +1104,8 @@ MainActivity.showError(host, R.string.anim_short);
 
     /** The cities by this name, under the search row (the last search's matches go first); none, a line says so. */
     private void findCity(Page page, Row search, String name) {
+        if (host == null) return;
+        int searchId = ++citySearchId;
         Toast.makeText(host, R.string.weather_searching, Toast.LENGTH_SHORT).show();
         new Thread(() -> {
             List<Weather.Place> found;
@@ -1095,7 +1116,8 @@ MainActivity.showError(host, R.string.anim_short);
             }
             List<Weather.Place> places = found;
             handler.post(() -> {
-                if (host == null) return;
+                if (host == null || searchId != citySearchId || pages.isEmpty()
+                        || pages.get(pages.size() - 1) != page) return;
                 for (Row old : cityRows) {
                     page.list.removeView(old.view);
                     page.rows.remove(old);
@@ -1114,7 +1136,7 @@ MainActivity.showError(host, R.string.anim_short);
                 for (Weather.Place place : places) {
                     Row row = page.add(place.name, () -> place.name.equals(placeNameIfPicked()) ? "✓" : "", () -> {
                         settings.setWeatherPlace(place);
-                        page.refresh();
+                        for (Page open : pages) open.refresh();
                     });
                     cityRows.add(row);
                 }
@@ -1390,35 +1412,43 @@ MainActivity.showError(host, R.string.anim_short);
      */
     private Page fontPicker(boolean clock) {
         Page page = new Page(ctx.getString(clock ? R.string.clock_font : R.string.font));
-        List<String> choices = new ArrayList<>();
-        choices.add(Fonts.OUTFIT);
-        java.util.Collections.addAll(choices, Fonts.SYSTEM);
-        for (Fonts.Item item : new Fonts(ctx).list()) choices.add(item.id);
-        String sample = UiFont.sample(ctx), language = UiFont.languageName(ctx);
-        for (String choice : choices) {
-            Row row = page.add(Fonts.name(ctx, choice), () -> choice.equals(clock ? settings.clockFont()
-                    : settings.uiFont()) ? "✓" : "", () -> {
-                if (clock) settings.setClockFont(choice);
-                else settings.setUiFont(choice);
-                Fonts.changed();
-                rebuildHome();
-                Activity h = host;
-                if (h != null) {
-                    h.setIntent(h.getIntent().putExtra(SettingsActivity.ON_APPEARANCE, true));
-                    h.recreate();
+        Runnable populate = () -> {
+            page.list.removeAllViews();
+            page.rows.clear();
+            page.stops.clear();
+            page.opened = null;
+            List<String> choices = new ArrayList<>();
+            choices.add(Fonts.OUTFIT);
+            java.util.Collections.addAll(choices, Fonts.SYSTEM);
+            for (Fonts.Item item : new Fonts(ctx).list()) choices.add(item.id);
+            String sample = UiFont.sample(ctx), language = UiFont.languageName(ctx);
+            for (String choice : choices) {
+                Row row = page.add(Fonts.name(ctx, choice), () -> choice.equals(clock ? settings.clockFont()
+                        : settings.uiFont()) ? "✓" : "", () -> {
+                    if (clock) settings.setClockFont(choice);
+                    else settings.setUiFont(choice);
+                    Fonts.changed();
+                    rebuildHome();
+                    Activity h = host;
+                    if (h != null) {
+                        h.setIntent(h.getIntent().putExtra(SettingsActivity.ON_APPEARANCE, true));
+                        h.recreate();
+                    }
+                });
+                // Each named in itself, Outfit too.
+                android.graphics.Typeface face = Fonts.OUTFIT.equals(choice)
+                        ? ctx.getResources().getFont(R.font.outfit) : Fonts.typeface(ctx, choice, false);
+                if (face != null) row.label.setTypeface(face);
+                if (!Fonts.covers(ctx, choice, sample)) {
+                    row.aboutText = ctx.getString(R.string.font_not_covered, language);
                 }
-            });
-            // Each named in itself, Outfit too.
-            android.graphics.Typeface face = Fonts.OUTFIT.equals(choice)
-                    ? ctx.getResources().getFont(R.font.outfit) : Fonts.typeface(ctx, choice, false);
-            if (face != null) row.label.setTypeface(face);
-            if (!Fonts.covers(ctx, choice, sample)) {
-                row.aboutText = ctx.getString(R.string.font_not_covered, language);
+                if (choice.equals(clock ? settings.clockFont() : settings.uiFont())) page.opened = row;
             }
-            if (choice.equals(clock ? settings.clockFont() : settings.uiFont())) page.opened = row;   // focus starts here
-        }
-        Row add = page.link(R.string.font_add, null, this::fontsPage);
-        add.about = R.string.fonts_short;
+            Row add = page.link(R.string.font_add, null, this::fontsPage);
+            add.about = R.string.fonts_short;
+        };
+        populate.run();
+        page.rebuild = populate;
         return page;
     }
 
@@ -1848,16 +1878,25 @@ MainActivity.showError(host, R.string.anim_short);
         Row save = page.add(R.string.backup_to_tv, null, null);
         save.about = R.string.backup_tv_short;
         save.action = () -> withStorage(() -> {
-            Context app = ctx.getApplicationContext();
-            new Thread(() -> {
-                boolean ok = Backup.saveToTv(app);
-                handler.post(() -> {
-                    if (host == null) return;
-                    if (ok) Toast.makeText(host, R.string.backup_saved, Toast.LENGTH_SHORT).show();
-                    else MainActivity.showError(host, R.string.backup_failed);
-                    page.refresh();   // the copy's new date
-                });
-            }, "Backup").start();
+            if (host == null) return;
+            NameDialog.askNewSecret(host, R.string.backup_passphrase_set, 128, highlight,
+                    passphrase -> {
+                        if (host == null) return;
+                        if (passphrase == null || passphrase.isEmpty()) {
+                            MainActivity.showError(host, R.string.backup_passphrase_empty);
+                            return;
+                        }
+                        Context app = ctx.getApplicationContext();
+                        new Thread(() -> {
+                            boolean ok = Backup.saveToTv(app, passphrase);
+                            handler.post(() -> {
+                                if (host == null) return;
+                                if (ok) Toast.makeText(host, R.string.backup_saved, Toast.LENGTH_SHORT).show();
+                                else MainActivity.showError(host, R.string.backup_failed);
+                                page.refresh();   // the copy's new date
+                            });
+                        }, "Backup").start();
+                    });
         });
         // Its value is when the TV's copy was made; it opens a page that asks first, only when there's one.
         Row restore = page.link(R.string.restore_from_tv, this::savedOnTv, null);
@@ -1903,9 +1942,29 @@ MainActivity.showError(host, R.string.anim_short);
         page.add(R.string.restore_now, this::savedOnTv, () -> {
             Context app = ctx.getApplicationContext();
             new Thread(() -> {
-                boolean ok = restore(Backup.loadFromTv(app));
+                String json = Backup.loadFromTv(app);
+                if (Backup.isEncrypted(json)) {
+                    handler.post(() -> {
+                        if (host == null) return;
+                        NameDialog.askSecret(host, R.string.backup_passphrase_enter, 128,
+                                highlight, passphrase -> {
+                                    if (host == null) return;
+                                    new Thread(() -> {
+                                        int res = restore(json, passphrase);
+                                        handler.post(() -> {
+                                            if (res == Backup.READ_OK) restored();
+                                            else if (host != null) MainActivity.showError(host,
+                                                    res == Backup.READ_WRONG_PASSPHRASE
+                                                            ? R.string.restore_wrong_passphrase : R.string.restore_failed);
+                                        });
+                                    }, "Restore").start();
+                                });
+                    });
+                    return;
+                }
+                int res = restore(json, "");
                 handler.post(() -> {
-                    if (ok) restored();
+                    if (res == Backup.READ_OK) restored();
                     else if (host != null) MainActivity.showError(host, R.string.restore_failed);
                 });
             }, "Restore").start();
@@ -1913,12 +1972,12 @@ MainActivity.showError(host, R.string.anim_short);
         return page;
     }
 
-    /** Off the main thread: the backup read through, then put in place; false when it isn't one, and nothing changed. */
-    private boolean restore(String json) {
-        Backup.Contents contents = Backup.read(json);
-        if (contents == null) return false;
-        restoredLanguage = contents.language;
-        return Backup.apply(ctx.getApplicationContext(), contents);
+    /** Off the main thread: the backup read through, then put in place; Backup.READ_OK on success. */
+    private int restore(String json, String passphrase) {
+        Backup.ReadResult r = Backup.readWithStatus(json, passphrase);
+        if (r.status != Backup.READ_OK || r.contents == null) return r.status;
+        restoredLanguage = r.contents.language;
+        return Backup.apply(ctx.getApplicationContext(), r.contents) ? Backup.READ_OK : Backup.READ_INVALID;
     }
 
     private volatile String restoredLanguage;
@@ -2214,6 +2273,7 @@ MainActivity.showError(host, R.string.anim_short);
                 }).start();
         Page current = pages.get(pages.size() - 1);
         title.setText(current.title);
+        if (current.rebuild != null) current.rebuild.run();
         current.focusable(true);
         current.refresh();
         slide(current.view, 0f);
@@ -2320,17 +2380,18 @@ MainActivity.showError(host, R.string.anim_short);
         if (AdBlock.supported()) link.customDns = adbPages::customAdFromPhone;
         link.backups = new PhoneLink.Backups() {
             @Override
-            public String make() {
+            public String make(String passphrase) {
                 try {
-                    return Backup.make(app);
-                } catch (org.json.JSONException | java.io.IOException e) {
+                    return Backup.make(app, passphrase);
+                } catch (org.json.JSONException | java.io.IOException | java.security.GeneralSecurityException
+                         | IllegalArgumentException e) {
                     return null;
                 }
             }
 
             @Override
-            public boolean restore(String json) {
-                return SettingsScreen.this.restore(json);
+            public int restore(String json, String passphrase) {
+                return SettingsScreen.this.restore(json, passphrase);
             }
 
             @Override

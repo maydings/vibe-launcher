@@ -133,6 +133,8 @@ public final class FlightBoard extends FrameLayout {
         return text;
     }
 
+    private boolean wearing;
+
     /** The airline's logo on the plate; none for an aircraft of no airline. */
     private void wear(Flights.Near n) {
         if (n.icao == null) {
@@ -146,12 +148,17 @@ public final class FlightBoard extends FrameLayout {
         }
         logoOf = n.icao;
         String icao = n.icao;
-        AirlineLogos.get(getContext()).logo(icao, n.iata, logo -> {
-            if (!icao.equals(logoOf)) return;   // the screen has gone to another since
-            plate.setVisibility(logo != null ? VISIBLE : GONE);
-            if (logo != null) plate.setImageBitmap(logo.picture);
-            if (showingNow != null) say(showingNow);   // the airline's name gives way to its logo, or comes back
-        });
+        wearing = true;
+        try {
+            AirlineLogos.get(getContext()).logo(icao, n.iata, logo -> {
+                if (!icao.equals(logoOf)) return;   // the screen has gone to another since
+                plate.setVisibility(logo != null ? VISIBLE : GONE);
+                if (logo != null) plate.setImageBitmap(logo.picture);
+                if (!wearing && showingNow != null) say(showingNow);   // async update: re-say without recursion
+            });
+        } finally {
+            wearing = false;
+        }
     }
 
     /** Where its foot goes, down the screen: the same for every tile (Home says where). Not said: the middle. */
@@ -192,6 +199,8 @@ public final class FlightBoard extends FrameLayout {
 
     /** Where the map is of, and how far the flights are looked for: known before any aircraft is heard of. */
     void setHere(Weather.Place here, double reachKm) {
+        if (here == null) return;
+        map.onDrawn = () -> set(credit, mapped && map.drawn() ? "© OpenStreetMap contributors" : null);
         map.setPlace(here.lat, here.lon, reachKm);
     }
 

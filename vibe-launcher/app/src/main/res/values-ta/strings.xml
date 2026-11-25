@@ -302,6 +302,12 @@
     <string name="scan_to_backup">ஃபோனில் காப்புப் பிரதியைச் சேமிக்க அல்லது ஒன்றைத் திருப்பி அனுப்ப ஃபோனால் ஸ்கேன் செய்யவும்</string>
     <string name="backup_saved">காப்புப் பிரதி சேமிக்கப்பட்டது</string>
     <string name="backup_failed">காப்புப் பிரதியைச் சேமிக்க முடியவில்லை</string>
+    <string name="backup_passphrase_set">இந்த காப்புப்பிரதிக்கான கடவுச்சொற்றொடர்</string>
+    <string name="backup_passphrase_enter">காப்புப்பிரதி கடவுச்சொற்றொடர்</string>
+    <string name="backup_passphrase_empty">காப்புப்பிரதியை என்க்ரிப்ட் செய்ய கடவுச்சொற்றொடரை உள்ளிடவும்</string>
+    <string name="backup_passphrase_again">மீண்டும் தட்டச்சு செய்யவும்</string>
+    <string name="backup_passphrase_mismatch">இரண்டும் பொருந்தவில்லை</string>
+    <string name="restore_wrong_passphrase">தவறான காப்புப்பிரதி கடவுச்சொற்றொடர்</string>
     <string name="restore_now">இப்போது மீட்டமை</string>
     <string name="restore_warning">அமைப்புகள், டைல்கள், கோப்புறைகள், சாவிகள் அனைத்தும் காப்புப் பிரதியில் உள்ளவற்றால் மாற்றப்படும், பிறகு முகப்பு மீண்டும் தொடங்கும்.</string>
     <string name="restore_failed">அந்தக் காப்புப் பிரதியைப் படிக்க முடியவில்லை</string>

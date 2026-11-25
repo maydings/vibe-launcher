@@ -46,11 +46,11 @@ final class PhoneLink {
      * and one the phone sends back. On the page's own thread, except restored.
      */
     interface Backups {
-        /** The backup to download, as JSON; null when it couldn't be made. */
-        String make();
+        /** The encrypted backup to download, as JSON; null when it couldn't be made. */
+        String make(String passphrase);
 
-        /** Puts this backup in place; false when it isn't one, or couldn't be. */
-        boolean restore(String json);
+        /** Puts this backup in place; returns Backup.READ_OK, READ_WRONG_PASSPHRASE, or READ_INVALID. */
+        int restore(String json, String passphrase);
 
         /** On the main thread, once a backup from the phone is in place. */
         void restored();
@@ -119,6 +119,8 @@ final class PhoneLink {
      * restoring one changes every setting: neither is for whoever has the link at any other time.
      */
     volatile boolean backupsOpen;
+    /** When Settings is closed during the 5-minute pairing grace period, only /pair answers. */
+    volatile boolean pairOnly;
     /** Set by Settings on Android 11 and up: the pairing page is there while it is. */
     Pairing pairing;
     /** Set by Settings: the wallpaper page is there while it is. */
@@ -201,21 +203,30 @@ final class PhoneLink {
     String start() {
         String ip = localIp();
         if (ip == null) return null;
+        InetAddress bind;
         try {
-            server = new ServerSocket(PORT);
+            bind = InetAddress.getByName(ip);
+        } catch (IOException e) {
+            return null;
+        }
+        try {
+            server = new ServerSocket(PORT, 16, bind);
         } catch (IOException e) {
             try {
-                server = new ServerSocket(0);   // something else has the usual port
+                server = new ServerSocket(0, 16, bind);   // something else has the usual port
             } catch (IOException e2) {
                 return null;
             }
         }
-        url = "http://" + ip + ":" + server.getLocalPort() + "/" + code;
+        expectedHost = ip + ":" + server.getLocalPort();
+        url = "http://" + expectedHost + "/" + code;
         Thread t = new Thread(this::serve, "PhoneLink");
         t.setDaemon(true);
         t.start();
         return url;
     }
+
+    private volatile String expectedHost;
 
     boolean running() {
         return server != null && !server.isClosed();
@@ -230,24 +241,27 @@ final class PhoneLink {
     }
 
     /**
-     * A few at once: a phone's browser opens connections ahead of need and leaves them idle, and one of
-     * those, taken first, would keep the page it's really asking for waiting until it timed out.
+     * A few at once with a bounded queue: a phone's browser opens connections ahead of need and leaves them idle,
+     * and an unbounded queue would let a LAN flood exhaust FDs.
      */
     private final java.util.concurrent.ExecutorService connections =
-            java.util.concurrent.Executors.newFixedThreadPool(4, r -> {
-                Thread t = new Thread(r, "PhoneLink connection");
-                t.setDaemon(true);
-                return t;
-            });
+            new java.util.concurrent.ThreadPoolExecutor(4, 4, 0L, java.util.concurrent.TimeUnit.MILLISECONDS,
+                    new java.util.concurrent.ArrayBlockingQueue<>(16), r -> {
+                        Thread t = new Thread(r, "PhoneLink connection");
+                        t.setDaemon(true);
+                        return t;
+                    }, new java.util.concurrent.ThreadPoolExecutor.AbortPolicy());
     /** One request answered at a time, as when there was one thread: only the waiting for them is shared. */
     private final Object turn = new Object();
 
     private void serve() {
         while (!server.isClosed()) {
+            Socket s = null;
             try {
-                Socket s = server.accept();
+                s = server.accept();
+                Socket accepted = s;
                 connections.execute(() -> {
-                    try (Socket mine = s) {
+                    try (Socket mine = accepted) {
                         mine.setSoTimeout(5000);
                         handle(mine);
                     } catch (IOException | RuntimeException | OutOfMemoryError e) {
@@ -255,8 +269,15 @@ final class PhoneLink {
                         // one): this connection's alone to fail, not all of Vibe Launcher.
                     }
                 });
+                s = null;
             } catch (IOException | RuntimeException e) {
-                // The server closing (the loop ends), or no thread to take it: carry on.
+                // The server closing (the loop ends), or no thread/slot to take it: close rejected socket and carry on.
+                if (s != null) {
+                    try {
+                        s.close();
+                    } catch (IOException ignored) {
+                    }
+                }
             }
         }
     }
@@ -265,13 +286,46 @@ final class PhoneLink {
         InputStream in = s.getInputStream();
         String head = readHead(in);
         if (head == null) return;
+        if (!allowedOriginAndHost(head)) {
+            respondText(s, "403 Forbidden", "Invalid host or origin.");
+            return;
+        }
         synchronized (turn) {
             answer(s, in, head);
         }
     }
 
+    private boolean allowedOriginAndHost(String head) {
+        String expected = expectedHost;
+        if (expected == null) return true;
+        String host = header(head, "host");
+        if (host == null || !host.equalsIgnoreCase(expected)) return false;
+        String origin = header(head, "origin");
+        if (origin != null && !origin.equalsIgnoreCase("http://" + expected)) return false;
+        return true;
+    }
+
+    private static String header(String head, String name) {
+        String prefix = name.toLowerCase(Locale.ROOT) + ":";
+        for (String line : head.split("\r\n")) {
+            if (line.toLowerCase(Locale.ROOT).startsWith(prefix)) {
+                return line.substring(prefix.length()).trim();
+            }
+        }
+        return null;
+    }
+
     private void answer(Socket s, InputStream in, String head) throws IOException {
         String[] request = head.split("\r\n", 2)[0].split(" ");
+        if (pairOnly) {
+            Pairing p = pairing;
+            if (p != null && request.length >= 2 && request[1].equals("/" + code + "/pair")) {
+                handlePair(s, in, head, request[0], p);
+                return;
+            }
+            respond(s, "403 Forbidden", page("Open Vibe Launcher settings on the device first."));
+            return;
+        }
         Backups b = backups;
         if (b != null && request.length >= 2 && request[1].startsWith("/" + code + "/backup")) {
             if (!backupsOpen) {
@@ -326,26 +380,7 @@ final class PhoneLink {
         }
         Pairing p = pairing;
         if (p != null && request.length >= 2 && request[1].equals("/" + code + "/pair")) {
-            if (request[0].equals("POST")) {
-                Map<String, String> fields = parseForm(readBody(in, (int) contentLength(head, MAX_BODY)));
-                String digits = fields.get("code"), port = fields.get("port");
-                if (digits == null || !digits.matches("\\d{6}")) {
-                    respondText(s, "400 Bad Request", "Type the 6-digit code the device shows.");
-                } else if (port != null && !port.matches("(.*:)?\\d{1,5}")) {
-                    respondText(s, "400 Bad Request", "The port is the number after the colon, such as 37123.");
-                } else {
-                    String answer;
-                    try {
-                        answer = p.pair(digits, port);
-                    } catch (RuntimeException | Error e) {   // the phone hears what went wrong, not a dropped connection
-                        android.util.Log.w("VibeAdb", "pairing failed", e);
-                        answer = "Pairing failed on the device (" + e.getClass().getSimpleName() + "). Try again.";
-                    }
-                    respondText(s, "200 OK", answer);
-                }
-            } else {
-                respond(s, "200 OK", pairForm());
-            }
+            handlePair(s, in, head, request[0], p);
             return;
         }
         if (request.length < 2 || !request[1].equals("/" + code)) {
@@ -361,9 +396,32 @@ final class PhoneLink {
         }
     }
 
+    private void handlePair(Socket s, InputStream in, String head, String method, Pairing p) throws IOException {
+        if (method.equals("POST")) {
+            Map<String, String> fields = parseForm(readBody(in, (int) contentLength(head, MAX_BODY)));
+            String digits = fields.get("code"), port = fields.get("port");
+            if (digits == null || !digits.matches("\\d{6}")) {
+                respondText(s, "400 Bad Request", "Type the 6-digit code the device shows.");
+            } else if (port != null && !port.matches("(.*:)?\\d{1,5}")) {
+                respondText(s, "400 Bad Request", "The port is the number after the colon, such as 37123.");
+            } else {
+                String answer;
+                try {
+                    answer = p.pair(digits, port);
+                } catch (RuntimeException | Error e) {   // the phone hears what went wrong, not a dropped connection
+                    android.util.Log.w("VibeAdb", "pairing failed", e);
+                    answer = "Pairing failed on the device (" + e.getClass().getSimpleName() + "). Try again.";
+                }
+                respondText(s, "200 OK", answer);
+            }
+        } else {
+            respond(s, "200 OK", pairForm());
+        }
+    }
+
     /**
-     * The backup page (/backup), the backup itself to download (/backup.json), and a backup sent back to restore
-     * (POST /backup), which is read through before anything on the TV changes.
+     * The backup page (/backup), an encrypted backup to download (POST /backup.json with passphrase), and a backup
+     * sent back to restore (POST /backup, passphrase in X-Backup-Passphrase base64 header).
      */
     private void handleBackup(Socket s, InputStream in, String head, String method, String path, Backups b)
             throws IOException {
@@ -375,14 +433,33 @@ final class PhoneLink {
                 refuse(s, "413 Payload Too Large", "Too large for a Vibe Launcher backup.");
                 return;
             }
-            if (b.restore(readBody(in, length))) {
+            String passHeader = header(head, "x-backup-passphrase");
+            String passphrase = "";
+            if (passHeader != null && !passHeader.isEmpty()) {
+                try {
+                    passphrase = new String(java.util.Base64.getDecoder().decode(passHeader), StandardCharsets.UTF_8);
+                } catch (IllegalArgumentException e) {
+                    respondText(s, "400 Bad Request", "Invalid passphrase encoding.");
+                    return;
+                }
+            }
+            int res = b.restore(readBody(in, length), passphrase);
+            if (res == Backup.READ_OK) {
                 main.post(b::restored);
                 respondText(s, "200 OK", "Restored. Home is starting again on your device.");
+            } else if (res == Backup.READ_WRONG_PASSPHRASE) {
+                respondText(s, "403 Forbidden", "Wrong passphrase. Try again.");
             } else {
                 respondText(s, "400 Bad Request", "That isn't a Vibe Launcher backup this version can read.");
             }
-        } else if (path.equals("/backup.json")) {
-            String json = b.make();
+        } else if (method.equals("POST") && path.equals("/backup.json")) {
+            Map<String, String> fields = parseForm(readBody(in, (int) contentLength(head, MAX_BODY)));
+            String passphrase = fields.get("passphrase");
+            if (passphrase == null || passphrase.isEmpty()) {
+                respondText(s, "400 Bad Request", "Enter a passphrase to encrypt the backup.");
+                return;
+            }
+            String json = b.make(passphrase);
             if (json == null) {
                 respondText(s, "500 Internal Server Error", "The backup couldn't be made.");
                 return;
@@ -446,7 +523,14 @@ final class PhoneLink {
             return;
         }
         if (video) {   // too small: said here, not taken (the page checks first, where the phone can read it)
-            int[] size = Wallpapers.videoSize(file);
+            int[] size;
+            try {
+                size = Wallpapers.videoSize(file);
+            } catch (RuntimeException e) {
+                //noinspection ResultOfMethodCallIgnored
+                file.delete();
+                throw e;
+            }
             if (size != null && Math.min(size[0], size[1]) < Wallpapers.MIN_VIDEO_SIDE) {
                 //noinspection ResultOfMethodCallIgnored
                 file.delete();
@@ -454,10 +538,20 @@ final class PhoneLink {
                 return;
             }
         }
-        if (w.received(file, video, nameIn(path))) {
+        boolean added;
+        try {
+            added = w.received(file, video, nameIn(path));
+        } catch (RuntimeException e) {
+            //noinspection ResultOfMethodCallIgnored
+            file.delete();
+            throw e;
+        }
+        if (added) {
             respondText(s, "200 OK", video ? "Added. The video is in the Library on the device."
                     : "Added. The picture is in the Library on the device.");
         } else {
+            //noinspection ResultOfMethodCallIgnored
+            file.delete();
             respondText(s, "415 Unsupported Media Type", video ? "The device couldn't use that video."
                     : "The device couldn't use that picture.");
         }
@@ -465,16 +559,19 @@ final class PhoneLink {
 
     /** The name sent with an upload (the address's name=...), or "" when there's none. */
     static String nameIn(String path) {
-        int q = path.indexOf("name=");
-        if (q < 0) return "";
-        String raw = path.substring(q + 5);
-        int amp = raw.indexOf('&');
-        if (amp >= 0) raw = raw.substring(0, amp);
-        try {
-            return java.net.URLDecoder.decode(raw, "UTF-8").trim();
-        } catch (IllegalArgumentException | java.io.UnsupportedEncodingException e) {
-            return "";
+        if (path == null) return "";
+        int qmark = path.indexOf('?');
+        String query = qmark >= 0 ? path.substring(qmark + 1) : path;
+        for (String pair : query.split("&")) {
+            if (pair.startsWith("name=")) {
+                try {
+                    return URLDecoder.decode(pair.substring(5), "UTF-8").trim();
+                } catch (IllegalArgumentException | java.io.UnsupportedEncodingException e) {
+                    return "";
+                }
+            }
         }
+        return "";
     }
 
     /** Why a video under 720p isn't taken, and how to send a bigger one. */
@@ -604,11 +701,16 @@ final class PhoneLink {
 
     private static String readHead(InputStream in) throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        int b, matched = 0;
+        long deadline = System.currentTimeMillis() + 5000;
+        int b, state = 0;
         while ((b = in.read()) != -1) {
+            if (System.currentTimeMillis() > deadline) return null;
             out.write(b);
-            matched = (b == '\r' || b == '\n') ? matched + 1 : 0;
-            if (matched == 4) return out.toString("UTF-8");
+            if (state == 0 && b == '\r') state = 1;
+            else if (state == 1 && b == '\n') state = 2;
+            else if (state == 2 && b == '\r') state = 3;
+            else if (state == 3 && b == '\n') return out.toString("UTF-8");
+            else state = (b == '\r') ? 1 : 0;
             if (out.size() > MAX_BODY) return null;
         }
         return null;
@@ -628,10 +730,14 @@ final class PhoneLink {
     }
 
     private static String readBody(InputStream in, int length) throws IOException {
-        byte[] buf = new byte[length];
-        int n = 0, r;
-        while (n < length && (r = in.read(buf, n, length - n)) > 0) n += r;
-        return new String(buf, 0, n, StandardCharsets.UTF_8);
+        ByteArrayOutputStream out = new ByteArrayOutputStream(Math.min(length, 16 * 1024));
+        byte[] buf = new byte[Math.min(Math.max(length, 1), 16 * 1024)];
+        int left = length, r;
+        while (left > 0 && (r = in.read(buf, 0, Math.min(buf.length, left))) > 0) {
+            out.write(buf, 0, r);
+            left -= r;
+        }
+        return new String(out.toByteArray(), StandardCharsets.UTF_8);
     }
 
     static Map<String, String> parseForm(String body) {
@@ -832,25 +938,43 @@ final class PhoneLink {
      */
     private String backupForm() {
         return head("/backup")
-                + "<style>a.b{display:block;box-sizing:border-box;margin-top:20px;padding:14px;text-align:center;"
-                + "font-weight:600;border-radius:12px;background:#fff;color:#000;text-decoration:none}"
-                + "h2{font-weight:500;font-size:19px;margin-top:40px}input[type=file]{margin-top:12px}</style>"
+                + "<style>h2{font-weight:500;font-size:19px;margin-top:40px}input[type=file]{margin-top:12px}</style>"
                 + "<h1>Vibe Launcher backup</h1>"
-                + "<p>Settings, tiles, folders, tile pictures and API keys. A backup holds your keys, so keep it "
-                + "private.</p>"
-                + "<a class=b href='/" + code + "/backup.json' download>Download backup</a>"
+                + "<p>Settings, tiles, folders, tile pictures and API keys, encrypted with your passphrase.</p>"
+                + "<label for=dp>Passphrase to encrypt backup</label>"
+                + "<input id=dp type=password autocomplete=new-password placeholder='Enter a passphrase'>"
+                + "<input id=dp2 type=password autocomplete=new-password placeholder='Type it again'>"
+                + "<button id=dl disabled>Download encrypted backup</button><p id=dm></p>"
                 + "<h2>Restore</h2>"
                 + "<p>Choose a backup. Everything on the device is replaced by the backup's, then Home starts again.</p>"
                 + "<input type=file id=f accept='.json,application/json'>"
+                + "<label for=rp>Backup passphrase</label>"
+                + "<input id=rp type=password autocomplete=current-password placeholder='Passphrase (required for encrypted backups)'>"
                 + "<button id=send disabled>Restore on device</button><p id=m></p>"
                 + "<script>"
-                + "var f=document.getElementById('f'),b=document.getElementById('send'),m=document.getElementById('m');"
+                + "var dp=document.getElementById('dp'),dp2=document.getElementById('dp2'),"
+                + "dl=document.getElementById('dl'),dm=document.getElementById('dm');"
+                + "dp.oninput=dp2.oninput=function(){dl.disabled=!dp.value||!dp2.value;dm.textContent='';};"
+                + "dl.onclick=function(){if(!dp.value)return;"
+                + "if(dp.value!==dp2.value){dm.textContent='The two passphrases don\\'t match.';return;}"
+                + "dl.disabled=true;dm.textContent='Encrypting…';"
+                + "fetch('/" + code + "/backup.json',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},"
+                + "body:'passphrase='+encodeURIComponent(dp.value)}).then(function(r){if(!r.ok)return r.text().then(function(t){throw t;});"
+                + "var cd=r.headers.get('Content-Disposition')||'';var m=cd.match(/filename=\"([^\"]+)\"/);"
+                + "return r.blob().then(function(b){return{b:b,n:m?m[1]:'vibe-launcher-backup.json'};});})"
+                + ".then(function(x){var u=URL.createObjectURL(x.b),a=document.createElement('a');a.href=u;a.download=x.n;"
+                + "document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},2000);"
+                + "dm.textContent='Encrypted backup downloaded.';dl.disabled=false;})"
+                + ".catch(function(e){dm.textContent=typeof e==='string'?e:'Download failed.';dl.disabled=false;});};"
+                + "var f=document.getElementById('f'),rp=document.getElementById('rp'),b=document.getElementById('send'),m=document.getElementById('m');"
                 + "f.onchange=function(){b.disabled=!f.files.length;m.textContent='';};"
+                + "function b64u(s){var e=new TextEncoder().encode(s),o='';for(var i=0;i<e.length;i++)o+=String.fromCharCode(e[i]);return btoa(o);}"
                 + "b.onclick=function(){if(!f.files.length)return;"
                 + "if(!confirm('Replace all settings, tiles, folders and keys on the device with this backup?'))return;"
                 + "b.disabled=true;m.textContent='Sending…';var r=new FileReader();"
-                + "r.onload=function(){fetch(location.pathname,{method:'POST',headers:{'Content-Type':'application/json'},"
-                + "body:r.result}).then(function(x){return x.text();}).then(function(t){m.textContent=t;b.disabled=false;})"
+                + "r.onload=function(){var h={'Content-Type':'application/json'};if(rp.value)h['X-Backup-Passphrase']=b64u(rp.value);"
+                + "fetch(location.pathname,{method:'POST',headers:h,body:r.result})"
+                + ".then(function(x){return x.text();}).then(function(t){m.textContent=t;b.disabled=false;})"
                 + ".catch(function(){m.textContent='Not sent: try again.';b.disabled=false;});};"
                 + "r.onerror=function(){m.textContent='The file couldn\\'t be read.';b.disabled=false;};"
                 + "r.readAsText(f.files[0]);};"

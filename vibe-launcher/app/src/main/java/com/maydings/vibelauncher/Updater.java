@@ -175,6 +175,7 @@ final class Updater {
             JSONObject a = assets.getJSONObject(i);
             if (!APK.equals(a.optString("name"))) continue;
             apk = a.getString("browser_download_url");
+            if (!apk.startsWith("https://")) apk = null;
             String digest = a.optString("digest");   // "sha256:<hex>", which GitHub works out itself
             if (digest.startsWith("sha256:")) sha = digest.substring(7);
         }
@@ -284,24 +285,39 @@ final class Updater {
         PackageInstaller.SessionParams params = new PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL);
         params.setAppPackageName(pkg);
         int id = installer.createSession(params);
-        try (PackageInstaller.Session session = installer.openSession(id)) {
+        PackageInstaller.Session session = null;
+        try {
+            session = installer.openSession(id);
             try (InputStream in = new java.io.FileInputStream(apk);
                  OutputStream out = session.openWrite(APK, 0, apk.length())) {
                 byte[] buf = new byte[65536];
                 int n;
                 while ((n = in.read(buf)) > 0) out.write(buf, 0, n);
                 session.fsync(out);
-            } catch (IOException | RuntimeException e) {
-                session.abandon();   // or the half-written session stays behind in the installer
-                throw e;
             }
             // Written now (not applied later): installing ends this process. UpdateReceiver reads it back.
             if (self) prefs(app).edit().putLong("installing", System.currentTimeMillis()).commit();
             // Mutable: the installer adds the status and its confirmation screen to this intent.
             int flags = PendingIntent.FLAG_UPDATE_CURRENT | (Build.VERSION.SDK_INT >= 31 ? PendingIntent.FLAG_MUTABLE : 0);
-            Intent result = new Intent(app, UpdateReceiver.class);
+            Intent result = new Intent(app, UpdateReceiver.class).putExtra(PackageInstaller.EXTRA_PACKAGE_NAME, pkg);
             PendingIntent status = PendingIntent.getBroadcast(app, id, result, flags);
             session.commit(status.getIntentSender());
+        } catch (IOException | RuntimeException e) {
+            if (self) prefs(app).edit().remove("installing").commit();
+            if (session != null) {
+                try {
+                    session.abandon();
+                } catch (RuntimeException ignored) {
+                }
+            } else {
+                try {
+                    installer.abandonSession(id);
+                } catch (RuntimeException ignored) {
+                }
+            }
+            throw e;
+        } finally {
+            if (session != null) session.close();
         }
     }
 

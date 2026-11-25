@@ -80,8 +80,8 @@ final class AirlineLogos {
 
     /**
      * The airline's logo, from the TV's cache or downloaded once (kept there until Android clears it). Answered at
-     * once with what's held, and again if a download brings one (or a sharper one, once the flight number tells
-     * the airline's two-character code).
+     * once with what's held, and again if a download brings one. The airline's own (three-letter) logo is tried
+     * first, and the one under its two-character code only when there is none: one that's held is kept.
      */
     void logo(String icao, String iata, Listener to) {
         if (icao == null) {
@@ -96,7 +96,11 @@ final class AirlineLogos {
             to.onLogo(held);
             return;
         }
-        if (held != null) to.onLogo(held);
+        if (held != null) {
+            to.onLogo(held);
+            logosAsked.add(asked);
+            return;
+        }
         List<Listener> waiting = logosWaited.get(asked);
         if (waiting != null) {
             waiting.add(to);
@@ -112,7 +116,7 @@ final class AirlineLogos {
                 logo = loadLogo(icao, iata);
             } catch (Refused e) {
                 turnedAway = true;   // this one only, and for now: asked again in ten minutes
-            } catch (IOException | RuntimeException e) {
+            } catch (IOException | RuntimeException | OutOfMemoryError e) {
                 failed = true;   // offline, or the server's down: asked again in a minute
             }
             Logo got = logo;
@@ -172,7 +176,8 @@ final class AirlineLogos {
      * another reason (too many requests, say), that's said (Refused) and nothing's noted: asked again later.
      */
     private static Logo fetchLogo(String url, File to, File none) throws IOException {
-        if (none.exists() && System.currentTimeMillis() - none.lastModified() < NO_LOGO_MS) return null;
+        long noneAge = System.currentTimeMillis() - none.lastModified();
+        if (none.exists() && noneAge >= 0 && noneAge < NO_LOGO_MS) return null;
         byte[] bytes;
         try {
             bytes = Http.get(url, 1024 * 1024);
@@ -186,8 +191,16 @@ final class AirlineLogos {
             File part = new File(to.getPath() + ".part");
             try (FileOutputStream out = new FileOutputStream(part)) {
                 out.write(bytes);
+            } catch (IOException e) {
+                //noinspection ResultOfMethodCallIgnored
+                part.delete();
+                throw e;
             }
-            if (!part.renameTo(to)) throw new IOException("not kept");
+            if (!part.renameTo(to)) {
+                //noinspection ResultOfMethodCallIgnored
+                part.delete();
+                throw new IOException("not kept");
+            }
             Logo logo = readLogo(to);
             if (logo != null) return logo;
         }
@@ -199,8 +212,20 @@ final class AirlineLogos {
 
     private static Logo readLogo(File file) {
         if (!file.isFile()) return null;
+        BitmapFactory.Options bounds = new BitmapFactory.Options();
+        bounds.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(file.getPath(), bounds);
+        if (bounds.outWidth < 8 || bounds.outHeight < 8
+                || bounds.outWidth > 2048 || bounds.outHeight > 2048
+                || (long) bounds.outWidth * bounds.outHeight > 2_000_000L) {
+            //noinspection ResultOfMethodCallIgnored
+            file.delete();
+            return null;
+        }
         Bitmap b = BitmapFactory.decodeFile(file.getPath());
         if (b == null || b.getWidth() < 8 || b.getHeight() < 8) {
+            if (b != null) b.recycle();
+            //noinspection ResultOfMethodCallIgnored
             file.delete();
             return null;
         }
@@ -218,8 +243,15 @@ final class AirlineLogos {
                 if (y > bottom) bottom = y;
             }
         }
-        if (r < l || bottom < t) return null;
-        return new Logo(l == 0 && t == 0 && r == w - 1 && bottom == h - 1 ? b
-                : Bitmap.createBitmap(b, l, t, r - l + 1, bottom - t + 1));
+        if (r < l || bottom < t) {
+            b.recycle();
+            //noinspection ResultOfMethodCallIgnored
+            file.delete();
+            return null;
+        }
+        if (l == 0 && t == 0 && r == w - 1 && bottom == h - 1) return new Logo(b);
+        Bitmap cropped = Bitmap.createBitmap(b, l, t, r - l + 1, bottom - t + 1);
+        b.recycle();
+        return new Logo(cropped);
     }
 }

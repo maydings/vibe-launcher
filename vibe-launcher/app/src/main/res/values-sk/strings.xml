@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Naskenujte telefónom a uložte doň zálohu alebo ju pošlite späť</string>
     <string name="backup_saved">Záloha uložená</string>
     <string name="backup_failed">Zálohu sa nepodarilo uložiť</string>
+    <string name="backup_passphrase_set">Heslo pre túto zálohu</string>
+    <string name="backup_passphrase_enter">Heslo zálohy</string>
+    <string name="backup_passphrase_empty">Zadajte heslo na zašifrovanie zálohy</string>
+    <string name="backup_passphrase_again">Zadajte ju znova</string>
+    <string name="backup_passphrase_mismatch">Obe sa nezhodujú</string>
+    <string name="restore_wrong_passphrase">Nesprávne heslo zálohy</string>
     <string name="restore_now">Obnoviť teraz</string>
     <string name="restore_warning">Nastavenia, dlaždice, priečinky aj kľúče sa nahradia tými zo zálohy a potom sa plocha znova spustí.</string>
     <string name="restore_failed">Túto zálohu sa nepodarilo prečítať</string>

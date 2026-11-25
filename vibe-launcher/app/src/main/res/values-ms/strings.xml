@@ -302,6 +302,12 @@
     <string name="scan_to_backup">Imbas dengan telefon untuk menyimpan sandaran di sana atau menghantar satu kembali</string>
     <string name="backup_saved">Sandaran disimpan</string>
     <string name="backup_failed">Sandaran tidak dapat disimpan</string>
+    <string name="backup_passphrase_set">Frasa laluan untuk sandaran ini</string>
+    <string name="backup_passphrase_enter">Frasa laluan sandaran</string>
+    <string name="backup_passphrase_empty">Masukkan frasa laluan untuk menyulitkan sandaran</string>
+    <string name="backup_passphrase_again">Taip sekali lagi</string>
+    <string name="backup_passphrase_mismatch">Kedua-duanya tidak sepadan</string>
+    <string name="restore_wrong_passphrase">Frasa laluan sandaran salah</string>
     <string name="restore_now">Pulihkan sekarang</string>
     <string name="restore_warning">Tetapan, jubin, folder dan kunci semuanya diganti dengan yang dalam sandaran, kemudian Laman Utama bermula semula.</string>
     <string name="restore_failed">Sandaran itu tidak dapat dibaca</string>
