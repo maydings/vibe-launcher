@@ -121,6 +121,19 @@ final class WallpaperVideo implements TextureView.SurfaceTextureListener {
     }
 
     /**
+     * Home is off the screen: the player goes, and the TV's video decoder with it. A player only paused keeps
+     * the decoder, and on a TV with one to give, the app in front then has none for its own video.
+     */
+    void letGo() {
+        release();
+    }
+
+    /** Home is on the screen again: the video that was let go plays from its start. */
+    void comeBack() {
+        if (wanted != null && player == null) start();
+    }
+
+    /**
      * Covered whole by something over it, or in sight again: nothing is decoded for a video nobody sees, and it
      * goes on from where it stood once it's uncovered (unless it's paused as well).
      */

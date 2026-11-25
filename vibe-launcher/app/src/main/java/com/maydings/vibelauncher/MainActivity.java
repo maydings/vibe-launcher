@@ -740,6 +740,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         started = true;
         if (clockRefresh == null) clockRefresh = new ClockRefresh(root);
         clockRefresh.start();   // while Home is on screen, paused or not
+        wallpaperVideo.comeBack();
         // Back to the rows for this visit. Here rather than in onStop: Home can still be on screen while
         // the app it opened animates in, and the rows jumping back would show.
         showRows(false, false);
@@ -885,6 +886,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     protected void onStop() {
         super.onStop();
         started = false;
+        wallpaperVideo.letGo();   // the decoder is the app's that's in front now
         if (clockRefresh != null) clockRefresh.stop();
         backFromApp = !inSettings;   // Settings is part of Home: no new picture for coming back from it
     }

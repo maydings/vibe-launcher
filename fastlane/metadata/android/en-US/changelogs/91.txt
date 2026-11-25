@@ -1,0 +1,1 @@
+* An app opened from a tile with a video backdrop can play its own video: Home lets go of the TV's video decoder while it's off the screen. On some TVs the app's video stayed blank until Home was restarted. Back on Home, the backdrop video plays from its start.
